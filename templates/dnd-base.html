@@ -9,19 +9,12 @@
     <link rel="stylesheet" type="text/css" href="{{ s }}">
     {% endfor %}
     
-    <style>
-        {% block style %}
-        {% endblock %}
-    </style>
-    
     {% for j in javascript %}
     <script src="{{ j }}"></script>
     {% endfor %}
     
-    <script>
-        {% block script %}
-        {% endblock %}
-    </script>
+    {% block meta %}
+    {% endblock %}
     
     {% endblock %}
 </head>
