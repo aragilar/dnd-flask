@@ -1,7 +1,0 @@
-{
-    "+": "FREE",
-    "cost": 5,
-    "description": "A chain has 10 hit points. It can be burst with a successful DC 20 Strength check.",
-    "name": "Chain (10 feet)",
-    "weight": "10 lb."
-}

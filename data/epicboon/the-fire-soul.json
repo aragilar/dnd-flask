@@ -1,9 +1,0 @@
-{
-    "+": "DMHB",
-    "name": "The Fire Soul",
-    "text": [
-        "You have immunity to fire damage. You can also cast *burning hands* (save DC 15) at will, without using a spell slot or any components.",
-        "",
-        "<spell>Burning Hands</spell>"
-    ]
-}

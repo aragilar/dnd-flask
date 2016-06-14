@@ -1,8 +1,0 @@
-{
-    "name": "DnD Static file generator",
-    "description": "Generates info pages for DnD 5e.",
-    "image": "heroku/python",
-    "repository": "https://github.com/Omega0/dnd-pagegen",
-    "keywords": ["D&D", "D&D 5e", "DnD", "DnD 5e"],
-    "addons": []
-}

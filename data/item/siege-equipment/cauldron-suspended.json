@@ -1,5 +1,0 @@
-{
-    "+": "DMHB",
-    "description": "*Large object*\n\n**Armor Class:** 19  \n**Hit Points:** 20  \n**Damage Immunities:** poison, psychic\n\nA cauldron is an iron pot suspended so that it can be tipped easily, spilling its contents. Once emptied, a cauldron must be refilled-and its contents must usually be reheated-before it can be used again. It takes three actions to fill a cauldron and one action to tip it.\n\nCauldrons can be filled with other liquids, such as acid or green slime, with different effects.\n\n**Boiling Oil.** The cauldron pours boiling oil onto a 10-foot-square area directly below it. Any creature in the area must make a DC 15 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save, or half as much damage on a successful one.",
-    "name": "Cauldron, suspended"
-}
