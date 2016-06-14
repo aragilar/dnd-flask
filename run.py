@@ -76,7 +76,12 @@ def index():
     else:
         query = ''
     
+    title = 'Home'
+    if show is not None:
+        title = '{!s} {!s}'.format(show.get('+', filter), title)
+    
     return render_template('dnd.html',
+        title=title,
         styles=[url_for('static', filename='index.css')],
         filters=sorted([(filters[f].get('+', f), f) for f in filters.keys()], key=lambda a: a[0]),
         charsheet=url_for('static', filename='character_sheet.html'),
