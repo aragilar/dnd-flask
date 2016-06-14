@@ -1,0 +1,14 @@
+{
+    "+": "FREE",
+    "cost": 1.0,
+    "damage": "1d6",
+    "damage type": "piercing",
+    "name": "Spear",
+    "properties": [
+        "thrown (range 20/60)",
+        "versatile (1d8)"
+    ],
+    "ranged": false,
+    "type": "simple",
+    "weight": "3"
+}

@@ -1,0 +1,45 @@
+{
+    "+": "UA-BLACK-MAGIC",
+    "@": "Tiefling",
+    "ability scores": {
+        "+": 0,
+        "cha": 0,
+        "con": 1,
+        "dex": 0,
+        "int": 0,
+        "str": 0,
+        "wis": 0
+    },
+    "description": "*Unearthed Arcana: Black Magic*\n\nAll abyssal tieflings trace their bloodline to the demons of the Abyss. These tieflings have the following additional features.",
+    "languages": [
+        "Abyssal"
+    ],
+    "name": "Abyssal Legacy Tiefling",
+    "traits": [
+        "Abyssal Arcana",
+        "Abyssal Fortitude"
+    ],
+    "traits-data": {
+        "Abyssal Arcana": [
+            "Each time you finish a long rest, you gain the ability to cast cantrips and spells randomly determined from a short list. At 1st level, you can cast a cantrip. When you reach 3rd level, you can also cast a 1st-level spell. At 5th level, you can cast a 2nd-level spell.",
+            "",
+            "You can cast a spell gained from this trait only once until you complete your next long rest. You can cast a cantrip gained from this trait at will, as normal. For 1st-level spells whose effect changes if cast using a spell slot of 2nd level or higher, you cast the spell as if using a 2nd-level slot. Spells of 2nd level are cast as if using a 2nd-level slot.",
+            "",
+            "At the end of each long rest, you lose the cantrips and spells previously granted by this feature, even if you did not cast them. You replace those cantrips and spells by rolling for new ones on the Abyssal Arcana Spells table. Roll separately for each cantrip and spell. If you roll the same spell or cantrip you gained at the end of your previous long rest, roll again until you get a different result.",
+            "",
+            "**Abyssal Arcana Spells**",
+            "",
+            "| d6 | 1st Level | 3rd Level | 5th Level |",
+            "|:--:|:----------|:----------|:----------|",
+            "| 1  | <spell>Dancing Lights</spell> | <spell>Burning Hands</spell> | <spell>Alter Self</spell> |",
+            "| 2  | <spell>True Strike</spell> | <spell>Charm Person</spell> | <spell>Darkness</spell> |",
+            "| 3  | <spell>Light</spell> | <spell>Magic Missile</spell> | <spell>Invisibility</spell> |",
+            "| 4  | <spell>Message</spell> | <spell>Cure Wounds</spell> | <spell>Levitate</spell> |",
+            "| 5  | <spell>Spare the Dying</spell> | <spell>Tasha's Hideous Laughter</spell> | <spell>Mirror Image</spell> |",
+            "| 6  | <spell>Prestidigitation</spell> | <spell>Thunderwave</spell> | <spell>Spider Climb</spell> |"
+        ],
+        "Abyssal Fortitude": [
+            "Your hit point maximum increases by half your level (minimum 1)"
+        ]
+    }
+}

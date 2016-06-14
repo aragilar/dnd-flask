@@ -1,0 +1,187 @@
+{
+    "+": "UA-RANGERBETA",
+    "combat proficiencies": [
+        "Light Armor",
+        "Shields",
+        "Simple Weapons",
+        "Martial Weapons"
+    ],
+    "description": "A warrior who uses martial prowess and nature magic to combat threats on the edges of civilization",
+    "equipment": [
+        [
+            "leather armor"
+        ],
+        [
+            "two shortswords",
+            "two martial melee weapons",
+            "a martial melee weapon and a shield"
+        ],
+        [
+            "a dungeoneer's pack",
+            "an explorer's pack"
+        ],
+        [
+            "A longbow and a quiver of 20 arrows",
+            "a martial weapon"
+        ]
+    ],
+    "features": [
+        [],
+        [
+            "Ambuscade"
+        ],
+        [
+            "Fighting Style",
+            "Skirmisher's Stealth"
+        ],
+        [
+            "Primeval Awareness",
+            "Spirit Path"
+        ],
+        [
+            "Ability Score Improvement"
+        ],
+        [
+            "Extra Attack"
+        ]
+    ],
+    "features-data": {
+        "Ability Score Improvement": [
+            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+        ],
+        "Ambuscade": [
+            "Rangers strike first and strike hard. When you roll initiative, you gain a special turn that takes place before other creatures can act. On this turn, you can use your action to take either the Attack or Hide action.",
+            "",
+            "If more than one creature in an encounter has this feature, they all act first in order of initiative, then the regular initiative order begins.",
+            "",
+            "If you would normally be surprised at the start of an encounter, you are not surprised but you do not gain this extra turn."
+        ],
+        "Extra Attack": [
+            "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+        ],
+        "Fighting Style": [
+            "At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.",
+            "",
+            "*Archery*  ",
+            "You gain a +2 bonus to attack rolls you make with ranged weapons.",
+            "",
+            "*Defense*  ",
+            "While you are wearing armor, you gain a +1 bonus to AC.",
+            "",
+            "*Dueling*  ",
+            "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.",
+            "",
+            "*Two-Weapon Fighting*  ",
+            "When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
+        ],
+        "Natural Explorer": [
+            "At 2nd level, you are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you're proficient in.",
+            "",
+            "While traveling for an hour or more in your favored terrain, you gain the following benefits:",
+            "",
+            "* Difficult terrain doesn't slow your group's travel.",
+            "* Your group can't become lost except by magical means.",
+            "* Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger.",
+            "* If you are traveling alone, you can move stealthily at a normal pace.",
+            "* When you forage, you find twice as much food as you normally would.",
+            "* While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.",
+            "",
+            "You choose additional favored terrain types at 6th and 10th level."
+        ],
+        "Primeval Awareness": [
+            "Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn't reveal the creatures' location or number."
+        ],
+        "Skirmisher's Stealth": [
+            "Beginning at 2nd level, you combine speed and stealth in combat to make yourself hard to pin down. You are difficult to detect even if you attack or otherwise take actions that would normally reveal your presence.",
+            "",
+            "At the start of your turn, pick a creature you are hidden from. You remain hidden from that creature during your turn, regardless of your actions or the actions of other creatures. As a bonus action at the end of your turn, you can make a Dexterity (Stealth) check to hide again if you fulfill the conditions needed to hide. Otherwise, creatures are aware of you at the end of your turn."
+        ],
+        "Spirit Path": [
+            "At 3rd level, you form a bond with a nature spirit-a companion forged by your link to the wild. This spirit companion protects you as you travel and watches your back in battle. You choose a ranger path that shapes your spirit companion and its magic: the Guardian, the Seeker, or the Stalker. Your choice grants you features at 3rd level and again at 7th, 11th, and 15th level.",
+            "",
+            "*Spirit Companion*  ",
+            "All rangers gain a spirit companion and the ability to invoke its magical power. (Your spirit companion grants you one benefit you can call on in this playtest version of the revised ranger, with more benefits gained at higher levels.) You regain your ability to call on your spirit companion in this way when you finish a short or long rest.",
+            "",
+            "Once per day as a bonus action, you can command your spirit companion to materialize as a living creature, determined by the ranger path you choose. Your spirit companion manifests as an animal for 1 minute or until your concentration is broken (as if you are concentrating on a spell). You can also dismiss it as a bonus action.",
+            "",
+            "The manifested creature gains a bonus to attack rolls and saving throws equal to your Wisdom modifier. It uses the hit points in the animal's stat block or half your hit point maximum, whichever is higher.",
+            "",
+            "The manifested creature takes its turn on your initiative and acts immediately after you. You control its actions, even if you are unconscious or otherwise unable to act."
+        ],
+        "Spirit Path Feature": [
+            "You gain a feature from your Spirit Path."
+        ]
+    },
+    "hit die": "2d6",
+    "longdescription": [
+        "# Rangers, Alternative",
+        "",
+        "*Unearthed Arcana: Ranger Beta*",
+        "",
+        "## Note: this class is still very much in beta and should not be used in an actual campaign",
+        "",
+        "The ranger has been a part of Dungeons & Dragons since almost the beginning, and it remains one of the most popular classes in the game. However, feedback on fifth edition D&D has shown that the ranger lags behind the other classes in terms of power and player satisfaction.",
+        "",
+        "In looking at the history of the ranger, the class is very much a victim of the game's changing core mechanics. In the early days, the ranger started with the basic chassis of the fighter, added elements of other classes, and introduced its own unique mechanics. Over time, though, the game's core rules have grown more comprehensive and flexible. And as they have, several of the key elements that set rangers apart-including fighting with two weapons, tracking, and stealth-became available to any character.",
+        "",
+        "That change left the ranger leaning on a narrow selection of unique mechanics, most notably those that gave the character a set of benefits against a specific type of opponent. Such a mechanic works well if it augments an already strong foundation for a character class, such as a cleric's ability to turn undead. However, that kind of benefit is too situational to serve as the class's signature ability.",
+        "",
+        "The ranger has also featured an animal companion in previous editions of the game, but giving a player what amounts to a second character to play is difficult to balance in a satisfying way. The feedback we've received indicates that many players feel too restricted by the Beast Master ranger's companion. It doesn't feel logical or satisfying to have a companion that sits still unless a ranger actively commands it.",
+        "",
+        "The following revised design of the ranger builds on the class's unique traits, creating a new set of class features for 1st level to 5th level. These features are designed to make the ranger feel distinct and interesting while still remaining true to its identity within the game. Before we dive into the details, here are some notes on how the design came together.",
+        "",
+        "## Design Notes",
+        "",
+        "The ranger presented here was built around a small number of concepts that define the class. These concepts serve to make the class distinct and create a cohesive sense of the ranger's place in the world.",
+        "",
+        "### Skirmishers",
+        "",
+        "Rangers are skirmishers. They avoid direct confrontation in favor of sudden, deadly attacks that leave an opponent without the chance to make an effective counterattack.",
+        "",
+        "Key Mechanics: Ambuscade, Fighting Style, Skirmisher's Stealth. These mechanics give the ranger a fighter feel, while focusing on specific tactics that involve ambushes, mobility, and sniping.",
+        "",
+        "### Wanderers",
+        "",
+        "Rangers are the ultimate survivors. They can wander a barren wilderness alone for months, living only on what they find. A group with a ranger has a significantly easier time surviving in the wilds.",
+        "",
+        "Key Mechanics: Natural Explorer, 2d6 Hit Dice. The Natural Explorer mechanic from the Player's Handbook makes the ranger the best character to have along on wilderness adventures. Upgraded Hit Dice make rangers as durable as barbarians, even as they gain a more reliable number of hit points compared to the barbarian's d12. In addition, having a higher total number of Hit Dice means a ranger can more efficiently heal with short rests, providing finer control over how much healing to shoot for when spending Hit Dice.",
+        "",
+        "### Guardians",
+        "",
+        "Rangers are champions of the natural world. They are typically good aligned, and their link to nature gives them supernatural abilities. They are the paladins of the forest.",
+        "",
+        "Key Mechanics: Spirit Path. The Spirit Path class feature combines the concept of an animal companion with the ranger's traditional spellcasting. This ranger has a spirit companion that can channel magical effects to the character and his or her companions. The spirit companion can manifest as a wild animal and aid the ranger for short periods of time-enough to make a big impact on one fight without serving as the star for every fight.",
+        "",
+        "Companions are tricky to balance in D&D. If they are weak, they feel like a lot of work for a small payoff. However, even a moderately powerful companion can give a character too much of an advantage in the long term. This design opts for a very powerful companion, but one that appears only once per day.",
+        "",
+        "## This Playtest and the Player's Handbook",
+        "",
+        "Does this playtest mean we're changing the ranger as presented in the Player's Handbook? No. Not in the least. This is merely an attempt to gauge how much interest there is in moving back to the core definition of the ranger, then attempting to shift it a bit to make it a more distinct class. Even if this option proves overwhelmingly popular, we'll continue to treat the ranger in the Player's Handbook as the canonical class and will keep this version as an option for players and DMs who want something a bit different. If you're happy with your current ranger character, keep playing!",
+        "",
+        "Before we consider making a change to the Player's Handbook, an alternative ranger would need to be thoroughly playtested from levels 1 to 20. We would then need to see conclusive feedback that you-our players and DMs-want to replace the ranger character class. Even then, we'd simply make this option a legal choice for D&D Adventurers League play and present it in an upcoming expansion as a new option for home campaigns. We have no intention of invalidating current characters or taking options away from people who enjoy them."
+    ],
+    "max-level": 5,
+    "name": "Ranger, Alt",
+    "primary stat": [
+        "dex",
+        "wis"
+    ],
+    "saving throws": [
+        "dex",
+        "wis"
+    ],
+    "skills": [
+        3,
+        "Animal Handling",
+        "Athletics",
+        "Insight",
+        "Investigation",
+        "Nature",
+        "Perception",
+        "Stealth",
+        "Survival"
+    ],
+    "tool proficiencies": [
+        "Herbalism Kit"
+    ]
+}

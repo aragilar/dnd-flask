@@ -1,0 +1,10 @@
+{
+    "+": "FREE",
+    "ac": "16",
+    "cost": 75.0,
+    "name": "Chain mail",
+    "stealth": true,
+    "strength": 13,
+    "type": "heavy",
+    "weight": 55
+}

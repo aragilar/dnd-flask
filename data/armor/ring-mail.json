@@ -1,0 +1,10 @@
+{
+    "+": "FREE",
+    "ac": "14",
+    "cost": 30.0,
+    "name": "Ring mail",
+    "stealth": true,
+    "strength": 0,
+    "type": "heavy",
+    "weight": 40
+}

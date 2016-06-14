@@ -1,0 +1,10 @@
+{
+    "+": "FREE",
+    "ac": "17",
+    "cost": 200.0,
+    "name": "Splint",
+    "stealth": true,
+    "strength": 15,
+    "type": "heavy",
+    "weight": 60
+}

@@ -1,0 +1,10 @@
+{
+    "+": "DMHB",
+    "attunement": true,
+    "description": [
+        "When you fall while wearing this ring, you descend 60 feet per round and take no damage from falling."
+    ],
+    "name": "Ring of Feather Falling",
+    "rarity": "rare",
+    "type": "Ring"
+}

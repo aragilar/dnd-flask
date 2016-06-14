@@ -1,0 +1,12 @@
+{
+    "+": "FREE",
+    "cost": 0.1,
+    "damage": "1d4",
+    "damage type": "bludgeoning",
+    "name": "Sling",
+    "properties": [
+        "ammunition (range 30/120)"
+    ],
+    "ranged": true,
+    "type": "simple"
+}

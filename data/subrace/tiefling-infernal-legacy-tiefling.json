@@ -1,0 +1,36 @@
+{
+    "+": "PHB",
+    "@": "Tiefling",
+    "ability scores": {
+        "+": 0,
+        "cha": 0,
+        "con": 0,
+        "dex": 0,
+        "int": 1,
+        "str": 0,
+        "wis": 0
+    },
+    "description": "The Infernal Legacy Tiefling is the Player's Handbook version of the Tiefling.",
+    "languages": [
+        "Infernal"
+    ],
+    "name": "Infernal Legacy Tiefling",
+    "traits": [
+        "Hellish Resistance",
+        "Infernal Legacy"
+    ],
+    "traits-data": {
+        "Hellish Resistance": [
+            "You have resistance to fire damage."
+        ],
+        "Infernal Legacy": [
+            "You know the *thaumaturgy* cantrip. Once you reach 3rd level, you can cast the *hellish Rebuke* spell once per day as a 2nd-level spell. Once you reach 5th level, you can also cast the *darkness* spell once per day. Charisma is your spellcasting ability for these spells.",
+            "",
+            "<spell>Thaumaturgy</spell>",
+            "",
+            "<spell>Hellish Rebuke</spell>",
+            "",
+            "<spell>Darkness</spell>"
+        ]
+    }
+}

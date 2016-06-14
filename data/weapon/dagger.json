@@ -1,0 +1,15 @@
+{
+    "+": "FREE",
+    "cost": 2.0,
+    "damage": "1d4",
+    "damage type": "piercing",
+    "name": "Dagger",
+    "properties": [
+        "finesse",
+        "light",
+        "thrown (range 20/60)"
+    ],
+    "ranged": false,
+    "type": "simple",
+    "weight": "1"
+}

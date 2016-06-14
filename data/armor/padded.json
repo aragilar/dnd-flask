@@ -1,0 +1,10 @@
+{
+    "+": "FREE",
+    "ac": "11 + Dex modifier",
+    "cost": 5.0,
+    "name": "Padded",
+    "stealth": true,
+    "strength": 0,
+    "type": "light",
+    "weight": 8
+}

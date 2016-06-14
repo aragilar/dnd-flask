@@ -1,0 +1,12 @@
+{
+    "+": "DMHB",
+    "attunement": true,
+    "description": [
+        "While wearing this ring, you can cast the *jump* spell from it as a bonus action at will, but can target only yourself when you do so.",
+        "",
+        "<spell>Jump</spell>"
+    ],
+    "name": "Ring of Jumping",
+    "rarity": "uncommon",
+    "type": "Ring"
+}

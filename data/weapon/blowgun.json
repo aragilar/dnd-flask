@@ -1,0 +1,14 @@
+{
+    "+": "FREE",
+    "cost": 10.0,
+    "damage": "1",
+    "damage type": "piercing",
+    "name": "Blowgun",
+    "properties": [
+        "ammunition (range 25/100)",
+        "loading"
+    ],
+    "ranged": true,
+    "type": "martial",
+    "weight": "1"
+}

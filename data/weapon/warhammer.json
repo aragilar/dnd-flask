@@ -1,0 +1,13 @@
+{
+    "+": "FREE",
+    "cost": 15.0,
+    "damage": "1d8",
+    "damage type": "bludgeoning",
+    "name": "Warhammer",
+    "properties": [
+        "versatile (1d10)"
+    ],
+    "ranged": false,
+    "type": "martial",
+    "weight": "2"
+}

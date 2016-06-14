@@ -1,0 +1,10 @@
+{
+    "+": "FREE",
+    "ac": "13 + Dex modifier (max 2)",
+    "cost": 50.0,
+    "name": "Chain shirt",
+    "stealth": false,
+    "strength": 0,
+    "type": "medium",
+    "weight": 20
+}

@@ -1,0 +1,15 @@
+{
+    "+": "FREE",
+    "cost": 10.0,
+    "damage": "1d12",
+    "damage type": "piercing",
+    "name": "Lance",
+    "properties": [
+        "reach",
+        "special"
+    ],
+    "ranged": false,
+    "special": "You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted.",
+    "type": "martial",
+    "weight": "6"
+}

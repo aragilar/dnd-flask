@@ -1,0 +1,10 @@
+{
+    "+": "FREE",
+    "ac": "18",
+    "cost": 1500.0,
+    "name": "Plate",
+    "stealth": true,
+    "strength": 15,
+    "type": "heavy",
+    "weight": 65
+}

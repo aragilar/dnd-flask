@@ -1,0 +1,13 @@
+{
+    "+": "FREE",
+    "cost": 1.0,
+    "damage": "1d4",
+    "damage type": "slashing",
+    "name": "Sickle",
+    "properties": [
+        "light"
+    ],
+    "ranged": false,
+    "type": "simple",
+    "weight": "2"
+}

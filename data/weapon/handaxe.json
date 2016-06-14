@@ -1,0 +1,14 @@
+{
+    "+": "FREE",
+    "cost": 5.0,
+    "damage": "1d6",
+    "damage type": "slashing",
+    "name": "Handaxe",
+    "properties": [
+        "light",
+        "thrown (range 20/60)"
+    ],
+    "ranged": false,
+    "type": "simple",
+    "weight": "2"
+}

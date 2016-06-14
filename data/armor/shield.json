@@ -1,0 +1,10 @@
+{
+    "+": "FREE",
+    "ac": "+2",
+    "cost": 10.0,
+    "name": "Shield",
+    "stealth": false,
+    "strength": 0,
+    "type": "shield",
+    "weight": 6
+}

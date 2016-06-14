@@ -1,0 +1,18 @@
+{
+    "+": "PHB",
+    "cast time": "1 action",
+    "components": {
+        "material": "a grasshopper's hind leg",
+        "somatic": true,
+        "verbal": true
+    },
+    "description": [
+        "You touch a creature. The creature's jump distance is tripled until the spell ends."
+    ],
+    "duration": "1 minute",
+    "level": "1",
+    "name": "Jump",
+    "range": "Touch",
+    "ritual": false,
+    "type": "Transmutation"
+}

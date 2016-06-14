@@ -1,0 +1,13 @@
+{
+    "+": "FREE",
+    "cost": 25.0,
+    "damage": "1d8",
+    "damage type": "piercing",
+    "name": "Rapier",
+    "properties": [
+        "finesse"
+    ],
+    "ranged": false,
+    "type": "martial",
+    "weight": "2"
+}

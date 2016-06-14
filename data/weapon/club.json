@@ -1,0 +1,13 @@
+{
+    "+": "FREE",
+    "cost": 0.1,
+    "damage": "1d4",
+    "damage type": "bludgeoning",
+    "name": "Club",
+    "properties": [
+        "light"
+    ],
+    "ranged": false,
+    "type": "simple",
+    "weight": "2"
+}

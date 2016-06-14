@@ -1,0 +1,16 @@
+{
+    "+": "FREE",
+    "cost": 50.0,
+    "damage": "1d10",
+    "damage type": "piercing",
+    "name": "Crossbow, heavy",
+    "properties": [
+        "ammunition (range 100/400)",
+        "heavy",
+        "loading",
+        "two-handed"
+    ],
+    "ranged": true,
+    "type": "martial",
+    "weight": "18"
+}

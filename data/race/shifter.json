@@ -1,0 +1,37 @@
+{
+    "+": "UA-EBERON",
+    "ability scores": {
+        "+": 0,
+        "cha": 0,
+        "con": 0,
+        "dex": 1,
+        "int": 0,
+        "str": 0,
+        "wis": 0
+    },
+    "description": "# Shifters\n\n*Unearthed Arcana: Eberron*\n\nShifters are descended from humans and lycanthropes. Although they cannot fully change to animal form, they can take on animalistic features by a process they call shifting.\n\n## Use in Eberon Setting\n\nShifters embody the tension between Khorvaire's natural world and its future, as growing cities and magical technology push against the wild.",
+    "languages": [
+        "Common",
+        "Sylvan"
+    ],
+    "name": "Shifter",
+    "size": "Medium",
+    "size description": "Shifters are about the same size as humans. Your size is {size}.",
+    "speed": 30,
+    "traits": [
+        "Darkvision",
+        "Shifting"
+    ],
+    "traits-data": {
+        "Darkvision": [
+            "Your lycanthropic heritage grants you the ability to see in dark conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+        ],
+        "Shifting": [
+            "On your turn, you can shift as a bonus action. Shifting lasts for 1 minute or until you end it on your turn as a bonus action.",
+            "",
+            "While shifting, you gain temporary hit points equal to your level + your Constitution bonus (minimum of 1). You also gain a feature that depends on your shifter subrace, described below.",
+            "",
+            "You must finish a short or long rest before you can shift again."
+        ]
+    }
+}

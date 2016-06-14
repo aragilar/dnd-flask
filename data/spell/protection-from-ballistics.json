@@ -1,0 +1,21 @@
+{
+    "+": "UA-MODERN",
+    "cast time": "1 action",
+    "components": {
+        "material": "a shell casing",
+        "somatic": true,
+        "verbal": true
+    },
+    "description": [
+        "*MODERN*",
+        "",
+        "This spell enchants the flesh of the target against the impact of bullets. Until the spell ends, the target has resistance to nonmagical ballistic damage."
+    ],
+    "duration": "Concentration, up to 10 minutes",
+    "level": "3",
+    "name": "Protection from Ballistics",
+    "range": "Touch",
+    "ritual": false,
+    "technomagic": false,
+    "type": "Abjuration"
+}

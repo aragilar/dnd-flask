@@ -1,0 +1,21 @@
+{
+    "+": "FREE",
+    "@": "Human",
+    "ability scores": {
+        "+": 0,
+        "cha": 1,
+        "con": 1,
+        "dex": 1,
+        "int": 1,
+        "str": 1,
+        "wis": 1
+    },
+    "combat proficiencies": [],
+    "description": "Ability Score Increase: A typical human's ability scores all increase by 1.",
+    "feats": [],
+    "languages": [],
+    "name": "Human (Typical)",
+    "skills": [],
+    "tool proficiencies": [],
+    "traits": []
+}

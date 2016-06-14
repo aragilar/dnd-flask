@@ -1,0 +1,18 @@
+{
+    "+": "FREE",
+    "cast time": "1 action",
+    "components": {
+        "material": "",
+        "somatic": true,
+        "verbal": true
+    },
+    "description": [
+        "You touch a creature and can end either one disease or one condition afflicting it. The condition can be blinded, deafened, paralyzed, or poisoned."
+    ],
+    "duration": "Instantaneous",
+    "level": "2",
+    "name": "Lesser Restoration",
+    "range": "Touch",
+    "ritual": false,
+    "type": "Abjuration"
+}

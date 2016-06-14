@@ -1,0 +1,17 @@
+{
+    "+": "DMHB",
+    "attunement": false,
+    "description": [
+        "uncommon (+1), rare (+2), or very rare (+3)",
+        "",
+        "You have a bonus to attack and damage rolls made with this piece of magic ammunition. The bonus is determined by the rarity of the ammunition. Once it hit a target, the ammunition is no longer magical."
+    ],
+    "limits": "any ammunition",
+    "name": "Ammunition, +1, +2, or +3",
+    "rarity": [
+        "uncommon",
+        "rare",
+        "very rare"
+    ],
+    "type": "Weapon"
+}

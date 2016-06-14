@@ -1,0 +1,21 @@
+{
+    "+": "UA-MODERN",
+    "cast time": "1 action",
+    "components": {
+        "material": "",
+        "somatic": true,
+        "verbal": true
+    },
+    "description": [
+        "*MODERN*",
+        "",
+        "This spell shuts down all electronic devices within range that are not wielded by or under the direct control of a creature. If an electronic device within range is used by a creature, that creature must succeed on a Constitution saving throw to prevent the device from being shut down. While the spell remains active, no electronic device within range can be started or restarted."
+    ],
+    "duration": "Concentration, up to 1 minute",
+    "level": "5",
+    "name": "Shutdown",
+    "range": "120 feet",
+    "ritual": false,
+    "technomagic": true,
+    "type": "Transmutation"
+}

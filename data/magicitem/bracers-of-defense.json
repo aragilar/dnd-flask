@@ -1,0 +1,10 @@
+{
+    "+": "DMHB",
+    "attunement": true,
+    "description": [
+        "While wearing these bracers, you gain a +2 bonus to AC if you are wearing no armor and using no shield."
+    ],
+    "name": "Bracers of Defense",
+    "rarity": "rare",
+    "type": "Wondrous item"
+}

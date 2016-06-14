@@ -1,0 +1,10 @@
+{
+    "+": "FREE",
+    "cost": 5.0,
+    "damage": "1d6",
+    "damage type": "bludgeoning",
+    "name": "Mace",
+    "ranged": false,
+    "type": "simple",
+    "weight": "4"
+}

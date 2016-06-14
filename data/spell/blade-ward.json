@@ -1,0 +1,18 @@
+{
+    "+": "PHB",
+    "cast time": "1 action",
+    "components": {
+        "material": "",
+        "somatic": true,
+        "verbal": true
+    },
+    "description": [
+        "You extend your hand and trace a sigil of warding in the air. Until the end of your next turn, you have resistance against bludgeoning, piercing, and slashing damage dealt by weapon attacks."
+    ],
+    "duration": "1 round",
+    "level": "Cantrip",
+    "name": "Blade Ward",
+    "range": "Self",
+    "ritual": false,
+    "type": "Abjuration"
+}

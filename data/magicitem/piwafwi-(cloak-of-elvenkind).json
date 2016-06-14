@@ -1,0 +1,12 @@
+{
+    "+": "OotA",
+    "attunement": true,
+    "description": [
+        "*Out of the Abyss*",
+        "",
+        "This dark spider-silk cloak is made by drow. It is a cloak of elvenkind (see chapter 7, \"Treasure,\" of the Dungeon Master's Guide). It loses its magic if exposed to sunlight for 1 hour without interruption."
+    ],
+    "name": "Piwafwi (Cloak of Elvenkind)",
+    "rarity": "uncommon",
+    "type": "Wondrous item"
+}

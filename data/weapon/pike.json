@@ -1,0 +1,15 @@
+{
+    "+": "FREE",
+    "cost": 5.0,
+    "damage": "1d10",
+    "damage type": "piercing",
+    "name": "Pike",
+    "properties": [
+        "heavy",
+        "reach",
+        "two-handed"
+    ],
+    "ranged": false,
+    "type": "martial",
+    "weight": "18"
+}

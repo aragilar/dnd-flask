@@ -1,0 +1,18 @@
+{
+    "+": "FREE",
+    "cast time": "1 action",
+    "components": {
+        "material": "diamond dust worth 100 gp, which the spell consumes",
+        "somatic": true,
+        "verbal": true
+    },
+    "description": [
+        "This spell turns the flesh of a willing creature you touch as hard as stone. Until the spell ends, the target has resistance to nonmagical bludgeoning, piercing, and slashing damage."
+    ],
+    "duration": "Concentration, up to 1 hour",
+    "level": "4",
+    "name": "Stoneskin",
+    "range": "Touch",
+    "ritual": false,
+    "type": "Abjuration"
+}

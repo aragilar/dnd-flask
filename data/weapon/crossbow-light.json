@@ -1,0 +1,15 @@
+{
+    "+": "FREE",
+    "cost": 25.0,
+    "damage": "1d8",
+    "damage type": "piercing",
+    "name": "Crossbow, light",
+    "properties": [
+        "ammunition (range 80/320)",
+        "loading",
+        "two-handed"
+    ],
+    "ranged": true,
+    "type": "simple",
+    "weight": "5"
+}

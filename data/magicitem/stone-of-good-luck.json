@@ -1,0 +1,10 @@
+{
+    "+": "DMHB",
+    "attunement": true,
+    "description": [
+        "While this polished agate is on your person, you gain a +1 bonus to ability checks and saving throws."
+    ],
+    "name": "Stone of Good Luck",
+    "rarity": "uncommon",
+    "type": "Wondrous item"
+}

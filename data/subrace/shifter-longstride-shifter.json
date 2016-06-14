@@ -1,0 +1,23 @@
+{
+    "+": "UA-EBERON",
+    "@": "Shifter",
+    "ability scores": {
+        "+": 0,
+        "cha": 0,
+        "con": 0,
+        "dex": 1,
+        "int": 0,
+        "str": 0,
+        "wis": 0
+    },
+    "description": "Longstride shifters are fleet and elusive.",
+    "name": "Longstride Shifter",
+    "traits": [
+        "Shifting Feature"
+    ],
+    "traits-data": {
+        "Shifting Feature": [
+            "While shifting you can use the Dash action as a bonus action."
+        ]
+    }
+}

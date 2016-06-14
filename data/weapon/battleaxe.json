@@ -1,0 +1,13 @@
+{
+    "+": "FREE",
+    "cost": 10.0,
+    "damage": "1d8",
+    "damage type": "slashing",
+    "name": "Battleaxe",
+    "properties": [
+        "versatile (1d10)"
+    ],
+    "ranged": false,
+    "type": "martial",
+    "weight": "4"
+}

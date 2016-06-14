@@ -1,0 +1,10 @@
+{
+    "+": "FREE",
+    "ac": "15 + Dex modifier (max 2)",
+    "cost": 750.0,
+    "name": "Half plate",
+    "stealth": true,
+    "strength": 0,
+    "type": "medium",
+    "weight": 40
+}
