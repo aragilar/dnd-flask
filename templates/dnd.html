@@ -1,11 +1,32 @@
 {% extends "dnd-base.html" %}
 {% block title %}Home{% endblock %}
+{% block style %}
+p.filter {
+    float:right;
+}
+{% endblock %}
+{% block script %}
+window.onload = function(){
+    var elem = document.getElementById("filter");
+    elem.value = 'show';
+    elem.addEventListener(function(){
+        if (this.value != '-'){
+            window.location.search = 'filter=' + this.value;
+        } else {
+            window.location.search = '';
+        }
+    });
+}
+{% endblock %}
 {% block content %}
 <div>
-    <select style="float: right;" onchange="window.location.search=(this.value!='-')?('filter='+this.value):('')">
-        <option>-</option>
-        <option value="show">Modern</option>
-    </select>
+    <p class="filter">
+        Filter: 
+        <select id="filter">
+            <option>-</option>
+            <option value="show">Modern</option>
+        </select>
+    </p>
     <h1>Home</h1>
     <h2><a href="{{ charsheet }}">Character Sheet</a></h2>
     <hr>
