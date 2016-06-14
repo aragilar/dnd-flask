@@ -9,10 +9,11 @@ app = Flask(__name__)
 
 releasesort = helper.release_sort
 filters = {}
-for file in os.listdir('data'):
-    if file.endswith('.json') and file != 'sources.json':
-        item = file[:-5]
-        filters[item] = helper.archiver.load('data/%s.json' % item)
+folder = 'data/filter'
+for item in os.listdir(folder):
+    if item.endswith('.json'):
+        filters[item[:-5]] = helper.archiver.load(os.path.join(folder, item))
+del folder
 
 @app.errorhandler(403)
 def four_oh_three(e):
