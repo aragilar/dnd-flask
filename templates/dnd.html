@@ -1,22 +1,24 @@
 {% extends "dnd-base.html" %}
 {% block title %}Home{% endblock %}
-{% block style %}
+{% block meta %}
+<style>
 p.filter {
     float:right;
 }
-{% endblock %}
-{% block script %}
+</style>
+<script>
 window.onload = function(){
     var elem = document.getElementById("filter");
     elem.value = 'show';
-    elem.addEventListener(function(){
+    elem.addEventListener('onchange', function(){
         if (this.value != '-'){
             window.location.search = 'filter=' + this.value;
         } else {
             window.location.search = '';
         }
     });
-}
+};
+</script>
 {% endblock %}
 {% block content %}
 <div>
