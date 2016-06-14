@@ -92,7 +92,7 @@ td, th {
 }
 
 details {
-    padding: 5px;
+    margin: 5px;
 }
 
 summary * {
