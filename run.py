@@ -80,6 +80,7 @@ def index():
     
     return render_template('dnd.html',
         styles=[url_for('static', filename='index.css')],
+        filters=filterlist,
         charsheet=url_for('static', filename='character_sheet.html'),
         classlink=url_for('class_home', filter=filter),
         classes=classes,
