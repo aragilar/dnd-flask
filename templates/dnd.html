@@ -44,7 +44,9 @@ window.onload = function(){
         Filter: 
         <select id="filter">
             <option>-</option>
-            <option value="show">Modern</option>
+            {% for item in filters %}
+            <option value="{{ item[1] }}">{{ item[0] }}</option>
+            {% endfor %}
         </select>
     </p>
     <h1>Home</h1>
