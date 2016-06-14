@@ -1,0 +1,141 @@
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],/* 1 */
+input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+/*My styles below*/
+
+:target {
+    background-color: #fbe54e;
+}
+
+body {
+    background-color: #ddd;
+    padding: 10px 0px 300px;
+}
+
+a.button {
+    background-color: #ddd;
+    padding: 3px;
+    margin: 1px;
+    border: 2px outset #555;
+    border-radius: 10px;
+}
+
+a.button:active {
+    border-style: inset;
+}
+
+a.home {
+    float: left;
+}
+
+a.collapse-details {
+    float: right;
+    color: black;
+    text-decoration: none;
+}
+
+a.button:active {
+    border-style: inset;
+}
+
+div {
+    width: 800px;
+    margin: 0px auto;
+    border: 1px solid black;
+    padding: 5px;
+    background-color: #fff;
+}
+
+div div {
+    width: 80%;
+}
+
+li {
+    margin: 2px 0px;
+}
+
+li[value] {
+    padding: 5px;
+}
+
+li[value] > details {
+    position: relative;
+    top: 1px;
+    margin: 0px;
+    padding: 0px;
+}
+
+li.no-bullet {
+    list-style: none outside none;
+}
+
+a {
+    color: #00e;
+}
+
+tr, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td, th {
+    min-width: 20px;
+    max-width: 400px;
+    /*text-align: center;*/
+    vertical-align: top;
+    padding: 0px 5px;
+}
+
+details {
+    margin: 5px;
+}
+
+summary * {
+    display: inline;
+}
+
+details > *:not(summary) {
+    text-align: left;
+}
+
+summary {
+    text-align: left;
+}
+
+.spell-box {
+    border: 1px solid #ddd;
+    width: 98%;
+    padding: 0px 3px;
+    /*background-color: #ffd;*/
+}
+
+@media only screen
+and (max-device-width : 736px) {
+    body {
+        font-size: 1.5em;
+    }
+    
+    /*li + li {
+        margin-top: 100px;
+    }*/
+}
+
+@media only screen
+and (max-device-width : 400px) {
+    div {
+        width: auto;
+        padding: 15px;
+    }
+}
+
+@media only screen
+and (max-device-width : 1024px) {
+    li > details:first-child {
+        display: inline-block;
+        vertical-align: top;
+    }
+    li > details {
+        position: relative;
+        bottom: 5px;
+    }
+}

@@ -1,0 +1,9 @@
+{% extends "dnd-base.html" %}
+{% block content %}
+<div>
+    <h1>{{ title }}</h1>
+    {% for line in message %}
+    <p>{{ line }}</p>
+    {% endfor %}
+</div>
+{% endblock %}

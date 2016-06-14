@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    
+    {% for s in styles %}
+    <link rel="stylesheet" type="text/css" href="{{ s }}">
+    {% endfor %}
+    
+    {% for j in javascript %}
+    <script src="{{ j }}"></script>
+    {% endfor %}
+    
+    {% endblock %}
+</head>
+<body>
+    {% if home or collapse_details %}
+    <div>
+        {% if home %}
+        <a class="home button" href="{{ home }}">Home</a>
+        {% endif %}
+        {% if collapse_details %}
+        <a class="collapse-details button" onclick="var lst=document.querySelectorAll('details');for (var x=0;x<lst.length;x++){lst[x].removeAttribute('open');}">Collapse Details</a>
+        {% endif %}
+        <span style="display: block; clear: both;"></span>
+    </div>
+    {% endif %}
+    {% block content %}{{ content|safe }}{% endblock %}
+</body>
+</html>
