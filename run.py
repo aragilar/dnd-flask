@@ -9,12 +9,10 @@ app = Flask(__name__)
 
 releasesort = helper.release_sort
 filters = {}
-filterlist = []
 for file in os.listdir('data'):
     if file.endswith('.json') and file != 'sources.json':
         item = file[:-5]
         filters[item] = helper.archiver.load('data/%s.json' % item)
-        filterlist.append((filters[item].get('+', item), filters[item]))
 
 @app.errorhandler(403)
 def four_oh_three(e):
@@ -80,7 +78,7 @@ def index():
     
     return render_template('dnd.html',
         styles=[url_for('static', filename='index.css')],
-        filters=filterlist,
+        filters=sorted([(filters[f].get('+', f), f) for f in filters.keys()], key=lambda a: a[0]),
         charsheet=url_for('static', filename='character_sheet.html'),
         classlink=url_for('class_home', filter=filter),
         classes=classes,
