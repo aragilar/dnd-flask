@@ -73,6 +73,11 @@ a {
     color: #00e;
 }
 
+p {
+    text-indent: 1em;
+    margin: 5px;
+}
+
 tr, td, th {
     border: 1px solid black;
     border-collapse: collapse;
@@ -88,6 +93,7 @@ td, th {
 
 details {
     margin: 5px;
+    padding: 5px;
 }
 
 summary * {
