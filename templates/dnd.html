@@ -2,6 +2,10 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <div>
+    <select style="float: right;" onchange="window.location.search=(this.value!='-')?('filter='+this.value):('')">
+        <option>-</option>
+        <option value="show">Modern</option>
+    </select>
     <h1>Home</h1>
     <h2><a href="{{ charsheet }}">Character Sheet</a></h2>
     <hr>
