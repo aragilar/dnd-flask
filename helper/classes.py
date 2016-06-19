@@ -3,15 +3,15 @@ import re
 import utils
 
 def spell_tables(spells, maxslot, spell_list):
-    table_style = 'width: 60%; margin: 0px auto;'
-    head_row_style = 'background-color: #000; color: #fff; text-align: center;'
+    table_style = 'class="spell-table"'
+    head_row_style = 'class="head-row"'
     ret = ''
     if spells != None:
         cantrips = spells.get('Cantrip', [])
         if len(cantrips):
             ret += '<details><summary>Cantrips</summary>\n'
-            ret += '<table style="%s">\n' % table_style
-            ret += '<tr><th style="%s">Cantrips</th></tr>' % head_row_style
+            ret += '<table %s>\n' % table_style
+            ret += '<tr><th %s>Cantrips</th></tr>' % head_row_style
             for item in cantrips:
                 temp = utils.spellblock(item, spell_list)
                 if temp != None:
@@ -21,7 +21,7 @@ def spell_tables(spells, maxslot, spell_list):
 
         if len(spells.get('1', [])) and maxslot > 0:
             ret += '<details><summary>Spells</summary>\n'
-            ret += '<table style="%s">\n' % table_style
+            ret += '<table %s>\n' % table_style
             for x in xrange(1, maxslot + 1):
                 if str(x) in spells:
                     lst = spells[str(x)]
@@ -29,7 +29,7 @@ def spell_tables(spells, maxslot, spell_list):
                     lst = []
 
                 if len(lst):
-                    ret += '<tr><th style="%s">%s-Level Spells</th></tr>\n' % (head_row_style, utils.ordinals[x])
+                    ret += '<tr><th %s>%s-Level Spells</th></tr>\n' % (head_row_style, utils.ordinals[x])
                     for item in lst:
                         temp = utils.spellblock(item, spell_list)
                         if temp != None:

@@ -1,5 +1,5 @@
-openArrow = '▼';
-closedArrow = '►';
+openArrow = '▼ ';
+closedArrow = '► ';
 
 if (!('open' in document.createElement('details'))){
     function noDetails(){

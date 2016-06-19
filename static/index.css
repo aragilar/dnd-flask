@@ -107,6 +107,17 @@ summary {
     text-align: left;
 }
 
+.spell-table {
+	width: 60%;
+	margin: 0px auto;
+}
+
+.head-row {
+	background-color: #000;
+	color: #fff;
+	text-align: center;
+}
+
 .spell-box {
     border: 1px solid #ddd;
     width: 98%;
