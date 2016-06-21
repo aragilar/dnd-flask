@@ -356,4 +356,4 @@ if __name__ == '__main__':
     if port != 5000:
         host = '0.0.0.0'
     print 'safari-http://%s:%d' % (host, port)
-    app.run(host=host, port=port)
+    app.run(host=host, port=port)#, debug=True, use_reloader=False)

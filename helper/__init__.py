@@ -223,7 +223,13 @@ def _middleman(keys, a, in_, sub=None):
 # ----#-
 
 def getclasses(keys=None):
-    return _middleman(keys, 'class', class_list, 'subclass')
+    lst = _middleman(keys, 'class', class_list, 'subclass')
+    if keys is not None:
+        for class_ in lst:
+            spells = lst[class_].get('spells', {})
+            for lvl in spells:
+                spells[lvl] = filter(lambda a: keys['spell'][a], spells[lvl])
+    return lst
 
 def getraces(keys=None):
     return _middleman(keys, 'race', race_list, 'subrace')
@@ -317,17 +323,18 @@ def documentation(page):
 # ----#-
 
 if __name__ == '__main__':
-    show = load('show.json')
+    show = load('filter/official.json')
     print '\n\n'.join(map(lambda a: '\n'.join(sorted(a)), [
-        getclasses(show),
-        getraces(show),
-        getbackgrounds(show),
-        getspells(show),
-        getfeats(show),
-        getepicboons(show),
-        getmagicitems(show),
-        getweapons(show),
-        getarmors(show),
-        getitems(show),
-        getoptionalrules(show)
+        #getclasses(show),
+        #getraces(show),
+        #getbackgrounds(show),
+        #getspells(show),
+        #getfeats(show),
+        #getepicboons(show),
+        #getmagicitems(show),
+        #getweapons(show),
+        #getarmors(show),
+        #getitems(show),
+        #getoptionalrules(show)
     ]))
+    #print '\n'.join(sorted(getclasses(show)['Sorcerer']['spells']['Cantrip']))

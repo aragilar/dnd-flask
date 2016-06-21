@@ -13,8 +13,8 @@ def spell_tables(spells, maxslot, spell_list):
             ret += '<table %s>\n' % table_style
             ret += '<tr><th %s>Cantrips</th></tr>' % head_row_style
             for item in cantrips:
-                temp = utils.spellblock(item, spell_list)
-                if temp != None:
+                if item in spell_list:
+                    temp = utils.spellblock(item, spell_list)
                     ret += '<tr><td>\n%s\n</td></tr>\n' % temp
             ret += '</table>\n'
             ret += '</details>\n'
@@ -31,8 +31,8 @@ def spell_tables(spells, maxslot, spell_list):
                 if len(lst):
                     ret += '<tr><th %s>%s-Level Spells</th></tr>\n' % (head_row_style, utils.ordinals[x])
                     for item in lst:
-                        temp = utils.spellblock(item, spell_list)
-                        if temp != None:
+                        if item in spell_list:
+                            temp = utils.spellblock(item, spell_list)
                             ret += '<tr><td>\n%s\n</td></tr>\n' % temp
             ret += '</table>\n'
             ret += '</details>\n'
