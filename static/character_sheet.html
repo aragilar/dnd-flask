@@ -5,7 +5,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>D&amp;D Character Sheet</title>
-        <!--<link rel="stylesheet" type="text/css" href="index.css">-->
         <link rel="stylesheet" type="text/css" href="character_sheet.css">
         <script src="character_sheet.js"></script>
     </head>
@@ -15,10 +14,10 @@
             <a class="home button" href="../">Home</a>
             <div id="fileio">
                 <input id="fileselect" type="file" name="files[]">
-                <a id="load" class="button" onclick="upload()">Load</a>
+                <a id="load" class="button">Load</a>
             </div>
-            <a id="calc" class="button" onclick="fillAttrs()">Calculate</a>
-            <a id="save" class="button" onclick="download()">Save</a>
+            <a id="calc" class="button">Calculate</a>
+            <a id="save" class="button">Save</a>
             <br style="clear: both">
         </div>
         <div id="body">
@@ -34,69 +33,69 @@
                     <input id="experience" class="save">
                 </div>
                 <div id="main-sheet-stats">
-                    <input type="number" id="str" class="save" value="10" onchange="modifiers(this)">
-                    <input type="number" id="dex" class="save" value="10" onchange="modifiers(this)">
-                    <input type="number" id="con" class="save" value="10" onchange="modifiers(this)">
-                    <input type="number" id="int" class="save" value="10" onchange="modifiers(this)">
-                    <input type="number" id="wis" class="save" value="10" onchange="modifiers(this)">
-                    <input type="number" id="cha" class="save" value="10" onchange="modifiers(this)">
-                    <output id="strmod">+0</output>
-                    <output id="dexmod">+0</output>
-                    <output id="conmod">+0</output>
-                    <output id="intmod">+0</output>
-                    <output id="wismod">+0</output>
-                    <output id="chamod">+0</output>
+                    <input type="number" id="str" class="save">
+                    <input type="number" id="dex" class="save">
+                    <input type="number" id="con" class="save">
+                    <input type="number" id="int" class="save">
+                    <input type="number" id="wis" class="save">
+                    <input type="number" id="cha" class="save">
+                    <output id="strmod"></output>
+                    <output id="dexmod"></output>
+                    <output id="conmod"></output>
+                    <output id="intmod"></output>
+                    <output id="wismod"></output>
+                    <output id="chamod"></output>
                     <input type="checkbox" id="inspiration" class="save">
-                    <input type="number" id="proficiency" class="save" value="2">
+                    <input type="number" id="proficiency" class="save">
                     <input type="checkbox" id="strsave" class="save">
-					<input id="strsave-value" class="save">
+                    <input id="strsave-value" class="save">
                     <input type="checkbox" id="dexsave" class="save">
-					<input id="dexsave-value" class="save">
+                    <input id="dexsave-value" class="save">
                     <input type="checkbox" id="consave" class="save">
-					<input id="consave-value" class="save">
+                    <input id="consave-value" class="save">
                     <input type="checkbox" id="intsave" class="save">
-					<input id="intsave-value" class="save">
+                    <input id="intsave-value" class="save">
                     <input type="checkbox" id="wissave" class="save">
-					<input id="wissave-value" class="save">
+                    <input id="wissave-value" class="save">
                     <input type="checkbox" id="chasave" class="save">
-					<input id="chasave-value" class="save">
+                    <input id="chasave-value" class="save">
                     <input type="checkbox" id="acrobatics" class="save">
-					<input id="acrobatics-value" class="save">
+                    <input id="acrobatics-value" class="save">
                     <input type="checkbox" id="animal-handling" class="save">
-					<input id="animal-handling-value" class="save">
+                    <input id="animal-handling-value" class="save">
                     <input type="checkbox" id="arcana" class="save">
-					<input id="arcana-value" class="save">
+                    <input id="arcana-value" class="save">
                     <input type="checkbox" id="athletics" class="save">
-					<input id="athletics-value" class="save">
+                    <input id="athletics-value" class="save">
                     <input type="checkbox" id="deception" class="save">
-					<input id="deception-value" class="save">
+                    <input id="deception-value" class="save">
                     <input type="checkbox" id="history" class="save">
-					<input id="history-value" class="save">
+                    <input id="history-value" class="save">
                     <input type="checkbox" id="insight" class="save">
-					<input id="insight-value" class="save">
+                    <input id="insight-value" class="save">
                     <input type="checkbox" id="intimidation" class="save">
-					<input id="intimidation-value" class="save">
+                    <input id="intimidation-value" class="save">
                     <input type="checkbox" id="investigation" class="save">
-					<input id="investigation-value" class="save">
+                    <input id="investigation-value" class="save">
                     <input type="checkbox" id="medicine" class="save">
-					<input id="medicine-value" class="save">
+                    <input id="medicine-value" class="save">
                     <input type="checkbox" id="nature" class="save">
-					<input id="nature-value" class="save">
+                    <input id="nature-value" class="save">
                     <input type="checkbox" id="perception" class="save">
-					<input id="perception-value" class="save">
+                    <input id="perception-value" class="save">
                     <input type="checkbox" id="performance" class="save">
-					<input id="performance-value" class="save">
+                    <input id="performance-value" class="save">
                     <input type="checkbox" id="persuasion" class="save">
-					<input id="persuasion-value" class="save">
+                    <input id="persuasion-value" class="save">
                     <input type="checkbox" id="religion" class="save">
-					<input id="religion-value" class="save">
+                    <input id="religion-value" class="save">
                     <input type="checkbox" id="sleight-of-hand" class="save">
-					<input id="sleight-of-hand-value" class="save">
+                    <input id="sleight-of-hand-value" class="save">
                     <input type="checkbox" id="stealth" class="save">
-					<input id="stealth-value" class="save">
+                    <input id="stealth-value" class="save">
                     <input type="checkbox" id="survival" class="save">
-					<input id="survival-value" class="save">
-                    <input id="passive-perception" class="save" value="10">
+                    <input id="survival-value" class="save">
+                    <input id="passive-perception" class="save">
                 </div>
                 <textarea id="proficiencies" class="save"></textarea>
                 <div id="health-block">
@@ -413,14 +412,20 @@
                 </div>
             </div>
         </div>
-		<div id="instructions" style="display: none">
-			<p>To use the Jack of all Trades or Expertise features simply type the feature into the features box. For example:</p>
+        <div id="instructions" style="display: none">
+            <p>To use the Jack of all Trades or Expertise features simply type the feature into the features box. For example:</p>
 <pre>
 Jack of all Trades
 Expertise: Investigation
 Expertise: Perception
 </pre>
-			<p>would give jack of all trades and expertise in investigation and perception</p>
-		</div>
+            <p>would give jack of all trades and expertise in investigation and perception. Capitalization does not matter.</p>
+            <p>List of skills: (* means any skill name)</p>
+            <ul>
+                <li>Expertise: *</li>
+                <li>Jack of All Trades</li>
+                <li>Remarkable Athlete</li>
+            </ul>
+        </div>
     </body>
 </html>
