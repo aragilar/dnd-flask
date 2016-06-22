@@ -10,6 +10,7 @@ input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointe
 body {
     background-color: #ddd;
     padding: 10px 0px 300px;
+    font-family: Georgia, serif;
 }
 
 a.button {
@@ -108,21 +109,25 @@ summary {
 }
 
 .spell-table {
-	width: 60%;
-	margin: 0px auto;
+    width: 60%;
+    margin: 0px auto;
 }
 
 .head-row {
-	background-color: #000;
-	color: #fff;
-	text-align: center;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
 }
 
-.spell-box {
+.spell-box > div {
     border: 1px solid #ddd;
     width: 98%;
     padding: 0px 3px;
     /*background-color: #ffd;*/
+}
+
+.spell-box > summary {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @media only screen

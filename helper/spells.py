@@ -44,8 +44,8 @@ def spellblock(spellname, spells):
     spell = spells.get(spellname, {'name': spellname})
     ret = ''
     if spell != None:
-        ret += '<details><summary>%s</summary>\n' % str(spellname)
-        ret += '<div class="spell-box">\n'
+        ret += '<details class="spell-box"><summary>%s</summary>\n' % str(spellname)
+        ret += '<div>\n'
         ret += spell2html(spell)
         ret += '</div>\n'
         ret += '</details>'
@@ -143,7 +143,7 @@ def main(spells, classes, load, compact = True):
     <span style="margin: 5px; display: block; clear: both;">Count: <output id="count">0</output></span>
 </div>'''
 
-    ret += '<table id="spells" style="width: 100%;">\n'
+    ret += '<table id="spells" class="spell-table" style="width: 100%;">\n'
     for spell in sorted(spells.keys()):
         ret += '<tr><td>\n'
         ret += spellblock(spell, spells)
