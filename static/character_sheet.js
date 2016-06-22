@@ -1,5 +1,8 @@
 var filename = 'Character.json';
 
+var continuity = true;
+var out = {};
+
 var statList = [
     'str',
     'dex',
@@ -58,6 +61,14 @@ function upload() {
             try {
                 var text = reader.result;
                 data = JSON.parse(text);
+                if (continuity) {
+                    out = data;
+                }
+                var tags = document.getElementsByClassName('save');
+                for (var x = 0; x < tags.length; x++){
+                    var tag = tags[x];
+                    tag.value = "";
+                }
                 for (var key in data) {
                     var tag = document.getElementById(key);
                     if (tag) {
@@ -82,11 +93,17 @@ function upload() {
 }
 
 function download() {
-    var tags = document.querySelectorAll(".save");
-    var data = {};
+    var tags = document.getElementsByClassName('save');
+    //var tags = document.querySelectorAll(".save");
+    var data;
+    if (continuity) {
+        data = out;
+    } else {
+        data = {};
+    }
     
     for (var x = 0; x < tags.length; x++) {
-        tag = tags[x];
+        var tag = tags[x];
         if (tag.type === "checkbox") {
             data[tag.id] = tag.checked;
         } else {
@@ -103,9 +120,9 @@ function download() {
     element.setAttribute('download', filename);
     element.setAttribute('target', '_blank');
     element.style.display = 'none';
-    document.body.appendChild(element);
+    //document.body.appendChild(element);
     element.click();
-    document.body.removeChild(element);
+    //document.body.removeChild(element);
 }
 
 function modifiers(tag) {
