@@ -1,7 +1,9 @@
 #!/usr/bin/env python2
 
+import sys
 import os
 import re
+import traceback
 import helper
 from flask import Flask, render_template, url_for, abort, request
 
@@ -44,6 +46,7 @@ def four_oh_four(e):
 
 @app.errorhandler(500)
 def five_hundred(e):
+    sys.stderr.write(traceback.format_exc())
     filter, show = get_filter()
     
     return render_template('error.html',
@@ -355,5 +358,6 @@ if __name__ == '__main__':
     port = int(helper.os.environ.get('PORT', 5000))
     if port != 5000:
         host = '0.0.0.0'
+    debug = port == 5000 and False
     print 'safari-http://%s:%d' % (host, port)
-    app.run(host=host, port=port)#, debug=True, use_reloader=False)
+    app.run(host=host, port=port, debug=debug, use_reloader=False)
