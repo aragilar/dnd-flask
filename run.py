@@ -9,8 +9,6 @@ from flask import Flask, render_template, url_for, abort, request, send_from_dir
 
 app = Flask(__name__)
 
-print ' '.join(sys.argv)
-
 if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
     helper.init(sys.argv[1])
 else:
@@ -239,7 +237,7 @@ def background_page():
                 url_for('static', filename='items.css')
             ],
             javascript=[url_for('static', filename='nodetails.js')],
-            title='Magic Items',
+            title='Backgrounds',
             content=html
         )
     else:

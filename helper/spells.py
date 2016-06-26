@@ -121,9 +121,7 @@ def main(spells, classes, load, compact = True):
     
     temp = load('spellcasting.md')
     if temp:
-        ret += '<details><summary><h1>Spells</h1></summary>\n'
-        ret += utils.get_details(utils.convert(temp))
-        ret += '</details>\n'
+        ret += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
     else:
         ret += '<h1>Spells</h1>\n'
     ret += '<div style="padding: 5px; margin: 5px auto;">\n'

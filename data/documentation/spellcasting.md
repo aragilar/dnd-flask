@@ -1,4 +1,4 @@
-# Spellcasting
+# Spells
 
 Magic permeates the worlds of D&D and most often appears in the form of a spell.
 

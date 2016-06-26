@@ -95,9 +95,9 @@ def main(backgrounds, load):
     ret = '<div>\n'
     temp = load('backgrounds.md')
     if temp:
-        ret += '<details><summary><h1>Backgrounds</h1></summary>\n\n'
-        ret += utils.get_details(utils.convert(temp))
-        ret += '</details>\n\n'
+        ret += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
+    else:
+        ret += '<h1>Backgrounds</h1>\n'
 
     for background in sorted(backgrounds.keys()):
         background = backgrounds[background]

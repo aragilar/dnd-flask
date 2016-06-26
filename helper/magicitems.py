@@ -49,31 +49,16 @@ def main(items, spell_list, load, compact = True):
     
     ret = '<script>\nitems = %s;\n</script>\n' % (archiver.p(itemscopy, compact = compact))
     
-    ##ret += '<h1>Magic Items</h1>\n'
-    
-    temp = load('magicitems.md')
-    if temp != None:
-        temp = temp.strip('\n')
-        if temp:
-            ret += '<details><summary><h1>Magic Items</h1></summary>\n\n'
-            ret += utils.get_details(utils.convert(temp))
-            ret += '</details>\n\n'
-    
-    temp = load('sentientitems.md')
-    if temp != None:
-        temp = temp.strip('\n')
-        if temp:
-            ret += '<details><summary><h1>Sentient Items</h1></summary>\n\n'
-            ret += utils.get_details(utils.convert(temp))
-            ret += '</details>\n\n'
-    
-    temp = load('artifacts.md')
-    if temp != None:
-        temp = temp.strip('\n')
-        if temp:
-            ret += '<details><summary><h1>Artifacts</h1></summary>\n\n'
-            ret += utils.get_details(utils.convert(temp))
-            ret += '</details>\n\n'
+    head = ''
+    for item in ['magicitems.md', 'sentientitems.md', 'artifacts.md']:
+        temp = load(item)
+        if temp != None:
+            temp = temp.strip('\n')
+            if temp:
+                head += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
+    if not head:
+        head = '<h1>Magic Items</h1>\n'
+    ret += head
     
     ret += '''<div style="padding: 5px; margin: 5px auto;">
     

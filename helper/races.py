@@ -119,12 +119,8 @@ def race2html(race, spell_list, release_sort=sorted):
     ret += '<div>\n'
     
     # ----#-   Race Description
-    ret += '<details>\n'
-    temp = utils.convert(race.get('description', '')) + '\n\n'
-    temp = temp.replace('<h1', '<summary><h1')
-    temp = temp.replace('</h1>', '</h1></summary>')
-    ret += temp
-    ret += '</details>\n'
+    temp = utils.convert(race.get('description', ''))
+    ret += utils.get_details(temp, 'h1') + '\n\n'
     ret += '</div>\n\n'
     
     # ----#-   Race Features

@@ -159,15 +159,11 @@ def class2html(c, spell_list, release_sort=sorted):
     #ret += '<h1>%s</h1>\n' % c.get('name', '')
 
     # ----#-   Class Description
-    ret += '<details>\n'
     temp = c.get('longdescription', '')
     temp = '\n'.join(temp)
     temp = utils.convert(temp)
-    temp = temp.replace('<h1', '<summary><h1', 1)
-    temp = temp.replace('</h1>', '</h1></summary>', 1)
+    temp = utils.get_details(temp, 'h1')
     ret += temp
-    ret += '\n\n'
-    ret += '</details>\n'
     ret += '</div>\n\n'
 
     # ----#-   Class Details

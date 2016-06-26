@@ -121,16 +121,24 @@ def choice_list(lst, type = ''):
         ret = 'none'
     return ret
 
-def get_details(text):
-    blocks = text.split('<h1')
+def get_details(text, detltag='h2', splttag=None):
+    if splttag is not None:
+        blocks = text.split('<{}'.format(splttag))
+    else:
+        blocks = [text]
+    
     for x in xrange(len(blocks)):
         text = blocks[x]
-        text, n = re.subn('(<h2.+?>.*?</h2>)', '</details>\n<details>\n<summary>\\1</summary>\n', text)
+        text, n = re.subn('(<{0}.+?>.*?</{0}>)'.format(detltag), '</details>\n<details>\n<summary>\\1</summary>\n', text)
         
         if n > 0:
             text = text.replace('</details>\n', '', 1)
             text += '</details>\n'
 
         blocks[x] = text
-    text = '<h1'.join(blocks)
+    
+    if splttag is not None:
+        text = '<{}'.format(splttag).join(blocks)
+    else:
+        text = blocks[0]
     return text

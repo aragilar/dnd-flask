@@ -113,38 +113,37 @@ def main(weapons, armors, items, load):
     
     temp = load('equipment.md')
     if temp:
-        ret += '<details><summary><h1>Equipment</h1></summary>\n\n'
-        ret += utils.get_details(utils.convert(temp))
-        ret += '<table id="item-table">\n'
-        ret += '<tr><th>Item</th><th>Cost</th><th>Weight</th></tr>\n'
-        for item in sorted(items):
-            ret += item2html(items[item])
-        ret += '</table>\n'
-        ret += '</details>\n\n'
+        temp = utils.get_details(utils.convert(temp))
+    else:
+        temp = '<h1>Equipment</h1>\n'
+    temp += '<table id="item-table">\n'
+    temp += '<tr><th>Item</th><th>Cost</th><th>Weight</th></tr>\n'
+    for item in sorted(items):
+        temp += item2html(items[item])
+    temp += '</table>\n'
+    ret += utils.get_details(temp, 'h1')
     
     temp = load('equipment-packs.md')
     if temp:
-        ret += '<details><summary><h1>Equipment Packs</h1></summary>\n\n'
-        ret += utils.get_details(utils.convert(temp))
-        ret += '</details>\n\n'
-    
-    ret += '<details>\n<summary><h1 id="weapons">Weapons</h1></summary>\n'
+        ret += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
     
     temp = ''
     t = load('weapons.md')
     if t:
         temp += t
         temp += '\n\n'
+    else:
+        temp += '<h1>Weapons</h1>\n'
     del t
     
     temp += '## Special\n\n'
     for item in sorted(weapons.keys()):
         if weapons[item].has_key('special'):
             temp += '**%s** %s\n\n' % (item, weapons[item]['special'])
-    ret += utils.get_details(utils.convert(temp))
+    temp = utils.get_details(utils.convert(temp))
     
-    ret += '<table id="weapons-table">\n'
-    ret += '<tr><th>Name</th><th>Cost</th><th>Damage</th><th>Weight</th><th>Properties</th></tr>'
+    temp += '<table id="weapons-table">\n'
+    temp += '<tr><th>Name</th><th>Cost</th><th>Damage</th><th>Weight</th><th>Properties</th></tr>'
     martial_melee = []
     martial_ranged = []
     simple_melee = []
@@ -169,24 +168,25 @@ def main(weapons, armors, items, load):
     
     for name, lst in [('Simple Melee', simple_melee), ('Simple Ranged', simple_ranged), ('Martial Melee', martial_melee), ('Martial Ranged', martial_ranged), ('Other', other)]:
         if len(lst):
-            ret += '<tr><th colspan="100">%s</th></tr>\n' % name
+            temp += '<tr><th colspan="100">%s</th></tr>\n' % name
             for weapon in lst:
-                ret += weapon2html(weapon)
+                temp += weapon2html(weapon)
     
-    ret += '</table>\n</details>\n'
-    
-    ret += '<details>\n<summary><h1 id="armor">Armor</h1></summary>\n'
+    temp += '</table>\n'
+    ret += utils.get_details(temp, 'h1')
     
     temp = ''
     t = load('armors.md')
     if t:
         temp += t
         temp += '\n\n'
+    else:
+        temp += '<h1>Armors</h1>\n'
     del t
-    ret += utils.get_details(utils.convert(temp))
+    temp = utils.get_details(utils.convert(temp))
     
-    ret += '<table id="armor-table">\n'
-    ret += '<tr><th>Armor</th><th>Cost</th><th>Armor Class (ac)</th><th>Strength</th><th>Stealth</th><th>Weight</th><th>Note</th></tr>'
+    temp += '<table id="armor-table">\n'
+    temp += '<tr><th>Armor</th><th>Cost</th><th>Armor Class (ac)</th><th>Strength</th><th>Stealth</th><th>Weight</th><th>Note</th></tr>'
     light = []
     medium = []
     heavy = []
@@ -205,15 +205,14 @@ def main(weapons, armors, items, load):
             heavy.append(armor)
         else:
             other.append(armor)
+    
     for name, lst in [('Light', light), ('Medium', medium), ('Heavy', heavy), ('Other', other)]:
         if len(lst):
-            ret += '<tr><th colspan="100">%s</th></tr>\n' % name
+            temp += '<tr><th colspan="100">%s</th></tr>\n' % name
             for armor in lst:
-                ret += armor2html(armor)
-    ret += '</table>\n</details>\n'
+                temp += armor2html(armor)
+    temp += '</table>\n'
+    ret += utils.get_details(temp, 'h1')
     
     ret += '</div>\n'
     return ret
-
-if __name__ == '__main__':
-    prin = main()
