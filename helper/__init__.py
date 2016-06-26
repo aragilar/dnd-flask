@@ -12,21 +12,49 @@ import feats
 import magicitems
 import items
 
-datafolder = 'data/'
-path = ''
-prev = path
-while not os.path.isdir(os.path.join(path, datafolder)):
-    path = os.path.join(path, '..')
-    path = os.path.abspath(path)
-    if prev == path:
-        datafolder = None
-        break
-    prev = path
-if datafolder is not None:
-    datafolder = os.path.join(path, datafolder)
-del path
+datafolder = None
+sources_order = None
+class_list = None
+race_list = None
+background_list = None
+spell_list = None
+feat_list = None
+epicboon_list = None
+magicitem_list = None
+weapon_list = None
+armor_list = None
+optionalrule_list = None
+item_list = None
 
-sources_order = archiver.load(datafolder + 'sources.json')
+def init(folder='data'):
+    global datafolder, sources_order, class_list, race_list, background_list, spell_list, feat_list, epicboon_list, magicitem_list, weapon_list, armor_list, optionalrule_list, item_list
+
+    datafolder = folder
+    path = ''
+    prev = path
+    while not os.path.isdir(os.path.join(path, datafolder)):
+        path = os.path.join(path, '..')
+        path = os.path.abspath(path)
+        if prev == path:
+            datafolder = None
+            break
+        prev = path
+    if datafolder is not None:
+        datafolder = os.path.join(path, datafolder)
+
+    sources_order = archiver.load(os.path.join(datafolder, 'sources.json'))
+    
+    class_list = load('class')
+    race_list = load('race')
+    background_list = load('background')
+    spell_list = load('spell')
+    feat_list = load('feat')
+    epicboon_list = load('epicboon')
+    magicitem_list = load('magicitem')
+    weapon_list = load('weapon')
+    armor_list = load('armor')
+    optionalrule_list = load('optionalrule')
+    item_list = get_items()
 
 def _get_spells(d):
     spells = d.get('spells')
@@ -75,7 +103,7 @@ def load(folder, sources=sources_order):
                         'description': ''.join(data[1:])
                     }
                     
-                    if data['+'] in sources:
+                    if sources is None or data['+'] in sources:
                         d[data['name']] = data
                     
     elif os.path.isdir(path):
@@ -116,7 +144,7 @@ def load(folder, sources=sources_order):
                                 
     else: #folder.find('.') > -1:
         try:
-            with open(datafolder + folder) as f:
+            with open(path) as f:
                 d = f.read()
         except IOError:
             d = None
@@ -125,23 +153,23 @@ def load(folder, sources=sources_order):
 
 def _get_items(lst, sources, dir):
     global datafolder
-    for folder in os.listdir(datafolder + dir):
-        path = datafolder + dir + folder + '/'
+    for folder in os.listdir(os.path.join(datafolder, dir)):
+        path = os.path.join(datafolder, dir, folder)
         if os.path.isdir(path): # check each folder in 'items'
-            data = load(dir + folder, sources)
+            data = load(os.path.join(dir, folder), sources)
             
-            if data and os.path.isfile(path + 'description.md'):
+            if data and os.path.isfile(os.path.join(path, 'description.md')):
                 # if the folder is a data folder put it in items
                 data['group'] = True
                 
-                with open(path + 'description.md', 'r') as f:
+                with open(os.path.join(path, 'description.md'), 'r') as f:
                     temp = f.readlines()
                 data['name'] = temp[0].strip() # get name
                 
                 if len(temp) > 2: # get description
                     data['description'] = ''.join(temp[2:])
                         
-                _get_items(data, sources, dir + folder + '/')
+                _get_items(data, sources, os.path.join(dir, folder))
                 
                 lst[data['name']] = data
 
@@ -189,18 +217,6 @@ def release_sort(lst):
         return sorted(lst)
 
 # ----#-
-
-class_list = load('class')
-race_list = load('race')
-background_list = load('background')
-spell_list = load('spell')
-feat_list = load('feat')
-epicboon_list = load('epicboon')
-magicitem_list = load('magicitem')
-weapon_list = load('weapon')
-armor_list = load('armor')
-optionalrule_list = load('optionalrule')
-item_list = get_items()
 
 def _has_sub(keys, in_, sub):
     out = {}
@@ -336,9 +352,10 @@ def documentation(page):
 # ----#-
 
 if __name__ == '__main__':
+    init()
     show = load('filter/official.json')
-    #print '\n\n'.join(map(lambda a: '\n'.join(sorted(a)), [
-        #getclasses(show),
+    print '\n\n'.join(map(lambda a: '\n'.join(sorted(a)), [
+        getclasses(show),
         #getraces(show),
         #getbackgrounds(show),
         #getspells(show),
@@ -349,5 +366,5 @@ if __name__ == '__main__':
         #getarmors(show),
         #getitems(show),
         #getoptionalrules(show)
-    #]))
+    ]))
     #print '\n'.join(sorted(getclasses(show)['Sorcerer']['spells']['Cantrip']))

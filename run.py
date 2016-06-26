@@ -9,9 +9,13 @@ from flask import Flask, render_template, url_for, abort, request
 
 app = Flask(__name__)
 
+if len(sys.argv) < 2:
+    helper.init()
+else:
+    helper.init(sys.argv[1])
 releasesort = helper.release_sort
 filters = {}
-folder = 'data/filter'
+folder = os.path.join(helper.datafolder, 'filter')
 for item in os.listdir(folder):
     if item.endswith('.json'):
         filters[item[:-5]] = helper.archiver.load(os.path.join(folder, item))
@@ -386,7 +390,7 @@ def optionalrule_page(rule):
 
 if __name__ == '__main__':
     host = '127.0.0.1'
-    port = int(helper.os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5000))
     if port != 5000:
         host = '0.0.0.0'
     debug = port == 5000 and False
