@@ -1,0 +1,66 @@
+{
+    "1": [
+        "Absorb Elements",
+        "Alarm",
+        "Animal Friendship",
+        "Beast Bond",
+        "Cure Wounds",
+        "Detect Magic",
+        "Detect Poison and Disease",
+        "Ensnaring Strike",
+        "Fog Cloud",
+        "Goodberry",
+        "Hail of Thorns",
+        "Hunter's Mark",
+        "Jump",
+        "Longstrider",
+        "Speak with Animals"
+    ],
+    "2": [
+        "Animal Messenger",
+        "Barkskin",
+        "Beast Sense",
+        "Cordon of Arrows",
+        "Darkvision",
+        "Find Traps",
+        "Lesser Restoration",
+        "Locate Animals or Plants",
+        "Locate Object",
+        "Pass without Trace",
+        "Protection from Poison",
+        "Silence",
+        "Spike Growth"
+    ],
+    "3": [
+        "Conjure Animals",
+        "Conjure Barrage",
+        "Daylight",
+        "Flame Arrows",
+        "Lightning Arrow",
+        "Nondetection",
+        "Plant Growth",
+        "Protection from Energy",
+        "Speak with Plants",
+        "Water Breathing",
+        "Water Walk",
+        "Wind Wall"
+    ],
+    "4": [
+        "Conjure Woodland Beings",
+        "Freedom of Movement",
+        "Grasping Vine",
+        "Locate Creature",
+        "Stoneskin"
+    ],
+    "5": [
+        "Commune with Nature",
+        "Conjure Volley",
+        "Swift Quiver",
+        "Tree Stride"
+    ],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": [],
+    "Cantrip": []
+}

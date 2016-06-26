@@ -28,6 +28,14 @@ del path
 
 sources_order = archiver.load(datafolder + 'sources.json')
 
+def _get_spells(d):
+    spells = d.get('spells')
+    if isinstance(spells, basestring):
+        d['spells'] = load('spelllist/%s.json' % spells)
+        if not isinstance(d['spells'], dict):
+            del d['spells']
+    return d
+
 def load(folder, sources=sources_order):
     global datafolder
     if datafolder is None:
@@ -35,17 +43,18 @@ def load(folder, sources=sources_order):
             return None
         else:
             return {}
+    path = os.path.join(datafolder, folder)
         
     if folder.endswith('.md'):
         try:
-            with open(datafolder + 'documentation/' + folder) as f:
+            with open(os.path.join(datafolder, 'documentation/' + folder)) as f:
                 d = f.read()
         except IOError:
             d = None
             
     elif folder.endswith('.json'):
         try:
-            d = archiver.load(datafolder + folder)
+            d = archiver.load(path)
         except IOError:
             d = None
             
@@ -54,9 +63,9 @@ def load(folder, sources=sources_order):
             folder += '/'
             
         d = {}
-        for item in os.listdir(datafolder + folder):
+        for item in os.listdir(path):
             if item.endswith('.md'):
-                with open(datafolder + folder + item) as f:
+                with open(os.path.join(path, item)) as f:
                     data = f.readlines()
                     
                 if len(data) > 1:
@@ -69,14 +78,13 @@ def load(folder, sources=sources_order):
                     if data['+'] in sources:
                         d[data['name']] = data
                     
-    elif os.path.isdir(datafolder + folder):
+    elif os.path.isdir(path):
         if folder.endswith('/'):
             folder = folder[:-1]
         d = {}
-        dir = datafolder + folder + '/'
-        for item in os.listdir(dir):
+        for item in os.listdir(path):
             try:
-                item = archiver.load(dir + item)
+                item = archiver.load(os.path.join(path, item))
             except ValueError:
                 continue
             except IOError:
@@ -84,6 +92,8 @@ def load(folder, sources=sources_order):
             if isinstance(item, dict):
                 if sources is None or item.get('+') in sources:
                     if 'name' in item:
+                        if folder == 'class':
+                            _get_spells(item)
                         d[item['name']] = item
         
         if folder in ['class', 'race']:
@@ -92,17 +102,17 @@ def load(folder, sources=sources_order):
             for key in d:
                 d[key][subfolder] = {}
             
-            dir = datafolder + subfolder + '/'
-            for item in os.listdir(dir):
+            path = os.path.join(datafolder, subfolder)
+            for item in os.listdir(path):
                 try:
-                    item = archiver.load(dir + item)
+                    item = archiver.load(os.path.join(path, item))
                 except ValueError:
                     continue
                 if isinstance(item, dict):
                     if sources is None or item.get('+') in sources:
-                        if 'name' in item and '@' in item:
-                            if item['@'] in d:
-                                d[item['@']][subfolder][item['name']] = item
+                        if 'name' in item and '@' in item and item['@'] in d:
+                            _get_spells(item)
+                            d[item['@']][subfolder][item['name']] = item
                                 
     else: #folder.find('.') > -1:
         try:
@@ -195,12 +205,15 @@ item_list = get_items()
 def _has_sub(keys, in_, sub):
     out = {}
     for key in keys:
-        if isinstance(keys[key], dict):
+        if isinstance(keys[key], dict) and any(keys[key].values()):
             c = {}
             c.update(in_[key])
-            c[sub] = {subkey: in_[key][sub][subkey] for subkey in keys[key] if keys[key][subkey]}
-            if len(c[sub]):
-                out[key] = c
+            subs = {}
+            for subkey in keys[key]:
+                if keys[key][subkey]:
+                    subs[subkey] = in_[key][sub][subkey]
+            c[sub] = subs
+            out[key] = c
         elif keys[key]:
             out[key] = in_[key]
     return out
@@ -337,4 +350,4 @@ if __name__ == '__main__':
         #getitems(show),
         #getoptionalrules(show)
     ]))
-    #print '\n'.join(sorted(getclasses(show)['Sorcerer']['spells']['Cantrip']))
+    print '\n'.join(sorted(getclasses(show)['Sorcerer']['spells']['Cantrip']))
