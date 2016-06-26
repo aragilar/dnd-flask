@@ -9,10 +9,12 @@ from flask import Flask, render_template, url_for, abort, request
 
 app = Flask(__name__)
 
-if len(sys.argv) < 2:
-    helper.init()
-else:
+print ' '.join(sys.argv)
+
+if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
     helper.init(sys.argv[1])
+else:
+    helper.init()
 releasesort = helper.release_sort
 filters = {}
 folder = os.path.join(helper.datafolder, 'filter')
