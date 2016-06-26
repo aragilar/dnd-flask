@@ -5,7 +5,7 @@ import os
 import re
 import traceback
 import helper
-from flask import Flask, render_template, url_for, abort, request
+from flask import Flask, render_template, url_for, abort, request, send_from_directory
 
 app = Flask(__name__)
 
@@ -74,6 +74,14 @@ def five_hundred(e):
             "We'll try to fix this a quickly as possible."
         ]
     ), 500
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(
+        os.path.join(app.root_path, 'static', 'images'),
+        'favicon.ico',
+        mimetype='image/vnd.microsoft.icon'
+    )
 
 def get_filter():
     filter = request.args.get('filter')
