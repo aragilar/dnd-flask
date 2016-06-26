@@ -30,17 +30,6 @@ def init(folder='data'):
     global datafolder, sources_order, class_list, race_list, background_list, spell_list, feat_list, epicboon_list, magicitem_list, weapon_list, armor_list, optionalrule_list, item_list
 
     datafolder = folder
-    path = ''
-    prev = path
-    while not os.path.isdir(os.path.join(path, datafolder)):
-        path = os.path.join(path, '..')
-        path = os.path.abspath(path)
-        if prev == path:
-            datafolder = None
-            break
-        prev = path
-    if datafolder is not None:
-        datafolder = os.path.join(path, datafolder)
 
     sources_order = archiver.load(os.path.join(datafolder, 'sources.json'))
     
@@ -75,11 +64,12 @@ def load(folder, sources=sources_order):
         
     if folder.endswith('.md'):
         try:
-            with open(os.path.join(datafolder, 'documentation/' + folder)) as f:
+            with open(os.path.join(datafolder, 'documentation', folder)) as f:
                 d = f.read()
         except IOError:
             d = None
-            
+    elif not os.path.exists(path):
+        d = None
     elif folder.endswith('.json'):
         try:
             d = archiver.load(path)
@@ -89,7 +79,7 @@ def load(folder, sources=sources_order):
     elif folder in ['optionalrule']:
         if not folder.endswith('/'):
             folder += '/'
-            
+        
         d = {}
         for item in os.listdir(path):
             if item.endswith('.md'):
@@ -352,7 +342,7 @@ def documentation(page):
 # ----#-
 
 if __name__ == '__main__':
-    init()
+    init('../data')
     show = load('filter/official.json')
     print '\n\n'.join(map(lambda a: '\n'.join(sorted(a)), [
         getclasses(show),

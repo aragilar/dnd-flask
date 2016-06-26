@@ -16,9 +16,10 @@ else:
 releasesort = helper.release_sort
 filters = {}
 folder = os.path.join(helper.datafolder, 'filter')
-for item in os.listdir(folder):
-    if item.endswith('.json'):
-        filters[item[:-5]] = helper.archiver.load(os.path.join(folder, item))
+if os.path.exists(folder):
+    for item in os.listdir(folder):
+        if item.endswith('.json'):
+            filters[item[:-5]] = helper.archiver.load(os.path.join(folder, item))
 del folder
 
 @app.errorhandler(403)
