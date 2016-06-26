@@ -23,7 +23,10 @@ def four_oh_three(e):
     
     return render_template('error.html',
         home=url_for('index', filter=filter),
-        styles=[url_for('static', filename='index.css')],
+        styles=[
+            url_for('static', filename='normalize.css'),
+            url_for('static', filename='index.css')
+        ],
         title=str(e),
         message=[
             "You don't have access to this page."
@@ -36,7 +39,10 @@ def four_oh_four(e):
     
     return render_template('error.html',
         home=url_for('index', filter=filter),
-        styles=[url_for('static', filename='index.css')],
+        styles=[
+            url_for('static', filename='normalize.css'),
+            url_for('static', filename='index.css')
+        ],
         title=str(e),
         message=[
             "Our gnomes couldn't find the file you were looking for...",
@@ -51,7 +57,10 @@ def five_hundred(e):
     
     return render_template('error.html',
         home=url_for('index', filter=filter),
-        styles=[url_for('static', filename='index.css')],
+        styles=[
+            url_for('static', filename='normalize.css'),
+            url_for('static', filename='index.css')
+        ],
         title='500: '+str(e),
         message=[
             "Whoops, looks like something went wrong!",
@@ -86,7 +95,10 @@ def index():
     
     return render_template('dnd.html',
         title=title,
-        styles=[url_for('static', filename='index.css')],
+        styles=[
+            url_for('static', filename='normalize.css'),
+            url_for('static', filename='index.css')
+        ],
         filters=sorted([(filters[f].get('+', f), f) for f in filters.keys()], key=lambda a: a[0]),
         charsheet=url_for('static', filename='character_sheet.html'),
         classlink=url_for('class_home', filter=filter),
@@ -115,7 +127,10 @@ def class_home():
         
     return render_template('dnd-subthing.html',
         home=url_for('index', filter=filter),
-        styles=[url_for('static', filename='index.css')],
+        styles=[
+            url_for('static', filename='normalize.css'),
+            url_for('static', filename='index.css')
+        ],
         name='Classes',
         things=classes,
         subthings=subclasses,
@@ -133,7 +148,10 @@ def class_page(classname):
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[url_for('static', filename='index.css')],
+            styles=[
+                url_for('static', filename='normalize.css'),
+                url_for('static', filename='index.css')
+            ],
             javascript=[url_for('static', filename='nodetails.js')],
             title=classname,
             content=html
@@ -158,7 +176,10 @@ def race_home():
         
     return render_template('dnd-subthing.html',
         home=url_for('index', filter=filter),
-        styles=[url_for('static', filename='index.css')],
+        styles=[
+            url_for('static', filename='normalize.css'),
+            url_for('static', filename='index.css')
+        ],
         name='Races',
         things=races,
         subthings=subraces,
@@ -176,7 +197,10 @@ def race_page(racename):
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[url_for('static', filename='index.css')],
+            styles=[
+                url_for('static', filename='normalize.css'),
+                url_for('static', filename='index.css')
+            ],
             javascript=[url_for('static', filename='nodetails.js')],
             title=racename,
             content=html
@@ -195,6 +219,7 @@ def background_page():
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=[
+                url_for('static', filename='normalize.css'),
                 url_for('static', filename='index.css'),
                 url_for('static', filename='items.css')
             ],
@@ -216,6 +241,7 @@ def spell_page():
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=[
+                url_for('static', filename='normalize.css'),
                 url_for('static', filename='index.css'),
                 url_for('static', filename='items.css')
             ],
@@ -249,6 +275,7 @@ def feat_page():
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=[
+                url_for('static', filename='normalize.css'),
                 url_for('static', filename='index.css'),
                 url_for('static', filename='items.css')
             ],
@@ -270,6 +297,7 @@ def magicitem_page():
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=[
+                url_for('static', filename='normalize.css'),
                 url_for('static', filename='index.css'),
                 url_for('static', filename='items.css')
             ],
@@ -294,6 +322,7 @@ def item_page():
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=[
+                url_for('static', filename='normalize.css'),
                 url_for('static', filename='index.css'),
                 url_for('static', filename='items.css')
             ],
@@ -321,6 +350,7 @@ def document_page(document):
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=[
+                url_for('static', filename='normalize.css'),
                 url_for('static', filename='index.css'),
                 url_for('static', filename='items.css')
             ],
@@ -343,6 +373,7 @@ def optionalrule_page(rule):
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=[
+                url_for('static', filename='normalize.css'),
                 url_for('static', filename='index.css'),
                 url_for('static', filename='items.css')
             ],

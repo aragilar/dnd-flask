@@ -350,4 +350,4 @@ if __name__ == '__main__':
         #getitems(show),
         #getoptionalrules(show)
     ]))
-    print '\n'.join(sorted(getclasses(show)['Sorcerer']['spells']['Cantrip']))
+    #print '\n'.join(sorted(getclasses(show)['Sorcerer']['spells']['Cantrip']))
