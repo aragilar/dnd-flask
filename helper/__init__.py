@@ -214,7 +214,7 @@ def _has_sub(keys, in_, sub):
                     subs[subkey] = in_[key][sub][subkey]
             c[sub] = subs
             out[key] = c
-        elif keys[key]:
+        elif keys[key] == True:
             out[key] = in_[key]
     return out
 
@@ -337,7 +337,7 @@ def documentation(page):
 
 if __name__ == '__main__':
     show = load('filter/official.json')
-    print '\n\n'.join(map(lambda a: '\n'.join(sorted(a)), [
+    #print '\n\n'.join(map(lambda a: '\n'.join(sorted(a)), [
         #getclasses(show),
         #getraces(show),
         #getbackgrounds(show),
@@ -349,5 +349,5 @@ if __name__ == '__main__':
         #getarmors(show),
         #getitems(show),
         #getoptionalrules(show)
-    ]))
+    #]))
     #print '\n'.join(sorted(getclasses(show)['Sorcerer']['spells']['Cantrip']))
