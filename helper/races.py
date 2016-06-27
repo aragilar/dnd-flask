@@ -114,7 +114,7 @@ def features2html(race):
     
     return ret
 
-def race2html(race, spell_list, release_sort=sorted):
+def race2html(race, spell_list):
     ret = ''
     ret += '<div>\n'
     
@@ -129,7 +129,7 @@ def race2html(race, spell_list, release_sort=sorted):
     ret += '</div>\n'
     
     subraces = race.get('subrace', {})
-    for subrace in release_sort(subraces):
+    for subrace in subraces:
         subrace = subraces.get(subrace, {})
         
         ret += '<div>\n'

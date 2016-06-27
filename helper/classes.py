@@ -153,7 +153,7 @@ def equipment_row(lst):
     else:
         return ''
 
-def class2html(c, spell_list, release_sort=sorted):
+def class2html(c, spell_list):
     ret = ''
     ret += '<div>\n'
     #ret += '<h1>%s</h1>\n' % c.get('name', '')
@@ -219,7 +219,7 @@ def class2html(c, spell_list, release_sort=sorted):
 
     # ----#-   Subclass
     subclassdict = c.get('subclass', {})
-    for name in release_sort(subclassdict):
+    for name in subclassdict:
         subc = subclassdict.get(name, {})
         subcstr = '\n<div>\n\n'
         

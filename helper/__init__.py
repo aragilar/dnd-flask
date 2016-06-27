@@ -2,6 +2,7 @@
 
 import os
 import re
+import collections
 import archiver
 import utils
 import classes
@@ -53,6 +54,41 @@ def _get_spells(d):
             del d['spells']
     return d
 
+def _release_key(item):
+    global sources_order
+    
+    if item is None or not isinstance(item, dict) or not item.has_key('+'):
+        return item
+    else:
+        source = item['+']
+        key = item.get('name', '')
+        if source in sources_order:
+            index = sources_order.index(source)
+        elif source == 'UA-MODERN':
+            index = len(sources_order) + 1
+        elif source.startswith('UA'):
+            index = len(sources_order)
+        else:
+            index = len(sources_order) + 2
+        return '%5d %s' % (index, str(key))
+
+def _from_files(path):
+    l = []
+    for item in os.listdir(path):
+        item = os.path.join(path, item)
+        if os.path.isfile(item) and item.endswith('.json'):
+            try:
+                l.append(archiver.load(item))
+            except ValueError, IOError:
+                print item
+                raise
+            except:
+                raise
+    l = sorted(l, key=lambda a: a.get('name', ''))
+    l = sorted(l, key=_release_key)
+    l = sorted(l, key=lambda a: a.get('A', ''))
+    return l
+
 def load(folder, sources=sources_order):
     global datafolder
     if datafolder is None:
@@ -80,8 +116,8 @@ def load(folder, sources=sources_order):
         if not folder.endswith('/'):
             folder += '/'
         
-        d = {}
-        for item in os.listdir(path):
+        d = collections.OrderedDict()
+        for item in sorted(os.listdir(path)):
             if item.endswith('.md'):
                 with open(os.path.join(path, item)) as f:
                     data = f.readlines()
@@ -99,14 +135,8 @@ def load(folder, sources=sources_order):
     elif os.path.isdir(path):
         if folder.endswith('/'):
             folder = folder[:-1]
-        d = {}
-        for item in os.listdir(path):
-            try:
-                item = archiver.load(os.path.join(path, item))
-            except ValueError:
-                continue
-            except IOError:
-                continue
+        d = collections.OrderedDict()
+        for item in _from_files(path):
             if isinstance(item, dict):
                 if sources is None or item.get('+') in sources:
                     if 'name' in item:
@@ -118,27 +148,23 @@ def load(folder, sources=sources_order):
             subfolder = 'sub' + folder
             
             for key in d:
-                d[key][subfolder] = {}
+                d[key][subfolder] = collections.OrderedDict()
             
             path = os.path.join(datafolder, subfolder)
-            for item in os.listdir(path):
-                try:
-                    item = archiver.load(os.path.join(path, item))
-                except ValueError:
-                    continue
+            for item in _from_files(path):
                 if isinstance(item, dict):
                     if sources is None or item.get('+') in sources:
                         if 'name' in item and '@' in item and item['@'] in d:
                             _get_spells(item)
                             d[item['@']][subfolder][item['name']] = item
-                                
+    
     else: #folder.find('.') > -1:
         try:
             with open(path) as f:
                 d = f.read()
         except IOError:
             d = None
-            
+    
     return d
 
 def _get_items(lst, sources, dir):
@@ -172,7 +198,7 @@ def get_items(sources=sources_order):
 
 def slug(s):
     r"""
-    gets a "slug", a filename compatible,
+    gets a "slug", a filename compatible
     version of a string
     """
     s = s.lower()
@@ -182,40 +208,16 @@ def slug(s):
     s = s.replace('/', '-')
     return s
 
-def _release_key(key, d):
-    global sources_order
-    
-    item = d[key]
-    if item == None or not isinstance(item, dict) or not item.has_key('+'):
-        return str(key)
-    else:
-        source = item['+']
-        if source in sources_order:
-            index = sources_order.index(source)
-        elif source == 'UA-MODERN':
-            index = len(sources_order) + 1
-        elif source.startswith('UA'):
-            index = len(sources_order)
-        else:
-            index = len(sources_order) + 2
-        return '%5d %s' % (index, str(key))
-
-def release_sort(lst):
-    if isinstance(lst, dict):
-        return sorted(lst.keys(), key=lambda key: _release_key(key, lst))
-    else:
-        return sorted(lst)
-
 # ----#-
 
 def _has_sub(keys, in_, sub):
-    out = {}
-    for key in keys:
+    out = collections.OrderedDict()
+    for key in filter(lambda a: a in keys, in_):
         if isinstance(keys[key], dict) and any(keys[key].values()):
             c = {}
             c.update(in_[key])
-            subs = {}
-            for subkey in keys[key]:
+            subs = collections.OrderedDict()
+            for subkey in filter(lambda a: a in keys[key], in_[key][sub]):
                 if keys[key][subkey]:
                     subs[subkey] = in_[key][sub][subkey]
             c[sub] = subs
@@ -225,7 +227,7 @@ def _has_sub(keys, in_, sub):
     return out
 
 def _no_sub(keys, in_):
-    return {key: in_[key] for key in keys if keys[key]}
+    return collections.OrderedDict((key, in_[key]) for key in in_ if keys.get(key, False))
 
 def _middleman(keys, a, in_, sub=None):
     if in_ is not None:
@@ -288,14 +290,14 @@ def getoptionalrules(keys=None):
 def class2html(c, keys=None):
     cs = getclasses(keys)
     if c in cs:
-        return classes.class2html(cs[c], getspells(keys), release_sort)
+        return classes.class2html(cs[c], getspells(keys))
     else:
         return None
 
 def race2html(r, keys=None):
     rs = getraces(keys)
     if r in rs:
-        return races.race2html(rs[r], getspells(keys), release_sort)
+        return races.race2html(rs[r], getspells(keys))
     else:
         return None
 
@@ -368,9 +370,9 @@ def documentation(page):
 if __name__ == '__main__':
     init('../data')
     show = load('filter/official.json')
-    print '\n\n'.join(map(lambda a: '\n'.join(sorted(a)), [
-        getclasses(show),
-        #getraces(show),
+    print '\n\n'.join(map(lambda a: '\n'.join(a), [
+        #getclasses(show),
+        getraces(show),
         #getbackgrounds(show),
         #getspells(show),
         #getfeats(show),

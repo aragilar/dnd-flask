@@ -13,7 +13,6 @@ if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
     helper.init(sys.argv[1])
 else:
     helper.init()
-releasesort = helper.release_sort
 filters = {}
 folder = os.path.join(helper.datafolder, 'filter')
 if os.path.exists(folder):
@@ -93,9 +92,9 @@ def get_filter():
 def index():
     filter, show = get_filter()
     
-    classes = [(c, url_for('class_page', classname=c, filter=filter)) for c in releasesort(helper.getclasses(show))]
-    races = [(c, url_for('race_page', racename=c, filter=filter)) for c in releasesort(helper.getraces(show))]
-    rules = [(c, url_for('optionalrule_page', rule=c, filter=filter)) for c in releasesort(helper.getoptionalrules(show))]
+    classes = [(c, url_for('class_page', classname=c, filter=filter)) for c in helper.getclasses(show)]
+    races = [(c, url_for('race_page', racename=c, filter=filter)) for c in helper.getraces(show)]
+    rules = [(c, url_for('optionalrule_page', rule=c, filter=filter)) for c in helper.getoptionalrules(show)]
     
     if filter is not None:
         query = '?filter=' + filter
@@ -138,8 +137,8 @@ def class_home():
     subclasses = {}
     classes = helper.getclasses(show)
     for key in classes:
-        subclasses[key] = releasesort(classes[key]['subclass'])
-    classes = releasesort(classes)
+        subclasses[key] = classes[key]['subclass'].keys()
+    classes = classes.keys()
     
     if filter is not None:
         query = '?filter=' + filter
@@ -187,8 +186,8 @@ def race_home():
     subraces = {}
     races = helper.getraces(show)
     for key in races:
-        subraces[key] = releasesort(races[key]['subrace'])
-    races = releasesort(races)
+        subraces[key] = races[key]['subrace'].keys()
+    races = races.keys()
     
     if filter is not None:
         query = '?filter=' + filter
