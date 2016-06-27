@@ -300,22 +300,46 @@ def race2html(r, keys=None):
         return None
 
 def background_page(keys=None):
-    return backgrounds.main(getbackgrounds(keys), load)
+    bgs = getbackgrounds(keys)
+    if len(bgs):
+        return backgrounds.main(bgs, load)
+    else:
+        return None
 
 def spell_page(keys=None):
-    return spells.main(getspells(keys), getclasses(keys), load)
+    sps = getspells(keys)
+    if len(sps):
+        return spells.main(sps, getclasses(keys), load)
+    else:
+        return None
 
 def magicitem_page(keys=None):
-    return magicitems.main(getmagicitems(keys), getspells(keys), load)
+    mis = getmagicitems(keys)
+    if len(mis):
+        return magicitems.main(mis, getspells(keys), load)
+    else:
+        return None
 
 def feat_page(keys=None):
-    return feats.main(getfeats(keys), getspells(keys), load)
+    fs = getfeats(keys)
+    if len(fs):
+        return feats.main(fs, getspells(keys), load)
+    else:
+        return None
 
 def boon_page(keys=None):
-    return feats.boons(getepicboons(keys), getspells(keys), load)
+    bs = getepicboons(keys)
+    if len(bs):
+        return feats.boons(bs, getspells(keys), load)
+    else:
+        return None
 
 def item_page(keys=None):
-    return items.main(getweapons(keys), getarmors(keys), getitems(keys), load)
+    wps = getweapons(keys)
+    ams = getarmors(keys)
+    its = getitems(keys)
+    if len(wps) or len(ams) or len(its):
+        return items.main(wps, ams, its, load)
 
 def optionalrule_page(key, keys=None):
     rules = getoptionalrules(keys)

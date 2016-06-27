@@ -53,6 +53,7 @@ window.onload = function(){
     <hr>
     <h2><a href="http://dnd.wizards.com/articles/features/basicrules" target="_blank">Basic Rules</a></h2>
     <hr>
+    {% if classes %}
     <h2><a href="{{ classlink }}">Classes</a></h2>
     <ul>
         {% for item in classes %}
@@ -60,6 +61,8 @@ window.onload = function(){
         {% endfor %}
     </ul>
     <hr>
+    {% endif %}
+    {% if races %}
     <h2><a href="{{ racelink }}">Races</a></h2>
     <ul>
         {% for item in races %}
@@ -67,16 +70,30 @@ window.onload = function(){
         {% endfor %}
     </ul>
     <hr>
+    {% endif %}
     <h1>Reference Databases</h1>
     <h2><a href="http://crobi.github.io/dnd5e-quickref/preview/quickref.html" target="_blank">Actions &amp; Conditions</a></h2>
+    {% if backgrounds %}
     <h2><a href="backgrounds{{ query }}">Backgrounds</a></h2>
+    {% endif %}
+    {% if spells %}
     <h2><a href="spells{{ query }}">Spells</a></h2>
+    {% endif %}
+    {% if feats or boons %}
     <h2><a href="feats{{ query }}">Feats</a></h2>
+    {% if boons %}
     <ul>
         <li><a href="feats#epic-boons{{ query }}">Epic Boons</a></li>
     </ul>
+    {% endif %}
+    {% endif %}
+    {% if items %}
     <h2><a href="items{{ query }}">Items</a></h2>
+    {% endif %}
+    {% if magicitems %}
     <h2><a href="magicitems{{ query }}">Magic Items</a></h2>
+    {% endif %}
+    {% if documentation %}
     <hr>
     <h1>Rules</h1>
     <h2><a href="documentation/character-progression{{ query }}">Character Progression</h2>
@@ -86,6 +103,7 @@ window.onload = function(){
     <h2><a href="documentation/adventuring{{ query }}">Adventuring</a></h2>
     <h2><a href="documentation/combat{{ query }}">Combat</a></h2>
     <h2><a href="documentation/multiclassing{{ query }}">Multiclassing</a></h2>
+    {% endif %}
     {% if optionalrules %}
     <hr>
     <h1>Optional Rules</h1>

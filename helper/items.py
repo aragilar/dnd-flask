@@ -111,108 +111,111 @@ def item2html(item):
 def main(weapons, armors, items, load):
     ret = '<div id="items-div">\n'
     
-    temp = load('equipment.md')
-    if temp:
-        temp = utils.get_details(utils.convert(temp))
-    else:
-        temp = '<h1>Equipment</h1>\n'
-    temp += '<table id="item-table">\n'
-    temp += '<tr><th>Item</th><th>Cost</th><th>Weight</th></tr>\n'
-    for item in sorted(items):
-        temp += item2html(items[item])
-    temp += '</table>\n'
-    ret += utils.get_details(temp, 'h1')
+    if len(items):
+        temp = load('equipment.md')
+        if temp:
+            temp = utils.get_details(utils.convert(temp))
+        else:
+            temp = '<h1>Equipment</h1>\n'
+        temp += '<table id="item-table">\n'
+        temp += '<tr><th>Item</th><th>Cost</th><th>Weight</th></tr>\n'
+        for item in sorted(items):
+            temp += item2html(items[item])
+        temp += '</table>\n'
+        ret += utils.get_details(temp, 'h1')
     
     temp = load('equipment-packs.md')
     if temp:
         ret += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
     
-    temp = ''
-    t = load('weapons.md')
-    if t:
-        temp += t
-        temp += '\n\n'
-    else:
-        temp += '<h1>Weapons</h1>\n'
-    del t
-    
-    temp += '## Special\n\n'
-    for item in sorted(weapons.keys()):
-        if weapons[item].has_key('special'):
-            temp += '**%s** %s\n\n' % (item, weapons[item]['special'])
-    temp = utils.get_details(utils.convert(temp))
-    
-    temp += '<table id="weapons-table">\n'
-    temp += '<tr><th>Name</th><th>Cost</th><th>Damage</th><th>Weight</th><th>Properties</th></tr>'
-    martial_melee = []
-    martial_ranged = []
-    simple_melee = []
-    simple_ranged = []
-    other = []
-    for weapon in sorted(weapons.keys()):
-        weapon = weapons[weapon]
-        type = weapon.get('type', '')
-        range = weapon.get('ranged', False)
-        if type == 'martial':
-            if not range:
-                martial_melee.append(weapon)
-            else:
-                martial_ranged.append(weapon)
-        elif type == 'simple':
-            if not range:
-                simple_melee.append(weapon)
-            else:
-                simple_ranged.append(weapon)
+    if len(weapons):
+        temp = ''
+        t = load('weapons.md')
+        if t:
+            temp += t
+            temp += '\n\n'
         else:
-            other.append(weapon)
+            temp += '<h1>Weapons</h1>\n'
+        del t
+        
+        temp += '## Special\n\n'
+        for item in sorted(weapons.keys()):
+            if weapons[item].has_key('special'):
+                temp += '**%s** %s\n\n' % (item, weapons[item]['special'])
+        temp = utils.get_details(utils.convert(temp))
+        
+        temp += '<table id="weapons-table">\n'
+        temp += '<tr><th>Name</th><th>Cost</th><th>Damage</th><th>Weight</th><th>Properties</th></tr>'
+        martial_melee = []
+        martial_ranged = []
+        simple_melee = []
+        simple_ranged = []
+        other = []
+        for weapon in sorted(weapons.keys()):
+            weapon = weapons[weapon]
+            type = weapon.get('type', '')
+            range = weapon.get('ranged', False)
+            if type == 'martial':
+                if not range:
+                    martial_melee.append(weapon)
+                else:
+                    martial_ranged.append(weapon)
+            elif type == 'simple':
+                if not range:
+                    simple_melee.append(weapon)
+                else:
+                    simple_ranged.append(weapon)
+            else:
+                other.append(weapon)
+        
+        for name, lst in [('Simple Melee', simple_melee), ('Simple Ranged', simple_ranged), ('Martial Melee', martial_melee), ('Martial Ranged', martial_ranged), ('Other', other)]:
+            if len(lst):
+                temp += '<tr><th colspan="100">%s</th></tr>\n' % name
+                for weapon in lst:
+                    temp += weapon2html(weapon)
+        
+        temp += '</table>\n'
+        ret += utils.get_details(temp, 'h1')
     
-    for name, lst in [('Simple Melee', simple_melee), ('Simple Ranged', simple_ranged), ('Martial Melee', martial_melee), ('Martial Ranged', martial_ranged), ('Other', other)]:
-        if len(lst):
-            temp += '<tr><th colspan="100">%s</th></tr>\n' % name
-            for weapon in lst:
-                temp += weapon2html(weapon)
-    
-    temp += '</table>\n'
-    ret += utils.get_details(temp, 'h1')
-    
-    temp = ''
-    t = load('armors.md')
-    if t:
-        temp += t
-        temp += '\n\n'
-    else:
-        temp += '<h1>Armors</h1>\n'
-    del t
-    temp = utils.get_details(utils.convert(temp))
-    
-    temp += '<table id="armor-table">\n'
-    temp += '<tr><th>Armor</th><th>Cost</th><th>Armor Class (ac)</th><th>Strength</th><th>Stealth</th><th>Weight</th><th>Note</th></tr>'
-    light = []
-    medium = []
-    heavy = []
-    other = []
-    alist = map(lambda a: armors[a], armors.keys())
-    alist = sorted(alist, key = lambda a: not a.get('stealth', False))
-    alist = sorted(alist, key = lambda a: a.get('ac', ''))
-    alist = sorted(alist, key = lambda a: a.get('cost', 0.0) if a.get('cost', 0.0) > 0 else float('inf'))
-    for armor in alist:
-        type = armor.get('type', '')
-        if type == 'light':
-            light.append(armor)
-        elif type == 'medium':
-            medium.append(armor)
-        elif type == 'heavy':
-            heavy.append(armor)
+    if len(armors):
+        temp = ''
+        t = load('armors.md')
+        if t:
+            temp += t
+            temp += '\n\n'
         else:
-            other.append(armor)
-    
-    for name, lst in [('Light', light), ('Medium', medium), ('Heavy', heavy), ('Other', other)]:
-        if len(lst):
-            temp += '<tr><th colspan="100">%s</th></tr>\n' % name
-            for armor in lst:
-                temp += armor2html(armor)
-    temp += '</table>\n'
-    ret += utils.get_details(temp, 'h1')
+            temp += '<h1>Armors</h1>\n'
+        del t
+        temp = utils.get_details(utils.convert(temp))
+        
+        temp += '<table id="armor-table">\n'
+        temp += '<tr><th>Armor</th><th>Cost</th><th>Armor Class (ac)</th><th>Strength</th><th>Stealth</th><th>Weight</th><th>Note</th></tr>'
+        light = []
+        medium = []
+        heavy = []
+        other = []
+        alist = map(lambda a: armors[a], armors.keys())
+        alist = sorted(alist, key = lambda a: not a.get('stealth', False))
+        alist = sorted(alist, key = lambda a: a.get('ac', ''))
+        alist = sorted(alist, key = lambda a: a.get('cost', 0.0) if a.get('cost', 0.0) > 0 else float('inf'))
+        for armor in alist:
+            type = armor.get('type', '')
+            if type == 'light':
+                light.append(armor)
+            elif type == 'medium':
+                medium.append(armor)
+            elif type == 'heavy':
+                heavy.append(armor)
+            else:
+                other.append(armor)
+        
+        for name, lst in [('Light', light), ('Medium', medium), ('Heavy', heavy), ('Other', other)]:
+            if len(lst):
+                temp += '<tr><th colspan="100">%s</th></tr>\n' % name
+                for armor in lst:
+                    temp += armor2html(armor)
+        temp += '</table>\n'
+        ret += utils.get_details(temp, 'h1')
     
     ret += '</div>\n'
     return ret

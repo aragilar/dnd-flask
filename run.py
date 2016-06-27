@@ -114,13 +114,21 @@ def index():
         ],
         filters=sorted([(filters[f].get('+', f), f) for f in filters.keys()], key=lambda a: a[0]),
         charsheet=url_for('static', filename='character_sheet.html'),
+        optionalrules=rules,
+        slug=helper.slug,
+        query=query,
+        
         classlink=url_for('class_home', filter=filter),
         classes=classes,
         racelink=url_for('race_home', filter=filter),
         races=races,
-        optionalrules=rules,
-        slug=helper.slug,
-        query=query
+        backgrounds=bool(helper.getbackgrounds(show)),
+        spells=bool(helper.getspells(show)),
+        feats=bool(helper.getfeats(show)),
+        boons=bool(helper.getepicboons(show)),
+        items=helper.getweapons(show) or helper.getarmors(show) or helper.getitems(show),
+        magicitems=bool(helper.getmagicitems(show)),
+        documentation=os.path.exists(os.path.join(helper.datafolder, 'documentation'))
     )
 
 @app.route('/class/')
