@@ -1,6 +1,7 @@
 {
     "+": "PHB",
     "@": "Wizard",
+    "A": 7,
     "description": [
         "You are a student of spells that modify energy and matter. To you, the world is not a fixed thing, but eminently mutable, and you delight in being an agent of change.",
         "",

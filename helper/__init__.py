@@ -372,7 +372,7 @@ if __name__ == '__main__':
     show = load('filter/official.json')
     print '\n\n'.join(map(lambda a: '\n'.join(a), [
         #getclasses(show),
-        getraces(show),
+        #getraces(show),
         #getbackgrounds(show),
         #getspells(show),
         #getfeats(show),

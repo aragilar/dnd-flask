@@ -1,6 +1,7 @@
 {
     "+": "PHB",
     "@": "Wizard",
+    "A": 0,
     "description": [
         "The School of Abjuration emphasizes magic that blocks, banishes, or protects. Detractors of this school say that its tradition is about denial, negation rather than positive assertion. You understand, however, that ending harmful effects, protecting the weak, and banishing evil influences is anything but a philosophical void. It is a proud and respected vocation.",
         "",
