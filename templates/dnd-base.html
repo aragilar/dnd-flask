@@ -16,6 +16,10 @@
     {% block meta %}
     {% endblock %}
     
+    {% if reload %}
+    <meta http-equiv="refresh" content="3">
+    {% endif %}
+    
     {% endblock %}
 </head>
 <body>

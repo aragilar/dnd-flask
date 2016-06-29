@@ -1,29 +1,42 @@
-#!/usr/bin/env python2
-
 import sys
 import os
 import re
 import traceback
+import threading
 import helper
 from flask import Flask, render_template, url_for, abort, request, send_from_directory
 
 app = Flask(__name__)
 
-if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
-    helper.init(sys.argv[1])
-else:
-    helper.init()
 filters = {}
-folder = os.path.join(helper.datafolder, 'filter')
-if os.path.exists(folder):
-    for item in os.listdir(folder):
-        if item.endswith('.json'):
-            filters[item[:-5]] = helper.archiver.load(os.path.join(folder, item))
-del folder
-
 everystyle = ['normalize.css', 'index.css']
 everyjs = ['nodetails.js']
 itemcss = 'items.css'
+started = False
+
+def init():
+    global filters, started
+    if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
+        args = (sys.argv[1],)
+    else:
+        args = ()
+    t = threading.Thread(target=helper.init, args=args)
+    t.start()
+    folder = os.path.join(helper.datafolder, 'filter')
+    if os.path.exists(folder):
+        for item in os.listdir(folder):
+            if item.endswith('.json'):
+                filters[item[:-5]] = helper.archiver.load(os.path.join(folder, item))
+    t.join()
+    started = True
+
+def get_filter():
+    filter = request.args.get('filter')
+    if filter is not None and filter in filters:
+        show = filters[filter]
+    else:
+        show = None
+    return filter, show
 
 @app.errorhandler(403)
 def four_oh_three(e):
@@ -54,6 +67,7 @@ def four_oh_four(e):
         styles=styles,
         javascript=js,
         title=str(e),
+        reload=not started,
         message=[
             "Our gnomes couldn't find the file you were looking for...",
             "If you entered the URL manually try checking your spelling."
@@ -87,14 +101,6 @@ def favicon():
         mimetype='image/vnd.microsoft.icon'
     )
 
-def get_filter():
-    filter = request.args.get('filter')
-    if filter is not None and filter in filters:
-        show = filters[filter]
-    else:
-        show = None
-    return filter, show
-
 @app.route('/')
 def index():
     filter, show = get_filter()
@@ -102,6 +108,11 @@ def index():
     classes = [(c, url_for('class_page', classname=c, filter=filter)) for c in helper.getclasses(show)]
     races = [(c, url_for('race_page', racename=c, filter=filter)) for c in helper.getraces(show)]
     rules = [(c, url_for('optionalrule_page', rule=c, filter=filter)) for c in helper.getoptionalrules(show)]
+    
+    if helper.datafolder is not None:
+        documents = os.path.exists(os.path.join(helper.datafolder, 'documentation'))
+    else:
+        documents = False
     
     if filter is not None:
         query = '?filter=' + filter
@@ -120,7 +131,6 @@ def index():
         styles=styles,
         javascript=js,
         filters=sorted([(filters[f].get('+', f), f) for f in filters.keys()], key=lambda a: a[0]),
-        charsheet=url_for('static', filename='character_sheet.html'),
         optionalrules=rules,
         slug=helper.slug,
         query=query,
@@ -135,7 +145,7 @@ def index():
         boons=bool(helper.getepicboons(show)),
         items=helper.getweapons(show) or helper.getarmors(show) or helper.getitems(show),
         magicitems=bool(helper.getmagicitems(show)),
-        documentation=os.path.exists(os.path.join(helper.datafolder, 'documentation'))
+        documentation=documents
     )
 
 @app.route('/class/')
@@ -412,10 +422,19 @@ def optionalrule_page(rule):
         abort(404)
 
 if __name__ == '__main__':
-    host = '127.0.0.1'
-    port = int(os.environ.get('PORT', 5000))
-    if port != 5000:
+    t = threading.Thread(target=init)
+    t.start()
+    
+    if 'PORT' in os.environ: # Public System
+        port = int(os.environ['PORT'])
         host = '0.0.0.0'
-    debug = port == 5000 and False
-    print('safari-http://%s:%d' % (host, port))
+        debug = False
+    else: # Private System
+        port = 5000
+        host = '127.0.0.1'
+        debug = False
+        print('safari-http://%s:%d' % (host, port))
+    
     app.run(host=host, port=port, debug=debug, use_reloader=False)
+    
+    t.join()
