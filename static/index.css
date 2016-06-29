@@ -104,8 +104,12 @@ summary {
 }
 
 .spell-table {
-    width: 60%;
+	width: 100%;
     margin: 0px auto;
+}
+
+.spell-table.class-spells {
+    width: 60%;
 }
 
 .head-row {

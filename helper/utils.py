@@ -1,4 +1,5 @@
 import re
+import multiprocessing.pool
 import markdown2
 
 md = markdown2.Markdown(extras = [
@@ -142,3 +143,27 @@ def get_details(text, detltag='h2', splttag=None):
     else:
         text = blocks[0]
     return text
+
+def asynclist(func, args=None, kwargs=None):
+    if args is None and kwargs is None:
+        return None
+    elif args is None:
+        kwargs = list(kwargs)
+        args = [() for _ in kwargs]
+    elif kwargs is None:
+        args = list(args)
+        kwargs = [{} for _ in args]
+    
+    lst = list(zip(args, kwargs))
+    
+    pool = multiprocessing.pool.ThreadPool(processes=len(lst))
+    
+    l = []
+    for arg, kwarg in lst:
+        l.append(pool.apply_async(func, arg, kwarg))
+    
+    new = []
+    for item in l:
+        new.append(item.get())
+    
+    return new

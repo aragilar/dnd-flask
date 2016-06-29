@@ -85,10 +85,14 @@ def main(items, spell_list, load, compact = True):
     <span style="margin: 5px; display: block; clear: both;">Count: <output id="count">0</output></span>
 </div>'''
 
-    ret += '<table id="magicitems" class="spell-table" style="width: 100%;">\n'
-    for item in sorted(items.keys()):
-        ret += '<tr><td>%s</td></tr>\n' % itemblock(items[item])
-    ret += '</table>\n'
+    ret += '<table id="magicitems" class="spell-table">\n<tr><td>\n'
+    ret += '</td></tr>\n<tr><td>\n'.join(
+        utils.asynclist(
+            itemblock,
+            zip(items[item] for item in sorted(items))
+        )
+    )
+    ret += '</td></tr>\n</table>\n'
     
     ret = spells.handle_spells(ret, spell_list)
     

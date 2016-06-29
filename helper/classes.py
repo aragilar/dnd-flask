@@ -4,7 +4,7 @@ from . import utils
 from . import spells as spellmod
 
 def spell_tables(spells, maxslot, spell_list):
-    table_style = 'class="spell-table"'
+    table_style = 'class="spell-table class-spells"'
     head_row_style = 'class="head-row"'
     ret = ''
     if spells != None:

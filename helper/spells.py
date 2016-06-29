@@ -141,12 +141,14 @@ def main(spells, classes, load, compact = True):
     <span style="margin: 5px; display: block; clear: both;">Count: <output id="count">0</output></span>
 </div>'''
 
-    ret += '<table id="spells" class="spell-table" style="width: 100%;">\n'
-    for spell in sorted(spells.keys()):
-        ret += '<tr><td>\n'
-        ret += spellblock(spell, spells)
-        ret += '</td></tr>\n'
-    ret += '</table>\n'
+    ret += '<table id="spells" class="spell-table">\n<tr><td>\n'
+    ret += '</td></tr>\n<tr><td>\n'.join(
+        utils.asynclist(
+            lambda a: spellblock(a, spells),
+            zip(sorted(spells.keys()))
+        )
+    )
+    ret += '</td></tr>\n</table>\n'
     ret += '</div>\n'
     #ret = load.html_back(top + ret, 'Spells', 'spells/', ['../items.css'], ['spells.js'])
     return ret
