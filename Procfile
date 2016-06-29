@@ -1,1 +1,1 @@
-web: /usr/bin/python3 run.py data --log-file -
+web: python run.py data --log-file -
