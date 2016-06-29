@@ -145,6 +145,9 @@ def get_details(text, detltag='h2', splttag=None):
     return text
 
 def asynclist(func, lst):
-    with multiprocessing.pool.ThreadPool(processes=len(lst)) as pool:
-        new = pool.map(func, lst)
+    try:
+        with multiprocessing.pool.ThreadPool(processes=len(lst)) as pool:
+            new = pool.map(func, lst)
+    except:
+        new = map(func, lst)
     return new
