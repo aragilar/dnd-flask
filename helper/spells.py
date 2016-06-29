@@ -145,7 +145,7 @@ def main(spells, classes, load, compact = True):
     ret += '</td></tr>\n<tr><td>\n'.join(
         utils.asynclist(
             lambda a: spellblock(a, spells),
-            zip(sorted(spells.keys()))
+            list(sorted(spells.keys()))
         )
     )
     ret += '</td></tr>\n</table>\n'

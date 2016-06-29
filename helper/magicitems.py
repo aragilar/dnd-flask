@@ -89,7 +89,7 @@ def main(items, spell_list, load, compact = True):
     ret += '</td></tr>\n<tr><td>\n'.join(
         utils.asynclist(
             itemblock,
-            zip(items[item] for item in sorted(items))
+            [items[item] for item in sorted(items)]
         )
     )
     ret += '</td></tr>\n</table>\n'
