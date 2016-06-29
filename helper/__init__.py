@@ -1,17 +1,16 @@
-#!/usr/bin/env python2
-
+import sys
 import os
 import re
 import collections
-import archiver
-import utils
-import classes
-import races
-import backgrounds
-import spells
-import feats
-import magicitems
-import items
+from . import archiver
+from . import utils
+from . import classes
+from . import races
+from . import backgrounds
+from . import spells
+from . import feats
+from . import magicitems
+from . import items
 
 datafolder = None
 sources_order = None
@@ -48,7 +47,7 @@ def init(folder='data'):
 
 def _get_spells(d):
     spells = d.get('spells')
-    if isinstance(spells, basestring):
+    if not (spells is None or isinstance(spells, dict)):
         d['spells'] = load('spelllist/%s.json' % spells)
         if not isinstance(d['spells'], dict):
             del d['spells']
@@ -57,8 +56,8 @@ def _get_spells(d):
 def _release_key(item):
     global sources_order
     
-    if item is None or not isinstance(item, dict) or not item.has_key('+'):
-        return item
+    if item is None or not isinstance(item, dict) or '+' not in item:
+        return ''
     else:
         source = item['+']
         key = item.get('name', '')
@@ -79,14 +78,14 @@ def _from_files(path):
         if os.path.isfile(item) and item.endswith('.json'):
             try:
                 l.append(archiver.load(item))
-            except ValueError, IOError:
-                print item
+            except (ValueError, IOError):
+                print(item)
                 raise
             except:
                 raise
     l = sorted(l, key=lambda a: a.get('name', ''))
     l = sorted(l, key=_release_key)
-    l = sorted(l, key=lambda a: a.get('A', ''))
+    l = sorted(l, key=lambda a: a.get('A', float('inf')))
     return l
 
 def load(folder, sources=sources_order):
@@ -249,7 +248,7 @@ def getclasses(keys=None):
         for class_ in lst:
             spells = lst[class_].get('spells', {})
             for lvl in spells:
-                spells[lvl] = filter(lambda a: keys['spell'][a], spells[lvl])
+                spells[lvl] = list(filter(lambda a: keys['spell'][a], spells[lvl]))
     return lst
 
 def getraces(keys=None):
@@ -370,7 +369,7 @@ def documentation(page):
 if __name__ == '__main__':
     init('../data')
     show = load('filter/official.json')
-    print '\n\n'.join(map(lambda a: '\n'.join(a), [
+    print('\n\n'.join(map(lambda a: '\n'.join(a), [
         #getclasses(show),
         #getraces(show),
         #getbackgrounds(show),
@@ -382,5 +381,5 @@ if __name__ == '__main__':
         #getarmors(show),
         #getitems(show),
         #getoptionalrules(show)
-    ]))
+    ])))
     #print '\n'.join(sorted(getclasses(show)['Sorcerer']['spells']['Cantrip']))

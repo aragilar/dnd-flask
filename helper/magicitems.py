@@ -1,5 +1,6 @@
-import archiver
-import utils
+from . import archiver
+from . import utils
+from . import spells
 
 def item2md(item):
     ret = ''
@@ -15,7 +16,7 @@ def item2md(item):
         temp += ', ' + _
     attunement = item.get('attunement')
     if attunement:
-        if isinstance(attunement, basestring):
+        if isinstance(attunement, str):
             if attunement[0].lower() in 'aeiou':
                 temp += ' (requires attunement by an %s)' % attunement
             else:
@@ -89,7 +90,7 @@ def main(items, spell_list, load, compact = True):
         ret += '<tr><td>%s</td></tr>\n' % itemblock(items[item])
     ret += '</table>\n'
     
-    ret = utils.handle_spells(ret, spell_list)
+    ret = spells.handle_spells(ret, spell_list)
     
     ret = '<div>\n%s\n</div>' % ret
     return ret

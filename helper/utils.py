@@ -1,6 +1,5 @@
 import re
 import markdown2
-from spells import spellblock, handle_spells
 
 md = markdown2.Markdown(extras = [
 'fenced-code-blocks',
@@ -109,8 +108,9 @@ def choice_list(lst, type = ''):
     if type != '':
         type = ' ' + type
     if len(lst) > 0:
-        if type != '' and lst[0] > 1:
-            type += 's'
+        if type != '':
+            if isinstance(lst[0], str) or lst[0] > 1:
+                type += 's'
         if isinstance(lst[0], int) and len(lst) > 1:
             ret = 'Choose %d%s from %s' % (lst[0], type, comma_list(lst[1:]))
         elif isinstance(lst[0], int):
@@ -127,7 +127,7 @@ def get_details(text, detltag='h2', splttag=None):
     else:
         blocks = [text]
     
-    for x in xrange(len(blocks)):
+    for x in range(len(blocks)):
         text = blocks[x]
         text, n = re.subn('(<{0}.+?>.*?</{0}>)'.format(detltag), '</details>\n<details>\n<summary>\\1</summary>\n', text)
         

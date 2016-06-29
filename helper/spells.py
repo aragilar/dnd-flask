@@ -1,6 +1,6 @@
 import re
-import archiver
-import utils
+from . import archiver
+from . import utils
 
 spellexpression = re.compile('''(?<!<p>)(
 <spell>
@@ -100,7 +100,7 @@ def spell2html(spell):
     
     lst = spell.get('description', [])
     
-##    for x in xrange(len(lst)):
+##    for x in range(len(lst)):
 ##        item = lst[x]
 ##        lst[x] = item
     

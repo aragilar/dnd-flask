@@ -1,4 +1,4 @@
-import utils
+from . import utils
 
 def background2html(background):
     ret = '<details><summary><h2>%s</summary>\n\n' % background.get('name', '')

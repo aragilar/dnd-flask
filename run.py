@@ -21,16 +21,21 @@ if os.path.exists(folder):
             filters[item[:-5]] = helper.archiver.load(os.path.join(folder, item))
 del folder
 
+everystyle = ['normalize.css', 'index.css']
+everyjs = ['nodetails.js']
+itemcss = 'items.css'
+
 @app.errorhandler(403)
 def four_oh_three(e):
     filter, show = get_filter()
     
+    styles = [url_for('static', filename=file) for file in everystyle]
+    js = [url_for('static', filename=file) for file in everyjs]
+    
     return render_template('error.html',
         home=url_for('index', filter=filter),
-        styles=[
-            url_for('static', filename='normalize.css'),
-            url_for('static', filename='index.css')
-        ],
+        styles=styles,
+        javascript=js,
         title=str(e),
         message=[
             "You don't have access to this page."
@@ -41,12 +46,13 @@ def four_oh_three(e):
 def four_oh_four(e):
     filter, show = get_filter()
     
+    styles = [url_for('static', filename=file) for file in everystyle]
+    js = [url_for('static', filename=file) for file in everyjs]
+    
     return render_template('error.html',
         home=url_for('index', filter=filter),
-        styles=[
-            url_for('static', filename='normalize.css'),
-            url_for('static', filename='index.css')
-        ],
+        styles=styles,
+        javascript=js,
         title=str(e),
         message=[
             "Our gnomes couldn't find the file you were looking for...",
@@ -59,12 +65,13 @@ def five_hundred(e):
     sys.stderr.write(traceback.format_exc())
     filter, show = get_filter()
     
+    styles = [url_for('static', filename=file) for file in everystyle]
+    js = [url_for('static', filename=file) for file in everyjs]
+    
     return render_template('error.html',
         home=url_for('index', filter=filter),
-        styles=[
-            url_for('static', filename='normalize.css'),
-            url_for('static', filename='index.css')
-        ],
+        styles=styles,
+        javascript=js,
         title='500: '+str(e),
         message=[
             "Whoops, looks like something went wrong!",
@@ -104,13 +111,14 @@ def index():
     title = 'Home'
     if show is not None:
         title = '{!s} {!s}'.format(show.get('+', filter), title)
+        
+    styles = [url_for('static', filename=file) for file in everystyle]
+    js = [url_for('static', filename=file) for file in everyjs]
     
     return render_template('dnd.html',
         title=title,
-        styles=[
-            url_for('static', filename='normalize.css'),
-            url_for('static', filename='index.css')
-        ],
+        styles=styles,
+        javascript=js,
         filters=sorted([(filters[f].get('+', f), f) for f in filters.keys()], key=lambda a: a[0]),
         charsheet=url_for('static', filename='character_sheet.html'),
         optionalrules=rules,
@@ -144,13 +152,14 @@ def class_home():
         query = '?filter=' + filter
     else:
         query = ''
+    
+    styles = [url_for('static', filename=file) for file in everystyle]
+    js = [url_for('static', filename=file) for file in everyjs]
         
     return render_template('dnd-subthing.html',
         home=url_for('index', filter=filter),
-        styles=[
-            url_for('static', filename='normalize.css'),
-            url_for('static', filename='index.css')
-        ],
+        styles=styles,
+        javascript=js,
         name='Classes',
         things=classes,
         subthings=subclasses,
@@ -164,15 +173,15 @@ def class_page(classname):
     
     html = helper.class2html(classname, show)
     
-    if html is not None:
+    if html:
+        styles = [url_for('static', filename=file) for file in everystyle]
+        js = [url_for('static', filename=file) for file in everyjs]
+        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[
-                url_for('static', filename='normalize.css'),
-                url_for('static', filename='index.css')
-            ],
-            javascript=[url_for('static', filename='nodetails.js')],
+            styles=styles,
+            javascript=js,
             title=classname,
             content=html
         )
@@ -193,13 +202,14 @@ def race_home():
         query = '?filter=' + filter
     else:
         query = ''
+    
+    styles = [url_for('static', filename=file) for file in everystyle]
+    js = [url_for('static', filename=file) for file in everyjs]
         
     return render_template('dnd-subthing.html',
         home=url_for('index', filter=filter),
-        styles=[
-            url_for('static', filename='normalize.css'),
-            url_for('static', filename='index.css')
-        ],
+        styles=styles,
+        javascript=js,
         name='Races',
         things=races,
         subthings=subraces,
@@ -213,15 +223,15 @@ def race_page(racename):
     
     html = helper.race2html(racename, show)
     
-    if html is not None:
+    if html:
+        styles = [url_for('static', filename=file) for file in everystyle]
+        js = [url_for('static', filename=file) for file in everyjs]
+        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[
-                url_for('static', filename='normalize.css'),
-                url_for('static', filename='index.css')
-            ],
-            javascript=[url_for('static', filename='nodetails.js')],
+            styles=styles,
+            javascript=js,
             title=racename,
             content=html
         )
@@ -234,16 +244,16 @@ def background_page():
     
     html = helper.background_page(show)
     
-    if html is not None:
+    if html:
+        styles = [url_for('static', filename=file) for file in everystyle]
+        styles.append(url_for('static', filename=itemcss))
+        js = [url_for('static', filename=file) for file in everyjs]
+        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[
-                url_for('static', filename='normalize.css'),
-                url_for('static', filename='index.css'),
-                url_for('static', filename='items.css')
-            ],
-            javascript=[url_for('static', filename='nodetails.js')],
+            styles=styles,
+            javascript=js,
             title='Backgrounds',
             content=html
         )
@@ -256,19 +266,17 @@ def spell_page():
     
     html = helper.spell_page(show)
     
-    if html is not None:
+    if html:
+        styles = [url_for('static', filename=file) for file in everystyle]
+        styles.append(url_for('static', filename=itemcss))
+        js = [url_for('static', filename=file) for file in everyjs]
+        js.append(url_for('static', filename='spells.js'))
+        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[
-                url_for('static', filename='normalize.css'),
-                url_for('static', filename='index.css'),
-                url_for('static', filename='items.css')
-            ],
-            javascript=[
-                url_for('static', filename='nodetails.js'),
-                url_for('static', filename='spells.js')
-            ],
+            styles=styles,
+            javascript=js,
             title='Spells',
             content=html
         )
@@ -291,15 +299,15 @@ def feat_page():
     html = feats + boons
     
     if html:
+        styles = [url_for('static', filename=file) for file in everystyle]
+        styles.append(url_for('static', filename=itemcss))
+        js = [url_for('static', filename=file) for file in everyjs]
+        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[
-                url_for('static', filename='normalize.css'),
-                url_for('static', filename='index.css'),
-                url_for('static', filename='items.css')
-            ],
-            javascript=[url_for('static', filename='nodetails.js')],
+            styles=styles,
+            javascript=js,
             title='Feats',
             content=html
         )
@@ -312,19 +320,17 @@ def magicitem_page():
     
     html = helper.magicitem_page(show)
     
-    if html is not None:
+    if html:
+        styles = [url_for('static', filename=file) for file in everystyle]
+        styles.append(url_for('static', filename=itemcss))
+        js = [url_for('static', filename=file) for file in everyjs]
+        js.append(url_for('static', filename='magicitems.js'))
+        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[
-                url_for('static', filename='normalize.css'),
-                url_for('static', filename='index.css'),
-                url_for('static', filename='items.css')
-            ],
-            javascript=[
-                url_for('static', filename='nodetails.js'),
-                url_for('static', filename='magicitems.js')
-            ],
+            styles=styles,
+            javascript=js,
             title='Magic Items',
             content=html
         )
@@ -337,16 +343,16 @@ def item_page():
     
     html = helper.item_page(show)
     
-    if html is not None:
+    if html:
+        styles = [url_for('static', filename=file) for file in everystyle]
+        styles.append(url_for('static', filename=itemcss))
+        js = [url_for('static', filename=file) for file in everyjs]
+        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[
-                url_for('static', filename='normalize.css'),
-                url_for('static', filename='index.css'),
-                url_for('static', filename='items.css')
-            ],
-            javascript=[url_for('static', filename='nodetails.js')],
+            styles=styles,
+            javascript=js,
             title='Items',
             content=html
         )
@@ -359,22 +365,22 @@ def document_page(document):
     
     html = helper.documentation(document)
     
-    if html is not None:
+    if html:
         title = re.findall('<h1.*?>(.*?)</h1>', html)
         if len(title):
             title = title[0]
         else:
             title = document
         
+        styles = [url_for('static', filename=file) for file in everystyle]
+        styles.append(url_for('static', filename=itemcss))
+        js = [url_for('static', filename=file) for file in everyjs]
+        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[
-                url_for('static', filename='normalize.css'),
-                url_for('static', filename='index.css'),
-                url_for('static', filename='items.css')
-            ],
-            javascript=[url_for('static', filename='nodetails.js')],
+            styles=styles,
+            javascript=js,
             title=title,
             content=html
         )
@@ -387,17 +393,18 @@ def optionalrule_page(rule):
     
     html = helper.optionalrule_page(rule, show)
     
-    if html is not None:
+    if html:
         title = rule
+        
+        styles = [url_for('static', filename=file) for file in everystyle]
+        styles.append(url_for('static', filename=itemcss))
+        js = [url_for('static', filename=file) for file in everyjs]
+        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=[
-                url_for('static', filename='normalize.css'),
-                url_for('static', filename='index.css'),
-                url_for('static', filename='items.css')
-            ],
-            javascript=[url_for('static', filename='nodetails.js')],
+            styles=styles,
+            javascript=js,
             title=title,
             content=html
         )
@@ -410,5 +417,5 @@ if __name__ == '__main__':
     if port != 5000:
         host = '0.0.0.0'
     debug = port == 5000 and False
-    print 'safari-http://%s:%d' % (host, port)
+    print('safari-http://%s:%d' % (host, port))
     app.run(host=host, port=port, debug=debug, use_reloader=False)

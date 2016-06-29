@@ -1,4 +1,5 @@
-import utils
+from . import utils
+from . import spells
 
 def feat2md(feat):
     ret = ''
@@ -39,7 +40,7 @@ def main(feats, spell_list, load):
     ret += '</table>\n'
     ret += '</div>\n'
     
-    ret = utils.handle_spells(ret, spell_list)
+    ret = spells.handle_spells(ret, spell_list)
     return ret
 
 def boons(epicboons, spell_list, load):
@@ -57,5 +58,5 @@ def boons(epicboons, spell_list, load):
     ret += '</table>\n'
     ret += '</div>\n'
     
-    ret = utils.handle_spells(ret, spell_list)
+    ret = spells.handle_spells(ret, spell_list)
     return ret

@@ -1,5 +1,5 @@
 import re
-import utils
+from . import utils
 
 def weapon2html(weapon):
     ret = '<tr>\n'
@@ -90,7 +90,7 @@ def item2html(item):
             ret += '<td><details><summary>%s</summary>\n%s\n</details></td>' % (item.get('name', ''), utils.convert(str(temp)))
         
         temp = item.get('cost', 0.0)
-        if temp > 0:
+        if temp:
             try:
                 if temp < 0.1:
                     ret += '<td>%d cp</td>\n' % int(temp * 100)
@@ -98,7 +98,7 @@ def item2html(item):
                     ret += '<td>%d sp</td>\n' % int(temp * 10)
                 else:
                     ret += '<td>%d gp</td>\n' % int(temp)
-            except ValueError:
+            except (ValueError, TypeError):
                 ret += '<td>%s</td>\n' % str(temp)
         else:
             ret += '<td>-</td>\n'
@@ -140,7 +140,7 @@ def main(weapons, armors, items, load):
         
         temp += '## Special\n\n'
         for item in sorted(weapons.keys()):
-            if weapons[item].has_key('special'):
+            if 'special' in weapons[item]:
                 temp += '**%s** %s\n\n' % (item, weapons[item]['special'])
         temp = utils.get_details(utils.convert(temp))
         

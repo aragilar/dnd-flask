@@ -4,7 +4,10 @@ import json
 try:
     import cStringIO as StringIO
 except ImportError:
-    import StringIO
+    try:
+        import StringIO
+    except ImportError:
+        import io as StringIO
 
 def save(object, filename, compact = False):
     '''Save object: object to file: filename,

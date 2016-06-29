@@ -1,5 +1,6 @@
 import re
-import utils
+from . import utils
+from . import spells
 
 def features2html(race):
     ret = ''
@@ -139,6 +140,6 @@ def race2html(race, spell_list):
         ret += features2html(subrace)
         ret += '</div>\n'
     
-    ret = utils.handle_spells(ret, spell_list)
+    ret = spells.handle_spells(ret, spell_list)
     
     return ret

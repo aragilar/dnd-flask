@@ -1,6 +1,7 @@
 import math
 import re
-import utils
+from . import utils
+from . import spells as spellmod
 
 def spell_tables(spells, maxslot, spell_list):
     table_style = 'class="spell-table"'
@@ -14,7 +15,7 @@ def spell_tables(spells, maxslot, spell_list):
             ret += '<tr><th %s>Cantrips</th></tr>' % head_row_style
             for item in cantrips:
                 if item in spell_list:
-                    temp = utils.spellblock(item, spell_list)
+                    temp = spellmod.spellblock(item, spell_list)
                     ret += '<tr><td>\n%s\n</td></tr>\n' % temp
             ret += '</table>\n'
             ret += '</details>\n'
@@ -22,7 +23,7 @@ def spell_tables(spells, maxslot, spell_list):
         if len(spells.get('1', [])) and maxslot > 0:
             ret += '<details><summary>Spells</summary>\n'
             ret += '<table %s>\n' % table_style
-            for x in xrange(1, maxslot + 1):
+            for x in range(1, maxslot + 1):
                 if str(x) in spells:
                     lst = spells[str(x)]
                 else:
@@ -32,7 +33,7 @@ def spell_tables(spells, maxslot, spell_list):
                     ret += '<tr><th %s>%s-Level Spells</th></tr>\n' % (head_row_style, utils.ordinals[x])
                     for item in lst:
                         if item in spell_list:
-                            temp = utils.spellblock(item, spell_list)
+                            temp = spellmod.spellblock(item, spell_list)
                             ret += '<tr><td>\n%s\n</td></tr>\n' % temp
             ret += '</table>\n'
             ret += '</details>\n'
@@ -51,7 +52,7 @@ def features2html(c):
             table = {}
         
         if magic > 0: # figure out the level of the maximum spell slot
-            if c.has_key('max-slot'):
+            if 'max-slot' in c:
                 x = c['max-slot']
             else:
                 y = c.get('max-level', 20)
@@ -59,7 +60,7 @@ def features2html(c):
                     y = 0
                 else:
                     y = int(math.ceil(y / float(magic)))
-                for x in xrange(len(utils.spellslots[-1])):
+                for x in range(len(utils.spellslots[-1])):
                     if utils.spellslots[y][x] < 1:
                         break
                 else:
@@ -71,7 +72,7 @@ def features2html(c):
         headrows += table.get('@', [])
         if magic:
             headrows += ['']
-            headrows += map(lambda a: utils.ordinals[a] + '-Level', xrange(1, x + 1))
+            headrows += list(map(lambda a: utils.ordinals[a] + '-Level', range(1, x + 1)))
         
         ret += '<details><summary>Table</summary>\n'
         ret += '<table>\n'
@@ -88,7 +89,7 @@ def features2html(c):
             ret += '<th%s>%s</th>\n' % (style, item)
         ret += '</tr>\n'
         
-        for x in xrange(1, c.get("max-level", 20)+1):
+        for x in range(1, c.get("max-level", 20)+1):
             ret += '<tr>\n'
             for item in headrows:
                 if item != '':
@@ -177,13 +178,13 @@ def class2html(c, spell_list):
     if temp[-1] == '/':
         sep = 'or'
         temp = temp[:-1]
-    temp = map(lambda a: utils.stats[a], temp)
+    temp = list(map(lambda a: utils.stats[a], temp))
     if len(temp) > 1:
         short += '**Primary Abilities:** %s  \n' % utils.comma_list(temp, sep)
     elif len(temp) == 1:
         short += '**Primary Ability:** %s  \n' % temp[0]
     temp = c.get('saving throws', [])
-    temp = map(lambda a: utils.stats[a], temp)
+    temp = list(map(lambda a: utils.stats[a], temp))
     if len(temp) > 1:
         short += '**Saving Throw Proficiencies:** %s  \n' % utils.comma_list(temp)
     elif len(temp) == 1:
@@ -244,13 +245,13 @@ def class2html(c, spell_list):
             subcstr += '\n<details><summary>Subclass Spells</summary>\n'
             subcstr += utils.convert(spells.get('description', ''))
             subcstr += '<table>\n'
-            for key in sorted(filter(lambda a: a.isdigit(), spells.keys()), key = lambda a: int(a)):
-                lst = spells[key]
+            for key in sorted(int(a) for a in spells.keys() if a.isdigit()):
+                lst = spells[str(key)]
                 subcstr += '<tr>\n'
-                subcstr += '<td style="text-align: center;">%s</td>\n' % utils.ordinals[int(key)]
+                subcstr += '<td style="text-align: center;">%s</td>\n' % utils.ordinals[key]
                 for spell in lst:
                     subcstr += '<td>'
-                    subcstr += utils.spellblock(spell, spell_list)
+                    subcstr += spellmod.spellblock(spell, spell_list)
                     subcstr += '</td>\n'
                 subcstr += '</tr>\n'
             subcstr += '</table>\n'
@@ -270,6 +271,6 @@ def class2html(c, spell_list):
         ret += spell_tables(spells, c.get('max-slot', 9), spell_list)
         ret += '</div>'
 
-    ret = utils.handle_spells(ret, spell_list)
+    ret = spellmod.handle_spells(ret, spell_list)
 
     return ret
