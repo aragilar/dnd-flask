@@ -129,6 +129,21 @@ summary {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/*summary::-webkit-details-marker {
+	display: none;
+}
+
+details > summary::before {
+	content: "+ ";
+	font-family: monospace;
+	font-weight: bolder;
+	font-size: 1.2em;
+}
+
+details[open] > summary::before {
+	content: "- ";
+}*/
+
 @media only screen
 and (max-device-width : 736px) {
     body {

@@ -1,4 +1,32 @@
 if (!('open' in document.createElement('details'))){
+    var details_style_text = ''
+        + 'details {display: block;} '
+        + 'details > *:not(summary) {display: none;} '
+        + 'details[open="open"] > *:not(summary) {display: block;} ';
+    
+    var b = false;
+    for (var x in document.styleSheets){
+        var sheet = document.styleSheets[x];
+        for (var y in sheet.cssRules){
+            var rule = sheet.cssRules[y];
+            if (rule instanceof CSSRule){
+                console.log(rule.cssText);
+            }
+            if (rule instanceof CSSRule && rule.cssText.indexOf('summary::-webkit-details-marker') > -1){
+                b = true;
+                break;
+            }
+        }
+        if (b){
+            break;
+        }
+    }
+    if (!b){
+        details_style_text += ''
+            + 'details summary::before {content: "► ";} '
+            + 'details[open] summary::before {content: "▼ ";}';
+    }
+
     function toggle(){
         var details = this.parentNode;
         if (details.hasAttribute('open')){
@@ -16,7 +44,7 @@ if (!('open' in document.createElement('details'))){
 
     document.addEventListener('DOMContentLoaded', function(){
         var styleTag = document.createElement('style');
-        var styleText = document.createTextNode('details {display: block;} details > *:not(summary) {display: none;} details[open="open"] > *:not(summary) {display: block;} details summary::before {content: "► ";} details[open] summary::before {content: "▼ ";}');
+        var styleText = document.createTextNode(details_style_text);
         styleTag.appendChild(styleText);
         document.head.insertBefore(styleTag, document.head.childNodes[0]);
         
