@@ -9,9 +9,9 @@ from flask import Flask, render_template, url_for, abort, request, send_from_dir
 app = Flask(__name__)
 
 filters = {}
-everystyle = ['normalize.css', 'index.css']
-everyjs = ['nodetails.js']
-itemcss = 'items.css'
+everystyle = ['@normalize.css', '@index.css']
+everyjs = ['@nodetails.js']
+itemcss = '@items.css'
 started = False
 
 def init():
@@ -122,14 +122,11 @@ def index():
     title = 'Home'
     if show is not None:
         title = '{!s} {!s}'.format(show.get('+', filter), title)
-        
-    styles = [url_for('static', filename=file) for file in everystyle]
-    js = [url_for('static', filename=file) for file in everyjs]
     
     return render_template('dnd.html',
         title=title,
-        styles=styles,
-        javascript=js,
+        styles=everystyle,
+        javascript=everyjs,
         filters=sorted([(filters[f].get('+', f), f) for f in filters.keys()], key=lambda a: a[0]),
         optionalrules=rules,
         slug=helper.slug,
@@ -162,14 +159,11 @@ def class_home():
         query = '?filter=' + filter
     else:
         query = ''
-    
-    styles = [url_for('static', filename=file) for file in everystyle]
-    js = [url_for('static', filename=file) for file in everyjs]
         
     return render_template('dnd-subthing.html',
         home=url_for('index', filter=filter),
-        styles=styles,
-        javascript=js,
+        styles=everystyle,
+        javascript=everyjs,
         name='Classes',
         things=classes,
         subthings=subclasses,
@@ -184,14 +178,11 @@ def class_page(classname):
     html = helper.class2html(classname, show)
     
     if html:
-        styles = [url_for('static', filename=file) for file in everystyle]
-        js = [url_for('static', filename=file) for file in everyjs]
-        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=styles,
-            javascript=js,
+            styles=everystyle,
+            javascript=everyjs,
             title=classname,
             content=html
         )
@@ -213,13 +204,10 @@ def race_home():
     else:
         query = ''
     
-    styles = [url_for('static', filename=file) for file in everystyle]
-    js = [url_for('static', filename=file) for file in everyjs]
-        
     return render_template('dnd-subthing.html',
         home=url_for('index', filter=filter),
-        styles=styles,
-        javascript=js,
+        styles=everystyle,
+        javascript=everyjs,
         name='Races',
         things=races,
         subthings=subraces,
@@ -234,14 +222,11 @@ def race_page(racename):
     html = helper.race2html(racename, show)
     
     if html:
-        styles = [url_for('static', filename=file) for file in everystyle]
-        js = [url_for('static', filename=file) for file in everyjs]
-        
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
-            styles=styles,
-            javascript=js,
+            styles=everystyle,
+            javascript=everyjs,
             title=racename,
             content=html
         )
@@ -255,15 +240,14 @@ def background_page():
     html = helper.background_page(show)
     
     if html:
-        styles = [url_for('static', filename=file) for file in everystyle]
-        styles.append(url_for('static', filename=itemcss))
-        js = [url_for('static', filename=file) for file in everyjs]
+        styles = everystyle[:]
+        styles.append(itemcss)
         
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=styles,
-            javascript=js,
+            javascript=everyjs,
             title='Backgrounds',
             content=html
         )
@@ -277,10 +261,10 @@ def spell_page():
     html = helper.spell_page(show)
     
     if html:
-        styles = [url_for('static', filename=file) for file in everystyle]
-        styles.append(url_for('static', filename=itemcss))
-        js = [url_for('static', filename=file) for file in everyjs]
-        js.append(url_for('static', filename='spells.js'))
+        styles = everystyle[:]
+        styles.append(itemcss)
+        js = everyjs[:]
+        js.append('@spells.js')
         
         return render_template('display.html',
             home=url_for('index', filter=filter),
@@ -309,15 +293,14 @@ def feat_page():
     html = feats + boons
     
     if html:
-        styles = [url_for('static', filename=file) for file in everystyle]
-        styles.append(url_for('static', filename=itemcss))
-        js = [url_for('static', filename=file) for file in everyjs]
+        styles = everystyle[:]
+        styles.append(itemcss)
         
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=styles,
-            javascript=js,
+            javascript=everyjs,
             title='Feats',
             content=html
         )
@@ -331,10 +314,10 @@ def magicitem_page():
     html = helper.magicitem_page(show)
     
     if html:
-        styles = [url_for('static', filename=file) for file in everystyle]
-        styles.append(url_for('static', filename=itemcss))
-        js = [url_for('static', filename=file) for file in everyjs]
-        js.append(url_for('static', filename='magicitems.js'))
+        styles = everystyle[:]
+        styles.append(itemcss)
+        js = everyjs[:]
+        js.append('@magicitems.js')
         
         return render_template('display.html',
             home=url_for('index', filter=filter),
@@ -354,15 +337,14 @@ def item_page():
     html = helper.item_page(show)
     
     if html:
-        styles = [url_for('static', filename=file) for file in everystyle]
-        styles.append(url_for('static', filename=itemcss))
-        js = [url_for('static', filename=file) for file in everyjs]
+        styles = everystyle[:]
+        styles.append(itemcss)
         
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=styles,
-            javascript=js,
+            javascript=everyjs,
             title='Items',
             content=html
         )
@@ -382,15 +364,14 @@ def document_page(document):
         else:
             title = document
         
-        styles = [url_for('static', filename=file) for file in everystyle]
-        styles.append(url_for('static', filename=itemcss))
-        js = [url_for('static', filename=file) for file in everyjs]
+        styles = everystyle[:]
+        styles.append(itemcss)
         
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=styles,
-            javascript=js,
+            javascript=everyjs,
             title=title,
             content=html
         )
@@ -406,15 +387,14 @@ def optionalrule_page(rule):
     if html:
         title = rule
         
-        styles = [url_for('static', filename=file) for file in everystyle]
-        styles.append(url_for('static', filename=itemcss))
-        js = [url_for('static', filename=file) for file in everyjs]
+        styles = everystyle[:]
+        styles.append(itemcss)
         
         return render_template('display.html',
             home=url_for('index', filter=filter),
             collapse_details=True,
             styles=styles,
-            javascript=js,
+            javascript=everyjs,
             title=title,
             content=html
         )
