@@ -86,12 +86,10 @@ def main(items, spell_list, load, compact = True):
 </div>'''
 
     ret += '<table id="magicitems" class="spell-table">\n<tr><td>\n'
-    ret += '</td></tr>\n<tr><td>\n'.join(
-        utils.asynclist(
+    ret += '</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
             itemblock,
             [items[item] for item in sorted(items)]
-        )
-    )
+    ))
     ret += '</td></tr>\n</table>\n'
     
     ret = spells.handle_spells(ret, spell_list)

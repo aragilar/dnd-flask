@@ -144,7 +144,7 @@ def get_details(text, detltag='h2', splttag=None):
         text = blocks[0]
     return text
 
-def asynclist(func, lst):
+def asyncmap(func, lst):
     try:
         with multiprocessing.pool.ThreadPool(processes=len(lst)) as pool:
             new = pool.map(func, lst)

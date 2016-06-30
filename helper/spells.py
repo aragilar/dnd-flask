@@ -142,12 +142,10 @@ def main(spells, classes, load, compact = True):
 </div>'''
 
     ret += '<table id="spells" class="spell-table">\n<tr><td>\n'
-    ret += '</td></tr>\n<tr><td>\n'.join(
-        utils.asynclist(
+    ret += '</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
             lambda a: spellblock(a, spells),
             list(sorted(spells.keys()))
-        )
-    )
+    ))
     ret += '</td></tr>\n</table>\n'
     ret += '</div>\n'
     #ret = load.html_back(top + ret, 'Spells', 'spells/', ['../items.css'], ['spells.js'])

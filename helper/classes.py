@@ -9,18 +9,18 @@ def spell_tables(spells, maxslot, spell_list):
     ret = ''
     if spells != None:
         cantrips = spells.get('Cantrip', [])
-        if len(cantrips):
+        if cantrips:
             ret += '<details><summary>Cantrips</summary>\n'
             ret += '<table %s>\n' % table_style
-            ret += '<tr><th %s>Cantrips</th></tr>' % head_row_style
-            for item in cantrips:
-                if item in spell_list:
-                    temp = spellmod.spellblock(item, spell_list)
-                    ret += '<tr><td>\n%s\n</td></tr>\n' % temp
-            ret += '</table>\n'
+            ret += '<tr><th %s>Cantrips</th></tr>\n<tr><td>\n' % head_row_style
+            ret += '\n</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+                lambda a: spellmod.spellblock(a, spell_list),
+                list(sorted(filter(lambda a: a in spell_list, cantrips)))
+            ))
+            ret += '</td></tr>\n</table>\n'
             ret += '</details>\n'
 
-        if len(spells.get('1', [])) and maxslot > 0:
+        if maxslot > 0 and any(spells.get(str(i)) for i in range(1, maxslot+1)):
             ret += '<details><summary>Spells</summary>\n'
             ret += '<table %s>\n' % table_style
             for x in range(1, maxslot + 1):
@@ -30,12 +30,12 @@ def spell_tables(spells, maxslot, spell_list):
                     lst = []
 
                 if len(lst):
-                    ret += '<tr><th %s>%s-Level Spells</th></tr>\n' % (head_row_style, utils.ordinals[x])
-                    for item in lst:
-                        if item in spell_list:
-                            temp = spellmod.spellblock(item, spell_list)
-                            ret += '<tr><td>\n%s\n</td></tr>\n' % temp
-            ret += '</table>\n'
+                    ret += '<tr><th %s>%s-Level Spells</th></tr>\n<tr><td>\n' % (head_row_style, utils.ordinals[x])
+                    ret += '\n</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+                        lambda a: spellmod.spellblock(a, spell_list),
+                        list(sorted(filter(lambda a: a in spell_list, lst)))
+                    ))
+            ret += '\n</td></tr>\n</table>\n'
             ret += '</details>\n'
     return ret
 
