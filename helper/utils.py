@@ -1,4 +1,5 @@
 import re
+import collections
 try:
     import multiprocessing.pool
 except:
@@ -17,14 +18,15 @@ md = markdown2.Markdown(extras = [
 
 convert = md.convert
 
-stats = {
-'str': 'Strength',
-'dex': 'Dexterity',
-'con': 'Constitution',
-'int': 'Intelligence',
-'wis': 'Wisdom',
-'cha': 'Charisma'}
-statlist = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+stats = collections.OrderedDict([
+    ('str', 'Strength'),
+    ('dex', 'Dexterity'),
+    ('con', 'Constitution'),
+    ('int', 'Intelligence'),
+    ('wis', 'Wisdom'),
+    ('cha', 'Charisma')
+])
+statlist = stats.keys()
 
 ordinals = [
 '0th',
