@@ -103,8 +103,12 @@ summary {
     text-align: left;
 }
 
+#filter-block {
+    float:right;
+}
+
 .spell-table {
-	width: 100%;
+    width: 100%;
     margin: 0px auto;
 }
 
@@ -130,18 +134,18 @@ summary {
 }
 
 /*summary::-webkit-details-marker {
-	display: none;
+    display: none;
 }
 
 details > summary::before {
-	content: "+ ";
-	font-family: monospace;
-	font-weight: bolder;
-	font-size: 1.2em;
+    content: "+ ";
+    font-family: monospace;
+    font-weight: bolder;
+    font-size: 1.2em;
 }
 
 details[open] > summary::before {
-	content: "- ";
+    content: "- ";
 }*/
 
 @media only screen

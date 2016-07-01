@@ -1,5 +1,5 @@
 img#background-img {
-    content:url("images/Character_Sheet_Background.png");
+    content:url("../images/Character_Sheet_Background.png");
 }
 
 #character-appearance, #symbol {

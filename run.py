@@ -8,7 +8,7 @@ from flask import Flask, render_template, url_for, abort, request, send_from_dir
 
 app = Flask(__name__)
 
-filters = {}
+filters = helper.collections.OrderedDict()
 everystyle = ['@normalize.css', '@index.css']
 everyjs = ['@nodetails.js']
 itemcss = '@items.css'
@@ -31,6 +31,13 @@ def init():
                 if filterkey not in d:
                     d[filterkey] = item[:-5]
                 filters[d[filterkey]] = d
+        for key in sorted(filters):
+            try:
+                filters.move_to_end(key)
+            except AttributeError:
+                d = filters[key]
+                del filters[key]
+                filters[key] = d
     t.join()
     started = True
 
@@ -61,7 +68,7 @@ def four_oh_four(e):
         styles=everystyle,
         javascript=everyjs,
         title=str(e),
-        reload=not started,
+        #reload=not started,
         message=[
             "Our gnomes couldn't find the file you were looking for...",
             "If you entered the URL manually try checking your spelling."
@@ -116,7 +123,7 @@ def index():
     return render_template('dnd.html',
         title=title,
         styles=everystyle,
-        javascript=everyjs,
+        javascript=everyjs+['@filters.js'],
         filters=filters.keys(),
         optionalrules=rules,
         slug=helper.slug,
@@ -239,13 +246,10 @@ def background_page():
     html = helper.background_page(show)
     
     if html:
-        styles = everystyle[:]
-        styles.append(itemcss)
-        
         return render_template('display.html',
             home=True,
             collapse_details=True,
-            styles=styles,
+            styles=everystyle+[itemcss],
             javascript=everyjs,
             title='Backgrounds',
             content=html
@@ -260,16 +264,11 @@ def spell_page():
     html = helper.spell_page(show)
     
     if html:
-        styles = everystyle[:]
-        styles.append(itemcss)
-        js = everyjs[:]
-        js.append('@spells.js')
-        
         return render_template('display.html',
             home=True,
             collapse_details=True,
-            styles=styles,
-            javascript=js,
+            styles=everystyle+[itemcss],
+            javascript=everyjs+['@spells.js'],
             title='Spells',
             content=html
         )
@@ -292,13 +291,10 @@ def feat_page():
     html = feats + boons
     
     if html:
-        styles = everystyle[:]
-        styles.append(itemcss)
-        
         return render_template('display.html',
             home=True,
             collapse_details=True,
-            styles=styles,
+            styles=everystyle+[itemcss],
             javascript=everyjs,
             title='Feats',
             content=html
@@ -313,16 +309,11 @@ def magicitem_page():
     html = helper.magicitem_page(show)
     
     if html:
-        styles = everystyle[:]
-        styles.append(itemcss)
-        js = everyjs[:]
-        js.append('@magicitems.js')
-        
         return render_template('display.html',
             home=True,
             collapse_details=True,
-            styles=styles,
-            javascript=js,
+            styles=everystyle+[itemcss],
+            javascript=everyjs+['@magicitems.js'],
             title='Magic Items',
             content=html
         )
@@ -336,13 +327,10 @@ def item_page():
     html = helper.item_page(show)
     
     if html:
-        styles = everystyle[:]
-        styles.append(itemcss)
-        
         return render_template('display.html',
             home=True,
             collapse_details=True,
-            styles=styles,
+            styles=everystyle+[itemcss],
             javascript=everyjs,
             title='Items',
             content=html
@@ -361,13 +349,10 @@ def document_page(document):
         else:
             title = document
         
-        styles = everystyle[:]
-        styles.append(itemcss)
-        
         return render_template('display.html',
             home=True,
             collapse_details=True,
-            styles=styles,
+            styles=everystyle+[itemcss],
             javascript=everyjs,
             title=title,
             content=html
@@ -384,13 +369,10 @@ def optionalrule_page(rule):
     if html:
         title = rule
         
-        styles = everystyle[:]
-        styles.append(itemcss)
-        
         return render_template('display.html',
             home=True,
             collapse_details=True,
-            styles=styles,
+            styles=everystyle+[itemcss],
             javascript=everyjs,
             title=title,
             content=html
@@ -410,7 +392,7 @@ if __name__ == '__main__':
         port = 5000
         host = '127.0.0.1'
         debug = False
-        print('safari-http://%s:%d' % (host, port))
+        print('safari-http://%s:%d/character_sheet/angular' % (host, port))
     
     app.run(host=host, port=port, debug=debug, use_reloader=False)
     

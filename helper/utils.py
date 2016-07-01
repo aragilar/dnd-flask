@@ -1,5 +1,9 @@
 import re
-import multiprocessing.pool
+try:
+    import multiprocessing.pool
+except:
+    class multiprocessing (object):
+        pool = False
 import markdown2
 
 md = markdown2.Markdown(extras = [
@@ -146,6 +150,8 @@ def get_details(text, detltag='h2', splttag=None):
 
 def asyncmap(func, lst):
     try:
+        if not multiprocessing.pool:
+            raise Exception
         with multiprocessing.pool.ThreadPool(processes=len(lst)) as pool:
             new = pool.map(func, lst)
     except:
