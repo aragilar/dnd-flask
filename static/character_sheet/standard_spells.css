@@ -1,3 +1,7 @@
+div#spells-sheet {
+    display: initial;
+}
+
 img#spells-img {
     content:url("../images/Character_Sheet_Spells.png");
 }

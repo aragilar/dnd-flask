@@ -91,7 +91,7 @@ textarea.save {
 #body {
     background-color: white;
     width: 800px;
-    height: 3105px;
+    /*height: 3105px;*/
     padding: 5px;
     margin: 0px auto 10px;
     border: 1px solid black;
@@ -100,25 +100,20 @@ textarea.save {
     left: 0px;
 }
 
-#main-sheet, #spells-sheet, #background-sheet {
+br.clear {
+    clear: both;
+}
+
+#main-sheet,
+#spells-sheet,
+#background-sheet,
+#circle-1-sheet,
+#circle-2-sheet {
     width: 800px;
     height: 1035px;
-    position: absolute;
-}
-
-#main-sheet {
-    top: 0px;
-    left: 0px;
-}
-
-#spells-sheet {
-    top: 1035px;
-    left: 0px;
-}
-
-#background-sheet {
-    top: 2070px;
-    left: 0px;
+    position: relative;
+    display: none;
+    float: left;
 }
 
 #main-img, #spells-img, #background-img {
@@ -132,28 +127,20 @@ textarea.save {
 @media only screen and (min-width: 1610px) {
     #body {
         width: 1600px;
-        height: 2070px;
-    }
-
-    #spells-sheet {
-        top: 0px;
-        left: 800px;
-    }
-
-    #background-sheet {
-        top: 1035px;
-        left: 0px;
+        /*height: 2070px;*/
     }
 }
 
 @media only screen and (min-width: 2410px) {
     #body {
         width: 2400px;
-        height: 1035px;
+        /*height: 1035px;*/
     }
+}
 
-    #background-sheet {
-        top: 0px;
-        left: 1600px;
+@media only screen and (min-width: 3210px) {
+    #body {
+        width: 3200px;
+        /*height: 1035px;*/
     }
 }

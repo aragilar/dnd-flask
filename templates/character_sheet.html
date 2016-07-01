@@ -3,41 +3,41 @@
 <meta name="viewport" content="width=device-width">
 {% endblock %}
 {% block title %}D&amp;D Character Sheet{% endblock %}
-{% set styles = ['@normalize.css', '@character_sheet/character_sheet.css', '@character_sheet/%s.css' % look] %}
+{% set styles = ['@normalize.css', '@character_sheet/character_sheet.css', '@character_sheet/%s.css' % slug(look)] %}
 {% set javascript = ['@character_sheet/character_sheet.js'] %}
 {% set stats = [
-	"str",
-	"dex",
-	"con",
-	"int",
-	"wis",
-	"cha"
+    "str",
+    "dex",
+    "con",
+    "int",
+    "wis",
+    "cha"
 ] %}
 {% set skills = [
-	"strsave",
-	"dexsave",
-	"consave",
-	"intsave",
-	"wissave",
-	"chasave",
-	"acrobatics",
-	"animal-handling",
-	"arcana",
-	"athletics",
-	"deception",
-	"history",
-	"insight",
-	"intimidation",
-	"investigation",
-	"medicine",
-	"nature",
-	"perception",
-	"performance",
-	"persuasion",
-	"religion",
-	"sleight-of-hand",
-	"stealth",
-	"survival"
+    "strsave",
+    "dexsave",
+    "consave",
+    "intsave",
+    "wissave",
+    "chasave",
+    "acrobatics",
+    "animal-handling",
+    "arcana",
+    "athletics",
+    "deception",
+    "history",
+    "insight",
+    "intimidation",
+    "investigation",
+    "medicine",
+    "nature",
+    "perception",
+    "performance",
+    "persuasion",
+    "religion",
+    "sleight-of-hand",
+    "stealth",
+    "survival"
 ] %}
 {% block content %}
 <div id="controls">
@@ -48,7 +48,7 @@
     </div>
     <a id="calc" class="button">Calculate</a>
     <a id="save" class="button">Save</a>
-    <br style="clear: both">
+    <br class="clear">
 </div>
 <div id="body">
     <div id="main-sheet">
@@ -93,7 +93,7 @@
             <input type="checkbox" id="f3" class="save">
         </div>
         <div id="attacks-and-spellcasting">
-        	{% for i in range(1, 3+1) %}
+            {% for i in range(1, 3+1) %}
             <input id="attack-{{ i }}-name" class="save">
             <input id="attack-{{ i }}-bonus" class="save">
             <input id="attack-{{ i }}-damage" class="save">
@@ -101,10 +101,11 @@
             <textarea id="attacks" class="save"></textarea>
         </div>
         <div id="inventory">
-        	{% for currency in ["cp", "sp", "ep", "gp", "pp", "qp"] %}
+            {% for currency in ["cp", "sp", "ep", "gp", "pp", "qp"] %}
             <input id="{{ currency }}" class="save">
             {% endfor %}
             <textarea id="equipment" class="save"></textarea>
+            <textarea id="character-notes" class="save"></textarea>
         </div>
         <div id="personality-box">
             <textarea id="personality-traits" class="save"></textarea>
@@ -125,7 +126,7 @@
             <input id="spell-attack" class="save">
         </div>
         <div id="cantrips">
-        	{% for i in range(1, 8+1) %}
+            {% for i in range(1, 8+1) %}
             <input id="spell-C-{{ i }}" class="save spell-left">
             {% endfor %}
         </div>
@@ -227,6 +228,7 @@
             <textarea id="treasure-2" class="save"></textarea>
         </div>
     </div>
+    <br class="clear">
 </div>
 <div id="instructions" style="display: none">
     <p>To use the Jack of all Trades or Expertise features simply type the feature into the features box. For example:</p>

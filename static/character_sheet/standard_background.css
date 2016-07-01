@@ -1,3 +1,7 @@
+div#background-sheet {
+    display: initial;
+}
+
 img#background-img {
     content:url("../images/Character_Sheet_Background.png");
 }

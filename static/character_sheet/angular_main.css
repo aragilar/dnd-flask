@@ -2,8 +2,12 @@ div#main-sheet {
     display: initial;
 }
 
+/*.save {
+    border: 1px solid RGBA(200, 200, 200, 1);
+}*/
+
 img#main-img {
-    content:url("../images/Character_Sheet.png");
+    content:url("../images/Character_Sheet_Angular.png");
 }
 
 #name {
@@ -39,78 +43,77 @@ img#main-img {
 #str, #dex, #con, #int, #wis, #cha {
     text-align: center;
     left: 45px;
-    width: 57px;
-    font-size: 28px;
+    width: 73px;
+    font-size: 27px;
 }
 
 #str {
-    top: 202px;
+    top: 283px;
 }
 
 #dex {
-    top: 296px;
+    top: 372px;
 }
 
 #con {
-    top: 389px;
+    top: 461px;
 }
 
 #int {
-    top: 483px;
+    top: 550px;
 }
 
 #wis {
-    top: 577px;
+    top: 639px;
 }
 
 #cha {
-    top: 670px;
+    top: 728px;
 }
 
 #strmod, #dexmod, #conmod, #intmod, #wismod, #chamod {
     position: absolute;
     text-align: center;
     left: 46px;
-    width: 57px;
+    width: 71px;
     font-size: 15px;
-    /*border: 1px solid black;/**/
 }
 
 #strmod {
-    top: 243px;
+    top: 260px;
 }
 
 #dexmod {
-    top: 337px;
+    top: 349px;
 }
 
 #conmod {
-    top: 430px;
+    top: 438px;
 }
 
 #intmod {
-    top: 524px;
+    top: 527px;
 }
 
 #wismod {
-    top: 617px;
+    top: 616px;
 }
 
 #chamod {
-    top: 710px;
-}
-
-#inspiration {
-    top: 175px;
-    left: 133px;
+    top: 705px;
 }
 
 #proficiency {
     text-align: center;
-    top: 218px;
-    left: 123px;
-    width: 34px;
-    font-size: 22px;
+    top: 180px;
+    left: 63px;
+    width: 37px;
+    font-size: 23px;
+}
+
+#inspiration {
+    top: 223px;
+    left: 74px;
 }
 
 #strsave, #dexsave, #consave, #intsave, #wissave, #chasave,
@@ -119,7 +122,7 @@ img#main-img {
 #nature, #perception, #performance, #persuasion, #religion,
 #sleight-of-hand, #stealth, #survival {
     width: 14px;
-    left: 130px;
+    left: 131px;
 }
 
 #strsave-value, #dexsave-value, #consave-value, #intsave-value,
@@ -128,229 +131,134 @@ img#main-img {
 #insight-value, #intimidation-value, #investigation-value, #medicine-value,
 #nature-value, #perception-value, #performance-value, #persuasion-value,
 #religion-value, #sleight-of-hand-value, #stealth-value, #survival-value {
-    width: 20px;
-    left: 146px;
-    font-size: 12px;
+    width: 14px;
+    left: 147px;
+    font-size: 8px;
+    color: black;
 }
 
-#strsave {
-    top: 268px;
+#strsave, #strsave-value {
+    top: 260px;
 }
 
-#strsave-value {
-    top: 266px;
+#dexsave, #dexsave-value {
+    top: 349px;
 }
 
-#dexsave {
-    top: 285px;
+#consave, #consave-value {
+    top: 438px;
 }
 
-#dexsave-value {
-    top: 283px;
+#intsave, #intsave-value {
+    top: 527px;
 }
 
-#consave {
-    top: 303px;
+#wissave, #wissave-value {
+    top: 616px;
 }
 
-#consave-value {
-    top: 301px;
+#chasave, #chasave-value {
+    top: 705px;
 }
 
-#intsave {
-    top: 321px;
+#acrobatics, #acrobatics-value {
+    top: 361px;
 }
 
-#intsave-value {
-    top: 319px;
-}
-
-#wissave {
-    top: 339px;
-}
-
-#wissave-value {
-    top: 337px;
-}
-
-#chasave {
-    top: 356px;
-}
-
-#chasave-value {
-    top: 354px;
-}
-
-#acrobatics {
-    top: 418px;
-}
-
-#acrobatics-value {
-    top: 416px;
-}
-
-#animal-handling {
-    top: 436px;
-}
-
-#animal-handling-value {
-    top: 434px;
-}
-
-#arcana {
-    top: 454px;
-}
-
-#arcana-value {
-    top: 452px;
-}
-
-#athletics {
-    top: 471px;
-}
-
-#athletics-value {
-    top: 469px;
-}
-
-#deception {
-    top: 489px;
-}
-
-#deception-value {
-    top: 487px;
-}
-
-#history {
-    top: 507px;
-}
-
-#history-value {
-    top: 505px;
-}
-
-#insight {
-    top: 524px;
-}
-
-#insight-value {
-    top: 522px;
-}
-
-#intimidation {
-    top: 542px;
-}
-
-#intimidation-value {
-    top: 540px;
-}
-
-#investigation {
-    top: 559px;
-}
-
-#investigation-value {
-    top: 557px;
-}
-
-#medicine {
-    top: 577px;
-}
-
-#medicine-value {
-    top: 575px;
-}
-
-#nature {
-    top: 595px;
-}
-
-#nature-value {
-    top: 593px;
-}
-
-#perception {
-    top: 612px;
-}
-
-#perception-value {
-    top: 610px;
-}
-
-#performance {
-    top: 630px;
-}
-
-#performance-value {
+#animal-handling, #animal-handling-value {
     top: 628px;
 }
 
-#persuasion {
-    top: 648px;
+#arcana, #arcana-value {
+    top: 539px;
 }
 
-#persuasion-value {
-    top: 646px;
+#athletics, #athletics-value {
+    top: 272px;
 }
 
-#religion {
-    top: 665px;
+#deception, #deception-value {
+    top: 718px;
 }
 
-#religion-value {
-    top: 663px;
+#history, #history-value {
+    top: 552px;
 }
 
-#sleight-of-hand {
-    top: 683px;
+#insight, #insight-value {
+    top: 641px;
 }
 
-#sleight-of-hand-value {
-    top: 681px;
+#intimidation, #intimidation-value {
+    top: 730px;
 }
 
-#stealth {
-    top: 701px;
+#investigation, #investigation-value {
+    top: 564px;
 }
 
-#stealth-value {
-    top: 699px;
+#medicine, #medicine-value {
+    top: 653px;
 }
 
-#survival {
-    top: 719px;
+#nature, #nature-value {
+    top: 577px;
 }
 
-#survival-value {
-    top: 717px;
+#perception, #perception-value {
+    top: 666px;
+}
+
+#performance, #performance-value {
+    top: 743px;
+}
+
+#persuasion, #persuasion-value {
+    top: 755px;
+}
+
+#religion, #religion-value {
+    top: 589px;
+}
+
+#sleight-of-hand, #sleight-of-hand-value {
+    top: 374px;
+}
+
+#stealth, #stealth-value {
+    top: 386px;
+}
+
+#survival, #survival-value {
+    top: 678px;
 }
 
 #passive-perception {
     text-align: center;
-    top: 772px;
-    left: 38px;
-    width: 34px;
-    font-size: 16px;
+    top: 790px;
+    left: 61px;
+    width: 41px;
+    font-size: 19px;
 }
 
 #proficiencies {
-    top: 814px;
+    top: 844px;
     left: 40px;
     width: 220px;
-    height: 168px;
+    height: 139px;
 }
 
 #ac {
     text-align: center;
-    top: 187px;
+    top: 190px;
     left: 298px;
-    width: 48px;
+    width: 49px;
     font-size: 22px;
 }
 
 #initiative {
     text-align: center;
-    top: 190px;
+    top: 192px;
     left: 368px;
     width: 56px;
     font-size: 22px;
@@ -358,17 +266,17 @@ img#main-img {
 
 #speed {
     text-align: center;
-    top: 190px;
+    top: 192px;
     left: 444px;
     width: 57px;
     font-size: 22px;
 }
 
 #max-hp {
-    top: 256px;
-    left: 380px;
-    width: 115px;
-    font-size: 12px;
+    top: 259px;
+    left: 392px;
+    width: 107px;
+    font-size: 10px;
 }
 
 #current-hp, #temporary-hp {
@@ -378,13 +286,13 @@ img#main-img {
 }
 
 #current-hp {
-    top: 273px;
+    top: 274px;
     height: 40px;
 }
 
 #temporary-hp {
-    top: 340px;
-    height: 42px;
+    top: 348px;
+    height: 40px;
 }
 
 #total-hit-dice {
@@ -407,7 +315,7 @@ img#main-img {
 }
 
 #s1, #s2, #s3 {
-    top: 419px;
+    top: 420px;
 }
 
 #f1, #f2, #f3 {
@@ -429,83 +337,63 @@ img#main-img {
 #attack-1-name, #attack-1-bonus, #attack-1-damage,
 #attack-2-name, #attack-2-bonus, #attack-2-damage,
 #attack-3-name, #attack-3-bonus, #attack-3-damage {
-    font-size: 17px;
+    font-size: 15px;
 }
 
 #attack-1-name, #attack-1-bonus, #attack-1-damage {
-    top: 511px;
+    top: 512px;
 }
 
 #attack-2-name, #attack-2-bonus, #attack-2-damage {
-    top: 538px;
+    top: 539px;
 }
 
 #attack-3-name, #attack-3-bonus, #attack-3-damage {
-    top: 565px;
+    top: 566px;
 }
 
 #attack-1-name, #attack-2-name, #attack-3-name {
-    left: 292px;
-    width: 81px;
+    left: 291px;
+    width: 85px;
 }
 
 #attack-1-bonus, #attack-2-bonus, #attack-3-bonus {
     text-align: center;
-    left: 380px;
-    width: 40px;
+    left: 383px;
+    width: 39px;
 }
 
 #attack-1-damage, #attack-2-damage, #attack-3-damage {
-    left: 427px;
-    width: 80px;
+    left: 430px;
+    width: 77px;
 }
 
 #attacks {
-    top: 587px;
+    top: 586px;
     left: 286px;
     width: 222px;
-    height: 151px;
+    height: 225px;
+    font-size: 11px;
 }
 
 #cp, #sp, #ep, #gp, #pp, #qp {
-    text-align: center;
-    left: 296px;
-    width: 44px;
+    display: none;
 }
 
-#cp {
-    top: 783px;
-}
-
-#sp {
-    top: 817px;
-}
-
-#ep {
-    top: 851px;
-}
-
-#gp {
-    top: 885px;
-}
-
-#pp {
-    top: 919px;
-}
-
-#qp {
-    top: 956px;
+#equipment, #character-notes {
+    top: 843px;
+    height: 140px;
+    font-size: 11px;
 }
 
 #equipment {
-    top: 770px;
-    left: 347px;
-    width: 160px;
-    height: 212px;
+    left: 286px;
+    width: 232px;
 }
 
 #character-notes {
-    display: none;
+    left: 524px;
+    width: 231px;
 }
 
 #personality-traits,
@@ -536,8 +424,8 @@ img#main-img {
 }
 
 #features {
-    top: 498px;
+    top: 499px;
     left: 533px;
     width: 222px;
-    height: 484px;
+    height: 312px;
 }

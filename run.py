@@ -393,7 +393,7 @@ if __name__ == '__main__':
         port = 5000
         host = '127.0.0.1'
         debug = False
-        print('safari-http://%s:%d/character_sheet/angular' % (host, port))
+        print('safari-http://%s:%d/' % (host, port))
     
     app.run(host=host, port=port, debug=debug, use_reloader=False)
     
