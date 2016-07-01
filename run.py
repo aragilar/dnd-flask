@@ -148,7 +148,8 @@ def character_sheet(look):
         look = 'standard'
     
     return render_template('character_sheet.html',
-        look=look
+        look=look,
+        slug=helper.slug
     )
 
 @app.route('/class/')

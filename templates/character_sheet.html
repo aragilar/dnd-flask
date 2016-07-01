@@ -5,6 +5,40 @@
 {% block title %}D&amp;D Character Sheet{% endblock %}
 {% set styles = ['@normalize.css', '@character_sheet/character_sheet.css', '@character_sheet/%s.css' % look] %}
 {% set javascript = ['@character_sheet/character_sheet.js'] %}
+{% set stats = [
+	"str",
+	"dex",
+	"con",
+	"int",
+	"wis",
+	"cha"
+] %}
+{% set skills = [
+	"strsave",
+	"dexsave",
+	"consave",
+	"intsave",
+	"wissave",
+	"chasave",
+	"acrobatics",
+	"animal-handling",
+	"arcana",
+	"athletics",
+	"deception",
+	"history",
+	"insight",
+	"intimidation",
+	"investigation",
+	"medicine",
+	"nature",
+	"perception",
+	"performance",
+	"persuasion",
+	"religion",
+	"sleight-of-hand",
+	"stealth",
+	"survival"
+] %}
 {% block content %}
 <div id="controls">
     <a class="home button" href="{{ url_for('.index', **query) }}">Home</a>
@@ -29,68 +63,16 @@
             <input id="experience" class="save">
         </div>
         <div id="main-sheet-stats">
-            <input type="number" id="str" class="save">
-            <input type="number" id="dex" class="save">
-            <input type="number" id="con" class="save">
-            <input type="number" id="int" class="save">
-            <input type="number" id="wis" class="save">
-            <input type="number" id="cha" class="save">
-            <output id="strmod"></output>
-            <output id="dexmod"></output>
-            <output id="conmod"></output>
-            <output id="intmod"></output>
-            <output id="wismod"></output>
-            <output id="chamod"></output>
+            {% for stat in stats %}
+            <input type="number" id="{{ slug(stat[:3]) }}" class="save">
+            <output id="{{ slug(stat[:3]) }}mod"></output>
+            {% endfor %}
             <input type="checkbox" id="inspiration" class="save">
             <input type="number" id="proficiency" class="save">
-            <input type="checkbox" id="strsave" class="save">
-            <input id="strsave-value" class="save">
-            <input type="checkbox" id="dexsave" class="save">
-            <input id="dexsave-value" class="save">
-            <input type="checkbox" id="consave" class="save">
-            <input id="consave-value" class="save">
-            <input type="checkbox" id="intsave" class="save">
-            <input id="intsave-value" class="save">
-            <input type="checkbox" id="wissave" class="save">
-            <input id="wissave-value" class="save">
-            <input type="checkbox" id="chasave" class="save">
-            <input id="chasave-value" class="save">
-            <input type="checkbox" id="acrobatics" class="save">
-            <input id="acrobatics-value" class="save">
-            <input type="checkbox" id="animal-handling" class="save">
-            <input id="animal-handling-value" class="save">
-            <input type="checkbox" id="arcana" class="save">
-            <input id="arcana-value" class="save">
-            <input type="checkbox" id="athletics" class="save">
-            <input id="athletics-value" class="save">
-            <input type="checkbox" id="deception" class="save">
-            <input id="deception-value" class="save">
-            <input type="checkbox" id="history" class="save">
-            <input id="history-value" class="save">
-            <input type="checkbox" id="insight" class="save">
-            <input id="insight-value" class="save">
-            <input type="checkbox" id="intimidation" class="save">
-            <input id="intimidation-value" class="save">
-            <input type="checkbox" id="investigation" class="save">
-            <input id="investigation-value" class="save">
-            <input type="checkbox" id="medicine" class="save">
-            <input id="medicine-value" class="save">
-            <input type="checkbox" id="nature" class="save">
-            <input id="nature-value" class="save">
-            <input type="checkbox" id="perception" class="save">
-            <input id="perception-value" class="save">
-            <input type="checkbox" id="performance" class="save">
-            <input id="performance-value" class="save">
-            <input type="checkbox" id="persuasion" class="save">
-            <input id="persuasion-value" class="save">
-            <input type="checkbox" id="religion" class="save">
-            <input id="religion-value" class="save">
-            <input type="checkbox" id="sleight-of-hand" class="save">
-            <input id="sleight-of-hand-value" class="save">
-            <input type="checkbox" id="stealth" class="save">
-            <input id="stealth-value" class="save">
-            <input type="checkbox" id="survival" class="save">
-            <input id="survival-value" class="save">
+            {% for skill in skills %}
+            <input type="checkbox" id="{{ slug(skill) }}" class="save">
+            <input id="{{ slug(skill) }}-value" class="save">
+            {% endfor %}
             <input id="passive-perception" class="save">
         </div>
         <textarea id="proficiencies" class="save"></textarea>
@@ -111,24 +93,17 @@
             <input type="checkbox" id="f3" class="save">
         </div>
         <div id="attacks-and-spellcasting">
-            <input id="attack-1-name" class="save">
-            <input id="attack-1-bonus" class="save">
-            <input id="attack-1-damage" class="save">
-            <input id="attack-2-name" class="save">
-            <input id="attack-2-bonus" class="save">
-            <input id="attack-2-damage" class="save">
-            <input id="attack-3-name" class="save">
-            <input id="attack-3-bonus" class="save">
-            <input id="attack-3-damage" class="save">
+        	{% for i in range(1, 3+1) %}
+            <input id="attack-{{ i }}-name" class="save">
+            <input id="attack-{{ i }}-bonus" class="save">
+            <input id="attack-{{ i }}-damage" class="save">
+            {% endfor %}
             <textarea id="attacks" class="save"></textarea>
         </div>
         <div id="inventory">
-            <input id="cp" class="save">
-            <input id="sp" class="save">
-            <input id="ep" class="save">
-            <input id="gp" class="save">
-            <input id="pp" class="save">
-            <input id="qp" class="save">
+        	{% for currency in ["cp", "sp", "ep", "gp", "pp", "qp"] %}
+            <input id="{{ currency }}" class="save">
+            {% endfor %}
             <textarea id="equipment" class="save"></textarea>
         </div>
         <div id="personality-box">
@@ -150,236 +125,81 @@
             <input id="spell-attack" class="save">
         </div>
         <div id="cantrips">
-            <input id="spell-C-1" class="save spell-left">
-            <input id="spell-C-2" class="save spell-left">
-            <input id="spell-C-3" class="save spell-left">
-            <input id="spell-C-4" class="save spell-left">
-            <input id="spell-C-5" class="save spell-left">
-            <input id="spell-C-6" class="save spell-left">
-            <input id="spell-C-7" class="save spell-left">
-            <input id="spell-C-8" class="save spell-left">
+        	{% for i in range(1, 8+1) %}
+            <input id="spell-C-{{ i }}" class="save spell-left">
+            {% endfor %}
         </div>
         <div id="1st-level">
             <input id="slots-total-1" class="save">
             <input id="slots-expended-1" class="save">
-            <input type="checkbox" id="spell-1-1-prepared" class="save spell-prepared-left">
-            <input id="spell-1-1" class="save spell-left">
-            <input type="checkbox" id="spell-1-2-prepared" class="save spell-prepared-left">
-            <input id="spell-1-2" class="save spell-left">
-            <input type="checkbox" id="spell-1-3-prepared" class="save spell-prepared-left">
-            <input id="spell-1-3" class="save spell-left">
-            <input type="checkbox" id="spell-1-4-prepared" class="save spell-prepared-left">
-            <input id="spell-1-4" class="save spell-left">
-            <input type="checkbox" id="spell-1-5-prepared" class="save spell-prepared-left">
-            <input id="spell-1-5" class="save spell-left">
-            <input type="checkbox" id="spell-1-6-prepared" class="save spell-prepared-left">
-            <input id="spell-1-6" class="save spell-left">
-            <input type="checkbox" id="spell-1-7-prepared" class="save spell-prepared-left">
-            <input id="spell-1-7" class="save spell-left">
-            <input type="checkbox" id="spell-1-8-prepared" class="save spell-prepared-left">
-            <input id="spell-1-8" class="save spell-left">
-            <input type="checkbox" id="spell-1-9-prepared" class="save spell-prepared-left">
-            <input id="spell-1-9" class="save spell-left">
-            <input type="checkbox" id="spell-1-10-prepared" class="save spell-prepared-left">
-            <input id="spell-1-10" class="save spell-left">
-            <input type="checkbox" id="spell-1-11-prepared" class="save spell-prepared-left">
-            <input id="spell-1-11" class="save spell-left">
-            <input type="checkbox" id="spell-1-12-prepared" class="save spell-prepared-left">
-            <input id="spell-1-12" class="save spell-left">
-            <input type="checkbox" id="spell-1-13-prepared" class="save spell-prepared-left">
-            <input id="spell-1-13" class="save spell-left">
+            {% for i in range(1, 13+1) %}
+            <input type="checkbox" id="spell-1-{{ i }}-prepared" class="save spell-prepared-left">
+            <input id="spell-1-{{ i }}" class="save spell-left">
+            {% endfor %}
         </div>
         <div id="2nd-level">
             <input id="slots-total-2" class="save">
             <input id="slots-expended-2" class="save">
-            <input type="checkbox" id="spell-2-1-prepared" class="save spell-prepared-left">
-            <input id="spell-2-1" class="save spell-left">
-            <input type="checkbox" id="spell-2-2-prepared" class="save spell-prepared-left">
-            <input id="spell-2-2" class="save spell-left">
-            <input type="checkbox" id="spell-2-3-prepared" class="save spell-prepared-left">
-            <input id="spell-2-3" class="save spell-left">
-            <input type="checkbox" id="spell-2-4-prepared" class="save spell-prepared-left">
-            <input id="spell-2-4" class="save spell-left">
-            <input type="checkbox" id="spell-2-5-prepared" class="save spell-prepared-left">
-            <input id="spell-2-5" class="save spell-left">
-            <input type="checkbox" id="spell-2-6-prepared" class="save spell-prepared-left">
-            <input id="spell-2-6" class="save spell-left">
-            <input type="checkbox" id="spell-2-7-prepared" class="save spell-prepared-left">
-            <input id="spell-2-7" class="save spell-left">
-            <input type="checkbox" id="spell-2-8-prepared" class="save spell-prepared-left">
-            <input id="spell-2-8" class="save spell-left">
-            <input type="checkbox" id="spell-2-9-prepared" class="save spell-prepared-left">
-            <input id="spell-2-9" class="save spell-left">
-            <input type="checkbox" id="spell-2-10-prepared" class="save spell-prepared-left">
-            <input id="spell-2-10" class="save spell-left">
-            <input type="checkbox" id="spell-2-11-prepared" class="save spell-prepared-left">
-            <input id="spell-2-11" class="save spell-left">
-            <input type="checkbox" id="spell-2-12-prepared" class="save spell-prepared-left">
-            <input id="spell-2-12" class="save spell-left">
-            <input type="checkbox" id="spell-2-13-prepared" class="save spell-prepared-left">
-            <input id="spell-2-13" class="save spell-left">
+            {% for i in range(1, 13+1) %}
+            <input type="checkbox" id="spell-2-{{ i }}-prepared" class="save spell-prepared-left">
+            <input id="spell-2-{{ i }}" class="save spell-left">
+            {% endfor %}
         </div>
         <div id="3rd-level">
             <input id="slots-total-3" class="save">
             <input id="slots-expended-3" class="save">
-            <input type="checkbox" id="spell-3-1-prepared" class="save spell-prepared-center">
-            <input id="spell-3-1" class="save spell-center">
-            <input type="checkbox" id="spell-3-2-prepared" class="save spell-prepared-center">
-            <input id="spell-3-2" class="save spell-center">
-            <input type="checkbox" id="spell-3-3-prepared" class="save spell-prepared-center">
-            <input id="spell-3-3" class="save spell-center">
-            <input type="checkbox" id="spell-3-4-prepared" class="save spell-prepared-center">
-            <input id="spell-3-4" class="save spell-center">
-            <input type="checkbox" id="spell-3-5-prepared" class="save spell-prepared-center">
-            <input id="spell-3-5" class="save spell-center">
-            <input type="checkbox" id="spell-3-6-prepared" class="save spell-prepared-center">
-            <input id="spell-3-6" class="save spell-center">
-            <input type="checkbox" id="spell-3-7-prepared" class="save spell-prepared-center">
-            <input id="spell-3-7" class="save spell-center">
-            <input type="checkbox" id="spell-3-8-prepared" class="save spell-prepared-center">
-            <input id="spell-3-8" class="save spell-center">
-            <input type="checkbox" id="spell-3-9-prepared" class="save spell-prepared-center">
-            <input id="spell-3-9" class="save spell-center">
-            <input type="checkbox" id="spell-3-10-prepared" class="save spell-prepared-center">
-            <input id="spell-3-10" class="save spell-center">
-            <input type="checkbox" id="spell-3-11-prepared" class="save spell-prepared-center">
-            <input id="spell-3-11" class="save spell-center">
-            <input type="checkbox" id="spell-3-12-prepared" class="save spell-prepared-center">
-            <input id="spell-3-12" class="save spell-center">
-            <input type="checkbox" id="spell-3-13-prepared" class="save spell-prepared-center">
-            <input id="spell-3-13" class="save spell-center">
+            {% for i in range(1, 13+1) %}
+            <input type="checkbox" id="spell-3-{{ i }}-prepared" class="save spell-prepared-center">
+            <input id="spell-3-{{ i }}" class="save spell-center">
+            {% endfor %}
         </div>
         <div id="4th-level">
             <input id="slots-total-4" class="save">
             <input id="slots-expended-4" class="save">
-            <input type="checkbox" id="spell-4-1-prepared" class="save spell-prepared-center">
-            <input id="spell-4-1" class="save spell-center">
-            <input type="checkbox" id="spell-4-2-prepared" class="save spell-prepared-center">
-            <input id="spell-4-2" class="save spell-center">
-            <input type="checkbox" id="spell-4-3-prepared" class="save spell-prepared-center">
-            <input id="spell-4-3" class="save spell-center">
-            <input type="checkbox" id="spell-4-4-prepared" class="save spell-prepared-center">
-            <input id="spell-4-4" class="save spell-center">
-            <input type="checkbox" id="spell-4-5-prepared" class="save spell-prepared-center">
-            <input id="spell-4-5" class="save spell-center">
-            <input type="checkbox" id="spell-4-6-prepared" class="save spell-prepared-center">
-            <input id="spell-4-6" class="save spell-center">
-            <input type="checkbox" id="spell-4-7-prepared" class="save spell-prepared-center">
-            <input id="spell-4-7" class="save spell-center">
-            <input type="checkbox" id="spell-4-8-prepared" class="save spell-prepared-center">
-            <input id="spell-4-8" class="save spell-center">
-            <input type="checkbox" id="spell-4-9-prepared" class="save spell-prepared-center">
-            <input id="spell-4-9" class="save spell-center">
-            <input type="checkbox" id="spell-4-10-prepared" class="save spell-prepared-center">
-            <input id="spell-4-10" class="save spell-center">
-            <input type="checkbox" id="spell-4-11-prepared" class="save spell-prepared-center">
-            <input id="spell-4-11" class="save spell-center">
-            <input type="checkbox" id="spell-4-12-prepared" class="save spell-prepared-center">
-            <input id="spell-4-12" class="save spell-center">
-            <input type="checkbox" id="spell-4-13-prepared" class="save spell-prepared-center">
-            <input id="spell-4-13" class="save spell-center">
+            {% for i in range(1, 13+1) %}
+            <input type="checkbox" id="spell-4-{{ i }}-prepared" class="save spell-prepared-center">
+            <input id="spell-4-{{ i }}" class="save spell-center">
+            {% endfor %}
         </div>
         <div id="5th-level">
             <input id="slots-total-5" class="save">
             <input id="slots-expended-5" class="save">
-            <input type="checkbox" id="spell-5-1-prepared" class="save spell-prepared-center">
-            <input id="spell-5-1" class="save spell-center">
-            <input type="checkbox" id="spell-5-2-prepared" class="save spell-prepared-center">
-            <input id="spell-5-2" class="save spell-center">
-            <input type="checkbox" id="spell-5-3-prepared" class="save spell-prepared-center">
-            <input id="spell-5-3" class="save spell-center">
-            <input type="checkbox" id="spell-5-4-prepared" class="save spell-prepared-center">
-            <input id="spell-5-4" class="save spell-center">
-            <input type="checkbox" id="spell-5-5-prepared" class="save spell-prepared-center">
-            <input id="spell-5-5" class="save spell-center">
-            <input type="checkbox" id="spell-5-6-prepared" class="save spell-prepared-center">
-            <input id="spell-5-6" class="save spell-center">
-            <input type="checkbox" id="spell-5-7-prepared" class="save spell-prepared-center">
-            <input id="spell-5-7" class="save spell-center">
-            <input type="checkbox" id="spell-5-8-prepared" class="save spell-prepared-center">
-            <input id="spell-5-8" class="save spell-center">
-            <input type="checkbox" id="spell-5-9-prepared" class="save spell-prepared-center">
-            <input id="spell-5-9" class="save spell-center">
+            {% for i in range(1, 9+1) %}
+            <input type="checkbox" id="spell-5-{{ i }}-prepared" class="save spell-prepared-center">
+            <input id="spell-5-{{ i }}" class="save spell-center">
+            {% endfor %}
         </div>
         <div id="6th-level">
             <input id="slots-total-6" class="save">
             <input id="slots-expended-6" class="save">
-            <input type="checkbox" id="spell-6-1-prepared" class="save spell-prepared-right">
-            <input id="spell-6-1" class="save spell-right">
-            <input type="checkbox" id="spell-6-2-prepared" class="save spell-prepared-right">
-            <input id="spell-6-2" class="save spell-right">
-            <input type="checkbox" id="spell-6-3-prepared" class="save spell-prepared-right">
-            <input id="spell-6-3" class="save spell-right">
-            <input type="checkbox" id="spell-6-4-prepared" class="save spell-prepared-right">
-            <input id="spell-6-4" class="save spell-right">
-            <input type="checkbox" id="spell-6-5-prepared" class="save spell-prepared-right">
-            <input id="spell-6-5" class="save spell-right">
-            <input type="checkbox" id="spell-6-6-prepared" class="save spell-prepared-right">
-            <input id="spell-6-6" class="save spell-right">
-            <input type="checkbox" id="spell-6-7-prepared" class="save spell-prepared-right">
-            <input id="spell-6-7" class="save spell-right">
-            <input type="checkbox" id="spell-6-8-prepared" class="save spell-prepared-right">
-            <input id="spell-6-8" class="save spell-right">
-            <input type="checkbox" id="spell-6-9-prepared" class="save spell-prepared-right">
-            <input id="spell-6-9" class="save spell-right">
+            {% for i in range(1, 9+1) %}
+            <input type="checkbox" id="spell-6-{{ i }}-prepared" class="save spell-prepared-right">
+            <input id="spell-6-{{ i }}" class="save spell-right">
+            {% endfor %}
         </div>
         <div id="7th-level">
             <input id="slots-total-7" class="save">
             <input id="slots-expended-7" class="save">
-            <input type="checkbox" id="spell-7-1-prepared" class="save spell-prepared-right">
-            <input id="spell-7-1" class="save spell-right">
-            <input type="checkbox" id="spell-7-2-prepared" class="save spell-prepared-right">
-            <input id="spell-7-2" class="save spell-right">
-            <input type="checkbox" id="spell-7-3-prepared" class="save spell-prepared-right">
-            <input id="spell-7-3" class="save spell-right">
-            <input type="checkbox" id="spell-7-4-prepared" class="save spell-prepared-right">
-            <input id="spell-7-4" class="save spell-right">
-            <input type="checkbox" id="spell-7-5-prepared" class="save spell-prepared-right">
-            <input id="spell-7-5" class="save spell-right">
-            <input type="checkbox" id="spell-7-6-prepared" class="save spell-prepared-right">
-            <input id="spell-7-6" class="save spell-right">
-            <input type="checkbox" id="spell-7-7-prepared" class="save spell-prepared-right">
-            <input id="spell-7-7" class="save spell-right">
-            <input type="checkbox" id="spell-7-8-prepared" class="save spell-prepared-right">
-            <input id="spell-7-8" class="save spell-right">
-            <input type="checkbox" id="spell-7-9-prepared" class="save spell-prepared-right">
-            <input id="spell-7-9" class="save spell-right">
+            {% for i in range(1, 9+1) %}
+            <input type="checkbox" id="spell-7-{{ i }}-prepared" class="save spell-prepared-right">
+            <input id="spell-7-{{ i }}" class="save spell-right">
+            {% endfor %}
         </div>
         <div id="8th-level">
             <input id="slots-total-8" class="save">
             <input id="slots-expended-8" class="save">
-            <input type="checkbox" id="spell-8-1-prepared" class="save spell-prepared-right">
-            <input id="spell-8-1" class="save spell-right">
-            <input type="checkbox" id="spell-8-2-prepared" class="save spell-prepared-right">
-            <input id="spell-8-2" class="save spell-right">
-            <input type="checkbox" id="spell-8-3-prepared" class="save spell-prepared-right">
-            <input id="spell-8-3" class="save spell-right">
-            <input type="checkbox" id="spell-8-4-prepared" class="save spell-prepared-right">
-            <input id="spell-8-4" class="save spell-right">
-            <input type="checkbox" id="spell-8-5-prepared" class="save spell-prepared-right">
-            <input id="spell-8-5" class="save spell-right">
-            <input type="checkbox" id="spell-8-6-prepared" class="save spell-prepared-right">
-            <input id="spell-8-6" class="save spell-right">
-            <input type="checkbox" id="spell-8-7-prepared" class="save spell-prepared-right">
-            <input id="spell-8-7" class="save spell-right">
+            {% for i in range(1, 7+1) %}
+            <input type="checkbox" id="spell-8-{{ i }}-prepared" class="save spell-prepared-right">
+            <input id="spell-8-{{ i }}" class="save spell-right">
+            {% endfor %}
         </div>
         <div id="9th-level">
             <input id="slots-total-9" class="save">
             <input id="slots-expended-9" class="save">
-            <input type="checkbox" id="spell-9-1-prepared" class="save spell-prepared-right">
-            <input id="spell-9-1" class="save spell-right">
-            <input type="checkbox" id="spell-9-2-prepared" class="save spell-prepared-right">
-            <input id="spell-9-2" class="save spell-right">
-            <input type="checkbox" id="spell-9-3-prepared" class="save spell-prepared-right">
-            <input id="spell-9-3" class="save spell-right">
-            <input type="checkbox" id="spell-9-4-prepared" class="save spell-prepared-right">
-            <input id="spell-9-4" class="save spell-right">
-            <input type="checkbox" id="spell-9-5-prepared" class="save spell-prepared-right">
-            <input id="spell-9-5" class="save spell-right">
-            <input type="checkbox" id="spell-9-6-prepared" class="save spell-prepared-right">
-            <input id="spell-9-6" class="save spell-right">
-            <input type="checkbox" id="spell-9-7-prepared" class="save spell-prepared-right">
-            <input id="spell-9-7" class="save spell-right">
+            {% for i in range(1, 7+1) %}
+            <input type="checkbox" id="spell-9-{{ i }}-prepared" class="save spell-prepared-right">
+            <input id="spell-9-{{ i }}" class="save spell-right">
+            {% endfor %}
         </div>
     </div>
     <div id="background-sheet">
