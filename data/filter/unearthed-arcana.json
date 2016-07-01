@@ -1,5 +1,5 @@
 {
-    "+": "Unearthed Arcana",
+    "name": "Unearthed Arcana",
     "armor": {
         "Breastplate": false,
         "Chain mail": false,

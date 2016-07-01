@@ -1,0 +1,426 @@
+{% extends "dnd-base.html" %}
+{% block meta %}
+<meta name="viewport" content="width=device-width">
+{% endblock %}
+{% block title %}D&amp;D Character Sheet{% endblock %}
+{% set styles = ['@normalize.css', '@character_sheet/%s.css' % look] %}
+{% set javascript = ['@character_sheet/character_sheet.js'] %}
+{% block content %}
+<div id="controls">
+    <a class="home button" href="{{ url_for('.index', **query) }}">Home</a>
+    <div id="fileio">
+        <input id="fileselect" type="file" name="files[]">
+        <a id="load" class="button">Load</a>
+    </div>
+    <a id="calc" class="button">Calculate</a>
+    <a id="save" class="button">Save</a>
+    <br style="clear: both">
+</div>
+<div id="body">
+    <div id="main-sheet">
+        <img id="main-img" alt="character sheet">
+        <div id="main-sheet-head">
+            <input id="name" class="save">
+            <input id="class" class="save">
+            <input id="background" class="save">
+            <input id="player" class="save">
+            <input id="race" class="save">
+            <input id="alignment" class="save">
+            <input id="experience" class="save">
+        </div>
+        <div id="main-sheet-stats">
+            <input type="number" id="str" class="save">
+            <input type="number" id="dex" class="save">
+            <input type="number" id="con" class="save">
+            <input type="number" id="int" class="save">
+            <input type="number" id="wis" class="save">
+            <input type="number" id="cha" class="save">
+            <output id="strmod"></output>
+            <output id="dexmod"></output>
+            <output id="conmod"></output>
+            <output id="intmod"></output>
+            <output id="wismod"></output>
+            <output id="chamod"></output>
+            <input type="checkbox" id="inspiration" class="save">
+            <input type="number" id="proficiency" class="save">
+            <input type="checkbox" id="strsave" class="save">
+            <input id="strsave-value" class="save">
+            <input type="checkbox" id="dexsave" class="save">
+            <input id="dexsave-value" class="save">
+            <input type="checkbox" id="consave" class="save">
+            <input id="consave-value" class="save">
+            <input type="checkbox" id="intsave" class="save">
+            <input id="intsave-value" class="save">
+            <input type="checkbox" id="wissave" class="save">
+            <input id="wissave-value" class="save">
+            <input type="checkbox" id="chasave" class="save">
+            <input id="chasave-value" class="save">
+            <input type="checkbox" id="acrobatics" class="save">
+            <input id="acrobatics-value" class="save">
+            <input type="checkbox" id="animal-handling" class="save">
+            <input id="animal-handling-value" class="save">
+            <input type="checkbox" id="arcana" class="save">
+            <input id="arcana-value" class="save">
+            <input type="checkbox" id="athletics" class="save">
+            <input id="athletics-value" class="save">
+            <input type="checkbox" id="deception" class="save">
+            <input id="deception-value" class="save">
+            <input type="checkbox" id="history" class="save">
+            <input id="history-value" class="save">
+            <input type="checkbox" id="insight" class="save">
+            <input id="insight-value" class="save">
+            <input type="checkbox" id="intimidation" class="save">
+            <input id="intimidation-value" class="save">
+            <input type="checkbox" id="investigation" class="save">
+            <input id="investigation-value" class="save">
+            <input type="checkbox" id="medicine" class="save">
+            <input id="medicine-value" class="save">
+            <input type="checkbox" id="nature" class="save">
+            <input id="nature-value" class="save">
+            <input type="checkbox" id="perception" class="save">
+            <input id="perception-value" class="save">
+            <input type="checkbox" id="performance" class="save">
+            <input id="performance-value" class="save">
+            <input type="checkbox" id="persuasion" class="save">
+            <input id="persuasion-value" class="save">
+            <input type="checkbox" id="religion" class="save">
+            <input id="religion-value" class="save">
+            <input type="checkbox" id="sleight-of-hand" class="save">
+            <input id="sleight-of-hand-value" class="save">
+            <input type="checkbox" id="stealth" class="save">
+            <input id="stealth-value" class="save">
+            <input type="checkbox" id="survival" class="save">
+            <input id="survival-value" class="save">
+            <input id="passive-perception" class="save">
+        </div>
+        <textarea id="proficiencies" class="save"></textarea>
+        <div id="health-block">
+            <input id="ac" class="save">
+            <input id="initiative" class="save">
+            <input id="speed" class="save">
+            <input id="max-hp" class="save">
+            <textarea id="current-hp" class="save"></textarea>
+            <textarea id="temporary-hp" class="save"></textarea>
+            <input id="total-hit-dice" class="save">
+            <textarea id="hit-dice" class="save"></textarea>
+            <input type="checkbox" id="s1" class="save">
+            <input type="checkbox" id="s2" class="save">
+            <input type="checkbox" id="s3" class="save">
+            <input type="checkbox" id="f1" class="save">
+            <input type="checkbox" id="f2" class="save">
+            <input type="checkbox" id="f3" class="save">
+        </div>
+        <div id="attacks-and-spellcasting">
+            <input id="attack-1-name" class="save">
+            <input id="attack-1-bonus" class="save">
+            <input id="attack-1-damage" class="save">
+            <input id="attack-2-name" class="save">
+            <input id="attack-2-bonus" class="save">
+            <input id="attack-2-damage" class="save">
+            <input id="attack-3-name" class="save">
+            <input id="attack-3-bonus" class="save">
+            <input id="attack-3-damage" class="save">
+            <textarea id="attacks" class="save"></textarea>
+        </div>
+        <div id="inventory">
+            <input id="cp" class="save">
+            <input id="sp" class="save">
+            <input id="ep" class="save">
+            <input id="gp" class="save">
+            <input id="pp" class="save">
+            <input id="qp" class="save">
+            <textarea id="equipment" class="save"></textarea>
+        </div>
+        <div id="personality-box">
+            <textarea id="personality-traits" class="save"></textarea>
+            <textarea id="ideals" class="save"></textarea>
+            <textarea id="bonds" class="save"></textarea>
+            <textarea id="flaws" class="save"></textarea>
+        </div>
+        <div id="features-box">
+            <textarea id="features" class="save"></textarea>
+        </div>
+    </div>
+    <div id="spells-sheet">
+        <img id="spells-img" alt="spells sheet">
+        <div id="spell-sheet-head">
+            <input id="spellclass-name" class="save">
+            <input id="spellcasting-ability" class="save">
+            <input id="spell-save" class="save">
+            <input id="spell-attack" class="save">
+        </div>
+        <div id="cantrips">
+            <input id="spell-C-1" class="save spell-left">
+            <input id="spell-C-2" class="save spell-left">
+            <input id="spell-C-3" class="save spell-left">
+            <input id="spell-C-4" class="save spell-left">
+            <input id="spell-C-5" class="save spell-left">
+            <input id="spell-C-6" class="save spell-left">
+            <input id="spell-C-7" class="save spell-left">
+            <input id="spell-C-8" class="save spell-left">
+        </div>
+        <div id="1st-level">
+            <input id="slots-total-1" class="save">
+            <input id="slots-expended-1" class="save">
+            <input type="checkbox" id="spell-1-1-prepared" class="save spell-prepared-left">
+            <input id="spell-1-1" class="save spell-left">
+            <input type="checkbox" id="spell-1-2-prepared" class="save spell-prepared-left">
+            <input id="spell-1-2" class="save spell-left">
+            <input type="checkbox" id="spell-1-3-prepared" class="save spell-prepared-left">
+            <input id="spell-1-3" class="save spell-left">
+            <input type="checkbox" id="spell-1-4-prepared" class="save spell-prepared-left">
+            <input id="spell-1-4" class="save spell-left">
+            <input type="checkbox" id="spell-1-5-prepared" class="save spell-prepared-left">
+            <input id="spell-1-5" class="save spell-left">
+            <input type="checkbox" id="spell-1-6-prepared" class="save spell-prepared-left">
+            <input id="spell-1-6" class="save spell-left">
+            <input type="checkbox" id="spell-1-7-prepared" class="save spell-prepared-left">
+            <input id="spell-1-7" class="save spell-left">
+            <input type="checkbox" id="spell-1-8-prepared" class="save spell-prepared-left">
+            <input id="spell-1-8" class="save spell-left">
+            <input type="checkbox" id="spell-1-9-prepared" class="save spell-prepared-left">
+            <input id="spell-1-9" class="save spell-left">
+            <input type="checkbox" id="spell-1-10-prepared" class="save spell-prepared-left">
+            <input id="spell-1-10" class="save spell-left">
+            <input type="checkbox" id="spell-1-11-prepared" class="save spell-prepared-left">
+            <input id="spell-1-11" class="save spell-left">
+            <input type="checkbox" id="spell-1-12-prepared" class="save spell-prepared-left">
+            <input id="spell-1-12" class="save spell-left">
+            <input type="checkbox" id="spell-1-13-prepared" class="save spell-prepared-left">
+            <input id="spell-1-13" class="save spell-left">
+        </div>
+        <div id="2nd-level">
+            <input id="slots-total-2" class="save">
+            <input id="slots-expended-2" class="save">
+            <input type="checkbox" id="spell-2-1-prepared" class="save spell-prepared-left">
+            <input id="spell-2-1" class="save spell-left">
+            <input type="checkbox" id="spell-2-2-prepared" class="save spell-prepared-left">
+            <input id="spell-2-2" class="save spell-left">
+            <input type="checkbox" id="spell-2-3-prepared" class="save spell-prepared-left">
+            <input id="spell-2-3" class="save spell-left">
+            <input type="checkbox" id="spell-2-4-prepared" class="save spell-prepared-left">
+            <input id="spell-2-4" class="save spell-left">
+            <input type="checkbox" id="spell-2-5-prepared" class="save spell-prepared-left">
+            <input id="spell-2-5" class="save spell-left">
+            <input type="checkbox" id="spell-2-6-prepared" class="save spell-prepared-left">
+            <input id="spell-2-6" class="save spell-left">
+            <input type="checkbox" id="spell-2-7-prepared" class="save spell-prepared-left">
+            <input id="spell-2-7" class="save spell-left">
+            <input type="checkbox" id="spell-2-8-prepared" class="save spell-prepared-left">
+            <input id="spell-2-8" class="save spell-left">
+            <input type="checkbox" id="spell-2-9-prepared" class="save spell-prepared-left">
+            <input id="spell-2-9" class="save spell-left">
+            <input type="checkbox" id="spell-2-10-prepared" class="save spell-prepared-left">
+            <input id="spell-2-10" class="save spell-left">
+            <input type="checkbox" id="spell-2-11-prepared" class="save spell-prepared-left">
+            <input id="spell-2-11" class="save spell-left">
+            <input type="checkbox" id="spell-2-12-prepared" class="save spell-prepared-left">
+            <input id="spell-2-12" class="save spell-left">
+            <input type="checkbox" id="spell-2-13-prepared" class="save spell-prepared-left">
+            <input id="spell-2-13" class="save spell-left">
+        </div>
+        <div id="3rd-level">
+            <input id="slots-total-3" class="save">
+            <input id="slots-expended-3" class="save">
+            <input type="checkbox" id="spell-3-1-prepared" class="save spell-prepared-center">
+            <input id="spell-3-1" class="save spell-center">
+            <input type="checkbox" id="spell-3-2-prepared" class="save spell-prepared-center">
+            <input id="spell-3-2" class="save spell-center">
+            <input type="checkbox" id="spell-3-3-prepared" class="save spell-prepared-center">
+            <input id="spell-3-3" class="save spell-center">
+            <input type="checkbox" id="spell-3-4-prepared" class="save spell-prepared-center">
+            <input id="spell-3-4" class="save spell-center">
+            <input type="checkbox" id="spell-3-5-prepared" class="save spell-prepared-center">
+            <input id="spell-3-5" class="save spell-center">
+            <input type="checkbox" id="spell-3-6-prepared" class="save spell-prepared-center">
+            <input id="spell-3-6" class="save spell-center">
+            <input type="checkbox" id="spell-3-7-prepared" class="save spell-prepared-center">
+            <input id="spell-3-7" class="save spell-center">
+            <input type="checkbox" id="spell-3-8-prepared" class="save spell-prepared-center">
+            <input id="spell-3-8" class="save spell-center">
+            <input type="checkbox" id="spell-3-9-prepared" class="save spell-prepared-center">
+            <input id="spell-3-9" class="save spell-center">
+            <input type="checkbox" id="spell-3-10-prepared" class="save spell-prepared-center">
+            <input id="spell-3-10" class="save spell-center">
+            <input type="checkbox" id="spell-3-11-prepared" class="save spell-prepared-center">
+            <input id="spell-3-11" class="save spell-center">
+            <input type="checkbox" id="spell-3-12-prepared" class="save spell-prepared-center">
+            <input id="spell-3-12" class="save spell-center">
+            <input type="checkbox" id="spell-3-13-prepared" class="save spell-prepared-center">
+            <input id="spell-3-13" class="save spell-center">
+        </div>
+        <div id="4th-level">
+            <input id="slots-total-4" class="save">
+            <input id="slots-expended-4" class="save">
+            <input type="checkbox" id="spell-4-1-prepared" class="save spell-prepared-center">
+            <input id="spell-4-1" class="save spell-center">
+            <input type="checkbox" id="spell-4-2-prepared" class="save spell-prepared-center">
+            <input id="spell-4-2" class="save spell-center">
+            <input type="checkbox" id="spell-4-3-prepared" class="save spell-prepared-center">
+            <input id="spell-4-3" class="save spell-center">
+            <input type="checkbox" id="spell-4-4-prepared" class="save spell-prepared-center">
+            <input id="spell-4-4" class="save spell-center">
+            <input type="checkbox" id="spell-4-5-prepared" class="save spell-prepared-center">
+            <input id="spell-4-5" class="save spell-center">
+            <input type="checkbox" id="spell-4-6-prepared" class="save spell-prepared-center">
+            <input id="spell-4-6" class="save spell-center">
+            <input type="checkbox" id="spell-4-7-prepared" class="save spell-prepared-center">
+            <input id="spell-4-7" class="save spell-center">
+            <input type="checkbox" id="spell-4-8-prepared" class="save spell-prepared-center">
+            <input id="spell-4-8" class="save spell-center">
+            <input type="checkbox" id="spell-4-9-prepared" class="save spell-prepared-center">
+            <input id="spell-4-9" class="save spell-center">
+            <input type="checkbox" id="spell-4-10-prepared" class="save spell-prepared-center">
+            <input id="spell-4-10" class="save spell-center">
+            <input type="checkbox" id="spell-4-11-prepared" class="save spell-prepared-center">
+            <input id="spell-4-11" class="save spell-center">
+            <input type="checkbox" id="spell-4-12-prepared" class="save spell-prepared-center">
+            <input id="spell-4-12" class="save spell-center">
+            <input type="checkbox" id="spell-4-13-prepared" class="save spell-prepared-center">
+            <input id="spell-4-13" class="save spell-center">
+        </div>
+        <div id="5th-level">
+            <input id="slots-total-5" class="save">
+            <input id="slots-expended-5" class="save">
+            <input type="checkbox" id="spell-5-1-prepared" class="save spell-prepared-center">
+            <input id="spell-5-1" class="save spell-center">
+            <input type="checkbox" id="spell-5-2-prepared" class="save spell-prepared-center">
+            <input id="spell-5-2" class="save spell-center">
+            <input type="checkbox" id="spell-5-3-prepared" class="save spell-prepared-center">
+            <input id="spell-5-3" class="save spell-center">
+            <input type="checkbox" id="spell-5-4-prepared" class="save spell-prepared-center">
+            <input id="spell-5-4" class="save spell-center">
+            <input type="checkbox" id="spell-5-5-prepared" class="save spell-prepared-center">
+            <input id="spell-5-5" class="save spell-center">
+            <input type="checkbox" id="spell-5-6-prepared" class="save spell-prepared-center">
+            <input id="spell-5-6" class="save spell-center">
+            <input type="checkbox" id="spell-5-7-prepared" class="save spell-prepared-center">
+            <input id="spell-5-7" class="save spell-center">
+            <input type="checkbox" id="spell-5-8-prepared" class="save spell-prepared-center">
+            <input id="spell-5-8" class="save spell-center">
+            <input type="checkbox" id="spell-5-9-prepared" class="save spell-prepared-center">
+            <input id="spell-5-9" class="save spell-center">
+        </div>
+        <div id="6th-level">
+            <input id="slots-total-6" class="save">
+            <input id="slots-expended-6" class="save">
+            <input type="checkbox" id="spell-6-1-prepared" class="save spell-prepared-right">
+            <input id="spell-6-1" class="save spell-right">
+            <input type="checkbox" id="spell-6-2-prepared" class="save spell-prepared-right">
+            <input id="spell-6-2" class="save spell-right">
+            <input type="checkbox" id="spell-6-3-prepared" class="save spell-prepared-right">
+            <input id="spell-6-3" class="save spell-right">
+            <input type="checkbox" id="spell-6-4-prepared" class="save spell-prepared-right">
+            <input id="spell-6-4" class="save spell-right">
+            <input type="checkbox" id="spell-6-5-prepared" class="save spell-prepared-right">
+            <input id="spell-6-5" class="save spell-right">
+            <input type="checkbox" id="spell-6-6-prepared" class="save spell-prepared-right">
+            <input id="spell-6-6" class="save spell-right">
+            <input type="checkbox" id="spell-6-7-prepared" class="save spell-prepared-right">
+            <input id="spell-6-7" class="save spell-right">
+            <input type="checkbox" id="spell-6-8-prepared" class="save spell-prepared-right">
+            <input id="spell-6-8" class="save spell-right">
+            <input type="checkbox" id="spell-6-9-prepared" class="save spell-prepared-right">
+            <input id="spell-6-9" class="save spell-right">
+        </div>
+        <div id="7th-level">
+            <input id="slots-total-7" class="save">
+            <input id="slots-expended-7" class="save">
+            <input type="checkbox" id="spell-7-1-prepared" class="save spell-prepared-right">
+            <input id="spell-7-1" class="save spell-right">
+            <input type="checkbox" id="spell-7-2-prepared" class="save spell-prepared-right">
+            <input id="spell-7-2" class="save spell-right">
+            <input type="checkbox" id="spell-7-3-prepared" class="save spell-prepared-right">
+            <input id="spell-7-3" class="save spell-right">
+            <input type="checkbox" id="spell-7-4-prepared" class="save spell-prepared-right">
+            <input id="spell-7-4" class="save spell-right">
+            <input type="checkbox" id="spell-7-5-prepared" class="save spell-prepared-right">
+            <input id="spell-7-5" class="save spell-right">
+            <input type="checkbox" id="spell-7-6-prepared" class="save spell-prepared-right">
+            <input id="spell-7-6" class="save spell-right">
+            <input type="checkbox" id="spell-7-7-prepared" class="save spell-prepared-right">
+            <input id="spell-7-7" class="save spell-right">
+            <input type="checkbox" id="spell-7-8-prepared" class="save spell-prepared-right">
+            <input id="spell-7-8" class="save spell-right">
+            <input type="checkbox" id="spell-7-9-prepared" class="save spell-prepared-right">
+            <input id="spell-7-9" class="save spell-right">
+        </div>
+        <div id="8th-level">
+            <input id="slots-total-8" class="save">
+            <input id="slots-expended-8" class="save">
+            <input type="checkbox" id="spell-8-1-prepared" class="save spell-prepared-right">
+            <input id="spell-8-1" class="save spell-right">
+            <input type="checkbox" id="spell-8-2-prepared" class="save spell-prepared-right">
+            <input id="spell-8-2" class="save spell-right">
+            <input type="checkbox" id="spell-8-3-prepared" class="save spell-prepared-right">
+            <input id="spell-8-3" class="save spell-right">
+            <input type="checkbox" id="spell-8-4-prepared" class="save spell-prepared-right">
+            <input id="spell-8-4" class="save spell-right">
+            <input type="checkbox" id="spell-8-5-prepared" class="save spell-prepared-right">
+            <input id="spell-8-5" class="save spell-right">
+            <input type="checkbox" id="spell-8-6-prepared" class="save spell-prepared-right">
+            <input id="spell-8-6" class="save spell-right">
+            <input type="checkbox" id="spell-8-7-prepared" class="save spell-prepared-right">
+            <input id="spell-8-7" class="save spell-right">
+        </div>
+        <div id="9th-level">
+            <input id="slots-total-9" class="save">
+            <input id="slots-expended-9" class="save">
+            <input type="checkbox" id="spell-9-1-prepared" class="save spell-prepared-right">
+            <input id="spell-9-1" class="save spell-right">
+            <input type="checkbox" id="spell-9-2-prepared" class="save spell-prepared-right">
+            <input id="spell-9-2" class="save spell-right">
+            <input type="checkbox" id="spell-9-3-prepared" class="save spell-prepared-right">
+            <input id="spell-9-3" class="save spell-right">
+            <input type="checkbox" id="spell-9-4-prepared" class="save spell-prepared-right">
+            <input id="spell-9-4" class="save spell-right">
+            <input type="checkbox" id="spell-9-5-prepared" class="save spell-prepared-right">
+            <input id="spell-9-5" class="save spell-right">
+            <input type="checkbox" id="spell-9-6-prepared" class="save spell-prepared-right">
+            <input id="spell-9-6" class="save spell-right">
+            <input type="checkbox" id="spell-9-7-prepared" class="save spell-prepared-right">
+            <input id="spell-9-7" class="save spell-right">
+        </div>
+    </div>
+    <div id="background-sheet">
+        <img id="background-img" alt="background sheet">
+        <div id="details-sheet-head">
+            <input id="details-name" class="save">
+            <input id="age" class="save">
+            <input id="height" class="save">
+            <input id="weight" class="save">
+            <input id="eyes" class="save">
+            <input id="skin" class="save">
+            <input id="hair" class="save">
+        </div>
+        <div id="character-background-block">
+            <textarea id="character-appearance" class="save"></textarea>
+            <textarea id="character-backstory" class="save"></textarea>
+        </div>
+        <div id="character-traits-block">
+            <textarea id="allies-and-organizations" class="save"></textarea>
+            <input id="symbol-name" class="save">
+            <textarea id="symbol" class="save"></textarea>
+            <textarea id="additional-features-and-traits-1" class="save"></textarea>
+            <textarea id="additional-features-and-traits-2" class="save"></textarea>
+            <textarea id="treasure-1" class="save"></textarea>
+            <textarea id="treasure-2" class="save"></textarea>
+        </div>
+    </div>
+</div>
+<div id="instructions" style="display: none">
+    <p>To use the Jack of all Trades or Expertise features simply type the feature into the features box. For example:</p>
+<pre>
+Jack of all Trades
+Expertise: Investigation
+Expertise: Perception
+</pre>
+    <p>would give jack of all trades and expertise in investigation and perception. Capitalization does not matter.</p>
+    <p>List of skills: (* means any skill name)</p>
+    <ul>
+        <li>Expertise: *</li>
+        <li>Jack of All Trades</li>
+        <li>Remarkable Athlete</li>
+    </ul>
+</div>
+{% endblock %}

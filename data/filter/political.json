@@ -1,5 +1,5 @@
 {
-    "+": "Political",
+    "name": "Political",
     "armor": {
         "Breastplate": true,
         "Chain mail": true,

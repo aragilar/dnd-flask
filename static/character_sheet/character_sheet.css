@@ -1,0 +1,159 @@
+body {
+    background-color: #ddd;
+}
+
+div {
+    background-color: #fff;
+}
+
+.button {
+    background-color: #ddd;
+    padding: 3px;
+    margin: 1px;
+    border: 2px outset #555;
+    border-radius: 10px;
+}
+
+.button:active {
+    border-style: inset;
+    background-color: #55f;
+    border-color: #55f;
+}
+
+.home {
+    float: left;
+}
+
+.save {
+    position: absolute;
+    font-size: 16px;
+    background-color: RGBA(255, 255, 255, 0);
+    border: 1px solid RGBA(200, 200, 200, 0);
+    /*border: 1px solid RGBA(200, 200, 200, 1);/**/
+}
+
+input.save[type="checkbox"]:checked {
+    opacity: 1;
+}
+
+input.save[type="checkbox"]:not(:checked) {
+    opacity: 0;
+}
+
+input {
+    padding: 0px;
+    margin: 0px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+textarea.save {
+    resize: none;
+    font-size: 12px;
+}
+
+#fileio {
+    float: left;
+    padding: 1px;
+    padding-right: 0px;
+    margin-left: 20px;
+    border: 2px solid #555;
+    border-radius: 10px;
+}
+
+#fileselect {
+    padding: 0px;
+    margin: 1px;
+    border: 0px solid white;
+}
+
+#calc {
+    float: left;
+}
+
+#save {
+    float: right;
+}
+
+#body, #controls {
+    width: 808px;
+    padding: 1px;
+    margin: 10px auto 0px;
+    border: 1px solid black;
+}
+
+/**************************/
+
+#body {
+    background-color: white;
+    width: 800px;
+    height: 3105px;
+    padding: 5px;
+    margin: 0px auto 10px;
+    border: 1px solid black;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+#main-sheet, #spells-sheet, #background-sheet {
+    width: 800px;
+    height: 1035px;
+    position: absolute;
+}
+
+#main-sheet {
+    top: 0px;
+    left: 0px;
+}
+
+#spells-sheet {
+    top: 1035px;
+    left: 0px;
+}
+
+#background-sheet {
+    top: 2070px;
+    left: 0px;
+}
+
+#main-img, #spells-img, #background-img {
+    width: 800px;
+    height: 1035px;
+    position: absolute;
+    /*top: 0px;
+    left: 0px;*/
+}
+
+@media only screen and (min-width: 1610px) {
+    #body {
+        width: 1600px;
+        height: 2070px;
+    }
+
+    #spells-sheet {
+        top: 0px;
+        left: 800px;
+    }
+
+    #background-sheet {
+        top: 1035px;
+        left: 0px;
+    }
+}
+
+@media only screen and (min-width: 2410px) {
+    #body {
+        width: 2400px;
+        height: 1035px;
+    }
+
+    #background-sheet {
+        top: 0px;
+        left: 1600px;
+    }
+}

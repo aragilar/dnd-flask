@@ -1,0 +1,535 @@
+img#main-img {
+    content:url("images/Character_Sheet.png");
+}
+
+#name {
+    top: 75px;
+    left: 55px;
+    width: 280px;
+    font-size: 30px;
+}
+
+#class, #background, #player {
+    top: 63px;
+}
+
+#race, #alignment, #experience {
+    top: 97px;
+}
+
+#class, #race {
+    left: 352px;
+    width: 146px;
+}
+
+#background, #alignment {
+    left: 500px;
+    width: 124px;
+}
+
+#player, #experience {
+    left: 626px;
+    width: 115px;
+}
+
+#str, #dex, #con, #int, #wis, #cha {
+    text-align: center;
+    left: 45px;
+    width: 57px;
+    font-size: 28px;
+}
+
+#str {
+    top: 202px;
+}
+
+#dex {
+    top: 296px;
+}
+
+#con {
+    top: 389px;
+}
+
+#int {
+    top: 483px;
+}
+
+#wis {
+    top: 577px;
+}
+
+#cha {
+    top: 670px;
+}
+
+#strmod, #dexmod, #conmod, #intmod, #wismod, #chamod {
+    position: absolute;
+    text-align: center;
+    left: 46px;
+    width: 57px;
+    font-size: 15px;
+    /*border: 1px solid black;/**/
+}
+
+#strmod {
+    top: 244px;
+}
+
+#dexmod {
+    top: 338px;
+}
+
+#conmod {
+    top: 431px;
+}
+
+#intmod {
+    top: 525px;
+}
+
+#wismod {
+    top: 618px;
+}
+
+#chamod {
+    top: 711px;
+}
+
+#inspiration {
+    top: 176px;
+    left: 133px;
+}
+
+#proficiency {
+    text-align: center;
+    top: 218px;
+    left: 123px;
+    width: 34px;
+    font-size: 22px;
+}
+
+#strsave, #dexsave, #consave, #intsave, #wissave, #chasave,
+#acrobatics, #animal-handling, #arcana, #athletics, #deception,
+#history, #insight, #intimidation, #investigation, #medicine,
+#nature, #perception, #performance, #persuasion, #religion,
+#sleight-of-hand, #stealth, #survival {
+    width: 14px;
+    left: 130px;
+}
+
+#strsave-value, #dexsave-value, #consave-value, #intsave-value,
+#wissave-value, #chasave-value, #acrobatics-value, #animal-handling-value,
+#arcana-value, #athletics-value, #deception-value, #history-value,
+#insight-value, #intimidation-value, #investigation-value, #medicine-value,
+#nature-value, #perception-value, #performance-value, #persuasion-value,
+#religion-value, #sleight-of-hand-value, #stealth-value, #survival-value {
+    width: 20px;
+    left: 146px;
+    font-size: 12px;
+}
+
+#strsave {
+    top: 269px;
+}
+
+#strsave-value {
+    top: 267px;
+}
+
+#dexsave {
+    top: 286px;
+}
+
+#dexsave-value {
+    top: 284px;
+}
+
+#consave {
+    top: 304px;
+}
+
+#consave-value {
+    top: 302px;
+}
+
+#intsave {
+    top: 322px;
+}
+
+#intsave-value {
+    top: 320px;
+}
+
+#wissave {
+    top: 340px;
+}
+
+#wissave-value {
+    top: 338px;
+}
+
+#chasave {
+    top: 357px;
+}
+
+#chasave-value {
+    top: 355px;
+}
+
+#acrobatics {
+    top: 419px;
+}
+
+#acrobatics-value {
+    top: 417px;
+}
+
+#animal-handling {
+    top: 437px;
+}
+
+#animal-handling-value {
+    top: 435px;
+}
+
+#arcana {
+    top: 455px;
+}
+
+#arcana-value {
+    top: 453px;
+}
+
+#athletics {
+    top: 472px;
+}
+
+#athletics-value {
+    top: 470px;
+}
+
+#deception {
+    top: 490px;
+}
+
+#deception-value {
+    top: 488px;
+}
+
+#history {
+    top: 508px;
+}
+
+#history-value {
+    top: 506px;
+}
+
+#insight {
+    top: 525px;
+}
+
+#insight-value {
+    top: 523px;
+}
+
+#intimidation {
+    top: 543px;
+}
+
+#intimidation-value {
+    top: 541px;
+}
+
+#investigation {
+    top: 560px;
+}
+
+#investigation-value {
+    top: 558px;
+}
+
+#medicine {
+    top: 578px;
+}
+
+#medicine-value {
+    top: 576px;
+}
+
+#nature {
+    top: 596px;
+}
+
+#nature-value {
+    top: 594px;
+}
+
+#perception {
+    top: 613px;
+}
+
+#perception-value {
+    top: 611px;
+}
+
+#performance {
+    top: 631px;
+}
+
+#performance-value {
+    top: 629px;
+}
+
+#persuasion {
+    top: 649px;
+}
+
+#persuasion-value {
+    top: 647px;
+}
+
+#religion {
+    top: 666px;
+}
+
+#religion-value {
+    top: 664px;
+}
+
+#sleight-of-hand {
+    top: 684px;
+}
+
+#sleight-of-hand-value {
+    top: 682px;
+}
+
+#stealth {
+    top: 702px;
+}
+
+#stealth-value {
+    top: 700px;
+}
+
+#survival {
+    top: 720px;
+}
+
+#survival-value {
+    top: 718px;
+}
+
+#passive-perception {
+    text-align: center;
+    top: 773px;
+    left: 38px;
+    width: 34px;
+    font-size: 16px;
+}
+
+#proficiencies {
+    top: 815px;
+    left: 40px;
+    width: 220px;
+    height: 168px;
+}
+
+#ac {
+    text-align: center;
+    top: 188px;
+    left: 298px;
+    width: 48px;
+    font-size: 22px;
+}
+
+#initiative {
+    text-align: center;
+    top: 190px;
+    left: 368px;
+    width: 56px;
+    font-size: 22px;
+}
+
+#speed {
+    text-align: center;
+    top: 190px;
+    left: 444px;
+    width: 57px;
+    font-size: 22px;
+}
+
+#max-hp {
+    top: 256px;
+    left: 380px;
+    width: 115px;
+    font-size: 12px;
+}
+
+#current-hp, #temporary-hp {
+    left: 295px;
+    width: 204px;
+    font-size: 12px;
+}
+
+#current-hp {
+    top: 273px;
+    height: 40px;
+}
+
+#temporary-hp {
+    top: 340px;
+    height: 42px;
+}
+
+#total-hit-dice {
+    top: 416px;
+    left: 323px;
+    width: 60px;
+    font-size: 9px;
+}
+
+#hit-dice {
+    top: 430px;
+    left: 298px;
+    width: 86px;
+    height: 26px;
+    font-size: 10px;
+}
+
+#s1, #s2, #s3, #f1, #f2, #f3 {
+    width: 14px;
+}
+
+#s1, #s2, #s3 {
+    top: 420px;
+}
+
+#f1, #f2, #f3 {
+    top: 440px;
+}
+
+#s1, #f1 {
+    left: 451px;
+}
+
+#s2, #f2 {
+    left: 468px;
+}
+
+#s3, #f3 {
+    left: 485px;
+}
+
+#attack-1-name, #attack-1-bonus, #attack-1-damage,
+#attack-2-name, #attack-2-bonus, #attack-2-damage,
+#attack-3-name, #attack-3-bonus, #attack-3-damage {
+    font-size: 17px;
+}
+
+#attack-1-name, #attack-1-bonus, #attack-1-damage {
+    top: 512px;
+}
+
+#attack-2-name, #attack-2-bonus, #attack-2-damage {
+    top: 539px;
+}
+
+#attack-3-name, #attack-3-bonus, #attack-3-damage {
+    top: 566px;
+}
+
+#attack-1-name, #attack-2-name, #attack-3-name {
+    left: 292px;
+    width: 81px;
+}
+
+#attack-1-bonus, #attack-2-bonus, #attack-3-bonus {
+    text-align: center;
+    left: 380px;
+    width: 40px;
+}
+
+#attack-1-damage, #attack-2-damage, #attack-3-damage {
+    left: 427px;
+    width: 80px;
+}
+
+#attacks {
+    top: 587px;
+    left: 286px;
+    width: 222px;
+    height: 151px;
+}
+
+#cp, #sp, #ep, #gp, #pp, #qp {
+    text-align: center;
+    left: 296px;
+    width: 44px;
+}
+
+#cp {
+    top: 784px;
+}
+
+#sp {
+    top: 818px;
+}
+
+#ep {
+    top: 852px;
+}
+
+#gp {
+    top: 886px;
+}
+
+#pp {
+    top: 920px;
+}
+
+#qp {
+    top: 957px;
+}
+
+#equipment {
+    top: 771px;
+    left: 347px;
+    width: 160px;
+    height: 212px;
+}
+
+#personality-traits,
+#ideals,
+#bonds,
+#flaws {
+    left: 542px;
+    width: 204px;
+    height: 43px;
+    font-size: 13px;
+}
+
+#personality-traits {
+    top: 179px;
+    height: 60px;
+}
+
+#ideals {
+    top: 270px;
+}
+
+#bonds {
+    top: 342px;
+}
+
+#flaws {
+    top: 414px;
+}
+
+#features {
+    top: 499px;
+    left: 533px;
+    width: 222px;
+    height: 484px;
+}

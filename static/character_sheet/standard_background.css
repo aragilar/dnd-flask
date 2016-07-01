@@ -1,0 +1,99 @@
+img#background-img {
+    content:url("images/Character_Sheet_Background.png");
+}
+
+#character-appearance, #symbol {
+    font-family: "Courier New", Courier, monospace;
+}
+
+#details-name {
+    top: 80px;
+    left: 56px;
+    width: 280px;
+    font-size: 30px;
+}
+
+#age, #height, #weight {
+    top: 67px;
+}
+
+#eyes, #skin, #hair {
+    top: 102px;
+}
+
+#age, #eyes {
+    left: 347px;
+    width: 146px;
+}
+
+#height, #skin {
+    left: 495px;
+    width: 123px;
+}
+
+#weight, #hair {
+    left: 620px;
+    width: 126px;
+}
+
+#character-appearance {
+    left: 39px;
+    top: 165px;
+    width: 222px;
+    height: 286px;
+}
+
+#character-backstory {
+    left: 39px;
+    top: 499px;
+    width: 222px;
+    height: 484px;
+}
+
+#allies-and-organizations,
+#additional-features-and-traits-1,
+#additional-features-and-traits-2,
+#treasure-1, #treasure-2 {
+    width: 226px;
+}
+
+#allies-and-organizations {
+    left: 287px;
+    top: 167px;
+    height: 284px;
+}
+
+#symbol-name {
+    left: 550px;
+    top: 200px;
+    width: 183px;
+    font-size: 17px;
+}
+
+#symbol {
+    left: 547px;
+    top: 222px;
+    width: 187px;
+    height: 146px;
+}
+
+#additional-features-and-traits-1,
+#additional-features-and-traits-2 {
+    top: 485px;
+    height: 268px;
+}
+
+#treasure-1, #treasure-2 {
+    top: 786px;
+    height: 196px;
+}
+
+#additional-features-and-traits-1,
+#treasure-1 {
+    left: 287px;
+}
+
+#additional-features-and-traits-2,
+#treasure-2 {
+    left: 528px;
+}

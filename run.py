@@ -12,6 +12,7 @@ filters = {}
 everystyle = ['@normalize.css', '@index.css']
 everyjs = ['@nodetails.js']
 itemcss = '@items.css'
+filterkey = 'name'
 started = False
 
 def init():
@@ -26,7 +27,10 @@ def init():
     if os.path.exists(folder):
         for item in os.listdir(folder):
             if item.endswith('.json'):
-                filters[item[:-5]] = helper.archiver.load(os.path.join(folder, item))
+                d = helper.archiver.load(os.path.join(folder, item))
+                if filterkey not in d:
+                    d[filterkey] = item[:-5]
+                filters[d[filterkey]] = d
     t.join()
     started = True
 
@@ -40,15 +44,10 @@ def get_filter():
 
 @app.errorhandler(403)
 def four_oh_three(e):
-    filter, show = get_filter()
-    
-    styles = [url_for('static', filename=file) for file in everystyle]
-    js = [url_for('static', filename=file) for file in everyjs]
-    
     return render_template('error.html',
-        home=url_for('index', filter=filter),
-        styles=styles,
-        javascript=js,
+        home=True,
+        styles=everystyle,
+        javascript=everyjs,
         title=str(e),
         message=[
             "You don't have access to this page."
@@ -57,15 +56,10 @@ def four_oh_three(e):
 
 @app.errorhandler(404)
 def four_oh_four(e):
-    filter, show = get_filter()
-    
-    styles = [url_for('static', filename=file) for file in everystyle]
-    js = [url_for('static', filename=file) for file in everyjs]
-    
     return render_template('error.html',
-        home=url_for('index', filter=filter),
-        styles=styles,
-        javascript=js,
+        home=True,
+        styles=everystyle,
+        javascript=everyjs,
         title=str(e),
         reload=not started,
         message=[
@@ -77,15 +71,11 @@ def four_oh_four(e):
 @app.errorhandler(500)
 def five_hundred(e):
     sys.stderr.write(traceback.format_exc())
-    filter, show = get_filter()
-    
-    styles = [url_for('static', filename=file) for file in everystyle]
-    js = [url_for('static', filename=file) for file in everyjs]
     
     return render_template('error.html',
-        home=url_for('index', filter=filter),
-        styles=styles,
-        javascript=js,
+        home=True,
+        styles=everystyle,
+        javascript=everyjs,
         title='500: '+str(e),
         message=[
             "Whoops, looks like something went wrong!",
@@ -105,9 +95,9 @@ def favicon():
 def index():
     filter, show = get_filter()
     
-    classes = [(c, url_for('class_page', classname=c, filter=filter)) for c in helper.getclasses(show)]
-    races = [(c, url_for('race_page', racename=c, filter=filter)) for c in helper.getraces(show)]
-    rules = [(c, url_for('optionalrule_page', rule=c, filter=filter)) for c in helper.getoptionalrules(show)]
+    classes = helper.getclasses(show).keys()
+    races = helper.getraces(show).keys()
+    rules = helper.getoptionalrules(show).keys()
     
     if helper.datafolder is not None:
         documents = os.path.exists(os.path.join(helper.datafolder, 'documentation'))
@@ -121,20 +111,17 @@ def index():
     
     title = 'Home'
     if show is not None:
-        title = '{!s} {!s}'.format(show.get('+', filter), title)
+        title = '{!s} {!s}'.format(show.get(filterkey, filter), title)
     
     return render_template('dnd.html',
         title=title,
         styles=everystyle,
         javascript=everyjs,
-        filters=sorted([(filters[f].get('+', f), f) for f in filters.keys()], key=lambda a: a[0]),
+        filters=filters.keys(),
         optionalrules=rules,
         slug=helper.slug,
-        query=query,
         
-        classlink=url_for('class_home', filter=filter),
         classes=classes,
-        racelink=url_for('race_home', filter=filter),
         races=races,
         backgrounds=bool(helper.getbackgrounds(show)),
         spells=bool(helper.getspells(show)),
@@ -143,6 +130,18 @@ def index():
         items=helper.getweapons(show) or helper.getarmors(show) or helper.getitems(show),
         magicitems=bool(helper.getmagicitems(show)),
         documentation=documents
+    )
+
+@app.route('/character_sheet/', defaults={'look': 'standard'})
+@app.route('/character_sheet/<look>')
+def character_sheet(look):
+    filter, show = get_filter()
+
+    if look in ['index', 'index.htm', 'index.html']:
+        look = 'standard'
+    
+    return render_template('character_sheet.html',
+        look=look
     )
 
 @app.route('/class/')
@@ -161,29 +160,29 @@ def class_home():
         query = ''
         
     return render_template('dnd-subthing.html',
-        home=url_for('index', filter=filter),
+        home=True,
         styles=everystyle,
         javascript=everyjs,
         name='Classes',
+        subpage='class_page',
         things=classes,
         subthings=subclasses,
-        slug=helper.slug,
-        query=query
+        slug=helper.slug
     )
 
-@app.route('/class/<classname>')
-def class_page(classname):
+@app.route('/class/<name>')
+def class_page(name):
     filter, show = get_filter()
     
-    html = helper.class2html(classname, show)
+    html = helper.class2html(name, show)
     
     if html:
         return render_template('display.html',
-            home=url_for('index', filter=filter),
+            home=True,
             collapse_details=True,
             styles=everystyle,
             javascript=everyjs,
-            title=classname,
+            title=name,
             content=html
         )
     else:
@@ -205,29 +204,29 @@ def race_home():
         query = ''
     
     return render_template('dnd-subthing.html',
-        home=url_for('index', filter=filter),
+        home=True,
         styles=everystyle,
         javascript=everyjs,
         name='Races',
+        subpage='race_page',
         things=races,
         subthings=subraces,
-        slug=helper.slug,
-        query=query
+        slug=helper.slug
     )
 
-@app.route('/race/<racename>')
-def race_page(racename):
+@app.route('/race/<name>')
+def race_page(name):
     filter, show = get_filter()
     
-    html = helper.race2html(racename, show)
+    html = helper.race2html(name, show)
     
     if html:
         return render_template('display.html',
-            home=url_for('index', filter=filter),
+            home=True,
             collapse_details=True,
             styles=everystyle,
             javascript=everyjs,
-            title=racename,
+            title=name,
             content=html
         )
     else:
@@ -244,7 +243,7 @@ def background_page():
         styles.append(itemcss)
         
         return render_template('display.html',
-            home=url_for('index', filter=filter),
+            home=True,
             collapse_details=True,
             styles=styles,
             javascript=everyjs,
@@ -267,7 +266,7 @@ def spell_page():
         js.append('@spells.js')
         
         return render_template('display.html',
-            home=url_for('index', filter=filter),
+            home=True,
             collapse_details=True,
             styles=styles,
             javascript=js,
@@ -297,7 +296,7 @@ def feat_page():
         styles.append(itemcss)
         
         return render_template('display.html',
-            home=url_for('index', filter=filter),
+            home=True,
             collapse_details=True,
             styles=styles,
             javascript=everyjs,
@@ -320,7 +319,7 @@ def magicitem_page():
         js.append('@magicitems.js')
         
         return render_template('display.html',
-            home=url_for('index', filter=filter),
+            home=True,
             collapse_details=True,
             styles=styles,
             javascript=js,
@@ -341,7 +340,7 @@ def item_page():
         styles.append(itemcss)
         
         return render_template('display.html',
-            home=url_for('index', filter=filter),
+            home=True,
             collapse_details=True,
             styles=styles,
             javascript=everyjs,
@@ -353,8 +352,6 @@ def item_page():
 
 @app.route('/documentation/<document>')
 def document_page(document):
-    filter, show = get_filter()
-    
     html = helper.documentation(document)
     
     if html:
@@ -368,7 +365,7 @@ def document_page(document):
         styles.append(itemcss)
         
         return render_template('display.html',
-            home=url_for('index', filter=filter),
+            home=True,
             collapse_details=True,
             styles=styles,
             javascript=everyjs,
@@ -391,7 +388,7 @@ def optionalrule_page(rule):
         styles.append(itemcss)
         
         return render_template('display.html',
-            home=url_for('index', filter=filter),
+            home=True,
             collapse_details=True,
             styles=styles,
             javascript=everyjs,

@@ -1,5 +1,5 @@
 {
-    "+": "Modern",
+    "name": "Modern",
     "armor": {
         "Breastplate": true,
         "Chain mail": true,
