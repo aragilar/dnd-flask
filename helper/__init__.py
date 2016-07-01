@@ -11,6 +11,7 @@ from . import spells
 from . import feats
 from . import magicitems
 from . import items
+slug = utils.slug
 
 datafolder = None
 sources_order = None
@@ -194,18 +195,6 @@ def get_items(sources=sources_order):
     if item_list is not None:
         _get_items(item_list, sources, dir)
     return item_list
-
-def slug(s):
-    r"""
-    gets a "slug", a filename compatible
-    version of a string
-    """
-    s = s.lower()
-    s = s.replace(' ', '-')
-    s = s.replace("'", '')
-    s = s.replace(',', '')
-    s = s.replace('/', '-')
-    return s
 
 # ----#-
 

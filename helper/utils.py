@@ -96,6 +96,18 @@ spellslots = [
     [4,3,3,3,3,2,2,1,1]
 ]
 
+def slug(s):
+    r"""
+    gets a "slug", a filename compatible
+    version of a string
+    """
+    s = s.lower()
+    s = s.replace(' ', '-')
+    s = s.replace("'", '')
+    s = s.replace(',', '')
+    s = s.replace('/', '-')
+    return s
+
 def comma_list(lst, joiner = 'and'):
     if len(lst) > 2 or joiner == None:
         ret = ', '.join(lst[:-1])

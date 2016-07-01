@@ -221,13 +221,18 @@ def class2html(c, spell_list):
     # ----#-   Subclass
     subclassdict = c.get('subclass', {})
     for name in subclassdict:
-        subc = subclassdict.get(name, {})
+        subc = subclassdict[name]
         subcstr = '\n<div>\n\n'
         
         # ----#-   Subclass Features
-        subcstr += '<details><summary>%s</h2></summary>\n' % utils.convert('## ' + subc.get('name', ''))
-        subcstr += utils.convert('\n'.join(subc.get('description', '')))
-        subcstr += '</details>\n'
+        n = subc.get('name', '')
+        desc = subc.get('description')
+        if desc:
+            subcstr += '<details><summary><h2 id="%s">%s</h2></summary>\n' % (utils.slug(n), n)
+            subcstr += utils.convert('\n'.join(desc))
+            subcstr += '<hr>\n</details>\n'
+        else:
+            subcstr += '<h2 id="%s">%s</h2>\n' % (utils.slug(n), n)
         subcstr += features2html(subc)
         
         # ----#-   Subclass Foot
