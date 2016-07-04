@@ -66,4 +66,33 @@
 </div>
 <div id="equipment-sheet">
     <img id="equipment-img" alt="equipment sheet">
+    <input id="helmet" class="save">
+    <textarea id="helmet-info" class="save"></textarea>
+    <input id="chestpiece" class="save">
+    <textarea id="chestpiece-info" class="save"></textarea>
+    <input id="bracer" class="save">
+    <textarea id="bracer-info" class="save"></textarea>
+    <input id="glove" class="save">
+    <textarea id="glove-info" class="save"></textarea>
+    <input id="belt" class="save">
+    <textarea id="belt-info" class="save"></textarea>
+    <input id="shoe" class="save">
+    <textarea id="shoe-info" class="save"></textarea>
+    <textarea id="treasure-1" class="save"></textarea>
+    <textarea id="treasure-2" class="save"></textarea>
+    <input id="potion-1" class="save">
+    <input id="potion-2" class="save">
+    {% for i in range(1, 4+1) %}
+    <input type="checkbox" id="potion-1-{{ i }}" class="save">
+    <input type="checkbox" id="potion-2-{{ i }}" class="save">
+    {% endfor %}
+    <input id="ammo" class="save">
+    <input id="torch" class="save">
+    {% for i in range(1, 12+1) %}
+    <input type="checkbox" id="ammo-{{ i }}" class="save">
+    <input type="checkbox" id="torch-{{ i }}" class="save">
+    {% endfor %}
+    <textarea id="feats" class="save"></textarea>
+    <textarea id="notes" class="save"></textarea>
+    <textarea id="backgrounds" class="save"></textarea>
 </div>
