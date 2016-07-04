@@ -6,10 +6,6 @@ img#main-img {
     content:url(../images/Character_Sheet_Circle_1.png);
 }
 
-/*.save {
-    border: 1px solid RGBA(200, 200, 200, 1);
-}*/
-
 #name {
     top: 366px;
     left: 285px;
@@ -74,8 +70,9 @@ img#main-img {
 
 #experience, #level, #next-level {
     top: 501px;
-    width: 158px;
+    width: 155px;
     font-size: 28px;
+    text-align: center;
 }
 
 #experience {
@@ -85,11 +82,10 @@ img#main-img {
 #level {
     left: 375px;
     width: 45px;
-    text-align: center;
 }
 
 #next-level {
-    left: 427px;
+    left: 430px;
 }
 
 #initiative, #languages {
@@ -389,11 +385,56 @@ img#main-img {
 #spell-list-1, #spell-list-2, #spell-list-3,
 #spell-list-4, #spell-list-5, #spell-list-6,
 #spell-list-7, #spell-list-8, #spell-list-9 {
-    display: none;
+    left: 52px;
+    width: 338px;
+    font-size: 12px;
+}
+
+#spell-list-cantrips {
+	top: 719px;
+}
+
+#spell-list-1 {
+	top: 743px;
+}
+
+#spell-list-2 {
+	top: 766px;
+}
+
+#spell-list-3 {
+	top: 790px;
+}
+
+#spell-list-4 {
+	top: 813px;
+}
+
+#spell-list-5 {
+	top: 837px;
+}
+
+#spell-list-6 {
+	top: 860px;
+}
+
+#spell-list-7 {
+	top: 884px;
+}
+
+#spell-list-8 {
+	top: 907px;
+}
+
+#spell-list-9 {
+	top: 929px;
 }
 
 #prepared-spells {
-    display: none;
+    top: 954px;
+    left: 52px;
+    width: 334px;
+    height: 40px;
 }
 
 #proficiency {
@@ -404,9 +445,15 @@ img#main-img {
 }
 
 #proficiencies {
-    display: none;
+    top: 733px;
+    left: 406px;
+    width: 335px;
+    height: 133px;
 }
 
 #skills {
-    display: none;
+    top: 884px;
+    left: 406px;
+    width: 335px;
+    height: 112px;
 }
