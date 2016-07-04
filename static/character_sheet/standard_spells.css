@@ -7,7 +7,7 @@ img#spells-img {
 }
 
 #spellclass-name {
-    top: 80px;
+    top: 79px;
     left: 56px;
     width: 283px;
     font-size: 30px;
@@ -15,7 +15,7 @@ img#spells-img {
 
 #spellcasting-ability, #spell-save, #spell-attack {
     text-align: center;
-    top: 73px;
+    top: 72px;
     width: 85px;
     font-size: 26px;
 }
@@ -49,167 +49,167 @@ img#spells-img {
 }
 
 #spell-3-1-prepared, #spell-6-1-prepared {
-    top: 231px;
+    top: 230px;
 }
 
 #spell-3-2-prepared, #spell-6-2-prepared {
-    top: 249px;
+    top: 248px;
 }
 
 #spell-3-3-prepared, #spell-6-3-prepared {
-    top: 267px;
+    top: 266px;
 }
 
 #spell-3-4-prepared, #spell-6-4-prepared {
-    top: 286px;
+    top: 285px;
 }
 
 #spell-3-5-prepared, #spell-6-5-prepared {
-    top: 304px;
+    top: 303px;
 }
 
 #spell-3-6-prepared, #spell-6-6-prepared {
-    top: 322px;
+    top: 321px;
 }
 
 #spell-3-7-prepared, #spell-6-7-prepared {
-    top: 341px;
+    top: 340px;
 }
 
 #spell-3-8-prepared, #spell-6-8-prepared {
-    top: 359px;
+    top: 358px;
 }
 
 #spell-3-9-prepared, #spell-6-9-prepared {
-    top: 377px;
+    top: 376px;
 }
 
 #spell-3-10-prepared {
-    top: 395px;
+    top: 394px;
 }
 
 #spell-3-11-prepared {
-    top: 414px;
+    top: 413px;
 }
 
 #spell-3-12-prepared {
-    top: 432px;
+    top: 431px;
 }
 
 #spell-1-1-prepared, #spell-3-13-prepared, #spell-7-1-prepared {
-    top: 452px;
+    top: 451px;
 }
 
 #spell-1-2-prepared, #spell-7-2-prepared {
-    top: 472px;
+    top: 471px;
 }
 
 #spell-1-3-prepared, #spell-7-3-prepared {
-    top: 490px;
+    top: 489px;
 }
 
 #spell-1-4-prepared, #spell-7-4-prepared {
-    top: 508px;
+    top: 507px;
 }
 
 #spell-1-5-prepared, #spell-4-1-prepared, #spell-7-5-prepared {
-    top: 527px;
+    top: 526px;
 }
 
 #spell-1-6-prepared, #spell-4-2-prepared, #spell-7-6-prepared {
-    top: 545px;
+    top: 544px;
 }
 
 #spell-1-7-prepared, #spell-4-3-prepared, #spell-7-7-prepared {
-    top: 564px;
+    top: 563px;
 }
 
 #spell-1-8-prepared, #spell-4-4-prepared, #spell-7-8-prepared {
-    top: 582px;
+    top: 581px;
 }
 
 #spell-1-9-prepared, #spell-4-5-prepared, #spell-7-9-prepared {
-    top: 600px;
+    top: 599px;
 }
 
 #spell-1-10-prepared, #spell-4-6-prepared {
-    top: 618px;
+    top: 617px;
 }
 
 #spell-1-11-prepared, #spell-4-7-prepared {
-    top: 636px;
+    top: 635px;
 }
 
 #spell-1-12-prepared, #spell-4-8-prepared {
-    top: 654px;
+    top: 653px;
 }
 
 #spell-1-13-prepared, #spell-4-9-prepared, #spell-8-1-prepared {
-    top: 673px;
+    top: 672px;
 }
 
 #spell-4-10-prepared, #spell-8-2-prepared {
-    top: 692px;
+    top: 691px;
 }
 
 #spell-4-11-prepared, #spell-8-3-prepared {
-    top: 709px;
+    top: 708px;
 }
 
 #spell-4-12-prepared, #spell-8-4-prepared {
-    top: 728px;
+    top: 727px;
 }
 
 #spell-2-1-prepared, #spell-4-13-prepared, #spell-8-5-prepared {
-    top: 748px;
+    top: 747px;
 }
 
 #spell-2-2-prepared, #spell-8-6-prepared {
-    top: 767px;
+    top: 766px;
 }
 
 #spell-2-3-prepared, #spell-8-7-prepared {
-    top: 785px;
+    top: 784px;
 }
 
 #spell-2-4-prepared {
-    top: 804px;
+    top: 803px;
 }
 
 #spell-2-5-prepared, #spell-5-1-prepared {
-    top: 822px;
+    top: 821px;
 }
 
 #spell-2-6-prepared, #spell-5-2-prepared {
-    top: 841px;
+    top: 840px;
 }
 
 #spell-2-7-prepared, #spell-5-3-prepared, #spell-9-1-prepared {
-    top: 859px;
+    top: 858px;
 }
 
 #spell-2-8-prepared, #spell-5-4-prepared, #spell-9-2-prepared {
-    top: 877px;
+    top: 876px;
 }
 
 #spell-2-9-prepared, #spell-5-5-prepared, #spell-9-3-prepared {
-    top: 895px;
+    top: 894px;
 }
 
 #spell-2-10-prepared, #spell-5-6-prepared, #spell-9-4-prepared {
-    top: 913px;
+    top: 912px;
 }
 
 #spell-2-11-prepared, #spell-5-7-prepared, #spell-9-5-prepared {
-    top: 931px;
+    top: 930px;
 }
 
 #spell-2-12-prepared, #spell-5-8-prepared, #spell-9-6-prepared {
-    top: 950px;
+    top: 949px;
 }
 
 #spell-2-13-prepared, #spell-5-9-prepared, #spell-9-7-prepared {
-    top: 968px;
+    top: 967px;
 }
 
 .spell-left, .spell-center, .spell-right {
@@ -230,167 +230,167 @@ img#spells-img {
 }
 
 #spell-C-1, #spell-3-1, #spell-6-1 {
-    top: 227px;
+    top: 226px;
 }
 
 #spell-C-2, #spell-3-2, #spell-6-2 {
-    top: 245px;
+    top: 244px;
 }
 
 #spell-C-3, #spell-3-3, #spell-6-3 {
-    top: 263px;
+    top: 262px;
 }
 
 #spell-C-4, #spell-3-4, #spell-6-4 {
-    top: 282px;
+    top: 281px;
 }
 
 #spell-C-5, #spell-3-5, #spell-6-5 {
-    top: 300px;
+    top: 299px;
 }
 
 #spell-C-6, #spell-3-6, #spell-6-6 {
-    top: 318px;
+    top: 317px;
 }
 
 #spell-C-7, #spell-3-7, #spell-6-7 {
-    top: 337px;
+    top: 336px;
 }
 
 #spell-C-8, #spell-3-8, #spell-6-8 {
-    top: 355px;
+    top: 354px;
 }
 
 #spell-3-9, #spell-6-9 {
-    top: 373px;
+    top: 372px;
 }
 
 #spell-3-10 {
-    top: 391px;
+    top: 390px;
 }
 
 #spell-3-11 {
-    top: 410px;
+    top: 409px;
 }
 
 #spell-3-12 {
-    top: 429px;
+    top: 428px;
 }
 
 #spell-1-1, #spell-3-13, #spell-7-1 {
-    top: 449px;
+    top: 448px;
 }
 
 #spell-1-2, #spell-7-2 {
-    top: 468px;
+    top: 467px;
 }
 
 #spell-1-3, #spell-7-3 {
-    top: 486px;
+    top: 485px;
 }
 
 #spell-1-4, #spell-7-4 {
-    top: 504px;
+    top: 503px;
 }
 
 #spell-1-5, #spell-4-1, #spell-7-5 {
-    top: 523px;
+    top: 522px;
 }
 
 #spell-1-6, #spell-4-2, #spell-7-6 {
-    top: 541px;
+    top: 540px;
 }
 
 #spell-1-7, #spell-4-3, #spell-7-7 {
-    top: 560px;
+    top: 559px;
 }
 
 #spell-1-8, #spell-4-4, #spell-7-8 {
-    top: 578px;
+    top: 577px;
 }
 
 #spell-1-9, #spell-4-5, #spell-7-9 {
-    top: 596px;
+    top: 595px;
 }
 
 #spell-1-10, #spell-4-6 {
-    top: 614px;
+    top: 613px;
 }
 
 #spell-1-11, #spell-4-7 {
-    top: 632px;
+    top: 631px;
 }
 
 #spell-1-12, #spell-4-8 {
-    top: 650px;
+    top: 649px;
 }
 
 #spell-1-13, #spell-4-9, #spell-8-1 {
-    top: 670px;
+    top: 669px;
 }
 
 #spell-4-10, #spell-8-2 {
-    top: 688px;
+    top: 687px;
 }
 
 #spell-4-11, #spell-8-3 {
-    top: 706px;
+    top: 705px;
 }
 
 #spell-4-12, #spell-8-4 {
-    top: 725px;
+    top: 724px;
 }
 
 #spell-2-1, #spell-4-13, #spell-8-5 {
-    top: 744px;
+    top: 743px;
 }
 
 #spell-2-2, #spell-8-6 {
-    top: 764px;
+    top: 763px;
 }
 
 #spell-2-3, #spell-8-7 {
-    top: 782px;
+    top: 781px;
 }
 
 #spell-2-4 {
-    top: 801px;
+    top: 800px;
 }
 
 #spell-2-5, #spell-5-1 {
-    top: 819px;
+    top: 818px;
 }
 
 #spell-2-6, #spell-5-2 {
-    top: 838px;
+    top: 837px;
 }
 
 #spell-2-7, #spell-5-3, #spell-9-1 {
-    top: 856px;
+    top: 855px;
 }
 
 #spell-2-8, #spell-5-4, #spell-9-2 {
-    top: 874px;
+    top: 873px;
 }
 
 #spell-2-9, #spell-5-5, #spell-9-3 {
-    top: 892px;
+    top: 891px;
 }
 
 #spell-2-10, #spell-5-6, #spell-9-4 {
-    top: 910px;
+    top: 909px;
 }
 
 #spell-2-11, #spell-5-7, #spell-9-5 {
-    top: 928px;
+    top: 927px;
 }
 
 #spell-2-12, #spell-5-8, #spell-9-6 {
-    top: 946px;
+    top: 945px;
 }
 
 #spell-2-13, #spell-5-9, #spell-9-7 {
-    top: 964px;
+    top: 963px;
 }
 
 #slots-total-1, #slots-total-2, #slots-total-3,
@@ -415,35 +415,35 @@ img#spells-img {
 }
 
 #slots-total-1 {
-    top: 408px;
+    top: 407px;
 }
 
 #slots-total-2 {
-    top: 706px;
+    top: 705px;
 }
 
 #slots-total-3, #slots-total-6 {
-    top: 188px;
+    top: 187px;
 }
 
 #slots-total-4 {
-    top: 483px;
+    top: 482px;
 }
 
 #slots-total-5 {
-    top: 779px;
+    top: 778px;
 }
 
 #slots-total-7 {
-    top: 410px;
+    top: 409px;
 }
 
 #slots-total-8 {
-    top: 632px;
+    top: 631px;
 }
 
 #slots-total-9 {
-    top: 816px;
+    top: 815px;
 }
 
 #slots-expended-1, #slots-expended-2, #slots-expended-3,
@@ -467,33 +467,33 @@ img#spells-img {
 }
 
 #slots-expended-1 {
-    top: 411px;
+    top: 410px;
 }
 
 #slots-expended-2 {
-    top: 710px;
+    top: 709px;
 }
 
 #slots-expended-3, #slots-expended-6 {
-    top: 192px;
+    top: 191px;
 }
 
 #slots-expended-4 {
-    top: 487px;
+    top: 486px;
 }
 
 #slots-expended-5 {
-    top: 783px;
+    top: 782px;
 }
 
 #slots-expended-7 {
-    top: 414px;
+    top: 413px;
 }
 
 #slots-expended-8 {
-    top: 636px;
+    top: 635px;
 }
 
 #slots-expended-9 {
-    top: 820px;
+    top: 819px;
 }

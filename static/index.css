@@ -50,19 +50,23 @@ li {
     margin: 2px 0px;
 }
 
-li[value] {
-    padding: 5px;
-}
-
-li[value] > details {
+li > details {
     position: relative;
     top: 1px;
     margin: 0px;
     padding: 0px;
 }
 
+li > details:last-child {
+    padding-bottom: 8px;
+}
+
 li.no-bullet {
     list-style: none outside none;
+}
+
+li:empty {
+    list-style-type: none;
 }
 
 a {

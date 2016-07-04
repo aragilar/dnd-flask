@@ -6,6 +6,10 @@ img#main-img {
     content:url("../images/Character_Sheet.png");
 }
 
+#character-notes {
+    display: none;
+}
+
 #name {
     top: 75px;
     left: 55px;
@@ -502,10 +506,6 @@ img#main-img {
     left: 347px;
     width: 160px;
     height: 212px;
-}
-
-#character-notes {
-    display: none;
 }
 
 #personality-traits,

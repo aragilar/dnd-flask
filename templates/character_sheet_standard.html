@@ -1,0 +1,131 @@
+<div id="main-sheet">
+    <img id="main-img" alt="character sheet">
+    <div id="main-sheet-head">
+        <input id="name" class="save">
+        <input id="class" class="save">
+        <input id="background" class="save">
+        <input id="player" class="save">
+        <input id="race" class="save">
+        <input id="alignment" class="save">
+        <input id="experience" class="save">
+        <span id="level-container">
+            <input id="level" class="save">
+        </span>
+        <span id="to-next-container">
+            <input id="to-next" class="save">
+        </span>
+    </div>
+    <div id="main-sheet-stats">
+        {% for stat in stats %}
+        <input type="number" id="{{ stat }}" class="save">
+        <output id="{{ stat }}mod"></output>
+        {% endfor %}
+        <input type="checkbox" id="inspiration" class="save">
+        <input type="number" id="proficiency" class="save">
+        {% for skill in skills %}
+        <input type="checkbox" id="{{ skill }}" class="save">
+        <input id="{{ skill }}-value" class="save">
+        {% endfor %}
+        <input id="passive-perception" class="save">
+    </div>
+    <textarea id="proficiencies" class="save"></textarea>
+    <div id="health-block">
+        <input id="ac" class="save">
+        <input id="initiative" class="save">
+        <input id="speed" class="save">
+        <input id="max-hp" class="save">
+        <textarea id="current-hp" class="save"></textarea>
+        <textarea id="temporary-hp" class="save"></textarea>
+        <input id="total-hit-dice" class="save">
+        <textarea id="hit-dice" class="save"></textarea>
+        <input type="checkbox" id="s1" class="save">
+        <input type="checkbox" id="s2" class="save">
+        <input type="checkbox" id="s3" class="save">
+        <input type="checkbox" id="f1" class="save">
+        <input type="checkbox" id="f2" class="save">
+        <input type="checkbox" id="f3" class="save">
+    </div>
+    <div id="attacks-and-spellcasting">
+        {% for i in range(1, 3+1) %}
+        <input id="attack-{{ i }}-name" class="save">
+        <input id="attack-{{ i }}-bonus" class="save">
+        <input id="attack-{{ i }}-damage" class="save">
+        {% endfor %}
+        <textarea id="attacks" class="save"></textarea>
+    </div>
+    <div id="inventory">
+        {% for currency in ["cp", "sp", "ep", "gp", "pp", "qp"] %}
+        <input id="{{ currency }}" class="save">
+        {% endfor %}
+        <textarea id="equipment" class="save"></textarea>
+        <textarea id="character-notes" class="save"></textarea>
+    </div>
+    <div id="personality-box">
+        <textarea id="personality-traits" class="save"></textarea>
+        <textarea id="ideals" class="save"></textarea>
+        <textarea id="bonds" class="save"></textarea>
+        <textarea id="flaws" class="save"></textarea>
+    </div>
+    <div id="features-box">
+        <textarea id="features" class="save"></textarea>
+    </div>
+</div>
+<div id="spells-sheet">
+    <img id="spells-img" alt="spells sheet">
+    <div id="spell-sheet-head">
+        <input id="spellclass-name" class="save">
+        <input id="spellcasting-ability" class="save">
+        <input id="spell-save" class="save">
+        <input id="spell-attack" class="save">
+    </div>
+    <div id="cantrips">
+        {% for i in range(1, 8+1) %}
+        <input id="spell-C-{{ i }}" class="save spell-left">
+        {% endfor %}
+    </div>
+    {% for lvl, n, side in [
+        (1, 13, 'left'),
+        (2, 13, 'left'),
+        (3, 13, 'center'),
+        (4, 13, 'center'),
+        (5, 9, 'center'),
+        (6, 9, 'right'),
+        (7, 9, 'right'),
+        (8, 7, 'right'),
+        (9, 7, 'right')
+    ] %}
+    <div id="{{ '1st' if lvl == 1 else '2nd' if lvl == 2 else '%dth' % lvl }}-level">
+        <input id="slots-total-{{ lvl }}" class="save">
+        <input id="slots-expended-{{ lvl }}" class="save">
+        {% for i in range(1, n+1) %}
+        <input type="checkbox" id="spell-{{ lvl }}-{{ i }}-prepared" class="save spell-prepared-{{ side }}">
+        <input id="spell-{{ lvl }}-{{ i }}" class="save spell-{{ side }}">
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+<div id="background-sheet">
+    <img id="background-img" alt="background sheet">
+    <div id="details-sheet-head">
+        <input id="details-name" class="save">
+        <input id="age" class="save">
+        <input id="height" class="save">
+        <input id="weight" class="save">
+        <input id="eyes" class="save">
+        <input id="skin" class="save">
+        <input id="hair" class="save">
+    </div>
+    <div id="character-background-block">
+        <textarea id="character-appearance" class="save"></textarea>
+        <textarea id="character-backstory" class="save"></textarea>
+    </div>
+    <div id="character-traits-block">
+        <textarea id="allies-and-organizations" class="save"></textarea>
+        <input id="symbol-name" class="save">
+        <textarea id="symbol" class="save"></textarea>
+        <textarea id="additional-features-and-traits-1" class="save"></textarea>
+        <textarea id="additional-features-and-traits-2" class="save"></textarea>
+        <textarea id="treasure-1" class="save"></textarea>
+        <textarea id="treasure-2" class="save"></textarea>
+    </div>
+</div>

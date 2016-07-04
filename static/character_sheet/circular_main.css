@@ -1,0 +1,412 @@
+div#main-sheet {
+    display: initial;
+}
+
+img#main-img {
+    content:url(../images/Character_Sheet_Circle_1.png);
+}
+
+/*.save {
+    border: 1px solid RGBA(200, 200, 200, 1);
+}*/
+
+#name {
+    top: 366px;
+    left: 285px;
+    width: 226px;
+    font-size: 18px;
+    z-index: 1;
+}
+
+#alignment, #race, #class {
+    top: 407px;
+    width: 101px;
+    font-size: 18px;
+}
+
+#alignment {
+    left: 244px;
+}
+
+#race {
+    left: 347px;
+}
+
+#class {
+    left: 450px;
+}
+
+#gender, #hair, #eyes,
+#size, #height, #weight {
+    top: 448px;
+    font-size: 18px;
+}
+
+#gender {
+    left: 222px;
+    width: 65px;
+}
+
+#hair {
+    left: 288px;
+    width: 54px;
+}
+
+#eyes {
+    left: 343px;
+    width: 55px;
+}
+
+#size {
+    left: 399px;
+    width: 56px;
+}
+
+#height {
+    left: 456px;
+    width: 55px;
+}
+
+#weight {
+    left: 512px;
+    width: 61px;
+}
+
+#experience, #level, #next-level {
+    top: 501px;
+    width: 158px;
+    font-size: 28px;
+}
+
+#experience {
+    left: 210px;
+}
+
+#level {
+    left: 375px;
+    width: 45px;
+    text-align: center;
+}
+
+#next-level {
+    left: 427px;
+}
+
+#initiative, #languages {
+    top: 566px;
+    width: 88px;
+}
+
+#initiative {
+    left: 232px;
+    font-size: 38px;
+}
+
+#languages {
+    left: 475px;
+    height: 45px;
+}
+
+#speed, #vision {
+    top: 631px;
+    width: 52px;
+    font-size: 17px;
+}
+
+#speed {
+    left: 268px;
+}
+
+#vision {
+    left: 475px;
+}
+
+#str, #strmod,
+#dex, #dexmod,
+#con, #conmod,
+#int, #intmod,
+#wis, #wismod,
+#cha, #chamod {
+    width: 33px;
+    font-size: 13px;
+    text-align: center;
+}
+
+#str, #dex, #con, #int, #wis, #cha {
+    left: 334px;
+}
+
+#strmod, #dexmod, #conmod,
+#intmod, #wismod, #chamod {
+    position: absolute;
+    left: 428px;
+}
+
+#str, #strmod {
+    top: 554px;
+}
+
+#dex, #dexmod {
+    top: 578px;
+}
+
+#con, #conmod {
+    top: 601px;
+}
+
+#int, #intmod {
+    top: 625px;
+}
+
+#wis, #wismod {
+    top: 648px;
+}
+
+#cha, #chamod {
+    top: 672px;
+}
+
+#attack-1-name, #attack-1-bonus, #attack-1-damage, #attack-1-type,
+#attack-2-name, #attack-2-bonus, #attack-2-damage, #attack-2-type,
+#attack-3-name, #attack-3-bonus, #attack-3-damage, #attack-3-type,
+#attack-4-name, #attack-4-bonus, #attack-4-damage, #attack-4-type,
+#spell-1-name, #spell-1-bonus, #spell-1-damage, #spell-1-type,
+#spell-2-name, #spell-2-bonus, #spell-2-damage, #spell-2-type,
+#spell-3-name, #spell-3-bonus, #spell-3-damage, #spell-3-type,
+#spell-4-name, #spell-4-bonus, #spell-4-damage, #spell-4-type {
+    font-size: 12px;
+    text-align: center;
+}
+
+#attack-1-name, #attack-1-bonus, #attack-1-damage, #attack-1-type {
+    top: 93px;
+}
+
+#attack-2-name, #attack-2-bonus, #attack-2-damage, #attack-2-type {
+    top: 111px;
+}
+
+#attack-3-name, #attack-3-bonus, #attack-3-damage, #attack-3-type {
+    top: 129px;
+}
+
+#attack-4-name, #attack-4-bonus, #attack-4-damage, #attack-4-type {
+    top: 146px;
+}
+
+#spell-1-name, #spell-1-bonus, #spell-1-damage, #spell-1-type {
+    top: 223px;
+}
+
+#spell-2-name, #spell-2-bonus, #spell-2-damage, #spell-2-type {
+    top: 241px;
+}
+
+#spell-3-name, #spell-3-bonus, #spell-3-damage, #spell-3-type {
+    top: 258px;
+}
+
+#spell-4-name, #spell-4-bonus, #spell-4-damage, #spell-4-type {
+    top: 276px;
+}
+
+#attack-1-name, #attack-2-name, #attack-3-name, #attack-4-name,
+#spell-1-name, #spell-2-name, #spell-3-name, #spell-4-name {
+    left: 94px;
+    width: 115px;
+    text-align: left;
+}
+
+#spell-1-name, #spell-2-name, #spell-3-name, #spell-4-name {
+    width: 150px;
+}
+
+#attack-1-bonus, #attack-2-bonus, #attack-3-bonus, #attack-4-bonus {
+    left: 216px;
+    width: 28px;
+}
+
+#attack-1-damage, #attack-2-damage, #attack-3-damage, #attack-4-damage,
+#spell-1-bonus, #spell-2-bonus, #spell-3-bonus, #spell-4-bonus {
+    left: 251px;
+    width: 29px;
+}
+
+#attack-1-type, #attack-2-type, #attack-3-type, #attack-4-type,
+#spell-1-damage, #spell-2-damage, #spell-3-damage, #spell-4-damage {
+    left: 287px;
+    width: 28px;
+}
+
+#features {
+    top: 78px;
+    left: 470px;
+    width: 269px;
+    height: 159px;
+}
+
+#traits {
+    top: 266px;
+    left: 470px;
+    width: 269px;
+    height: 129px;
+}
+
+#spell-save {
+    top: 332px;
+    left: 191px;
+    width: 34px;
+    text-align: center;
+}
+
+#slots-total-1, #slots-total-2, #slots-total-3,
+#slots-total-4, #slots-total-5, #slots-total-6,
+#slots-total-7, #slots-total-8, #slots-total-9 {
+    left: 87px;
+    width: 28px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#slots-expended-1, #slots-expended-2, #slots-expended-3,
+#slots-expended-4, #slots-expended-5, #slots-expended-6,
+#slots-expended-7, #slots-expended-8, #slots-expended-9 {
+    left: 134px;
+    width: 28px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#slots-total-1, #slots-expended-1 {
+    top: 333px;
+}
+
+#slots-total-2, #slots-expended-2 {
+    top: 353px;
+}
+
+#slots-total-3, #slots-expended-3 {
+    top: 373px;
+}
+
+#slots-total-4, #slots-expended-4 {
+    top: 393px;
+}
+
+#slots-total-5, #slots-expended-5 {
+    top: 412px;
+}
+
+#slots-total-6, #slots-expended-6 {
+    top: 432px;
+}
+
+#slots-total-7, #slots-expended-7 {
+    top: 452px;
+}
+
+#slots-total-8, #slots-expended-8 {
+    top: 472px;
+}
+
+#slots-total-9, #slots-expended-9 {
+    top: 492px;
+}
+
+#cp, #sp, #ep, #gp, #pp {
+    left: 680px;
+    width: 29px;
+    font-size: 13px;
+}
+
+#cp {
+    top: 421px;
+}
+
+#sp {
+    top: 439px;
+}
+
+#ep {
+    top: 457px;
+}
+
+#gp {
+    top: 474px;
+}
+
+#pp {
+    top: 492px;
+}
+
+#max-hp, #current-hp {
+    top: 555px;
+    font-size: 24px;
+}
+
+#total-hit-dice, #hit-dice {
+    top: 606px;
+    font-size: 19px;
+}
+
+#max-hp, #total-hit-dice {
+    left: 52px;
+    width: 57px;
+    text-align: center;
+}
+
+#current-hp, #hit-dice {
+    left: 110px;
+    width: 53px;
+    text-align: center;
+}
+
+#current-hp {
+    height: 25px;
+}
+
+#hit-dice {
+    height: 19px;
+}
+
+#ac, #ac-no-armor {
+    left: 629px;
+    width: 114px;
+    text-align: center;
+}
+
+#ac {
+    top: 556px;
+    font-size: 30px;
+}
+
+#ac-no-armor {
+    top: 607px;
+    font-size: 26px;
+}
+
+#spell-list-cantrips,
+#spell-list-1, #spell-list-2, #spell-list-3,
+#spell-list-4, #spell-list-5, #spell-list-6,
+#spell-list-7, #spell-list-8, #spell-list-9 {
+    display: none;
+}
+
+#prepared-spells {
+    display: none;
+}
+
+#proficiency {
+    top: 697px;
+    left: 630px;
+    width: 48px;
+    text-align: center;
+}
+
+#proficiencies {
+    display: none;
+}
+
+#skills {
+    display: none;
+}

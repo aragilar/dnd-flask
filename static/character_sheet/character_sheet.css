@@ -86,7 +86,15 @@ textarea.save {
     border: 1px solid black;
 }
 
-/**************************/
+#controls::after, #body::after,
+#controls::before, #body::before {
+    content: "";
+    display: table;
+}
+
+#controls::after, #body::after {
+    clear: both;
+}
 
 #body {
     background-color: white;
@@ -100,15 +108,10 @@ textarea.save {
     left: 0px;
 }
 
-br.clear {
-    clear: both;
-}
-
 #main-sheet,
 #spells-sheet,
 #background-sheet,
-#circle-1-sheet,
-#circle-2-sheet {
+#equipment-sheet {
     width: 800px;
     height: 1035px;
     position: relative;
@@ -116,7 +119,10 @@ br.clear {
     float: left;
 }
 
-#main-img, #spells-img, #background-img {
+#main-img,
+#spells-img,
+#background-img,
+#equipment-img {
     width: 800px;
     height: 1035px;
     position: absolute;

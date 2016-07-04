@@ -2,12 +2,12 @@ div#main-sheet {
     display: initial;
 }
 
-/*.save {
-    border: 1px solid RGBA(200, 200, 200, 1);
-}*/
-
 img#main-img {
     content:url("../images/Character_Sheet_Angular.png");
+}
+
+#cp, #sp, #ep, #gp, #pp, #qp {
+    display: none;
 }
 
 #name {
@@ -25,19 +25,41 @@ img#main-img {
     top: 96px;
 }
 
+#level, #to-next {
+    top: 132px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+}
+
 #class, #race {
     left: 352px;
     width: 146px;
 }
 
-#background, #alignment {
+#background, #alignment, #level {
     left: 500px;
     width: 124px;
 }
 
-#player, #experience {
+#player, #experience, #to-next {
     left: 626px;
     width: 115px;
+}
+
+#level-container::after, #to-next-container::after {
+    position: absolute;
+    top: 152px;
+    font-size: 9px;
+}
+
+#level-container::after {
+    content: "LEVEL";
+    left: 501px;
+}
+
+#to-next-container::after {
+    content: "TO NEXT";
+    left: 627px;
 }
 
 #str, #dex, #con, #int, #wis, #cha {
@@ -374,10 +396,6 @@ img#main-img {
     width: 222px;
     height: 225px;
     font-size: 11px;
-}
-
-#cp, #sp, #ep, #gp, #pp, #qp {
-    display: none;
 }
 
 #equipment, #character-notes {

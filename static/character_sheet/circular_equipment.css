@@ -1,0 +1,7 @@
+div#equipment-sheet {
+    display: initial;
+}
+
+img#equipment-img {
+    content:url("../images/Character_Sheet_Circle_2.png");
+}

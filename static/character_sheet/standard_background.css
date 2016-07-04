@@ -18,11 +18,11 @@ img#background-img {
 }
 
 #age, #height, #weight {
-    top: 67px;
+    top: 66px;
 }
 
 #eyes, #skin, #hair {
-    top: 102px;
+    top: 100px;
 }
 
 #age, #eyes {
@@ -42,14 +42,14 @@ img#background-img {
 
 #character-appearance {
     left: 39px;
-    top: 165px;
+    top: 164px;
     width: 222px;
     height: 286px;
 }
 
 #character-backstory {
     left: 39px;
-    top: 499px;
+    top: 498px;
     width: 222px;
     height: 484px;
 }
@@ -63,7 +63,7 @@ img#background-img {
 
 #allies-and-organizations {
     left: 287px;
-    top: 167px;
+    top: 166px;
     height: 284px;
 }
 
@@ -71,24 +71,24 @@ img#background-img {
     left: 550px;
     top: 200px;
     width: 183px;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 #symbol {
     left: 547px;
-    top: 222px;
+    top: 221px;
     width: 187px;
     height: 146px;
 }
 
 #additional-features-and-traits-1,
 #additional-features-and-traits-2 {
-    top: 485px;
+    top: 484px;
     height: 268px;
 }
 
 #treasure-1, #treasure-2 {
-    top: 786px;
+    top: 785px;
     height: 196px;
 }
 

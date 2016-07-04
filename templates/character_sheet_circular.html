@@ -1,0 +1,69 @@
+<div id="main-sheet">
+    <img id="main-img" alt="character sheet">
+    
+    <input id="name" class="save">
+    <input id="alignment" class="save">
+    <input id="race" class="save">
+    <input id="class" class="save">
+    <input id="gender" class="save">
+    <input id="hair" class="save">
+    <input id="eyes" class="save">
+    <input id="size" class="save">
+    <input id="height" class="save">
+    <input id="weight" class="save">
+    <input id="experience" class="save">
+    <input id="level" class="save">
+    <input id="next-level" class="save">
+    <input id="initiative" class="save">
+    <input id="languages" class="save">
+    <input id="speed" class="save">
+    <input id="vision" class="save">
+    {% for stat in stats %}
+    <input type="number" id="{{ stat }}" class="save">
+    <output id="{{ stat }}mod"></output>
+    {% endfor %}
+    
+    {% for type in ['attack', 'spell'] %}
+    {% for i in range(1, 4+1) %}
+    <input id="{{ type }}-{{ i }}-name" class="save">
+    <input id="{{ type }}-{{ i }}-bonus" class="save">
+    <input id="{{ type }}-{{ i }}-damage" class="save">
+    {% if type != 'spell' %}
+    <input id="{{ type }}-{{ i }}-type" class="save">
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    
+    <textarea id="features" class="save"></textarea>
+    <textarea id="traits" class="save"></textarea>
+    
+    {% for lvl in range(1, 9+1) %}
+    <input id="slots-total-{{ lvl }}" class="save">
+    <input id="slots-expended-{{ lvl }}" class="save">
+    {% endfor %}
+    <input id="spell-save" class="save">
+    
+    {% for currency in ["cp", "sp", "ep", "gp", "pp"] %}
+    <input id="{{ currency }}" class="save">
+    {% endfor %}
+    
+    <input id="max-hp" class="save">
+    <textarea id="current-hp" class="save"></textarea>
+    <input id="total-hit-dice" class="save">
+    <textarea id="hit-dice" class="save"></textarea>
+    
+    <input id="ac" class="save">
+    <input id="ac-no-armor" class="save">
+    
+    {% for lvl in ["cantrips", 1, 2, 3, 4, 5, 6, 7, 8, 9] %}
+    <input id="spell-list-{{ lvl }}" class="save">
+    {% endfor %}
+    <textarea id="prepared-spells" class="save"></textarea>
+    
+    <input type="number" id="proficiency" class="save">
+    <textarea id="proficiencies" class="save"></textarea>
+    <textarea id="skills" class="save"></textarea>
+</div>
+<div id="equipment-sheet">
+    <img id="equipment-img" alt="equipment sheet">
+</div>

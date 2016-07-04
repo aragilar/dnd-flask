@@ -148,8 +148,7 @@ def character_sheet(look):
         look = 'standard'
     
     return render_template('character_sheet.html',
-        look=look,
-        slug=helper.slug
+        look=helper.slug(look)
     )
 
 @app.route('/class/')
@@ -393,8 +392,10 @@ if __name__ == '__main__':
         port = 5000
         host = '127.0.0.1'
         debug = False
+        
+        t.join()
         print('safari-http://%s:%d/' % (host, port))
     
-    app.run(host=host, port=port, debug=debug, use_reloader=False)
-    
     t.join()
+    
+    app.run(host=host, port=port, debug=debug, use_reloader=False)
