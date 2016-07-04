@@ -40,6 +40,28 @@ var skills = {
     "initiative": "dex",
 };
 
+function getValue(id, fail) {
+    if (fail === undefined) {
+        fail = 0;
+    }
+
+    var value;
+    var elem = document.getElementById(id);
+    if (elem) {
+        value = elem.value;
+    } else {
+        value = fail;
+    }
+    return value;
+}
+
+function setValue(id, value) {
+    var elem = document.getElementById(id);
+    if (elem) {
+        elem.value = value;
+    }
+}
+
 function toMod(i) {
     var s = i.toString();
     if (i > 0) {
@@ -147,20 +169,23 @@ function parseNumber(i) {
 
 function fillAttrs() {
     var stats = {
-        "str": parseNumber(document.getElementById('strmod').value),
-        "dex": parseNumber(document.getElementById('dexmod').value),
-        "con": parseNumber(document.getElementById('conmod').value),
-        "int": parseNumber(document.getElementById('intmod').value),
-        "wis": parseNumber(document.getElementById('wismod').value),
-        "cha": parseNumber(document.getElementById('chamod').value)
+        "str": parseNumber(getValue('strmod')),
+        "dex": parseNumber(getValue('dexmod')),
+        "con": parseNumber(getValue('conmod')),
+        "int": parseNumber(getValue('intmod')),
+        "wis": parseNumber(getValue('wismod')),
+        "cha": parseNumber(getValue('chamod'))
     };
     
-    var proficiency = parseNumber(document.getElementById('proficiency').value);
+    var proficiency = parseNumber(getValue('proficiency'));
+
     var stat;
     var tag;
     var value;
+    var checkbox;
     var isProficient;
-    var features = document.getElementById('features').value.toLowerCase();
+
+    var features = getValue('features', '').toLowerCase();
     var jack = features.indexOf("jack of all trades") > -1;
     var half = parseInt(proficiency / 2);
     if (jack) {
@@ -179,7 +204,14 @@ function fillAttrs() {
             tag = document.getElementById(key);
         }
         value = stats[stat];
-        isProficient = document.getElementById(key).checked;
+
+        checkbox = document.getElementById(key)
+        if (checkbox) {
+            isProficient = checkbox.checked;
+        } else {
+            isProficient = false;
+        }
+
         if (isProficient) {
             value += proficiency;
             if (features.indexOf("expertise: " + key) > -1) {
@@ -192,34 +224,39 @@ function fillAttrs() {
             && athleteSkills.indexOf(stat) > -1) {
             value += athlete;
         }
-        tag.value = toMod(value);
+        if (tag) {
+            tag.value = toMod(value);
+        }
     }
 
-    value = parseNumber(document.getElementById('perception-value').value);
+    value = parseNumber(getValue('perception-value'));
     value += 10;
-    document.getElementById('passive-perception').value = value;
+    setValue('passive-perception', value);
 
-    var magic = document.getElementById('spellcasting-ability').value;
+    var magic = getValue('spellcasting-ability', 'aaa');
     magic = magic.slice(0, 3).toLowerCase();
     if (magic in stats) {
         value = stats[magic];
         value += proficiency;
         var value2 = value + 8;
-        document.getElementById('spell-attack').value = toMod(value);
-        document.getElementById('spell-save').value = value2;
+        setValue('spell-attack', toMod(value));
+        setValue('spell-save', value2);
     }
 }
 
 window.onload = function(){
+    var elem;
     for (var item in statList) {
         item = statList[item];
-        var elem = document.getElementById(item);
-        elem.addEventListener('change', modifiers);
-        elem.value = '10';
-        modifiers(elem);
+        elem = document.getElementById(item);
+        if (elem) {
+            elem.addEventListener('change', modifiers);
+            elem.value = '10';
+            modifiers(elem);
+        }
     }
     
-    document.getElementById('proficiency').value = '2';
+    setValue('proficiency', 2);
     fillAttrs();
     
     var fs = {
@@ -228,6 +265,9 @@ window.onload = function(){
         'save': download,
     };
     for (var key in fs) {
-        document.getElementById(key).addEventListener('click', fs[key]);
+        elem = document.getElementById(key);
+        if (elem) {
+            elem.addEventListener('click', fs[key]);
+        }
     }
 }
