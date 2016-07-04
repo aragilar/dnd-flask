@@ -141,7 +141,7 @@ function download() {
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
     element.setAttribute('download', filename);
     element.setAttribute('target', '_blank');
-    element.style.display = 'none';
+    //element.style.display = 'none';
     //document.body.appendChild(element);
     element.click();
     //document.body.removeChild(element);
@@ -156,7 +156,9 @@ function modifiers(tag) {
     value /= 2;
     value = Math.floor(value);
     var tag = document.getElementById(tag.id + 'mod');
-    tag.value = toMod(value);
+    if (tag) {
+        tag.value = toMod(value);
+    }
 }
 
 function parseNumber(i) {
