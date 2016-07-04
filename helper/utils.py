@@ -146,21 +146,43 @@ def get_details(text, detltag='h2', splttag=None):
     else:
         blocks = [text]
     
-    for x in range(len(blocks)):
-        text = blocks[x]
-        text, n = re.subn('(<{0}.+?>.*?</{0}>)'.format(detltag), '</details>\n<details>\n<summary>\\1</summary>\n', text)
-        
-        if n > 0:
-            text = text.replace('</details>\n', '', 1)
-            text += '</details>\n'
-
-        blocks[x] = text
+    finder = re.compile('(<{0}.+?>.*?</{0}>)(.+?)(?=<{0}|$)'.format(detltag), re.DOTALL)
+    
+    for x, text in enumerate(blocks):
+        repl = finder.findall(text)
+        if repl:
+            new = text[:text.find(repl[0][0])]
+            for item in repl:
+                new += details_block(item[0], item[1])
+            blocks[x] = new
     
     if splttag is not None:
         text = '<{}'.format(splttag).join(blocks)
     else:
-        text = blocks[0]
+        text = ''.join(blocks)
     return text
+
+def details_block(summary, body=None, summary_class=None, body_class=None):
+    if body:
+        if body_class:
+            txt = '<details class="%s">' % body_class
+        else:
+            txt = '<details>'
+        if summary_class:
+            txt += '<summary class="%s">' % summary_class
+        else:
+            txt += '<summary>'
+        txt += summary
+        txt += '</summary>'
+        if not body.startswith('\n'):
+            txt += '\n'
+        txt += body
+        if not body.endswith('\n'):
+            txt += '\n'
+        txt += '</details>\n'
+    else:
+        txt = summary
+    return txt
 
 def asyncmap(func, lst):
     try:

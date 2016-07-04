@@ -42,15 +42,14 @@ def handle_spells(text, spells):
 
 def spellblock(spellname, spells):
     spell = spells.get(spellname, {'name': spellname})
-    ret = ''
     if spell != None:
-        ret += '<details class="spell-box"><summary>%s</summary>\n' % str(spellname)
-        ret += '<div>\n'
-        ret += spell2html(spell)
-        ret += '</div>\n'
-        ret += '</details>'
+        ret = utils.details_block(
+            str(spellname),
+            '<div>\n%s</div>' % spell2html(spell),
+            body_class="spell-box"
+        )
     else:
-        ret += str(spellname)
+        ret = str(spellname)
     return ret
 
 def spell2html(spell):

@@ -17,13 +17,9 @@ def feat2html(feat):
     return ret
 
 def featblock(feat):
-    ret = ''
-    ret += '<details><summary>%s</summary>\n' % str(feat['name'])
-    ret += '<div class="spell-box">\n'
-    ret += feat2html(feat)
-    ret += '</div>\n'
-    ret += '</details>'
-    return ret
+    summary = str(feat['name'])
+    body = '<div>\n%s</div>' % feat2html(feat)
+    return utils.details_block(summary, body, body_class='spell-box')
 
 def main(feats, spell_list, load):
     ret = '<div>\n'

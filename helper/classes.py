@@ -3,6 +3,19 @@ import re
 from . import utils
 from . import spells as spellmod
 
+def feature_block(data, feature):
+    temp = data.get(feature, [])
+    temp = '\n'.join(temp)
+    
+    temp = utils.convert(temp)
+    temp = utils.get_details(temp)
+    temp = re.sub('<h2.*?>', '', temp)
+    temp = temp.replace('</h2>', '')
+    
+    temp = utils.details_block(feature, temp)
+    
+    return temp
+
 def spell_tables(spells, maxslot, spell_list):
     table_style = 'class="spell-table class-spells"'
     head_row_style = 'class="head-row"'
@@ -10,19 +23,19 @@ def spell_tables(spells, maxslot, spell_list):
     if spells != None:
         cantrips = spells.get('Cantrip', [])
         if cantrips:
-            ret += '<details><summary>Cantrips</summary>\n'
-            ret += '<table %s>\n' % table_style
-            ret += '<tr><th %s>Cantrips</th></tr>\n<tr><td>\n' % head_row_style
-            ret += '\n</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+            summary = 'Cantrips'
+            body = '<table %s>\n' % table_style
+            body += '<tr><th %s>Cantrips</th></tr>\n<tr><td>\n' % head_row_style
+            body += '\n</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
                 lambda a: spellmod.spellblock(a, spell_list),
                 list(sorted(filter(lambda a: a in spell_list, cantrips)))
             ))
-            ret += '</td></tr>\n</table>\n'
-            ret += '</details>\n'
+            body += '</td></tr>\n</table>'
+            ret += utils.details_block(summary, body)
 
         if maxslot > 0 and any(spells.get(str(i)) for i in range(1, maxslot+1)):
-            ret += '<details><summary>Spells</summary>\n'
-            ret += '<table %s>\n' % table_style
+            summary = 'Spells'
+            body = '<table %s>\n' % table_style
             for x in range(1, maxslot + 1):
                 if str(x) in spells:
                     lst = spells[str(x)]
@@ -30,17 +43,17 @@ def spell_tables(spells, maxslot, spell_list):
                     lst = []
 
                 if len(lst):
-                    ret += '<tr><th %s>%s-Level Spells</th></tr>\n<tr><td>\n' % (head_row_style, utils.ordinals[x])
-                    ret += '\n</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+                    body += '<tr><th %s>%s-Level Spells</th></tr>\n<tr><td>\n' % (head_row_style, utils.ordinals[x])
+                    body += '\n</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
                         lambda a: spellmod.spellblock(a, spell_list),
                         list(sorted(filter(lambda a: a in spell_list, lst)))
                     ))
-            ret += '\n</td></tr>\n</table>\n'
-            ret += '</details>\n'
+            body += '\n</td></tr>\n</table>'
+            ret += utils.details_block(summary, body)
     return ret
 
 def features2html(c):
-    lst = c.get('features', [[]])
+    lst = c.get('features', [])
     data = c.get('features-data', {})
     ret = ''
     
@@ -74,69 +87,64 @@ def features2html(c):
             headrows += ['']
             headrows += list(map(lambda a: utils.ordinals[a] + '-Level', range(1, x + 1)))
         
-        ret += '<details><summary>Table</summary>\n'
-        ret += '<table>\n'
+        summary = 'Table'
+        body = '<table>\n'
         
         if magic:
-            ret += '<caption>%sSpell Slots</caption>\n' % ('&nbsp;' * len(headrows) * 3)
+            body += '<caption>%sSpell Slots</caption>\n' % ('&nbsp;' * len(headrows) * 3)
         
         emptycolstyle = ' style="min-width: 0px;"'
-        ret += '<tr>\n'
+        body += '<tr>\n'
         for item in headrows:
             style = ''
             if item == '':
                 style = emptycolstyle
-            ret += '<th%s>%s</th>\n' % (style, item)
-        ret += '</tr>\n'
+            body += '<th%s>%s</th>\n' % (style, item)
+        body += '</tr>\n'
         
         for x in range(1, c.get("max-level", 20)+1):
-            ret += '<tr>\n'
+            body += '<tr>\n'
             for item in headrows:
                 if item != '':
-                    ret += '<td style="text-align: center;">'
+                    body += '<td style="text-align: center;">'
                     if item == 'Level': # character level
-                        ret += utils.ordinals[x]
+                        body += utils.ordinals[x]
                     elif item in table: # data specific to the class
-                        ret += str(table.get(item, [])[x-1])
+                        body += str(table.get(item, [])[x-1])
                     elif item[:3] in utils.ordinals: # spell slots
                         if x < magic:
                             y = 0
                         else:
                             y = int(math.ceil(x / float(magic)))
                         z = utils.ordinals.index(item[:3]) - 1
-                        ret += str(utils.spellslots[y][z])
-                    ret += '</td>\n'
+                        body += str(utils.spellslots[y][z])
+                    body += '</td>\n'
                 else:
-                    ret += '<td%s></td>\n' % emptycolstyle
-            ret += '</tr>\n'
-        ret += '</table>\n'
-        ret += '</details>\n\n'
+                    body += '<td%s></td>\n' % emptycolstyle
+            body += '</tr>\n'
+        body += '</table>'
+        ret += utils.details_block(summary, body)
     
     # ----#-   Features
-    ret += '<ol>\n'
-    for x, line in enumerate(lst):
-        if len(line) and x > 0:
-            format = '<li value="%d">%%s</li>\n' % x
-        else:
-            format = '%s'
+    if len(lst):
+        for item in lst[0]:
+            ret += feature_block(data, item)
         
-        linestr = ''
-        for item in line:
-            linestr += '<details><summary>%s</summary>\n' % item
-            temp = data.get(item, [])
-            temp = '\n'.join(temp)
+        ret += '<ol>\n'
+        for line in lst[1:]:
+            #if len(line) and x > 0:
+            #    format = '<li value="%d">%%s</li>\n' % x
+            #else:
+            #    format = '%s'
+            format = '<li>%s</li>\n'
             
-            temp = utils.convert(temp)
-            temp = utils.get_details(temp)
-            temp = re.sub('<h2.*?>', '', temp)
-            temp = temp.replace('</h2>', '')
+            linestr = ''
+            for item in line:
+                linestr += feature_block(data, item)
             
-            linestr += temp
-            linestr += '</details>\n'
-        
-        format = format % linestr
-        ret += format
-    ret += '</ol>\n'
+            format %= linestr
+            ret += format
+        ret += '</ol>\n'
     return ret
 
 def equipment_row(lst):
@@ -169,7 +177,7 @@ def class2html(c, spell_list):
 
     # ----#-   Class Details
     ret += '<div>\n'
-    ret += '<details><summary><h2>Features</h2></summary>\n\n'
+    summary = '<h2>Features</h2>'
     
     short = '**Description:** %s  \n' % c.get('description', '')
     short += '**Hit Die:** %s  \n' % c.get('hit die', '')
@@ -200,9 +208,9 @@ def class2html(c, spell_list):
         short += 'You start with the following equipment in addition to the equipment granted by your background:\n\n'
         for item in temp:
             short += '* %s\n' % equipment_row(item)
-    ret += utils.convert(short)
+    short = utils.convert(short)
     
-    ret += '</details>\n'
+    ret += utils.details_block(summary, short)
 
     # ----#-   Class Features
     ret += features2html(c)
@@ -211,11 +219,9 @@ def class2html(c, spell_list):
     temp = c.get('foot', [])
     for item in temp:
         if len(item) > 1:
-            ret += '<details><summary>%s</summary>\n' % item[0]
             temp = utils.convert('\n'.join(item[1:]))
             temp = utils.get_details(temp)
-            ret += temp
-            ret += '</details>\n'
+            ret += utils.details_block(item[0], temp)
     ret += '</div>\n'
 
     # ----#-   Subclass
@@ -227,40 +233,38 @@ def class2html(c, spell_list):
         # ----#-   Subclass Features
         n = subc.get('name', '')
         desc = subc.get('description')
-        if desc:
-            subcstr += '<details><summary><h2 id="%s">%s</h2></summary>\n' % (utils.slug(n), n)
-            subcstr += utils.convert('\n'.join(desc))
-            subcstr += '<hr>\n</details>\n'
-        else:
-            subcstr += '<h2 id="%s">%s</h2>\n' % (utils.slug(n), n)
+        summary = '<h2 id="%s">%s</h2>' % (utils.slug(n), n)
+        body = utils.convert('\n'.join(desc))
+        if body:
+            body += '<hr>'
+        subcstr += utils.details_block(summary, body)
         subcstr += features2html(subc)
         
         # ----#-   Subclass Foot
         temp = subc.get('foot', [])
         for item in temp:
             if len(item) > 1:
-                subcstr += '<details><summary>%s</summary>\n' % item[0]
-                temp = utils.convert('\n'.join(item[1:]))
-                subcstr += temp
-                subcstr += '</details>\n'
+                summary = item[0]
+                body = utils.convert('\n'.join(item[1:]))
+                subcstr += utils.details_block(summary, body)
         
         # ----#-   Subclass Subclass Spells
         spells = subc.get('subclassspells')
         if spells != None:
-            subcstr += '\n<details><summary>Subclass Spells</summary>\n'
-            subcstr += utils.convert(spells.get('description', ''))
-            subcstr += '<table>\n'
+            summary = 'Subclass Spells'
+            body = utils.convert(spells.get('description', ''))
+            body += '<table>\n'
             for key in sorted(int(a) for a in spells.keys() if a.isdigit()):
                 lst = spells[str(key)]
-                subcstr += '<tr>\n'
-                subcstr += '<td style="text-align: center;">%s</td>\n' % utils.ordinals[key]
+                body += '<tr>\n'
+                body += '<td style="text-align: center;">%s</td>\n' % utils.ordinals[key]
                 for spell in lst:
-                    subcstr += '<td>'
-                    subcstr += spellmod.spellblock(spell, spell_list)
-                    subcstr += '</td>\n'
-                subcstr += '</tr>\n'
-            subcstr += '</table>\n'
-            subcstr += '</details>\n'
+                    body += '<td>'
+                    body += spellmod.spellblock(spell, spell_list)
+                    body += '</td>\n'
+                body += '</tr>\n'
+            body += '</table>'
+            subcstr += utils.details_block(summary, body)
         
         # ----#-   Subclass Spells
         spells = subc.get('spells')

@@ -1,94 +1,96 @@
 from . import utils
 
 def background2html(background):
-    ret = '<details><summary><h2>%s</summary>\n\n' % background.get('name', '')
+    summary = '<h2>%s</h2>' % background.get('name', '')
     
-    ret += '%s\n\n' % '\n'.join(background.get('description', []))
+    body = '%s\n\n' % '\n'.join(background.get('description', []))
     
     temp = background.get('skills', [])
     if len(temp):
-        ret += '**Skill Proficiencies:** %s  \n' % utils.choice_list(temp, 'skill')
+        body += '**Skill Proficiencies:** %s  \n' % utils.choice_list(temp, 'skill')
     
     temp = background.get('tools', [])
     if len(temp):
-        ret += '**Tool Proficiencies:** %s  \n' % utils.choice_list(temp, 'tool')
+        body += '**Tool Proficiencies:** %s  \n' % utils.choice_list(temp, 'tool')
     
     temp = background.get('languages', [])
     if len(temp):
-        ret += '**Languages:** %s  \n' % utils.choice_list(temp, 'language')
+        body += '**Languages:** %s  \n' % utils.choice_list(temp, 'language')
     
     temp = background.get('equipment', [])
     if len(temp):
-        ret += '**Equipment:** %s\n\n' % utils.comma_list(temp)
+        body += '**Equipment:** %s\n\n' % utils.comma_list(temp)
     
     temp = background.get('features', [])
     for feature in temp:
-        ret += '*%s*  \n%s\n\n' % (feature[0], '\n'.join(feature[1:]))
+        body += '*%s*  \n%s\n\n' % (feature[0], '\n'.join(feature[1:]))
     
-    ret += '*Suggested Characteristics*  \n%s\n\n' % '\n'.join(background.get('characteristics', []))
+    body += '*Suggested Characteristics*  \n%s\n\n' % '\n'.join(background.get('characteristics', []))
     
     temp = background.get('personality traits', [])
     if len(temp):
-        ret += '***\n\n'
+        body += '***\n\n'
         if isinstance(temp, list):
-            ret += '| d%d | %s |\n' % (len(temp), 'Personality Trait')
-            ret += '|:---:|:---|\n'
+            body += '| d%d | %s |\n' % (len(temp), 'Personality Trait')
+            body += '|:---:|:---|\n'
             for x, item in enumerate(temp):
-                ret += '| %d | %s |\n' % (x+1, item)
+                body += '| %d | %s |\n' % (x+1, item)
         else:
-            ret += '**Personality Traits**  \n'
-            ret += str(temp)
-        ret += '\n'
+            body += '**Personality Traits**  \n'
+            body += str(temp)
+        body += '\n'
     
     temp = background.get('ideal', [])
     if len(temp):
-        ret += '***\n\n'
+        body += '***\n\n'
         if isinstance(temp, list):
-            ret += '| d%d | %s |\n' % (len(temp), 'Ideal')
-            ret += '|:---:|:---|\n'
+            body += '| d%d | %s |\n' % (len(temp), 'Ideal')
+            body += '|:---:|:---|\n'
             for x, item in enumerate(temp):
-                ret += '| %d | %s |\n' % (x+1, item)
+                body += '| %d | %s |\n' % (x+1, item)
         else:
-            ret += '**Ideals**  \n'
-            ret += str(temp)
-        ret += '\n'
+            body += '**Ideals**  \n'
+            body += str(temp)
+        body += '\n'
     
     temp = background.get('bond', [])
     if len(temp):
-        ret += '***\n\n'
+        body += '***\n\n'
         if isinstance(temp, list):
-            ret += '| d%d | %s |\n' % (len(temp), 'Bond')
-            ret += '|:---:|:---|\n'
+            body += '| d%d | %s |\n' % (len(temp), 'Bond')
+            body += '|:---:|:---|\n'
             for x, item in enumerate(temp):
-                ret += '| %d | %s |\n' % (x+1, item)
+                body += '| %d | %s |\n' % (x+1, item)
         else:
-            ret += '**Bonds**  \n'
-            ret += str(temp)
-        ret += '\n'
+            body += '**Bonds**  \n'
+            body += str(temp)
+        body += '\n'
     
     temp = background.get('flaw', [])
     if len(temp):
-        ret += '***\n\n'
+        body += '***\n\n'
         if isinstance(temp, list):
-            ret += '| d%d | %s |\n' % (len(temp), 'Flaw')
-            ret += '|:---:|:---|\n'
+            body += '| d%d | %s |\n' % (len(temp), 'Flaw')
+            body += '|:---:|:---|\n'
             for x, item in enumerate(temp):
-                ret += '| %d | %s |\n' % (x+1, item)
+                body += '| %d | %s |\n' % (x+1, item)
         else:
-            ret += '**Flaws**  \n'
-            ret += str(temp)
-        ret += '\n'
+            body += '**Flaws**  \n'
+            body += str(temp)
+        body += '\n'
     
     temp = background.get('variant', [])
     if len(temp):
-        ret += '***\n\n'
-        ret += '\n'.join(temp)
-        ret += '\n\n'
+        body += '***\n\n'
+        body += '\n'.join(temp)
+        body += '\n\n'
     
-    ret += '***\n\n'
+    body += '***\n\n'
     
-    ret += '</details>'
-    ret = utils.convert(ret)
+    body = utils.convert(body)
+    
+    ret = utils.details_block(summary, body)
+    
     return ret
 
 def main(backgrounds, load):

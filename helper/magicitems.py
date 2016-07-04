@@ -33,12 +33,11 @@ def item2html(item):
     return ret
 
 def itemblock(item):
-    ret = '<details class="spell-box"><summary>%s</summary>\n' % str(item.get('name'))
-    ret += '<div>\n'
-    ret += item2html(item)
-    ret += '</div>\n'
-    ret += '</details>'
-    return ret
+    summary = str(item.get('name'))
+    body = '<div>\n'
+    body += item2html(item)
+    body += '</div>'
+    return utils.details_block(summary, body, body_class="spell-box")
 
 def main(items, spell_list, load, compact = True):
     itemscopy = {}
