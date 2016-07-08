@@ -184,7 +184,7 @@ def class_page(name):
     html = helper.class2html(name, show)
     
     if html:
-        return render_template('display.html',
+        return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle,
@@ -228,7 +228,7 @@ def race_page(name):
     html = helper.race2html(name, show)
     
     if html:
-        return render_template('display.html',
+        return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle,
@@ -246,7 +246,7 @@ def background_page():
     html = helper.background_page(show)
     
     if html:
-        return render_template('display.html',
+        return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle+[itemcss],
@@ -264,7 +264,7 @@ def spell_page():
     html = helper.spell_page(show)
     
     if html:
-        return render_template('display.html',
+        return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle+[itemcss],
@@ -291,7 +291,7 @@ def feat_page():
     html = feats + boons
     
     if html:
-        return render_template('display.html',
+        return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle+[itemcss],
@@ -309,7 +309,7 @@ def magicitem_page():
     html = helper.magicitem_page(show)
     
     if html:
-        return render_template('display.html',
+        return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle+[itemcss],
@@ -327,7 +327,7 @@ def item_page():
     html = helper.item_page(show)
     
     if html:
-        return render_template('display.html',
+        return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle+[itemcss],
@@ -349,7 +349,7 @@ def document_page(document):
         else:
             title = document
         
-        return render_template('display.html',
+        return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle+[itemcss],
@@ -369,7 +369,7 @@ def optionalrule_page(rule):
     if html:
         title = rule
         
-        return render_template('display.html',
+        return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle+[itemcss],
