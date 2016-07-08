@@ -18,6 +18,7 @@ img#main-img {
     top: 407px;
     width: 101px;
     font-size: 18px;
+    text-align: center;
 }
 
 #alignment {
@@ -36,6 +37,7 @@ img#main-img {
 #size, #height, #weight {
     top: 448px;
     font-size: 18px;
+    text-align: center;
 }
 
 #gender {
@@ -96,6 +98,7 @@ img#main-img {
 #initiative {
     left: 232px;
     font-size: 38px;
+    text-align: center;
 }
 
 #languages {
@@ -107,6 +110,7 @@ img#main-img {
     top: 631px;
     width: 52px;
     font-size: 17px;
+    text-align: center;
 }
 
 #speed {
@@ -341,6 +345,7 @@ img#main-img {
     left: 680px;
     width: 29px;
     font-size: 13px;
+    text-align: center;
 }
 
 #cp {
