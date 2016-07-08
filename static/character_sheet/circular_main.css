@@ -248,11 +248,39 @@ img#main-img {
     height: 129px;
 }
 
+#spellcasting-ability-container {
+    display: block;
+    position: absolute;
+    top: 356px;
+    left: 168px;
+    width: 36px;
+    text-align: center;
+    font-size: 7px;
+}
+
+#spellcasting-ability-container::before {
+    content: "ABILITY";
+    color: #444;
+    font-family: times "times new roman" serif;
+}
+
+#spellcasting-ability {
+    display: block;
+    border: 1px solid #999;
+    border-radius: 0;
+    width: 34px;
+    text-align: inherit;
+}
+
 #spell-save {
     top: 332px;
     left: 191px;
     width: 34px;
     text-align: center;
+}
+
+#spell-attack-container {
+    display: none;
 }
 
 #slots-total-1, #slots-total-2, #slots-total-3,
@@ -391,43 +419,43 @@ img#main-img {
 }
 
 #spell-list-cantrips {
-	top: 719px;
+    top: 719px;
 }
 
 #spell-list-1 {
-	top: 743px;
+    top: 743px;
 }
 
 #spell-list-2 {
-	top: 766px;
+    top: 766px;
 }
 
 #spell-list-3 {
-	top: 790px;
+    top: 790px;
 }
 
 #spell-list-4 {
-	top: 813px;
+    top: 813px;
 }
 
 #spell-list-5 {
-	top: 837px;
+    top: 837px;
 }
 
 #spell-list-6 {
-	top: 860px;
+    top: 860px;
 }
 
 #spell-list-7 {
-	top: 884px;
+    top: 884px;
 }
 
 #spell-list-8 {
-	top: 907px;
+    top: 907px;
 }
 
 #spell-list-9 {
-	top: 929px;
+    top: 927px;
 }
 
 #prepared-spells {
@@ -444,16 +472,52 @@ img#main-img {
     text-align: center;
 }
 
+#saving-throws {
+    position: absolute;
+    top: 731px;
+    left: 407px;
+    width: 339px;
+    height: 37px;
+    font-size: 10px;
+}
+
 #proficiencies {
-    top: 733px;
+    top: 778px;
     left: 406px;
     width: 335px;
-    height: 133px;
+    height: 88px;
+    font-size: 14px;
 }
 
 #skills {
+    position: absolute;
     top: 884px;
-    left: 406px;
-    width: 335px;
+    left: 407px;
+    width: 339px;
     height: 112px;
+    font-size: 10px;
+}
+
+#skills label, #saving-throws label {
+    position: relative;
+    float: left;
+    padding: 1px 1px 4px;
+    border: 1px solid black;
+    width: 109px;
+    text-transform: uppercase;
+}
+
+#skills label {
+    border-width: 0px 1px 1px 0px;
+    width: 110px;
+}
+
+#skills label .save,
+#saving-throws label .save {
+    position: absolute;
+    right: 0px;
+    size: 10px;
+    border: 1px solid black;
+    border-radius: 9999px;
+    opacity: 1;
 }

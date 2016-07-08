@@ -41,7 +41,13 @@
     <input id="slots-total-{{ lvl }}" class="save">
     <input id="slots-expended-{{ lvl }}" class="save">
     {% endfor %}
+    <label id="spellcasting-ability-container">
+        <input id="spellcasting-ability" class="save">
+    </label>
     <input id="spell-save" class="save">
+    <label id="spell-attack-container">
+        <input id="spell-attack" class="save">
+    </label>
     
     {% for currency in ["cp", "sp", "ep", "gp", "pp"] %}
     <input id="{{ currency }}" class="save">
@@ -61,8 +67,25 @@
     <textarea id="prepared-spells" class="save"></textarea>
     
     <input type="number" id="proficiency" class="save">
+    <div id="saving-throws">
+        {% for skill in skills[:6] %}
+        <label>
+            {{ skill.replace('-', ' ').upper() }}
+            <input type="checkbox" id="{{ skill }}" class="save">
+        </label>
+        <input type="hidden" id="{{ skill }}-value" class="save">
+        {% endfor %}
+    </div>
     <textarea id="proficiencies" class="save"></textarea>
-    <textarea id="skills" class="save"></textarea>
+    <div id="skills">
+        {% for skill in skills[6:] %}
+        <label>
+            {{ skill.replace('-', ' ').upper() }}
+            <input type="checkbox" id="{{ skill }}" class="save">
+        </label>
+        <input type="hidden" id="{{ skill }}-value" class="save">
+        {% endfor %}
+    </div>
 </div>
 <div id="equipment-sheet">
     <img id="equipment-img" alt="equipment sheet">
@@ -76,12 +99,14 @@
     <textarea id="glove-info" class="save"></textarea>
     <input id="belt" class="save">
     <textarea id="belt-info" class="save"></textarea>
-    <input id="shoe" class="save">
-    <textarea id="shoe-info" class="save"></textarea>
+    <input id="boot" class="save">
+    <textarea id="boot-info" class="save"></textarea>
     <textarea id="treasure-1" class="save"></textarea>
     <textarea id="treasure-2" class="save"></textarea>
     <input id="potion-1" class="save">
+    <textarea id="potion-1-info" class="save"></textarea>
     <input id="potion-2" class="save">
+    <textarea id="potion-2-info" class="save"></textarea>
     {% for i in range(1, 4+1) %}
     <input type="checkbox" id="potion-1-{{ i }}" class="save">
     <input type="checkbox" id="potion-2-{{ i }}" class="save">

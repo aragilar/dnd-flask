@@ -359,11 +359,22 @@ img#main-img {
     font-size: 16px;
 }
 
-#proficiencies {
+#proficiencies, #languages {
+    border: 0px solid black;
+    border-radius: 0px;
     top: 814px;
+    width: 108px;
+    height: 170px;
+}
+
+#proficiencies {
+    border-right-width: 1px;
     left: 40px;
-    width: 220px;
-    height: 168px;
+}
+
+#languages {
+    border-left-width: 1px;
+    left: 152px;
 }
 
 #ac {
@@ -557,9 +568,21 @@ img#main-img {
     top: 414px;
 }
 
-#features {
-    top: 498px;
+#features, #traits {
     left: 533px;
-    width: 222px;
-    height: 484px;
+    width: 224px;
+    border: 0px solid black;
+    border-radius: 0px;
+}
+
+#features {
+    border-bottom-width: 1px;
+    top: 498px;
+    height: 313px;
+}
+
+#traits {
+    border-top-width: 1px;
+    top: 815px;
+    height: 168px;
 }

@@ -147,15 +147,12 @@ function download() {
     //document.body.removeChild(element);
 }
 
-function modifiers(tag) {
-    /*if (tag === undefined) {
-        tag = this;
-    }*/
-    var value = tag.value;
+function modifiers() {
+    var value = this.value;
     value -= 10;
     value /= 2;
     value = Math.floor(value);
-    var tag = document.getElementById(tag.id + 'mod');
+    var tag = document.getElementById(this.id + 'mod');
     if (tag) {
         tag.value = toMod(value);
     }
@@ -254,7 +251,7 @@ window.onload = function(){
         if (elem) {
             elem.addEventListener('change', modifiers);
             elem.value = '10';
-            modifiers(elem);
+            modifiers.call(elem);
         }
     }
     

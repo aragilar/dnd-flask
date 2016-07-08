@@ -6,6 +6,273 @@ img#equipment-img {
     content:url("../images/Character_Sheet_Circle_2.png");
 }
 
-.save {
-    border: 1px solid RGBA(200, 200, 200, 1);
+#helmet, #chestpiece, #bracer, #glove, #belt, #boot {
+    left: 83px;
+    width: 286px;
+    font-size: 13px;
+}
+
+#helmet-info, #chestpiece-info, #bracer-info,
+#glove-info, #belt-info, #boot-info {
+    left: 94px;
+    width: 253px;
+    height: 30px;
+}
+
+#helmet {
+    top: 94px;
+}
+
+#helmet-info {
+    top: 118px;
+}
+
+#chestpiece {
+    top: 165px;
+}
+
+#chestpiece-info {
+    top: 188px;
+}
+
+#bracer {
+    top: 235px;
+}
+
+#bracer-info {
+    top: 259px;
+}
+
+#glove {
+    top: 306px;
+}
+
+#glove-info {
+    top: 329px;
+}
+
+#belt {
+    top: 376px;
+}
+
+#belt-info {
+    top: 400px;
+}
+
+#boot {
+    top: 447px;
+}
+
+#boot-info {
+    top: 471px;
+}
+
+#treasure-1, #treasure-2 {
+    left: 406px;
+    width: 335px;
+}
+
+#treasure-1 {
+    top: 77px;
+    height: 341px;
+}
+
+#treasure-2 {
+    top: 435px;
+    height: 76px;
+}
+
+#potion-1, #potion-2 {
+    top: 538px;
+    width: 137px;
+    font-size: 13px;
+}
+
+#potion-1-info, #potion-2-info {
+    top: 568px;
+    width: 77px;
+    height: 30px;
+}
+
+#potion-1 {
+    left: 229px;
+}
+
+#potion-1-info {
+    left: 253px;
+}
+
+#potion-2 {
+    left: 432px;
+}
+
+#potion-2-info {
+    left: 464px;
+}
+
+#potion-1-1, #potion-2-1 {
+    top: 560px;
+}
+
+#potion-1-1 {
+    left: 346px;
+}
+
+#potion-2-1 {
+    left: 437px;
+}
+
+#potion-1-2, #potion-2-2 {
+    top: 578px;
+}
+
+#potion-1-2 {
+    left: 345px;
+}
+
+#potion-2-2 {
+    left: 439px;
+}
+
+#potion-1-3, #potion-2-3 {
+    top: 595px;
+}
+
+#potion-1-3 {
+    left: 351px;
+}
+
+#potion-2-3 {
+    left: 433px;
+}
+
+#potion-1-4, #potion-2-4 {
+    top: 610px;
+}
+
+#potion-1-4 {
+    left: 364px;
+}
+
+#potion-2-4 {
+    left: 419px;
+}
+
+#ammo, #torch {
+    top: 629px;
+    width: 137px;
+    font-size: 13px;
+}
+
+#ammo {
+    left: 191px;
+}
+
+#torch {
+    left: 470px;
+}
+
+#ammo-12, #torch-12 {
+    top: 537px;
+}
+
+#ammo-1, #torch-1, #ammo-11, #torch-11 {
+    top: 543px;
+}
+
+#ammo-2, #torch-2, #ammo-10, #torch-10 {
+    top: 560px;
+}
+
+#ammo-3, #torch-3, #ammo-9, #torch-9 {
+    top: 584px;
+}
+
+#ammo-4, #torch-4, #ammo-8, #torch-8 {
+    top: 607px;
+}
+
+#ammo-5, #torch-5, #ammo-7, #torch-7 {
+    top: 625px;
+}
+
+#ammo-6, #torch-6 {
+    top: 631px;
+}
+
+#ammo-12, #ammo-6 {
+    left: 139px;
+}
+
+#ammo-1, #ammo-5 {
+    left: 162px;
+}
+
+#ammo-2, #ammo-4 {
+    left: 180px;
+}
+
+#ammo-3 {
+    left: 186px;
+}
+
+#ammo-7, #ammo-11 {
+    left: 115px;
+}
+
+#ammo-8, #ammo-10 {
+    left: 98px;
+}
+
+#ammo-9 {
+    left: 92px;
+}
+
+#torch-12, #torch-6 {
+    left: 645px;
+}
+
+#torch-1, #torch-5 {
+    left: 668px;
+}
+
+#torch-2, #torch-4 {
+    left: 686px;
+}
+
+#torch-3 {
+    left: 692px;
+}
+
+#torch-7, #torch-11 {
+    left: 621px;
+}
+
+#torch-8, #torch-10 {
+    left: 603px;
+}
+
+#torch-9 {
+    left: 598px;
+}
+
+#feats {
+    top: 688px;
+    left: 53px;
+    width: 335px;
+    height: 306px;
+}
+
+#notes {
+    top: 688px;
+    left: 406px;
+    width: 335px;
+    height: 141px;
+}
+
+#backgrounds {
+    top: 847px;
+    left: 406px;
+    width: 335px;
+    height: 146px;
 }

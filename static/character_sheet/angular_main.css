@@ -263,11 +263,22 @@ img#main-img {
     font-size: 19px;
 }
 
-#proficiencies {
+#proficiencies, #languages {
+    border: 0px solid black;
+    border-radius: 0px;
     top: 844px;
+    width: 108px;
+    height: 140px;
+}
+
+#proficiencies {
+    border-right-width: 1px;
     left: 40px;
-    width: 220px;
-    height: 139px;
+}
+
+#languages {
+    border-left-width: 1px;
+    left: 152px;
 }
 
 #ac {
@@ -398,7 +409,7 @@ img#main-img {
     font-size: 11px;
 }
 
-#equipment, #character-notes {
+#equipment, #notes {
     top: 843px;
     height: 140px;
     font-size: 11px;
@@ -409,7 +420,7 @@ img#main-img {
     width: 232px;
 }
 
-#character-notes {
+#notes {
     left: 524px;
     width: 231px;
 }
@@ -441,9 +452,21 @@ img#main-img {
     top: 414px;
 }
 
-#features {
-    top: 499px;
-    left: 533px;
+#features, #traits {
+    left: 534px;
     width: 222px;
-    height: 312px;
+    border: 0px solid black;
+    border-radius: 0px;
+}
+
+#features {
+    border-bottom-width: 1px;
+    top: 499px;
+    height: 211px;
+}
+
+#traits {
+    border-top-width: 1px;
+    top: 714px;
+    height: 96px;
 }

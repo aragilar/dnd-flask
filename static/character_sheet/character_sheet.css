@@ -29,15 +29,16 @@ div {
     font-size: 16px;
     background-color: RGBA(255, 255, 255, 0);
     border: 1px solid RGBA(200, 200, 200, 0);
+    -webkit-appearance: none;
     /*border: 1px solid RGBA(200, 200, 200, 1);/**/
+}
+
+input.save[type="checkbox"] {
+    opacity: 0;
 }
 
 input.save[type="checkbox"]:checked {
     opacity: 1;
-}
-
-input.save[type="checkbox"]:not(:checked) {
-    opacity: 0;
 }
 
 input {

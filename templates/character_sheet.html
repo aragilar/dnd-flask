@@ -47,9 +47,7 @@
         <input id="fileselect" type="file" name="files[]">
         <a id="load" class="button">Load</a>
     </div>
-    {% if notcircular %}
     <a id="calc" class="button">Calculate</a>
-    {% endif %}
     <a id="save" class="button">Save</a>
 </div>
 <div id="body">
@@ -59,7 +57,6 @@
         "character_sheet_circular.html"
     %}
 </div>
-{% if notcircular %}
 <div id="instructions" style="display: none">
     <p>To use the Jack of all Trades or Expertise features simply type the feature into the features box. For example:</p>
 <pre>
@@ -75,5 +72,4 @@ Expertise: Perception
         <li>Remarkable Athlete</li>
     </ul>
 </div>
-{% endif %}
 {% endblock %}
