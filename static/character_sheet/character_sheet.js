@@ -98,12 +98,14 @@ function upload() {
                             tag.checked = Boolean(data[key]);
                         } else {
                             tag.value = data[key];
-                            if (['str', 'dex', 'con', 'int', 'wis', 'cha'].indexOf(key) >= 0) {
+                            if (statList.indexOf(key) >= 0) {
                                 modifiers(tag);
                             }
                         }
                     }
                 }
+
+                fillAttrs();
             } catch (err) {
                 alert(err);
             }
@@ -167,6 +169,10 @@ function parseNumber(i) {
 }
 
 function fillAttrs() {
+	statList.forEach(function(item){
+		modifiers.call(document.getElementById(item));
+	});
+
     var stats = {
         "str": parseNumber(getValue('strmod')),
         "dex": parseNumber(getValue('dexmod')),
@@ -249,9 +255,9 @@ window.onload = function(){
         item = statList[item];
         elem = document.getElementById(item);
         if (elem) {
-            elem.addEventListener('change', modifiers);
             elem.value = '10';
-            modifiers.call(elem);
+            /*elem.addEventListener('change', modifiers);
+            modifiers.call(elem);*/
         }
     }
     
