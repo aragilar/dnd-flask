@@ -37,6 +37,9 @@
     "name": "Cloistered Scholar",
     "skills": [
         "History",
-        "your choice of one from among Arcana, Nature, and Religion"
+        1,
+        "Arcana",
+        "Nature",
+        "Religion"
     ]
 }

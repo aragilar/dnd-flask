@@ -126,14 +126,35 @@ def comma_list(lst, joiner = 'and'):
 def choice_list(lst, type = ''):
     if type != '':
         type = ' ' + type
-    if len(lst) > 0:
-        if type != '':
-            if isinstance(lst[0], str) or lst[0] > 1:
-                type += 's'
-        if isinstance(lst[0], int) and len(lst) > 1:
-            ret = 'Choose %d%s from %s' % (lst[0], type, comma_list(lst[1:]))
-        elif isinstance(lst[0], int):
-            ret = 'Choose %d%s' % (lst[0], type)
+    if lst:
+        choose = None
+        for x, item in enumerate(lst):
+            if isinstance(item, int):
+                choose = x
+                break
+        
+        if (type and choose is not None
+                and lst[choose] > 1):
+            type += 's'
+        
+        if choose is not None and len(lst) > 1:
+            if choose == 0:
+                ret = 'Choose %d%s from %s' % (
+                    lst[0],
+                    type,
+                    comma_list(lst[1:])
+                )
+            else:
+                ret = '%s, and %d%s from %s' % (
+                    comma_list(lst[:choose]),
+                    lst[choose],
+                    type,
+                    comma_list(lst[choose+1:]))
+        elif choose is not None:
+            if lst[choose] > 1:
+                ret = 'Choose any %d%s' % (lst[choose], type)
+            else:
+                ret = 'Choose any%s' % type
         else:
             ret = comma_list(lst)
     else:

@@ -45,7 +45,10 @@
     "name": "Inheritor",
     "skills": [
         "Survival",
-        "1 from among Arcana, History, and Religion"
+        1,
+        "Arcana",
+        "History",
+        "Religion"
     ],
     "tools": [
         "your choice of a gaming set or a musical instrument"

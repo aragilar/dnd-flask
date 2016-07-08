@@ -80,6 +80,10 @@
         "I put no trust in divine beings."
     ],
     "skills": [
-        "Choose two from among Arcana, Investigation, Religion, and Survival"
+        2,
+        "Arcana",
+        "Investigation",
+        "Religion",
+        "Survival"
     ]
 }

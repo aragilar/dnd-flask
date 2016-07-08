@@ -45,7 +45,11 @@
     "name": "Knight of the Order",
     "skills": [
         "Persuasion",
-        "1 from among Arcana, History, Nature, and Religion, as appropriate for your order"
+        1,
+        "Arcana",
+        "History",
+        "Nature",
+        "Religion"
     ],
     "tools": [
         "1 type of gaming set or musical instrument"
