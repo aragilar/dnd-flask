@@ -138,18 +138,20 @@ def choice_list(lst, type = ''):
             type += 's'
         
         if choose is not None and len(lst) > 1:
+            choices = comma_list(lst[choose+1:], 'or')
             if choose == 0:
                 ret = 'Choose %d%s from %s' % (
-                    lst[0],
+                    lst[choose],
                     type,
-                    comma_list(lst[1:])
+                    choices
                 )
             else:
                 ret = '%s, and %d%s from %s' % (
                     comma_list(lst[:choose]),
                     lst[choose],
                     type,
-                    comma_list(lst[choose+1:]))
+                    choices
+                )
         elif choose is not None:
             if lst[choose] > 1:
                 ret = 'Choose any %d%s' % (lst[choose], type)

@@ -46,6 +46,19 @@
     "name": "Faction Agent",
     "skills": [
         "Insight",
-        "1 Intelligence, Wisdom, or Charisma skill of your choice, as appropriate to your faction"
+        1,
+        "Animal Handling",
+        "Arcana",
+        "Deception",
+        "History",
+        "Intimidation",
+        "Investigation",
+        "Medicine",
+        "Nature",
+        "Perception",
+        "Performance",
+        "Persuasion",
+        "Religion",
+        "Survival"
     ]
 }
