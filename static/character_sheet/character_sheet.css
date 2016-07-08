@@ -56,23 +56,10 @@ textarea.save {
     font-size: 12px;
 }
 
-#fileio {
+#fileselect {
     float: left;
     padding: 1px;
-    padding-right: 0px;
     margin-left: 20px;
-    border: 2px solid #555;
-    border-radius: 10px;
-}
-
-#fileselect {
-    padding: 0px;
-    margin: 1px;
-    border: 0px solid white;
-}
-
-#calc {
-    float: left;
 }
 
 #save {

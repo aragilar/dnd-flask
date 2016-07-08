@@ -43,11 +43,7 @@
 {% set notcircular = look != 'circular' %}
 <div id="controls">
     <a class="home button" href="{{ url_for('.index', **query) }}">Home</a>
-    <div id="fileio">
-        <input id="fileselect" type="file" name="files[]">
-        <a id="load" class="button">Load</a>
-    </div>
-    <a id="calc" class="button">Calculate</a>
+    <input id="fileselect" class="button" type="file" name="files[]">
     <a id="save" class="button">Save</a>
 </div>
 <div id="body">

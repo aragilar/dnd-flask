@@ -259,14 +259,23 @@ window.onload = function(){
     fillAttrs();
     
     var fs = {
-        'load': upload,
-        'calc': fillAttrs,
-        'save': download,
+        'fileselect': ['change', upload],
+        'calc': ['click', fillAttrs],
+        'save': ['click', download]
     };
+
+    statList.concat(Object.keys(skills)).concat([
+        'proficiency',
+        'features',
+        'spellcasting-ability'
+    ]).forEach(function(item){
+        fs[item] = ['change', fillAttrs];
+    });
+
     for (var key in fs) {
         elem = document.getElementById(key);
         if (elem) {
-            elem.addEventListener('click', fs[key]);
+            elem.addEventListener(fs[key][0], fs[key][1]);
         }
     }
 }
