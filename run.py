@@ -11,7 +11,6 @@ app = Flask(__name__)
 filters = helper.collections.OrderedDict()
 everystyle = ['@normalize.css', '@index.css']
 everyjs = ['@nodetails.js']
-itemcss = '@items.css'
 filterkey = 'name'
 started = False
 
@@ -249,7 +248,7 @@ def background_page():
         return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
-            styles=everystyle+[itemcss],
+            styles=everystyle,
             javascript=everyjs,
             title='Backgrounds',
             content=html
@@ -267,7 +266,7 @@ def spell_page():
         return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
-            styles=everystyle+[itemcss],
+            styles=everystyle,
             javascript=everyjs+['@spells.js'],
             title='Spells',
             content=html
@@ -294,7 +293,7 @@ def feat_page():
         return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
-            styles=everystyle+[itemcss],
+            styles=everystyle,
             javascript=everyjs,
             title='Feats',
             content=html
@@ -312,7 +311,7 @@ def magicitem_page():
         return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
-            styles=everystyle+[itemcss],
+            styles=everystyle,
             javascript=everyjs+['@magicitems.js'],
             title='Magic Items',
             content=html
@@ -330,7 +329,7 @@ def item_page():
         return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
-            styles=everystyle+[itemcss],
+            styles=everystyle,
             javascript=everyjs,
             title='Items',
             content=html
@@ -352,7 +351,7 @@ def document_page(document):
         return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
-            styles=everystyle+[itemcss],
+            styles=everystyle,
             javascript=everyjs,
             title=title,
             content=html
@@ -372,7 +371,7 @@ def optionalrule_page(rule):
         return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
-            styles=everystyle+[itemcss],
+            styles=everystyle,
             javascript=everyjs,
             title=title,
             content=html

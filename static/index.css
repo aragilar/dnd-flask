@@ -108,6 +108,10 @@ p {
     margin: 5px;
 }
 
+table {
+    width: 100%;
+}
+
 tr, td, th {
     border: 1px solid black;
     border-collapse: collapse;
@@ -167,34 +171,26 @@ summary {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/*summary::-webkit-details-marker {
-    display: none;
+#items-div th[colspan] {
+    color: #fff;
+    background-color: #000;
+    text-align: center;
+    padding: 5px;
 }
 
-details > summary::before {
-    content: "+ ";
-    font-family: monospace;
-    font-weight: bolder;
-    font-size: 1.2em;
+#items-div td[colspan] > details > summary {
+    text-align: center;
+    background-color: #000;
+    color: #fff;
 }
-
-details[open] > summary::before {
-    content: "- ";
-}*/
 
 @media only screen
 and (max-device-width : 736px) {
+    /*Phones*/
     body {
         font-size: 1.5em;
     }
-    
-    /*li + li {
-        margin-top: 100px;
-    }*/
-}
 
-@media only screen
-and (max-device-width : 400px) {
     div {
         width: auto;
         padding: 15px;
@@ -203,6 +199,7 @@ and (max-device-width : 400px) {
 
 @media only screen
 and (max-device-width : 1024px) {
+    /*Tablets*/
     li > details:first-child {
         display: inline-block;
         vertical-align: top;
