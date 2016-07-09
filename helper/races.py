@@ -140,7 +140,7 @@ def race2html(race, spell_list):
         summary = '<h2 id="%s">%s</h2>' % (utils.slug(n), n)
         if desc:
             desc = utils.convert(desc) + '<hr>'
-        ret += utils.details_block(summary, desc)
+        ret += utils.details_group(utils.details_block(summary, desc))
         ret += features2html(subrace)
         ret += '</div>\n'
     

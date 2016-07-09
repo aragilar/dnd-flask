@@ -84,13 +84,13 @@ def main(items, spell_list, load, compact = True):
     <span style="margin: 5px; display: block; clear: both;">Count: <output id="count">0</output></span>
 </div>'''
 
-    ret += '<table id="magicitems" class="spell-table">\n<tr><td>\n'
-    ret += '</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+    temp = '<table id="magicitems" class="spell-table">\n<tr><td>\n'
+    temp += '</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
             itemblock,
             [items[item] for item in sorted(items)]
     ))
-    ret += '</td></tr>\n</table>\n'
-    
+    temp += '</td></tr>\n</table>\n'
+    ret += utils.details_group(temp, body_class="spell-table")
     ret = spells.handle_spells(ret, spell_list)
     
     ret = '<div>\n%s\n</div>' % ret

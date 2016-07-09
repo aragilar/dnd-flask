@@ -9,8 +9,14 @@ from flask import Flask, render_template, url_for, abort, request, send_from_dir
 app = Flask(__name__)
 
 filters = helper.collections.OrderedDict()
-everystyle = ['@normalize.css', '@index.css']
-everyjs = ['@nodetails.js']
+everystyle = [
+    '@normalize.css',
+    '@index.css'
+]
+everyjs = [
+    'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js',
+    '@nodetails.js'
+]
 filterkey = 'name'
 started = False
 

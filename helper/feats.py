@@ -21,38 +21,24 @@ def featblock(feat):
     body = '<div>\n%s</div>' % feat2html(feat)
     return utils.details_block(summary, body, body_class='spell-box')
 
-def main(feats, spell_list, load):
+def main(feats, spell_list, load, t='feats'):
     ret = '<div>\n'
     
-    temp = load('feats.md')
+    temp = load('%s.md' % t.replace('-', ''))
     if temp != None:
         ret += utils.convert(temp)
 
-    ret += '<table id="feats-table" style="width: 100%;">\n'
+    temp = '<table id="%s-table" style="width: 100%;">\n' % t
     for feat in sorted(feats.keys()):
-        ret += '<tr><td>\n'
-        ret += featblock(feats[feat])
-        ret += '</td></tr>\n'
-    ret += '</table>\n'
+        temp += '<tr><td>\n'
+        temp += featblock(feats[feat])
+        temp += '</td></tr>\n'
+    temp += '</table>\n'
+    ret += utils.details_group(temp)
     ret += '</div>\n'
     
     ret = spells.handle_spells(ret, spell_list)
     return ret
 
 def boons(epicboons, spell_list, load):
-    ret = '<div>\n'
-    
-    temp = load('epicboons.md')
-    if temp != None:
-        ret += utils.convert(temp)
-    
-    ret += '<table id="epic-boons-table" style="width: 100%;">\n'
-    for boon in sorted(epicboons.keys()):
-        ret += '<tr><td>\n'
-        ret += featblock(epicboons[boon])
-        ret += '</td></tr>\n'
-    ret += '</table>\n'
-    ret += '</div>\n'
-    
-    ret = spells.handle_spells(ret, spell_list)
-    return ret
+    return main(epicboons, spell_list, load, 'epic-boons')

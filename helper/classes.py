@@ -17,7 +17,8 @@ def feature_block(data, feature):
     return temp
 
 def spell_tables(spells, maxslot, spell_list):
-    table_style = 'class="spell-table class-spells"'
+    table_class = 'spell-table class-spells'
+    table_style = 'class="%s"' % table_class
     head_row_style = 'class="head-row"'
     ret = ''
     if spells != None:
@@ -31,7 +32,8 @@ def spell_tables(spells, maxslot, spell_list):
                 list(sorted(filter(lambda a: a in spell_list, cantrips)))
             ))
             body += '</td></tr>\n</table>'
-            ret += utils.details_block(summary, body)
+            body = utils.details_group(body, body_class=table_class)
+            ret += utils.details_group(utils.details_block(summary, body))
 
         if maxslot > 0 and any(spells.get(str(i)) for i in range(1, maxslot+1)):
             summary = 'Spells'
@@ -49,7 +51,8 @@ def spell_tables(spells, maxslot, spell_list):
                         list(sorted(filter(lambda a: a in spell_list, lst)))
                     ))
             body += '\n</td></tr>\n</table>'
-            ret += utils.details_block(summary, body)
+            body = utils.details_group(body, body_class=table_class)
+            ret += utils.details_group(utils.details_block(summary, body))
     return ret
 
 def features2html(c):

@@ -89,7 +89,7 @@ def background2html(background):
     
     body = utils.convert(body)
     
-    ret = utils.details_block(summary, body)
+    ret = utils.details_group(utils.details_block(summary, body))
     
     return ret
 

@@ -37,7 +37,7 @@ def handle_spells(text, spells):
     spelllist += list(spellexpression.finditer(text))
     spelllist = map(lambda a: a.groups(), spelllist)
     for item in spelllist:
-        text = text.replace(item[0], spellblock(item[-1], spells))
+        text = text.replace(item[0], utils.details_group(spellblock(item[-1], spells)))
     return text
 
 def spellblock(spellname, spells):
@@ -111,8 +111,7 @@ def main(spells, classes, load, compact = True):
     byClass = spells_by_class(classes)
     spellscopy = {}
     for spell in spells.keys():
-        temp = {}
-        temp.update(spells[spell])
+        temp = spells[spell].copy()
         del temp['description']
         spellscopy[spell] = temp
     
@@ -140,12 +139,13 @@ def main(spells, classes, load, compact = True):
     <span style="margin: 5px; display: block; clear: both;">Count: <output id="count">0</output></span>
 </div>'''
 
-    ret += '<table id="spells" class="spell-table">\n<tr><td>\n'
-    ret += '</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+    temp = '<table id="spells" class="spell-table">\n<tr><td>\n'
+    temp += ''.join(utils.asyncmap(
             lambda a: spellblock(a, spells),
             list(sorted(spells.keys()))
     ))
-    ret += '</td></tr>\n</table>\n'
+    temp += '</td></tr>\n</table>\n'
+    ret += utils.details_group(temp, body_class="spell-table")
     ret += '</div>\n'
     #ret = load.html_back(top + ret, 'Spells', 'spells/', ['../items.css'], ['spells.js'])
     return ret

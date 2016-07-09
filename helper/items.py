@@ -82,17 +82,17 @@ def item2html(item):
         temp += '</table>\n'
         
         ret += '<td colspan="3">'
-        ret += utils.details_block(
+        ret += utils.details_group(utils.details_block(
             '<strong><em>%s</em></strong>' % item.get('name', ''),
             temp
-        )
+        ))
         ret += '</td></tr>\n'
     else:
         temp = item.get('description')
         if temp:
             temp = utils.convert(str(temp))
         ret += '<td>'
-        ret += utils.details_block(item.get('name', ''), temp)
+        ret += utils.details_group(utils.details_block(item.get('name', ''), temp))
         ret += '</td>\n'
         
         temp = item.get('cost', 0.0)

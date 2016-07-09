@@ -174,10 +174,11 @@ def get_details(text, detltag='h2', splttag=None):
     for x, text in enumerate(blocks):
         repl = finder.findall(text)
         if repl:
-            new = text[:text.find(repl[0][0])]
+            head = text[:text.find(repl[0][0])]
+            new = ''
             for item in repl:
                 new += details_block(item[0], item[1])
-            blocks[x] = new
+            blocks[x] = head + details_group(new)
     
     if splttag is not None:
         text = '<{}'.format(splttag).join(blocks)
@@ -206,6 +207,15 @@ def details_block(summary, body=None, summary_class=None, body_class=None):
     else:
         txt = summary
     return txt
+
+def details_group(text, body_class=None):
+	"""
+	will use
+	dl for list of details segments
+	dt for summary
+	dd for body
+	"""
+	return text
 
 def asyncmap(func, lst):
     try:
