@@ -147,6 +147,8 @@ def features2html(c):
             format %= linestr
             ret += format
         ret += '</ol>\n'
+        
+        ret = utils.details_group(ret, body_class="class-features")
     return ret
 
 def equipment_row(lst):
