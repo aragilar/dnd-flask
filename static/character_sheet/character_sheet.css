@@ -1,5 +1,7 @@
 body {
     background-color: #ddd;
+    background-image: url("../images/wood1.png");
+    background-repeat: repeat;
 }
 
 div {

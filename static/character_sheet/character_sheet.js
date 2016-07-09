@@ -36,8 +36,7 @@ var skills = {
     "religion": "int",
     "sleight-of-hand": "dex",
     "stealth": "dex",
-    "survival": "wis",
-    "initiative": "dex",
+    "survival": "wis"
 };
 
 function getValue(id, fail) {
@@ -191,23 +190,27 @@ function fillAttrs() {
     var isProficient;
 
     var features = getValue('features', '').toLowerCase();
-    var jack = features.indexOf("jack of all trades") > -1;
     var half = parseInt(proficiency / 2);
+    var jack = features.indexOf("jack of all trades") > -1;
     if (jack) {
         jack = half;
+    } else {
+        jack = 0;
     }
     var athlete = features.indexOf("remarkable athlete") > -1;
     if (athlete) {
         athlete = half;
+    } else {
+        athlete = 0;
     }
     var athleteSkills = statList.slice(0,3);
     
     for (var key in skills) {
         stat = skills[key];
         tag = document.getElementById(key + '-value');
-        if (!tag){
+        /*if (!tag){
             tag = document.getElementById(key);
-        }
+        }*/
         value = stats[stat];
 
         checkbox = document.getElementById(key)
@@ -233,6 +236,14 @@ function fillAttrs() {
             tag.value = toMod(value);
         }
     }
+
+    value = stats['dex'];
+    if (jack) {
+        value += jack;
+    } else if (athlete) {
+        value += athlete;
+    }
+    setValue('initiative', toMod(value));
 
     value = parseNumber(getValue('perception-value'));
     value += 10;

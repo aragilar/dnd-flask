@@ -41,7 +41,7 @@
     "survival"
 ] %}
 {% set notcircular = look != 'circular' %}
-<div id="controls">
+<div id="controls" class="nav">
     <a class="home button" href="{{ url_for('.index', **query) }}">Home</a>
     <input id="fileselect" class="button" type="file" name="files[]">
     <a id="save" class="button">Save</a>

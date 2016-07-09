@@ -34,7 +34,7 @@
 </head>
 <body>
     {% if home or collapse_details %}
-    <div>
+    <div class="nav">
         {% if home %}
         <a class="home button" href="{{ url_for('.index', **query) }}">Home</a>
         {% endif %}
