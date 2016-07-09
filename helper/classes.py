@@ -87,8 +87,7 @@ def features2html(c):
             headrows += ['']
             headrows += list(map(lambda a: utils.ordinals[a], range(1, x + 1)))
         
-        summary = 'Table'
-        body = '<table>\n'
+        body = '<table class="class-table">\n'
         
         if magic:
             body += '<caption>%sSpell Slots</caption>\n' % ('&nbsp;' * len(headrows) * 3)
@@ -123,7 +122,7 @@ def features2html(c):
                     body += '<td%s></td>\n' % emptycolstyle
             body += '</tr>\n'
         body += '</table>'
-        ret += utils.details_block(summary, body)
+        ret += utils.details_block('Table', body)
     
     # ----#-   Features
     if len(lst):
@@ -179,8 +178,10 @@ def class2html(c, spell_list):
     ret += '<div>\n'
     summary = '<h2>Features</h2>'
     
-    short = '**Description:** %s  \n' % c.get('description', '')
-    short += '**Hit Die:** %s  \n' % c.get('hit die', '')
+    short = '**Description:** %s\n\n' % c.get('description', '')
+    short += '###### Hit Points\n\n'
+    short += '**Hit Die:** %s\n\n' % c.get('hit die', '')
+    short += '###### Proficiencies\n\n'
     temp = c.get('primary stat', [])
     sep = 'and'
     if temp[-1] == '/':
@@ -188,29 +189,29 @@ def class2html(c, spell_list):
         temp = temp[:-1]
     temp = list(map(lambda a: utils.stats[a], temp))
     if len(temp) > 1:
-        short += '**Primary Abilities:** %s  \n' % utils.comma_list(temp, sep)
+        short += '**Primary Abilities:** %s\n\n' % utils.comma_list(temp, sep)
     elif len(temp) == 1:
-        short += '**Primary Ability:** %s  \n' % temp[0]
+        short += '**Primary Ability:** %s\n\n' % temp[0]
     temp = c.get('saving throws', [])
     temp = list(map(lambda a: utils.stats[a], temp))
     if len(temp) > 1:
-        short += '**Saving Throw Proficiencies:** %s  \n' % utils.comma_list(temp)
+        short += '**Saving Throw Proficiencies:** %s\n\n' % utils.comma_list(temp)
     elif len(temp) == 1:
-        short += '**Saving Throw Proficiency:** %s  \n' % temp[0]
-    short += '**Armor and Weapon Proficiencies:** %s  \n' % utils.comma_list(c.get('combat proficiencies', []))
+        short += '**Saving Throw Proficiency:** %s\n\n' % temp[0]
+    short += '**Armor and Weapon Proficiencies:** %s\n\n' % utils.comma_list(c.get('combat proficiencies', []))
     temp = utils.choice_list(c.get('tool proficiencies', []))
     if temp != 'none':
-        short += '**Tool Proficiencies:** %s  \n' % temp
+        short += '**Tool Proficiencies:** %s\n\n' % temp
     short += '**Skills:** %s\n\n' % utils.choice_list(c.get('skills', []))
     temp = c.get('equipment', [])
     if len(temp):
-        short += '**Equipment**  \n'
+        short += '###### Equipment\n\n'
         short += 'You start with the following equipment in addition to the equipment granted by your background:\n\n'
         for item in temp:
             short += '* %s\n' % equipment_row(item)
     short = utils.convert(short)
     
-    ret += utils.details_block(summary, short)
+    ret += utils.details_block(summary, short, body_class="class-head")
 
     # ----#-   Class Features
     ret += features2html(c)
@@ -253,7 +254,7 @@ def class2html(c, spell_list):
         if spells != None:
             summary = 'Subclass Spells'
             body = utils.convert(spells.get('description', ''))
-            body += '<table>\n'
+            body += '<table class="subclass-spells">\n'
             for key in sorted(int(a) for a in spells.keys() if a.isdigit()):
                 lst = spells[str(key)]
                 body += '<tr>\n'
