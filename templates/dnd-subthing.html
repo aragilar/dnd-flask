@@ -1,7 +1,7 @@
 {% extends "dnd-base.html" %}
 {% block title %}{{ name }} Home{% endblock %}
 {% block content %}
-<div>
+<div id="home">
     <h1>{{ name }}</h1>
     {% for item in things %}
     <h2><a href="{{ url_for(subpage, name=item, **query) }}">{{ item }}</a></h2>
