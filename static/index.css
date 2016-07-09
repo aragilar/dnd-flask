@@ -64,10 +64,10 @@ div {
     margin: 0px auto;
     border: 1px solid black;
     padding: 5px;
-    background-color: #fff;
 }
 
-div:not(#nav) {
+body > div:not(#nav) {
+    background-color: #fff;
     background-image: url("images/parchment3.png");
     background-repeat: repeat;
 }

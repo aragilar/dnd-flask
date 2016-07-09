@@ -28,7 +28,7 @@ def main(feats, spell_list, load, t='feats'):
     if temp != None:
         ret += utils.convert(temp)
 
-    temp = '<table id="%s-table" style="width: 100%;">\n' % t
+    temp = '<table id="%s-table" style="width: 100%%;">\n' % t
     for feat in sorted(feats.keys()):
         temp += '<tr><td>\n'
         temp += featblock(feats[feat])
