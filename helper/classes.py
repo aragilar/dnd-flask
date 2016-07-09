@@ -85,7 +85,7 @@ def features2html(c):
         headrows += table.get('@', [])
         if magic:
             headrows += ['']
-            headrows += list(map(lambda a: utils.ordinals[a] + '-Level', range(1, x + 1)))
+            headrows += list(map(lambda a: utils.ordinals[a], range(1, x + 1)))
         
         summary = 'Table'
         body = '<table>\n'
