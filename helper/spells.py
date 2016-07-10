@@ -140,7 +140,7 @@ def main(spells, classes, load, compact = True):
 </div>'''
 
     temp = '<table id="spells" class="spell-table">\n<tr><td>\n'
-    temp += ''.join(utils.asyncmap(
+    temp += '</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
             lambda a: spellblock(a, spells),
             list(sorted(spells.keys()))
     ))
