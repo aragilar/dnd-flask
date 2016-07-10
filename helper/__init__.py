@@ -236,8 +236,9 @@ def getclasses(keys=None):
     if keys is not None:
         for class_ in lst:
             spells = lst[class_].get('spells', {})
-            for lvl in spells:
-                spells[lvl] = list(filter(lambda a: keys['spell'][a], spells[lvl]))
+            if 'spell' in keys:
+                for lvl in spells:
+                    spells[lvl] = list(filter(lambda a: keys['spell'].get(a), spells[lvl]))
     return lst
 
 def getraces(keys=None):
