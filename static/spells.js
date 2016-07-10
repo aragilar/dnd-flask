@@ -29,14 +29,13 @@ function Filter(){
 
     var count = 0;
     
-    $('.table-item > .spell-box').each(function(){
+    $('#spells > .spell-box').each(function(){
         var tag = $(this);
         if (tag.is('details')){
             var val = tag.find('summary:first');
         } else {
             var val = tag.prev();
         }
-        tag = tag.parent();
         var text = val.html();
         var data = spells[text];
         var hide = false;
@@ -62,8 +61,10 @@ function Filter(){
 
         if (hide){
             tag.hide();
+            val.hide();
         } else {
             tag.show();
+            val.show();
             count += 1;
         }
     });

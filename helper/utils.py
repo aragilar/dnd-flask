@@ -208,14 +208,29 @@ def details_block(summary, body=None, summary_class=None, body_class=None):
         txt = summary
     return txt
 
-def details_group(text, body_class=None):
-	"""
-	will use
-	dl for list of details segments
-	dt for summary
-	dd for body
-	"""
-	return text
+def details_group(text, body_id=None, body_class=None):
+    """
+    will use
+    dl for list of details segments
+    dt for summary
+    dd for body
+    """
+    if body_class:
+        body_class = ' class="%s"' % body_class
+    else:
+        body_class = ''
+    if body_id:
+        body_id = ' id="%s"' % body_id
+    else:
+        body_id = ''
+    if body_class or body_id:
+        return '<div%s%s>%s</div>' % (
+            body_id,
+            body_class,
+            text
+        )
+    else:
+        return text
 
 def asyncmap(func, lst):
     try:

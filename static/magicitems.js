@@ -16,14 +16,13 @@ function Filter(){
     
     var name = $('#name').val();
     
-    $('.table-item > .spell-box').each(function(){
+    $('#magicitems > .spell-box').each(function(){
         var tag = $(this);
         if (tag.is('details')){
             var val = tag.find('summary:first');
         } else {
             var val = tag.prev();
         }
-        tag = tag.parent();
         var text = val.html();
         var data = items[text];
         var hide = false;
@@ -64,8 +63,10 @@ function Filter(){
         
         if (hide){
             tag.hide();
+            val.hide();
         } else {
             tag.show();
+            val.show();
             count += 1;
         }
     });
