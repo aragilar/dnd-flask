@@ -13,7 +13,6 @@ function Filter(){
     $.each(["name", "level", "type", "ritual"], function(x, item){
         var filter = $(document.getElementById(item));
         if (filter.attr("type") == "checkbox"){
-            console.log(item)
             if (filter.is(":checked")){
                 filters[item] = true;
             }
@@ -24,8 +23,6 @@ function Filter(){
             }
         }
     });
-
-    console.log(filters)
 
     var count = 0;
     

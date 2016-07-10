@@ -154,8 +154,12 @@ summary {
 }
 
 .spell-table {
-    width: 100%;
     margin: 0px auto;
+    width: 98%;
+}
+
+table.spell-table {
+    width: 100%;
 }
 
 .head-row {
