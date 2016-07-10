@@ -10,13 +10,23 @@ def features2html(race):
     if sum(map(lambda a: scores[a], scores)) > 0:
         lst = []
         if sum(map(lambda a: scores[a] if a != '+' else 0, scores)) > 0:
-            for i in utils.statlist:
-                if scores.get(i) > 0:
-                    lst.append('your %s score increases by %d' % (utils.stats[i], scores.get(i)))
+            if all(map(lambda a: scores[a] == 1, utils.statlist)):
+                lst.append("your ability scores each increase by 1")
+            else:
+                for i in utils.statlist:
+                    if scores.get(i) > 0:
+                        lst.append('your %s score increases by %d' % (
+                            utils.stats[i],
+                            scores.get(i)
+                        ))
             if scores.get('+') > 0:
-                lst.append('%d other ability scores of your choice increase by 1' % scores.get('+'))
+                lst.append('%d other ability scores of your choice increase by 1'
+                    % scores.get('+')
+                )
         elif scores.get('+') > 0:
-            lst.append('%d different ability scores of your choice increase by 1' % scores.get('+'))
+            lst.append('%d different ability scores of your choice increase by 1'
+                % scores.get('+')
+            )
         lst = utils.comma_list(lst)
         lst = lst[0].upper() + lst[1:] + '.'
         ret += '**Ability Score Increase.** %s\n\n' % lst
@@ -52,26 +62,34 @@ def features2html(race):
     # ----#-   Race Traits
     temp = race.get('traits-data', {})
     for trait in race.get('traits', []):
-        tempstr = '**%s.** %s\n\n' % (trait, '\n'.join(temp.get(trait, ['Unknown Trait'])))
+        tempstr = '**%s.** %s\n\n' % (trait, '\n'.join(
+            temp.get(trait, ['Unknown Trait'])
+        ))
         ret += tempstr
         
     
     # ----#-   Race Weapons
     temp = race.get('combat proficiencies', [])
     if len(temp) > 0:
-        ret += '**%s Combat Training.** You have proficiency in %s.\n\n' % (race.get('name', ''), utils.comma_list(temp))
+        ret += ('**%s Combat Training.** You have proficiency in %s.\n\n'
+            % (race.get('name', ''), utils.comma_list(temp))
+        )
     
     # ----#-   Race Tools
     temp = race.get('tool proficiencies', [])
     if len(temp) > 1:
         ret += '**Tool Proficiencies.** %s.\n\n' % utils.choice_list(temp, 'tool')
     elif len(temp):
-        ret += '**Tool Proficiency.** You gain proficiency with %s.\n\n' % str(temp[0])
+        ret += ('**Tool Proficiency.** You gain proficiency with %s.\n\n'
+            % str(temp[0])
+        )
     
     # ----#-   Race Skills
     temp = race.get('skills', [])
     if len(temp) > 1:
-        ret += '**Skills.** You gain proficiency in %s.\n\n' % utils.choice_list(temp, 'skill')
+        ret += ('**Skills.** You gain proficiency in %s.\n\n'
+            % utils.choice_list(temp, 'skill')
+        )
     elif len(temp):
         if isinstance(temp[0], int):
             if temp[0] > 1:
@@ -104,12 +122,13 @@ def features2html(race):
     if len(temp):
         tempstr = race.get('languages description')
         if tempstr != None:
-            ret += '**Languages.** %s\n\n' % tempstr.format(languages = utils.choice_list(temp, 'language'))
+            ret += '**Languages.** %s\n\n' % tempstr.format(
+                languages=utils.choice_list(temp, 'language')
+            )
         else:
-            if len(temp) > 1:
-                ret += '**Languages.** You can speak, read, and write %s.\n\n' % utils.choice_list(temp, 'language')
-            else:
-                ret += '**Language.** You can speak, read, and write %s.\n\n' % str(temp[0])
+            ret += ('**Languages.** You can speak, read, and write %s.\n\n'
+                % utils.choice_list(temp, 'language')
+            )
     
     ret = utils.md.convert(ret)
     
