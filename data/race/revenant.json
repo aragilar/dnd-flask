@@ -12,11 +12,8 @@
     "description": "# Revenants\n\n*Unearthed Arcana: Gothic Characters*\n\nHaving met a cruel and undeserved end, you have returned to the realm of the living. As a revenant, you thirst for revenge against those who wronged you in life, or seek to complete a final, critical task you left unfinished.\n\nThe revenant subrace can be applied to any race that has a subrace, and replaces that race's existing subrace options. Alternatively, you can apply this new subrace to a race without subrace options using the modification options provided below.\n\nYour DM might also allow you to take this subrace for a slain character. In that case, your character rises from the dead with its original subrace replaced (or with the necessary modifications made to its base traits), filled with a determination to seek vengeance or complete its mission.",
     "name": "Revenant",
     "traits": [
-        "Racial Adjustment",
-        "Relentless Nature"
-    ],
-    "traits-data": {
-        "Racial Adjustment": [
+        [
+            "Racial Adjustment",
             "For races that don't have subrace options, taking on the revenant subrace means making changes to your character's base traits, as follows. (This playtest article provides options only for human and dragonborn characters. Because half elves and half orcs have no subrace options, they shouldn't be used with these revenant subrace rules.)",
             "",
             "**Human Revenant.** If you want to play a human revenant, modify the human's Ability Score Increase trait to the following: Two different ability scores of your choice increase by 1. If you use the variant human traits, remove the Skills trait and the Feat trait.",
@@ -25,7 +22,8 @@
             "",
             "**Tiefling Revenant.** A prior installment of Unearthed Arcana outlined two tiefling variants that make use of subraces. Use that article to make a tiefling revenant, replacing the subrace options with the revenant subrace options."
         ],
-        "Relentless Nature": [
+        [
+            "Relentless Nature",
             "Your DM assigns a goal to you-typically, one related to your character's death. The goal must be a specific task you can complete, such as slaying an enemy or liberating an area and its people. Until you fulfill that goal, you gain the following benefits:",
             "",
             "* If you are below half your hit point maximum at the start of your turn, you regain 1 hit point.",
@@ -34,5 +32,5 @@
             "",
             "When your goal is complete, you finally find rest. You die and cannot be restored to life."
         ]
-    }
+    ]
 }

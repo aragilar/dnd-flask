@@ -16,11 +16,8 @@
     ],
     "name": "Abyssal Legacy Tiefling",
     "traits": [
-        "Abyssal Arcana",
-        "Abyssal Fortitude"
-    ],
-    "traits-data": {
-        "Abyssal Arcana": [
+        [
+            "Abyssal Arcana",
             "Each time you finish a long rest, you gain the ability to cast cantrips and spells randomly determined from a short list. At 1st level, you can cast a cantrip. When you reach 3rd level, you can also cast a 1st-level spell. At 5th level, you can cast a 2nd-level spell.",
             "",
             "You can cast a spell gained from this trait only once until you complete your next long rest. You can cast a cantrip gained from this trait at will, as normal. For 1st-level spells whose effect changes if cast using a spell slot of 2nd level or higher, you cast the spell as if using a 2nd-level slot. Spells of 2nd level are cast as if using a 2nd-level slot.",
@@ -38,8 +35,9 @@
             "| 5  | <spell>Spare the Dying</spell> | <spell>Tasha's Hideous Laughter</spell> | <spell>Mirror Image</spell> |",
             "| 6  | <spell>Prestidigitation</spell> | <spell>Thunderwave</spell> | <spell>Spider Climb</spell> |"
         ],
-        "Abyssal Fortitude": [
+        [
+            "Abyssal Fortitude",
             "Your hit point maximum increases by half your level (minimum 1)"
         ]
-    }
+    ]
 }

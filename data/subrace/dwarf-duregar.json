@@ -16,27 +16,25 @@
     ],
     "name": "Duregar",
     "traits": [
-        "Superior Darkvision",
-        "Duregar Resilience",
-        "Duregar Magic",
-        "Sunlight Sensitivity"
-    ],
-    "traits-data": {
-        "Duregar Magic": [
+        [
+            "Superior Darkvision",
+            "Your darkvision has a radius of 120 feet."
+        ],
+        [
+            "Duregar Resilience",
+            "You have advantage on saving throws against illusions and against being charmed or paralyzed."
+        ],
+        [
+            "Duregar Magic",
             "When you reach 3rd level, you can cast the *enlarge/reduce* spell on yourself once with this trait, using only the spell's enlarge option. When you reach 5th level, you can cast the *invisibility* spell on yourself once with this trait. You don't need material components for either spell, and you can't cast them while you're in direct sunlight, although sunlight has no effect on them once cast. You regain the ability to cast these spells with this trait when you finish a long rest. Intelligence is your spellcasting ability for these spells.",
             "",
             "<spell>Enlarge/Reduce</spell>",
             "",
             "<spell>Invisibility</spell>"
         ],
-        "Duregar Resilience": [
-            "You have advantage on saving throws against illusions and against being charmed or paralyzed."
-        ],
-        "Sunlight Sensitivity": [
+        [
+            "Sunlight Sensitivity",
             "You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight."
-        ],
-        "Superior Darkvision": [
-            "Your darkvision has a radius of 120 feet."
         ]
-    }
+    ]
 }

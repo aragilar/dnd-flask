@@ -24,27 +24,25 @@
         "vehicles (water)"
     ],
     "traits": [
-        "Conqueror's Virtue",
-        "Horns",
-        "Goring Rush",
-        "Hammering Horns",
-        "Labyrinthine Recall"
-    ],
-    "traits-data": {
-        "Conqueror's Virtue": [
-            "Conqueror's Virtue. From a young age, you focused on one of the three virtues of strength, cunning, or intellect. Your choice of your Strength, Intelligence, or Wisdom score increases by 1."
+        [
+            "Conqueror's Virtue",
+            "From a young age, you focused on one of the three virtues of strength, cunning, or intellect. Your choice of your Strength, Intelligence, or Wisdom score increases by 1."
         ],
-        "Goring Rush": [
-            "When you use the Dash action during your turn, you can make a melee attack with your horns as a bonus action."
-        ],
-        "Hammering Horns": [
-            "When you use the Attack action during your turn to make a melee attack, you can attempt to shove a creature with your horns as a bonus action. You cannot use this shove attempt to knock a creature prone."
-        ],
-        "Horns": [
+        [
+            "Horns",
             "You are never unarmed. You are proficient with your horns, which are a melee weapon that deals 1d10 piercing damage. Your horns grant you advantage on all checks made to shove a creature, but not to avoid being shoved yourself."
         ],
-        "Labyrinthine Recall": [
+        [
+            "Goring Rush",
+            "When you use the Dash action during your turn, you can make a melee attack with your horns as a bonus action."
+        ],
+        [
+            "Hammering Horns",
+            "When you use the Attack action during your turn to make a melee attack, you can attempt to shove a creature with your horns as a bonus action. You cannot use this shove attempt to knock a creature prone."
+        ],
+        [
+            "Labyrinthine Recall",
             "You can perfectly recall any path you have traveled."
         ]
-    }
+    ]
 }

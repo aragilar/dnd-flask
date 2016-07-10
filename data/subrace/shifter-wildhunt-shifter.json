@@ -13,11 +13,9 @@
     "description": "Your wildhunt heritage makes you a consummate tracker and survivor.",
     "name": "Wildhunt Shifter",
     "traits": [
-        "Shifting Feature"
-    ],
-    "traits-data": {
-        "Shifting Feature": [
+        [
+            "Shifting Feature",
             "While shifting, you gain advantage on all Wisdom-based checks and saving throws."
         ]
-    }
+    ]
 }

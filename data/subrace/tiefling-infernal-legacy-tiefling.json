@@ -16,14 +16,12 @@
     ],
     "name": "Infernal Legacy Tiefling",
     "traits": [
-        "Hellish Resistance",
-        "Infernal Legacy"
-    ],
-    "traits-data": {
-        "Hellish Resistance": [
+        [
+            "Hellish Resistance",
             "You have resistance to fire damage."
         ],
-        "Infernal Legacy": [
+        [
+            "Infernal Legacy",
             "You know the *thaumaturgy* cantrip. Once you reach 3rd level, you can cast the *hellish Rebuke* spell once per day as a 2nd-level spell. Once you reach 5th level, you can also cast the *darkness* spell once per day. Charisma is your spellcasting ability for these spells.",
             "",
             "<spell>Thaumaturgy</spell>",
@@ -32,5 +30,5 @@
             "",
             "<spell>Darkness</spell>"
         ]
-    }
+    ]
 }

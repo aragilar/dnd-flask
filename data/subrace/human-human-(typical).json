@@ -10,12 +10,6 @@
         "str": 1,
         "wis": 1
     },
-    "combat proficiencies": [],
     "description": "Ability Score Increase: A typical human's ability scores all increase by 1.",
-    "feats": [],
-    "languages": [],
-    "name": "Human (Typical)",
-    "skills": [],
-    "tool proficiencies": [],
-    "traits": []
+    "name": "Human (Typical)"
 }

@@ -22,15 +22,13 @@
     "size description": "Aarakocra are about 5 feet tall. They have thin, lightweight bodies that weigh between 80 and 100 pounds. Your size is {size}.",
     "speed": 25,
     "traits": [
-        "Flight",
-        "Talons"
-    ],
-    "traits-data": {
-        "Flight": [
+        [
+            "Flight",
             "You have a flying speed of 50 feet. To use this speed, you can't be wearing medium or heavy armor."
         ],
-        "Talons": [
+        [
+            "Talons",
             "You are proficient with your unarmed strikes, which deal 1d4 slashing damage on a hit."
         ]
-    }
+    ]
 }

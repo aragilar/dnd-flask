@@ -23,19 +23,17 @@
     "size description": "Halflings average about 3 feet tall and weigh about 40 pounds. Your size is {size}.",
     "speed": 25,
     "traits": [
-        "Lucky",
-        "Brave",
-        "Halfling Nimbleness"
-    ],
-    "traits-data": {
-        "Brave": [
+        [
+            "Lucky",
+            "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+        ],
+        [
+            "Brave",
             "You have advantage on saving throws against being frightened."
         ],
-        "Halfling Nimbleness": [
+        [
+            "Halfling Nimbleness",
             "You can move through the space of any creature that is of a size larger than yours."
-        ],
-        "Lucky": [
-            "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
         ]
-    }
+    ]
 }

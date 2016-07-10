@@ -22,11 +22,9 @@
     ],
     "name": "High Elf",
     "traits": [
-        "Elven Cantrip"
-    ],
-    "traits-data": {
-        "Elven Cantrip": [
+        [
+            "Elven Cantrip",
             "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
         ]
-    }
+    ]
 }

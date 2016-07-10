@@ -4,13 +4,20 @@ from . import utils
 from . import spells as spellmod
 
 def feature_block(data, feature):
-    temp = data.get(feature, [])
-    temp = '\n'.join(temp)
+    if isinstance(feature, list):
+        temp = feature[1:]
+        feature = feature[0]
+    else:
+        temp = data.get(feature, '')
     
-    temp = utils.convert(temp)
-    temp = utils.get_details(temp)
-    temp = re.sub('<h2.*?>', '', temp)
-    temp = temp.replace('</h2>', '')
+    if isinstance(temp, list):
+        temp = '\n'.join(temp)
+        temp = utils.convert(temp)
+        temp = utils.get_details(temp)
+        temp = re.sub('<h2.*?>', '', temp)
+        temp = temp.replace('</h2>', '')
+        
+        data[feature] = temp
     
     temp = utils.details_block(feature, temp)
     
@@ -148,7 +155,7 @@ def features2html(c):
             ret += format
         ret += '</ol>\n'
         
-        ret = utils.details_group(ret, body_class="class-features")
+        ret = utils.details_group(ret)#, body_class="class-features")
     return ret
 
 def equipment_row(lst):

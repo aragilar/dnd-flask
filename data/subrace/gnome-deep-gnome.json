@@ -23,15 +23,13 @@
     "size": "Small",
     "size description": "A typical svirfneblin stands about 3 to 3 1/2 feet tall and weighs 80 to 120 pounds. Your size is {size}.",
     "traits": [
-        "Superior Darkvision",
-        "Stone camouflage"
-    ],
-    "traits-data": {
-        "Stone camouflage": [
-            "You have advantage on Dexterity (stealth) checks to hide in rocky terrain."
-        ],
-        "Superior Darkvision": [
+        [
+            "Superior Darkvision",
             "Your darkvision has a radius of 120 feet."
+        ],
+        [
+            "Stone camouflage",
+            "You have advantage on Dexterity (stealth) checks to hide in rocky terrain."
         ]
-    }
+    ]
 }

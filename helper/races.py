@@ -60,11 +60,10 @@ def features2html(race):
             ret += '**Speed.** Your base walking speed is %s feet.\n\n' % str(temp)
     
     # ----#-   Race Traits
-    temp = race.get('traits-data', {})
     for trait in race.get('traits', []):
-        tempstr = '**%s.** %s\n\n' % (trait, '\n'.join(
-            temp.get(trait, ['Unknown Trait'])
-        ))
+        temp = trait[1:]
+        trait = trait[0]
+        tempstr = '**%s.** %s\n\n' % (trait, '\n'.join(temp))
         ret += tempstr
         
     

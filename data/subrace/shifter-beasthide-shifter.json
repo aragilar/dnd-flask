@@ -13,11 +13,9 @@
     "description": "As a beasthide shifter, you are especially tough and persistent in battle.",
     "name": "Beasthide Shifter",
     "traits": [
-        "Shifting Feature"
-    ],
-    "traits-data": {
-        "Shifting Feature": [
+        [
+            "Shifting Feature",
             "While shifting, you gain a +1 bonus to AC."
         ]
-    }
+    ]
 }

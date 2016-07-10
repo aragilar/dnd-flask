@@ -13,11 +13,9 @@
     "description": "Your cliffwalk heritage grants you the agility of a mountain goat.",
     "name": "Cliffwalk Shifter",
     "traits": [
-        "Shifting Feature"
-    ],
-    "traits-data": {
-        "Shifting Feature": [
+        [
+            "Shifting Feature",
             "While shifting you gain a climb speed of 30 feet."
         ]
-    }
+    ]
 }

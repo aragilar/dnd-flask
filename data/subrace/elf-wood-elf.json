@@ -21,11 +21,9 @@
     "speed": 35,
     "speed description": "Your base walking speed increases to {speed} feet.",
     "traits": [
-        "Mask of the Wild"
-    ],
-    "traits-data": {
-        "Mask of the Wild": [
+        [
+            "Mask of the Wild",
             "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
         ]
-    }
+    ]
 }
