@@ -84,8 +84,8 @@ def main(items, spell_list, load, compact = True):
     <span style="margin: 5px; display: block; clear: both;">Count: <output id="count">0</output></span>
 </div>'''
 
-    temp = '<table id="magicitems" class="spell-table">\n<tr><td>\n'
-    temp += '</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+    temp = '<table id="magicitems" class="spell-table">\n<tr><td class="table-item">\n'
+    temp += '</td></tr>\n<tr><td class="table-item">\n'.join(utils.asyncmap(
             itemblock,
             [items[item] for item in sorted(items)]
     ))

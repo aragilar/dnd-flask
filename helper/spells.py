@@ -139,8 +139,8 @@ def main(spells, classes, load, compact = True):
     <span style="margin: 5px; display: block; clear: both;">Count: <output id="count">0</output></span>
 </div>'''
 
-    temp = '<table id="spells" class="spell-table">\n<tr><td>\n'
-    temp += '</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+    temp = '<table id="spells" class="spell-table">\n<tr><td class="table-item">\n'
+    temp += '</td></tr>\n<tr><td class="table-item">\n'.join(utils.asyncmap(
             lambda a: spellblock(a, spells),
             list(sorted(spells.keys()))
     ))

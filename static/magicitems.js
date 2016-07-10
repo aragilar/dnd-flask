@@ -1,88 +1,82 @@
-function filter(){
+function Filter(){
     var filters = [];
     var count = 0;
     var rarity = false;
     
-    tags = document.querySelectorAll('.filter');
-    for (var x = 0; x < tags.length; x++){
-        var tag = tags[x];
-        var filter = tag.id;
-        filter = filter.replace('_', ' ');
-        if (tag.checked){
+    $(".filter").each(function(){
+        var tag = $(this);
+        var filter = tag.attr('id').replace('_', ' ');
+        if (tag.is(':checked')){
             filters.push(filter);
-            if (tag.className.indexOf('rarity') >= 0){
+            if (tag.hasClass('rarity')){
                 rarity = true;
             }
         }
-    }
+    });
     
-    var name = document.getElementById('name').value;
+    var name = $('#name').val();
     
-    console.log(filters);
-    
-    tags = document.querySelectorAll('#magicitems > tbody > tr');
-    for (var x = 0; x < tags.length; x++){
-        var tag = tags[x];
-        var val = tag.querySelector('td > details > summary');
-        var text = val.innerHTML;
-        text = text.trim();
+    $('.table-item > .spell-box').each(function(){
+        var tag = $(this);
+        if (tag.is('details')){
+            var val = tag.find('summary:first');
+        } else {
+            var val = tag.prev();
+        }
+        tag = tag.parent();
+        var text = val.html();
         var data = items[text];
-        //console.log(JSON.stringify(data['rarity']));
-        var hide;
+        var hide = false;
+        
         if (rarity){
-            data_rarity = data['rarity'];
-            if (typeof data_rarity === 'string' ||
-                data_rarity instanceof String){
+            var data_rarity = data['rarity'];
+            if (typeof data_rarity === 'string'
+            || data_rarity instanceof String){
                 hide = filters.indexOf(data_rarity) < 0;
-            }
-            else{
+            } else {
                 hide = true;
-                for (var y = 0; y < data_rarity.length; y++){
-                    if (filters.indexOf(data_rarity[y]) > 0){
+                $.each(data_rarity, function(x, item){
+                    if (filters.indexOf(item) >= 0){
                         hide = false;
                     }
-                }
+                });
             }
         }
-        else{
-            hide = false;
+        if (data === undefined){
+            alert(text)
         }
-        
-        if (filters.indexOf('attuned') < 0){
-            if (data['attunement']){
+        if (data['attunement']){
+            if (filters.indexOf('attuned') < 0){
                 hide = true;
             }
-        }
-        if (filters.indexOf('unattuned') < 0){
-            if (!data['attunement']){
-                hide = true;
-            }
-        }
-        
-        if (name !== ''){
-            if (data['name'].toLowerCase().indexOf(name.toLowerCase()) < 0 && data['type'].toLowerCase().indexOf(name.toLowerCase()) < 0){
+        } else {
+            if (filters.indexOf('unattuned') < 0){
                 hide = true;
             }
         }
         
-        tag.style.display = hide ? 'none' : 'table-row';
-        if (!hide){
-            count++;
+        if (name != ''){
+            if (data['name'].toLowerCase().indexOf(name.toLowerCase()) < 0
+            && data['type'].toLowerCase().indexOf(name.toLowerCase()) < 0){
+                hide = true;
+            }
         }
-    }
+        
+        if (hide){
+            tag.hide();
+        } else {
+            tag.show();
+            count += 1;
+        }
+    });
     
-    //Break Line//
-    
-    document.getElementById('count').innerHTML = count;
+    $('#count').html(count);
 }
 
-document.addEventListener('DOMContentLoaded', function(){
-    var tags = document.querySelectorAll('.filter');
-    for (var x = 0; x < tags.length; x++){
-        var tag = tags[x];
-        tag.setAttribute('onchange', 'filter()');
-        //tag.setAttribute('onblur', 'filter()');
-    }
+$(document).ready(function(){
+    $('.filter').each(function(){
+        $(this).change(Filter);
+    });
     
-    filter();
+    Filter();
 });

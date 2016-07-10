@@ -1,4 +1,4 @@
-function filterClass(){
+function Filter(){
     var cfilters = {};
     
     $.each(classes, function(item){
@@ -29,14 +29,14 @@ function filterClass(){
 
     var count = 0;
     
-    $('#spells .spell-box').each(function(){
+    $('.table-item > .spell-box').each(function(){
         var tag = $(this);
         if (tag.is('details')){
             var val = tag.find('summary:first');
-            tag = tag.parent();
         } else {
             var val = tag.prev();
         }
+        tag = tag.parent();
         var text = val.html();
         var data = spells[text];
         var hide = false;
@@ -62,25 +62,23 @@ function filterClass(){
 
         if (hide){
             tag.hide();
-            val.hide();
         } else {
             tag.show();
-            val.show();
             count += 1;
         }
     });
 
-    $(document.getElementById('count')).html(count);
+    $('#count').html(count);
 }
 
 $(document).ready(function(){
     $('.filter').each(function(){
-        $(this).change(filterClass);
+        $(this).change(Filter);
     });
     
     $.each(classes, function(item){
-        $(item).change(filterClass);
+        $(item).change(Filter);
     });
     
-    filterClass();
+    Filter();
 });
