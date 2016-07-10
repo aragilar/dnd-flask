@@ -45,6 +45,14 @@ h6 {
     margin: 0px;
 }
 
+h6:first-child {
+	margin-top: 5px;
+}
+
+h6:last-child {
+    margin-bottom: 5px;
+}
+
 .class-head p {
     margin: 0px;
     text-indent: 0px;
@@ -182,6 +190,28 @@ summary {
     text-align: center;
     background-color: #000;
     color: #fff;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details > summary::before {
+    content: "▼";
+    display: inline-block;
+    margin-right: 3px;
+    font-size: 12px;
+    -webkit-transition: 1s ease-out;
+    -moz-transition: 1s ease-out;
+    -ms-transition: 1s ease-out;
+    transition: 1s ease-out;
+}
+
+details[open] > summary::before {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }
 
 @media only screen
