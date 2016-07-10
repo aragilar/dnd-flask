@@ -101,6 +101,7 @@
         },
         "Sorcerer": {
             "Draconic Bloodline": true,
+            "Favored Soul": true,
             "Storm Sorcery": true,
             "Wild Magic": true
         },
