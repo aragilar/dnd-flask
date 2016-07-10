@@ -197,10 +197,14 @@ summary::-webkit-details-marker {
 }
 
 details > summary::before {
-    content: "▼";
+    content: "";
     display: inline-block;
-    margin-right: 3px;
-    font-size: 20px;
+    width: 0px;
+    height: 0px;
+    margin-right: 5px;
+    border: 0px solid transparent;
+    border-width: 14px 7px 0px;
+    border-color: black transparent;
     -webkit-transition: 1s ease-out;
     -moz-transition: 1s ease-out;
     -ms-transition: 1s ease-out;
