@@ -1,106 +1,86 @@
 function filterClass(){
-    var filters = {};
+    var cfilters = {};
     
-    for (item in classes){
-        var filter = document.getElementById(item);
-        if (filter.getAttribute("type") == "checkbox"){
-            if (filter.checked){
-                filters[item] = true;
-            }
-        } else {
-            var temp = filter.value;
-            if (temp != '' && temp != null){
-                filters[item] = temp;
-            }
+    $.each(classes, function(item){
+        var filter = $(document.getElementById(item));
+        if (filter.is(":checked")){
+            cfilters[item] = true;
         }
-    }
-    
-    tags = document.querySelectorAll('#spells > tbody > tr');
-    for (var x = 0; x < tags.length; x++){
-        var tag = tags[x];
-        var val = tag.querySelector('td > details > summary');
-        var text = val.innerHTML;
-        var data = spells[text];
-        //alert(JSON.stringify(data));
-        var hide = false;
-        for (var filter in filters){
-            f = filters[filter];
-            if (f){
-                if (classes[filter].indexOf(text) < 0){
-                    hide = true;
-                }
-            }
-        }
-        tag.style.display = hide ? 'none' : 'table-row';
-    }
-    
-    //Break Line//
-    
+    });
+
     var filters = {};
 
-    var f = ["name", "level", "type", "ritual"/*, "nonverbal", "nonsomatic", "immaterial"*/];
-    for (var x = 0; x < f.length; x++){
-        var item = f[x];
-        var filter = document.getElementById(item);
-        if (filter.getAttribute("type") == "checkbox"){
-            if (filter.checked){
+    $.each(["name", "level", "type", "ritual"], function(x, item){
+        var filter = $(document.getElementById(item));
+        if (filter.attr("type") == "checkbox"){
+            console.log(item)
+            if (filter.is(":checked")){
                 filters[item] = true;
             }
         } else {
-            var temp = filter.value;
-            if (temp != '' && temp != null){
+            var temp = filter.val();
+            if (temp != "" && temp !== undefined){
                 filters[item] = temp;
             }
         }
-    }
-    
+    });
+
+    console.log(filters)
+
     var count = 0;
     
-    tags = document.querySelectorAll('#spells > tbody > tr');
-    for (var x = 0; x < tags.length; x++){
-        var tag = tags[x];
-        var val = tag.querySelector('td > details > summary');
-        var text = val.innerHTML;
-        text = text.trim();
+    $('#spells .spell-box').each(function(){
+        var tag = $(this);
+        if (tag.is('details')){
+            var val = tag.find('summary:first');
+            tag = tag.parent();
+        } else {
+            var val = tag.prev();
+        }
+        var text = val.html();
         var data = spells[text];
-        //alert(JSON.stringify(data));
-        var hide = tag.style.display !== 'table-row';
-        for (var filter in filters){
-            f = filters[filter];
-            if (f){
-                if (f === true){
+        var hide = false;
+        $.each(cfilters, function(filter, value){
+            if (value && classes[filter].indexOf(text) < 0){
+                hide = true;
+            }
+        });
+
+        $.each(filters, function(filter, value){
+            if (value){
+                if (value === true){
                     if (!data[filter]){
                         hide = true;
                     }
                 } else {
-                    if (data[filter].toLowerCase().indexOf(f.toLowerCase()) < 0){
+                    if (data[filter].toLowerCase().indexOf(value.toLowerCase()) < 0){
                         hide = true;
                     }
                 }
             }
-        }
-        tag.style.display = hide ? 'none' : 'table-row';
-        if (!hide){
+        });
+
+        if (hide){
+            tag.hide();
+            val.hide();
+        } else {
+            tag.show();
+            val.show();
             count += 1;
         }
-    }
-    
-    document.getElementById('count').innerHTML = count;
+    });
+
+    $(document.getElementById('count')).html(count);
 }
 
-document.addEventListener('DOMContentLoaded', function(){
-    var tags = document.querySelectorAll('.filter');
-    for (var x = 0; x < tags.length; x++){
-        var tag = tags[x];
-        tag.setAttribute('onchange', 'filterClass()');
-        //tag.setAttribute('onblur', 'filterClass()');
-    }
+$(document).ready(function(){
+    $('.filter').each(function(){
+        $(this).change(filterClass);
+    });
     
-    var n;
-    for (n in classes){
-        var tag = document.getElementById(n);
-        tag.setAttribute('onchange', 'filterClass()');
-    }
+    $.each(classes, function(item){
+        $(item).change(filterClass);
+    });
     
     filterClass();
 });
