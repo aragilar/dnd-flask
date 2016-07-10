@@ -155,7 +155,7 @@ summary {
 
 .spell-table {
     margin: 0px auto;
-    width: 98%;
+    width: initial;
 }
 
 table.spell-table {
