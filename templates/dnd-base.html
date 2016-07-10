@@ -39,7 +39,7 @@
         <a class="home button" href="{{ url_for('.index', **query) }}">Home</a>
         {% endif %}
         {% if collapse_details %}
-        <a class="collapse-details button" onclick="var lst=document.querySelectorAll('details');for (var x=0;x<lst.length;x++){lst[x].removeAttribute('open');}">Collapse Details</a>
+        <a class="collapse-details button" onclick="$('details').each(function(){$(this).removeAttr('open');});">Collapse Details</a>
         {% endif %}
         <span style="display: block; clear: both;"></span>
     </div>

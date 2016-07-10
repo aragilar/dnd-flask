@@ -14,8 +14,8 @@ def feature_block(data, feature):
         temp = '\n'.join(temp)
         temp = utils.convert(temp)
         temp = utils.get_details(temp)
-        temp = re.sub('<h2.*?>', '', temp)
-        temp = temp.replace('</h2>', '')
+        #temp = re.sub('<h2.*?>', '', temp)
+        #temp = temp.replace('</h2>', '')
         
         data[feature] = temp
     
@@ -63,9 +63,10 @@ def spell_tables(spells, maxslot, spell_list):
     return ret
 
 def features2html(c):
-    lst = c.get('features', [])
+    lst = c.get('features', [])[:]
     data = c.get('features-data', {})
     ret = ''
+    maxlevel = c.get("max-level", 20)
     
     # ----#-   Table
     table = c.get('table')
@@ -78,7 +79,7 @@ def features2html(c):
             if 'max-slot' in c:
                 x = c['max-slot']
             else:
-                y = c.get('max-level', 20)
+                y = maxlevel
                 if y < magic:
                     y = 0
                 else:
@@ -111,7 +112,7 @@ def features2html(c):
             body += '<th%s>%s</th>\n' % (style, item)
         body += '</tr>\n'
         
-        for x in range(1, c.get("max-level", 20)+1):
+        for x in range(1, maxlevel+1):
             body += '<tr>\n'
             for item in headrows:
                 if item != '':
@@ -136,24 +137,26 @@ def features2html(c):
     
     # ----#-   Features
     if len(lst):
-        for item in lst[0]:
+        head = lst.pop(0)
+        if len(lst) > maxlevel:
+            foot = lst.pop(-1)
+        else:
+            foot = c.get('foot', [])
+
+        for item in head:
             ret += feature_block(data, item)
         
         ret += '<ol>\n'
-        for line in lst[1:]:
-            #if len(line) and x > 0:
-            #    format = '<li value="%d">%%s</li>\n' % x
-            #else:
-            #    format = '%s'
-            format = '<li>%s</li>\n'
-            
+        for line in lst:
             linestr = ''
             for item in line:
                 linestr += feature_block(data, item)
             
-            format %= linestr
-            ret += format
+            ret += '<li>%s</li>\n' % linestr
         ret += '</ol>\n'
+
+        for item in foot:
+            ret += feature_block(data, item)
         
         ret = utils.details_group(ret)#, body_class="class-features")
     return ret
@@ -227,14 +230,6 @@ def class2html(c, spell_list):
 
     # ----#-   Class Features
     ret += features2html(c)
-
-    # ----#-   Class Foot
-    temp = c.get('foot', [])
-    for item in temp:
-        if len(item) > 1:
-            temp = utils.convert('\n'.join(item[1:]))
-            temp = utils.get_details(temp)
-            ret += utils.details_block(item[0], temp)
     ret += '</div>\n'
 
     # ----#-   Subclass
@@ -252,14 +247,6 @@ def class2html(c, spell_list):
             body += '<hr>'
         subcstr += utils.details_block(summary, body)
         subcstr += features2html(subc)
-        
-        # ----#-   Subclass Foot
-        temp = subc.get('foot', [])
-        for item in temp:
-            if len(item) > 1:
-                summary = item[0]
-                body = utils.convert('\n'.join(item[1:]))
-                subcstr += utils.details_block(summary, body)
         
         # ----#-   Subclass Subclass Spells
         spells = subc.get('subclassspells')
