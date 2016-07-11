@@ -32,6 +32,13 @@
         [
             17,
             "Express Transit"
+        ],
+        [
+            -1,
+            [
+                "City Magic",
+                "Many of the class features and spells in this article depend on a character's presence in an urban environment to function. At the DM's discretion, these features and spells might function in smaller urban areas (such as sufficiently population dense large towns or suburbs). However, they do not function in areas with little or no artificial construction (such as a wholly natural forest settlement), regardless of population."
+            ]
         ]
     ],
     "features-data": {
@@ -65,13 +72,6 @@
             "From 1st level, you are able to tap into the spirit of community found in the city. While you are within any city, you can gain advantage on a single Charisma (Deception, Intimidation, or Persuasion) check, and you are considered proficient in the appropriate skill. You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain any expended uses when you finish a long rest."
         ]
     },
-    "foot": [
-        [
-            "City Magic",
-            "",
-            "Many of the class features and spells in this article depend on a character's presence in an urban environment to function. At the DM's discretion, these features and spells might function in smaller urban areas (such as sufficiently population dense large towns or suburbs). However, they do not function in areas with little or no artificial construction (such as a wholly natural forest settlement), regardless of population."
-        ]
-    ],
     "name": "City Domain",
     "subclassspells": {
         "1": [
