@@ -26,97 +26,82 @@
         ]
     ],
     "features": [
-        [],
         [
-            "Ambuscade"
+            1,
+            [
+                "Ambuscade",
+                "Rangers strike first and strike hard. When you roll initiative, you gain a special turn that takes place before other creatures can act. On this turn, you can use your action to take either the Attack or Hide action.",
+                "",
+                "If more than one creature in an encounter has this feature, they all act first in order of initiative, then the regular initiative order begins.",
+                "",
+                "If you would normally be surprised at the start of an encounter, you are not surprised but you do not gain this extra turn."
+            ]
         ],
         [
-            "Fighting Style",
-            "Skirmisher's Stealth"
+            2,
+            [
+                "Fighting Style",
+                "At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.",
+                "",
+                "###### Archery",
+                "",
+                "You gain a +2 bonus to attack rolls you make with ranged weapons.",
+                "",
+                "###### Defense",
+                "",
+                "While you are wearing armor, you gain a +1 bonus to AC.",
+                "",
+                "###### Dueling",
+                "",
+                "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.",
+                "",
+                "###### Two-Weapon Fighting",
+                "",
+                "When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
+            ],
+            [
+                "Skirmisher's Stealth",
+                "Beginning at 2nd level, you combine speed and stealth in combat to make yourself hard to pin down. You are difficult to detect even if you attack or otherwise take actions that would normally reveal your presence.",
+                "",
+                "At the start of your turn, pick a creature you are hidden from. You remain hidden from that creature during your turn, regardless of your actions or the actions of other creatures. As a bonus action at the end of your turn, you can make a Dexterity (Stealth) check to hide again if you fulfill the conditions needed to hide. Otherwise, creatures are aware of you at the end of your turn."
+            ]
         ],
         [
-            "Primeval Awareness",
-            "Spirit Path"
+            3,
+            [
+                "Primeval Awareness",
+                "Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn't reveal the creatures' location or number."
+            ],
+            [
+                "Spirit Path",
+                "At 3rd level, you form a bond with a nature spirit-a companion forged by your link to the wild. This spirit companion protects you as you travel and watches your back in battle. You choose a ranger path that shapes your spirit companion and its magic: the Guardian, the Seeker, or the Stalker. Your choice grants you features at 3rd level and again at 7th, 11th, and 15th level.",
+                "",
+                "###### Spirit Companion",
+                "",
+                "All rangers gain a spirit companion and the ability to invoke its magical power. (Your spirit companion grants you one benefit you can call on in this playtest version of the revised ranger, with more benefits gained at higher levels.) You regain your ability to call on your spirit companion in this way when you finish a short or long rest.",
+                "",
+                "Once per day as a bonus action, you can command your spirit companion to materialize as a living creature, determined by the ranger path you choose. Your spirit companion manifests as an animal for 1 minute or until your concentration is broken (as if you are concentrating on a spell). You can also dismiss it as a bonus action.",
+                "",
+                "The manifested creature gains a bonus to attack rolls and saving throws equal to your Wisdom modifier. It uses the hit points in the animal's stat block or half your hit point maximum, whichever is higher.",
+                "",
+                "The manifested creature takes its turn on your initiative and acts immediately after you. You control its actions, even if you are unconscious or otherwise unable to act."
+            ]
         ],
         [
-            "Ability Score Improvement"
+            4,
+            [
+                "Ability Score Improvement",
+                "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+            ]
         ],
         [
-            "Extra Attack"
+            5,
+            [
+                "Extra Attack",
+                "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+            ]
         ]
     ],
-    "features-data": {
-        "Ability Score Improvement": [
-            "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
-        ],
-        "Ambuscade": [
-            "Rangers strike first and strike hard. When you roll initiative, you gain a special turn that takes place before other creatures can act. On this turn, you can use your action to take either the Attack or Hide action.",
-            "",
-            "If more than one creature in an encounter has this feature, they all act first in order of initiative, then the regular initiative order begins.",
-            "",
-            "If you would normally be surprised at the start of an encounter, you are not surprised but you do not gain this extra turn."
-        ],
-        "Extra Attack": [
-            "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
-        ],
-        "Fighting Style": [
-            "At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.",
-            "",
-            "###### Archery",
-            "",
-            "You gain a +2 bonus to attack rolls you make with ranged weapons.",
-            "",
-            "###### Defense",
-            "",
-            "While you are wearing armor, you gain a +1 bonus to AC.",
-            "",
-            "###### Dueling",
-            "",
-            "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.",
-            "",
-            "###### Two-Weapon Fighting",
-            "",
-            "When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
-        ],
-        "Natural Explorer": [
-            "At 2nd level, you are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you're proficient in.",
-            "",
-            "While traveling for an hour or more in your favored terrain, you gain the following benefits:",
-            "",
-            "* Difficult terrain doesn't slow your group's travel.",
-            "* Your group can't become lost except by magical means.",
-            "* Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger.",
-            "* If you are traveling alone, you can move stealthily at a normal pace.",
-            "* When you forage, you find twice as much food as you normally would.",
-            "* While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.",
-            "",
-            "You choose additional favored terrain types at 6th and 10th level."
-        ],
-        "Primeval Awareness": [
-            "Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn't reveal the creatures' location or number."
-        ],
-        "Skirmisher's Stealth": [
-            "Beginning at 2nd level, you combine speed and stealth in combat to make yourself hard to pin down. You are difficult to detect even if you attack or otherwise take actions that would normally reveal your presence.",
-            "",
-            "At the start of your turn, pick a creature you are hidden from. You remain hidden from that creature during your turn, regardless of your actions or the actions of other creatures. As a bonus action at the end of your turn, you can make a Dexterity (Stealth) check to hide again if you fulfill the conditions needed to hide. Otherwise, creatures are aware of you at the end of your turn."
-        ],
-        "Spirit Path": [
-            "At 3rd level, you form a bond with a nature spirit-a companion forged by your link to the wild. This spirit companion protects you as you travel and watches your back in battle. You choose a ranger path that shapes your spirit companion and its magic: the Guardian, the Seeker, or the Stalker. Your choice grants you features at 3rd level and again at 7th, 11th, and 15th level.",
-            "",
-            "###### Spirit Companion",
-            "",
-            "All rangers gain a spirit companion and the ability to invoke its magical power. (Your spirit companion grants you one benefit you can call on in this playtest version of the revised ranger, with more benefits gained at higher levels.) You regain your ability to call on your spirit companion in this way when you finish a short or long rest.",
-            "",
-            "Once per day as a bonus action, you can command your spirit companion to materialize as a living creature, determined by the ranger path you choose. Your spirit companion manifests as an animal for 1 minute or until your concentration is broken (as if you are concentrating on a spell). You can also dismiss it as a bonus action.",
-            "",
-            "The manifested creature gains a bonus to attack rolls and saving throws equal to your Wisdom modifier. It uses the hit points in the animal's stat block or half your hit point maximum, whichever is higher.",
-            "",
-            "The manifested creature takes its turn on your initiative and acts immediately after you. You control its actions, even if you are unconscious or otherwise unable to act."
-        ],
-        "Spirit Path Feature": [
-            "You gain a feature from your Spirit Path."
-        ]
-    },
     "hit die": "2d6",
     "longdescription": [
         "# Rangers, Alternative",

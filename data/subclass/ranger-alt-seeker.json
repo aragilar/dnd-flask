@@ -7,14 +7,10 @@
         "When your spirit companion manifests, it takes the form of a giant eagle."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Seeker's Eye"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Seeker's Eye": [

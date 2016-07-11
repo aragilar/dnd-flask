@@ -20,36 +20,23 @@
         "6 | You blinked. Once. Last week."
     ],
     "features": [
-        [],
         [
+            1,
             "Eyes of the Dark",
             "Strength of the Grave"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            6,
             "Hound of Ill Omen"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            14,
             "Shadow Walk"
         ],
-        [],
-        [],
-        [],
         [
+            18,
             "Shadow Form"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Eyes of the Dark": [

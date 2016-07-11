@@ -6,36 +6,23 @@
         "Some rogues enhance their fine-honed skills of stealth and agility with magic, learning tricks of enchantment and illusion. These rogues include pickpockets and burglars, but also pranksters, mischief-makers, and a significant number of adventurers."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Spellcasting",
             "Mage Hand Legerdemain"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            9,
             "Magical Ambush"
         ],
-        [],
-        [],
-        [],
         [
+            13,
             "Versatile Trickster"
         ],
-        [],
-        [],
-        [],
         [
+            17,
             "Spell Thief"
-        ],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Mage Hand Legerdemain": [

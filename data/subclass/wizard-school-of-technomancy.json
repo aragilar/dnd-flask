@@ -11,36 +11,23 @@
         "Technomancers can make use of technology as both a conduit and a storage space for magic. In a campaign using the optional rules for magic item creation (see the Dungeon Master's Guide), a technomancer might craft disposable electronic devices and smartphone apps in lieu of potions and scrolls."
     ],
     "features": [
-        [],
-        [],
         [
+            2,
             "Bonus Proficiencies",
             "Technological Savant"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Program Spell"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Online Casting"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Chained Device"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bonus Proficiencies": [

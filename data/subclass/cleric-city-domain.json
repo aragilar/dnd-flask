@@ -11,39 +11,28 @@
         "New spells introduced for the City domain are marked with an asterisk and detailed in the \"New Spells\" section at the end of this article. For all other spells, see the Player's Handbook."
     ],
     "features": [
-        [],
         [
+            1,
             "Bonus Cantrip",
             "Bonus Proficiencies",
             "Heart of the City"
         ],
         [
+            2,
             "Channel Divinity: Spirits of the City"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Block Watch"
         ],
-        [],
         [
+            8,
             "Divine Strike"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            17,
             "Express Transit"
-        ],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Block Watch": [

@@ -17,36 +17,23 @@
         "When we are done with this initial design, here's what the Favored Soul sorcerous origin looks like:"
     ],
     "features": [
-        [],
         [
+            1,
             "Chosen of the Gods",
             "Bonus Proficiencies"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            6,
             "Extra Attack"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            14,
             "Divine Wings"
         ],
-        [],
-        [],
-        [],
         [
+            18,
             "Power of the Chosen"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bonus Proficiencies": [

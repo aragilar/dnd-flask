@@ -22,35 +22,22 @@
         "6 | In a dark area, you always carry a lit torch or lantern. Putting it down is an unbearable thought."
     ],
     "features": [
-        [],
         [
+            1,
             "Radiant Soul"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            6,
             "Searing Vengeance"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Radiant Resilience"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Healing Light"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Healing Light": [

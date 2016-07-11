@@ -25,35 +25,22 @@
         "**Weight:** 45 lb."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Battlerager Armor"
         ],
-        [],
-        [],
         [
+            6,
             "Reckless Abandon"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Battlerager Charge"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Spiked Retribution"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Battlerager Armor": [

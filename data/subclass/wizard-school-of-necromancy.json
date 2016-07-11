@@ -10,36 +10,23 @@
         "Not all necromancers are evil, but the forces they manipulate are considered taboo by many societies."
     ],
     "features": [
-        [],
-        [],
         [
+            2,
             "Necromancy Savant",
             "Grim Harvest"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Undead Thralls"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Inured to Undeath"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Command Undead"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Command Undead": [

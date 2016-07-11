@@ -11,36 +11,23 @@
         "Deep Stalkers master spells useful in navigating the Underdark, and their combat tactics focus on ambush, surprise, and stealth. They fight alone or in small groups in hostile territory, relying on clever tactics to carry the day."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Underdark Scout",
             "Deep Stalker Magic"
         ],
-        [],
-        [],
-        [],
         [
+            7,
             "Iron Mind"
         ],
-        [],
-        [],
-        [],
         [
+            11,
             "Stalker's Flurry"
         ],
-        [],
-        [],
-        [],
         [
+            15,
             "Stalker's Dodge"
-        ],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Deep Stalker Magic": [

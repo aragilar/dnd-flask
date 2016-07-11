@@ -7,40 +7,29 @@
         "The archetypal Scout excels at finding safe passage through dangerous regions. Scouts usually favor light armor and ranged weapons, but they are comfortable using heavier gear when faced with intense fighting."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Bonus Proficiencies",
             "Combat Superiority",
             "Natural Explorer"
         ],
-        [],
-        [],
-        [],
         [
+            7,
             "Combat Superiority and Natural Explorer Improvement"
         ],
-        [],
-        [],
         [
+            10,
             "Improved Combat Superiority"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            15,
             "Relentless",
             "Combat Superiority and Natural Explorer Improvement"
         ],
-        [],
-        [],
         [
+            18,
             "Improved Combat Superiority"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bonus Proficiencies": [

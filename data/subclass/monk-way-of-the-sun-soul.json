@@ -19,35 +19,22 @@
         "Monks of the Way of the Sun Soul learn to channel their own life energy into searing bolts of light. They teach that meditation can unlock the ability to unleash the indomitable light shed by the soul of every living creature."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Radiant Sun Bolt"
         ],
-        [],
-        [],
         [
+            6,
             "Searing Arc Strike"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            11,
             "Searing Sunburst"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            17,
             "Sun Shield"
-        ],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Radiant Sun Bolt": [

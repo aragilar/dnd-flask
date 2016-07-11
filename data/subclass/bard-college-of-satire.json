@@ -15,34 +15,19 @@
         "Jesters adventure to safeguard the common folk and to undermine the plans of the rich, powerful, and arrogant. Their magic bolsters allies' spirits while casting doubt into foes' minds. Among bards, jesters are unmatched acrobats, and their ability to tumble, dodge, leap, and climb makes them slippery opponents in battle."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Bonus Proficiencies",
             "Tumbling Fool"
         ],
-        [],
-        [],
         [
+            6,
             "Fool's Insight"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            14,
             "Fool's Luck"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bonus Proficiencies": [

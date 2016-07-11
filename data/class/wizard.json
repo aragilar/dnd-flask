@@ -26,8 +26,8 @@
         ]
     ],
     "features": [
-        [],
         [
+            1,
             [
                 "Spellcasting",
                 "As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power. See chapter 10 for the general rules of spellcasting and chapter 11 for the wizard spell list.",
@@ -82,6 +82,7 @@
             ]
         ],
         [
+            2,
             [
                 "Arcane Tradition",
                 "When you reach 2nd level, you choose an arcane tradition, shaping your practice of magic through one of eight schools: Abjuration, Conjuration, Divination, Enchantment, Evocation, Illusion, Necromancy, or Transmutation, all detailed at the end of the class description.",
@@ -89,42 +90,42 @@
                 "Your choice grants you features at 2nd level and again at 6th, 10th, and 14th level."
             ]
         ],
-        [],
         [
+            4,
             [
                 "Ability Score Improvement",
                 "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
             ]
         ],
-        [],
         [
+            6,
             [
                 "Arcane Tradition Feature",
                 "You gain a feature from your Arcane Tradition."
             ]
         ],
-        [],
         [
+            8,
             "Ability Score Improvement"
         ],
-        [],
         [
+            10,
             "Arcane Tradition Feature"
         ],
-        [],
         [
+            12,
             "Ability Score Improvement"
         ],
-        [],
         [
+            14,
             "Arcane Tradition Feature"
         ],
-        [],
         [
+            16,
             "Ability Score Improvement"
         ],
-        [],
         [
+            18,
             [
                 "Spell Mastery",
                 "At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.",
@@ -133,9 +134,11 @@
             ]
         ],
         [
+            19,
             "Ability Score Improvement"
         ],
         [
+            20,
             [
                 "Signature Spell",
                 "When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don't count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can't do so again until you finish a short or long rest.",

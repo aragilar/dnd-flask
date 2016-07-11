@@ -7,41 +7,30 @@
         "The archetypal Cavalier excels at mounted combat. Usually born to nobility and raised in a royal court, a Cavalier is equally at home leading a cavalry charge or exchanging witty repartee at a state dinner."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Bonus Proficiencies",
             "Born to the Saddle",
             "Combat Superiority"
         ],
-        [],
-        [],
-        [],
         [
+            7,
             "Ferocious Charger",
             "Extra Superiority Die"
         ],
-        [],
-        [],
         [
+            10,
             "Improved Combat Superiority"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            15,
             "Relentless",
             "Extra Superiority Die"
         ],
-        [],
-        [],
         [
+            18,
             "Improved Combat Superiority"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bonus Proficiencies": [

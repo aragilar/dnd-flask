@@ -1,4 +1,5 @@
 import math
+import copy
 import re
 from . import utils
 from . import spells as spellmod
@@ -63,7 +64,7 @@ def spell_tables(spells, maxslot, spell_list):
     return ret
 
 def features2html(c):
-    lst = c.get('features', [])[:]
+    lst = copy.deepcopy(c.get('features', []))
     data = c.get('features-data', {})
     ret = ''
     maxlevel = c.get("max-level", 20)
@@ -137,20 +138,35 @@ def features2html(c):
     
     # ----#-   Features
     if len(lst):
-        head = lst.pop(0)
-        if len(lst) > maxlevel:
-            foot = lst.pop(-1)
+        if lst[0] and lst[0][0] == 0:
+            head = lst.pop(0)
+            head.pop(0)
         else:
-            foot = c.get('foot', [])
+            head = []
+
+        if lst[-1] and lst[-1][0] == -1:
+            foot = lst.pop(-1)
+            foot.pop(0)
+        else:
+            foot = []
 
         for item in head:
             ret += feature_block(data, item)
         
         ret += '<ol>\n'
-        for line in lst:
+        lst = iter(lst)
+        line = next(lst)
+        for lvl in range(1, maxlevel+1):
+            while line[0] < lvl:
+                try:
+                    line = next(lst)
+                except StopIteration:
+                    break
+            
             linestr = ''
-            for item in line:
-                linestr += feature_block(data, item)
+            if line[0] == lvl:
+                for item in line[1:]:
+                    linestr += feature_block(data, item)
             
             ret += '<li>%s</li>\n' % linestr
         ret += '</ol>\n'

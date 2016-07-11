@@ -5,37 +5,26 @@
         "The archetypal Champion focuses on the development of raw physical power honed to deadly perfection. Those who model themselves on this archetype combine rigorous training with physical excellence to deal devastating blows."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Improved Critical"
         ],
-        [],
-        [],
-        [],
         [
+            7,
             "Remarkable Athlete"
         ],
-        [],
-        [],
         [
+            10,
             "Additional Fighting Style"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            15,
             "Superior Critical"
         ],
-        [],
-        [],
         [
+            18,
             "Survivor"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Additional Fighting Style": [

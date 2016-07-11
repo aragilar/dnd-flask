@@ -7,33 +7,20 @@
         "A paladin must be evil and at least 3rd level to become an Oathbreaker. The paladin replaces the features specific to his or her Sacred Oath with Oathbreaker features."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Channel Divinity"
         ],
-        [],
-        [],
-        [],
         [
+            7,
             "Aura of Hate"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            15,
             "Supernatural Resistance"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            20,
             "Dread Lord"
         ]
     ],

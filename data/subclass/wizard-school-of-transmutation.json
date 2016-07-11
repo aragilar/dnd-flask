@@ -10,36 +10,23 @@
         "Some transmuters are tinkerers and pranksters, turning people into toads and transforming copper into silver for fun and occasional profit. Others pursue their magical studies with deadly seriousness, seeking the power of the gods to make and destroy worlds."
     ],
     "features": [
-        [],
-        [],
         [
+            2,
             "Transmutation Savant",
             "Minor Alchemy"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Transmuter's Stone"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Shapechanger"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Master Transmuter"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Master Transmuter": [

@@ -9,34 +9,19 @@
         "The college's members gather in libraries and sometimes in actual colleges, complete with classrooms and dormitories, to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Bonus Proficiencies",
             "Cutting Words"
         ],
-        [],
-        [],
         [
+            6,
             "Additional Magical Secrets"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            14,
             "Peerless Skill"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Additional Magical Secrets": [

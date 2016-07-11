@@ -13,36 +13,23 @@
         "Your DM can lift this restriction to better suit the campaign. The restriction reflects the story of bladesingers in the Forgotten Realms, but it might not apply to your DM's setting or your DM's version of the Realms."
     ],
     "features": [
-        [],
-        [],
         [
+            2,
             "Training in War and Song",
             "Bladesong"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Extra Attack"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Song of Defense"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Song of Victory"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bladesong": [

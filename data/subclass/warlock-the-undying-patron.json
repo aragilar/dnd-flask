@@ -9,35 +9,22 @@
         "In the Realms, Undying patrons include Larloch the Shadow King, legendary master of Warlock's Crypt, and Gilgeam, the God-King of Unther."
     ],
     "features": [
-        [],
         [
+            1,
             "Among the Dead"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            6,
             "Defy Death"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Undying Nature"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Indestructible Life"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Among the Dead": [

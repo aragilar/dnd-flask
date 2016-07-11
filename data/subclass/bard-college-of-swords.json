@@ -11,35 +11,20 @@
         "Blades who abandon lives as entertainers have often run into trouble that makes maintaining their secret activities impossible. A blade caught stealing or engaging in vigilante justice is too great a liability for most performer troupes. With their weapon skills as their greatest asset, these blades either take up work as enforcers for thieves' guilds or strike out on their own as adventurers."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Bonus Proficiencies",
             "Fighting Style",
             "Blade Flourish"
         ],
-        [],
-        [],
         [
+            6,
             "Extra Attack"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            14,
             "Battle Magic"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Battle Magic": [

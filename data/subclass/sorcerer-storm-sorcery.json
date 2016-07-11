@@ -9,37 +9,24 @@
         "Storm sorcerers are invaluable members of a ship's crew. Their magic allows them to exert control over wind and weather in their immediate area. Their abilities also prove useful in repelling attacks by sahuagin, pirates, and other waterborne threats."
     ],
     "features": [
-        [],
         [
+            1,
             "Wind Speaker",
             "Tempestuous Magic"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            6,
             "Heart of the Storm",
             "Storm Guide"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            14,
             "Storm's Fury"
         ],
-        [],
-        [],
-        [],
         [
+            18,
             "Wind Soul"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Heart of the Storm": [

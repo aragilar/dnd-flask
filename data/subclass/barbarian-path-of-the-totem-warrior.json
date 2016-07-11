@@ -7,36 +7,23 @@
         "Most barbarian tribes consider a totem animal to be kin to a particular clan. In such cases, it is unusual for an individual to have more than one totem animal spirit, though exceptions exist."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Spirit Seeker",
             "Totem Spirit"
         ],
-        [],
-        [],
         [
+            6,
             "Aspect of the Beast"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Spirit Walker"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Totemic Attunement"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Aspect of the Beast": [

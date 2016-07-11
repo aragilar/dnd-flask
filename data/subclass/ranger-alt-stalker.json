@@ -7,14 +7,10 @@
         "When your spirit companion manifests, it takes the form of a dire wolf."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Stalker's Fangs"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Stalker's Fangs": [

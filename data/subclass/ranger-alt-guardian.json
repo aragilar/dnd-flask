@@ -7,14 +7,10 @@
         "When your spirit companion manifests, it takes the form of a brown bear."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Guardian's Shroud"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Guardian's Shroud": [

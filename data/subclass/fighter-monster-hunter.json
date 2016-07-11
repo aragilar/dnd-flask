@@ -7,39 +7,28 @@
         "As an archetypal Monster Hunter, you are an expert at defeating supernatural threats. Typically mentored by an older, experienced Monster Hunter, you learn to overcome a variety of unnatural defenses and attacks, including those of undead, lycanthropes, and other creatures of horror."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Bonus Proficiencies",
             "Combat Superiority",
             "Hunter's Mysticism"
         ],
-        [],
-        [],
-        [],
         [
+            7,
             "Monster Slayer"
         ],
-        [],
-        [],
         [
+            10,
             "Improved Combat Superiority"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            15,
             "Relentless"
         ],
-        [],
-        [],
         [
+            18,
             "Improved Combat Superiority"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bonus Proficiencies": [

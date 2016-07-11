@@ -6,36 +6,23 @@
         "You focus your study on magic that creates powerful elemental effects such as bitter cold, searing flame, rolling thunder, crackling lightning, and burning acid. Some evokers find employment in military forces, serving as artillery to blast enemy armies from afar. Others use their spectacular power to protect the weak, while some seek their own gain as bandits, adventurers, or aspiring tyrants."
     ],
     "features": [
-        [],
-        [],
         [
+            2,
             "Evocation Savant",
             "Sculpt Spells"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Potent Cantrip"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Empowered Evocation"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Overchannel"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Empowered Evocation": [

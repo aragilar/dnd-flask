@@ -9,37 +9,26 @@
         "The gods of this domain are often associated with knowledge, as learning and arcane power tend to go hand-in-hand. In the Realms, deities of this domain include Azuth and Mystra, as well as Corellon Larethian of the elven pantheon. In other worlds, this domain includes Hecate, Math Mathonwy, and Isis; the triple moon gods of Solinari, Lunitari, and Nuitari of Krynn; and Boccob, Vecna, and WeeJas of Greyhawk."
     ],
     "features": [
-        [],
         [
+            1,
             "Arcane Initiate"
         ],
         [
+            2,
             "Channel Divinity: Arcane Abjuration"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Spell Breaker"
         ],
-        [],
         [
+            8,
             "Potent Spellcasting"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            17,
             "Arcane Mastery"
-        ],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Arcane Initiate": [

@@ -7,25 +7,22 @@
         "Members of this order who take up the adventuring life are skilled warriors. Their psionic abilities allow them to shrug off injuries and hazards, while focusing their strength and speed in combat."
     ],
     "features": [
-        [],
         [
+            1,
             "Martial Order"
         ],
-        [],
         [
+            3,
             "Psionic Resilience"
         ],
-        [],
-        [],
         [
+            6,
             "Surge of Health"
         ],
-        [],
         [
+            8,
             "Cutting Resonance"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Cutting Resonance": [

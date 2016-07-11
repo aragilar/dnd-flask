@@ -9,36 +9,23 @@
         "You have made a bargain for power granted by an entity that you believe to be completely digital. Whether it is a rogue AI or the spirit of a deceased hacker, the Ghost in the Machine is capable of feats that defy explanation."
     ],
     "features": [
-        [],
         [
+            1,
             "Bonus Proficiency",
             "Information Surge"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            6,
             "Wire Walk"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Personal Encryption"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Technovirus"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bonus Proficiency": [

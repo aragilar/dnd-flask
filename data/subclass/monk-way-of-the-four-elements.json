@@ -7,35 +7,22 @@
         "Many monks of this tradition tattoo their bodies with representations of their ki powers, commonly imagined as coiling dragons, but also as phoenixes, fish, plants, mountains, and cresting waves."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Disciple of the Four Elements"
         ],
-        [],
-        [],
         [
+            6,
             "Additional Elemental Discipline"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            11,
             "Additional Elemental Discipline"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            17,
             "Additional Elemental Discipline"
-        ],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Additional Elemental Discipline": [

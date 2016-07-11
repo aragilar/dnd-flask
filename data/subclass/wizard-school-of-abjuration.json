@@ -8,36 +8,23 @@
         "Called abjurers, members of this school are sought when baleful spirits require exorcism, when important locations must be guarded against magical spying, and when portals to other planes of existence must be closed."
     ],
     "features": [
-        [],
-        [],
         [
+            2,
             "Abjuration Savant",
             "Arcane Ward"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Projected Ward"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Improved Abjuration"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Spell Resistance"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Abjuration Savant": [

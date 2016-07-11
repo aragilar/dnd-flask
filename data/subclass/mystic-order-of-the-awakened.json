@@ -7,26 +7,23 @@
         "The Awakened are skilled at bending minds and unleashing devastating psychic attacks, and are able to read the secrets of the world through psionic energy. Awakened mystics who take to adventuring excel at unraveling mysteries, solving puzzles, and defeating monsters by turning them into unwilling pawns."
     ],
     "features": [
-        [],
         [
+            1,
             "Mind Mastery",
             "Awakened Expertise"
         ],
-        [],
         [
+            3,
             "Psionic Investigation"
         ],
-        [],
-        [],
         [
+            6,
             "Psychic Surge"
         ],
-        [],
         [
+            8,
             "Potent Psionics"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Awakened Expertise": [

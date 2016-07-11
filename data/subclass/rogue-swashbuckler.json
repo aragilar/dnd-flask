@@ -9,36 +9,23 @@
         "A Swashbuckler excels in single combat, and can fight with two weapons while safely darting away from an opponent."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Fancy Footwork",
             "Rakish Audacity"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            9,
             "Panache"
         ],
-        [],
-        [],
-        [],
         [
+            13,
             "Elegant Maneuver"
         ],
-        [],
-        [],
-        [],
         [
+            17,
             "Master Duelist"
-        ],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Elegant Maneuver": [

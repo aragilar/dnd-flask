@@ -9,36 +9,23 @@
         "The artificer was a separate class in prior editions of the Eberron setting, a melee combatant who specialized in mystically enhanced arms and armor. The fifth edition rules treat the artificer as a new wizard tradition that focuses on mystical invention, which you can choose starting at 2nd level."
     ],
     "features": [
-        [],
-        [],
         [
+            2,
             "Infuse Potions",
             "Infuse Scrolls"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Infuse Weapons and Armor"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Superior Artificer"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Master Artificer"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Infuse Potions": [

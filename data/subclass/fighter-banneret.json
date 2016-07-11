@@ -18,37 +18,26 @@
         "**Banneret** serves as the generic name for this archetype if you use it in other campaign settings or to model warlords other than Purple Dragon knights."
     ],
     "features": [
-        [],
-        [],
-        [],
         [
+            3,
             "Rallying Cry"
         ],
-        [],
-        [],
-        [],
         [
+            7,
             "Royal Envoy"
         ],
-        [],
-        [],
         [
+            10,
             "Inspiring Surge"
         ],
-        [],
-        [],
-        [],
-        [],
         [
+            15,
             "Bulwark"
         ],
-        [],
-        [],
         [
+            18,
             "Improved Inspiring Surge"
-        ],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bulwark": [

@@ -5,38 +5,27 @@
         "The Death domain is concerned with the forces that cause death, as well as the negative energy that gives rise to undead creatures. Deities such as Chemosh, Myrkul, and WeeJas are patrons of necromancers, death knights, liches, mummy lords, and vampires. Gods of the Death domain also embody murder (Anubi, Bhaal, and Pyremius), pain (Iuz or Loviatar), disease or poison (Incabulos, Talona, or Morgion), and the underworld (Hades and Hel)."
     ],
     "features": [
-        [],
         [
+            1,
             "Bonus Proficiency",
             "Reaper"
         ],
         [
+            2,
             "Channel Divinity: Touch of Death"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Inescapable Destruction"
         ],
-        [],
         [
+            8,
             "Divine Strike"
         ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
         [
+            17,
             "Improved Reaper"
-        ],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Bonus Proficiency": [

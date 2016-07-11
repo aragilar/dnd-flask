@@ -7,36 +7,23 @@
         "Changeable as the moon, a druid of this circle might prowl as a great cat one night, soar over the treetops as an eagle the next day, and crash through the undergrowth in bear form to drive off a trespassing monster. The wild is in the druid's blood."
     ],
     "features": [
-        [],
-        [],
         [
+            2,
             "Combat Wild Shape",
             "Circle Forms"
         ],
-        [],
-        [],
-        [],
         [
+            6,
             "Primal Strike"
         ],
-        [],
-        [],
-        [],
         [
+            10,
             "Elemental Wild Shape"
         ],
-        [],
-        [],
-        [],
         [
+            14,
             "Thousand Forms"
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ]
     ],
     "features-data": {
         "Circle Forms": [
