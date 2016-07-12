@@ -42,15 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h6 {
     font-size: 100%;
-    margin: 0px;
-}
-
-h6:first-child {
-    margin-top: 5px;
-}
-
-h6:last-child {
-    margin-bottom: 5px;
+    margin: 0;
 }
 
 .class-head p {
