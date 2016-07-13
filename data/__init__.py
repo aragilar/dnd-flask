@@ -11,7 +11,7 @@ def final_changes(d):
 # ----#-
 
 sources = helper.archiver.load('data/sources.json')
-sources = filter(f, sources)
+sources = list(filter(f, sources))
 
 d = {}
 
@@ -31,7 +31,8 @@ for name, set in [('class', helper.class_list), ('race', helper.race_list)]:
         else:
             d[name][key] = set[key]['+'] in sources
 
-for name, set in [('background', helper.background_list),
+for name, set in [
+    ('background', helper.background_list),
     ('spell', helper.spell_list),
     ('feat', helper.feat_list),
     ('epicboon', helper.epicboon_list),

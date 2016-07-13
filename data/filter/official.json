@@ -1,5 +1,4 @@
 {
-    "name": "Official",
     "armor": {
         "Breastplate": true,
         "Chain mail": true,
@@ -478,6 +477,7 @@
         "Staff of Healing": true,
         "Staff of Power": true,
         "Staff of Striking": true,
+        "Staff of Swarming Insects": true,
         "Staff of Thunder and Lightning": true,
         "Staff of Withering": true,
         "Staff of the Adder": true,
@@ -536,6 +536,7 @@
         "Winged Boots": true,
         "Wings of Flying": true
     },
+    "name": "Official",
     "optionalrule": {
         "Action Options": true,
         "Alien Technology": true,
