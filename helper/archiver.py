@@ -1,60 +1,68 @@
-'''A module for saving and reading json'''
+"""
+A module for saving and reading json
+"""
 
+import sys
 import json
-try:
-    import cStringIO as StringIO
-except ImportError:
-    try:
-        import StringIO
-    except ImportError:
-        import io as StringIO
 
-def save(object, filename, compact = False):
-    '''Save object: object to file: filename,
-    using the json protocol'''
+class encoder (json.JSONEncoder):
+    def __init__(self, **kwargs):
+        if self.compact:
+            kwargs['indent'] = None
+            kwargs['sort_keys'] = False
+            kwargs['separators'] = (',', ':')
+        else:
+            kwargs['indent'] = 4
+            kwargs['sort_keys'] = True
+            kwargs['separators'] = (',', ': ')
+        
+        json.JSONEncoder.__init__(self, **kwargs)
 
-    try:
-        with open(filename, 'r') as f:
-            text = f.read()
-    except IOError:
-        text = ''
-    
-    new = p(object, compact=compact)
+class cencoder (encoder):
+    compact = True
+class nencoder (encoder):
+    compact = False
 
-    if new != text:
-        with open(filename, 'w') as f:
-            f.write(new)
+def save(data, filename, compact=False):
+    """
+    Saves a JSON object to the given file
+    """
+    if compact:
+        enc = cencoder
+    else:
+        enc = nencoder
+    with open(filename, 'w') as f:
+        json.dump(data, f, cls=enc)
 
-def load(filename, debug = True):
-    '''Loads a json object from file: filename'''
+def load(filename, debug=True):
+    """
+    Loads a json object from the given file
+    """
     try:
         with open(filename, 'r') as f:
             try:
                 data = json.load(f)
             except ValueError:
                 if debug:
+                    sys.stderr.write('JSON error in file: %s\n' % filename)
                     raise
                 else:
                     data = None
         return data
     except IOError:
         if debug:
+            sys.stderr.write('Could not open file: %s\n' % filename)
             raise
         else:
             return None
 
-def p(data, compact = False):
-    s = StringIO.StringIO()
-
+def p(data, compact=False):
     if compact:
-        indent = None
-        sort = False
-        separators = (',', ':')
+        enc = cencoder
     else:
-        indent = 4
-        sort = True
-        separators = (',', ': ')
+        enc = nencoder
+    return json.dumps(data, cls=enc)
 
-    json.dump(data, s, indent = indent, sort_keys = sort, separators = separators)
-
-    return s.getvalue()
+if __name__ == '__main__':
+    #load(sys.argv[0])
+    print(p({'a': 0, 'b': 1}, compact=False))
