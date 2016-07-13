@@ -17,43 +17,41 @@
     "features": [
         [
             3,
-            "Bonus Proficiencies",
-            "Tumbling Fool"
+            [
+                "Bonus Proficiencies",
+                "When you join the College of Satire at 3rd level, you gain proficiency with thieves' tools. You also gain proficiency in Sleight of Hand and one additional skill of your choice. If you are already proficient with thieves' tools or in Sleight of Hand, choose another skill proficiency for each proficiency you already have."
+            ],
+            [
+                "Tumbling Fool",
+                "At 3rd level, you master a variety of acrobatic techniques that allow you to evade danger. As a bonus action, you can tumble. When you tumble, you gain the following benefits for the rest of your turn:",
+                "",
+                "* You gain the benefits of taking the Dash and Disengage actions.",
+                "* You gain a climbing speed equal to your current speed.",
+                "* You take half damage from falling."
+            ]
         ],
         [
             6,
-            "Fool's Insight"
+            [
+                "Fool's Insight",
+                "At 6th level, your ability to gather stories and lore gains a supernatural edge. You can cast *detect thoughts* up to a number of times equal to your Charisma modifier. You regain any expended uses of this ability after completing a long rest.",
+                "",
+                "If a creature resists your attempt to probe deeper and succeeds at its saving throw against your *detect thoughts*, it immediately suffers an embarrassing social gaffe. It might loudly pass gas, unleash a thunderous burp, trip and fall, or be compelled to tell a tasteless joke.",
+                "",
+                "<spell>Detect Thoughts</spell>"
+            ]
         ],
         [
             14,
-            "Fool's Luck"
+            [
+                "Fool's Luck",
+                "Jesters seem to have a knack for pulling themselves out of tight situations, transforming what looks like sure failure into an embarrassing but effective success.",
+                "",
+                "At 14th level, you can expend one use of Bardic Inspiration after you fail an ability check, fail a saving throw, or miss with an attack roll. Roll a Bardic Inspiration die and add the number rolled to your attack, saving throw, or ability check, using the new result in place of the failed one.",
+                "",
+                "If using this ability grants you a success on the attack, saving throw, or ability check, note the number you rolled on the Bardic Inspiration die. The DM can then apply that result as a penalty to an attack or check you make, and you cannot use this ability again until you suffer this drawback. When the DM invokes this penalty, describe an embarrassing gaffe or mistake you make as part of the affected die roll."
+            ]
         ]
     ],
-    "features-data": {
-        "Bonus Proficiencies": [
-            "When you join the College of Satire at 3rd level, you gain proficiency with thieves' tools. You also gain proficiency in Sleight of Hand and one additional skill of your choice. If you are already proficient with thieves' tools or in Sleight of Hand, choose another skill proficiency for each proficiency you already have."
-        ],
-        "Fool's Insight": [
-            "At 6th level, your ability to gather stories and lore gains a supernatural edge. You can cast *detect thoughts* up to a number of times equal to your Charisma modifier. You regain any expended uses of this ability after completing a long rest.",
-            "",
-            "If a creature resists your attempt to probe deeper and succeeds at its saving throw against your *detect thoughts*, it immediately suffers an embarrassing social gaffe. It might loudly pass gas, unleash a thunderous burp, trip and fall, or be compelled to tell a tasteless joke.",
-            "",
-            "<spell>Detect Thoughts</spell>"
-        ],
-        "Fool's Luck": [
-            "Jesters seem to have a knack for pulling themselves out of tight situations, transforming what looks like sure failure into an embarrassing but effective success.",
-            "",
-            "At 14th level, you can expend one use of Bardic Inspiration after you fail an ability check, fail a saving throw, or miss with an attack roll. Roll a Bardic Inspiration die and add the number rolled to your attack, saving throw, or ability check, using the new result in place of the failed one.",
-            "",
-            "If using this ability grants you a success on the attack, saving throw, or ability check, note the number you rolled on the Bardic Inspiration die. The DM can then apply that result as a penalty to an attack or check you make, and you cannot use this ability again until you suffer this drawback. When the DM invokes this penalty, describe an embarrassing gaffe or mistake you make as part of the affected die roll."
-        ],
-        "Tumbling Fool": [
-            "At 3rd level, you master a variety of acrobatic techniques that allow you to evade danger. As a bonus action, you can tumble. When you tumble, you gain the following benefits for the rest of your turn:",
-            "",
-            "* You gain the benefits of taking the Dash and Disengage actions.",
-            "* You gain a climbing speed equal to your current speed.",
-            "* You take half damage from falling."
-        ]
-    },
     "name": "College of Satire"
 }

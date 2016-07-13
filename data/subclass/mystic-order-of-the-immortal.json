@@ -9,34 +9,32 @@
     "features": [
         [
             1,
-            "Martial Order"
+            [
+                "Martial Order",
+                "At 1st level, you gain proficiency with martial weapons, heavy armor, and shields."
+            ]
         ],
         [
             3,
-            "Psionic Resilience"
+            [
+                "Psionic Resilience",
+                "At 3rd level, you learn to use psionic energy to speed up your natural healing. At the start of each of your turns, you gain temporary hit points equal to your Intelligence modifier, provided that you have at least 1 hit point."
+            ]
         ],
         [
             6,
-            "Surge of Health"
+            [
+                "Surge of Health",
+                "Starting at 6th level, you can draw on your psychic focus to escape death's grasp. As a reaction when you take damage, you can halve that damage against you. Your psychic focus immediately ends, and you can't use it again until you finish a short or long rest. You can't use this ability if you can't use your psychic focus."
+            ]
         ],
         [
             8,
-            "Cutting Resonance"
+            [
+                "Cutting Resonance",
+                "At 8th level, you gain the ability to infuse your weapon attacks with psychic energy. Once on each of your turns when you hit a creature with a weapon, you can deal an extra 1d8 psychic damage to the target. When you reach 14th level, this extra damage increases to 2d8."
+            ]
         ]
     ],
-    "features-data": {
-        "Cutting Resonance": [
-            "At 8th level, you gain the ability to infuse your weapon attacks with psychic energy. Once on each of your turns when you hit a creature with a weapon, you can deal an extra 1d8 psychic damage to the target. When you reach 14th level, this extra damage increases to 2d8."
-        ],
-        "Martial Order": [
-            "At 1st level, you gain proficiency with martial weapons, heavy armor, and shields."
-        ],
-        "Psionic Resilience": [
-            "At 3rd level, you learn to use psionic energy to speed up your natural healing. At the start of each of your turns, you gain temporary hit points equal to your Intelligence modifier, provided that you have at least 1 hit point."
-        ],
-        "Surge of Health": [
-            "Starting at 6th level, you can draw on your psychic focus to escape death's grasp. As a reaction when you take damage, you can halve that damage against you. Your psychic focus immediately ends, and you can't use it again until you finish a short or long rest. You can't use this ability if you can't use your psychic focus."
-        ]
-    },
     "name": "Order of the Immortal"
 }

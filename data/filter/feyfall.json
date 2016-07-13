@@ -99,6 +99,7 @@
             "Swashbuckler": true,
             "Thief": true
         },
+        "Rune Scribe": true,
         "Sorcerer": {
             "Draconic Bloodline": true,
             "Favored Soul": true,
@@ -348,9 +349,12 @@
         "Oil of Etherealness": true,
         "Oil of Sharpness": true,
         "Oil of Slipperiness": true,
+        "Opal of the Ild Rune": true,
         "Orb of Dragonkind": true,
+        "Orb of the Stein Rune": true,
         "Orcsplitter": true,
         "Pearl of Power": true,
+        "Pennant of the Vind Rune": true,
         "Periapt of Health": true,
         "Periapt of Proof Against Poison": true,
         "Periapt of Wound Closure": true,
@@ -426,6 +430,7 @@
         "Seeker Dart": true,
         "Sending Stones": true,
         "Sentinel Shield": true,
+        "Shard of the Kalt Rune": true,
         "Shield of Missile Attraction": true,
         "Shield, +1, + 2, or +3": true,
         "Slippers of Spider Climbing": true,

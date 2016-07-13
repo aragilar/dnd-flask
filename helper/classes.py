@@ -29,7 +29,8 @@ def spell_tables(spells, maxslot, spell_list):
     table_style = 'class="%s"' % table_class
     head_row_style = 'class="head-row"'
     ret = ''
-    if spells != None:
+    if spells != None and any(spells.values()):
+        print(spells.values())
         cantrips = spells.get('Cantrip', [])
         if cantrips:
             summary = 'Cantrips'
@@ -286,15 +287,13 @@ def class2html(c, spell_list):
         spells = subc.get('spells')
         subcstr += spell_tables(spells, subc.get('max-slot', 9), spell_list)
         
-        subcstr += '</div>'
+        subcstr += '</div>\n'
         ret += subcstr
 
     # ----#-   Class Spells
-    if c.get('spells') != None:
-        ret += '\n<div>\n'
-        spells = c.get('spells')
-        ret += spell_tables(spells, c.get('max-slot', 9), spell_list)
-        ret += '</div>'
+    temp = spell_tables(c.get('spells'), c.get('max-slot', 9), spell_list)
+    if temp:
+        ret += '<div>\n%s</div>\n' % temp
 
     ret = spellmod.handle_spells(ret, spell_list)
 

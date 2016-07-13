@@ -80,7 +80,6 @@ def _from_files(path):
             try:
                 l.append(archiver.load(item))
             except (ValueError, IOError):
-                print(item)
                 raise
             except:
                 raise

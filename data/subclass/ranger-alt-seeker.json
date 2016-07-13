@@ -9,13 +9,11 @@
     "features": [
         [
             3,
-            "Seeker's Eye"
+            [
+                "Seeker's Eye",
+                "Your companion spirit lends its sharp combat senses to you and your companions. As a bonus action, you invoke your spirit companion and choose a creature you can see. Until the end of your next turn, all attacks made against the chosen creature have advantage."
+            ]
         ]
     ],
-    "features-data": {
-        "Seeker's Eye": [
-            "Your companion spirit lends its sharp combat senses to you and your companions. As a bonus action, you invoke your spirit companion and choose a creature you can see. Until the end of your next turn, all attacks made against the chosen creature have advantage."
-        ]
-    },
     "name": "Seeker"
 }

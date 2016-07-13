@@ -9,13 +9,11 @@
     "features": [
         [
             3,
-            "Guardian's Shroud"
+            [
+                "Guardian's Shroud",
+                "Your companion spirit helps to protect you and the creatures closest to you. As a bonus action, you invoke your spirit companion and choose yourself or an ally you can see. The chosen creature gains temporary hit points equal to 2d6 + your Wisdom modifier."
+            ]
         ]
     ],
-    "features-data": {
-        "Guardian's Shroud": [
-            "Your companion spirit helps to protect you and the creatures closest to you. As a bonus action, you invoke your spirit companion and choose yourself or an ally you can see. The chosen creature gains temporary hit points equal to 2d6 + your Wisdom modifier."
-        ]
-    },
     "name": "Guardian"
 }

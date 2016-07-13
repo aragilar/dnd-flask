@@ -9,13 +9,11 @@
     "features": [
         [
             3,
-            "Stalker's Fangs"
+            [
+                "Stalker's Fangs",
+                "Your companion spirit lends the strength of its deadly bite to you or one of your companions. As a bonus action, you invoke your spirit companion and choose yourself or a creature you can see. The next time the chosen creature hits with a weapon attack, the target of the attack takes extra slashing damage equal to 2d6 + your Wisdom modifier."
+            ]
         ]
     ],
-    "features-data": {
-        "Stalker's Fangs": [
-            "Your companion spirit lends the strength of its deadly bite to you or one of your companions. As a bonus action, you invoke your spirit companion and choose yourself or a creature you can see. The next time the chosen creature hits with a weapon attack, the target of the attack takes extra slashing damage equal to 2d6 + your Wisdom modifier."
-        ]
-    },
     "name": "Stalker"
 }

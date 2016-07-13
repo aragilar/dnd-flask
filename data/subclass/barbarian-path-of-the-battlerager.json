@@ -27,36 +27,34 @@
     "features": [
         [
             3,
-            "Battlerager Armor"
+            [
+                "Battlerager Armor",
+                "When you choose this path at 3rd level, you gain the ability to use spiked armor (see the \"Spiked Armor\" sidebar) as a weapon. While you are wearing spiked armor and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes against a target within 5 feet of you. If the attack hits, the spikes deal 1d4 piercing damage. You use your Strength modifier for the attack and damage rolls.",
+                "",
+                "Additionally, when you use the Attack action to grapple a creature, the target takes 3 piercing damage if your grapple check succeeds."
+            ]
         ],
         [
             6,
-            "Reckless Abandon"
+            [
+                "Reckless Abandon",
+                "Beginning at 6th level, when you use Reckless Attack while raging, you also gain temporary hit points equal to your Constitution modifier (minimum of 1). They vanish if any of them are left when your rage ends."
+            ]
         ],
         [
             10,
-            "Battlerager Charge"
+            [
+                "Battlerager Charge",
+                "Beginning at 10th level, you can take the Dash action as a bonus action while you are raging."
+            ]
         ],
         [
             14,
-            "Spiked Retribution"
+            [
+                "Spiked Retribution",
+                "Starting at 14th level, when a creature within 5 feet of you hits you with a melee attack, the attacker takes 3 piercing damage if you are raging, aren't incapacitated, and are wearing spiked armor."
+            ]
         ]
     ],
-    "features-data": {
-        "Battlerager Armor": [
-            "When you choose this path at 3rd level, you gain the ability to use spiked armor (see the \"Spiked Armor\" sidebar) as a weapon. While you are wearing spiked armor and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes against a target within 5 feet of you. If the attack hits, the spikes deal 1d4 piercing damage. You use your Strength modifier for the attack and damage rolls.",
-            "",
-            "Additionally, when you use the Attack action to grapple a creature, the target takes 3 piercing damage if your grapple check succeeds."
-        ],
-        "Battlerager Charge": [
-            "Beginning at 10th level, you can take the Dash action as a bonus action while you are raging."
-        ],
-        "Reckless Abandon": [
-            "Beginning at 6th level, when you use Reckless Attack while raging, you also gain temporary hit points equal to your Constitution modifier (minimum of 1). They vanish if any of them are left when your rage ends."
-        ],
-        "Spiked Retribution": [
-            "Starting at 14th level, when a creature within 5 feet of you hits you with a melee attack, the attacker takes 3 piercing damage if you are raging, aren't incapacitated, and are wearing spiked armor."
-        ]
-    },
     "name": "Path of the Battlerager"
 }
