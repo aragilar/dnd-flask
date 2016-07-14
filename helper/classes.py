@@ -33,19 +33,17 @@ def spell_tables(spells, maxslot, spell_list):
         cantrips = spells.get('Cantrip', [])
         if cantrips:
             summary = 'Cantrips'
-            body = '<table %s>\n' % table_style
-            body += '<tr><th %s>Cantrips</th></tr>\n<tr><td>\n' % head_row_style
-            body += '\n</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+            body = '<h3 %s>Cantrips</h3>\n' % head_row_style
+            body += ''.join(utils.asyncmap(
                 lambda a: spellmod.spellblock(a, spell_list),
                 list(sorted(filter(lambda a: a in spell_list, cantrips)))
             ))
-            body += '</td></tr>\n</table>'
             body = utils.details_group(body, body_class=table_class)
             ret += utils.details_group(utils.details_block(summary, body))
 
         if maxslot > 0 and any(spells.get(str(i)) for i in range(1, maxslot+1)):
             summary = 'Spells'
-            body = '<table %s>\n' % table_style
+            body = ''
             for x in range(1, maxslot + 1):
                 if str(x) in spells:
                     lst = spells[str(x)]
@@ -53,12 +51,11 @@ def spell_tables(spells, maxslot, spell_list):
                     lst = []
 
                 if len(lst):
-                    body += '<tr><th %s>%s-Level Spells</th></tr>\n<tr><td>\n' % (head_row_style, utils.ordinals[x])
-                    body += '\n</td></tr>\n<tr><td>\n'.join(utils.asyncmap(
+                    body += '<h3 %s>%s-Level Spells</h3>\n' % (head_row_style, utils.ordinals[x])
+                    body += ''.join(utils.asyncmap(
                         lambda a: spellmod.spellblock(a, spell_list),
                         list(sorted(filter(lambda a: a in spell_list, lst)))
                     ))
-            body += '\n</td></tr>\n</table>'
             body = utils.details_group(body, body_class=table_class)
             ret += utils.details_group(utils.details_block(summary, body))
     return ret

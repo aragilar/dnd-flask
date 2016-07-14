@@ -7,7 +7,7 @@ body {
     background-image: url("images/wood1.png");
     background-repeat: repeat;
     padding: 10px 0 300px;
-    font-family: Georgia, serif;
+    font-family: "Times New Roman", Times, serif;
 }
 
 a.button {
@@ -40,11 +40,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #900;
 }
 
-h6 {
-    font-size: 100%;
-    margin: 0;
-}
-
 .class-head p {
     margin: 0;
     text-indent: 0;
@@ -74,10 +69,6 @@ body > div:not(#nav) {
 
 div div {
     width: 80%;
-}
-
-ul, ol, li {
-    margin: 0;
 }
 
 li > details {

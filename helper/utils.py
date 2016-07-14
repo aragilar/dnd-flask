@@ -9,10 +9,10 @@ import markdown2
 
 md = markdown2.Markdown(extras = [
 'fenced-code-blocks',
-'header-ids',
+#'header-ids',
 #'smarty-pants',
 'tables',
-'toc',
+#'toc',
 'markdown-in-html'
 ])
 
@@ -169,7 +169,7 @@ def get_details(text, detltag='h2', splttag=None):
     else:
         blocks = [text]
     
-    finder = re.compile('(<{0}.+?>.*?</{0}>)(.+?)(?=<{0}|$)'.format(detltag), re.DOTALL)
+    finder = re.compile('(<{0}.*?>.*?</{0}>)(.+?)(?=<{0}|$)'.format(detltag), re.DOTALL)
     
     for x, text in enumerate(blocks):
         repl = finder.findall(text)
