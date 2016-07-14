@@ -30,7 +30,6 @@ def spell_tables(spells, maxslot, spell_list):
     head_row_style = 'class="head-row"'
     ret = ''
     if spells != None and any(spells.values()):
-        print(spells.values())
         cantrips = spells.get('Cantrip', [])
         if cantrips:
             summary = 'Cantrips'

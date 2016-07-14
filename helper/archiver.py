@@ -1,13 +1,26 @@
 """
-A module for saving and reading json
+A module for saving and loading JSON
 """
 
 import sys
 import json
 
 class encoder (json.JSONEncoder):
-    def __init__(self, **kwargs):
-        if self.compact:
+    """
+    A JSON encoder with compact and non-compact views
+    """
+    def __init__(self, compact=False, **kwargs):
+        """
+        Calls to JSONEncoder's __init__
+        with some values overwritten based on compactness
+        
+        value      | compact    | not
+        indent     | None       | 4
+        sort_keys  | False      | True
+        separators | (',', ':') | (',', ': ')
+        """
+        
+        if compact:
             kwargs['indent'] = None
             kwargs['sort_keys'] = False
             kwargs['separators'] = (',', ':')
@@ -18,21 +31,12 @@ class encoder (json.JSONEncoder):
         
         json.JSONEncoder.__init__(self, **kwargs)
 
-class cencoder (encoder):
-    compact = True
-class nencoder (encoder):
-    compact = False
-
 def save(data, filename, compact=False):
     """
     Saves a JSON object to the given file
     """
-    if compact:
-        enc = cencoder
-    else:
-        enc = nencoder
     with open(filename, 'w') as f:
-        json.dump(data, f, cls=enc)
+        json.dump(data, f, cls=encoder, compact=compact)
 
 def load(filename, debug=True):
     """
@@ -57,11 +61,7 @@ def load(filename, debug=True):
             return None
 
 def p(data, compact=False):
-    if compact:
-        enc = cencoder
-    else:
-        enc = nencoder
-    return json.dumps(data, cls=enc)
+    return json.dumps(data, cls=encoder, compact=compact)
 
 if __name__ == '__main__':
     #load(sys.argv[0])

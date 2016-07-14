@@ -42,17 +42,17 @@ def handle_spells(text, spells):
 
 def spellblock(spellname, spells):
     spell = spells.get(spellname, {'name': spellname})
-    if spell != None:
+    if spell is not None:
         ret = utils.details_block(
             str(spellname),
-            '<div>\n%s</div>' % spell2html(spell),
+            '<div>\n%s</div>' % spell2html(spell, spells),
             body_class="spell-box"
         )
     else:
         ret = str(spellname)
     return ret
 
-def spell2html(spell):
+def spell2html(spell, spells):
     ret = '<h2>%s</h2>\n' % spell['name']
     
     lvl = spell.get('level', '0')
@@ -104,6 +104,7 @@ def spell2html(spell):
 ##        lst[x] = item
     
     ret += utils.convert('\n'.join(lst))
+    ret = handle_spells(ret, spells)
     return ret
 
 def main(spells, classes, load, compact = True):

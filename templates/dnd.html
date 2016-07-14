@@ -26,7 +26,7 @@
     <h2><a href="http://dnd.wizards.com/articles/features/basicrules" target="_blank">Basic Rules</a></h2>
     <hr>
     {% if classes %}
-    <h2><a href="{{ url_for('class_home', **query) }}">Classes</a></h2>
+    <h2><a href="{{ url_for('class_page', **query) }}">Classes</a></h2>
     <ul>
         {% for item in classes %}
         <li><a href="{{ url_for('class_page', name=item, **query) }}">{{ item }}</a></li>
@@ -35,7 +35,7 @@
     <hr>
     {% endif %}
     {% if races %}
-    <h2><a href="{{ url_for('race_home', **query) }}">Races</a></h2>
+    <h2><a href="{{ url_for('race_page', **query) }}">Races</a></h2>
     <ul>
         {% for item in races %}
         <li><a href="{{ url_for('race_page', name=item, **query) }}">{{ item }}</a></li>

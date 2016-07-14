@@ -28,14 +28,16 @@ def item2md(item):
     ret += '\n'.join(item.get('description', []))
     return ret
 
-def item2html(item):
-    ret = utils.convert(item2md(item))
+def item2html(item, spell_list):
+    ret = item2md(item)
+    ret = utils.convert(ret)
+    ret = spells.handle_spells(ret, spell_list)
     return ret
 
-def itemblock(item):
+def itemblock(item, spell_list):
     summary = str(item.get('name'))
     body = '<div>\n'
-    body += item2html(item)
+    body += item2html(item, spell_list)
     body += '</div>'
     return utils.details_block(summary, body, body_class="spell-box")
 
@@ -85,11 +87,11 @@ def main(items, spell_list, load, compact = True):
 </div>'''
 
     temp = ''.join(utils.asyncmap(
-            itemblock,
+            lambda a: itemblock(a, spell_list),
             [items[item] for item in sorted(items)]
     ))
     ret += utils.details_group(temp, body_id="magicitems", body_class="spell-table")
-    ret = spells.handle_spells(ret, spell_list)
+    #ret = spells.handle_spells(ret, spell_list)
     
     ret = '<div>\n%s\n</div>' % ret
     return ret
