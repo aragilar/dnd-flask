@@ -95,25 +95,32 @@ class Base (object):
 
 class Group (object):
     type = Base
+
+    def __loadfile(self, filename, folder, sources=None):
+        item = os.path.join(folder, filename)
+        if os.path.isfile(item) and item.endswith('.json'):
+            try:
+                item = archiver.load(item, object_hook=self.type.fromJSON)
+            except (ValueError, IOError):
+                raise
+            if sources is None or item.source in sources:
+                self.add(item)
     
     def __init__(self, folder=None, sources=None):
         self._items = collections.OrderedDict()
         if folder is not None:
             folder = os.path.join(folder, self.type.__name__.lower())
-            for item in os.listdir(folder):
-                item = os.path.join(folder, item)
-                if os.path.isfile(item) and item.endswith('.json'):
-                    try:
-                        item = archiver.load(item, object_hook=self.type.fromJSON)
-                    except (ValueError, IOError):
-                        raise
-                    if sources is None or item.source in sources:
-                        self.add(item)
+            asyncmap(
+                lambda a: self.__loadfile(a, folder, sources),
+                os.listdir(folder),
+            )
+                
             self.sort(key=lambda a: a.name)
             if sources is not None and self.type.subclass:
                 self.sort(key=lambda a: sources.index(a.source))
             self.sort(key=lambda a: a.index)
             
+            # ----#-   Sub
             if self.type.subclass:
                 if folder.endswith('/') or folder.endswith('\\'):
                     folder = folder[:-1]
