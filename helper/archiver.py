@@ -31,22 +31,22 @@ class encoder (json.JSONEncoder):
         
         json.JSONEncoder.__init__(self, **kwargs)
 
-def save(data, filename, compact=False):
+def save(data, filename, compact=False, **kwargs):
     """
     Saves a JSON object to the given file
     """
     with open(filename, 'w') as f:
-        json.dump(data, f, cls=encoder, compact=compact)
+        json.dump(data, f, cls=encoder, compact=compact, **kwargs)
 
-def load(filename, debug=True):
+def load(filename, debug=True, **kwargs):
     """
     Loads a json object from the given file
     """
     try:
         with open(filename, 'r') as f:
             try:
-                data = json.load(f)
-            except ValueError:
+                data = json.load(f, **kwargs)
+            except (ValueError):
                 if debug:
                     sys.stderr.write('JSON error in file: %s\n' % filename)
                     raise
@@ -60,8 +60,8 @@ def load(filename, debug=True):
         else:
             return None
 
-def p(data, compact=False):
-    return json.dumps(data, cls=encoder, compact=compact)
+def p(data, compact=False, **kwargs):
+    return json.dumps(data, cls=encoder, compact=compact, **kwargs)
 
 if __name__ == '__main__':
     #load(sys.argv[0])

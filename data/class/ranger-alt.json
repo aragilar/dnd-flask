@@ -103,7 +103,7 @@
         ]
     ],
     "hit die": "2d6",
-    "longdescription": [
+    "long description": [
         "# Rangers, Alternative",
         "",
         "*Unearthed Arcana: Ranger Beta*",
@@ -150,7 +150,7 @@
         "",
         "Before we consider making a change to the Player's Handbook, an alternative ranger would need to be thoroughly playtested from levels 1 to 20. We would then need to see conclusive feedback that you-our players and DMs-want to replace the ranger character class. Even then, we'd simply make this option a legal choice for D&D Adventurers League play and present it in an upcoming expansion as a new option for home campaigns. We have no intention of invalidating current characters or taking options away from people who enjoy them."
     ],
-    "max-level": 5,
+    "max level": 5,
     "name": "Ranger, Alt",
     "primary stat": [
         "dex",

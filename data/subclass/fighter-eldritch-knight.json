@@ -78,7 +78,7 @@
         ]
     ],
     "magic": 3,
-    "max-slot": 4,
+    "max slot": 4,
     "name": "Eldritch Knight",
     "spells": "wizard",
     "table": {

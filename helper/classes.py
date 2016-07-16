@@ -1,296 +1,355 @@
+import os
 import math
 import copy
 import re
+
+from . import archiver
 from . import utils
-from . import spells as spellmod
+from . import spells
 
-def feature_block(data, feature):
-    if isinstance(feature, list):
-        temp = feature[1:]
-        feature = feature[0]
-    else:
-        temp = data.get(feature, '')
+class Class (utils.Base):
+    combat_proficiencies = []
+    description = ''
+    equipment = []
+    features = []
+    hit_die = 8
+    long_description = []
+    magic = 0
+    max_level = 20
+    max_slot = 9
+    primary_stat = []
+    saving_throws = []
+    skills = []
+    spells = {}
+    table = {}
+    tool_proficiencies = []
     
-    if isinstance(temp, list):
-        temp = '\n'.join(temp)
+    loadhook = None
+    
+    #def __init__(self, *args, **kwargs):
+    #    utils.Base.__init__(self, *args, **kwargs)
+    #    if self.spells and callable(self.loadhook):
+    #        self.spells = 
+    
+    def __str__(self):
+        ret = '<div>\n'
+    
+        # ----#-   Class Description
+        temp = '\n'.join(self.long_description)
         temp = utils.convert(temp)
-        temp = utils.get_details(temp)
-        #temp = re.sub('<h2.*?>', '', temp)
-        #temp = temp.replace('</h2>', '')
+        temp = utils.get_details(temp, 'h1')
+        ret += temp
+        ret += '</div>\n'
+    
+        # ----#-   Class Details
+        ret += '<div>\n'
         
-        data[feature] = temp
+        summary = '<h2>Features</h2>'
+        
+        short = '<p><strong>Description:</strong> %s</p>\n\n' % self.description
+        short += '<h3>Hit Points</h3>\n\n'
+        short += '<p><strong>Hit Die:</strong> %s</p>\n\n' % self.hit_die
+        short += '<h3>Proficiencies</h3>\n\n'
+        
+        temp = self.primary_stat[:]
+        
+        sep = 'and'
+        if temp[-1] == '/':
+            sep = 'or'
+            temp = temp[:-1]
+        
+        temp = list(map(lambda a: utils.stats[a], temp))
+        if len(temp) > 1:
+            short += '<p><strong>Primary Abilities:</strong> %s</p>\n\n' % utils.comma_list(temp, sep)
+        elif temp:
+            short += '<p><strong>Primary Ability:</strong> %s</p>\n\n' % temp[0]
+        
+        temp = self.saving_throws
+        temp = list(map(lambda a: utils.stats[a], temp))
+        if len(temp) > 1:
+            short += '<p><strong>Saving Throw Proficiencies:</strong> %s</p>\n\n' % utils.comma_list(temp)
+        elif temp:
+            short += '<p><strong>Saving Throw Proficiency:</strong> %s</p>\n\n' % temp[0]
+        
+        short += '<p><strong>Armor and Weapon Proficiencies:</strong> %s</p>\n\n' % utils.comma_list(self.combat_proficiencies)
+        
+        if self.tool_proficiencies:
+            short += '<p><strong>Tool Proficiencies:</strong> %s</p>\n\n' % utils.choice_list(self.tool_proficiencies)
+        
+        short += '<p><strong>Skills:</strong> %s</p>\n\n' % utils.choice_list(self.skills)
+        
+        if self.equipment:
+            short += '<h3>Equipment</h3>\n\n'
+            short += '<p>You start with the following equipment in addition to the equipment granted by your background:<p>\n\n<ul>\n'
+            for item in self.equipment:
+                short += '<li>%s</li>\n' % self.equipment_row(item)
+            short += '</ul>'
+        
+        ret += utils.details_block(summary, short, body_class="class-head")
     
-    temp = utils.details_block(feature, temp)
+        # ----#-   Class Features
+        ret += self.features2html()
+        ret += '</div>\n'
     
-    return temp
-
-def spell_tables(spells, maxslot, spell_list):
-    table_class = 'spell-table class-spells'
-    table_style = 'class="%s"' % table_class
-    head_row_style = 'class="head-row"'
-    ret = ''
-    if spells != None and any(spells.values()):
-        cantrips = spells.get('Cantrip', [])
-        if cantrips:
-            summary = 'Cantrips'
-            body = '<h3 %s>Cantrips</h3>\n' % head_row_style
-            body += ''.join(utils.asyncmap(
-                lambda a: spellmod.spellblock(a, spell_list),
-                list(sorted(filter(lambda a: a in spell_list, cantrips)))
-            ))
-            body = utils.details_group(body, body_class=table_class)
-            ret += utils.details_group(utils.details_block(summary, body))
-
-        if maxslot > 0 and any(spells.get(str(i)) for i in range(1, maxslot+1)):
-            summary = 'Spells'
-            body = ''
-            for x in range(1, maxslot + 1):
-                if str(x) in spells:
-                    lst = spells[str(x)]
+        # ----#-   Subclass
+        for subc in self.children.values():
+            ret += str(subc)
+    
+        # ----#-   Class Spells
+        temp = self.spell_tables()
+        if temp:
+            ret += '<div>\n%s</div>\n' % temp
+    
+        ret = spells.handle_spells(ret, self.spell_list)
+    
+        return ret
+    
+    def features2html(self):
+        ret = ''
+        
+        # ----#-   Table
+        if self.table or self.magic > 0:
+            if self.magic > 0: # figure out the level of the maximum spell slot
+                if self.max_slot != 9:
+                    x = self.max_slot
                 else:
-                    lst = []
-
-                if len(lst):
-                    body += '<h3 %s>%s-Level Spells</h3>\n' % (head_row_style, utils.ordinals[x])
-                    body += ''.join(utils.asyncmap(
-                        lambda a: spellmod.spellblock(a, spell_list),
-                        list(sorted(filter(lambda a: a in spell_list, lst)))
-                    ))
-            body = utils.details_group(body, body_class=table_class)
-            ret += utils.details_group(utils.details_block(summary, body))
-    return ret
-
-def features2html(c):
-    lst = copy.deepcopy(c.get('features', []))
-    data = c.get('features-data', {})
-    ret = ''
-    maxlevel = c.get("max-level", 20)
-    
-    # ----#-   Table
-    table = c.get('table')
-    magic = c.get('magic', 0)
-    if table != None or magic > 0:
-        if table == None:
-            table = {}
-        
-        if magic > 0: # figure out the level of the maximum spell slot
-            if 'max-slot' in c:
-                x = c['max-slot']
+                    y = self.max_level
+                    if y < self.magic:
+                        y = 0
+                    else:
+                        y = int(math.ceil(y / float(self.magic)))
+                    for x in range(len(utils.spellslots[-1])):
+                        if utils.spellslots[y][x] < 1:
+                            break
+                    else:
+                        x += 1
             else:
-                y = maxlevel
-                if y < magic:
-                    y = 0
-                else:
-                    y = int(math.ceil(y / float(magic)))
-                for x in range(len(utils.spellslots[-1])):
-                    if utils.spellslots[y][x] < 1:
-                        break
-                else:
-                    x += 1
-        else:
-            x = 0
-        
-        headrows = ['Level']
-        headrows += table.get('@', [])
-        if magic:
-            headrows += ['']
-            headrows += list(map(lambda a: utils.ordinals[a], range(1, x + 1)))
-        
-        body = '<table class="class-table">\n'
-        
-        if magic:
-            body += '<caption>%sSpell Slots</caption>\n' % ('&nbsp;' * len(headrows) * 3)
-        
-        emptycolstyle = ' style="min-width: 0px;"'
-        body += '<tr>\n'
-        for item in headrows:
-            style = ''
-            if item == '':
-                style = emptycolstyle
-            body += '<th%s>%s</th>\n' % (style, item)
-        body += '</tr>\n'
-        
-        for x in range(1, maxlevel+1):
+                x = 0
+            
+            headrows = ['Level']
+            headrows += self.table.get('@', [])
+            if self.magic:
+                headrows += ['']
+                headrows += list(map(lambda a: utils.ordinals[a], range(1, x + 1)))
+            
+            body = '<table class="class-table">\n'
+            
+            if self.magic:
+                body += '<caption>%sSpell Slots</caption>\n' % ('&nbsp;' * len(headrows) * 3)
+            
+            emptycolstyle = ' style="min-width: 0px;"'
             body += '<tr>\n'
             for item in headrows:
-                if item != '':
-                    body += '<td style="text-align: center;">'
-                    if item == 'Level': # character level
-                        body += utils.ordinals[x]
-                    elif item in table: # data specific to the class
-                        body += str(table.get(item, [])[x-1])
-                    elif item[:3] in utils.ordinals: # spell slots
-                        if x < magic:
-                            y = 0
-                        else:
-                            y = int(math.ceil(x / float(magic)))
-                        z = utils.ordinals.index(item[:3]) - 1
-                        body += str(utils.spellslots[y][z])
-                    body += '</td>\n'
-                else:
-                    body += '<td%s></td>\n' % emptycolstyle
+                style = ''
+                if item == '':
+                    style = emptycolstyle
+                body += '<th%s>%s</th>\n' % (style, item)
             body += '</tr>\n'
-        body += '</table>'
-        ret += utils.details_block('Table', body)
-    
-    # ----#-   Features
-    if len(lst):
-        if lst[0] and lst[0][0] == 0:
-            head = lst.pop(0)
-            head.pop(0)
-        else:
-            head = []
-
-        if lst[-1] and lst[-1][0] == -1:
-            foot = lst.pop(-1)
-            foot.pop(0)
-        else:
-            foot = []
-
-        for item in head:
-            ret += feature_block(data, item)
-        
-        ret += '<ol>\n'
-        lst = iter(lst)
-        line = next(lst)
-        for lvl in range(1, maxlevel+1):
-            while line[0] < lvl:
-                try:
-                    line = next(lst)
-                except StopIteration:
-                    break
             
-            linestr = ''
-            if line[0] == lvl:
-                for item in line[1:]:
-                    linestr += feature_block(data, item)
+            for x in range(1, self.max_level+1):
+                body += '<tr>\n'
+                for item in headrows:
+                    if item != '':
+                        body += '<td style="text-align: center;">'
+                        if item == 'Level': # character level
+                            body += utils.ordinals[x]
+                        elif item in self.table: # data specific to the class
+                            body += str(self.table.get(item, [])[x-1])
+                        elif item[:3] in utils.ordinals: # spell slots
+                            if x < self.magic:
+                                y = 0
+                            else:
+                                y = int(math.ceil(x / float(self.magic)))
+                            z = utils.ordinals.index(item[:3]) - 1
+                            body += str(utils.spellslots[y][z])
+                        body += '</td>\n'
+                    else:
+                        body += '<td%s></td>\n' % emptycolstyle
+                body += '</tr>\n'
+            body += '</table>'
+            ret += utils.details_block('Table', body)
+        
+        # ----#-   Features
+        lst = copy.deepcopy(self.features)
+        if lst:
+            data = {}
+            if lst[0] and lst[0][0] == 0:
+                head = lst.pop(0)
+                head.pop(0)
+            else:
+                head = []
+    
+            if lst[-1] and lst[-1][0] == -1:
+                foot = lst.pop(-1)
+                foot.pop(0)
+            else:
+                foot = []
+    
+            for item in head:
+                ret += self.feature_block(data, item)
             
-            ret += '<li>%s</li>\n' % linestr
-        ret += '</ol>\n'
-
-        for item in foot:
-            ret += feature_block(data, item)
-        
-        ret = utils.details_group(ret)#, body_class="class-features")
-    return ret
-
-def equipment_row(lst):
-    if len(lst) > 1:
-        ret = []
-        for x, item in enumerate(lst):
-            short = '('
-            short += chr(97 + x)
-            short += ') '
-            short += item
-            ret.append(short)
-        return ' or '.join(ret)
-    elif len(lst) == 1:
-        return str(lst[0])
-    else:
-        return ''
-
-def class2html(c, spell_list):
-    ret = ''
-    ret += '<div>\n'
-    #ret += '<h1>%s</h1>\n' % c.get('name', '')
-
-    # ----#-   Class Description
-    temp = c.get('longdescription', '')
-    temp = '\n'.join(temp)
-    temp = utils.convert(temp)
-    temp = utils.get_details(temp, 'h1')
-    ret += temp
-    ret += '</div>\n\n'
-
-    # ----#-   Class Details
-    ret += '<div>\n'
-    summary = '<h2>Features</h2>'
+            ret += '<ol>\n'
+            lst = iter(lst)
+            line = next(lst)
+            for lvl in range(1, self.max_level+1):
+                while line[0] < lvl:
+                    try:
+                        line = next(lst)
+                    except StopIteration:
+                        break
+                
+                linestr = ''
+                if line[0] == lvl:
+                    for item in line[1:]:
+                        linestr += self.feature_block(data, item)
+                
+                ret += '<li>%s</li>\n' % linestr
+            ret += '</ol>\n'
     
-    short = '**Description:** %s\n\n' % c.get('description', '')
-    short += '###### Hit Points\n\n'
-    short += '**Hit Die:** %s\n\n' % c.get('hit die', '')
-    short += '###### Proficiencies\n\n'
-    temp = c.get('primary stat', [])
-    sep = 'and'
-    if temp[-1] == '/':
-        sep = 'or'
-        temp = temp[:-1]
-    temp = list(map(lambda a: utils.stats[a], temp))
-    if len(temp) > 1:
-        short += '**Primary Abilities:** %s\n\n' % utils.comma_list(temp, sep)
-    elif len(temp) == 1:
-        short += '**Primary Ability:** %s\n\n' % temp[0]
-    temp = c.get('saving throws', [])
-    temp = list(map(lambda a: utils.stats[a], temp))
-    if len(temp) > 1:
-        short += '**Saving Throw Proficiencies:** %s\n\n' % utils.comma_list(temp)
-    elif len(temp) == 1:
-        short += '**Saving Throw Proficiency:** %s\n\n' % temp[0]
-    short += '**Armor and Weapon Proficiencies:** %s\n\n' % utils.comma_list(c.get('combat proficiencies', []))
-    temp = utils.choice_list(c.get('tool proficiencies', []))
-    if temp != 'none':
-        short += '**Tool Proficiencies:** %s\n\n' % temp
-    short += '**Skills:** %s\n\n' % utils.choice_list(c.get('skills', []))
-    temp = c.get('equipment', [])
-    if len(temp):
-        short += '###### Equipment\n\n'
-        short += 'You start with the following equipment in addition to the equipment granted by your background:\n\n'
-        for item in temp:
-            short += '* %s\n' % equipment_row(item)
-    short = utils.convert(short)
+            for item in foot:
+                ret += self.feature_block(data, item)
+            
+            ret = utils.details_group(ret)#, body_class="class-features")
+        
+        return ret
     
-    ret += utils.details_block(summary, short, body_class="class-head")
-
-    # ----#-   Class Features
-    ret += features2html(c)
-    ret += '</div>\n'
-
-    # ----#-   Subclass
-    subclassdict = c.get('subclass', {})
-    for name in subclassdict:
-        subc = subclassdict[name]
-        subcstr = '\n<div>\n\n'
+    @staticmethod
+    def equipment_row(lst):
+        if len(lst) > 1:
+            ret = []
+            for x, item in enumerate(lst):
+                short = '('
+                short += chr(97 + x)
+                short += ') '
+                short += item
+                ret.append(short)
+            return ' or '.join(ret)
+        elif lst:
+            return str(lst[0])
+        else:
+            return ''
+    
+    @staticmethod
+    def feature_block(data, feature):
+        if isinstance(feature, list):
+            temp = feature[1:]
+            feature = feature[0]
+        else:
+            temp = data.get(feature, '')
         
-        # ----#-   Subclass Features
-        n = subc.get('name', '')
-        desc = subc.get('description')
-        summary = '<h2 id="%s">%s</h2>' % (utils.slug(n), n)
-        body = utils.convert('\n'.join(desc))
-        if body:
-            body += '<hr>'
-        subcstr += utils.details_block(summary, body)
-        subcstr += features2html(subc)
+        if isinstance(temp, list):
+            temp = '\n'.join(temp)
+            temp = utils.convert(temp)
+            temp = utils.get_details(temp)
+            
+            data[feature] = temp
         
-        # ----#-   Subclass Subclass Spells
-        spells = subc.get('subclassspells')
-        if spells != None:
+        temp = utils.details_block(feature, temp)
+        
+        return temp
+    
+    def spell_tables(self):
+        table_class = 'spell-table class-spells'
+        table_style = 'class="%s"' % table_class
+        head_row_style = 'class="head-row"'
+        ret = ''
+        if self.spells and any(self.spells.values()):
+            cantrips = self.spells.get('Cantrip', [])
+            if cantrips:
+                summary = 'Cantrips'
+                body = '<h3 %s>Cantrips</h3>\n' % head_row_style
+                body += ''.join(utils.asyncmap(
+                    lambda a: spells.spellblock(a, self.spell_list),
+                    list(sorted(cantrips))
+                ))
+                body = utils.details_group(body, body_class=table_class)
+                ret += utils.details_group(utils.details_block(summary, body))
+
+            if self.max_slot > 0 and any(self.spells.get(str(i)) for i in range(1, self.max_slot+1)):
+                summary = 'Spells'
+                body = ''
+                for x in range(1, self.max_slot + 1):
+                    if str(x) in self.spells:
+                        lst = self.spells[str(x)]
+                    else:
+                        lst = []
+    
+                    if lst:
+                        body += '<h3 %s>%s-Level Spells</h3>\n' % (head_row_style, utils.ordinals[x])
+                        body += ''.join(utils.asyncmap(
+                            lambda a: spells.spellblock(a, self.spell_list),
+                            list(sorted(lst))
+                        ))
+                body = utils.details_group(body, body_class=table_class)
+                ret += utils.details_group(utils.details_block(summary, body))
+        return ret
+    
+    def filter(self, fil):
+        ret = utils.Base.filter(self, fil)
+        if ret and fil is not None and 'spell' in fil:
+            spellfilter = fil['spell']
+            for item in ([ret] + list(ret.children.values())):
+                item.spells = item.spells.copy()
+                for lvl in item.spells.keys():
+                    item.spells[lvl] = list(filter(lambda a: spellfilter.get(a), item.spells[lvl]))
+        return ret
+
+class SubClass (Class):
+    subclass = None
+    subclass_spells = {}
+    
+    def __str__(self):
+        ret = '<div>\n'
+            
+        # ----#-   Features
+        summary = '<h2 id="%s">%s</h2>' % (utils.slug(self.name), self.name)
+        if self.description:
+            body = utils.convert('\n'.join(self.description)) + '<hr>'
+        else:
+            body = ''
+        ret += utils.details_block(summary, body)
+        
+        ret += self.features2html()
+        
+        # ----#-   Subclass Spells
+        if self.subclass_spells:
             summary = 'Subclass Spells'
-            body = utils.convert(spells.get('description', ''))
+            body = utils.convert(self.subclass_spells.get('description', ''))
             body += '<table class="subclass-spells">\n'
-            for key in sorted(int(a) for a in spells.keys() if a.isdigit()):
-                lst = spells[str(key)]
+            for key in sorted(int(a) for a in self.subclass_spells.keys() if a.isdigit()):
+                lst = self.subclass_spells[str(key)]
                 body += '<tr>\n'
                 body += '<td style="text-align: center;">%s</td>\n' % utils.ordinals[key]
                 for spell in lst:
                     body += '<td>'
-                    body += spellmod.spellblock(spell, spell_list)
+                    body += spells.spellblock(spell, spell_list)
                     body += '</td>\n'
                 body += '</tr>\n'
             body += '</table>'
-            subcstr += utils.details_block(summary, body)
+            ret += utils.details_block(summary, body)
         
-        # ----#-   Subclass Spells
-        spells = subc.get('spells')
-        subcstr += spell_tables(spells, subc.get('max-slot', 9), spell_list)
+        # ----#-   Spells
+        ret += self.spell_tables()
         
-        subcstr += '</div>\n'
-        ret += subcstr
+        ret += '</div>\n'
+        
+        return ret
 
-    # ----#-   Class Spells
-    temp = spell_tables(c.get('spells'), c.get('max-slot', 9), spell_list)
-    if temp:
-        ret += '<div>\n%s</div>\n' % temp
+Class.subclass = SubClass
 
-    ret = spellmod.handle_spells(ret, spell_list)
+class Classes (utils.Group):
+    type = Class
+    
+    def __init__(self, folder=None, sources=None):
+        utils.Group.__init__(self, folder, sources)
 
-    return ret
+        if folder is not None:
+            folder = os.path.join(folder, 'spelllist')
+            for c in self:
+                for item in ([c] + list(c.children.values())):
+                    if isinstance(item.spells, str):
+                        spellpath = os.path.join(folder, item.spells + '.json')
+                        if os.path.exists(spellpath):
+                            item.spells = archiver.load(spellpath)
+                        else:
+                            item.spells = Class.spells

@@ -2,9 +2,10 @@ import sys
 import os
 import re
 import traceback
-import threading
-import helper
+
 from flask import Flask, render_template, url_for, abort, request, send_from_directory
+
+import helper
 
 app = Flask(__name__)
 
@@ -18,7 +19,6 @@ everyjs = [
     '@nodetails.js'
 ]
 filterkey = 'name'
-started = False
 
 def init():
     global filters, started
@@ -26,8 +26,7 @@ def init():
         args = (sys.argv[1],)
     else:
         args = ()
-    t = threading.Thread(target=helper.init, args=args)
-    t.start()
+    helper.init(*args)
     folder = os.path.join(helper.datafolder, 'filter')
     if os.path.exists(folder):
         for item in os.listdir(folder):
@@ -43,8 +42,6 @@ def init():
                 d = filters[key]
                 del filters[key]
                 filters[key] = d
-    t.join()
-    started = True
 
 def get_filter():
     filter = request.args.get('filter')
@@ -107,9 +104,9 @@ def favicon():
 def index():
     filter, show = get_filter()
     
-    classes = helper.getclasses(show).keys()
-    races = helper.getraces(show).keys()
-    rules = helper.getoptionalrules(show).keys()
+    classes = helper.class_list.filter(show).keys()
+    races = helper.race_list.filter(show).keys()
+    rules = helper.optionalrule_list.filter(show).keys()
     
     if helper.datafolder is not None:
         documents = os.path.exists(os.path.join(helper.datafolder, 'documentation'))
@@ -135,12 +132,12 @@ def index():
         
         classes=classes,
         races=races,
-        backgrounds=bool(helper.getbackgrounds(show)),
-        spells=bool(helper.getspells(show)),
-        feats=bool(helper.getfeats(show)),
-        boons=bool(helper.getepicboons(show)),
-        items=helper.getweapons(show) or helper.getarmors(show) or helper.getitems(show),
-        magicitems=bool(helper.getmagicitems(show)),
+        backgrounds=bool(helper.background_list.filter(show)),
+        spells=bool(helper.spell_list.filter(show)),
+        feats=bool(helper.feat_list.filter(show)),
+        boons=bool(helper.epicboon_list.filter(show)),
+        items=helper.weapon_list.filter(show) or helper.armor_list.filter(show) or helper.item_list.filter(show),
+        magicitems=bool(helper.magicitem_list.filter(show)),
         documentation=documents
     )
 
@@ -176,9 +173,9 @@ def class_page(name):
             abort(404)
     else:
         subclasses = {}
-        classes = helper.getclasses(show)
-        for key in classes:
-            subclasses[key] = classes[key]['subclass'].keys()
+        classes = helper.class_list.filter(show)
+        for key in classes.keys():
+            subclasses[key] = classes[key].children.keys()
         classes = classes.keys()
             
         return render_template('dnd-subthing.html',
@@ -213,9 +210,9 @@ def race_page(name):
             abort(404)
     else:
         subraces = {}
-        races = helper.getraces(show)
-        for key in races:
-            subraces[key] = races[key]['subrace'].keys()
+        races = helper.race_list.filter(show)
+        for key in races.keys():
+            subraces[key] = races[key].children.keys()
         races = races.keys()
         
         return render_template('dnd-subthing.html',
@@ -274,80 +271,41 @@ def feat_page():
     else:
         abort(404)
 
-@app.route('/spells/', defaults={'name':None})
-@app.route('/spells/<name>')
-def spell_page(name):
+@app.route('/spells')
+def spell_page():
     filter, show = get_filter()
-    
-    if name is None:
-        html = helper.spell_page(show)
-        
-        if html:
-            return render_template('dnd-base.html',
-                home=True,
-                collapse_details=True,
-                styles=everystyle,
-                javascript=everyjs+['@spells.js'],
-                title='Spells',
-                content=html
-            )
-        else:
-            abort(404)
-    else:
-        spells = helper.getspells(show)
-        if name in spells:
-            html = helper.spells.spell2html(spells[name], spells)
-            html = '<div>\n%s</div>\n' % html
-            
-            return render_template('dnd-base.html',
-                home=True,
-                collapse_details=True,
-                styles=everystyle,
-                javascript=everyjs,
-                title=name,
-                content=html
-            )
-        else:
-            abort(404)
 
-@app.route('/magicitems/', defaults={'name':None})
-@app.route('/magicitems/<name>')
-def magicitem_page(name):
+    html = helper.spell_page(show)
+    
+    if html:
+        return render_template('dnd-base.html',
+            home=True,
+            collapse_details=True,
+            styles=everystyle,
+            javascript=everyjs+['@spells.js'],
+            title='Spells',
+            content=html
+        )
+    else:
+        abort(404)
+
+@app.route('/magicitems')
+def magicitem_page():
     filter, show = get_filter()
     
-    if name is None:
-        html = helper.magicitem_page(show)
-        
-        if html:
-            return render_template('dnd-base.html',
-                home=True,
-                collapse_details=True,
-                styles=everystyle,
-                javascript=everyjs+['@magicitems.js'],
-                title='Magic Items',
-                content=html
-            )
-        else:
-            abort(404)
+    html = helper.magicitem_page(show)
+    
+    if html:
+        return render_template('dnd-base.html',
+            home=True,
+            collapse_details=True,
+            styles=everystyle,
+            javascript=everyjs+['@magicitems.js'],
+            title='Magic Items',
+            content=html
+        )
     else:
-        items = helper.getmagicitems(show)
-        if name in items:
-            html = helper.magicitems.item2html(
-                items[name],
-                helper.getspells(show)
-            )
-            html = '<div>\n%s</div>\n' % html
-            
-            return render_template('dnd-base.html',
-                home=True,
-                collapse_details=True,
-                styles=everystyle,
-                javascript=everyjs,
-                title=name,
-                content=html
-            )
-        else:
-            abort(404)
+        abort(404)
 
 @app.route('/items')
 def item_page():
@@ -410,8 +368,8 @@ def optionalrule_page(rule):
         abort(404)
 
 if __name__ == '__main__':
-    t = threading.Thread(target=init)
-    t.start()
+    # ----#-   Main
+    init()
     
     if 'PORT' in os.environ: # Public System
         port = int(os.environ['PORT'])
@@ -422,9 +380,6 @@ if __name__ == '__main__':
         host = '127.0.0.1'
         debug = False
         
-        t.join()
         print('safari-http://%s:%d/' % (host, port))
-    
-    t.join()
     
     app.run(host=host, port=port, debug=debug, use_reloader=False)

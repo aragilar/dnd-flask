@@ -2,166 +2,170 @@ import re
 from . import utils
 from . import spells
 
-def features2html(race):
-    ret = ''
+class Race (utils.Base):
+    ability_scores = {}
+    age = None
+    alignment = None
+    combat_proficiencies = []
+    description = ''
+    feats = []
+    languages = []
+    languages_description = None
+    skills = []
+    size = 'medium'
+    size_description = 'Your size is {size}.'
+    speed = 30
+    speed_description = 'Your base walking speed is {speed} feet.'
+    tool_proficiencies = []
+    traits = []
     
-    # ----#-   Race Ability Scores
-    scores = race.get('ability scores', {})
-    if sum(map(lambda a: scores[a], scores)) > 0:
-        lst = []
-        if sum(map(lambda a: scores[a] if a != '+' else 0, scores)) > 0:
-            if all(map(lambda a: scores[a] == 1, utils.statlist)):
-                lst.append("your ability scores each increase by 1")
-            else:
-                for i in utils.statlist:
-                    if scores.get(i) > 0:
-                        lst.append('your %s score increases by %d' % (
-                            utils.stats[i],
-                            scores.get(i)
-                        ))
-            if scores.get('+') > 0:
-                lst.append('%d other ability scores of your choice increase by 1'
+    def __str__(self):
+        ret = '<div>\n'
+        
+        # ----#-   Race Description
+        temp = utils.convert(self.description)
+        ret += utils.get_details(temp, 'h1') + '\n\n'
+        ret += '</div>\n\n'
+        
+        # ----#-   Race Features
+        ret += '<div>\n%s</div>\n' % self.features2html()
+        
+        # ----#-   Subrace
+        for subrace in self.children.values():
+            ret += str(subrace)
+        
+        ret = spells.handle_spells(ret, self.spell_list)
+        
+        return ret
+    
+    def features2html(self):
+        ret = ''
+        
+        # ----#-   Race Ability Scores
+        scores = self.ability_scores
+        if sum(map(lambda a: scores[a], scores)) > 0:
+            lst = []
+            if sum(map(lambda a: scores[a] if a != '+' else 0, scores)) > 0:
+                if all(map(lambda a: scores[a] == 1, utils.statlist)):
+                    lst.append("your ability scores each increase by 1")
+                else:
+                    for i in utils.statlist:
+                        if scores.get(i) > 0:
+                            lst.append('your %s score increases by %d' % (
+                                utils.stats[i],
+                                scores.get(i)
+                            ))
+                if scores.get('+') > 0:
+                    lst.append('%d other ability scores of your choice increase by 1'
+                        % scores.get('+')
+                    )
+            elif scores.get('+') > 0:
+                lst.append('%d different ability scores of your choice increase by 1'
                     % scores.get('+')
                 )
-        elif scores.get('+') > 0:
-            lst.append('%d different ability scores of your choice increase by 1'
-                % scores.get('+')
-            )
-        lst = utils.comma_list(lst)
-        lst = lst[0].upper() + lst[1:] + '.'
-        ret += '**Ability Score Increase.** %s\n\n' % lst
-    
-    # ----#-   Race Age
-    temp = race.get('age')
-    if temp != None:
-        ret += '**Age.** %s\n\n' % temp
-    
-    # ----#-   Race Alignment
-    temp = race.get('alignment')
-    if temp != None:
-        ret += '**Alignment.** %s\n\n' % temp
-    
-    # ----#-   Race Size
-    temp = race.get('size description')
-    if temp != None:
-        ret += '**Size.** %s\n\n' % temp.format(**race)
-    else:
-        temp = race.get('size')
-        if temp != None:
-            ret += '**Size.** Your size is %s.\n\n' % str(temp)
-    
-    # ----#-   Race Speed
-    temp = race.get('speed description')
-    if temp != None:
-        ret += '**Speed.** %s\n\n' % temp.format(**race)
-    else:
-        temp = race.get('speed')
-        if temp != None:
-            ret += '**Speed.** Your base walking speed is %s feet.\n\n' % str(temp)
-    
-    # ----#-   Race Traits
-    for trait in race.get('traits', []):
-        temp = trait[1:]
-        trait = trait[0]
-        tempstr = '**%s.** %s\n\n' % (trait, '\n'.join(temp))
-        ret += tempstr
+            lst = utils.comma_list(lst)
+            lst = lst[0].upper() + lst[1:] + '.'
+            ret += '**Ability Score Increase.** %s\n\n' % lst
         
-    
-    # ----#-   Race Weapons
-    temp = race.get('combat proficiencies', [])
-    if len(temp) > 0:
-        ret += ('**%s Combat Training.** You have proficiency in %s.\n\n'
-            % (race.get('name', ''), utils.comma_list(temp))
-        )
-    
-    # ----#-   Race Tools
-    temp = race.get('tool proficiencies', [])
-    if len(temp) > 1:
-        ret += '**Tool Proficiencies.** %s.\n\n' % utils.choice_list(temp, 'tool')
-    elif len(temp):
-        ret += ('**Tool Proficiency.** You gain proficiency with %s.\n\n'
-            % str(temp[0])
-        )
-    
-    # ----#-   Race Skills
-    temp = race.get('skills', [])
-    if len(temp) > 1:
-        ret += ('**Skills.** You gain proficiency in %s.\n\n'
-            % utils.choice_list(temp, 'skill')
-        )
-    elif len(temp):
-        if isinstance(temp[0], int):
-            if temp[0] > 1:
-                ret += '**Skill.** You gain proficiency in %d skills.\n\n' % temp[0]
-            else:
-                ret += '**Skill.** You gain proficiency in %d skill.\n\n' % temp[0]
-        else:
-            ret += '**Skill.** You gain proficiency in %s.\n\n' % str(temp[0])
-    
-    # ----#-   Race Feats
-    temp = race.get('feats', [])
-    if len(temp) > 1:
-        ret += '**Feats.** You gain %s.\n\n' % utils.choice_list(temp, 'feat')
-    elif len(temp):
-        if isinstance(temp[0], int):
-            if temp[0] > 1:
-                ret += '**Feat.** You gain %d feats.\n\n' % temp[0]
-            else:
-                ret += '**Feat.** You gain %d feat.\n\n' % temp[0]
-        else:
-            ret += '**Feat.** You gain the %s feat.\n\n' % str(temp[0])
-    
-    # ----#-   Race Languages
-    temp = race.get('languages', [])
-    if len(temp) and isinstance(temp[-1], int):
-        if temp[-1] != 1:
-            temp[-1] = '%d additional languages' % temp[-1]
-        else:
-            temp[-1] = '%d additional language' % temp[-1]
-    if len(temp):
-        tempstr = race.get('languages description')
-        if tempstr != None:
-            ret += '**Languages.** %s\n\n' % tempstr.format(
-                languages=utils.choice_list(temp, 'language')
+        # ----#-   Race Age
+        if self.age is not None:
+            ret += '**Age.** %s\n\n' % self.age
+        
+        # ----#-   Race Alignment
+        if self.alignment is not None:
+            ret += '**Alignment.** %s\n\n' % self.alignment
+        
+        # ----#-   Race Size
+        ret += '**Size.** %s\n\n' % self.size_description.format(size=self.size)
+        
+        # ----#-   Race Speed
+        ret += '**Speed.** %s\n\n' % self.speed_description.format(speed=self.speed)
+        
+        # ----#-   Race Traits
+        for trait in self.traits:
+            ret += '**%s.** %s\n\n' % (trait[0], '\n'.join(trait[1:]))
+        
+        # ----#-   Race Weapons
+        if self.combat_proficiencies:
+            ret += ('**%s Combat Training.** You have proficiency in %s.\n\n'
+                % (self.name, utils.comma_list(self.combat_proficiencies))
             )
-        else:
-            ret += ('**Languages.** You can speak, read, and write %s.\n\n'
-                % utils.choice_list(temp, 'language')
+        
+        # ----#-   Race Tools
+        if len(self.tool_proficiencies) > 1:
+            ret += '**Tool Proficiencies.** %s.\n\n' % utils.choice_list(self.tool_proficiencies, 'tool')
+        elif self.tool_proficiencies:
+            ret += ('**Tool Proficiency.** You gain proficiency with %s.\n\n'
+                % str(self.tool_proficiencies[0])
             )
-    
-    ret = utils.md.convert(ret)
-    
-    return ret
+        
+        # ----#-   Race Skills
+        if len(self.skills) > 1:
+            ret += ('**Skills.** You gain proficiency in %s.\n\n'
+                % utils.choice_list(self.skills, 'skill')
+            )
+        elif self.skills:
+            if isinstance(self.skills[0], int):
+                if self.skills[0] == 1:
+                    ret += '**Skills.** You gain proficiency in a skill of your choice.\n\n'
+                else:
+                    ret += '**Skills.** You gain proficiency in %d skills of your choice.\n\n' % self.skills[0]
+            else:
+                ret += '**Skills.** You gain proficiency in %s.\n\n' % str(self.skills[0])
+        
+        # ----#-   Race Feats
+        if len(self.feats) > 1:
+            ret += '**Feats.** You gain %s.\n\n' % utils.choice_list(self.feats, 'feat')
+        elif len(self.feats):
+            if isinstance(self.feats[0], int):
+                if self.feats[0] == 1:
+                    ret += '**Feats.** You gain a feat of your choice.\n\n'
+                else:
+                    ret += '**Feats.** You gain %d feats of your choice.\n\n' % self.feats[0]
+            else:
+                ret += '**Feats.** You gain the %s feat.\n\n' % str(self.feats[0])
+        
+        # ----#-   Race Languages
+        temp = self.languages[:]
+        if len(temp) and isinstance(temp[-1], int):
+            if temp[-1] == 1:
+                temp[-1] = '%d additional language' % temp[-1]
+            else:
+                temp[-1] = '%d additional languages' % temp[-1]
+        
+        if temp:
+            tempstr = self.languages_description
+            if tempstr is not None:
+                ret += '**Languages.** %s\n\n' % tempstr.format(
+                    languages=utils.choice_list(temp, 'language')
+                )
+            else:
+                ret += ('**Languages.** You can speak, read, and write %s.\n\n'
+                    % utils.choice_list(temp, 'language')
+                )
+        
+        ret = utils.md.convert(ret)
+        
+        return ret
 
-def race2html(race, spell_list):
-    ret = ''
-    ret += '<div>\n'
-    
-    # ----#-   Race Description
-    temp = utils.convert(race.get('description', ''))
-    ret += utils.get_details(temp, 'h1') + '\n\n'
-    ret += '</div>\n\n'
-    
-    # ----#-   Race Features
-    ret += '<div>\n'
-    ret += features2html(race)
-    ret += '</div>\n'
-    
-    # ----#-   Subrace
-    subraces = race.get('subrace', {})
-    for subrace in subraces:
-        subrace = subraces[subrace]
-        
-        ret += '<div>\n'
-        n = subrace.get('name', '')
-        desc = subrace.get('description')
-        summary = '<h2 id="%s">%s</h2>' % (utils.slug(n), n)
+class SubRace (Race):
+    subclass = None
+
+    def __str__(self):
+        summary = '<h2 id="%s">%s</h2>' % (utils.slug(self.name), self.name)
+        desc = self.description
         if desc:
-            desc = utils.convert(desc) + '<hr>'
-        ret += utils.details_group(utils.details_block(summary, desc))
-        ret += features2html(subrace)
-        ret += '</div>\n'
-    
-    ret = spells.handle_spells(ret, spell_list)
-    
-    return ret
+            desc = utils.convert(desc)
+        ret = utils.details_group(utils.details_block(summary, desc))
+        ret += self.features2html()
+        
+        ret = spells.handle_spells(ret, self.spell_list)
+        
+        ret = '<div>\n%s</div>\n' % ret
+        
+        return ret
+
+Race.subclass = SubRace
+
+class Races (utils.Group):
+    type = Race

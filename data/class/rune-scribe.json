@@ -95,7 +95,7 @@
         ]
     ],
     "hit die": "1d8",
-    "longdescription": [
+    "long description": [
         "# Prestige Class: Rune Scribes",
         "",
         "*Unearthed Arcana: Rune Magic*",
@@ -117,7 +117,7 @@
         "* **Complete a special task.** You must find a rune and present it to an NPC rune scribe who accepts it in return for tutoring you in the ways of rune magic. You cannot gain more levels in this prestige class than your tutor has. You might need to seek out additional runes and present them to more skilled rune scribes in order to reach 5th level in this prestige class."
     ],
     "magic": 1,
-    "max-level": 5,
+    "max level": 5,
     "name": "Rune Scribe",
     "prestige": true,
     "primary stat": [

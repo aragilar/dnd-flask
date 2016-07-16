@@ -13,80 +13,77 @@ from . import magicitems
 from . import items
 slug = utils.slug
 
+class OptionalRule (utils.Base):
+    description = ''
+
+    def __init__(self, data):
+        self.name = data[1].lstrip('#').strip()
+        self.source = data[0].strip()
+        self.description = ''.join(data[1:])
+
+    def __str__(self):
+        html = self.description
+        html = utils.convert(html)
+        html = utils.get_details(html)
+        html = '<div>\n%s</div>\n' % html
+        return html
+
+class OptionalRules (utils.Group):
+    type = OptionalRule
+
+    def __init__(self, folder=None, sources=None):
+        utils.Group.__init__(self)
+        if folder:
+            folder = os.path.join(folder, 'optionalrule')
+            for item in sorted(os.listdir(folder)):
+                item = os.path.join(folder, item)
+                if os.path.exists(item) and item.endswith('.md'):
+                    with open(item, 'r') as f:
+                        item = f.readlines()
+                    if len(item) > 1:
+                        item = self.type(item)
+                        
+                        if sources is None or item.source in sources:
+                            self.add(item)
+
 datafolder = None
 sources_order = None
-class_list = None
-race_list = None
-background_list = None
-spell_list = None
-feat_list = None
-epicboon_list = None
-magicitem_list = None
-weapon_list = None
-armor_list = None
-optionalrule_list = None
-item_list = None
+class_list = classes.Classes()
+race_list = races.Races()
+background_list = backgrounds.Backgrounds()
+spell_list = spells.Spells()
+feat_list = feats.Feats()
+epicboon_list = feats.EpicBoons()
+magicitem_list = magicitems.MagicItems()
+weapon_list = items.Weapons()
+armor_list = items.Armors()
+optionalrule_list = OptionalRules()
+item_list = items.Items()
 
 def init(folder='data'):
-    global datafolder, sources_order, class_list, race_list, background_list, spell_list, feat_list, epicboon_list, magicitem_list, weapon_list, armor_list, optionalrule_list, item_list
+    global datafolder, sources_order, weapon_list, armor_list, optionalrule_list, item_list
 
     datafolder = folder
 
     sources_order = archiver.load(os.path.join(datafolder, 'sources.json'))
     
-    class_list = load('class')
-    race_list = load('race')
-    background_list = load('background')
-    spell_list = load('spell')
-    feat_list = load('feat')
-    epicboon_list = load('epicboon')
-    magicitem_list = load('magicitem')
-    weapon_list = load('weapon')
-    armor_list = load('armor')
-    optionalrule_list = load('optionalrule')
-    item_list = get_items()
-
-def _get_spells(d):
-    spells = d.get('spells')
-    if not (spells is None or isinstance(spells, dict)):
-        d['spells'] = load('spelllist/%s.json' % spells)
-        if not isinstance(d['spells'], dict):
-            del d['spells']
-    return d
-
-def _release_key(item):
-    global sources_order
+    l = [
+        class_list,
+        race_list,
+        background_list,
+        spell_list,
+        feat_list,
+        epicboon_list,
+        magicitem_list,
+        weapon_list,
+        armor_list,
+        optionalrule_list,
+        item_list,
+    ]
     
-    if item is None or not isinstance(item, dict) or '+' not in item:
-        return ''
-    else:
-        source = item['+']
-        key = item.get('name', '')
-        if source in sources_order:
-            index = sources_order.index(source)
-        elif source == 'UA-MODERN':
-            index = len(sources_order) + 1
-        elif source.startswith('UA'):
-            index = len(sources_order)
-        else:
-            index = len(sources_order) + 2
-        return '%5d %s' % (index, str(key))
-
-def _from_files(path):
-    l = []
-    for item in os.listdir(path):
-        item = os.path.join(path, item)
-        if os.path.isfile(item) and item.endswith('.json'):
-            try:
-                l.append(archiver.load(item))
-            except (ValueError, IOError):
-                raise
-            except:
-                raise
-    l = sorted(l, key=lambda a: a.get('name', ''))
-    l = sorted(l, key=_release_key)
-    l = sorted(l, key=lambda a: a.get('A', float('inf')))
-    return l
+    utils.asyncmap(lambda a: a.__init__(datafolder, sources_order), l)
+    for item in l:
+        item.set_spell_list(spell_list)
 
 def load(folder, sources=sources_order):
     global datafolder
@@ -95,8 +92,7 @@ def load(folder, sources=sources_order):
             return None
         else:
             return {}
-    path = os.path.join(datafolder, folder)
-        
+    path = os.path.join(datafolder, folder) 
     if folder.endswith('.md'):
         try:
             with open(os.path.join(datafolder, 'documentation', folder)) as f:
@@ -110,235 +106,78 @@ def load(folder, sources=sources_order):
             d = archiver.load(path)
         except IOError:
             d = None
-            
-    elif folder in ['optionalrule']:
-        if not folder.endswith('/'):
-            folder += '/'
-        
-        d = collections.OrderedDict()
-        for item in sorted(os.listdir(path)):
-            if item.endswith('.md'):
-                with open(os.path.join(path, item)) as f:
-                    data = f.readlines()
-                    
-                if len(data) > 1:
-                    data = {
-                        '+': data[0].strip(),
-                        'name': data[1].lstrip('#').strip(),
-                        'description': ''.join(data[1:])
-                    }
-                    
-                    if sources is None or data['+'] in sources:
-                        d[data['name']] = data
-                    
-    elif os.path.isdir(path):
-        if folder.endswith('/'):
-            folder = folder[:-1]
-        d = collections.OrderedDict()
-        for item in _from_files(path):
-            if isinstance(item, dict):
-                if sources is None or item.get('+') in sources:
-                    if 'name' in item:
-                        if folder == 'class':
-                            _get_spells(item)
-                        d[item['name']] = item
-        
-        if folder in ['class', 'race']:
-            subfolder = 'sub' + folder
-            
-            for key in d:
-                d[key][subfolder] = collections.OrderedDict()
-            
-            path = os.path.join(datafolder, subfolder)
-            for item in _from_files(path):
-                if isinstance(item, dict):
-                    if sources is None or item.get('+') in sources:
-                        if 'name' in item and '@' in item and item['@'] in d:
-                            _get_spells(item)
-                            d[item['@']][subfolder][item['name']] = item
-    
-    else: #folder.find('.') > -1:
+    else:
         try:
             with open(path) as f:
                 d = f.read()
         except IOError:
             d = None
-    
     return d
-
-def _get_items(lst, sources, dir):
-    global datafolder
-    for folder in os.listdir(os.path.join(datafolder, dir)):
-        path = os.path.join(datafolder, dir, folder)
-        if os.path.isdir(path): # check each folder in 'items'
-            data = load(os.path.join(dir, folder), sources)
-            
-            if data and os.path.isfile(os.path.join(path, 'description.md')):
-                # if the folder is a data folder put it in items
-                data['group'] = True
-                
-                with open(os.path.join(path, 'description.md'), 'r') as f:
-                    temp = f.readlines()
-                data['name'] = temp[0].strip() # get name
-                
-                if len(temp) > 2: # get description
-                    data['description'] = ''.join(temp[2:])
-                        
-                _get_items(data, sources, os.path.join(dir, folder))
-                
-                lst[data['name']] = data
-
-def get_items(sources=sources_order):
-    dir = 'item/'
-    item_list = load(dir, sources)
-    if item_list is not None:
-        _get_items(item_list, sources, dir)
-    return item_list
-
-# ----#-
-
-def _has_sub(keys, in_, sub):
-    out = collections.OrderedDict()
-    for key in filter(lambda a: a in keys, in_):
-        if isinstance(keys[key], dict) and any(keys[key].values()):
-            c = {}
-            c.update(in_[key])
-            subs = collections.OrderedDict()
-            for subkey in filter(lambda a: a in keys[key], in_[key][sub]):
-                if keys[key][subkey]:
-                    subs[subkey] = in_[key][sub][subkey]
-            c[sub] = subs
-            out[key] = c
-        elif keys[key] == True:
-            out[key] = in_[key]
-    return out
-
-def _no_sub(keys, in_):
-    return collections.OrderedDict((key, in_[key]) for key in in_ if keys.get(key, False))
-
-def _middleman(keys, a, in_, sub=None):
-    if in_ is not None:
-        if keys is not None and a in keys:
-            if sub is not None:
-                return _has_sub(keys[a], in_, sub)
-            else:
-                return _no_sub(keys[a], in_)
-        else:
-            return in_
-    else:
-        return {}
-
-# ----#-
-
-def getclasses(keys=None):
-    lst = _middleman(keys, 'class', class_list, 'subclass')
-    if keys is not None:
-        for class_ in lst:
-            spells = lst[class_].get('spells', {})
-            if 'spell' in keys:
-                for lvl in spells:
-                    spells[lvl] = list(filter(lambda a: keys['spell'].get(a), spells[lvl]))
-    return lst
-
-def getraces(keys=None):
-    return _middleman(keys, 'race', race_list, 'subrace')
-
-def getbackgrounds(keys=None):
-    return _middleman(keys, 'background', background_list)
-
-def getspells(keys=None):
-    return _middleman(keys, 'spell', spell_list)
-
-def getfeats(keys=None):
-    return _middleman(keys, 'feat', feat_list)
-
-def getepicboons(keys=None):
-    return _middleman(keys, 'epicboon', epicboon_list)
-
-def getmagicitems(keys=None):
-    return _middleman(keys, 'magicitem', magicitem_list)
-
-def getweapons(keys=None):
-    return _middleman(keys, 'weapon', weapon_list)
-
-def getarmors(keys=None):
-    return _middleman(keys, 'armor', armor_list)
-
-def getitems(keys=None):
-    if item_list is not None:
-        return item_list
-    else:
-        return {}
-
-def getoptionalrules(keys=None):
-    return _middleman(keys, 'optionalrule', optionalrule_list)
 
 # ----#-
 
 def class2html(c, keys=None):
-    cs = getclasses(keys)
+    cs = class_list.filter(keys)
     if c in cs:
-        return classes.class2html(cs[c], getspells(keys))
+        return str(cs[c])
     else:
         return None
 
 def race2html(r, keys=None):
-    rs = getraces(keys)
+    rs = race_list.filter(keys)
     if r in rs:
-        return races.race2html(rs[r], getspells(keys))
+        return str(rs[r])
     else:
         return None
 
 def background_page(keys=None):
-    bgs = getbackgrounds(keys)
-    if len(bgs):
-        return backgrounds.main(bgs, load)
+    bgs = background_list.filter(keys)
+    if bgs:
+        return bgs.page(load)
     else:
         return None
 
 def spell_page(keys=None):
-    sps = getspells(keys)
-    if len(sps):
-        return spells.main(sps, getclasses(keys), load)
+    sps = spell_list.filter(keys)
+    if sps:
+        return sps.page(class_list.filter(keys), load)
     else:
         return None
 
 def magicitem_page(keys=None):
-    mis = getmagicitems(keys)
-    if len(mis):
-        return magicitems.main(mis, getspells(keys), load)
+    mis = magicitem_list.filter(keys)
+    if mis:
+        return mis.page(load)
     else:
         return None
 
 def feat_page(keys=None):
-    fs = getfeats(keys)
-    if len(fs):
-        return feats.main(fs, getspells(keys), load)
+    fs = feat_list.filter(keys)
+    if fs:
+        return fs.page(load)
     else:
         return None
 
 def boon_page(keys=None):
-    bs = getepicboons(keys)
-    if len(bs):
-        return feats.boons(bs, getspells(keys), load)
+    bs = epicboon_list.filter(keys)
+    if bs:
+        return bs.page(load)
     else:
         return None
 
 def item_page(keys=None):
-    wps = getweapons(keys)
-    ams = getarmors(keys)
-    its = getitems(keys)
-    if len(wps) or len(ams) or len(its):
+    wps = weapon_list.filter(keys)
+    ams = armor_list.filter(keys)
+    its = item_list.filter(keys)
+    if wps or ams or its:
         return items.main(wps, ams, its, load)
+    else:
+        return None
 
 def optionalrule_page(key, keys=None):
-    rules = getoptionalrules(keys)
+    rules = optionalrule_list.filter(keys)
     if key in rules:
-        data = rules[key]['description']
-        html = utils.convert(data)
-        html = utils.get_details(html)
-        html = '<div>\n%s\n</div>\n' % html
-        return html
+        return str(rules[key])
     else:
         return None
 
@@ -352,23 +191,3 @@ def documentation(page):
         return html
     else:
         return None
-
-# ----#-
-
-if __name__ == '__main__':
-    init('../data')
-    show = load('filter/official.json')
-    print('\n\n'.join(map(lambda a: '\n'.join(a), [
-        #getclasses(show),
-        #getraces(show),
-        #getbackgrounds(show),
-        #getspells(show),
-        #getfeats(show),
-        #getepicboons(show),
-        #getmagicitems(show),
-        #getweapons(show),
-        #getarmors(show),
-        #getitems(show),
-        #getoptionalrules(show)
-    ])))
-    #print '\n'.join(sorted(getclasses(show)['Sorcerer']['spells']['Cantrip']))

@@ -1,140 +1,44 @@
+import os
 import re
+
+from . import archiver
 from . import utils
 
-def weapon2html(weapon):
-    ret = '<tr>\n'
-    
-    ret += '<th>%s</th>\n' % weapon.get('name', '')
-    
-    temp = weapon.get('cost', 0.0)
-    if temp > 0:
-        if temp < 0.1:
-            ret += '<td>%d cp</td>\n' % int(temp * 100)
-        elif temp < 1:
-            ret += '<td>%d sp</td>\n' % int(temp * 10)
-        else:
-            ret += '<td>%d gp</td>\n' % int(temp)
-    else:
-        ret += '<td>-</td>\n'
-    
-    ret += '<td>%s %s</td>' % (weapon.get('damage', ''), weapon.get('damage type', 'unknown'))
-    
-    ret += '<td>%s lb.</td>\n' % weapon.get('weight', '0')
-    
-    ret += '<td>%s</td>\n' % ', '.join(weapon.get('properties', ['-']))
-    
-    ret += '</tr>\n'
-    return ret
+class Weapon (utils.Base):
+    cost = 0.0
+    damage = ''
+    damage_type = 'unknown'
+    properties = ['-']
+    weight = '0'
 
-def armor2html(armor):
-    ret = '<tr>\n'
-    
-    ret += '<th>%s</th>' % armor.get('name', '')
-    
-    temp = armor.get('cost', 0.0)
-    if temp > 0:
-        if temp < 0.1:
-            ret += '<td>%d cp</td>\n' % int(temp * 100)
-        elif temp < 1:
-            ret += '<td>%d sp</td>\n' % int(temp * 10)
-        else:
-            ret += '<td>%d gp</td>\n' % int(temp)
-    else:
-        ret += '<td>-</td>\n'
-    
-    ret += '<td>%s</td>\n' % armor.get('ac', '-')
-    
-    temp = armor.get('strength', 0)
-    if temp > 0:
-        ret += '<td>%d</td>\n' % temp
-    else:
-        ret += '<td>-</td>\n'
-    
-    if armor.get('stealth'):
-        ret += '<td>Disadvantage</td>\n'
-    else:
-        ret += '<td>-</td>\n'
-    
-    ret += '<td>%s</td>\n' % armor.get('weight', 0)
-    
-    ret += '<td>%s</td>\n' % armor.get('note', '-')
-    
-    ret += '</tr>\n'
-    return ret
+    special = ''
 
-def item2html(item):
-    ret = '<tr>\n'
-    
-    if item.get('group', False):
-        temp = item.get('description')
+    def __str__(self):
+        ret = '<tr>\n'
         
-        if temp != None:
-            temp = utils.convert(str(temp))
-            temp += '\n\n'
-        else:
-            temp = ''
+        ret += '<th>%s</th>\n' % self.name
         
-        temp += '<table>\n<tr><th>Item</th><th>Cost</th><th>Weight</th></tr>\n'
-        
-        for key in sorted(filter(lambda a: a[0].isupper() or a[0].isdigit(), item.keys())):
-            temp += item2html(item[key]) + '\n'
-        
-        temp += '</table>\n'
-        
-        ret += '<td colspan="3">'
-        ret += utils.details_group(utils.details_block(
-            '<strong><em>%s</em></strong>' % item.get('name', ''),
-            temp
-        ))
-        ret += '</td></tr>\n'
-    else:
-        temp = item.get('description')
-        if temp:
-            temp = utils.convert(str(temp))
-        ret += '<td>'
-        ret += utils.details_group(utils.details_block(item.get('name', ''), temp))
-        ret += '</td>\n'
-        
-        temp = item.get('cost', 0.0)
-        if temp:
-            try:
-                if temp < 0.1:
-                    ret += '<td>%d cp</td>\n' % int(temp * 100)
-                elif temp < 1:
-                    ret += '<td>%d sp</td>\n' % int(temp * 10)
-                else:
-                    ret += '<td>%d gp</td>\n' % int(temp)
-            except (ValueError, TypeError):
-                ret += '<td>%s</td>\n' % str(temp)
+        if self.cost > 0:
+            if self.cost < 0.1:
+                ret += '<td>%d cp</td>\n' % int(self.cost * 100)
+            elif self.cost < 1:
+                ret += '<td>%d sp</td>\n' % int(self.cost * 10)
+            else:
+                ret += '<td>%d gp</td>\n' % int(self.cost)
         else:
             ret += '<td>-</td>\n'
         
-        ret += '<td>%s</td>\n' % item.get('weight', '-')
-    
-    ret += '</tr>\n'
-    return ret
+        ret += '<td>%s %s</td>' % (self.damage, self.damage_type)
+        ret += '<td>%s lb.</td>\n' % self.weight
+        ret += '<td>%s</td>\n' % ', '.join(self.properties)
+        
+        ret += '</tr>\n'
+        return ret
 
-def main(weapons, armors, items, load):
-    ret = '<div id="items-div">\n'
-    
-    if len(items):
-        temp = load('equipment.md')
-        if temp:
-            temp = utils.get_details(utils.convert(temp))
-        else:
-            temp = '<h1>Equipment</h1>\n'
-        temp += '<table id="item-table">\n'
-        temp += '<tr><th>Item</th><th>Cost</th><th>Weight</th></tr>\n'
-        for item in sorted(items):
-            temp += item2html(items[item])
-        temp += '</table>\n'
-        ret += utils.get_details(temp, 'h1')
-    
-    temp = load('equipment-packs.md')
-    if temp:
-        ret += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
-    
-    if len(weapons):
+class Weapons (utils.Group):
+    type = Weapon
+
+    def page(self, load):
         temp = ''
         t = load('weapons.md')
         if t:
@@ -145,9 +49,9 @@ def main(weapons, armors, items, load):
         del t
         
         temp += '## Special\n\n'
-        for item in sorted(weapons.keys()):
-            if 'special' in weapons[item]:
-                temp += '**%s** %s\n\n' % (item, weapons[item]['special'])
+        for item in self.values:
+            if item.special:
+                temp += '**%s** %s\n\n' % (item, item.special)
         temp = utils.get_details(utils.convert(temp))
         
         temp += '<table id="weapons-table">\n'
@@ -157,17 +61,14 @@ def main(weapons, armors, items, load):
         simple_melee = []
         simple_ranged = []
         other = []
-        for weapon in sorted(weapons.keys()):
-            weapon = weapons[weapon]
-            type = weapon.get('type', '')
-            range = weapon.get('ranged', False)
-            if type == 'martial':
-                if not range:
+        for weapon in self:
+            if weapon.type == 'martial':
+                if not weapon.range:
                     martial_melee.append(weapon)
                 else:
                     martial_ranged.append(weapon)
-            elif type == 'simple':
-                if not range:
+            elif weapon.type == 'simple':
+                if not weapon.range:
                     simple_melee.append(weapon)
                 else:
                     simple_ranged.append(weapon)
@@ -175,15 +76,59 @@ def main(weapons, armors, items, load):
                 other.append(weapon)
         
         for name, lst in [('Simple Melee', simple_melee), ('Simple Ranged', simple_ranged), ('Martial Melee', martial_melee), ('Martial Ranged', martial_ranged), ('Other', other)]:
-            if len(lst):
-                temp += '<tr><th colspan="100">%s</th></tr>\n' % name
+            if lst:
+                temp += '<tr><th colspan="5">%s</th></tr>\n' % name
                 for weapon in lst:
-                    temp += weapon2html(weapon)
+                    temp += str(weapon)
         
         temp += '</table>\n'
-        ret += utils.get_details(temp, 'h1')
-    
-    if len(armors):
+        return utils.get_details(temp, 'h1')
+
+class Armor (utils.Base):
+    ac = '-'
+    cost = 0.0
+    note = '-'
+    stealth = False
+    strength = 0
+    weight = '0'
+
+    def __str__(self):
+        ret = '<tr>\n'
+        
+        ret += '<th>%s</th>' % self.name
+        
+        if self.cost > 0:
+            if self.cost < 0.1:
+                ret += '<td>%d cp</td>\n' % int(self.cost * 100)
+            elif self.cost < 1:
+                ret += '<td>%d sp</td>\n' % int(self.cost * 10)
+            else:
+                ret += '<td>%d gp</td>\n' % int(self.cost)
+        else:
+            ret += '<td>-</td>\n'
+        
+        ret += '<td>%s</td>\n' % self.ac
+        
+        if self.strength:
+            ret += '<td>%d</td>\n' % self.strength
+        else:
+            ret += '<td>-</td>\n'
+        
+        if self.stealth:
+            ret += '<td>Disadvantage</td>\n'
+        else:
+            ret += '<td>-</td>\n'
+        
+        ret += '<td>%s</td>\n' % self.weight
+        ret += '<td>%s</td>\n' % self.note
+        
+        ret += '</tr>\n'
+        return ret
+
+class Armors (utils.Group):
+    type = Armor
+
+    def page(self, load):
         temp = ''
         t = load('armors.md')
         if t:
@@ -200,12 +145,12 @@ def main(weapons, armors, items, load):
         medium = []
         heavy = []
         other = []
-        alist = map(lambda a: armors[a], armors.keys())
-        alist = sorted(alist, key = lambda a: not a.get('stealth', False))
-        alist = sorted(alist, key = lambda a: a.get('ac', ''))
-        alist = sorted(alist, key = lambda a: a.get('cost', 0.0) if a.get('cost', 0.0) > 0 else float('inf'))
+        alist = self.values()
+        alist = sorted(alist, key=lambda a: not a.stealth)
+        alist = sorted(alist, key=lambda a: a.ac)
+        alist = sorted(alist, key=lambda a: a.cost if a.cost else float('inf'))
         for armor in alist:
-            type = armor.get('type', '')
+            type = armor.type
             if type == 'light':
                 light.append(armor)
             elif type == 'medium':
@@ -216,12 +161,129 @@ def main(weapons, armors, items, load):
                 other.append(armor)
         
         for name, lst in [('Light', light), ('Medium', medium), ('Heavy', heavy), ('Other', other)]:
-            if len(lst):
-                temp += '<tr><th colspan="100">%s</th></tr>\n' % name
+            if lst:
+                temp += '<tr><th colspan="7">%s</th></tr>\n' % name
                 for armor in lst:
-                    temp += armor2html(armor)
+                    temp += str(armor)
         temp += '</table>\n'
-        ret += utils.get_details(temp, 'h1')
+        return utils.get_details(temp, 'h1')
+
+class Item (utils.Base):
+    cost = 0.0
+    description = ''
+    weight = '-'
+
+    def __str__(self):
+        temp = self.description
+        if temp:
+            temp = utils.convert(str(temp))
+
+        ret = '<td>'
+        ret += utils.details_group(utils.details_block(self.name, temp))
+        ret += '</td>\n'
+        
+        if self.cost > 0:
+            if self.cost < 0.1:
+                ret += '<td>%d cp</td>\n' % int(self.cost * 100)
+            elif self.cost < 1:
+                ret += '<td>%d sp</td>\n' % int(self.cost * 10)
+            else:
+                ret += '<td>%d gp</td>\n' % int(self.cost)
+        else:
+            ret += '<td>-</td>\n'
+        
+        ret += '<td>%s</td>\n' % self.weight
+
+        return ret
+
+class Items (utils.Group):
+    type = Item
+    name = 'Items'
+    description = ''
+
+    def __init__(self, folder=None, sources=None):
+        utils.Group.__init__(self)
+        if folder:
+            t = os.path.join(folder, self.type.__name__.lower())
+            if os.path.exists(t):
+                folder = t
+            for item in os.listdir(folder):
+                item = os.path.join(folder, item)
+                if os.path.isdir(item):
+                    item = type(self)(item, sources)
+                    if item and item.name != 'Items':
+                        self._items[item.name] = item
+                elif os.path.isfile(item):
+                    if item.endswith('.json'):
+                        try:
+                            item = archiver.load(item, object_hook=self.type.fromJSON)
+                        except (ValueError, IOError):
+                            raise
+                        if sources is None or item.source in sources:
+                            self.add(item)
+                    elif item.endswith('description.md'):
+                        with open(item, 'r') as f:
+                            temp = f.readlines()
+                        self.name = temp[0].strip()
+                        if len(temp) > 2:
+                            self.description = ''.join(temp[2:])
+
+    def __str__(self):
+        if self.description:
+            temp = utils.convert(str(self.description))
+        else:
+            temp = ''
+        
+        temp += '<table>\n<tr><th>Item</th><th>Cost</th><th>Weight</th></tr>\n'
+        
+        for item in self:
+            item = str(item)
+            temp += '<tr>\n%s</tr>\n' % item
+        
+        temp += '</table>\n'
+
+        ret = utils.details_group(utils.details_block(
+            '<strong><em>%s</em></strong>' % self.name,
+            temp
+        ))
+
+        return ret
+
+    def page(self, load):
+        name = self.name
+        self.name = 'Equipment'
+        description = self.description
+
+        temp = load('equipment.md')
+        if temp:
+            temp = utils.get_details(utils.convert(temp))
+        else:
+            temp = ''
+        temp = temp[:temp.find('\n')]
+        self.description = temp
+
+        ret = str(self)
+
+        self.name = name
+        self.description = description
+
+        return ret
+
+def main(weapons, armors, items, load):
+    ret = '<div id="items-div">\n'
+    
+    if items:
+        ret += items.page(load)
+    
+    temp = load('equipment-packs.md')
+    if temp:
+        ret += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
+    
+    if weapons:
+        ret += weapons.page(load)
+    
+    if armors:
+        ret += armors.page(load)
     
     ret += '</div>\n'
     return ret

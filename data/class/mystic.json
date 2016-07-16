@@ -405,7 +405,7 @@
         ]
     ],
     "hit die": "1d8",
-    "longdescription": [
+    "long description": [
         "# Mystics",
         "",
         "*Unearthed Arcana: Psionics & the Mystic, Take 2*",
@@ -441,7 +441,7 @@
         "Psionics is a mysterious form of power within most D&D worlds. Secretive orders study its origins and applications, while pushing the boundaries of what psychic power can achieve.",
         "Each mystic order pursues a specific goal for psionic power. That goal shapes how the members of an order understand psionics and determines the disciplines they master."
     ],
-    "max-level": 10,
+    "max level": 10,
     "name": "Mystic",
     "primary stat": [
         "int"
