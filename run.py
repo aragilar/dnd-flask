@@ -271,37 +271,51 @@ def feat_page():
     else:
         abort(404)
 
-@app.route('/spells')
-def spell_page():
+@app.route('/spells/', defaults={'name':None})
+@app.route('/spells/<name>')
+def spell_page(name):
     filter, show = get_filter()
 
-    html = helper.spell_page(show)
-    
+    js = everyjs
+    if name is None:
+        html = helper.spell_page(show)
+        name = 'Spells'
+        js += ['@spells.js']
+    else:
+        html = helper.spell2html(name, show)
+
     if html:
         return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle,
-            javascript=everyjs+['@spells.js'],
-            title='Spells',
+            javascript=js,
+            title=name,
             content=html
         )
     else:
         abort(404)
 
-@app.route('/magicitems')
-def magicitem_page():
+@app.route('/magicitems/', defaults={'name':None})
+@app.route('/magicitems/<name>')
+def magicitem_page(name):
     filter, show = get_filter()
     
-    html = helper.magicitem_page(show)
-    
+    js = everyjs
+    if name is None:
+        html = helper.magicitem_page(show)
+        name = 'Magic Items'
+        js += ['@magicitems.js']
+    else:
+        html = helper.magicitem2html(name, show)
+
     if html:
         return render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle,
-            javascript=everyjs+['@magicitems.js'],
-            title='Magic Items',
+            javascript=js,
+            title=name,
             content=html
         )
     else:

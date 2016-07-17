@@ -144,10 +144,24 @@ def spell_page(keys=None):
     else:
         return None
 
+def spell2html(s, keys=None):
+    sps = spell_list.filter(keys)
+    if s in sps:
+        return "<div>\n%s</div>\n" % str(sps[s])
+    else:
+        return None
+
 def magicitem_page(keys=None):
     mis = magicitem_list.filter(keys)
     if mis:
         return mis.page(load)
+    else:
+        return None
+
+def magicitem2html(m, keys=None):
+    mis = magicitem_list.filter(keys)
+    if m in mis:
+        return "<div>\n%s</div>\n" % str(mis[m])
     else:
         return None
 
@@ -187,7 +201,7 @@ def documentation(page):
     if data is not None:
         html = utils.convert(data)
         html = utils.get_details(html)
-        html = '<div>\n%s\n</div>\n' % html
+        html = '<div>\n%s</div>\n' % html
         return html
     else:
         return None
