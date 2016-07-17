@@ -238,6 +238,8 @@ class Items (utils.Group):
         
         for item in self:
             item = str(item)
+            if not item.startswith('<td>'):
+                item = '<td colspan="3">\n%s</td>\n' % item
             temp += '<tr>\n%s</tr>\n' % item
         
         temp += '</table>\n'
@@ -249,9 +251,12 @@ class Items (utils.Group):
 
         return ret
 
+    def add(self, item):
+        self._items[item.name] = item
+
     def page(self, load):
         name = self.name
-        self.name = 'Equipment'
+        self.name = '<h1>Equipment</h1>'
         description = self.description
 
         temp = load('equipment.md')
@@ -259,7 +264,7 @@ class Items (utils.Group):
             temp = utils.get_details(utils.convert(temp))
         else:
             temp = ''
-        temp = temp[:temp.find('\n')]
+        temp = temp[temp.find('\n'):]
         self.description = temp
 
         ret = str(self)
