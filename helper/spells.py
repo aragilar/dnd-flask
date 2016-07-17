@@ -105,7 +105,10 @@ def handle_spells(text, spells):
     return text
 
 def spellblock(name, spells=None):
-    if spells is None:
+    if name is None:
+        name = ''
+        item = None
+    elif spells is None:
         spell = name
         name = spell.name
     else:

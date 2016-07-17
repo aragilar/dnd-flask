@@ -258,12 +258,12 @@ class Class (utils.Base):
             if cantrips:
                 summary = 'Cantrips'
                 body = '<h3 %s>Cantrips</h3>\n' % head_row_style
-                body += ''.join(utils.asyncmap(
+                temp = ''.join(utils.asyncmap(
                     lambda a: spells.spellblock(a, self.spell_list),
                     list(sorted(cantrips))
                 ))
-                body = utils.details_group(body, body_class=table_class)
-                ret += utils.details_group(utils.details_block(summary, body))
+                body += utils.details_group(temp, body_class=table_class)
+                ret += utils.details_block(summary, body)
 
             if self.max_slot > 0 and any(self.spells.get(str(i)) for i in range(1, self.max_slot+1)):
                 summary = 'Spells'
@@ -276,12 +276,13 @@ class Class (utils.Base):
     
                     if lst:
                         body += '<h3 %s>%s-Level Spells</h3>\n' % (head_row_style, utils.ordinals[x])
-                        body += ''.join(utils.asyncmap(
+                        temp = ''.join(utils.asyncmap(
                             lambda a: spells.spellblock(a, self.spell_list),
                             list(sorted(lst))
                         ))
-                body = utils.details_group(body, body_class=table_class)
-                ret += utils.details_group(utils.details_block(summary, body))
+                        body += utils.details_group(temp, body_class=table_class)
+                ret += utils.details_block(summary, body)
+            ret = utils.details_group(ret)
         return ret
     
     def filter(self, fil):

@@ -50,7 +50,10 @@ class MagicItem (utils.Base):
         return ret
 
 def itemblock(name, magicitems=None):
-    if magicitems is None:
+    if name is None:
+        name = ''
+        item = None
+    elif magicitems is None:
         item = name
         name = item.name
     else:
