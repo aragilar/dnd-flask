@@ -104,16 +104,20 @@ def handle_spells(text, spells):
         text = text.replace(item[0], utils.details_group(spellblock(item[-1], spells)))
     return text
 
-def spellblock(spellname, spells):
-    spell = spells.get(spellname)
+def spellblock(name, spells=None):
+    if spells is None:
+        spell = name
+        name = spell.name
+    else:
+        spell = spells.get(name)
     if spell is not None:
         ret = utils.details_block(
-            str(spellname),
+            str(name),
             '<div>\n%s</div>' % str(spell),
             body_class="spell-box"
         )
     else:
-        ret = str(spellname)
+        ret = str(name)
     return ret
 
 class Spells (utils.Group):
@@ -156,8 +160,8 @@ class Spells (utils.Group):
         '''
 
         temp = ''.join(utils.asyncmap(
-                lambda a: spellblock(a, self),
-                self.keys(),
+                spellblock,
+                self.values(),
         ))
         ret += utils.details_group(temp, body_id="spells", body_class="spell-table")
         ret += '</div>\n'

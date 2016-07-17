@@ -49,8 +49,12 @@ class MagicItem (utils.Base):
         
         return ret
 
-def itemblock(name, magicitems):
-    item = magicitems.get(name)
+def itemblock(name, magicitems=None):
+    if magicitems is None:
+        item = name
+        name = item.name
+    else:
+        item = magicitems.get(name)
     if item is not None:
         ret = utils.details_block(
             name,
@@ -109,8 +113,8 @@ class MagicItems (utils.Group):
         '''
 
         temp = ''.join(utils.asyncmap(
-                lambda a: itemblock(a, self),
-                self.keys(),
+                itemblock,
+                self.values(),
         ))
         ret += utils.details_group(temp, body_id="magicitems", body_class="spell-table")
         
