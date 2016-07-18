@@ -124,6 +124,10 @@ td, th {
     font-size: 1em;
 }
 
+.accordion > hr {
+    margin: initial;
+}
+
 .accordion > dt {
     position: relative;
     cursor: pointer;
