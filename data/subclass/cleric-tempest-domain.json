@@ -47,29 +47,20 @@
                 "Stormborn",
                 "At 17th level, you have a flying speed equal to your current walking speed whenever you are not underground or indoors."
             ]
+        ],
+        [
+            -1,
+            [
+                "Tempest Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Fog Cloud</spell> | <spell>Thunderwave</spell>",
+                "| 3rd | <spell>Gust of Wind</spell> | <spell>Shatter</spell>",
+                "| 5th | <spell>Call Lightining</spell> | <spell>Sleet Storm</spell>",
+                "| 7th | <spell>Control Water</spell> | <spell>Ice Storm</spell>",
+                "| 9th | <spell>Destructive Wave</spell> | <spell>Insect Plague</spell>"
+            ]
         ]
     ],
-    "name": "Tempest Domain",
-    "subclassspells": {
-        "1": [
-            "Fog Cloud",
-            "Thunderwave"
-        ],
-        "3": [
-            "Gust of Wind",
-            "Shatter"
-        ],
-        "5": [
-            "Call Lightning",
-            "Sleet Storm"
-        ],
-        "7": [
-            "Control Water",
-            "Ice Storm"
-        ],
-        "9": [
-            "Destructive Wave",
-            "Insect Plague"
-        ]
-    }
+    "name": "Tempest Domain"
 }

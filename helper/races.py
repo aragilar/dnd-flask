@@ -25,16 +25,16 @@ class Race (utils.Base):
         # ----#-   Race Description
         temp = utils.convert(self.description)
         ret += utils.get_details(temp, 'h1') + '\n\n'
-        ret += '</div>\n\n'
         
         # ----#-   Race Features
-        ret += '<div>\n%s</div>\n' % self.features2html()
+        ret += self.features2html()
+        ret += '</div>\n'
+        
+        ret = spells.handle_spells(ret, self.spell_list)
         
         # ----#-   Subrace
         for subrace in self.children.values():
             ret += str(subrace)
-        
-        ret = spells.handle_spells(ret, self.spell_list)
         
         return ret
     
@@ -152,7 +152,7 @@ class SubRace (Race):
     subclass = None
 
     def __str__(self):
-        summary = '<h2 id="%s">%s</h2>' % (utils.slug(self.name), self.name)
+        summary = '<h1 id="%s">%s</h1>' % (utils.slug(self.name), self.name)
         desc = self.description
         if desc:
             desc = utils.convert(desc)

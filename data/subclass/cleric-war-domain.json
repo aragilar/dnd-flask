@@ -45,29 +45,20 @@
                 "Avatar of Battle",
                 "At 17th level, you gain resistance to bludgeoning, piercing, and slashing damage from nonmagical weapons."
             ]
+        ],
+        [
+            -1,
+            [
+                "War Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Divine Favor</spell> | <spell>Shield of Faith</spell>",
+                "| 3rd | <spell>Magic Weapon</spell> | <spell>Spiritual Weapon</spell>",
+                "| 5th | <spell>Crusader's Mantle</spell> | <spell>Spirit Guardians</spell>",
+                "| 7th | <spell>Freedom of Movement</spell> | <spell>Stoneskin</spell>",
+                "| 9th | <spell>Flame Strike</spell> | <spell>Hold Monster</spell>"
+            ]
         ]
     ],
-    "name": "War Domain",
-    "subclassspells": {
-        "1": [
-            "Divine Favor",
-            "Shield of Faith"
-        ],
-        "3": [
-            "Magic Weapon",
-            "Spiritual Weapon"
-        ],
-        "5": [
-            "Crusader's Mantle",
-            "Spirit Guardians"
-        ],
-        "7": [
-            "Freedom of Movement",
-            "Stoneskin"
-        ],
-        "9": [
-            "Flame Strike",
-            "Hold Monster"
-        ]
-    }
+    "name": "War Domain"
 }

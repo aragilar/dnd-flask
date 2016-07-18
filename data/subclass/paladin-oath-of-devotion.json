@@ -68,30 +68,24 @@
                 "",
                 "Once you use this feature, you can't use it again until you finish a long rest."
             ]
+        ],
+        [
+            -1,
+            [
+                "Oath Spells",
+                "You gain oath spells at the paladin levels listed.",
+                "",
+                "**Oath of Devotion Spells**",
+                "",
+                "| Paladin Level | Spells | Spells |",
+                "|:-------------:|:-------|:-------|",
+                "| 3rd  | <spell>Protection from Evil and Good</spell> | <spell>Sanctuary</spell>",
+                "| 5th  | <spell>Lesser Restoration</spell> | <spell>Zone of Truth</spell>",
+                "| 9th  | <spell>Beacon of Hope</spell> | <spell>Dispel Magic</spell>",
+                "| 13th | <spell>Freedom of Movement</spell> | <spell>Guardian of Faith</spell>",
+                "| 17th | <spell>Commune</spell> | <spell>Flame Strike</spell>"
+            ]
         ]
     ],
-    "name": "Oath of Devotion",
-    "subclassspells": {
-        "13": [
-            "Freedom of Movement",
-            "Guardian of Faith"
-        ],
-        "17": [
-            "Commune",
-            "Flame Strike"
-        ],
-        "3": [
-            "Protection from Evil and Good",
-            "Sanctuary"
-        ],
-        "5": [
-            "Lesser Restoration",
-            "Zone of Truth"
-        ],
-        "9": [
-            "Beacon of Hope",
-            "Dispel Magic"
-        ],
-        "description": "You gain oath spells at the paladin levels listed."
-    }
+    "name": "Oath of Devotion"
 }

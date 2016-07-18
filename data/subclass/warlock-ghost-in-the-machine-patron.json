@@ -46,30 +46,24 @@
                 "",
                 "Once you use this feature, you can't use it again until you finish a long rest, at which point the target is cured of the technovirus. The infection can also be removed with a *lesser restoration* spell."
             ]
+        ],
+        [
+            -1,
+            [
+                "Expanded Spell List",
+                "The Ghost in the Machine lets you choose from an expanded list of spells when you learn a warlock spell. You gain the *on/off* cantrip, and the following new spells are added to the warlock spell list for you. See \"New Spells\" at the end of this article.",
+                "",
+                "**Ghost in the Machine Expanded Spells**",
+                "",
+                "| Spell Level | Spells | Spells |",
+                "|:-----------:|:-------|:-------|",
+                "| 1st | <spell>Infallible Relay</spell> | <spell>Remote Access</spell>",
+                "| 2nd | <spell>Arcane Hacking</spell> | <spell>Digital Phantom</spell>",
+                "| 3rd | <spell>Haywire</spell> | <spell>Invisible to Cameras</spell>",
+                "| 4th | <spell>Conjure Knowbot</spell> | <spell>System Backdoor</spell>",
+                "| 5th | <spell>Shutdown</spell> | <spell>Synchronicity</spell>"
+            ]
         ]
     ],
-    "name": "Ghost in the Machine Patron",
-    "subclassspells": {
-        "1": [
-            "Infallible Relay",
-            "Remote Access"
-        ],
-        "2": [
-            "Arcane Hacking",
-            "Digital Phantom"
-        ],
-        "3": [
-            "Haywire",
-            "Invisibility to Cameras"
-        ],
-        "4": [
-            "Conjure Knowbot",
-            "System Backdoor"
-        ],
-        "5": [
-            "Commune with City",
-            "Shutdown"
-        ],
-        "description": "The Ghost in the Machine lets you choose from an expanded list of spells when you learn a warlock spell. You gain the *on/off* cantrip, and the following new spells are added to the warlock spell list for you. See \"New Spells\" at the end of this article.\n\n<spell>On/Off</spell>"
-    }
+    "name": "Ghost in the Machine Patron"
 }

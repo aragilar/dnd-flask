@@ -69,6 +69,8 @@ class Backgrounds (utils.Group):
         else:
             ret += '<h1>Backgrounds</h1>\n'
 
+        ret += '<hr>\n'
+
         for background in self:
             ret += str(background)
 

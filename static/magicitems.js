@@ -18,11 +18,7 @@ function Filter(){
     
     $('#magicitems > .spell-box').each(function(){
         var tag = $(this);
-        if (tag.is('details')){
-            var val = tag.find('summary:first');
-        } else {
-            var val = tag.prev();
-        }
+        var val = tag.prev();
         var text = val.html();
         var data = items[text];
         var hide = false;
@@ -62,11 +58,16 @@ function Filter(){
         }
         
         if (hide){
-            tag.hide();
-            val.hide();
+            if (tag.is(':visible')){
+                tag.addClass('_preserve');
+            }
+            val.add(tag).hide();
         } else {
-            tag.show();
             val.show();
+            if (tag.hasClass('_preserve')){
+                tag.show();
+                tag.removeClass('_preserve');
+            }
             count += 1;
         }
     });

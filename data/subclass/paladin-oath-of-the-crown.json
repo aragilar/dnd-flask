@@ -59,30 +59,23 @@
                 "",
                 "This effect ends early if you are incapacitated or die. Once you use this feature, you can't use it again until you finish a long rest."
             ]
+        ],
+        [
+            -1,
+            [
+                "Oath Spells",
+                "You gain oath spells at the paladin levels listed.",
+                "",
+                "**Oath of the Crown Spells**",
+                "",
+                "| Paladin Level | Spells | Spells",
+                "| 3rd  | <spell>Command</spell> | <spell>Compelled Duel</spell>",
+                "| 5th  | <spell>Warding Bond</spell> | <spell>Zone of Truth</spell>",
+                "| 9th  | <spell>Aura of Vitality</spell> | <spell>Spirit Guardians</spell>",
+                "| 13th | <spell>Banishment</spell> | <spell>Guardian of Faith</spell>",
+                "| 17th | <spell>Circle of Power</spell> | <spell>Geas</spell>"
+            ]
         ]
     ],
-    "name": "Oath of the Crown",
-    "subclassspells": {
-        "13": [
-            "Banishment",
-            "Guardian of Faith"
-        ],
-        "17": [
-            "Circle of Power",
-            "Geas"
-        ],
-        "3": [
-            "Command",
-            "Compelled Duel"
-        ],
-        "5": [
-            "Warding Bond",
-            "Zone of Truth"
-        ],
-        "9": [
-            "Aura of Vitality",
-            "Spirit Guardians"
-        ],
-        "description": "You gain oath spells at the paladin levels listed."
-    }
+    "name": "Oath of the Crown"
 }

@@ -39,30 +39,24 @@
                 "",
                 "You can communicate telepathically with the charmed creature as long as the two of you are on the same plane of existence."
             ]
+        ],
+        [
+            -1,
+            [
+                "Expanded Spell List",
+                "The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+                "",
+                "**Great Old One Expanded Spells**",
+                "",
+                "| Spell Level | Spells | Spells |",
+                "|:-----------:|:-------|:-------|",
+                "| 1st | <spell>Dissonant Whispers</spell> | <spell>Tasha's Hideous Laughter</spell>",
+                "| 2nd | <spell>Detect Thoughts</spell> | <spell>Phantasmal Force</spell>",
+                "| 3rd | <spell>Clairvoyance</spell> | <spell>Sending</spell>",
+                "| 4th | <spell>Dominate Beast</spell> | <spell>Evard's Black Tentacles</spell>",
+                "| 5th | <spell>Dominate Person</spell> | <spell>Telekinesis</spell>"
+            ]
         ]
     ],
-    "name": "Great Old One Patron",
-    "subclassspells": {
-        "1": [
-            "Dissonant Whispers",
-            "Tasha's Hideous Laughter"
-        ],
-        "2": [
-            "Detect Thoughts",
-            "Phantasmal Force"
-        ],
-        "3": [
-            "Clairvoyance",
-            "Sending"
-        ],
-        "4": [
-            "Dominate Beast",
-            "Evard's Black Tentacles"
-        ],
-        "5": [
-            "Dominate Person",
-            "Telekinesis"
-        ],
-        "description": "The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you."
-    }
+    "name": "Great Old One Patron"
 }

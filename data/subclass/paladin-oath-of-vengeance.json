@@ -61,30 +61,24 @@
                 "",
                 "Once you use this feature, you can't use it again until you finish a long rest."
             ]
+        ],
+        [
+            -1,
+            [
+                "Oath Spells",
+                "You gain oath spells at the paladin levels listed.",
+                "",
+                "**Oath of Vengeance Spells**",
+                "",
+                "| Paladin Level | Spells | Spells |",
+                "|:-------------:|:-------|:-------|",
+                "| 3rd  | <spell>Bane</spell> | <spell>Hunter's Mark</spell>",
+                "| 5th  | <spell>Hold Person</spell> | <spell>Misty Step</spell>",
+                "| 9th  | <spell>Haste</spell> | <spell>Protection from Energy</spell>",
+                "| 13th | <spell>Banishment</spell> | <spell>Dimension Door</spell>",
+                "| 17th | <spell>Hold Monster</spell> | <spell>Scrying</spell>"
+            ]
         ]
     ],
-    "name": "Oath of Vengeance",
-    "subclassspells": {
-        "13": [
-            "Banishment",
-            "Dimension Door"
-        ],
-        "17": [
-            "Hold Monster",
-            "Scrying"
-        ],
-        "3": [
-            "Bane",
-            "Hunter's Mark"
-        ],
-        "5": [
-            "Hold Person",
-            "Misty Step"
-        ],
-        "9": [
-            "Haste",
-            "Protection from Energy"
-        ],
-        "description": "You gain oath spells at the paladin levels listed."
-    }
+    "name": "Oath of Vengeance"
 }

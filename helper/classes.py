@@ -37,12 +37,9 @@ class Class (utils.Base):
         # ----#-   Class Description
         temp = '\n'.join(self.long_description)
         temp = utils.convert(temp)
-        temp = utils.get_details(temp, 'h1')
-        ret += temp
-        ret += '</div>\n'
+        ret += utils.get_details(temp, 'h1')
     
         # ----#-   Class Details
-        ret += '<div>\n'
         
         summary = '<h2>Features</h2>'
         
@@ -85,11 +82,16 @@ class Class (utils.Base):
                 short += '<li>%s</li>\n' % self.equipment_row(item)
             short += '</ul>'
         
-        ret += utils.details_block(summary, short, body_class="class-head")
+        group = utils.details_block(summary, short, body_class="class-head")
+        group += self.classTable()
+
+        ret += utils.details_group(group)
     
         # ----#-   Class Features
         ret += self.features2html()
         ret += '</div>\n'
+    
+        ret = spells.handle_spells(ret, self.spell_list)
     
         # ----#-   Subclass
         for subc in self.children.values():
@@ -100,14 +102,11 @@ class Class (utils.Base):
         if temp:
             ret += '<div>\n%s</div>\n' % temp
     
-        ret = spells.handle_spells(ret, self.spell_list)
-    
         return ret
     
-    def features2html(self):
+    def classTable(self):
         ret = ''
-        
-        # ----#-   Table
+
         if self.table or self.magic > 0:
             if self.magic > 0: # figure out the level of the maximum spell slot
                 if self.max_slot != 9:
@@ -167,9 +166,13 @@ class Class (utils.Base):
                         body += '<td%s></td>\n' % emptycolstyle
                 body += '</tr>\n'
             body += '</table>'
-            ret += utils.details_block('Table', body)
+            ret += utils.details_block('<h2>Table</h2>', body)
+
+        return ret
+
+    def features2html(self):
+        ret = ''
         
-        # ----#-   Features
         lst = copy.deepcopy(self.features)
         if lst:
             data = {}
@@ -184,11 +187,12 @@ class Class (utils.Base):
                 foot.pop(0)
             else:
                 foot = []
-    
-            for item in head:
-                ret += self.feature_block(data, item)
+
+            if head:
+                for item in head:
+                    ret += self.feature_block(data, item)
+                ret += '<hr>\n'
             
-            ret += '<ol>\n'
             lst = iter(lst)
             line = next(lst)
             for lvl in range(1, self.max_level+1):
@@ -198,18 +202,21 @@ class Class (utils.Base):
                     except StopIteration:
                         break
                 
-                linestr = ''
                 if line[0] == lvl:
+                    linestr = ''
                     for item in line[1:]:
                         linestr += self.feature_block(data, item)
                 
-                ret += '<li>%s</li>\n' % linestr
-            ret += '</ol>\n'
-    
-            for item in foot:
-                ret += self.feature_block(data, item)
+                    if linestr:
+                        ret += '<h2>%s Level</h2>\n' % utils.ordinals[lvl]
+                        ret += linestr
+
+            if foot:
+                ret += '<hr>\n'
+                for item in foot:
+                    ret += self.feature_block(data, item)
             
-            ret = utils.details_group(ret)#, body_class="class-features")
+            ret = utils.details_group(ret, body_class="class-features")
         
         return ret
     
@@ -229,8 +236,7 @@ class Class (utils.Base):
         else:
             return ''
     
-    @staticmethod
-    def feature_block(data, feature):
+    def feature_block(self, data, feature):
         if isinstance(feature, list):
             temp = feature[1:]
             feature = feature[0]
@@ -241,6 +247,7 @@ class Class (utils.Base):
             temp = '\n'.join(temp)
             temp = utils.convert(temp)
             temp = utils.get_details(temp)
+            temp = spells.handle_spells(temp, self.spell_list)
             
             data[feature] = temp
         
@@ -303,31 +310,18 @@ class SubClass (Class):
         ret = '<div>\n'
             
         # ----#-   Features
-        summary = '<h2 id="%s">%s</h2>' % (utils.slug(self.name), self.name)
+        summary = '<h1 id="%s">%s</h1>' % (utils.slug(self.name), self.name)
         if self.description:
-            body = utils.convert('\n'.join(self.description)) + '<hr>'
+            body = utils.convert('\n'.join(self.description))
         else:
             body = ''
-        ret += utils.details_block(summary, body)
+
+        group = utils.details_block(summary, body)
+        group += self.classTable()
+
+        ret += utils.details_group(group)
         
         ret += self.features2html()
-        
-        # ----#-   Subclass Spells
-        if self.subclass_spells:
-            summary = 'Subclass Spells'
-            body = utils.convert(self.subclass_spells.get('description', ''))
-            body += '<table class="subclass-spells">\n'
-            for key in sorted(int(a) for a in self.subclass_spells.keys() if a.isdigit()):
-                lst = self.subclass_spells[str(key)]
-                body += '<tr>\n'
-                body += '<td style="text-align: center;">%s</td>\n' % utils.ordinals[key]
-                for spell in lst:
-                    body += '<td>'
-                    body += spells.spellblock(spell, spell_list)
-                    body += '</td>\n'
-                body += '</tr>\n'
-            body += '</table>'
-            ret += utils.details_block(summary, body)
         
         # ----#-   Spells
         ret += self.spell_tables()

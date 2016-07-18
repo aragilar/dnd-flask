@@ -45,29 +45,20 @@
                 "Master of Nature",
                 "At 17th level, you gain the ability to command animals and plant creatures. While creatures are charmed by your Charm Animals and Plants feature, you can take a bonus action on your turn to verbally command what each of those creatures will do on its next turn."
             ]
+        ],
+        [
+            -1,
+            [
+                "Nature Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Animal Friendship</spell> | <spell>Speak with Animals</spell>",
+                "| 3rd | <spell>Barkskin</spell> | <spell>Spike Growth</spell>",
+                "| 5th | <spell>Plant Growth</spell> | <spell>Wind Wall</spell>",
+                "| 7th | <spell>Dominate Beast</spell> | <spell>Grasping Vine</spell>",
+                "| 9th | <spell>Insect Plague</spell> | <spell>Tree Stride</spell>"
+            ]
         ]
     ],
-    "name": "Nature Domain",
-    "subclassspells": {
-        "1": [
-            "Animal Friendship",
-            "Speak with Animals"
-        ],
-        "3": [
-            "Barkskin",
-            "Spike Growth"
-        ],
-        "5": [
-            "Plant Growth",
-            "Wind Wall"
-        ],
-        "7": [
-            "Dominate Beast",
-            "Grasping Vine"
-        ],
-        "9": [
-            "Insect Plague",
-            "Tree Stride"
-        ]
-    }
+    "name": "Nature Domain"
 }

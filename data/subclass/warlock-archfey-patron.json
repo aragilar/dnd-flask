@@ -41,30 +41,24 @@
                 "",
                 "You must finish a short or long rest before you can use this feature again."
             ]
+        ],
+        [
+            -1,
+            [
+                "Expanded Spell List",
+                "The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+                "",
+                "**Archfey Expanded Spells**",
+                "",
+                "| Spell Level | Spells | Spells |",
+                "|:-----------:|:-------|:-------|",
+                "| 1st | <spell>Faerie Fire</spell> | <spell>Sleep</spell>",
+                "| 2nd | <spell>Calm Emotions</spell> | <spell>Phantasmal Force</spell>",
+                "| 3rd | <spell>Blink</spell> | <spell>Plant Growth</spell>",
+                "| 4th | <spell>Dominate Beast</spell> | <spell>Greater Invisibility</spell>",
+                "| 5th | <spell>Dominate Person</spell> | <spell>Seeming</spell>"
+            ]
         ]
     ],
-    "name": "Archfey Patron",
-    "subclassspells": {
-        "1": [
-            "Faerie Fire",
-            "Sleep"
-        ],
-        "2": [
-            "Calm Emotions",
-            "Phantasmal Force"
-        ],
-        "3": [
-            "Blink",
-            "Plant Growth"
-        ],
-        "4": [
-            "Dominate Beast",
-            "Greater Invisibility"
-        ],
-        "5": [
-            "Dominate Person",
-            "Seeming"
-        ],
-        "description": "The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you."
-    }
+    "name": "Archfey Patron"
 }

@@ -45,29 +45,20 @@
                 "Improved Reaper",
                 "Starting at 17th level, when the cleric casts a necromancy spell of 1st through 5th level that targets only one creature, the spell can instead target two creatures within range and within 5 feet of each other. If the spell consumes its material components, the cleric must provide them for each target."
             ]
+        ],
+        [
+            -1,
+            [
+                "Death Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>False Life</spell> | <spell>Ray of Sickness</spell>",
+                "| 3rd | <spell>Blindness/Deafness</spell> | <spell>Ray of Enfeeblement</spell>",
+                "| 5th | <spell>Animate Dead</spell> | <spell>Vampiric Touch</spell>",
+                "| 7th | <spell>Blight</spell> | <spell>Death Ward</spell>",
+                "| 9th | <spell>Antilife Shell</spell> | <spell>Cloudkill</spell>"
+            ]
         ]
     ],
-    "name": "Death Domain",
-    "subclassspells": {
-        "1": [
-            "False Life",
-            "Ray of Sickness"
-        ],
-        "3": [
-            "Blindness/Deafness",
-            "Ray of Enfeeblement"
-        ],
-        "5": [
-            "Animate Dead",
-            "Vampiric Touch"
-        ],
-        "7": [
-            "Blight",
-            "Death Ward"
-        ],
-        "9": [
-            "Antilife Shell",
-            "Cloudkill"
-        ]
-    }
+    "name": "Death Domain"
 }

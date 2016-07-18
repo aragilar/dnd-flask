@@ -114,11 +114,6 @@ class Group (object):
                 lambda a: self.__loadfile(a, folder, sources),
                 os.listdir(folder),
             )
-                
-            self.sort(key=lambda a: a.name)
-            if sources is not None and self.type.subclass:
-                self.sort(key=lambda a: sources.index(a.source))
-            self.sort(key=lambda a: a.index)
             
             # ----#-   Sub
             if self.type.subclass:
@@ -138,10 +133,6 @@ class Group (object):
                             raise
                         if sources is None or item.source in sources:
                             l.append(item)
-                l.sort(key=lambda a: a.name)
-                if sources is not None:
-                    self.sort(key=lambda a: sources.index(a.source))
-                self.sort(key=lambda a: a.index)
 
                 for item in l:
                     if item.parent in self:
@@ -183,6 +174,11 @@ class Group (object):
     def sort(self, key=lambda a: a.name):
         for item in sorted(self._items.values(), key=key):
             self._items.move_to_end(item.name)
+            if isinstance(item, self.type) and item.children:
+                for sub in sorted(item.children.values(), key=key):
+                    item.children.move_to_end(sub.name)
+            elif isinstance(item, type(self)):
+                item.sort(key)
     
     def __iter__(self):
         return iter(self._items.values())
@@ -292,49 +288,38 @@ def get_details(text, detltag='h2', splttag=None):
 
 def details_block(summary, body=None, summary_class=None, body_class=None):
     if body:
-        if body_class:
-            txt = '<details class="%s">' % body_class
-        else:
-            txt = '<details>'
         if summary_class:
-            txt += '<summary class="%s">' % summary_class
+            txt = '<dt class="%s">' % summary_class
         else:
-            txt += '<summary>'
+            txt = '<dt>'
         txt += summary
-        txt += '</summary>'
+        txt += '</dt>\n'
+
+        if body_class:
+            txt += '<dd class="%s">' % body_class
+        else:
+            txt += '<dd>'
         if not body.startswith('\n'):
             txt += '\n'
         txt += body
         if not body.endswith('\n'):
             txt += '\n'
-        txt += '</details>\n'
+        txt += '</dd>\n'
+        
     else:
         txt = summary
     return txt
 
 def details_group(text, body_id=None, body_class=None):
-    """
-    will use
-    dl for list of details segments
-    dt for summary
-    dd for body
-    """
+    c = 'accordion'
     if body_class:
-        body_class = ' class="%s"' % body_class
-    else:
-        body_class = ''
+        c += ' ' + body_class
+
+    d = ''
     if body_id:
-        body_id = ' id="%s"' % body_id
-    else:
-        body_id = ''
-    if body_class or body_id:
-        return '<div%s%s>%s</div>' % (
-            body_id,
-            body_class,
-            text
-        )
-    else:
-        return text
+        d = ' id="%s"' % body_id
+    
+    return '<dl%s class="%s">\n%s</dl>\n' % (d, c, text)
 
 def asyncmap(func, lst):
     with multiprocessing.pool.ThreadPool() as pool:

@@ -46,30 +46,24 @@
                 "",
                 "Once you use this feature, you can't use it again until you finish a short or long rest."
             ]
+        ],
+        [
+            -1,
+            [
+                "Expanded Spell List",
+                "The Undying lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+                "",
+                "**Undying Expanded Spells**",
+                "",
+                "| Spell Level | Spells | Spells |",
+                "|:-----------:|:-------|:-------|",
+                "| 1st | <spell>False Life</spell> | <spell>Ray of Sickness</spell>",
+                "| 2nd | <spell>Blindness/Deafness</spell> | <spell>Silence</spell>",
+                "| 3rd | <spell>Feign Death</spell> | <spell>Speak with Dead</spell>",
+                "| 4th | <spell>Aura of Life</spell> | <spell>Death Ward</spell>",
+                "| 5th | <spell>Contagion</spell> | <spell>Legend Lore</spell>"
+            ]
         ]
     ],
-    "name": "The Undying Patron",
-    "subclassspells": {
-        "1": [
-            "False Life",
-            "Ray of Sickness"
-        ],
-        "2": [
-            "Blindness/Deafness",
-            "Silence"
-        ],
-        "3": [
-            "Feign Death",
-            "Speak with Dead"
-        ],
-        "4": [
-            "Aura of Life",
-            "Death Ward"
-        ],
-        "5": [
-            "Contagion",
-            "Legend Lore"
-        ],
-        "description": "The Undying lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you."
-    }
+    "name": "The Undying Patron"
 }

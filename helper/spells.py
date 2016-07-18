@@ -97,9 +97,8 @@ def spells_by_class(classes):
     return new
 
 def handle_spells(text, spells):
-    spelllist = list(_spellexpression_p.finditer(text))
-    spelllist += list(_spellexpression.finditer(text))
-    spelllist = map(lambda a: a.groups(), spelllist)
+    spelllist = _spellexpression_p.findall(text)
+    spelllist += _spellexpression.findall(text)
     for item in spelllist:
         text = text.replace(item[0], utils.details_group(spellblock(item[-1], spells)))
     return text
