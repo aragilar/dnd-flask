@@ -152,6 +152,7 @@ td, th {
 
 .accordion > dd {
     border-bottom: 1px solid black;
+    margin-left: 40px;
 }
 
 @media only screen
