@@ -12,6 +12,19 @@
     ],
     "features": [
         [
+            0,
+            [
+                "City Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Comprehend Languages</spell> | <spell>Remote Access</spell>",
+                "| 3rd | <spell>Find Vehicle</spell> | <spell>Heat Metal</spell>",
+                "| 5th | <spell>Lightning Bolt</spell> | <spell>Protection from Ballistics</spell>",
+                "| 7th | <spell>Locate Creature</spell> | <spell>Synchronicity</spell>",
+                "| 9th | <spell>Commune with City</spell> | <spell>Shutdown</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Bonus Cantrip",
@@ -67,16 +80,6 @@
             [
                 "City Magic",
                 "Many of the class features and spells in this article depend on a character's presence in an urban environment to function. At the DM's discretion, these features and spells might function in smaller urban areas (such as sufficiently population dense large towns or suburbs). However, they do not function in areas with little or no artificial construction (such as a wholly natural forest settlement), regardless of population."
-            ],
-            [
-                "City Domain Spells",
-                "| Cleric Level | Spells | Spells |",
-                "|:------------:|:-------|:-------|",
-                "| 1st | <spell>Comprehend Languages</spell> | <spell>Remote Access</spell>",
-                "| 3rd | <spell>Find Vehicle</spell> | <spell>Heat Metal</spell>",
-                "| 5th | <spell>Lightning Bolt</spell> | <spell>Protection from Ballistics</spell>",
-                "| 7th | <spell>Locate Creature</spell> | <spell>Synchronicity</spell>",
-                "| 9th | <spell>Commune with City</spell> | <spell>Shutdown</spell>"
             ]
         ]
     ],

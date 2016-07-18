@@ -6,6 +6,19 @@
     ],
     "features": [
         [
+            0,
+            [
+                "War Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Divine Favor</spell> | <spell>Shield of Faith</spell>",
+                "| 3rd | <spell>Magic Weapon</spell> | <spell>Spiritual Weapon</spell>",
+                "| 5th | <spell>Crusader's Mantle</spell> | <spell>Spirit Guardians</spell>",
+                "| 7th | <spell>Freedom of Movement</spell> | <spell>Stoneskin</spell>",
+                "| 9th | <spell>Flame Strike</spell> | <spell>Hold Monster</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Bonus Proficiencies",
@@ -44,19 +57,6 @@
             [
                 "Avatar of Battle",
                 "At 17th level, you gain resistance to bludgeoning, piercing, and slashing damage from nonmagical weapons."
-            ]
-        ],
-        [
-            -1,
-            [
-                "War Domain Spells",
-                "| Cleric Level | Spells | Spells |",
-                "|:------------:|:-------|:-------|",
-                "| 1st | <spell>Divine Favor</spell> | <spell>Shield of Faith</spell>",
-                "| 3rd | <spell>Magic Weapon</spell> | <spell>Spiritual Weapon</spell>",
-                "| 5th | <spell>Crusader's Mantle</spell> | <spell>Spirit Guardians</spell>",
-                "| 7th | <spell>Freedom of Movement</spell> | <spell>Stoneskin</spell>",
-                "| 9th | <spell>Flame Strike</spell> | <spell>Hold Monster</spell>"
             ]
         ]
     ],

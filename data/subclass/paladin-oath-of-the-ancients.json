@@ -19,6 +19,20 @@
                 "**Preserve Your Own Light.** Delight in song and laughter, in beauty and art. If you allow the light to die in your own heart, you can't preserve it in the world.",
                 "",
                 "**Be the Light.** Be a glorious beacon for all who live in despair. Let the light of your joy and courage shine forth in all your deeds."
+            ],
+            [
+                "Oath Spells",
+                "You gain oath spells at the paladin levels listed.",
+                "",
+                "**Oath of the Ancients Spells**",
+                "",
+                "| Paladin Level | Spells | Spells |",
+                "|:-------------:|:-------|:-------|",
+                "| 3rd  | <spell>Ensnaring Strike</spell> | <spell>Speak with Animals</spell>",
+                "| 5th  | <spell>Moonbeam</spell> | <spell>Misty Step</spell>",
+                "| 9th  | <spell>Plant Growth</spell> | <spell>Protection from Energy</spell>",
+                "| 13th | <spell>Ice Storm</spell> | <spell>Stoneskin</spell>",
+                "| 17th | <spell>Commune with Nature</spell> | <spell>Tree Stride</spell>"
             ]
         ],
         [
@@ -67,23 +81,6 @@
                 "* Enemy creatures within 10 feet of you have disadvantage on saving throws against your paladin spells and Channel Divinity options.",
                 "",
                 "Once you use this feature, you can't use it again until you finish a long rest."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Oath Spells",
-                "You gain oath spells at the paladin levels listed.",
-                "",
-                "**Oath of the Ancients Spells**",
-                "",
-                "| Paladin Level | Spells | Spells |",
-                "|:-------------:|:-------|:-------|",
-                "| 3rd  | <spell>Ensnaring Strike</spell> | <spell>Speak with Animals</spell>",
-                "| 5th  | <spell>Moonbeam</spell> | <spell>Misty Step</spell>",
-                "| 9th  | <spell>Plant Growth</spell> | <spell>Protection from Energy</spell>",
-                "| 13th | <spell>Ice Storm</spell> | <spell>Stoneskin</spell>",
-                "| 17th | <spell>Commune with Nature</spell> | <spell>Tree Stride</spell>"
             ]
         ]
     ],

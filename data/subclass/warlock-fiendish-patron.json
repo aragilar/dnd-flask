@@ -7,6 +7,23 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Expanded Spell List",
+                "The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+                "",
+                "**Fiend Expanded Spells**",
+                "",
+                "| Spell Level | Spells | Spells |",
+                "|:-----------:|:-------|:-------|",
+                "| 1st | <spell>Burning Hands</spell> | <spell>Command</spell>",
+                "| 2nd | <spell>Blindness/Deafness</spell> | <spell>Scorching Ray</spell>",
+                "| 3rd | <spell>Fireball</spell> | <spell>Stinking Cloud</spell>",
+                "| 4th | <spell>Fire Shield</spell> | <spell>Wall of Fire</spell>",
+                "| 5th | <spell>Flame Strike</spell> | <spell>Hallow</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Dark One's Blessing",
@@ -38,23 +55,6 @@
                 "At the end of your next turn, the target returns to the space it previously occupied, or the nearest unoccupied space. If the target is not a fiend, it takes 10d10 psychic damage as it reels from its horrific experience.",
                 "",
                 "Once you use this feature, you can't use it again until you finish a long rest."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Expanded Spell List",
-                "The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
-                "",
-                "**Fiend Expanded Spells**",
-                "",
-                "| Spell Level | Spells | Spells |",
-                "|:-----------:|:-------|:-------|",
-                "| 1st | <spell>Burning Hands</spell> | <spell>Command</spell>",
-                "| 2nd | <spell>Blindness/Deafness</spell> | <spell>Scorching Ray</spell>",
-                "| 3rd | <spell>Fireball</spell> | <spell>Stinking Cloud</spell>",
-                "| 4th | <spell>Fire Shield</spell> | <spell>Wall of Fire</spell>",
-                "| 5th | <spell>Flame Strike</spell> | <spell>Hallow</spell>"
             ]
         ]
     ],

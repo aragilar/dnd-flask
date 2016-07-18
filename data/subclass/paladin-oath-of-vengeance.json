@@ -19,6 +19,20 @@
                 "**By Any Means Necessary.** My qualms can't get in the way of exterminating my foes.",
                 "",
                 "**Restitution.** If my foes wreak ruin on the world, it is because I failed to stop them. I must help those harmed by their misdeeds."
+            ],
+            [
+                "Oath Spells",
+                "You gain oath spells at the paladin levels listed.",
+                "",
+                "**Oath of Vengeance Spells**",
+                "",
+                "| Paladin Level | Spells | Spells |",
+                "|:-------------:|:-------|:-------|",
+                "| 3rd  | <spell>Bane</spell> | <spell>Hunter's Mark</spell>",
+                "| 5th  | <spell>Hold Person</spell> | <spell>Misty Step</spell>",
+                "| 9th  | <spell>Haste</spell> | <spell>Protection from Energy</spell>",
+                "| 13th | <spell>Banishment</spell> | <spell>Dimension Door</spell>",
+                "| 17th | <spell>Hold Monster</spell> | <spell>Scrying</spell>"
             ]
         ],
         [
@@ -60,23 +74,6 @@
                 "* You emanate an aura of menace in a 30-foot radius. The first time any enemy creature enters the aura or starts its turn there during a battle, the creature must succeed on a Wisdom saving throw or become frightened of you for 1 minute or until it takes any damage. Attack rolls against the frightened creature have advantage.",
                 "",
                 "Once you use this feature, you can't use it again until you finish a long rest."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Oath Spells",
-                "You gain oath spells at the paladin levels listed.",
-                "",
-                "**Oath of Vengeance Spells**",
-                "",
-                "| Paladin Level | Spells | Spells |",
-                "|:-------------:|:-------|:-------|",
-                "| 3rd  | <spell>Bane</spell> | <spell>Hunter's Mark</spell>",
-                "| 5th  | <spell>Hold Person</spell> | <spell>Misty Step</spell>",
-                "| 9th  | <spell>Haste</spell> | <spell>Protection from Energy</spell>",
-                "| 13th | <spell>Banishment</spell> | <spell>Dimension Door</spell>",
-                "| 17th | <spell>Hold Monster</spell> | <spell>Scrying</spell>"
             ]
         ]
     ],

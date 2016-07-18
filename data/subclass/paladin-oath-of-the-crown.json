@@ -20,6 +20,20 @@
                 "**Courage.** You must be willing to do what needs to be done for the sake of order, even in the face of overwhelming odds. If you don't act, then who will?",
                 "",
                 "**Responsibility.** You must deal with the consequences of your actions, and you are responsible for fulfilling your duties and obligations."
+            ],
+            [
+                "Oath Spells",
+                "You gain oath spells at the paladin levels listed.",
+                "",
+                "**Oath of the Crown Spells**",
+                "",
+                "| Paladin Level | Spells | Spells |",
+                "|:-------------:|:-------|:-------|",
+                "| 3rd  | <spell>Command</spell> | <spell>Compelled Duel</spell>",
+                "| 5th  | <spell>Warding Bond</spell> | <spell>Zone of Truth</spell>",
+                "| 9th  | <spell>Aura of Vitality</spell> | <spell>Spirit Guardians</spell>",
+                "| 13th | <spell>Banishment</spell> | <spell>Guardian of Faith</spell>",
+                "| 17th | <spell>Circle of Power</spell> | <spell>Geas</spell>"
             ]
         ],
         [
@@ -58,23 +72,6 @@
                 "* You have advantage on Wisdom saving throws, as do your allies within 30 feet of you.",
                 "",
                 "This effect ends early if you are incapacitated or die. Once you use this feature, you can't use it again until you finish a long rest."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Oath Spells",
-                "You gain oath spells at the paladin levels listed.",
-                "",
-                "**Oath of the Crown Spells**",
-                "",
-                "| Paladin Level | Spells | Spells |",
-                "|:-------------:|:-------|:-------|",
-                "| 3rd  | <spell>Command</spell> | <spell>Compelled Duel</spell>",
-                "| 5th  | <spell>Warding Bond</spell> | <spell>Zone of Truth</spell>",
-                "| 9th  | <spell>Aura of Vitality</spell> | <spell>Spirit Guardians</spell>",
-                "| 13th | <spell>Banishment</spell> | <spell>Guardian of Faith</spell>",
-                "| 17th | <spell>Circle of Power</spell> | <spell>Geas</spell>"
             ]
         ]
     ],

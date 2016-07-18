@@ -7,6 +7,23 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Expanded Spell List",
+                "The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+                "",
+                "**Archfey Expanded Spells**",
+                "",
+                "| Spell Level | Spells | Spells |",
+                "|:-----------:|:-------|:-------|",
+                "| 1st | <spell>Faerie Fire</spell> | <spell>Sleep</spell>",
+                "| 2nd | <spell>Calm Emotions</spell> | <spell>Phantasmal Force</spell>",
+                "| 3rd | <spell>Blink</spell> | <spell>Plant Growth</spell>",
+                "| 4th | <spell>Dominate Beast</spell> | <spell>Greater Invisibility</spell>",
+                "| 5th | <spell>Dominate Person</spell> | <spell>Seeming</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Fey Presence",
@@ -40,23 +57,6 @@
                 "Until this illusion ends, the creature thinks it is lost in a misty realm, the appearance of which you choose. The creature can see and hear only itself, you, and the illusion.",
                 "",
                 "You must finish a short or long rest before you can use this feature again."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Expanded Spell List",
-                "The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
-                "",
-                "**Archfey Expanded Spells**",
-                "",
-                "| Spell Level | Spells | Spells |",
-                "|:-----------:|:-------|:-------|",
-                "| 1st | <spell>Faerie Fire</spell> | <spell>Sleep</spell>",
-                "| 2nd | <spell>Calm Emotions</spell> | <spell>Phantasmal Force</spell>",
-                "| 3rd | <spell>Blink</spell> | <spell>Plant Growth</spell>",
-                "| 4th | <spell>Dominate Beast</spell> | <spell>Greater Invisibility</spell>",
-                "| 5th | <spell>Dominate Person</spell> | <spell>Seeming</spell>"
             ]
         ]
     ],

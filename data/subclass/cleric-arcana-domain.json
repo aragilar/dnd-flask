@@ -10,6 +10,19 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Arcana Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Detect Magic</spell> | <spell>Magic Missile</spell>",
+                "| 3rd | <spell>Magic Weapon</spell> | <spell>Nystul's Magic Aura</spell>",
+                "| 5th | <spell>Dispel Magic</spell> | <spell>Magic Circle</spell>",
+                "| 7th | <spell>Arcane Eye</spell> | <spell>Leomund's Secret Chest</spell>",
+                "| 9th | <spell>Planar Binding</spell> | <spell>Teleportation Circle</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Arcane Initiate",
@@ -58,19 +71,6 @@
             [
                 "Arcane Mastery",
                 "At 17th level, you choose four spells from the wizard spell list, one from each of the following levels: 6th, 7th, 8th, and 9th. You add them to your list of domain spells. Like your other domain spells, they are always prepared and count as cleric spells for you."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Arcana Domain Spells",
-                "| Cleric Level | Spells | Spells |",
-                "|:------------:|:-------|:-------|",
-                "| 1st | <spell>Detect Magic</spell> | <spell>Magic Missile</spell>",
-                "| 3rd | <spell>Magic Weapon</spell> | <spell>Nystul's Magic Aura</spell>",
-                "| 5th | <spell>Dispel Magic</spell> | <spell>Magic Circle</spell>",
-                "| 7th | <spell>Arcane Eye</spell> | <spell>Leomund's Secret Chest</spell>",
-                "| 9th | <spell>Planar Binding</spell> | <spell>Teleportation Circle</spell>"
             ]
         ]
     ],

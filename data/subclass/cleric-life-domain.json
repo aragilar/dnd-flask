@@ -7,6 +7,19 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Life Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Bless</spell> | <spell>Cure Wounds</spell>",
+                "| 3rd | <spell>Lesser Restoration</spell> | <spell>Spiritual Weapon</spell>",
+                "| 5th | <spell>Beacon of Hope</spell> | <spell>Revivify</spell>",
+                "| 7th | <spell>Death Ward</spell> | <spell>Guardian of Faith</spell>",
+                "| 9th | <spell>Mass Cure Wounds</spell> | <spell>Raise Dead</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Bonus Proficiency",
@@ -45,19 +58,6 @@
             [
                 "Supreme Healing",
                 "Starting at 17th level, when you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die. For example, instead of restoring 2d6 hit points to a creature, you restore 12."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Life Domain Spells",
-                "| Cleric Level | Spells | Spells |",
-                "|:------------:|:-------|:-------|",
-                "| 1st | <spell>Bless</spell> | <spell>Cure Wounds</spell>",
-                "| 3rd | <spell>Lesser Restoration</spell> | <spell>Spiritual Weapon</spell>",
-                "| 5th | <spell>Beacon of Hope</spell> | <spell>Revivify</spell>",
-                "| 7th | <spell>Death Ward</spell> | <spell>Guardian of Faith</spell>",
-                "| 9th | <spell>Mass Cure Wounds</spell> | <spell>Raise Dead</spell>"
             ]
         ]
     ],

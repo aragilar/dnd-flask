@@ -125,7 +125,7 @@ td, th {
 }
 
 .accordion > hr {
-    margin: initial;
+    margin: 0.5em auto;
 }
 
 .accordion > dt {

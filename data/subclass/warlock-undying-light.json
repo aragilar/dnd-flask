@@ -23,6 +23,23 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Expanded Spell List",
+                "The Undying Light lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+                "",
+                "**Undying Light Expanded Spells**",
+                "",
+                "| Spell Level | Spells |",
+                "|:-----------:|:-------|",
+                "| 1st | <spell>Burning Hands</spell>",
+                "| 2nd | <spell>Flaming Sphere</spell>",
+                "| 3rd | <spell>Daylight</spell>",
+                "| 4th | <spell>Fire Shield</spell>",
+                "| 5th | <spell>Flame Strike</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Radiant Soul",
@@ -56,23 +73,6 @@
                 "At 14th level, you gain the ability to channel the Undying Light to heal yourself and other creatures. As a bonus action, you can touch a creature and heal it. With each touch, a creature regains from 1d6 to 5d6 hit points (your choice). You have a total pool of 15d6 you can expend. Subtract the dice you use with each touch from that total.",
                 "",
                 "You regain all expended dice from your pool when you finish a long rest."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Expanded Spell List",
-                "The Undying Light lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
-                "",
-                "**Undying Light Expanded Spells**",
-                "",
-                "| Spell Level | Spells |",
-                "|:-----------:|:-------|",
-                "| 1st | <spell>Burning Hands</spell>",
-                "| 2nd | <spell>Flaming Sphere</spell>",
-                "| 3rd | <spell>Daylight</spell>",
-                "| 4th | <spell>Fire Shield</spell>",
-                "| 5th | <spell>Flame Strike</spell>"
             ]
         ]
     ],

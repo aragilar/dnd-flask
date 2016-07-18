@@ -6,6 +6,19 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Trickery Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Charm Person</spell> | <spell>Disguise Self</spell>",
+                "| 3rd | <spell>Mirror Image</spell> | <spell>Pass without Trace</spell>",
+                "| 5th | <spell>Blink</spell> | <spell>Dispel Magic</spell>",
+                "| 7th | <spell>Dimension Door</spell> | <spell>Polymorph</spell>",
+                "| 9th | <spell>Dominate Person</spell> | <spell>Modify Memory</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Blessing of the Trickster",
@@ -44,19 +57,6 @@
             [
                 "Improved Duplicity",
                 "At 17th level, you can create up to four duplicates of yourself, instead of one, when you use Invoke Duplicity. As a bonus action on your turn, you can move any number of them up to 30 feet, to a maximum range of 120 feet."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Trickery Domain Spells",
-                "| Cleric Level | Spells | Spells |",
-                "|:------------:|:-------|:-------|",
-                "| 1st | <spell>Charm Person</spell> | <spell>Disguise Self</spell>",
-                "| 3rd | <spell>Mirror Image</spell> | <spell>Pass without Trace</spell>",
-                "| 5th | <spell>Blink</spell> | <spell>Dispel Magic</spell>",
-                "| 7th | <spell>Dimension Door</spell> | <spell>Polymorph</spell>",
-                "| 9th | <spell>Dominate Person</spell> | <spell>Modify Memory</spell>"
             ]
         ]
     ],

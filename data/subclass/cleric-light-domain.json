@@ -6,6 +6,19 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Light Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Burning Hands</spell> | <spell>Faerie Fire</spell>",
+                "| 3rd | <spell>Flaming Sphere</spell> | <spell>Scorching Ray</spell>",
+                "| 5th | <spell>Daylight</spell> | <spell>Fireball</spell>",
+                "| 7th | <spell>Guardian of Faith</spell> | <spell>Wall of Fire</spell>",
+                "| 9th | <spell>Flame Strike</spell> | <spell>Scrying</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Bonus Cantrip",
@@ -48,19 +61,6 @@
             [
                 "Corona of Light",
                 "Starting at 17th level, you can use your action to activate an aura of sunlight that lasts for 1 minute or until you dismiss it using another action. You emit bright light in a 60-foot radius and dim light 30 feet beyond that. Your enemies in the bright light have disadvantage on saving throws against any spell that deals fire or radiant damage."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Light Domain Spells",
-                "| Cleric Level | Spells | Spells |",
-                "|:------------:|:-------|:-------|",
-                "| 1st | <spell>Burning Hands</spell> | <spell>Faerie Fire</spell>",
-                "| 3rd | <spell>Flaming Sphere</spell> | <spell>Scorching Ray</spell>",
-                "| 5th | <spell>Daylight</spell> | <spell>Fireball</spell>",
-                "| 7th | <spell>Guardian of Faith</spell> | <spell>Wall of Fire</spell>",
-                "| 9th | <spell>Flame Strike</spell> | <spell>Scrying</spell>"
             ]
         ]
     ],

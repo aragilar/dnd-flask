@@ -21,6 +21,20 @@
                 "**Honor.** Treat others with fairness, and let your honorable deeds be an example to them. Do as much good as possible while causing the least amount of harm.",
                 "",
                 "**Duty.** Be responsible for your actions and their consequences, protect those entrusted to your care, and obey those who have just authority over you."
+            ],
+            [
+                "Oath Spells",
+                "You gain oath spells at the paladin levels listed.",
+                "",
+                "**Oath of Devotion Spells**",
+                "",
+                "| Paladin Level | Spells | Spells |",
+                "|:-------------:|:-------|:-------|",
+                "| 3rd  | <spell>Protection from Evil and Good</spell> | <spell>Sanctuary</spell>",
+                "| 5th  | <spell>Lesser Restoration</spell> | <spell>Zone of Truth</spell>",
+                "| 9th  | <spell>Beacon of Hope</spell> | <spell>Dispel Magic</spell>",
+                "| 13th | <spell>Freedom of Movement</spell> | <spell>Guardian of Faith</spell>",
+                "| 17th | <spell>Commune</spell> | <spell>Flame Strike</spell>"
             ]
         ],
         [
@@ -67,23 +81,6 @@
                 "In addition, for the duration, you have advantage on saving throws against spells cast by fiends or undead.",
                 "",
                 "Once you use this feature, you can't use it again until you finish a long rest."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Oath Spells",
-                "You gain oath spells at the paladin levels listed.",
-                "",
-                "**Oath of Devotion Spells**",
-                "",
-                "| Paladin Level | Spells | Spells |",
-                "|:-------------:|:-------|:-------|",
-                "| 3rd  | <spell>Protection from Evil and Good</spell> | <spell>Sanctuary</spell>",
-                "| 5th  | <spell>Lesser Restoration</spell> | <spell>Zone of Truth</spell>",
-                "| 9th  | <spell>Beacon of Hope</spell> | <spell>Dispel Magic</spell>",
-                "| 13th | <spell>Freedom of Movement</spell> | <spell>Guardian of Faith</spell>",
-                "| 17th | <spell>Commune</spell> | <spell>Flame Strike</spell>"
             ]
         ]
     ],

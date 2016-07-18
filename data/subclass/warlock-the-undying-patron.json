@@ -10,6 +10,23 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Expanded Spell List",
+                "The Undying lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+                "",
+                "**Undying Expanded Spells**",
+                "",
+                "| Spell Level | Spells | Spells |",
+                "|:-----------:|:-------|:-------|",
+                "| 1st | <spell>False Life</spell> | <spell>Ray of Sickness</spell>",
+                "| 2nd | <spell>Blindness/Deafness</spell> | <spell>Silence</spell>",
+                "| 3rd | <spell>Feign Death</spell> | <spell>Speak with Dead</spell>",
+                "| 4th | <spell>Aura of Life</spell> | <spell>Death Ward</spell>",
+                "| 5th | <spell>Contagion</spell> | <spell>Legend Lore</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Among the Dead",
@@ -45,23 +62,6 @@
                 "When you reach 14th level, you partake of some of the true secrets of the Undying. On your turn, you can use a bonus action to regain hit points equal to 1d8 + your warlock level. Additionally, if you put a severed body part of yours back in place when you use this feature, the part reattaches.",
                 "",
                 "Once you use this feature, you can't use it again until you finish a short or long rest."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Expanded Spell List",
-                "The Undying lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
-                "",
-                "**Undying Expanded Spells**",
-                "",
-                "| Spell Level | Spells | Spells |",
-                "|:-----------:|:-------|:-------|",
-                "| 1st | <spell>False Life</spell> | <spell>Ray of Sickness</spell>",
-                "| 2nd | <spell>Blindness/Deafness</spell> | <spell>Silence</spell>",
-                "| 3rd | <spell>Feign Death</spell> | <spell>Speak with Dead</spell>",
-                "| 4th | <spell>Aura of Life</spell> | <spell>Death Ward</spell>",
-                "| 5th | <spell>Contagion</spell> | <spell>Legend Lore</spell>"
             ]
         ]
     ],

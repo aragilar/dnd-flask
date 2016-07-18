@@ -8,6 +8,23 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Oathbreaker Spells",
+                "An Oathbreaker paladin loses previously gained oath spells and instead gains the following Oathbreaker spells at the paladin levels listed.",
+                "",
+                "**Oathbreaker Spells**",
+                "",
+                "| Paladin Level | Spells | Spells |",
+                "|:-------------:|:-------|:-------|",
+                "| 3rd  | <spell>Hellish Rebuke</spell> | <spell>Inflict Wounds</spell>",
+                "| 5th  | <spell>Crown of Madness</spell> | <spell>Darkness</spell>",
+                "| 9th  | <spell>Animate Dead</spell> | <spell>Bestow Curse</spell>",
+                "| 13th | <spell>Blight</spell> | <spell>Confusion</spell>",
+                "| 17th | <spell>Contagion</spell> | <spell>Dominate Person</spell>"
+            ]
+        ],
+        [
             3,
             [
                 "Channel Divinity",
@@ -54,20 +71,6 @@
                 "The paladin who wishes to atone must first shed his or her evil alignment and demonstrate this alignment change through words and deeds. Having done so, the paladin loses all Oath breaker features and must choose a deity and a sacred oath. (With your permission, the player can select a different deity or sacred oath than the character had previously.) However, the paladin doesn't gain the class featu res specific to that sacred oath until he or she completes some kind of dangerous quest or trial, as determined by the DM.",
                 "",
                 "A paladin who breaks his or her sacred oath a second time can become an oathbreaker once more, but can't atone."
-            ],
-            [
-                "Oathbreaker Spells",
-                "An Oathbreaker paladin loses previously gained oath spells and instead gains the following Oathbreaker spells at the paladin levels listed.",
-                "",
-                "**Oathbreaker Spells**",
-                "",
-                "| Paladin Level | Spells | Spells |",
-                "|:-------------:|:-------|:-------|",
-                "| 3rd  | <spell>Hellish Rebuke</spell> | <spell>Inflict Wounds</spell>",
-                "| 5th  | <spell>Crown of Madness</spell> | <spell>Darkness</spell>",
-                "| 9th  | <spell>Animate Dead</spell> | <spell>Bestow Curse</spell>",
-                "| 13th | <spell>Blight</spell> | <spell>Confusion</spell>",
-                "| 17th | <spell>Contagion</spell> | <spell>Dominate Person</spell>"
             ]
         ]
     ],

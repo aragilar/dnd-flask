@@ -7,6 +7,19 @@
     ],
     "features": [
         [
+            0,
+            [
+                "Knowledge Domain Spells",
+                "| Cleric Level | Spells | Spells |",
+                "|:------------:|:-------|:-------|",
+                "| 1st | <spell>Command</spell> | <spell>Identify</spell>",
+                "| 3rd | <spell>Augury</spell> | <spell>Suggestion</spell>",
+                "| 5th | <spell>Nondetection</spell> | <spell>Speak with Dead</spell>",
+                "| 7th | <spell>Arcane Eye</spell> | <spell>Confusion</spell>",
+                "| 9th | <spell>Legend Lore</spell> | <spell>Scrying</spell>"
+            ]
+        ],
+        [
             1,
             [
                 "Blessings of Knowledge",
@@ -57,19 +70,6 @@
                 "If the object was owned by another creature in the recent past (within a number of days equal to your Wisdom score), you can spend 1 additional minute for each owner to learn the same information about that creature.",
                 "",
                 "**Area Reading.** As you meditate, you see visions of recent events in your immediate vicinity (a room, street, tunnel, clearing, or the like, up to a 50-foot cube), going back a number of days equal to your Wisdom score. For each minute you meditate, you learn about one significant event, beginning with the most recent. Significant events typically involve powerful emotions, such as battles and betrayals, marriages and murders, births and funerals. However, they might also include more mundane events that are nevertheless important in your current situation."
-            ]
-        ],
-        [
-            -1,
-            [
-                "Knowledge Domain Spells",
-                "| Cleric Level | Spells | Spells |",
-                "|:------------:|:-------|:-------|",
-                "| 1st | <spell>Command</spell> | <spell>Identify</spell>",
-                "| 3rd | <spell>Augury</spell> | <spell>Suggestion</spell>",
-                "| 5th | <spell>Nondetection</spell> | <spell>Speak with Dead</spell>",
-                "| 7th | <spell>Arcane Eye</spell> | <spell>Confusion</spell>",
-                "| 9th | <spell>Legend Lore</spell> | <spell>Scrying</spell>"
             ]
         ]
     ],
