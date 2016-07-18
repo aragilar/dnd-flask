@@ -1,6 +1,5 @@
 <div id="main-sheet">
     <img id="main-img" alt="character sheet">
-    
     <input id="name" class="save">
     <input id="alignment" class="save">
     <input id="race" class="save">
@@ -22,7 +21,6 @@
     <input type="number" id="{{ stat }}" class="save">
     <output id="{{ stat }}mod"></output>
     {% endfor %}
-    
     {% for type in ['attack', 'spell'] %}
     {% for i in range(1, 4+1) %}
     <input id="{{ type }}-{{ i }}-name" class="save">
@@ -33,10 +31,8 @@
     {% endif %}
     {% endfor %}
     {% endfor %}
-    
     <textarea id="features" class="save"></textarea>
     <textarea id="traits" class="save"></textarea>
-    
     {% for lvl in range(1, 9+1) %}
     <input id="slots-total-{{ lvl }}" class="save">
     <input id="slots-expended-{{ lvl }}" class="save">
@@ -48,24 +44,19 @@
     <label id="spell-attack-container">
         <input id="spell-attack" class="save">
     </label>
-    
     {% for currency in ["cp", "sp", "ep", "gp", "pp"] %}
     <input id="{{ currency }}" class="save">
     {% endfor %}
-    
     <input id="max-hp" class="save">
     <textarea id="current-hp" class="save"></textarea>
     <input id="total-hit-dice" class="save">
     <textarea id="hit-dice" class="save"></textarea>
-    
     <input id="ac" class="save">
     <input id="ac-no-armor" class="save">
-    
     {% for lvl in ["cantrips", 1, 2, 3, 4, 5, 6, 7, 8, 9] %}
     <input id="spell-list-{{ lvl }}" class="save">
     {% endfor %}
     <textarea id="prepared-spells" class="save"></textarea>
-    
     <input type="number" id="proficiency" class="save">
     <div id="saving-throws">
         {% for skill in skills[:6] %}
