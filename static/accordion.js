@@ -7,7 +7,7 @@ $(document).ready(function(){
         var next = elem.next();
         if (next.is('dd')){
             if (next.hasClass('dd-closed')){
-                next.slideToggle(400);
+                next.slideDown(400);
                 elem.removeClass('dt-closed').addClass('dt-open');
                 next.removeClass('dd-closed').addClass('dd-open');
             } else {

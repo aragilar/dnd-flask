@@ -156,6 +156,18 @@ td, th {
     margin-left: 40px;
 }
 
+/*
+.accordion > dd {
+    transition: 0.4s;
+    transform-origin: 50% 0%;
+}
+
+.accordion > dd.dd-closed {
+    transform: rotate3d(1, 0, 0, -90deg);
+    height: 0;
+}
+*/
+
 @media only screen
 and (max-device-width : 736px) {
     /*Phones*/
