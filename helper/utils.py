@@ -66,7 +66,7 @@ class Base (object):
                         child = child.subfilter(f)
                         if child:
                             ret.children[child.name] = child
-                    if not ret.children:
+                    if not ret.children and not f == True:
                         ret = None
         return ret
     
