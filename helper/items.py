@@ -9,6 +9,7 @@ class Weapon (utils.Base):
     damage = ''
     damage_type = 'unknown'
     properties = ['-']
+    ranged = False
     weight = '0'
 
     special = ''
@@ -49,9 +50,9 @@ class Weapons (utils.Group):
         del t
         
         temp += '## Special\n\n'
-        for item in self.values:
+        for item in self.values():
             if item.special:
-                temp += '**%s** %s\n\n' % (item, item.special)
+                temp += '**%s** %s\n\n' % (item.name, item.special)
         temp = utils.get_details(utils.convert(temp))
         
         temp += '<table id="weapons-table">\n'
@@ -63,12 +64,12 @@ class Weapons (utils.Group):
         other = []
         for weapon in self:
             if weapon.type == 'martial':
-                if not weapon.range:
+                if not weapon.ranged:
                     martial_melee.append(weapon)
                 else:
                     martial_ranged.append(weapon)
             elif weapon.type == 'simple':
-                if not weapon.range:
+                if not weapon.ranged:
                     simple_melee.append(weapon)
                 else:
                     simple_ranged.append(weapon)
