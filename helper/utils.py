@@ -287,27 +287,26 @@ def get_details(text, detltag='h2', splttag=None):
     return text
 
 def details_block(summary, body=None, summary_class=None, body_class=None):
-    if body:
-        if summary_class:
-            txt = '<dt class="%s">' % summary_class
-        else:
-            txt = '<dt>'
-        txt += summary
-        txt += '</dt>\n'
-
-        if body_class:
-            txt += '<dd class="%s">' % body_class
-        else:
-            txt += '<dd>'
-        if not body.startswith('\n'):
-            txt += '\n'
-        txt += body
-        if not body.endswith('\n'):
-            txt += '\n'
-        txt += '</dd>\n'
-        
+    if body is None:
+        body = ''
+    
+    if summary_class:
+        txt = '<dt class="%s">' % summary_class
     else:
-        txt = summary
+        txt = '<dt>'
+    txt += summary
+    txt += '</dt>\n'
+
+    if body_class:
+        txt += '<dd class="%s">' % body_class
+    else:
+        txt += '<dd>'
+    if not body.startswith('\n'):
+        txt += '\n'
+    txt += body
+    if not body.endswith('\n'):
+        txt += '\n'
+    txt += '</dd>\n'
     return txt
 
 def details_group(text, body_id=None, body_class=None):

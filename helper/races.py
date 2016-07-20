@@ -76,10 +76,12 @@ class Race (utils.Base):
             ret += '**Alignment.** %s\n\n' % self.alignment
         
         # ----#-   Race Size
-        ret += '**Size.** %s\n\n' % self.size_description.format(size=self.size)
+        if self.size is not None:
+            ret += '**Size.** %s\n\n' % self.size_description.format(size=self.size)
         
         # ----#-   Race Speed
-        ret += '**Speed.** %s\n\n' % self.speed_description.format(speed=self.speed)
+        if self.speed is not None:
+            ret += '**Speed.** %s\n\n' % self.speed_description.format(speed=self.speed)
         
         # ----#-   Race Traits
         for trait in self.traits:
@@ -150,6 +152,9 @@ class Race (utils.Base):
 
 class SubRace (Race):
     subclass = None
+    
+    size = None
+    speed = None
 
     def __str__(self):
         summary = '<h1 id="%s">%s</h1>' % (utils.slug(self.name), self.name)
