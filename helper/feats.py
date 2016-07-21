@@ -39,6 +39,7 @@ class Feats (utils.Group):
         temp = load('%s.md' % t.replace('-', ''))
         if temp != None:
             ret += utils.convert(temp)
+        ret = ret.replace('<h1>', '<h1 id="%s">' % t)
 
         temp = ''
         for feat in self:
