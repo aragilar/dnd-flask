@@ -288,7 +288,7 @@ def get_details(text, detltag='h2', splttag=None):
     return text
 
 def details_block(summary, body=None, summary_class=None, body_class=None):
-    if body is not None:
+    if body:
         if summary_class:
             txt = '<dt class="%s">' % summary_class
         else:
