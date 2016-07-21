@@ -32,7 +32,7 @@ class OptionalRules (utils.Group):
     type = OptionalRule
 
     def __init__(self, folder=None, sources=None):
-        utils.Group.__init__(self)
+        super().__init__()
         if folder:
             folder = os.path.join(folder, 'optionalrule')
             for item in sorted(os.listdir(folder)):

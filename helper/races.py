@@ -159,8 +159,7 @@ class SubRace (Race):
     def __str__(self):
         summary = '<h1 id="%s">%s</h1>' % (utils.slug(self.name), self.name)
         desc = self.description
-        if desc:
-            desc = utils.convert(desc)
+        desc = utils.convert(desc)
         ret = utils.details_group(utils.details_block(summary, desc))
         ret += self.features2html()
         

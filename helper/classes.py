@@ -24,13 +24,6 @@ class Class (utils.Base):
     table = {}
     tool_proficiencies = []
     
-    loadhook = None
-    
-    #def __init__(self, *args, **kwargs):
-    #    utils.Base.__init__(self, *args, **kwargs)
-    #    if self.spells and callable(self.loadhook):
-    #        self.spells = 
-    
     def __str__(self):
         ret = '<div>\n'
     
@@ -293,7 +286,7 @@ class Class (utils.Base):
         return ret
     
     def filter(self, fil):
-        ret = utils.Base.filter(self, fil)
+        ret = super().filter(fil)
         if ret and fil is not None and 'spell' in fil:
             spellfilter = fil['spell']
             for item in ([ret] + list(ret.children.values())):
@@ -336,7 +329,7 @@ class Classes (utils.Group):
     type = Class
     
     def __init__(self, folder=None, sources=None):
-        utils.Group.__init__(self, folder, sources)
+        super().__init__(folder, sources)
 
         if folder is not None:
             folder = os.path.join(folder, 'spelllist')

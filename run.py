@@ -1,7 +1,7 @@
 import sys
 import os
 import re
-import traceback
+import logging
 
 from flask import Flask, render_template, url_for, abort, request, send_from_directory
 
@@ -10,6 +10,10 @@ import helper
 app = Flask(__name__)
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
+
+log = logging.getLogger('FlaskApp')
+log.setLevel(logging.ERROR)
+app.logger.addHandler(log)
 
 filters = helper.collections.OrderedDict()
 everystyle = [
@@ -81,8 +85,6 @@ def four_oh_four(e):
 
 @app.errorhandler(500)
 def five_hundred(e):
-    sys.stderr.write(traceback.format_exc())
-    
     return render_template('error.html',
         home=True,
         styles=everystyle,

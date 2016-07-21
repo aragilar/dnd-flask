@@ -172,6 +172,7 @@ class Armors (utils.Group):
 class Item (utils.Base):
     cost = 0.0
     description = ''
+    group = None
     weight = '-'
 
     def __str__(self):
@@ -183,7 +184,9 @@ class Item (utils.Base):
         ret += utils.details_group(utils.details_block(self.name, temp))
         ret += '</td>\n'
         
-        if self.cost > 0:
+        if isinstance(self.cost, str):
+            ret += '<td>-</td>\n'
+        elif self.cost > 0:
             if self.cost < 0.1:
                 ret += '<td>%d cp</td>\n' % int(self.cost * 100)
             elif self.cost < 1:
@@ -194,85 +197,101 @@ class Item (utils.Base):
             ret += '<td>-</td>\n'
         
         ret += '<td>%s</td>\n' % self.weight
+        
+        ret = '<tr>%s</tr>\n' % ret
 
         return ret
 
 class Items (utils.Group):
     type = Item
-    name = 'Items'
-    description = ''
 
     def __init__(self, folder=None, sources=None):
-        utils.Group.__init__(self)
+        super().__init__(folder, sources)
+        self.groups = {}
         if folder:
             t = os.path.join(folder, self.type.__name__.lower())
             if os.path.exists(t):
                 folder = t
-            for item in os.listdir(folder):
-                item = os.path.join(folder, item)
-                if os.path.isdir(item):
-                    item = type(self)(item, sources)
-                    if item and item.name != 'Items':
-                        self._items[item.name] = item
-                elif os.path.isfile(item):
-                    if item.endswith('.json'):
-                        try:
-                            item = archiver.load(item, object_hook=self.type.fromJSON)
-                        except (ValueError, IOError):
-                            raise
-                        if sources is None or item.source in sources:
-                            self.add(item)
-                    elif item.endswith('description.md'):
+                for item in os.listdir(folder):
+                    item = os.path.join(folder, item)
+                    if os.path.isfile(item) and item.endswith('.md'):
                         with open(item, 'r') as f:
                             temp = f.readlines()
-                        self.name = temp[0].strip()
-                        if len(temp) > 2:
-                            self.description = ''.join(temp[2:])
-
-    def __str__(self):
-        if self.description:
-            temp = utils.convert(str(self.description))
-        else:
-            temp = ''
-        
-        temp += '<table>\n<tr><th>Item</th><th>Cost</th><th>Weight</th></tr>\n'
-        
-        for item in self:
-            item = str(item)
-            if not item.startswith('<td>'):
-                item = '<td colspan="3">\n%s</td>\n' % item
-            temp += '<tr>\n%s</tr>\n' % item
-        
-        temp += '</table>\n'
-
-        ret = utils.details_group(utils.details_block(
-            '<strong><em>%s</em></strong>' % self.name,
-            temp
-        ))
-
-        return ret
-
+                        temp = {
+                            'name': temp[0].lstrip('#').strip(),
+                            'description': (
+                                ''.join(temp[2:])
+                                if len(temp) > 1
+                                else ''
+                            ),
+                        }
+                        self.add(temp)
+    
     def add(self, item):
-        self._items[item.name] = item
+        if isinstance(item, self.type):
+            super().add(item)
+        elif isinstance(item, dict):
+            g = item['name']
+            g = self._getgroup(g)
+            if g is not None:
+                self.groups[g] = item['description']
+    
+    @staticmethod
+    def _getgroup(g):
+        if g is not None:
+            g = g.split('/')
+            if g:
+                g = g[-1]
+            else:
+                g = ''
+        return g
 
     def page(self, load):
-        name = self.name
-        self.name = '<h1>Equipment</h1>'
-        description = self.description
-
-        temp = load('equipment.md')
-        if temp:
-            temp = utils.get_details(utils.convert(temp))
+        ret = load('equipment.md')
+        if ret:
+            ret = utils.convert(ret)
+            ret = utils.get_details(ret)
         else:
-            temp = ''
-        temp = temp[temp.find('\n'):]
-        self.description = temp
-
-        ret = str(self)
-
-        self.name = name
-        self.description = description
-
+            ret = '<h1>Equipment</h1>\n'
+        
+        ret += '<table>\n'
+        ret += (
+            '<tr>'
+            '<th>Item</th>'
+            '<th>Cost</th>'
+            '<th>Weight</th>'
+            '</tr>\n'
+        )
+        
+        for item in self.values():
+            if not item.group:
+                ret += str(item)
+        
+        ret += '</table>\n'
+        
+        for name in sorted(self.groups):
+            description = self.groups[name]
+            hadany = False
+            temp = '<h2>%s</h2>\n' % name
+            temp += utils.convert(description)
+            temp += '<table>\n'
+            temp += (
+                '<tr>'
+                '<th>Item</th>'
+                '<th>Cost</th>'
+                '<th>Weight</th>'
+                '</tr>\n'
+            )
+            for item in self.values():
+                if self._getgroup(item.group) == name:
+                    temp += str(item)
+                    hadany = True
+            temp += '</table>\n'
+            if hadany:
+                ret += utils.get_details(temp)
+        
+        ret = utils.get_details(ret, 'h1')
+        
         return ret
 
 def main(weapons, armors, items, load):

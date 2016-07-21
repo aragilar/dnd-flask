@@ -115,7 +115,7 @@ class Group (object):
                 os.listdir(folder),
             )
             
-            # ----#-   Sub
+            # ----#-         Sub
             if self.type.subclass:
                 if folder.endswith('/') or folder.endswith('\\'):
                     folder = folder[:-1]
@@ -144,10 +144,11 @@ class Group (object):
         else:
             raise TypeError('Cannot accept item of type %s' % str(type(item)))
     
-    def filter(self, filter):
-        new = type(self)()
-        for item in self:
-            item = item.filter(filter)
+    def filter(self, f):
+        new = copy.copy(self)
+        new._items = collections.OrderedDict()
+        for item in self.values():
+            item = item.filter(f)
             if item is not None:
                 new.add(item)
         return new
@@ -287,26 +288,26 @@ def get_details(text, detltag='h2', splttag=None):
     return text
 
 def details_block(summary, body=None, summary_class=None, body_class=None):
-    if body is None:
-        body = ''
+    if body is not None:
+        if summary_class:
+            txt = '<dt class="%s">' % summary_class
+        else:
+            txt = '<dt>'
+        txt += summary
+        txt += '</dt>\n'
     
-    if summary_class:
-        txt = '<dt class="%s">' % summary_class
+        if body_class:
+            txt += '<dd class="%s">' % body_class
+        else:
+            txt += '<dd>'
+        if not body.startswith('\n'):
+            txt += '\n'
+        txt += body
+        if not body.endswith('\n'):
+            txt += '\n'
+        txt += '</dd>\n'
     else:
-        txt = '<dt>'
-    txt += summary
-    txt += '</dt>\n'
-
-    if body_class:
-        txt += '<dd class="%s">' % body_class
-    else:
-        txt += '<dd>'
-    if not body.startswith('\n'):
-        txt += '\n'
-    txt += body
-    if not body.endswith('\n'):
-        txt += '\n'
-    txt += '</dd>\n'
+        txt = summary
     return txt
 
 def details_group(text, body_id=None, body_class=None):
