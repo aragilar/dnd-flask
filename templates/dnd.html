@@ -29,7 +29,7 @@
     <h2><a href="{{ url_for('class_page', **query) }}">Classes</a></h2>
     <ul>
         {% for item in classes %}
-        <li><a href="{{ url_for('class_page', name=item, **query) }}">{{ item }}</a></li>
+        <li><h3><a href="{{ url_for('class_page', name=item, **query) }}">{{ item }}</a></h3></li>
         {% endfor %}
     </ul>
     <hr>
@@ -38,7 +38,7 @@
     <h2><a href="{{ url_for('race_page', **query) }}">Races</a></h2>
     <ul>
         {% for item in races %}
-        <li><a href="{{ url_for('race_page', name=item, **query) }}">{{ item }}</a></li>
+        <li><h3><a href="{{ url_for('race_page', name=item, **query) }}">{{ item }}</a></h3></li>
         {% endfor %}
     </ul>
     <hr>
@@ -55,7 +55,7 @@
     <h2><a href="{{ url_for('feat_page', **query) }}">Feats</a></h2>
     {% if boons %}
     <ul>
-        <li><a href="{{ url_for('feat_page', _anchor='epic-boons', **query) }}">Epic Boons</a></li>
+        <li><h3><a href="{{ url_for('feat_page', _anchor='epic-boons', **query) }}">Epic Boons</a></h3></li>
     </ul>
     {% endif %}
     {% endif %}
@@ -81,7 +81,7 @@
     <h1>Optional Rules</h1>
     <ul>
         {% for rule in optionalrules %}
-        <li><a href="{{ url_for('optionalrule_page', rule=rule, **query) }}">{{ rule }}</a></li>
+        <li><h3><a href="{{ url_for('optionalrule_page', rule=rule, **query) }}">{{ rule }}</a></h3></li>
         {% endfor %}
     </ul>
     {% endif %}

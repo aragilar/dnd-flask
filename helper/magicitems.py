@@ -41,7 +41,7 @@ class MagicItem (utils.Base):
                     temp += ' (requires attunement by a %s)' % self.attunement
             else:
                 temp += ' (requires attunement)'
-        ret += '<em>%s</em>\n\n' % temp
+        ret += '<p><em>%s</em></p>\n\n' % temp
         
         ret += utils.convert('\n'.join(self.description))
         

@@ -49,6 +49,12 @@
     color: black;
 }
 
+.index li,
+.index li * {
+    margin: 0px;
+    color: #455;
+}
+
 body {
     background-color: #ddd;
     background-image: url("images/wood1.png");
