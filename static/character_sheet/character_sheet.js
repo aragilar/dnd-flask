@@ -262,17 +262,15 @@ function fillAttrs() {
 
 window.onload = function(){
     var elem;
-    for (var item in statList) {
+    /*for (var item in statList) {
         item = statList[item];
         elem = document.getElementById(item);
         if (elem) {
             elem.value = '10';
-            /*elem.addEventListener('change', modifiers);
-            modifiers.call(elem);*/
         }
     }
     
-    setValue('proficiency', 2);
+    setValue('proficiency', 2);*/
     fillAttrs();
     
     var fs = {

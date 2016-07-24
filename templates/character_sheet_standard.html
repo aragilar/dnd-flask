@@ -17,11 +17,11 @@
     </div>
     <div id="main-sheet-stats">
         {% for stat in stats %}
-        <input type="number" id="{{ stat }}" class="save">
+        <input type="number" id="{{ stat }}" class="save" value="10">
         <output id="{{ stat }}mod"></output>
         {% endfor %}
         <input type="checkbox" id="inspiration" class="save">
-        <input type="number" id="proficiency" class="save">
+        <input type="number" id="proficiency" class="save" value="2">
         {% for skill in skills %}
         <input type="checkbox" id="{{ skill }}" class="save">
         <input id="{{ skill }}-value" class="save">

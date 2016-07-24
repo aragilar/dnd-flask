@@ -18,7 +18,7 @@
     <input id="speed" class="save">
     <input id="vision" class="save">
     {% for stat in stats %}
-    <input type="number" id="{{ stat }}" class="save">
+    <input type="number" id="{{ stat }}" class="save" value="10">
     <output id="{{ stat }}mod"></output>
     {% endfor %}
     {% for type in ['attack', 'spell'] %}
@@ -57,7 +57,7 @@
     <input id="spell-list-{{ lvl }}" class="save">
     {% endfor %}
     <textarea id="prepared-spells" class="save"></textarea>
-    <input type="number" id="proficiency" class="save">
+    <input type="number" id="proficiency" class="save" value="2">
     <div id="saving-throws">
         {% for skill in skills[:6] %}
         <label>
