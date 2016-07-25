@@ -25,7 +25,7 @@
         "",
         "If you command an object to attack, it can make a single melee attack against a creature within 5 feet of it. It makes a slam attack with an attack bonus and bludgeoning damage determined by its size. The DM might rule that a specific object inflicts slashing or piercing damage based on its form.",
         "",
-        "**At Higher Levels.** When you cast this spell using a spell slot of 6th level or higher, you animate or reassert control over two additional undead creatures for each slot level above 5th. Each of the creatures must come from a different corpse or pile of bones."
+        "**At Higher Levels.** If you cast this spell using a spell slot of 6th level or higher, you can animate two additional objects for each slot level above 5th."
     ],
     "duration": "Concentration, up to 1 minute",
     "level": "5",
