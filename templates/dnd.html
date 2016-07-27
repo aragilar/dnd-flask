@@ -26,19 +26,19 @@
     <h2><a href="http://dnd.wizards.com/articles/features/basicrules" target="_blank">Basic Rules</a></h2>
     <hr>
     {% if classes %}
-    <h2><a href="{{ url_for('class_page', **query) }}">Classes</a></h2>
+    <h2><a href="{{ url_for('subpage', type='Classes', **query) }}">Classes</a></h2>
     <ul>
         {% for item in classes %}
-        <li><h3><a href="{{ url_for('class_page', name=item, **query) }}">{{ item }}</a></h3></li>
+        <li><h3><a href="{{ url_for('subthing', name=item, type='Classes', **query) }}">{{ item }}</a></h3></li>
         {% endfor %}
     </ul>
     <hr>
     {% endif %}
     {% if races %}
-    <h2><a href="{{ url_for('race_page', **query) }}">Races</a></h2>
+    <h2><a href="{{ url_for('subpage', type='Races', **query) }}">Races</a></h2>
     <ul>
         {% for item in races %}
-        <li><h3><a href="{{ url_for('race_page', name=item, **query) }}">{{ item }}</a></h3></li>
+        <li><h3><a href="{{ url_for('subthing', name=item, type='Races', **query) }}">{{ item }}</a></h3></li>
         {% endfor %}
     </ul>
     <hr>
@@ -46,42 +46,38 @@
     <h1>Reference Databases</h1>
     <h2><a href="http://crobi.github.io/dnd5e-quickref/preview/quickref.html" target="_blank">Actions &amp; Conditions</a></h2>
     {% if backgrounds %}
-    <h2><a href="{{ url_for('background_page', **query) }}">Backgrounds</a></h2>
+    <h2><a href="{{ url_for('list_page', type='Backgrounds', **query) }}">Backgrounds</a></h2>
     {% endif %}
     {% if spells %}
-    <h2><a href="{{ url_for('spell_page', **query) }}">Spells</a></h2>
+    <h2><a href="{{ url_for('list_page', type='Spells', **query) }}">Spells</a></h2>
     {% endif %}
     {% if feats or boons %}
-    <h2><a href="{{ url_for('feat_page', **query) }}">Feats</a></h2>
+    <h2><a href="{{ url_for('list_page', type='Feats', **query) }}">Feats</a></h2>
     {% if boons %}
     <ul>
-        <li><h3><a href="{{ url_for('feat_page', _anchor='epic-boons', **query) }}">Epic Boons</a></h3></li>
+        <li><h3><a href="{{ url_for('list_page', type='Feats', _anchor='epic-boons', **query) }}">Epic Boons</a></h3></li>
     </ul>
     {% endif %}
     {% endif %}
     {% if items %}
-    <h2><a href="{{ url_for('item_page', **query) }}">Items</a></h2>
+    <h2><a href="{{ url_for('list_page', type='Items', **query) }}">Items</a></h2>
     {% endif %}
     {% if magicitems %}
-    <h2><a href="{{ url_for('magicitem_page', **query) }}">Magic Items</a></h2>
+    <h2><a href="{{ url_for('list_page', type='Magic Items', **query) }}">Magic Items</a></h2>
     {% endif %}
     {% if documentation %}
     <hr>
     <h1>Rules</h1>
-    <h2><a href="{{ url_for('document_page', document='character-progression', **query) }}">Character Progression</h2>
-    <h2><a href="{{ url_for('document_page', document='character-details', **query) }}">Character Details</a></h2>
-    <h2><a href="{{ url_for('document_page', document='expenses', **query) }}">Expenses</a></h2>
-    <h2><a href="{{ url_for('document_page', document='abilities', **query) }}">Ability Scores</a></h2>
-    <h2><a href="{{ url_for('document_page', document='adventuring', **query) }}">Adventuring</a></h2>
-    <h2><a href="{{ url_for('document_page', document='combat', **query) }}">Combat</a></h2>
-    <h2><a href="{{ url_for('document_page', document='multiclassing', **query) }}">Multiclassing</a></h2>
+    {% for rule in documentation %}
+    <h2><a href="{{ url_for('subthing', name=rule, type='Documentation', **query) }}">{{ rule }}</a></h2>
+    {% endfor %}
     {% endif %}
     {% if optionalrules %}
     <hr>
     <h1>Optional Rules</h1>
     <ul>
         {% for rule in optionalrules %}
-        <li><h3><a href="{{ url_for('optionalrule_page', rule=rule, **query) }}">{{ rule }}</a></h3></li>
+        <li><h3><a href="{{ url_for('subthing', name=rule, type='Optional Rules', **query) }}">{{ rule }}</a></h3></li>
         {% endfor %}
     </ul>
     {% endif %}

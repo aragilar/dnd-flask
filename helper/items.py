@@ -38,16 +38,22 @@ class Weapon (utils.Base):
 
 class Weapons (utils.Group):
     type = Weapon
+    head = '# Weapons'
+    
+    def __init__(self, folder=None, sources=None):
+        super().__init__(folder, sources)
+        if folder:
+            folder = os.path.join(folder, 'documentation/weapons.md')
+            if os.path.exists(folder):
+                with open(folder, 'r') as f:
+                    data = f.read()
+                self.head = data
 
-    def page(self, load):
+    def page(self):
         temp = ''
-        t = load('weapons.md')
-        if t:
-            temp += t
-            temp += '\n\n'
-        else:
-            temp += '<h1>Weapons</h1>\n'
-        del t
+        
+        temp += self.head
+        temp += '\n\n'
         
         temp += '## Special\n\n'
         for item in self.values():
@@ -83,7 +89,9 @@ class Weapons (utils.Group):
                     temp += str(weapon)
         
         temp += '</table>\n'
-        return utils.get_details(temp, 'h1')
+        temp = utils.get_details(temp, 'h1')
+        
+        return '<div>\n%s</div>\n' % temp
 
 class Armor (utils.Base):
     ac = '-'
@@ -128,16 +136,23 @@ class Armor (utils.Base):
 
 class Armors (utils.Group):
     type = Armor
+    head = '# Armors'
+    
+    def __init__(self, folder=None, sources=None):
+        super().__init__(folder, sources)
+        if folder:
+            folder = os.path.join(folder, 'documentation/armors.md')
+            if os.path.exists(folder):
+                with open(folder, 'r') as f:
+                    data = f.read()
+                self.head = data
 
-    def page(self, load):
+    def page(self):
         temp = ''
-        t = load('armors.md')
-        if t:
-            temp += t
-            temp += '\n\n'
-        else:
-            temp += '<h1>Armors</h1>\n'
-        del t
+        
+        temp += self.head
+        temp += '\n\n'
+        
         temp = utils.get_details(utils.convert(temp))
         
         temp += '<table id="armor-table">\n'
@@ -167,7 +182,9 @@ class Armors (utils.Group):
                 for armor in lst:
                     temp += str(armor)
         temp += '</table>\n'
-        return utils.get_details(temp, 'h1')
+        temp = utils.get_details(temp, 'h1')
+        
+        return '<div>\n%s</div>\n' % temp
 
 class Item (utils.Base):
     cost = 0.0
@@ -204,11 +221,24 @@ class Item (utils.Base):
 
 class Items (utils.Group):
     type = Item
+    head = '# Equipment'
+    packs = ''
 
     def __init__(self, folder=None, sources=None):
         super().__init__(folder, sources)
         self.groups = {}
         if folder:
+            path = os.path.join(folder, 'documentation/equipment.md')
+            if os.path.exists(path):
+                with open(path, 'r') as f:
+                    data = f.read()
+                self.head = data
+            path = os.path.join(folder, 'documentation/equipment-packs.md')
+            if os.path.exists(path):
+                with open(path, 'r') as f:
+                    data = f.read()
+                self.packs = data
+            
             t = os.path.join(folder, self.type.__name__.lower())
             if os.path.exists(t):
                 folder = t
@@ -246,13 +276,10 @@ class Items (utils.Group):
                 g = ''
         return g
 
-    def page(self, load):
-        ret = load('equipment.md')
-        if ret:
-            ret = utils.convert(ret)
-            ret = utils.get_details(ret)
-        else:
-            ret = '<h1>Equipment</h1>\n'
+    def page(self):
+        ret = self.head
+        ret = utils.convert(ret)
+        ret = utils.get_details(ret)
         
         ret += '<table>\n'
         ret += (
@@ -290,25 +317,8 @@ class Items (utils.Group):
             if hadany:
                 ret += utils.get_details(temp)
         
+        ret += utils.convert(self.packs)
+        
         ret = utils.get_details(ret, 'h1')
         
-        return ret
-
-def main(weapons, armors, items, load):
-    ret = '<div id="items-div">\n'
-    
-    if items:
-        ret += items.page(load)
-    
-    temp = load('equipment-packs.md')
-    if temp:
-        ret += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
-    
-    if weapons:
-        ret += weapons.page(load)
-    
-    if armors:
-        ret += armors.page(load)
-    
-    ret += '</div>\n'
-    return ret
+        return '<div>\n%s</div>\n' % ret

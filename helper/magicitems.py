@@ -1,3 +1,5 @@
+import os
+
 from . import archiver
 from . import utils
 from . import spells
@@ -70,8 +72,34 @@ def itemblock(name, magicitems=None):
 
 class MagicItems (utils.Group):
     type = MagicItem
+    javascript = ['magicitems.js']
+    
+    head = '# Magic Items'
+    sentients = ''
+    artifacts = ''
+    
+    def __init__(self, folder=None, sources=None):
+        super().__init__(folder, sources)
+        if folder:
+            path = os.path.join(folder, 'documentation/magicitems.md')
+            if os.path.exists(path):
+                with open(path, 'r') as f:
+                    data = f.read()
+                self.head = data
+            
+            path = os.path.join(folder, 'documentation/sentientitems.md')
+            if os.path.exists(path):
+                with open(path, 'r') as f:
+                    data = f.read()
+                self.sentients = data
+            
+            path = os.path.join(folder, 'documentation/artifacts.md')
+            if os.path.exists(path):
+                with open(path, 'r') as f:
+                    data = f.read()
+                self.artifacts = data
 
-    def page(self, load):
+    def page(self):
         itemscopy = {}
         for item in self.values():
             itemscopy[item.name] = item.dict()
@@ -79,15 +107,13 @@ class MagicItems (utils.Group):
         ret = '<script>\nitems = %s;\n</script>\n' % (archiver.p(itemscopy, compact=True))
         
         head = ''
-        for item in ['magicitems.md', 'sentientitems.md', 'artifacts.md']:
-            temp = load(item)
-            if temp != None:
-                temp = temp.strip('\n')
-                if temp:
-                    head += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
-        if not head:
-            head = '<h1>Magic Items</h1>\n'
-        ret += head
+        for item in [self.head, self.sentients, self.artifacts]:
+            if item:
+                temp = utils.convert(item)
+                temp = utils.get_details(temp)
+                head += temp
+        
+        ret += utils.get_details(head, 'h1')
         
         ret += '''
         <div style="padding: 5px; margin: 5px auto;">

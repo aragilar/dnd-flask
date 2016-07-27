@@ -1,4 +1,6 @@
+import os
 import re
+
 from . import archiver
 from . import utils
 
@@ -124,10 +126,32 @@ def spellblock(name, spells=None):
 
 class Spells (utils.Group):
     type = Spell
+    
+    javascript = ['spells.js']
+    head = '# Spells'
+    classes = {}
+    
+    def __init__(self, folder=None, sources=None):
+        super().__init__(folder, sources)
+        if folder:
+            folder = os.path.join(folder, 'documentation/spellcasting.md')
+            if os.path.exists(folder):
+                with open(folder, 'r') as f:
+                    data = f.read()
+                self.head = data
+    
+    def set_class_list(self, value):
+        self.classes = value
+    
+    def filter(self, f=None):
+        r = super().filter(f)
+        if hasattr(r.classes, 'filter'):
+            r.classes = r.classes.filter(f)
+        return r
 
-    def page(self, classes, load):
+    def page(self):
         ret = '<div>\n'
-        byClass = spells_by_class(classes)
+        byClass = spells_by_class(self.classes)
         spellscopy = {}
         for spell in self.values():
             spellscopy[spell.name] = spell.dict()
@@ -137,11 +161,8 @@ class Spells (utils.Group):
             archiver.p(byClass, compact=True)
         )
         
-        temp = load('spellcasting.md')
-        if temp:
-            ret += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
-        else:
-            ret += '<h1>Spells</h1>\n'
+        ret += utils.get_details(utils.get_details(utils.convert(self.head)), 'h1')
+        
         ret += '<div style="padding: 5px; margin: 5px auto;">\n'
         
         for c in sorted(byClass.keys()):

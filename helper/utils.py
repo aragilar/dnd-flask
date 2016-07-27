@@ -83,6 +83,9 @@ class Base (object):
             for child in self.children.values():
                 child.set_spell_list(spell_list)
     
+    def __str__(self):
+        return self.name
+    
     def __repr__(self):
         s = '{}({})'.format(
             type(self).__name__,

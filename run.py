@@ -57,92 +57,52 @@ def get_filter():
         show = None
     return filter, show
 
-@app.errorhandler(403)
-def four_oh_three(e):
-    return render_template('error.html',
+def final_pass(html):
+    items = re.findall('="@(.+?)"', html)
+    for item in items:
+        html = html.replace(
+            '="@%s"' % item,
+            '="%s"' % url_for('static', filename=item)
+        )
+    return html
+
+def error(e, message):
+    html = render_template('error.html',
         home=True,
         styles=everystyle,
         javascript=everyjs,
         title=str(e),
-        message=[
-            "You don't have access to this page."
-        ]
-    ), 403
+        message=message,
+    )
+    
+    return final_pass(html)
+
+@app.errorhandler(403)
+def four_oh_three(e):
+    error(e, [
+        "You don't have access to this page."
+    ]), 403
 
 @app.errorhandler(404)
 def four_oh_four(e):
-    return render_template('error.html',
-        home=True,
-        styles=everystyle,
-        javascript=everyjs,
-        title=str(e),
-        #reload=not started,
-        message=[
-            "Our gnomes couldn't find the file you were looking for...",
-            "If you entered the URL manually try checking your spelling."
-        ]
-    ), 404
+    return error(e, [
+        "Our gnomes couldn't find the file you were looking for...",
+        "If you entered the URL manually try checking your spelling.",
+    ]), 404
 
 @app.errorhandler(500)
 def five_hundred(e):
-    return render_template('error.html',
-        home=True,
-        styles=everystyle,
-        javascript=everyjs,
-        title='500: '+str(e),
-        message=[
-            "Whoops, looks like something went wrong!",
-            "We'll try to fix this a quickly as possible."
-        ]
-    ), 500
+    return error('500: '+str(e), [
+        "Whoops, looks like something went wrong!",
+        "We'll try to fix this a quickly as possible."
+    ]), 500
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(
         os.path.join(app.root_path, 'static', 'images'),
         'favicon.ico',
-        mimetype='image/vnd.microsoft.icon'
-    )
-
-@app.route('/')
-def index():
-    filter, show = get_filter()
-    
-    classes = helper.class_list.filter(show).keys()
-    races = helper.race_list.filter(show).keys()
-    rules = helper.optionalrule_list.filter(show).keys()
-    
-    if helper.datafolder is not None:
-        documents = os.path.exists(os.path.join(helper.datafolder, 'documentation'))
-    else:
-        documents = False
-    
-    if filter is not None:
-        query = '?filter=' + filter
-    else:
-        query = ''
-    
-    title = 'Home'
-    if show is not None:
-        title = '{!s} {!s}'.format(show.get(filterkey, filter), title)
-    
-    return render_template('dnd.html',
-        title=title,
-        styles=everystyle,
-        javascript=everyjs+['@filters.js'],
-        filters=filters.keys(),
-        optionalrules=rules,
-        slug=helper.slug,
-        
-        classes=classes,
-        races=races,
-        backgrounds=bool(helper.background_list.filter(show)),
-        spells=bool(helper.spell_list.filter(show)),
-        feats=bool(helper.feat_list.filter(show)),
-        boons=bool(helper.epicboon_list.filter(show)),
-        items=helper.weapon_list.filter(show) or helper.armor_list.filter(show) or helper.item_list.filter(show),
-        magicitems=bool(helper.magicitem_list.filter(show)),
-        documentation=documents
+        mimetype='image/vnd.microsoft.icon',
     )
 
 @app.route('/character_sheet/', defaults={'look':'standard'})
@@ -153,237 +113,171 @@ def character_sheet(look):
     if look in ['index', 'index.htm', 'index.html']:
         look = 'standard'
     
-    return render_template('character_sheet.html',
+    html = render_template('character_sheet.html',
         look=helper.slug(look)
     )
+    
+    return final_pass(html)
 
-@app.route('/class/', defaults={'name':None})
-@app.route('/class/<name>')
-def class_page(name):
+@app.route('/')
+def index():
     filter, show = get_filter()
     
-    if name is not None:
-        html = helper.class2html(name, show)
-        if html:
-            return render_template('dnd-base.html',
-                home=True,
-                collapse_details=True,
-                styles=everystyle,
-                javascript=everyjs,
-                title=name,
-                content=html
-            )
-        else:
-            abort(404)
-    else:
-        subclasses = {}
-        classes = helper.class_list.filter(show)
-        for key in classes.keys():
-            subclasses[key] = classes[key].children.keys()
-        classes = classes.keys()
-            
-        return render_template('dnd-subthing.html',
-            home=True,
-            styles=everystyle,
-            javascript=everyjs,
-            name='Classes',
-            subpage='class_page',
-            things=classes,
-            subthings=subclasses,
-            slug=helper.slug
+    title = 'Home'
+    if show is not None:
+        title = '{} {}'.format(
+            show.get(filterkey, filter),
+            title
         )
-
-@app.route('/race/', defaults={'name':None})
-@app.route('/race/<name>')
-def race_page(name):
-    filter, show = get_filter()
     
-    if name is not None:
-        html = helper.race2html(name, show)
+    html = render_template('dnd.html',
+        title=title,
+        styles=everystyle,
+        javascript=everyjs+['@filters.js'],
+        filters=filters.keys(),
+        slug=helper.slug,
         
-        if html:
-            return render_template('dnd-base.html',
-                home=True,
-                collapse_details=True,
-                styles=everystyle,
-                javascript=everyjs,
-                title=name,
-                content=html
-            )
-        else:
-            abort(404)
-    else:
-        subraces = {}
-        races = helper.race_list.filter(show)
-        for key in races.keys():
-            subraces[key] = races[key].children.keys()
-        races = races.keys()
-        
-        return render_template('dnd-subthing.html',
-            home=True,
-            styles=everystyle,
-            javascript=everyjs,
-            name='Races',
-            subpage='race_page',
-            things=races,
-            subthings=subraces,
-            slug=helper.slug
-        )
+        classes=helper.class_list.filter(show).keys(),
+        races=helper.race_list.filter(show).keys(),
+        backgrounds=bool(helper.background_list.filter(show)),
+        spells=bool(helper.spell_list.filter(show)),
+        feats=bool(helper.feat_list.filter(show)),
+        boons=bool(helper.epicboon_list.filter(show)),
+        items=helper.weapon_list.filter(show) or helper.armor_list.filter(show) or helper.item_list.filter(show),
+        magicitems=bool(helper.magicitem_list.filter(show)),
+        documentation=helper.document_list.filter(show).keys(),
+        optionalrules=helper.optionalrule_list.filter(show).keys(),
+    )
+    
+    return final_pass(html)
 
-@app.route('/backgrounds')
-def background_page():
+@app.route('/class/', defaults={'type':'Classes'})
+@app.route('/race/', defaults={'type':'Races'})
+def subpage(type):
     filter, show = get_filter()
     
-    html = helper.background_page(show)
+    data = {
+        'Classes': helper.class_list,
+        'Races': helper.race_list,
+    }.get(type)
+    
+    if not data:
+        return abort(404)
+    
+    data = data.filter(show)
+    
+    html = render_template('dnd-subthing.html',
+        home=True,
+        styles=everystyle,
+        javascript=everyjs,
+        name=type,
+        things=data,
+        slug=helper.slug
+    )
+    
+    if not html:
+        return abort(404)
+    
+    return final_pass(html)
+
+@app.route('/class/<name>', defaults={'type':'Classes'})
+@app.route('/race/<name>', defaults={'type':'Races'})
+@app.route('/spells/<name>', defaults={'type':'Spells'})
+@app.route('/magicitems/<name>', defaults={'type':'Magic Items'})
+@app.route('/documentation/<name>', defaults={'type':'Documentation'})
+@app.route('/optionalrule/<name>', defaults={'type':'Optional Rules'})
+def subthing(name, type):
+    filter, show = get_filter()
+    
+    type = {
+        'Classes': helper.class_list,
+        'Races': helper.race_list,
+        'Spells': helper.spell_list,
+        'Magic Items': helper.magicitem_list,
+        'Documentation': helper.document_list,
+        'Optional Rules': helper.optionalrule_list,
+    }.get(type)
+    
+    if not type:
+        return abort(404)
+    
+    type = type.filter(show)
+    
+    if name in type:
+        html = str(type[name])
+    else:
+        html = None
     
     if html:
-        return render_template('dnd-base.html',
+        html = render_template('dnd-base.html',
             home=True,
             collapse_details=True,
             styles=everystyle,
             javascript=everyjs,
-            title='Backgrounds',
-            content=html
-        )
-    else:
-        abort(404)
-
-@app.route('/feats')
-def feat_page():
-    filter, show = get_filter()
-    
-    feats = helper.feat_page(show)
-    boons = helper.boon_page(show)
-    
-    if feats is None:
-        feats = ''
-    
-    if boons is None:
-        boons = ''
-    
-    html = feats + boons
-    
-    if html:
-        return render_template('dnd-base.html',
-            home=True,
-            collapse_details=True,
-            styles=everystyle,
-            javascript=everyjs,
-            title='Feats',
-            content=html
-        )
-    else:
-        abort(404)
-
-@app.route('/spells/', defaults={'name':None})
-@app.route('/spells/<name>')
-def spell_page(name):
-    filter, show = get_filter()
-
-    js = everyjs
-    if name is None:
-        html = helper.spell_page(show)
-        name = 'Spells'
-        js += ['@spells.js']
-    else:
-        html = helper.spell2html(name, show)
-
-    if html:
-        return render_template('dnd-base.html',
-            home=True,
-            collapse_details=True,
-            styles=everystyle,
-            javascript=js,
             title=name,
             content=html
         )
-    else:
-        abort(404)
+    
+    if not html:
+        return abort(404)
+    
+    return final_pass(html)
 
-@app.route('/magicitems/', defaults={'name':None})
-@app.route('/magicitems/<name>')
-def magicitem_page(name):
+@app.route('/backgrounds', defaults={'type':'Backgrounds'})
+@app.route('/feats', defaults={'type':'Feats'})
+@app.route('/items', defaults={'type':'Items'})
+@app.route('/spells/', defaults={'type':'Spells'})
+@app.route('/magicitems/', defaults={'type':'Magic Items'})
+def list_page(type):
     filter, show = get_filter()
     
+    data = {
+        'Spells': [
+            helper.spell_list,
+        ],
+        'Magic Items': [
+            helper.magicitem_list,
+        ],
+        'Backgrounds': [
+            helper.background_list,
+        ],
+        'Feats': [
+            helper.feat_list,
+            helper.epicboon_list,
+        ],
+        'Items': [
+            helper.item_list,
+            helper.weapon_list,
+            helper.armor_list,
+        ],
+    }.get(type)
+    
+    if not data:
+        return abort(404)
+    
+    html = ''
+    style = everystyle
     js = everyjs
-    if name is None:
-        html = helper.magicitem_page(show)
-        name = 'Magic Items'
-        js += ['@magicitems.js']
-    else:
-        html = helper.magicitem2html(name, show)
+    for item in data:
+        item = item.filter(show)
+        if item:
+            if hasattr(item, 'javascript'):
+                js += ['@' + a for a in item.javascript]
+            html += item.page()
 
-    if html:
-        return render_template('dnd-base.html',
-            home=True,
-            collapse_details=True,
-            styles=everystyle,
-            javascript=js,
-            title=name,
-            content=html
-        )
-    else:
-        abort(404)
-
-@app.route('/items')
-def item_page():
-    filter, show = get_filter()
+    if not html:
+        return abort(404)
     
-    html = helper.item_page(show)
+    html = render_template('dnd-base.html',
+        home=True,
+        collapse_details=True,
+        styles=style,
+        javascript=js,
+        title=type,
+        content=html
+    )
     
-    if html:
-        return render_template('dnd-base.html',
-            home=True,
-            collapse_details=True,
-            styles=everystyle,
-            javascript=everyjs,
-            title='Items',
-            content=html
-        )
-    else:
-        abort(404)
-
-@app.route('/documentation/<document>')
-def document_page(document):
-    html = helper.documentation(document)
-    
-    if html:
-        title = re.findall('<h1.*?>(.*?)</h1>', html)
-        if len(title):
-            title = title[0]
-        else:
-            title = document
-        
-        return render_template('dnd-base.html',
-            home=True,
-            collapse_details=True,
-            styles=everystyle,
-            javascript=everyjs,
-            title=title,
-            content=html
-        )
-    else:
-        abort(404)
-
-@app.route('/optionalrule/<rule>')
-def optionalrule_page(rule):
-    filter, show = get_filter()
-    
-    html = helper.optionalrule_page(rule, show)
-    
-    if html:
-        title = rule
-        
-        return render_template('dnd-base.html',
-            home=True,
-            collapse_details=True,
-            styles=everystyle,
-            javascript=everyjs,
-            title=title,
-            content=html
-        )
-    else:
-        abort(404)
+    return final_pass(html)
 
 if __name__ == '__main__':
     # ----#-   Main

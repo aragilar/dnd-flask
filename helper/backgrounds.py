@@ -1,3 +1,5 @@
+import os
+
 from . import utils
 
 class Background (utils.Base):
@@ -60,14 +62,21 @@ class Background (utils.Base):
 
 class Backgrounds (utils.Group):
     type = Background
+    head = '# Backgrounds'
+    
+    def __init__(self, folder=None, sources=None):
+        super().__init__(folder, sources)
+        if folder:
+            folder = os.path.join(folder, 'documentation/backgrounds.md')
+            if os.path.exists(folder):
+                with open(folder, 'r') as f:
+                    data = f.read()
+                self.head = data
 
-    def page(self, load):
+    def page(self):
         ret = '<div>\n'
-        temp = load('backgrounds.md')
-        if temp:
-            ret += utils.get_details(utils.get_details(utils.convert(temp)), 'h1')
-        else:
-            ret += '<h1>Backgrounds</h1>\n'
+        
+        ret += utils.get_details(utils.get_details(utils.convert(self.head)), 'h1')
 
         ret += '<hr>\n'
 

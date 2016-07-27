@@ -73,10 +73,10 @@ div {
     max-width: 800px;
     margin: 0 auto;
     border: 1px solid black;
-    padding: 5px;
+    padding: 15px;
 }
 
-body > div:not(#nav) {
+body > div {
     background-color: #fff;
     background-image: url("images/parchment3.png");
     background-repeat: repeat;
@@ -88,7 +88,7 @@ a {
 
 p {
     text-indent: 1em;
-    margin: 5px;
+    margin: 0.25em;
 }
 
 li:empty {
@@ -97,7 +97,7 @@ li:empty {
 
 table {
     width: 100%;
-    margin: 1em 0;
+    margin: 0.5em 0;
 }
 
 tr, td, th {
@@ -175,15 +175,17 @@ td, th {
 */
 
 @media only screen
-and (max-device-width : 736px) {
+and (max-device-width : 1200px) {
+    /*Tablets*/
+    html {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen
+and (max-device-width : 800px) {
     /*Phones*/
     html {
         font-size: 2em;
-    }
-
-    div {
-        width: auto;
-        min-width: initial;
-        padding: 15px;
     }
 }

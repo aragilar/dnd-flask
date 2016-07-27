@@ -38,7 +38,13 @@ If you want to, you can roll randomly for your character's height and weight usi
 | Dwarf, mountain | 4'     | +2d4     | 130 lb. | x (2d6) lb. |
 | Elf, high       | 4'6"   | +2d10    | 90 lb.  | x (1d4) lb. |
 | Elf, wood       | 4'6"   | +2d10    | 100 lb. | x (1d4) lb. |
+| Elf, drow       | 4'5"   | +2d6     | 75 lb.  | x (1d6) lb. |
 | Halfling        | 2'7"   | +2d4     | 35 lb.  | x 1 lb.     |
+| Dragonborn      | 5'6"   | +2d8     | 175 lb. | x (2d6) lb. |
+| Gnome           | 2'11"  | +2d4     | 35 lb.  | x 1 lb.     |
+| Half-elf        | 4'9"   | +2d8     | 110 lb. | x (2d4) lb. |
+| Half-orc        | 4'10"  | +2d10    | 140 lb. | x (2d6) lb. |
+| Tiefling        | 4'9"   | +2d8     | 110 lb. | x (2d4) lb. |
 
 For example, as a human, Tika has a height of 4 feet 8 inches plus 2d10 inches. Her player rolls 2d10 and gets a total of 12, so Tika stands 5 feet 8 inches tall. Then the player uses that same roll of 12 and multiplies it by 2d4 pounds. Her 2d4 roll is 3, so Tika weighs an extra 36 pounds (12 x 3) on top of her base 110 pounds, for a total of 146 pounds.
 
@@ -162,7 +168,7 @@ else could exploit to bring you to ruin or cause you to act against your best in
 
 ## Tika and Artemis: Personal Characteristics
 
-Tika and Artemis have distinct personality traits. Tika Waylan dislikes boastfulness and has a fear of heights resulting from a bad fall during her career as a thief. Artemis Entreri is always prepared for the worst and moves with a quick, precise con dence.
+Tika and Artemis have distinct personality traits. Tika Waylan dislikes boastfulness and has a fear of heights resulting from a bad fall during her career as a thief. Artemis Entreri is always prepared for the worst and moves with a quick, precise confidence.
 
 Consider their ideals. Tika Waylan is innocent, almost childlike, believing in the value of life and the importance of appreciating everyone. Neutral good in alignment, she cleaves to ideals of life and respect. Artemis Entreri never allows his emotions to master him, and he constantly challenges himself to improve his skills. His lawful evil alignment gives him ideals of impartiality and a lust for power.
 

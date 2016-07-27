@@ -1,3 +1,6 @@
+import os
+import re
+
 from . import utils
 from . import spells
 
@@ -32,27 +35,38 @@ def featblock(name, feats):
 
 class Feats (utils.Group):
     type = Feat
+    _headfile = 'feats.md'
+    head = '# Feats'
+    
+    def __init__(self, folder=None, sources=None):
+        super().__init__(folder, sources)
+        if folder:
+            folder = os.path.join(folder, 'documentation', self._headfile)
+            if os.path.exists(folder):
+                with open(folder, 'r') as f:
+                    data = f.read()
+                self.head = data
 
-    def page(self, load, t='feats'):
+    def page(self):
         ret = '<div>\n'
     
-        temp = load('%s.md' % t.replace('-', ''))
-        if temp != None:
-            ret += utils.convert(temp)
-        ret = ret.replace('<h1>', '<h1 id="%s">' % t)
+        ret += utils.convert(self.head)
+        h1 = re.search('<h1>(.*?)</h1>', ret)
+        if h1:
+            slug = utils.slug(h1.group(1))
+            ret.replace(h1.group(0), '<h1 id="%s">%s</h1>' % (slug, h1.group(1)), 1)
 
         temp = ''
         for feat in self:
             temp += '<tr><td>\n'
             temp += featblock(feat.name, self)
             temp += '</td></tr>\n'
-        ret += utils.details_group(temp)#, body_class='%s-table'%t)
+        ret += utils.details_group(temp)
         
         ret += '</div>\n'
         return ret
 
 class EpicBoons (Feats):
     type = EpicBoon
-
-    def page(self, load):
-        return Feats.page(self, load, t='epic-boons')
+    _headfile = 'epicboons.md'
+    head = '# Epic Boons'
