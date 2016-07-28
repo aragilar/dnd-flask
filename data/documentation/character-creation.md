@@ -1,6 +1,6 @@
-# Character Progression
+# Step-by-Step Characters
 
-# Creating a Character
+*Player's Handbook: Chapter 1*
 
 Your first step in playing an adventurer in the Dungeons & Dragons game is to imagine and create a character of your own. Your character is a combination of game statistics, roleplaying hooks, and your imagination. You choose a race (such as human or halfling) and a class (such as fighter or wizard). You also invent the personality, appearance, and backstory of your character. Once completed, your character serves as your representative in the game, your avatar in the Dungeons & Dragons world.
 

@@ -74,30 +74,36 @@ class MagicItems (utils.Group):
     type = MagicItem
     javascript = ['magicitems.js']
     
-    head = '# Magic Items'
-    sentients = ''
-    artifacts = ''
+    head = '<h1>Magic Items</h1>\n'
     
     def __init__(self, folder=None, sources=None):
         super().__init__(folder, sources)
         if folder:
+            p = ''
+            
             path = os.path.join(folder, 'documentation/magicitems.md')
             if os.path.exists(path):
                 with open(path, 'r') as f:
                     data = f.read()
-                self.head = data
+                p += data
             
             path = os.path.join(folder, 'documentation/sentientitems.md')
             if os.path.exists(path):
                 with open(path, 'r') as f:
                     data = f.read()
-                self.sentients = data
+                p += data
             
             path = os.path.join(folder, 'documentation/artifacts.md')
             if os.path.exists(path):
                 with open(path, 'r') as f:
                     data = f.read()
-                self.artifacts = data
+                p += data
+            
+            if p:
+                p = utils.convert(p)
+                p = utils.get_details(p, splttag='h1')
+                p = utils.get_details(p, 'h1')
+                self.head = p
 
     def page(self):
         itemscopy = {}
@@ -106,14 +112,7 @@ class MagicItems (utils.Group):
         
         ret = '<script>\nitems = %s;\n</script>\n' % (archiver.p(itemscopy, compact=True))
         
-        head = ''
-        for item in [self.head, self.sentients, self.artifacts]:
-            if item:
-                temp = utils.convert(item)
-                temp = utils.get_details(temp)
-                head += temp
-        
-        ret += utils.get_details(head, 'h1')
+        ret += spells.handle_spells(self.head, self.spell_list)
         
         ret += '''
         <div style="padding: 5px; margin: 5px auto;">

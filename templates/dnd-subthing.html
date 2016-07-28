@@ -2,7 +2,7 @@
 {% block title %}{{ name }} Home{% endblock %}
 {% block content %}
 <div class="index">
-    <h1>{{ name }}</h1>
+    {{ things.head|safe }}
     {% for item in things.values() %}
     <h2><a href="{{ url_for('subthing', name=item.name, type=name, **query) }}">{{ item.name }}</a></h2>
     {% if item.children %}

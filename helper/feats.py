@@ -26,7 +26,7 @@ def featblock(name, feats):
     if feat is not None:
         ret = utils.details_block(
             str(name),
-            '<div>\n%s</div>' % str(feat),
+            '<div>\n%s</div>\n' % str(feat),
             body_class='spell-box',
         )
     else:
@@ -36,7 +36,7 @@ def featblock(name, feats):
 class Feats (utils.Group):
     type = Feat
     _headfile = 'feats.md'
-    head = '# Feats'
+    head = '<h1>Feats</h1>\n'
     
     def __init__(self, folder=None, sources=None):
         super().__init__(folder, sources)
@@ -45,12 +45,14 @@ class Feats (utils.Group):
             if os.path.exists(folder):
                 with open(folder, 'r') as f:
                     data = f.read()
+                data = utils.convert(data)
+                data = utils.get_details(data, 'h1')
                 self.head = data
 
     def page(self):
         ret = '<div>\n'
     
-        ret += utils.convert(self.head)
+        ret += self.head
         h1 = re.search('<h1>(.*?)</h1>', ret)
         if h1:
             slug = utils.slug(h1.group(1))
@@ -69,4 +71,4 @@ class Feats (utils.Group):
 class EpicBoons (Feats):
     type = EpicBoon
     _headfile = 'epicboons.md'
-    head = '# Epic Boons'
+    head = '<h1>Epic Boons</h1>\n'

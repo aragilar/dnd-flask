@@ -128,7 +128,7 @@ class Spells (utils.Group):
     type = Spell
     
     javascript = ['spells.js']
-    head = '# Spells'
+    head = '<h1>Spells</h1>\n'
     classes = {}
     
     def __init__(self, folder=None, sources=None):
@@ -138,6 +138,9 @@ class Spells (utils.Group):
             if os.path.exists(folder):
                 with open(folder, 'r') as f:
                     data = f.read()
+                data = utils.convert(data)
+                data = utils.get_details(data)
+                data = utils.get_details(data, 'h1')
                 self.head = data
     
     def set_class_list(self, value):
@@ -161,7 +164,7 @@ class Spells (utils.Group):
             archiver.p(byClass, compact=True)
         )
         
-        ret += utils.get_details(utils.get_details(utils.convert(self.head)), 'h1')
+        ret += self.head
         
         ret += '<div style="padding: 5px; margin: 5px auto;">\n'
         

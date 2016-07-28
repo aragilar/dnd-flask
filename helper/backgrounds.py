@@ -16,9 +16,9 @@ class Background (utils.Base):
     variant = None
 
     def __str__(self):
-        summary = '<h2>%s</h2>' % self.name
+        body = '<h2>%s</h2>\n' % self.name
         
-        body = '%s\n' % utils.convert('\n'.join(self.description))
+        body += '%s\n' % utils.convert('\n'.join(self.description))
         
         if self.skills:
             body += '<p><strong>Skill Proficiencies:</strong> %s</p>\n' % utils.choice_list(self.skills, 'skill')
@@ -56,13 +56,11 @@ class Background (utils.Base):
         if self.variant:
             body += utils.convert('\n'.join(self.variant))
         
-        ret = utils.details_group(utils.details_block(summary, body))
-        
-        return ret
+        return body
 
 class Backgrounds (utils.Group):
     type = Background
-    head = '# Backgrounds'
+    head = '<h1>Backgrounds</h1>\n'
     
     def __init__(self, folder=None, sources=None):
         super().__init__(folder, sources)
@@ -71,17 +69,22 @@ class Backgrounds (utils.Group):
             if os.path.exists(folder):
                 with open(folder, 'r') as f:
                     data = f.read()
+                data = utils.convert(data)
+                data = utils.get_details(data)
+                data = utils.get_details(data, 'h1')
                 self.head = data
 
     def page(self):
         ret = '<div>\n'
         
-        ret += utils.get_details(utils.get_details(utils.convert(self.head)), 'h1')
+        ret += self.head
 
-        ret += '<hr>\n'
-
+        body = ''
         for background in self:
-            ret += str(background)
+            
+            body += utils.details_block(background.name, str(background))
+        
+        ret += utils.details_group(body)
 
         ret += '</div>\n'
         return ret

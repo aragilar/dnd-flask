@@ -1,5 +1,7 @@
 # Ability Scores
 
+*Player's Handbook: Chapter 7*
+
 Sis abilities provide a quick description of every creature's physical and mental characteristics:
 
 * **Strength**, measuring physical power

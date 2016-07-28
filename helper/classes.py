@@ -327,11 +327,21 @@ Class.subclass = SubClass
 
 class Classes (utils.Group):
     type = Class
+    head = '<h1>Classes</h1>\n'
     
     def __init__(self, folder=None, sources=None):
         super().__init__(folder, sources)
 
-        if folder is not None:
+        if folder:
+            path = os.path.join(folder, 'documentation/classes.md')
+            if os.path.exists(path):
+                with open(path, 'r') as f:
+                    data = f.read()
+                data = utils.convert(data)
+                data = utils.get_details(data)
+                data = utils.get_details(data, 'h1')
+                self.head = data
+            
             folder = os.path.join(folder, 'spelllist')
             for c in self:
                 for item in ([c] + list(c.children.values())):

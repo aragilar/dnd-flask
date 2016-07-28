@@ -21,12 +21,13 @@ class OptionalRule (utils.Base):
     def __init__(self, data):
         self.name = data[1].lstrip('#').strip()
         self.source = data[0].strip()
-        self.description = ''.join(data[1:])
+        d = ''.join(data[1:])
+        d = utils.convert(d)
+        d = utils.get_details(d)
+        self.description = d
 
     def __str__(self):
         html = self.description
-        html = utils.convert(html)
-        html = utils.get_details(html)
         html = '<div>\n%s</div>\n' % html
         return html
 
@@ -54,12 +55,13 @@ class Documentation (utils.Base):
     def __init__(self, data):
         self.name = data[0].lstrip('#').strip()
         self.source = 'FREE'
-        self.description = ''.join(data[0:])
+        d = ''.join(data[0:])
+        d = utils.convert(d)
+        d = utils.get_details(d)
+        self.description = d
     
     def __str__(self):
         html = self.description
-        html = utils.convert(html)
-        html = utils.get_details(html)
         html = '<div>\n%s</div>\n' % html
         return html
 
@@ -67,13 +69,13 @@ class Documents (utils.Group):
     type = Documentation
     
     docs = [
-        'character-progression',
-        'character-details',
-        'expenses',
+        'character-creation',
+        'personality',
+        'equipment',
+        'customization',
         'abilities',
         'adventuring',
         'combat',
-        'multiclassing',
     ]
 
     def __init__(self, folder=None, sources=None):

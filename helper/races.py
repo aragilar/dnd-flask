@@ -1,4 +1,6 @@
+import os
 import re
+
 from . import utils
 from . import spells
 
@@ -173,3 +175,17 @@ Race.subclass = SubRace
 
 class Races (utils.Group):
     type = Race
+    head = '<h1>Races</h1>\n'
+    
+    def __init__(self, folder=None, sources=None):
+        super().__init__(folder, sources)
+
+        if folder:
+            path = os.path.join(folder, 'documentation/races.md')
+            if os.path.exists(path):
+                with open(path, 'r') as f:
+                    data = f.read()
+                data = utils.convert(data)
+                data = utils.get_details(data)
+                data = utils.get_details(data, 'h1')
+                self.head = data

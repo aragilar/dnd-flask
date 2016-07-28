@@ -1,5 +1,7 @@
 # Artifacts
 
+*Dungeon Master's Guide: Chapter 7*
+
 An artifact is a unique magic item of tremendous power, with its own origin and history. An artifact might have been created by gods or mortals of awesome power. It could have been created in the midst of a crisis that threatened a kingdom, a world, or the entire multiverse, and carry the weight of that pivotal moment in history.
 
 Some artifacts appear when they are needed most. For others, the reverse is true; when discovered, the world trembles at the ramifications of the find. In either case, introducing an artifact into a campaign requires forethought. The artifact could be an item that opposing sides are hoping to claim, or it might be something the adventurers need to overcome their greatest challenge.

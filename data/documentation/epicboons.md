@@ -1,5 +1,7 @@
 # Epic Boons
 
+*Dungeon Master's Guide: Chapter 7*
+
 To the DM,
 
 An epic boon is a special power available only to 20th level characters. Characters at that level gain such boons only if you want them to and only when you feel it's appropriate. Epic boons are best awarded after the characters complete a major quest, or accomplish something else particularly notable. A character might gain an epic boon after destroying an evil artifact, defeating an ancient dragon, or halting an incursion from the Outer Planes.

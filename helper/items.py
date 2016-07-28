@@ -221,23 +221,17 @@ class Item (utils.Base):
 
 class Items (utils.Group):
     type = Item
-    head = '# Equipment'
-    packs = ''
+    head = '# Items'
 
     def __init__(self, folder=None, sources=None):
         super().__init__(folder, sources)
         self.groups = {}
         if folder:
-            path = os.path.join(folder, 'documentation/equipment.md')
+            path = os.path.join(folder, 'documentation/items.md')
             if os.path.exists(path):
                 with open(path, 'r') as f:
                     data = f.read()
                 self.head = data
-            path = os.path.join(folder, 'documentation/equipment-packs.md')
-            if os.path.exists(path):
-                with open(path, 'r') as f:
-                    data = f.read()
-                self.packs = data
             
             t = os.path.join(folder, self.type.__name__.lower())
             if os.path.exists(t):
@@ -316,8 +310,6 @@ class Items (utils.Group):
             temp += '</table>\n'
             if hadany:
                 ret += utils.get_details(temp)
-        
-        ret += utils.convert(self.packs)
         
         ret = utils.get_details(ret, 'h1')
         

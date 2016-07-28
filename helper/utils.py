@@ -8,16 +8,25 @@ import markdown2
 
 from . import archiver
 
-md = markdown2.Markdown(extras = [
-'fenced-code-blocks',
-# 'header-ids',
-# 'smarty-pants',
-'tables',
-# 'toc',
-'markdown-in-html',
-])
+md = markdown2.Markdown(
+    html4tags=True,
+    extras = [
+        'fenced-code-blocks',
+        # 'header-ids',
+        # 'smarty-pants',
+        'tables',
+        # 'toc',
+        'markdown-in-html',
+    ],
+    safe_mode=True
+)
 
-convert = md.convert
+# _lock = multiprocessing.Lock()
+def convert(data):
+    # _lock.acquire()
+    out = md.convert(data)
+    # _lock.release()
+    return out
 
 class Base (object):
     _translate = {
@@ -98,6 +107,7 @@ class Base (object):
 
 class Group (object):
     type = Base
+    spell_list = {}
 
     def __loadfile(self, filename, folder, sources=None):
         item = os.path.join(folder, filename)
@@ -157,6 +167,7 @@ class Group (object):
         return new
     
     def set_spell_list(self, spell_list):
+        self.spell_list = spell_list
         for item in self:
             item.set_spell_list(spell_list)
     
@@ -273,10 +284,8 @@ def get_details(text, detltag='h2', splttag=None):
     else:
         blocks = [text]
     
-    finder = re.compile('(<{0}.*?>.*?</{0}>)(.+?)(?=<{0}|$)'.format(detltag), re.DOTALL)
-    
     for x, text in enumerate(blocks):
-        repl = finder.findall(text)
+        repl = re.findall('(<{0}.*?>.*?</{0}>)(.+?)(?=<{0}|$)'.format(detltag), text, re.DOTALL)
         if repl:
             head = text[:text.find(repl[0][0])]
             new = ''
