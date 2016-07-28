@@ -21,11 +21,11 @@ md = markdown2.Markdown(
     safe_mode=True
 )
 
-# _lock = multiprocessing.Lock()
+_lock = multiprocessing.Lock()
 def convert(data):
-    # _lock.acquire()
+    _lock.acquire()
     out = md.convert(data)
-    # _lock.release()
+    _lock.release()
     return out
 
 class Base (object):
