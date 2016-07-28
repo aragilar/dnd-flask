@@ -28,6 +28,8 @@ class Spell (utils.Base):
     ritual = False
     type = 'Unknown Type'
     
+    _page = None
+    
     def dict(self):
         d = {
             'name': self.name,
@@ -42,46 +44,52 @@ class Spell (utils.Base):
         return d
     
     def __str__(self):
-        ret = '<h2>%s</h2>\n' % self.name
-        
-        if self.level == 'Cantrip':
-            lvl = '%s Cantrip' % self.type
+        if self._page is None:
+            ret = '<h2>%s</h2>\n' % self.name
+            
+            if self.level == 'Cantrip':
+                lvl = '%s Cantrip' % self.type
+            else:
+                lvl = '%s-level %s' % (utils.ordinals[int(self.level)], self.type)
+            
+            if self.ritual:
+                lvl += ' (ritual)'
+            
+            ret += '<p>\n<em>%s</em><br>\n' % lvl
+            
+            ret += '<strong>Casting Time:</strong> %s<br>\n' % self.cast_time
+            ret += '<strong>Range:</strong> %s<br>\n' % self.range
+            
+            lst = []
+            truncated = True
+            
+            if self.components.get('verbal', False):
+                lst.append('Verbal')
+                if truncated:
+                    lst[-1] = lst[-1][0]
+            if self.components.get('somatic', False):
+                lst.append('Somatic')
+                if truncated:
+                    lst[-1] = lst[-1][0]
+            if self.components.get('material'):
+                lst.append('Material')
+                if truncated:
+                    lst[-1] = lst[-1][0]
+                lst[-1] += ' (%s)' % self.components.get('material', 'Unknown Material Component')
+            
+            if len(lst) == 0:
+                lst.append('None')
+            
+            ret += '<strong>Components:</strong> %s<br>\n' % ', '.join(lst)
+            ret += '<strong>Duration:</strong> %s\n</p>\n' % self.duration
+            
+            ret += utils.convert('\n'.join(self.description))
+            ret = handle_spells(ret, self.spell_list)
+            
+            self._page = ret
         else:
-            lvl = '%s-level %s' % (utils.ordinals[int(self.level)], self.type)
+            ret = self._page
         
-        if self.ritual:
-            lvl += ' (ritual)'
-        
-        ret += '<p>\n<em>%s</em><br>\n' % lvl
-        
-        ret += '<strong>Casting Time:</strong> %s<br>\n' % self.cast_time
-        ret += '<strong>Range:</strong> %s<br>\n' % self.range
-        
-        lst = []
-        truncated = True
-        
-        if self.components.get('verbal', False):
-            lst.append('Verbal')
-            if truncated:
-                lst[-1] = lst[-1][0]
-        if self.components.get('somatic', False):
-            lst.append('Somatic')
-            if truncated:
-                lst[-1] = lst[-1][0]
-        if self.components.get('material'):
-            lst.append('Material')
-            if truncated:
-                lst[-1] = lst[-1][0]
-            lst[-1] += ' (%s)' % self.components.get('material', 'Unknown Material Component')
-        
-        if len(lst) == 0:
-            lst.append('None')
-        
-        ret += '<strong>Components:</strong> %s<br>\n' % ', '.join(lst)
-        ret += '<strong>Duration:</strong> %s\n</p>\n' % self.duration
-        
-        ret += utils.convert('\n'.join(self.description))
-        ret = handle_spells(ret, self.spell_list)
         return ret
 
 def spells_by_class(classes):

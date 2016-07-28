@@ -18,7 +18,7 @@ md = markdown2.Markdown(
         # 'toc',
         'markdown-in-html',
     ],
-    safe_mode=True
+    # safe_mode=True
 )
 
 _lock = multiprocessing.Lock()
