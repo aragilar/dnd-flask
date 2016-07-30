@@ -121,35 +121,36 @@ class Group (object):
     
     def __init__(self, folder=None, sources=None):
         self._items = collections.OrderedDict()
-        if folder is not None:
+        if folder:
             folder = os.path.join(folder, self.type.__name__.lower())
-            asyncmap(
-                lambda a: self.__loadfile(a, folder, sources),
-                os.listdir(folder),
-            )
-            
-            # ----#-         Sub
-            if self.type.subclass:
-                if folder.endswith('/') or folder.endswith('\\'):
-                    folder = folder[:-1]
-
-                folder = os.path.split(folder)
-                folder = os.path.join(folder[0], self.type.subclass.__name__.lower())
-
-                l = []
-                for item in os.listdir(folder):
-                    item = os.path.join(folder, item)
-                    if os.path.isfile(item) and item.endswith('.json'):
-                        try:
-                            item = archiver.load(item, object_hook=self.type.subclass.fromJSON)
-                        except (ValueError, IOError):
-                            raise
-                        if sources is None or item.source in sources:
-                            l.append(item)
-
-                for item in l:
-                    if item.parent in self:
-                        self[item.parent].children[item.name] = item
+            if os.path.exists(folder):
+                asyncmap(
+                    lambda a: self.__loadfile(a, folder, sources),
+                    os.listdir(folder),
+                )
+                
+                # ----#-         Sub
+                if self.type.subclass:
+                    if folder.endswith('/') or folder.endswith('\\'):
+                        folder = folder[:-1]
+    
+                    folder = os.path.split(folder)
+                    folder = os.path.join(folder[0], self.type.subclass.__name__.lower())
+    
+                    l = []
+                    for item in os.listdir(folder):
+                        item = os.path.join(folder, item)
+                        if os.path.isfile(item) and item.endswith('.json'):
+                            try:
+                                item = archiver.load(item, object_hook=self.type.subclass.fromJSON)
+                            except (ValueError, IOError):
+                                raise
+                            if sources is None or item.source in sources:
+                                l.append(item)
+    
+                    for item in l:
+                        if item.parent in self:
+                            self[item.parent].children[item.name] = item
     
     def add(self, item):
         if isinstance(item, self.type):

@@ -10,10 +10,59 @@ from . import races
 from . import backgrounds
 from . import spells
 from . import feats
+from . import monsters
 from . import magicitems
 from . import items
 
 slug = utils.slug
+
+class Documentation (utils.Base):
+    description = ''
+    
+    def __init__(self, data):
+        self.name = data[0].lstrip('#').strip()
+        self.source = 'FREE'
+        d = ''.join(data[0:])
+        d = utils.convert(d)
+        d = utils.get_details(d, splttag='h1')
+        self.description = d
+    
+    def __str__(self):
+        html = self.description
+        html = '<div>\n%s</div>\n' % html
+        return html
+
+class Documents (utils.Group):
+    type = Documentation
+    
+    docs = [
+        'character-creation',
+        'personality',
+        'equipment',
+        'customization',
+        'abilities',
+        'adventuring',
+        'combat',
+        'conditions',
+        'gods',
+        'planes',
+    ]
+
+    def __init__(self, folder=None, sources=None):
+        super().__init__()
+        if folder:
+            folder = os.path.join(folder, 'documentation')
+            for item in self.docs:
+                item = os.path.join(folder, item + '.md')
+                if os.path.exists(item):
+                    with open(item, 'r') as f:
+                        item = f.readlines()
+                    if item:
+                        item = self.type(item)
+                        self.add(item)
+    
+    def sort(self, key=None):
+        pass
 
 class OptionalRule (utils.Base):
     description = ''
@@ -49,51 +98,6 @@ class OptionalRules (utils.Group):
                         if sources is None or item.source in sources:
                             self.add(item)
 
-class Documentation (utils.Base):
-    description = ''
-    
-    def __init__(self, data):
-        self.name = data[0].lstrip('#').strip()
-        self.source = 'FREE'
-        d = ''.join(data[0:])
-        d = utils.convert(d)
-        d = utils.get_details(d)
-        self.description = d
-    
-    def __str__(self):
-        html = self.description
-        html = '<div>\n%s</div>\n' % html
-        return html
-
-class Documents (utils.Group):
-    type = Documentation
-    
-    docs = [
-        'character-creation',
-        'personality',
-        'equipment',
-        'customization',
-        'abilities',
-        'adventuring',
-        'combat',
-    ]
-
-    def __init__(self, folder=None, sources=None):
-        super().__init__()
-        if folder:
-            folder = os.path.join(folder, 'documentation')
-            for item in self.docs:
-                item = os.path.join(folder, item + '.md')
-                if os.path.exists(item):
-                    with open(item, 'r') as f:
-                        item = f.readlines()
-                    if item:
-                        item = self.type(item)
-                        self.add(item)
-    
-    def sort(self, key=None):
-        pass
-
 datafolder = None
 sources_order = None
 class_list = classes.Classes()
@@ -103,6 +107,7 @@ background_list = backgrounds.Backgrounds()
 spell_list = spells.Spells()
 feat_list = feats.Feats()
 epicboon_list = feats.EpicBoons()
+monster_list = monsters.Monsters()
 magicitem_list = magicitems.MagicItems()
 weapon_list = items.Weapons()
 armor_list = items.Armors()
@@ -124,6 +129,7 @@ def init(folder='data'):
         spell_list,
         feat_list,
         epicboon_list,
+        monster_list,
         magicitem_list,
         weapon_list,
         armor_list,

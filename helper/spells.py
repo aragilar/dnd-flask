@@ -86,6 +86,8 @@ class Spell (utils.Base):
             ret += utils.convert('\n'.join(self.description))
             ret = handle_spells(ret, self.spell_list)
             
+            ret = '<div>\n%s</div>' % ret
+            
             self._page = ret
         else:
             ret = self._page
@@ -116,7 +118,7 @@ def handle_spells(text, spells):
 def spellblock(name, spells=None):
     if name is None:
         name = ''
-        item = None
+        spell = None
     elif spells is None:
         spell = name
         name = spell.name
@@ -125,7 +127,7 @@ def spellblock(name, spells=None):
     if spell is not None:
         ret = utils.details_block(
             str(name),
-            '<div>\n%s</div>' % str(spell),
+            str(spell),
             body_class="spell-box"
         )
     else:

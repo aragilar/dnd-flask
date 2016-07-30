@@ -52,6 +52,8 @@ class MagicItem (utils.Base):
             
             ret = spells.handle_spells(ret, self.spell_list)
             
+            ret = '<div>\n%s</div>' % ret
+            
             self._page = ret
         else:
             ret = self._page
@@ -69,8 +71,8 @@ def itemblock(name, magicitems=None):
         item = magicitems.get(name)
     if item is not None:
         ret = utils.details_block(
-            name,
-            '<div>\n%s</div>' % str(item),
+            str(name),
+            str(item),
             body_class="spell-box"
         )
     else:

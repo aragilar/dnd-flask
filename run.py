@@ -144,6 +144,7 @@ def index():
         feats=bool(helper.feat_list.filter(show)),
         boons=bool(helper.epicboon_list.filter(show)),
         items=helper.weapon_list.filter(show) or helper.armor_list.filter(show) or helper.item_list.filter(show),
+        monsters=bool(helper.monster_list.filter(show)),
         magicitems=bool(helper.magicitem_list.filter(show)),
         documentation=helper.document_list.filter(show).keys(),
         optionalrules=helper.optionalrule_list.filter(show).keys(),
@@ -183,6 +184,7 @@ def subpage(type):
 @app.route('/class/<name>', defaults={'type':'Classes'})
 @app.route('/race/<name>', defaults={'type':'Races'})
 @app.route('/spells/<name>', defaults={'type':'Spells'})
+@app.route('/monsters/<name>', defaults={'type':'Monsters'})
 @app.route('/magicitems/<name>', defaults={'type':'Magic Items'})
 @app.route('/documentation/<name>', defaults={'type':'Documentation'})
 @app.route('/optionalrule/<name>', defaults={'type':'Optional Rules'})
@@ -193,6 +195,7 @@ def subthing(name, type):
         'Classes': helper.class_list,
         'Races': helper.race_list,
         'Spells': helper.spell_list,
+        'Monsters': helper.monster_list,
         'Magic Items': helper.magicitem_list,
         'Documentation': helper.document_list,
         'Optional Rules': helper.optionalrule_list,
@@ -227,6 +230,7 @@ def subthing(name, type):
 @app.route('/feats', defaults={'type':'Feats'})
 @app.route('/items', defaults={'type':'Items'})
 @app.route('/spells/', defaults={'type':'Spells'})
+@app.route('/monsters/', defaults={'type':'Monsters'})
 @app.route('/magicitems/', defaults={'type':'Magic Items'})
 def list_page(type):
     filter, show = get_filter()
@@ -234,6 +238,9 @@ def list_page(type):
     data = {
         'Spells': [
             helper.spell_list,
+        ],
+        'Monsters': [
+            helper.monster_list,
         ],
         'Magic Items': [
             helper.magicitem_list,

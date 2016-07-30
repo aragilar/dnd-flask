@@ -91,6 +91,16 @@ p {
     margin: 0.25em;
 }
 
+img {
+    float: right;
+    border-radius: 15px;
+    width: auto;
+}
+
+img[alt="Spell Image"] {
+    max-height: 500px;
+}
+
 li:empty {
     list-style: none outside;
 }

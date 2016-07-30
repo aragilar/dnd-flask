@@ -2,7 +2,7 @@
 
 *Player's Handbook: Chapter 7*
 
-Sis abilities provide a quick description of every creature's physical and mental characteristics:
+Six abilities provide a quick description of every creature's physical and mental characteristics:
 
 * **Strength**, measuring physical power
 * **Dexterity**, measuring agility
@@ -19,7 +19,7 @@ This chapter focuses on how to use ability checks and saving throws, covering th
 
 ## Ability Score Modifiers
 
-Each of a creature's abilities has a score. a number that defines the magnitude of that ability. An ability score is not just a measure of innate capabilities, but also encompasses a creature's training and competence in activities related to that ability.
+Each of a creature's abilities has a score, a number that defines the magnitude of that ability. An ability score is not just a measure of innate capabilities, but also encompasses a creature's training and competence in activities related to that ability.
 
 A score of 10 or 11 is the normal human average, but adventurers and many monsters are a cut above average in most abilities. A score of 18 is the highest that a person usually reaches. Adventurers can have scores as high as 20, and monsters and divine beings can have scores as high as 30.
 
@@ -190,9 +190,9 @@ A Strength check can model any attempt to lift, push, pull, or break something, 
 
 * You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off.
 * You try to jump an unusually long distance or pull off a stunt midjump.
-* You struggle to swim or stay a oat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming.
+* You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming.
 
-Other Strength Checks. The DM might also call for a Strength check when you try to accomplish tasks like the following:
+**Other Strength Checks.** The DM might also call for a Strength check when you try to accomplish tasks like the following:
 
 * Force open a stuck, locked, or barred door
 * Break free of bonds
@@ -380,7 +380,7 @@ A Charisma check might arise when you try to influence or entertain others, when
 
 **Persuasion.** When you attempt to influence someone or a group of people with tact, social graces, or good nature, the DM might ask you to make a Charisma (Persuasion) check. Typically, you use persuasion when acting in good faith, to foster friendships, make cordial requests, or exhibit proper etiquette. Examples of persuading others include convincing a chamberlain to let your party see the king, negotiating peace between warring tribes, or inspiring a crowd of townsfolk.
 
-Other Charisma Checks. The DM might call for a Charisma check when you try to accomplish tasks like the following:
+**Other Charisma Checks.** The DM might call for a Charisma check when you try to accomplish tasks like the following:
 
 * Find the best person to talk to for news, rumors, and gossip
 * Blend into a crowd to get the sense of key topics of conversation
