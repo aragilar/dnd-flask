@@ -36,41 +36,65 @@ class Class (utils.Base):
         
         summary = '<h2>Features</h2>'
         
-        short = '<p><strong>Description:</strong> %s</p>\n\n' % self.description
-        short += '<h3>Hit Points</h3>\n\n'
-        short += '<p><strong>Hit Die:</strong> %s</p>\n\n' % self.hit_die
-        short += '<h3>Proficiencies</h3>\n\n'
+        short = '<p><strong>Description:</strong> %s</p>\n' % self.description
         
         temp = self.primary_stat[:]
         
         sep = 'and'
-        if temp[-1] == '/':
+        if temp and temp[-1] == '/':
             sep = 'or'
             temp = temp[:-1]
         
         temp = list(map(lambda a: utils.stats[a], temp))
         if len(temp) > 1:
-            short += '<p><strong>Primary Abilities:</strong> %s</p>\n\n' % utils.comma_list(temp, sep)
+            short += '<p><strong>Primary Abilities:</strong> %s</p>\n' % utils.comma_list(temp, sep)
         elif temp:
-            short += '<p><strong>Primary Ability:</strong> %s</p>\n\n' % temp[0]
+            short += '<p><strong>Primary Ability:</strong> %s</p>\n' % temp[0]
+        
+        short += '<h3>Hit Points</h3>\n'
+        
+        num = self.hit_die
+        if isinstance(num, int):
+            num = '1d%d' % num
+        
+        short += '<p><strong>Hit Dice:</strong> %s</p>\n' % num
+        
+        num = num.split('d')
+        if len(num) == 2 and all(map(str.isdigit, num)):
+            die = int(num[1])
+            num = int(num[0])
+            short += '<p><strong>Hit Points at 1st Level:</strong> %d + your Constitution modifier</p>\n' % (num * die)
+            avg = math.ceil((die / 2 + 0.5) * num)
+            num = '%dd%d' % (num, die)
+            short += (
+                '<p><strong>Hit Points at Higher Levels:</strong>'
+                ' %s (or %d) + your Constitution modifier per %s level after 1st'
+                '</p>\n'
+            ) % (num, avg, self.name.lower())
+            del avg, die, num
+        
+        short += '<h3>Proficiencies</h3>\n'
+        
+        short += '<p><strong>Armor and Weapons:</strong> %s</p>\n' % utils.comma_list(self.combat_proficiencies)
+        
+        if self.tool_proficiencies:
+            temp = utils.choice_list(self.tool_proficiencies)
+        else:
+            temp = 'None'
+        short += '<p><strong>Tools:</strong> %s</p>\n' % temp
         
         temp = self.saving_throws
         temp = list(map(lambda a: utils.stats[a], temp))
         if len(temp) > 1:
-            short += '<p><strong>Saving Throw Proficiencies:</strong> %s</p>\n\n' % utils.comma_list(temp)
+            short += '<p><strong>Saving Throws:</strong> %s</p>\n' % utils.comma_list(temp)
         elif temp:
-            short += '<p><strong>Saving Throw Proficiency:</strong> %s</p>\n\n' % temp[0]
+            short += '<p><strong>Saving Throw:</strong> %s</p>\n' % temp[0]
         
-        short += '<p><strong>Armor and Weapon Proficiencies:</strong> %s</p>\n\n' % utils.comma_list(self.combat_proficiencies)
-        
-        if self.tool_proficiencies:
-            short += '<p><strong>Tool Proficiencies:</strong> %s</p>\n\n' % utils.choice_list(self.tool_proficiencies)
-        
-        short += '<p><strong>Skills:</strong> %s</p>\n\n' % utils.choice_list(self.skills)
+        short += '<p><strong>Skills:</strong> %s</p>\n' % utils.choice_list(self.skills)
         
         if self.equipment:
-            short += '<h3>Equipment</h3>\n\n'
-            short += '<p>You start with the following equipment in addition to the equipment granted by your background:<p>\n\n<ul>\n'
+            short += '<h3>Equipment</h3>\n'
+            short += '<p>You start with the following equipment in addition to the equipment granted by your background:<p>\n<ul>\n'
             for item in self.equipment:
                 short += '<li>%s</li>\n' % self.equipment_row(item)
             short += '</ul>'
@@ -169,13 +193,13 @@ class Class (utils.Base):
         lst = copy.deepcopy(self.features)
         if lst:
             data = {}
-            if lst[0] and lst[0][0] == 0:
+            if lst and lst[0] and lst[0][0] == 0:
                 head = lst.pop(0)
                 head.pop(0)
             else:
                 head = []
     
-            if lst[-1] and lst[-1][0] == -1:
+            if lst and lst[-1] and lst[-1][0] == -1:
                 foot = lst.pop(-1)
                 foot.pop(0)
             else:
@@ -186,23 +210,24 @@ class Class (utils.Base):
                     ret += self.feature_block(data, item)
                 ret += '<hr>\n'
             
-            lst = iter(lst)
-            line = next(lst)
-            for lvl in range(1, self.max_level+1):
-                while line[0] < lvl:
-                    try:
-                        line = next(lst)
-                    except StopIteration:
-                        break
-                
-                if line[0] == lvl:
-                    linestr = ''
-                    for item in line[1:]:
-                        linestr += self.feature_block(data, item)
-                
-                    if linestr:
-                        ret += '<h2>%s Level</h2>\n' % utils.ordinals[lvl]
-                        ret += linestr
+            if lst and all(len(a) and isinstance(a[0], int) for a in lst):
+                lst = iter(lst)
+                line = next(lst)
+                for lvl in range(1, self.max_level+1):
+                    while line[0] < lvl:
+                        try:
+                            line = next(lst)
+                        except StopIteration:
+                            break
+                    
+                    if line[0] == lvl:
+                        linestr = ''
+                        for item in line[1:]:
+                            linestr += self.feature_block(data, item)
+                    
+                        if linestr:
+                            ret += '<h2>%s Level</h2>\n' % utils.ordinals[lvl]
+                            ret += linestr
 
             if foot:
                 ret += '<hr>\n'
