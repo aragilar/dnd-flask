@@ -23,8 +23,11 @@
     </ul>
     {% endif %}
     <hr>
+    <h1>External Links</h1>
     <h2><a href="http://dnd.wizards.com/articles/features/basicrules" target="_blank">Basic Rules</a></h2>
+    <h2><a href="http://crobi.github.io/dnd5e-quickref/preview/quickref.html" target="_blank">Actions &amp; Conditions</a></h2>
     <hr>
+    <h1>Reference Databases</h1>
     {% if classes %}
     <h2><a href="{{ url_for('subpage', type='Classes', **query) }}">Classes</a></h2>
     <ul>
@@ -32,7 +35,6 @@
         <li><h3><a href="{{ url_for('subthing', name=item, type='Classes', **query) }}">{{ item }}</a></h3></li>
         {% endfor %}
     </ul>
-    <hr>
     {% endif %}
     {% if races %}
     <h2><a href="{{ url_for('subpage', type='Races', **query) }}">Races</a></h2>
@@ -41,10 +43,7 @@
         <li><h3><a href="{{ url_for('subthing', name=item, type='Races', **query) }}">{{ item }}</a></h3></li>
         {% endfor %}
     </ul>
-    <hr>
     {% endif %}
-    <h1>Reference Databases</h1>
-    <h2><a href="http://crobi.github.io/dnd5e-quickref/preview/quickref.html" target="_blank">Actions &amp; Conditions</a></h2>
     {% if backgrounds %}
     <h2><a href="{{ url_for('list_page', type='Backgrounds', **query) }}">Backgrounds</a></h2>
     {% endif %}
@@ -62,19 +61,28 @@
     {% if items %}
     <h2><a href="{{ url_for('list_page', type='Items', **query) }}">Items</a></h2>
     {% endif %}
+    {% if monsters %}
+    <h2><a href="{{ url_for('list_page', type='Monsters', **query) }}">Monsters</a></h2>
+    {% if monsters.groups %}
+    <ul>
+        <li><h3><a href="{{ url_for('group_page', type='Monsters', **query) }}">Monster Groups</a></h3></li>
+    </ul>
+    {% endif %}
+    {% endif %}
     {% if magicitems %}
     <h2><a href="{{ url_for('list_page', type='Magic Items', **query) }}">Magic Items</a></h2>
     {% endif %}
     {% if documentation %}
     <hr>
     <h1>Rules</h1>
-    {% for rule in documentation %}
-    <h2><a href="{{ url_for('subthing', name=rule, type='Documentation', **query) }}">{{ rule }}</a></h2>
-    {% endfor %}
+    <ul>
+        {% for rule in documentation %}
+        <li><h3><a href="{{ url_for('subthing', name=rule, type='Documentation', **query) }}">{{ rule }}</a></h3></li>
+        {% endfor %}
+    </ul>
     {% endif %}
     {% if optionalrules %}
-    <hr>
-    <h1>Optional Rules</h1>
+    <h2>Optional Rules</h2>
     <ul>
         {% for rule in optionalrules %}
         <li><h3><a href="{{ url_for('subthing', name=rule, type='Optional Rules', **query) }}">{{ rule }}</a></h3></li>

@@ -286,6 +286,39 @@ def list_page(type):
     
     return final_pass(html)
 
+@app.route('/monstergroups/', defaults={'type':'Monsters'})
+def group_page(type):
+    filter, show = get_filter()
+    
+    data = {
+        'Monsters': [
+            helper.monster_list,
+        ],
+    }.get(type)
+    
+    if not data:
+        return abort(404)
+    
+    data = data.filter(show)
+    if data:
+        html = data.page()
+    else:
+        html = None
+
+    if not html:
+        return abort(404)
+    
+    html = render_template('dnd-base.html',
+        home=True,
+        collapse_details=True,
+        styles=everystyle,
+        javascript=everyjs,
+        title='Groups (%s)' % type,
+        content=html
+    )
+    
+    return final_pass(html)
+
 if __name__ == '__main__':
     # ----#-   Main
     init()

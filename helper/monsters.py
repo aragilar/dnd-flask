@@ -49,6 +49,7 @@ class Monsters (utils.Group):
     
     def __init__(self, folder=None, sources=None):
         super().__init__(folder, sources)
+        self.groups = {}
         if folder:
             path = os.path.join(folder, 'documentation/monsters.md')
             if os.path.exists(path):

@@ -87,16 +87,17 @@ class OptionalRules (utils.Group):
         super().__init__()
         if folder:
             folder = os.path.join(folder, 'optionalrule')
-            for item in sorted(os.listdir(folder)):
-                item = os.path.join(folder, item)
-                if os.path.exists(item) and item.endswith('.md'):
-                    with open(item, 'r') as f:
-                        item = f.readlines()
-                    if len(item) > 1:
-                        item = self.type(item)
-                        
-                        if sources is None or item.source in sources:
-                            self.add(item)
+            if os.path.exists(folder):
+                for item in sorted(os.listdir(folder)):
+                    item = os.path.join(folder, item)
+                    if os.path.exists(item) and item.endswith('.md'):
+                        with open(item, 'r') as f:
+                            item = f.readlines()
+                        if len(item) > 1:
+                            item = self.type(item)
+                            
+                            if sources is None or item.source in sources:
+                                self.add(item)
 
 datafolder = None
 sources_order = None
