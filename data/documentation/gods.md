@@ -1,5 +1,7 @@
 # Gods of the Multiverse
 
+*Player's Handbook: Appendix B*
+
 Religion is an important part of life in the worlds of the D&D multiverse. When gods walk the world, clerics channel divine power, evil cults perform dark sacrifices in subterranean lairs, and shining paladins stand like beacons against the darkness, it's hard to be ambivalent about the deities and deny their existence.
 
 Many people in the worlds of D&D worship different gods at different times and circumstances. People in the Forgotten Realms, for example, might pray to Sune for luck in love, make an offering to Waukeen before heading to the market, and pray to appease Talos when a severe storm blows in-all in the same day. Many people have a favorite among the gods, one whose ideals and teachings they make their own. And a few people dedicate themselves entirely to a single god, usually serving as a priest or champion of that god's ideals.
