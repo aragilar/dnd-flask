@@ -92,13 +92,17 @@ p {
 }
 
 img {
-    float: right;
     border-radius: 15px;
+    max-height: 500px;
     width: auto;
 }
 
-img[alt="Spell Image"] {
-    max-height: 500px;
+img.right {
+    float: right;
+}
+
+img.big {
+    max-height: 1000px;
 }
 
 li:empty {
@@ -188,7 +192,7 @@ td, th {
 and (max-device-width : 1200px) {
     /*Tablets*/
     html {
-        font-size: 1.5em;
+        font-size: 1em;
     }
 }
 

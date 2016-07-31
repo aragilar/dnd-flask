@@ -7,7 +7,7 @@
         "verbal": true
     },
     "description": [
-        "<img src=\"@images/spells/mordenkainens-sword.jpg\" alt=\"Spell Image\">",
+        "<img src=\"@images/spells/mordenkainens-sword.jpg\" alt=\"Mordenkainen's Sword\" class=\"right\">",
         "",
         "You create a sword-shaped plane of force that hovers within range. It lasts for the duration.",
         "",

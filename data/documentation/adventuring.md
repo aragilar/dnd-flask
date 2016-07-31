@@ -19,7 +19,7 @@ The DM's notes, including a key to the map, describe what the adventurers find a
 
 In situations where keeping track of the passage of time is important, the DM determines the time a task requires. The DM might use a different time scale depending on the context of the situation at hand. In a dungeon environment, the adventurers' movement happens on a scale of **minutes**. It takes them about a minute to creep down a long hallway, another minute to check for traps on the door at the end of the hall, and a good ten minutes to search the chamber beyond for anything interesting or valuable.
 
-In a city or wilderness, a scale of **hours** is often more appropriate. Adventurers eager to reach the lonely tower at the heart of the forest hurry across those  fteen miles in just under four hours' time.
+In a city or wilderness, a scale of **hours** is often more appropriate. Adventurers eager to reach the lonely tower at the heart of the forest hurry across those fifteen miles in just under four hours' time.
 
 For long journeys, a scale of **days** works best. Following the road from Baldur's Gate to Waterdeep, the adventurers spend four uneventful days before a goblin ambush interrupts their journey.
 
@@ -29,7 +29,7 @@ In combat and other fast-paced situations, the game relies on **rounds**, a 6-se
 
 Swimming across a rushing river, sneaking down a dungeon corridor, scaling a treacherous mountain slope-all sorts of movement play a key role in D&D adventures.
 
-The DM can summarize the adventurers' movement without calculating exact distances or travel times: "You travel through the forest and  nd the dungeon entrance late in the evening of the third day." Even in a dungeon, particularly a large dungeon or a cave network, the DM can summarize movement between encounters: "After killing the guardian at the entrance to the ancient dwarven stronghold, you consult your map, which leads you through miles of echoing corridors to a chasm bridged by a narrow stone arch."
+The DM can summarize the adventurers' movement without calculating exact distances or travel times: "You travel through the forest and find the dungeon entrance late in the evening of the third day." Even in a dungeon, particularly a large dungeon or a cave network, the DM can summarize movement between encounters: "After killing the guardian at the entrance to the ancient dwarven stronghold, you consult your map, which leads you through miles of echoing corridors to a chasm bridged by a narrow stone arch."
 
 Sometimes it's important, though, to know how long it takes to get from one spot to another, whether the answer is in days, hours, or minutes. The rules for determining travel time depend on two factors: the speed and travel pace of the creatures moving and the terrain they're moving over.
 
@@ -73,7 +73,7 @@ Movement through dangerous dungeons or wilderness areas often involves more than
 
 #### Climbing, Swimming, and Crawling
 
-While climbing or swimming, each foot of movement costs 1 extra foot (2 extra feet in di cult terrain), unless a creature has a climbing or swimming speed. At the DM's option, climbing a slippery vertical surface or one with few handholds requires a successful Strength (Athletics) check. Similarly, gaining any distance in rough water might require a successful Strength (Athletics) check.
+While climbing or swimming, each foot of movement costs 1 extra foot (2 extra feet in difficult terrain), unless a creature has a climbing or swimming speed. At the DM's option, climbing a slippery vertical surface or one with few handholds requires a successful Strength (Athletics) check. Similarly, gaining any distance in rough water might require a successful Strength (Athletics) check.
 
 #### Jumping
 
@@ -97,7 +97,7 @@ As adventurers travel through a dungeon or the wilderness, they need to remain a
 
 The adventurers should establish a marching order.
 
-A marching order makes it easier to determine which characters are a ected by traps, which ones can spot hidden enemies, and which ones are the closest to those enemies when a fight breaks out.
+A marching order makes it easier to determine which characters are affected by traps, which ones can spot hidden enemies, and which ones are the closest to those enemies when a fight breaks out.
 
 A character might occupy the front rank, one or more middle ranks, or the back rank. Characters in the front and back ranks need enough room to travel side by side with others in their rank. When space is too tight, the marching order must change, usually by moving characters to a middle rank.
 
@@ -121,13 +121,13 @@ While traveling at a fast pace, characters take a -5 penalty to their passive Wi
 
 Characters who turn their attention to other tasks as the group travels are not focused on watching for danger. These characters don't contribute their passive Wisdom (Perception) scores to the group's chance of noticing hidden threats. However, a character not watching for danger can do one of the following activities instead, or some other activity with the DM's permission.
 
-**Navigate.** The character can try to prevent the group from becoming lost, making a Wisdom (Survival) check when the DM calls for it. (The Dungeon Master's Guide has rules to determine whether the group gets lost.)
+**Navigate.** The character can try to prevent the group from becoming lost, making a Wisdom (Survival) check when the DM calls for it. (The *Dungeon Master's Guide* has rules to determine whether the group gets lost.)
 
 **Draw a Map.** The character can draw a map that records the group's progress and helps the characters get back on course if they get lost. No ability check is required.
 
-**Track.** A character can follow the tracks of another creature, making a Wisdom (Survival) check when the DM calls for it. (The Dungeon Master's Guide has rules for tracking.)
+**Track.** A character can follow the tracks of another creature, making a Wisdom (Survival) check when the DM calls for it. (The *Dungeon Master's Guide* has rules for tracking.)
 
-**Forage.** The character can keep an eye out for ready sources of food and water, making a Wisdom (Survival) check when the DM calls for it. (The Dungeon Master's Guide has rules for foraging.)
+**Forage.** The character can keep an eye out for ready sources of food and water, making a Wisdom (Survival) check when the DM calls for it. (The *Dungeon Master's Guide* has rules for foraging.)
 
 #### Splitting Up the Party
 
@@ -159,11 +159,11 @@ The most fundamental tasks of adventuring-noticing danger, finding hidden object
 
 A given area might be lightly or heavily obscured. In a **lightly obscured** area, such as dim light, patchy fog, or moderate foliage, creatures have disadvantage on Wisdom (Perception) checks that rely on sight.
 
-A **heavily obscured** area-such as darkness, opaque fog, or dense foliage-blocks vision entirely. A creature e ectively su ers from the blinded condition (see appendix A) when trying to see something in that area.
+A **heavily obscured** area-such as darkness, opaque fog, or dense foliage-blocks vision entirely. A creature effectively suffers from the blinded condition (see appendix A) when trying to see something in that area.
 
 The presence or absence of light in an environment creates three categories of illumination: bright light, dim light, and darkness.
 
-**Bright light** lets most creatures see normally. Even gloomy days provide bright light, as do torches, lanterns,  res, and other sources of illumination within a specific radius.
+**Bright light** lets most creatures see normally. Even gloomy days provide bright light, as do torches, lanterns, fires, and other sources of illumination within a specific radius.
 
 **Dim light**, also called shadows, creates a lightly obscured area. An area of dim light is usually a boundary between a source of bright light, such as a torch, and surrounding darkness. The soft light of twilight and dawn also counts as dim light. A particularly brilliant full moon might bathe the land in dim light.
 
@@ -203,7 +203,7 @@ If the character already has one or more levels of exhaustion, the character tak
 
 A character's interaction with objects in an environment is often simple to resolve in the game. The player tells the DM that his or her character is doing something, such as moving a lever, and the DM describes what, if anything, happens.
 
-For example, a character might decide to pull a lever, which might, in turn, raise a portcullis, cause a room to  ood with water, or open a secret door in a nearby wall. If the lever is rusted in position, though, a character might need to force it. In such a situation, the DM might call for a Strength check to see whether the character can wrench the lever into place. The DM sets the DC for any such check based on the difficulty of the task.
+For example, a character might decide to pull a lever, which might, in turn, raise a portcullis, cause a room to flood with water, or open a secret door in a nearby wall. If the lever is rusted in position, though, a character might need to force it. In such a situation, the DM might call for a Strength check to see whether the character can wrench the lever into place. The DM sets the DC for any such check based on the difficulty of the task.
 
 Characters can also damage objects with their weapons and spells. Objects are immune to poison and psychic damage, but otherwise they can be affected by physical and magical attacks much like creatures can. The DM determines an object's Armor Class and hit points, and might decide that certain objects have resistance or immunity to certain kinds of attacks. (It's hard to cut a rope with a club, for example.) Objects always fail Strength and Dexterity saving throws, and they are immune to effects that require other saves. When an object drops to 0 hit points, it breaks.
 

@@ -366,7 +366,7 @@ Clerics, druids, and rangers use Wisdom as their spellcasting ability, which hel
 
 ### Charisma
 
-Charisma measures your ability to interact effectively with others. It includes such factors as con dence and eloquence, and it can represent a charming or commanding personality.
+Charisma measures your ability to interact effectively with others. It includes such factors as confidence and eloquence, and it can represent a charming or commanding personality.
 
 #### Charisma Checks
 
@@ -374,7 +374,7 @@ A Charisma check might arise when you try to influence or entertain others, when
 
 **Deception.** Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions. This deception can encompass everything from misleading others through ambiguity to telling outright lies. Typical situations include trying to fast-talk a guard, con a merchant, earn money through gambling, pass yourself off in a disguise, dull someone's suspicions with false assurances, or maintain a straight face while telling a blatant lie.
 
-**Intimidation.** When you attempt to in uence someone through overt threats, hostile actions, and physical violence, the DM might ask you to make a Charisma (Intimidation) check. Examples include trying to pry information out of a prisoner, convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier to reconsider a decision.
+**Intimidation.** When you attempt to influence someone through overt threats, hostile actions, and physical violence, the DM might ask you to make a Charisma (Intimidation) check. Examples include trying to pry information out of a prisoner, convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier to reconsider a decision.
 
 **Performance.** Your Charisma (Performance) check determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment.
 
