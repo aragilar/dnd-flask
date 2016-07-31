@@ -138,7 +138,6 @@ img#main-img {
 
 #strmod, #dexmod, #conmod,
 #intmod, #wismod, #chamod {
-    position: absolute;
     left: 428px;
 }
 

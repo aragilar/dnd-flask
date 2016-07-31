@@ -94,7 +94,6 @@ img#main-img {
 }
 
 #strmod, #dexmod, #conmod, #intmod, #wismod, #chamod {
-    position: absolute;
     text-align: center;
     left: 46px;
     width: 57px;
@@ -157,6 +156,7 @@ img#main-img {
     width: 20px;
     left: 146px;
     font-size: 12px;
+    height: 12px;
 }
 
 #strsave {
@@ -357,6 +357,7 @@ img#main-img {
     left: 38px;
     width: 34px;
     font-size: 16px;
+    height: 16px;
 }
 
 #proficiencies, #languages {
@@ -391,6 +392,7 @@ img#main-img {
     left: 368px;
     width: 56px;
     font-size: 22px;
+    height: 22px;
 }
 
 #speed {

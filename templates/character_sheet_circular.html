@@ -13,7 +13,7 @@
     <input id="experience" class="save">
     <input id="level" class="save">
     <input id="next-level" class="save">
-    <input id="initiative" class="save">
+    <output id="initiative"></output>
     <textarea id="languages" class="save"></textarea>
     <input id="speed" class="save">
     <input id="vision" class="save">
@@ -40,9 +40,9 @@
     <label id="spellcasting-ability-container">
         <input id="spellcasting-ability" class="save">
     </label>
-    <input id="spell-save" class="save">
+    <output id="spell-save"></output>
     <label id="spell-attack-container">
-        <input id="spell-attack" class="save">
+        <output id="spell-attack"></output>
     </label>
     {% for currency in ["cp", "sp", "ep", "gp", "pp"] %}
     <input id="{{ currency }}" class="save">
@@ -64,7 +64,7 @@
             {{ skill.replace('-', ' ').upper() }}
             <input type="checkbox" id="{{ skill }}" class="save">
         </label>
-        <input type="hidden" id="{{ skill }}-value" class="save">
+        <output style="display: none" id="{{ skill }}-value"></output>
         {% endfor %}
     </div>
     <textarea id="proficiencies" class="save"></textarea>

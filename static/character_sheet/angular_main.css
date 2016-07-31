@@ -94,7 +94,6 @@ img#main-img {
 }
 
 #strmod, #dexmod, #conmod, #intmod, #wismod, #chamod {
-    position: absolute;
     text-align: center;
     left: 46px;
     width: 71px;
