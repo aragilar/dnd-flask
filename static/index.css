@@ -7,7 +7,7 @@
 }
 
 #filter-block {
-    float:right;
+    float: right;
 }
 
 .head-row {
@@ -54,6 +54,15 @@
     margin: 0px;
     color: #455;
 }
+
+/*Flexbox section*/
+.flex {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row, wrap;
+    padding: 0.5em;
+}
+/*end flexbox*/
 
 body {
     background-color: #ddd;

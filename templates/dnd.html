@@ -28,66 +28,83 @@
     <h2><a href="http://crobi.github.io/dnd5e-quickref/preview/quickref.html" target="_blank">Actions &amp; Conditions</a></h2>
     <hr>
     <h1>Reference Databases</h1>
-    {% if classes %}
-    <h2><a href="{{ url_for('subpage', type='Classes', **query) }}">Classes</a></h2>
-    <ul>
-        {% for item in classes %}
-        <li><h3><a href="{{ url_for('subthing', name=item, type='Classes', **query) }}">{{ item }}</a></h3></li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% if races %}
-    <h2><a href="{{ url_for('subpage', type='Races', **query) }}">Races</a></h2>
-    <ul>
-        {% for item in races %}
-        <li><h3><a href="{{ url_for('subthing', name=item, type='Races', **query) }}">{{ item }}</a></h3></li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% if backgrounds %}
-    <h2><a href="{{ url_for('list_page', type='Backgrounds', **query) }}">Backgrounds</a></h2>
-    {% endif %}
-    {% if spells %}
-    <h2><a href="{{ url_for('list_page', type='Spells', **query) }}">Spells</a></h2>
-    {% endif %}
-    {% if feats or boons %}
-    <h2><a href="{{ url_for('list_page', type='Feats', **query) }}">Feats</a></h2>
-    {% if boons %}
-    <ul>
-        <li><h3><a href="{{ url_for('list_page', type='Feats', _anchor='epic-boons', **query) }}">Epic Boons</a></h3></li>
-    </ul>
-    {% endif %}
-    {% endif %}
-    {% if items %}
-    <h2><a href="{{ url_for('list_page', type='Items', **query) }}">Items</a></h2>
-    {% endif %}
-    {% if monsters %}
-    <h2><a href="{{ url_for('list_page', type='Monsters', **query) }}">Monsters</a></h2>
-    {% if monsters.groups %}
-    <ul>
-        <li><h3><a href="{{ url_for('group_page', type='Monsters', **query) }}">Monster Groups</a></h3></li>
-    </ul>
-    {% endif %}
-    {% endif %}
-    {% if magicitems %}
-    <h2><a href="{{ url_for('list_page', type='Magic Items', **query) }}">Magic Items</a></h2>
-    {% endif %}
-    {% if documentation %}
+    <section id="reference" class="flex">
+        {% if classes %}
+        <section>
+            <h2><a href="{{ url_for('subpage', type='Classes', **query) }}">Classes</a></h2>
+            <ul>
+                {% for item in classes %}
+                <li><h3><a href="{{ url_for('subthing', name=item, type='Classes', **query) }}">{{ item }}</a></h3></li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+        {% if races %}
+        <section>
+            <h2><a href="{{ url_for('subpage', type='Races', **query) }}">Races</a></h2>
+            <ul>
+                {% for item in races %}
+                <li><h3><a href="{{ url_for('subthing', name=item, type='Races', **query) }}">{{ item }}</a></h3></li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+        {% if backgrounds or spells or feats or boons or items or monsters or magicitems %}
+        <section>
+            <h2>Other</h2>
+            {% if backgrounds %}
+            <h2><a href="{{ url_for('list_page', type='Backgrounds', **query) }}">Backgrounds</a></h2>
+            {% endif %}
+            {% if spells %}
+            <h2><a href="{{ url_for('list_page', type='Spells', **query) }}">Spells</a></h2>
+            {% endif %}
+            {% if feats or boons %}
+            <h2><a href="{{ url_for('list_page', type='Feats', **query) }}">Feats</a></h2>
+            {% if boons %}
+            <ul>
+                <li><h3><a href="{{ url_for('list_page', type='Feats', _anchor='epic-boons', **query) }}">Epic Boons</a></h3></li>
+            </ul>
+            {% endif %}
+            {% endif %}
+            {% if items %}
+            <h2><a href="{{ url_for('list_page', type='Items', **query) }}">Items</a></h2>
+            {% endif %}
+            {% if monsters %}
+            <h2><a href="{{ url_for('list_page', type='Monsters', **query) }}">Monsters</a></h2>
+            {% if monsters.groups %}
+            <ul>
+                <li><h3><a href="{{ url_for('group_page', type='Monsters', **query) }}">Monster Groups</a></h3></li>
+            </ul>
+            {% endif %}
+            {% endif %}
+            {% if magicitems %}
+            <h2><a href="{{ url_for('list_page', type='Magic Items', **query) }}">Magic Items</a></h2>
+            {% endif %}
+        </section>
+        {% endif %}
+    </section>
     <hr>
-    <h1>Rules</h1>
-    <ul>
-        {% for rule in documentation %}
-        <li><h3><a href="{{ url_for('subthing', name=rule, type='Documentation', **query) }}">{{ rule }}</a></h3></li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% if optionalrules %}
-    <h2>Optional Rules</h2>
-    <ul>
-        {% for rule in optionalrules %}
-        <li><h3><a href="{{ url_for('subthing', name=rule, type='Optional Rules', **query) }}">{{ rule }}</a></h3></li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    <section id="rules" class="flex">
+        <section>
+            <h1>Rules</h1>
+            {% if documentation %}
+            <ul>
+                {% for rule in documentation %}
+                <li><h3><a href="{{ url_for('subthing', name=rule, type='Documentation', **query) }}">{{ rule }}</a></h3></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
+        {% if optionalrules %}
+        <section>
+            <h2>Optional Rules</h2>
+            <ul>
+                {% for rule in optionalrules %}
+                <li><h3><a href="{{ url_for('subthing', name=rule, type='Optional Rules', **query) }}">{{ rule }}</a></h3></li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    </section>
 </div>
 {% endblock %}
