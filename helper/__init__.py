@@ -55,7 +55,7 @@ class Documents (utils.Group):
             for item in self.docs:
                 item = os.path.join(folder, item + '.md')
                 if os.path.exists(item):
-                    with open(item, 'r') as f:
+                    with open(item, 'r', encoding='utf-8') as f:
                         item = f.readlines()
                     if item:
                         item = self.type(item)
