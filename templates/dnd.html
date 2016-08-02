@@ -2,30 +2,35 @@
 {% set charsheets = ["Angular", "Circular"] %}
 {% block content %}
 <div class="index">
-    {% if filters %}
-    <p id="filter-block">
-        Filter: 
-        <select id="filter">
-            <option>-</option>
-            {% for item in filters %}
-            <option>{{ item }}</option>
-            {% endfor %}
-        </select>
-    </p>
-    {% endif %}
-    <h1>{{ title }}</h1>
-    <h2><a href="{{ url_for('character_sheet', filter=filter) }}">Character Sheet</a></h2>
-    {% if charsheets %}
-    <ul>
-        {% for item in charsheets %}
-        <li><a href="{{ url_for('character_sheet', look=item, **query) }}">{{ item }}</a></li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    <hr>
-    <h1>External Links</h1>
-    <h2><a href="http://dnd.wizards.com/articles/features/basicrules" target="_blank">Basic Rules</a></h2>
-    <h2><a href="http://crobi.github.io/dnd5e-quickref/preview/quickref.html" target="_blank">Actions &amp; Conditions</a></h2>
+    <section class="flex">
+        {% if filters %}
+        <section id="filter-block">
+            Filter: 
+            <select id="filter">
+                <option>-</option>
+                {% for item in filters %}
+                <option>{{ item }}</option>
+                {% endfor %}
+            </select>
+        </section>
+        {% endif %}
+        <section>
+            <h1>{{ title }}</h1>
+            <h2><a href="{{ url_for('character_sheet', filter=filter) }}">Character Sheet</a></h2>
+            {% if charsheets %}
+            <ul>
+                {% for item in charsheets %}
+                <li><a href="{{ url_for('character_sheet', look=item, **query) }}">{{ item }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
+        <section>
+            <h1>External Links</h1>
+            <h2><a href="http://dnd.wizards.com/articles/features/basicrules" target="_blank">Basic Rules</a></h2>
+            <h2><a href="http://crobi.github.io/dnd5e-quickref/preview/quickref.html" target="_blank">Actions &amp; Conditions</a></h2>
+        </section>
+    </section>
     <hr>
     <h1>Reference Databases</h1>
     <section id="reference" class="flex">
