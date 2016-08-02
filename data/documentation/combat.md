@@ -2,9 +2,9 @@
 
 *Player's Handbook: Chapter 9*
 
-The clatter of a sword striking against a shield. The terrible rending sound as monstrous claws tear through armor. A brilliant  ash of light as a ball of  ame blossoms from a wizard's spell. The sharp tang of blood in the air, cutting through the stench of vile monsters. Roars of fury, shouts of triumph, cries of pain. Combat in D&D can be chaotic, deadly, and thrilling.
+The clatter of a sword striking against a shield. The terrible rending sound as monstrous claws tear through armor. A brilliant flash of light as a ball of flame blossoms from a wizard's spell. The sharp tang of blood in the air, cutting through the stench of vile monsters. Roars of fury, shouts of triumph, cries of pain. Combat in D&D can be chaotic, deadly, and thrilling.
 
-This chapter provides the rules you need for your characters and monsters to engage in combat, whether it is a brief skirmish or an extended con ict in a dungeon or on a field of battle. Throughout this chapter, the rules address you, the player or Dungeon Master. The Dungeon Master controls all the monsters and nonplayer characters involved in combat, and each other player controls an adventurer. "You" can also mean the character or monster that you control.
+This chapter provides the rules you need for your characters and monsters to engage in combat, whether it is a brief skirmish or an extended conflict in a dungeon or on a field of battle. Throughout this chapter, the rules address you, the player or Dungeon Master. The Dungeon Master controls all the monsters and nonplayer characters involved in combat, and each other player controls an adventurer. "You" can also mean the character or monster that you control.
 
 ## The Order of Combat
 
@@ -13,7 +13,7 @@ A typical combat encounter is a clash between two sides, a flurry of weapon swin
 ### Combat Step by Step
 
 1. **Determine surprise.** The DM determines whether anyone involved in the combat encounter is surprised.
-2. **Establish positions.** The DM decides where all the characters and monsters are located. Given the adventurers' marching order or their stated positions in the room or other location, the DM  gures out where the adversaries are-how far away and in what direction.
+2. **Establish positions.** The DM decides where all the characters and monsters are located. Given the adventurers' marching order or their stated positions in the room or other location, the DM figures out where the adversaries are-how far away and in what direction.
 3. **Roll initiative.** Everyone involved in the combat encounter rolls initiative, determining the order of combatants' turns.
 4. **Take turns.** Each participant in the battle takes a turn in initiative order.
 5. **Begin the next round.** When everyone involved in the combat has had a turn, the round ends. Repeat step 4 until the fighting stops.
@@ -56,7 +56,7 @@ You choose when to take a bonus action during your turn, unless the bonus action
 
 #### Other Activity on Your Turn
 
-Your turn can include a variety of  ourishes that require neither your action nor your move.
+Your turn can include a variety of flourishes that require neither your action nor your move.
 
 You can communicate however you are able, through brief utterances and gestures, as you take your turn.
 
@@ -114,7 +114,7 @@ You can break up your movement on your turn, using some of your speed before and
 
 #### Moving between Attacks
 
-If you take an action that includes more than one weapon attack, you can break up your movement even further by moving between those attacks. For example, a  ghter who can make two attacks with the Extra Attack feature and who has a speed of 25 feet could move 10 feet, make an attack, move 15 feet, and then attack again.
+If you take an action that includes more than one weapon attack, you can break up your movement even further by moving between those attacks. For example, a fighter who can make two attacks with the Extra Attack feature and who has a speed of 25 feet could move 10 feet, make an attack, move 15 feet, and then attack again.
 
 #### Using Different Speeds
 
@@ -206,7 +206,7 @@ When you describe an action not detailed elsewhere in the rules, the DM tells yo
 The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.
 With this action, you make one melee or ranged attack. See the "Making an Attack" section for the rules that govern attacks.
 
-Certain features, such as the Extra Attack feature of the  ghter, allow you to make more than one attack with this action.
+Certain features, such as the Extra Attack feature of the fighter, allow you to make more than one attack with this action.
 
 ### Cast a Spell
 
@@ -262,7 +262,7 @@ When you describe an action not detailed elsewhere in the rules, the DM tells yo
 
 ## Making an Attack
 
-Whether you're striking with a melee weapon,  ring a weapon at range, or making an attack roll as part of a spell, an attack has a simple structure.
+Whether you're striking with a melee weapon, firing a weapon at range, or making an attack roll as part of a spell, an attack has a simple structure.
 
 1. **Choose a target.** Pick a target within your attack's range: a creature, an object, or a location.
 2. **Determine modifiers.** The DM determines whether the target has cover and whether you have advantage or disadvantage against the target. In addition, spells, special abilities, and other effects can apply penalties or bonuses to your attack roll.
@@ -373,7 +373,7 @@ A target with **total cover** can't be targeted directly by an attack or a spell
 
 ## Damage and Healing
 
-Injury and the risk of death are constant companions of those who explore the worlds of D&D. The thrust of a sword, a well-placed arrow, or a blast of  ame from a  reball spell all have the potential to damage, or even kill, the hardiest of creatures.
+Injury and the risk of death are constant companions of those who explore the worlds of D&D. The thrust of a sword, a well-placed arrow, or a blast of flame from a fireball spell all have the potential to damage, or even kill, the hardiest of creatures.
 
 ### Hit Points
 
@@ -409,7 +409,7 @@ The damage types follow, with examples to help a DM assign a damage type to a ne
 
 **Cold.** The infernal chill radiating from an ice devil's spear and the frigid blast of a white dragon's breath deal cold damage.
 
-**Fire.** Red dragons breathe fire, and many spells conjure  ames to deal fire damage.
+**Fire.** Red dragons breathe fire, and many spells conjure flames to deal fire damage.
 
 **Force.** Force is pure magical energy focused into a damaging form. Most effects that deal force damage are spells, including *magic missile* and *spiritual weapon*.
 
