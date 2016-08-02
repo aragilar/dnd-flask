@@ -189,15 +189,15 @@ td, th {
 */
 
 @media only screen
-and (max-device-width : 1200px) {
+and (max-device-width : 1000px) {
     /*Tablets*/
     html {
-        font-size: 1em;
+        font-size: 1.5em;
     }
 }
 
 @media only screen
-and (max-device-width : 800px) {
+and (max-device-width : 600px) {
     /*Phones*/
     html {
         font-size: 2em;
