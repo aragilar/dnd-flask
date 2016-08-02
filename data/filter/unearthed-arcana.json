@@ -128,6 +128,7 @@
             "Fiendish Patron": false,
             "Ghost in the Machine Patron": true,
             "Great Old One Patron": false,
+            "The Seeker Patron": true,
             "The Undying Patron": false,
             "Undying Light": true
         },
@@ -142,7 +143,8 @@
             "School of Illusion": false,
             "School of Necromancy": false,
             "School of Technomancy": true,
-            "School of Transmutation": false
+            "School of Transmutation": false,
+            "Theurgy": true
         }
     },
     "epicboon": {
