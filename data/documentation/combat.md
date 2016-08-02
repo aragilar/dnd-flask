@@ -124,11 +124,11 @@ For example, if you have a speed of 30 and a flying speed of 60 because a wizard
 
 ### Difficult Terrain
 
-Combat rarely takes place in bare rooms or on featureless plains. Boulder-strewn caverns, briar-choked forests, treacherous staircases-the setting of a typical fight contains dificult terrain.
+Combat rarely takes place in bare rooms or on featureless plains. Boulder-strewn caverns, briar-choked forests, treacherous staircases-the setting of a typical fight contains difficult terrain.
 
-Every foot of movement in dificult terrain costs 1 extra foot. This rule is true even if multiple things in a space count as dificult terrain.
+Every foot of movement in difficult terrain costs 1 extra foot. This rule is true even if multiple things in a space count as difficult terrain.
 
-Low furniture, rubble, undergrowth, steep stairs, snow, and shallow bogs are examples of dificult terrain. The space of another creature, whether hostile or not, also counts as dificult terrain.
+Low furniture, rubble, undergrowth, steep stairs, snow, and shallow bogs are examples of difficult terrain. The space of another creature, whether hostile or not, also counts as difficult terrain.
 
 ### Being Prone
 
@@ -136,11 +136,11 @@ Combatants often find themselves lying on the ground, either because they are kn
 
 You can **drop prone** without using any of your speed. **Standing up** takes more effort; doing so costs an amount of movement equal to half your speed. For example, if your speed is 30 feet, you must spend 15 feet of movement to stand up. You can't stand up if you don't have enough movement left or if your speed is 0.
 
-To move while prone, you must **crawl** or use magic such as teleportation. Every foot of movement while crawling costs 1 extra foot. Crawling 1 foot in dificult terrain, therefore, costs 3 feet of movement.
+To move while prone, you must **crawl** or use magic such as teleportation. Every foot of movement while crawling costs 1 extra foot. Crawling 1 foot in difficult terrain, therefore, costs 3 feet of movement.
 
 ### Moving Around Other Creatures
 
-You can move through a nonhostile creature's space. In contrast, you can move through a hostile creature's space only if the creature is at least two sizes larger or smaller than you. Remember that another creature's space is dificult terrain for you.
+You can move through a nonhostile creature's space. In contrast, you can move through a hostile creature's space only if the creature is at least two sizes larger or smaller than you. Remember that another creature's space is difficult terrain for you.
 
 Whether a creature is a friend or an enemy, you can't willingly end your move in its space.
 
@@ -148,7 +148,7 @@ If you leave a hostile creature's reach during your move, you provoke an opportu
 
 ### Flying Movement
 
-Flying creatures enjoy many benefits of mobility, but they must also deal with the danger of falling. If a flying creature is knocked prone, has its speed reduced to 0, or is otherwise deprived of the ability to move, the creature falls, unless it has the ability to hover or it is being held aloft by magic, such as by the fly spell.
+Flying creatures enjoy many benefits of mobility, but they must also deal with the danger of falling. If a flying creature is knocked prone, has its speed reduced to 0, or is otherwise deprived of the ability to move, the creature falls, unless it has the ability to hover or it is being held aloft by magic, such as by the *fly* spell.
 
 ### Creature Size
 
@@ -189,7 +189,7 @@ If you use a grid often, consider writing your speed in squares on your characte
 
 **Entering a Square.** To enter a square, you must have at least 1 square of movement left, even if the square is diagonally adjacent to the square you're in. (The rule for diagonal movement sacrifices realism for the sake of smooth play. The Dungeon Master's Guide provides guidance on using a more realistic approach.)
 
-If a square costs extra movement, as a square of dificult terrain does, you must have enough movement left to pay for entering it. For example, you must have at least 2 squares of movement left to enter a square of dificult terrain.
+If a square costs extra movement, as a square of difficult terrain does, you must have enough movement left to pay for entering it. For example, you must have at least 2 squares of movement left to enter a square of difficult terrain.
 
 **Corners.** Diagonal movement can't cross the corner of a wall, large tree, or other terrain feature that fills its space.
 
@@ -210,7 +210,7 @@ Certain features, such as the Extra Attack feature of the fighter, allow you to 
 
 ### Cast a Spell
 
-Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which speci es whether the caster must use an action, a reaction, minutes, or even hours to cast the spell. Casting a spell is, therefore, not necessarily an action. Most spells do have a casting time of 1 action, so a spellcaster often uses his or her action in combat to cast such a spell. See chapter 10 for the rules on spellcasting.
+Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether the caster must use an action, a reaction, minutes, or even hours to cast the spell. Casting a spell is, therefore, not necessarily an action. Most spells do have a casting time of 1 action, so a spellcaster often uses his or her action in combat to cast such a spell. See chapter 10 for the rules on spellcasting.
 
 ### Dash
 
@@ -234,7 +234,7 @@ Alternatively, you can aid a friendly creature in attacking a creature within 5 
 
 ### Hide
 
-When you take the Hide action, you make a Dexterity (Stealth) check in an attempt to hide, following the rules in chapter 7 for hiding. If you succeed, you gain certain bene ts, as described in the "Unseen Attackers and Targets" section later in this chapter.
+When you take the Hide action, you make a Dexterity (Stealth) check in an attempt to hide, following the rules in chapter 7 for hiding. If you succeed, you gain certain benefits, as described in the "Unseen Attackers and Targets" section later in this chapter.
 
 ### Ready
 
@@ -244,7 +244,7 @@ First, you decide what perceivable circumstance will trigger your reaction. Then
 
 When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.
 
-When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration (explained in chapter 10). If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the web spell and ready magic missile, your web spell ends, and if you take damage before you release magic missile with your reaction, your concentration might be broken.
+When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration (explained in chapter 10). If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the *web* spell and ready *magic missile*, your *web* spell ends, and if you take damage before you release *magic missile* with your reaction, your concentration might be broken.
 
 ### Search
 
@@ -272,7 +272,7 @@ If there's ever any question whether something you're doing counts as an attack,
 
 ### Attack Rolls
 
-When you make an attack, your attack roll determines whether the attack hits or misses. To make an attack roll, roll a d20 and add the appropriate modifiers. If the total of the roll plus modi ers equals or exceeds the target's Armor Class (AC), the attack hits. The AC of a character is determined at character creation, whereas the AC of a monster is in its stat block.
+When you make an attack, your attack roll determines whether the attack hits or misses. To make an attack roll, roll a d20 and add the appropriate modifiers. If the total of the roll plus modifiers equals or exceeds the target's Armor Class (AC), the attack hits. The AC of a character is determined at character creation, whereas the AC of a monster is in its stat block.
 
 #### Modifiers to the Roll
 
@@ -294,7 +294,7 @@ If the d20 roll for an attack is a 1, the attack misses regardless of any modifi
 
 ### Unseen Attackers and Targets
 
-Combatants often try to escape their foes' notice by hiding, casting the invisibility spell, or lurking in darkness.
+Combatants often try to escape their foes' notice by hiding, casting the *invisibility* spell, or lurking in darkness.
 
 When you attack a target that you can't see, you have disadvantage on the attack roll. This is true whether you're guessing the target's location or you're targeting a creature you can hear but not see. If the target isn't in the location you targeted, you automatically miss, but the DM typically just says that the attack missed, not whether you guessed the target's location correctly.
 
@@ -315,7 +315,7 @@ Some ranged attacks, such as those made with a longbow or a shortbow, have two r
 
 #### Ranged Attacks in Close Combat
 
-Aiming a ranged attack is more dificult when a foe is next to you. When you make a ranged attack with a weapon, a spell, or some other means, you have disadvantage on the attack roll if you are within 5 feet of a hostile creature who can see you and who isn't incapacitated.
+Aiming a ranged attack is more difficult when a foe is next to you. When you make a ranged attack with a weapon, a spell, or some other means, you have disadvantage on the attack roll if you are within 5 feet of a hostile creature who can see you and who isn't incapacitated.
 
 ### Melee Attacks
 
@@ -323,7 +323,7 @@ Used in hand-to-hand combat, a melee attack allows you to attack a foe within yo
 
 Most creatures have a 5-foot reach and can thus attack targets within 5 feet of them when making a melee attack. Certain creatures (typically those larger than Medium) have melee attacks with a greater reach than 5 feet, as noted in their descriptions.
 
-Instead of using a weapon to make a melee weapon attack, you can use an unarmed strike: a punch, kick, head-butt, or similar forceful blow (none of which count as weapons). On a hit, an unarmed strike deals bludgeoning damage equal to 1 + your Strength modifier. You are proficient with your unarmed strikes.
+Instead of using a weapon to make a melee weapon attack, you can use an **unarmed strike**: a punch, kick, head-butt, or similar forceful blow (none of which count as weapons). On a hit, an unarmed strike deals bludgeoning damage equal to 1 + your Strength modifier. You are proficient with your unarmed strikes.
 
 #### Opportunity Attacks
 
@@ -361,7 +361,7 @@ Battle often involves pitting your prowess against that of your foe. Such a chal
 
 ## Cover
 
-Walls, trees, creatures, and other obstacles can provide cover during combat, making a target more dificult to harm. A target can benefit from cover only when an attack or other effect originates on the opposite side of the cover.
+Walls, trees, creatures, and other obstacles can provide cover during combat, making a target more difficult to harm. A target can benefit from cover only when an attack or other effect originates on the opposite side of the cover.
 
 There are three degrees of cover. If a target is behind multiple sources of cover, only the most protective degree of cover applies; the degrees aren't added together. For example, if a target is behind a creature that gives half cover and a tree trunk that gives three-quarters cover, the target has three-quarters cover.
 
@@ -377,7 +377,7 @@ Injury and the risk of death are constant companions of those who explore the wo
 
 ### Hit Points
 
-Hit points represent a combination of physical and mental durability, the will to live, and luck. Creatures with more hit points are more dificult to kill. Those with fewer hit points are more fragile.
+Hit points represent a combination of physical and mental durability, the will to live, and luck. Creatures with more hit points are more difficult to kill. Those with fewer hit points are more fragile.
 
 A creature's current hit points (usually just called hit points) can be any number from the creature's hit point maximum down to 0. This number changes frequently as a creature takes damage or receives healing.
 
