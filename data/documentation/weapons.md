@@ -38,7 +38,7 @@ If you use a weapon that has the ammunition property to make a melee attack, you
 
 **Two-Handed.** This weapon requires two hands when you attack with it.
 
-**Versatile.** This weapon can be used with one or two hands. A damage value in parentheses appears with the property-the damage when the weapon is used with two hands to make a melee attack.
+**Versatile.** This weapon can be used with one or two hands. A damage value in parentheses appears with the property - the damage when the weapon is used with two hands to make a melee attack.
 
 ## Improvised Weapons
 

@@ -2,7 +2,7 @@
 
 *Player's Handbook: Chapter 8*
 
-Delving into the ancient Tomb of Horrors, slipping through the back alleys of Waterdeep, hacking a fresh trail through the thick jungles on the Isle of Dread-these are the things that Dungeons & Dragons adventures are made of. Your character in the game might explore forgotten ruins and uncharted lands, uncover dark secrets and sinister plots, and slay foul monsters. And if all goes well, your character will survive to claim rich rewards before embarking on a new adventure.
+Delving into the ancient Tomb of Horrors, slipping through the back alleys of Waterdeep, hacking a fresh trail through the thick jungles on the Isle of Dread - these are the things that Dungeons & Dragons adventures are made of. Your character in the game might explore forgotten ruins and uncharted lands, uncover dark secrets and sinister plots, and slay foul monsters. And if all goes well, your character will survive to claim rich rewards before embarking on a new adventure.
 
 This chapter covers the basics of the adventuring life, from the mechanics of movement to the complexities of social interaction. The rules for resting are also in this chapter, along with a discussion of the activities your character might pursue between adventures.
 
@@ -27,7 +27,7 @@ In combat and other fast-paced situations, the game relies on **rounds**, a 6-se
 
 ## Movement
 
-Swimming across a rushing river, sneaking down a dungeon corridor, scaling a treacherous mountain slope-all sorts of movement play a key role in D&D adventures.
+Swimming across a rushing river, sneaking down a dungeon corridor, scaling a treacherous mountain slope - all sorts of movement play a key role in D&D adventures.
 
 The DM can summarize the adventurers' movement without calculating exact distances or travel times: "You travel through the forest and find the dungeon entrance late in the evening of the third day." Even in a dungeon, particularly a large dungeon or a cave network, the DM can summarize movement between encounters: "After killing the guardian at the entrance to the ancient dwarven stronghold, you consult your map, which leads you through miles of echoing corridors to a chasm bridged by a narrow stone arch."
 
@@ -63,9 +63,9 @@ Certain special mounts, such as a pegasus or griffon, or special vehicles, such 
 
 #### Difficult Terrain
 
-The travel speeds given in the Travel Pace table assume relatively simple terrain: roads, open plains, or clear dungeon corridors. But adventurers often face dense forests, deep swamps, rubble-filled ruins, steep mountains, and ice-covered ground-all considered difficult terrain.
+The travel speeds given in the Travel Pace table assume relatively simple terrain: roads, open plains, or clear dungeon corridors. But adventurers often face dense forests, deep swamps, rubble-filled ruins, steep mountains, and ice-covered ground - all considered difficult terrain.
 
-You move at half speed in difficult terrain-moving 1 foot in difficult terrain costs 2 feet of speed-so you can cover only half the normal distance in a minute, an hour, or a day.
+You move at half speed in difficult terrain - moving 1 foot in difficult terrain costs 2 feet of speed - so you can cover only half the normal distance in a minute, an hour, or a day.
 
 ### Special Types of Movement
 
@@ -155,11 +155,11 @@ For example, a creature with a Constitution of 14 can hold its breath for 3 minu
 
 #### Vision and Light
 
-The most fundamental tasks of adventuring-noticing danger, finding hidden objects, hitting an enemy in combat, and targeting a spell, to name just a few-rely heavily on a character's ability to see. Darkness and other effects that obscure vision can prove a significant hindrance.
+The most fundamental tasks of adventuring - noticing danger, finding hidden objects, hitting an enemy in combat, and targeting a spell, to name just a few - rely heavily on a character's ability to see. Darkness and other effects that obscure vision can prove a significant hindrance.
 
 A given area might be lightly or heavily obscured. In a **lightly obscured** area, such as dim light, patchy fog, or moderate foliage, creatures have disadvantage on Wisdom (Perception) checks that rely on sight.
 
-A **heavily obscured** area-such as darkness, opaque fog, or dense foliage-blocks vision entirely. A creature effectively suffers from the blinded condition (see appendix A) when trying to see something in that area.
+A **heavily obscured** area - such as darkness, opaque fog, or dense foliage - blocks vision entirely. A creature effectively suffers from the blinded condition (see appendix A) when trying to see something in that area.
 
 The presence or absence of light in an environment creates three categories of illumination: bright light, dim light, and darkness.
 
@@ -273,7 +273,7 @@ Pay attention to your skill proficiencies when thinking of how you want to inter
 
 ## Resting
 
-Heroic though they might be, adventurers can't spend every hour of the day in the thick of exploration, social interaction, and combat. They need rest-time to sleep and eat, tend their wounds, refresh their minds and spirits for spellcasting, and brace themselves for further adventure.
+Heroic though they might be, adventurers can't spend every hour of the day in the thick of exploration, social interaction, and combat. They need rest - time to sleep and eat, tend their wounds, refresh their minds and spirits for spellcasting, and brace themselves for further adventure.
 
 Adventurers can take short rests in the midst of an adventuring day and a long rest to end the day.
 
@@ -285,7 +285,7 @@ A character can spend one or more Hit Dice at the end of a short rest, up to the
 
 ### Long Rest
 
-A long rest is a period of extended downtime, at least 8 hours long, during which a character sleeps or performs light activity: reading, talking, eating, or standing watch for no more than 2 hours. If the rest is interrupted by a period of strenuous activity-at least 1 hour of walking, fighting, casting spells, or similar adventuring activity-the characters must begin the rest again to gain any benefit from it.
+A long rest is a period of extended downtime, at least 8 hours long, during which a character sleeps or performs light activity: reading, talking, eating, or standing watch for no more than 2 hours. If the rest is interrupted by a period of strenuous activity - at least 1 hour of walking, fighting, casting spells, or similar adventuring activity - the characters must begin the rest again to gain any benefit from it.
 
 At the end of a long rest, a character regains all lost hit points. The character also regains spent Hit Dice, up to a number of dice equal to half of the character's total number of them (minimum of one die). For example, if a character has eight Hit Dice, he or she can regain four spent Hit Dice upon finishing a long rest.
 

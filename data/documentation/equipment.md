@@ -84,7 +84,7 @@ Your lifestyle choice can have consequences. Maintaining a wealthy lifestyle mig
 
 #### Self-Suficiency
 
-The expenses and lifestyles described in this chapter assume that you are spending your time between adventures in town, availing yourself of whatever services you can afford-paying for food and shelter, paying townspeople to sharpen your sword and repair your armor, and so on. Some characters, though, might prefer to spend their time away from civilization, sustaining themselves in the wild by hunting, foraging, and repairing their own gear.
+The expenses and lifestyles described in this chapter assume that you are spending your time between adventures in town, availing yourself of whatever services you can afford - paying for food and shelter, paying townspeople to sharpen your sword and repair your armor, and so on. Some characters, though, might prefer to spend their time away from civilization, sustaining themselves in the wild by hunting, foraging, and repairing their own gear.
 
 Maintaining this kind of lifestyle doesn't require you to spend any coin, but it is time-consuming. If you spend your time between adventures practicing a profession, as described in chapter 8, you can eke out the equivalent of a poor lifestyle. Proficiency in the Survival skill lets you live at the equivalent of a comfortable lifestyle.
 
@@ -149,7 +149,7 @@ Skilled hirelings include anyone hired to perform a service that involves a pro 
 
 People who are able to cast spells don't fall into the category of ordinary hirelings. It might be possible to find someone willing to cast a spell in exchange for coin or favors, but it is rarely easy and no established pay rates exist. As a rule, the higher the level of the desired spell, the harder it is to find someone who can cast it and the more it costs.
 
-Hiring someone to cast a relatively common spell of 1st or 2nd level, such as cure wounds or identify, is easy enough in a city or town, and might cost 10 to 50 gold pieces (plus the cost of any expensive material components). Finding someone able and willing to cast a higher-level spell might involve traveling to a large city, perhaps one with a university or prominent temple. Once found, the spellcaster might ask for a service instead of payment-the kind of service that only adventurers can provide, such as retrieving a rare item from a dangerous locale or traversing a monster-infested wilderness to deliver something important to a distant settlement.
+Hiring someone to cast a relatively common spell of 1st or 2nd level, such as cure wounds or identify, is easy enough in a city or town, and might cost 10 to 50 gold pieces (plus the cost of any expensive material components). Finding someone able and willing to cast a higher-level spell might involve traveling to a large city, perhaps one with a university or prominent temple. Once found, the spellcaster might ask for a service instead of payment - the kind of service that only adventurers can provide, such as retrieving a rare item from a dangerous locale or traversing a monster-infested wilderness to deliver something important to a distant settlement.
 
 ## Trinkets
 

@@ -13,7 +13,7 @@ A typical combat encounter is a clash between two sides, a flurry of weapon swin
 ### Combat Step by Step
 
 1. **Determine surprise.** The DM determines whether anyone involved in the combat encounter is surprised.
-2. **Establish positions.** The DM decides where all the characters and monsters are located. Given the adventurers' marching order or their stated positions in the room or other location, the DM figures out where the adversaries are-how far away and in what direction.
+2. **Establish positions.** The DM decides where all the characters and monsters are located. Given the adventurers' marching order or their stated positions in the room or other location, the DM figures out where the adversaries are - how far away and in what direction.
 3. **Roll initiative.** Everyone involved in the combat encounter rolls initiative, determining the order of combatants' turns.
 4. **Take turns.** Each participant in the battle takes a turn in initiative order.
 5. **Begin the next round.** When everyone involved in the combat has had a turn, the round ends. Repeat step 4 until the fighting stops.
@@ -38,7 +38,7 @@ If a tie occurs, the DM decides the order among tied DM-controlled creatures, an
 
 ### Your Turn
 
-On your turn, you can **move** a distance up to your speed and **take one action**. You decide whether to move first or take your action first. Your speed-sometimes called your walking speed-is noted on your character sheet.
+On your turn, you can **move** a distance up to your speed and **take one action**. You decide whether to move first or take your action first. Your speed - sometimes called your walking speed - is noted on your character sheet.
 
 The most common actions you can take are described in the "Actions in Combat" section later in this chapter. Many class features and other abilities provide additional options for your action.
 
@@ -124,7 +124,7 @@ For example, if you have a speed of 30 and a flying speed of 60 because a wizard
 
 ### Difficult Terrain
 
-Combat rarely takes place in bare rooms or on featureless plains. Boulder-strewn caverns, briar-choked forests, treacherous staircases-the setting of a typical fight contains difficult terrain.
+Combat rarely takes place in bare rooms or on featureless plains. Boulder-strewn caverns, briar-choked forests, treacherous staircases - the setting of a typical fight contains difficult terrain.
 
 Every foot of movement in difficult terrain costs 1 extra foot. This rule is true even if multiple things in a space count as difficult terrain.
 
@@ -193,7 +193,7 @@ If a square costs extra movement, as a square of difficult terrain does, you mus
 
 **Corners.** Diagonal movement can't cross the corner of a wall, large tree, or other terrain feature that fills its space.
 
-**Ranges.** To determine the range on a grid between two things-whether creatures or objects-start counting squares from a square adjacent to one of them and stop counting in the space of the other one. Count by the shortest route.
+**Ranges.** To determine the range on a grid between two things - whether creatures or objects - start counting squares from a square adjacent to one of them and stop counting in the space of the other one. Count by the shortest route.
 
 ## Actions in Combat
 
@@ -300,7 +300,7 @@ When you attack a target that you can't see, you have disadvantage on the attack
 
 When a creature can't see you, you have advantage on attack rolls against it.
 
-If you are hidden-both unseen and unheard-when you make an attack, you give away your location when the attack hits or misses.
+If you are hidden - both unseen and unheard - when you make an attack, you give away your location when the attack hits or misses.
 
 ### Ranged Attacks
 
@@ -355,9 +355,9 @@ Using the Attack action, you can make a special melee attack to shove a creature
 
 The target of your shove must be no more than one size larger than you, and it must be within your reach. You make a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you win the contest, you either knock the target prone or push it 5 feet away from you.
 
-#### Contests in Combat
-
-Battle often involves pitting your prowess against that of your foe. Such a challenge is represented by a contest. This section includes the most common contests that require an action in combat: grappling and shoving a creature. The DM can use these contests as models for improvising others.
+> #### Contests in Combat
+>
+> Battle often involves pitting your prowess against that of your foe. Such a challenge is represented by a contest. This section includes the most common contests that require an action in combat: grappling and shoving a creature. The DM can use these contests as models for improvising others.
 
 ## Cover
 
@@ -387,7 +387,7 @@ Whenever a creature takes damage, that damage is subtracted from its hit points.
 
 Each weapon, spell, and harmful monster ability specifies the damage it deals. You roll the damage die or dice, add any modifiers, and apply the damage to your target. Magic weapons, special abilities, and other factors can grant a bonus to damage.
 
-When attacking with a **weapon**, you add your ability modifier-the same modifier used for the attack roll-to the damage. A **spell** tells you which dice to roll for damage and whether to add any modifiers.
+When attacking with a **weapon**, you add your ability modifier - the same modifier used for the attack roll - to the damage. A **spell** tells you which dice to roll for damage and whether to add any modifiers.
 
 If a spell or other effect deals damage to **more than one target** at the same time, roll the damage once for all of them. For example, when a wizard casts fireball or a cleric casts flame strike, the spell's damage is rolled once for all creatures caught in the blast.
 
@@ -399,13 +399,13 @@ For example, if you score a critical hit with a dagger, roll 2d4 for the damage,
 
 #### Damage Types
 
-Different attacks, damaging spells, and other harmful effects deal di erent types of damage. Damage types have no rules of their own, but other rules, such as damage resistance, rely on the types.
+Different attacks, damaging spells, and other harmful effects deal different types of damage. Damage types have no rules of their own, but other rules, such as damage resistance, rely on the types.
 
 The damage types follow, with examples to help a DM assign a damage type to a new effect.
 
 **Acid.** The corrosive spray of a black dragon's breath and the dissolving enzymes secreted by a black pudding deal acid damage.
 
-**Bludgeoning.** Blunt force attacks-hammers, falling, constriction, and the like-deal bludgeoning damage.
+**Bludgeoning.** Blunt force attacks - hammers, falling, constriction, and the like - deal bludgeoning damage.
 
 **Cold.** The infernal chill radiating from an ice devil's spear and the frigid blast of a white dragon's breath deal cold damage.
 
@@ -445,13 +445,11 @@ Multiple instances of resistance or vulnerability that affect the same damage ty
 
 ### Healing
 
-Unless it results in death, damage isn't permanent. Even death is reversible through powerful magic. Rest can restore a creature's hit points (as explained in chapter 8), and magical methods such as a cure wounds spell or a potion of healing can remove damage in an instant.
+Unless it results in death, damage isn't permanent. Even death is reversible through powerful magic. Rest can restore a creature's hit points (as explained in chapter 8), and magical methods such as a *cure wounds* spell or a potion of healing can remove damage in an instant.
 
-When a creature receives healing of any kind, hit points regained are added to its current hit points. A creature's hit points can't exceed its hit point maximum, so any hit points regained in excess of this number are lost. For example, a druid grants a ranger 8 hit points of healing.
+When a creature receives healing of any kind, hit points regained are added to its current hit points. A creature's hit points can't exceed its hit point maximum, so any hit points regained in excess of this number are lost. For example, a druid grants a ranger 8 hit points of healing. If the ranger has 14 current hit points and has a hit point maximum of 20, the ranger regains 6 hit points from the druid, not 8.
 
-If the ranger has 14 current hit points and has a hit point maximum of 20, the ranger regains 6 hit points from the druid, not 8.
-
-A creature that has died can't regain hit points until magic such as the revivify spell has restored it to life.
+A creature that has died can't regain hit points until magic such as the *revivify* spell has restored it to life.
 
 ### Dropping to 0 Hit Points
 
@@ -475,7 +473,7 @@ Roll a d20. If the roll is 10 or higher, you succeed. Otherwise, you fail. A suc
 
 **Rolling 1 or 20.** When you make a death saving throw and roll a 1 on the d20, it counts as two failures. If you roll a 20 on the d20, you regain 1 hit point.
 
-**Damage at 0 Hit Points.** If you take any damage while you have 0 hit points, you su er a death saving throw failure. If the damage is from a critical hit, you su er two failures instead. If the damage equals or exceeds your hit point maximum, you suffer instant death.
+**Damage at 0 Hit Points.** If you take any damage while you have 0 hit points, you suffer a death saving throw failure. If the damage is from a critical hit, you suffer two failures instead. If the damage equals or exceeds your hit point maximum, you suffer instant death.
 
 #### Stabilizing a Creature
 
@@ -537,8 +535,8 @@ In either case, if the mount provokes an opportunity attack while you're on it, 
 
 When adventurers pursue sahuagin back to their undersea homes, fight off sharks in an ancient shipwreck, or find themselves in a flooded dungeon room, they must fight in a challenging environment. Underwater the following rules apply.
 
-When making a melee weapon attack, a creature that doesn't have a swimming speed (either natural or granted by magic) has disadvantage on the attack roll unless the weapon is a dagger, javelin, shortsword, spear, or trident.
+When making a **melee weapon attack**, a creature that doesn't have a swimming speed (either natural or granted by magic) has disadvantage on the attack roll unless the weapon is a dagger, javelin, shortsword, spear, or trident.
 
-A ranged weapon attack automatically misses a target beyond the weapon's normal range. Even against a target within normal range, the attack roll has disadvantage unless the weapon is a crossbow, a net, or a weapon that is thrown like a javelin (including a spear, trident, or dart).
+A **ranged weapon attack** automatically misses a target beyond the weapon's normal range. Even against a target within normal range, the attack roll has disadvantage unless the weapon is a crossbow, a net, or a weapon that is thrown like a javelin (including a spear, trident, or dart).
 
 Creatures and objects that are fully immersed in water have resistance to fire damage.

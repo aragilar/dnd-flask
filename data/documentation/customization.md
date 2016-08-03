@@ -2,7 +2,7 @@
 
 *Player's Handbook: Chapter 6*
 
-The combination of ability scores, race, class, and background defines your character's capabilities in the game, and the personal details you create set your character apart from every other character. Even within your class and race, you have options to fine-tune what your character can do. But this chapter is for players who-with the DM's permission-want to go a step further.
+The combination of ability scores, race, class, and background defines your character's capabilities in the game, and the personal details you create set your character apart from every other character. Even within your class and race, you have options to fine-tune what your character can do. But this chapter is for players who - with the DM's permission - want to go a step further.
 
 This chapter defines two optional sets of rules for customizing your character: multiclassing and feats. Multiclassing lets you combine classes together, and feats are special options you can choose instead of increasing your ability scores as you gain levels. Your DM decides whether these options are available in a campaign.
 
@@ -16,7 +16,7 @@ As you advance in levels, you might primarily remain a member of your original c
 
 ## Multiclassing Example
 
-Gary is playing a 4th-level fighter. When his character earns enough experience points to reach 5th level, Gary decides that his character will multiclass instead of continuing to progress as a fighter. Gary's fighter has been spending a lot of time with Dave's rogue, and has even been doing some jobs on the side for the local thieves' guild as a bruiser. Gary decides that his character will multiclass into the rogue class, and thus his character becomes a 4th level fighter and lst-level rogue (written as fighter 4/rogue 1).
+Gary is playing a 4th-level fighter. When his character earns enough experience points to reach 5th level, Gary decides that his character will multiclass instead of continuing to progress as a fighter. Gary's fighter has been spending a lot of time with Dave's rogue, and has even been doing some jobs on the side for the local thieves' guild as a bruiser. Gary decides that his character will multiclass into the rogue class, and thus his character becomes a 4th level fighter and 1st-level rogue (written as fighter 4/rogue 1).
 
 When Gary's character earns enough experience to reach 6th level, he can decide whether to add another fighter level (becoming a fighter 5/rogue 1), another rogue level (becoming a fighter 4/rogue 2), or a level in a third class, perhaps dabbling in wizardry thanks to the tome of mysterious lore he acquired (becoming a fighter 4/rogue 1/wizard 1).
 
@@ -107,7 +107,7 @@ Each spell you know and prepare is associated with one of your classes, and you 
 If you have more than one spellcasting class, this table might give you spell slots of a level that is higher than the spells you know or can prepare. You can use those slots, but only to cast your lower-level spells. If a lower-level spell that you cast, like burning bands, has an enhanced effect when cast using a higher-level slot, you can use the enhanced effect, even though you don't have any spells of that higher level.
 
 For example, if you are the aforementioned ranger 4/wizard 3, you count as a 5th-level character when determining your spell slots: you have four 1st-level
-slots, three 2nd-level slots, and two 3rd-level slots. However, you don't know any 3rd-level spells, nor do you know any 2nd-level ranger spells. You can use the spell slots of those levels to cast the spells you do know-and potentially enhance their effects.
+slots, three 2nd-level slots, and two 3rd-level slots. However, you don't know any 3rd-level spells, nor do you know any 2nd-level ranger spells. You can use the spell slots of those levels to cast the spells you do know - and potentially enhance their effects.
 
 **Pact Magic** If you have both the Spellcasting class feature and the Pact Magic class feature from the warlock class, you can use the spell slots you gain from the Pact Magic feature to cast spells you know or have prepared from classes with the Spellcasting class feature, and you can use the spell slots you gain fram the Spellcasting class feature to cast warlock spells you know.
 

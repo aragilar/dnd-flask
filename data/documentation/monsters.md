@@ -20,7 +20,7 @@ If you've never run a D&D adventure before, we recommend that you pick up the Du
 
 ## What Is a Monster?
 
-A monster is defined as any creature that can be interacted with and potentially fought and killed. Even something as harmless as a frog or as benevolent as a unicorn is a monster by this definition. The term also applies to humans, elves, dwarves, and other civilized folk who might be friends or rivals to the player characters. Most of the monsters that haunt the D&D world, however, are threats that are meant to be stopped: rampaging demons, conniving devils, soul-sucking undead, summoned elementals-the list goes on.
+A monster is defined as any creature that can be interacted with and potentially fought and killed. Even something as harmless as a frog or as benevolent as a unicorn is a monster by this definition. The term also applies to humans, elves, dwarves, and other civilized folk who might be friends or rivals to the player characters. Most of the monsters that haunt the D&D world, however, are threats that are meant to be stopped: rampaging demons, conniving devils, soul-sucking undead, summoned elementals - the list goes on.
 
 This book contains ready-to-play, easy-to-run monsters of all levels, and for nearly every climate and terrain imaginable. Whether your adventure takes place in a swamp, a dungeon, or the outer planes of existence, there are creatures in this book to populate that environment.
 
@@ -146,9 +146,9 @@ The game includes the following monster types, which have no rules of their own.
 **Humanoids** are the main peoples of the D&D
 world, both civilized and savage, including humans and a tremendous variety of other species. They have language and culture, few if any innate magical abilities (though most humanoids can learn spellcasting), and a bipedal form. The most common humanoid races are the ones most suitable as player characters: humans, dwarves, elves, and halflings. Almost as numerous but far more savage and brutal, and almost uniformly evil, are the races of goblinoids (gobilins, hobgoblins, and bugbears), orcs, gnolls, lizardfolk, and kobolds.
 
-A variety of humanoids appear throughout this book, but the races detailed in the *Player's Handbook*-with the exception of drow-are dealt with in appendix B. That appendix gives you a number of stat blocks that you can use to make various members of those races.
+A variety of humanoids appear throughout this book, but the races detailed in the *Player's Handbook* - with the exception of drow - are dealt with in appendix B. That appendix gives you a number of stat blocks that you can use to make various members of those races.
 
-**Monstrosities** are monsters in the strictest sense-frightening creatures that are not ordinary, not truly natural, and almost never benign. Some are the results of magical experimentation gone awry (such as owlbears), and others, are the product-of terrible curses (including minotaurs and yuan-ti). They defy categorization, and in some sense serve as a catch-all category for creatures that don't fit into any other type.
+**Monstrosities** are monsters in the strictest sense - frightening creatures that are not ordinary, not truly natural, and almost never benign. Some are the results of magical experimentation gone awry (such as owlbears), and others are the product of terrible curses (including minotaurs and yuan-ti). They defy categorization, and in some sense serve as a catch-all category for creatures that don't fit into any other type.
 
 **Oozes** are gelatinous creatures that rarely have a fixed shape. They are mostly subterranean, dwelling in caves and dungeons and feeding on refuse, carrion, or creatures unlucky enough to get in their way. Black puddings and gelatinous cubes are among the most recognizable oozes.
 
@@ -426,7 +426,7 @@ Some special abilities have restrictions on the number of times they can be used
 
 **X/Day.** The notation "X/Day" means a special ability can be used X number of times and that a monster must finish a long rest to regain expended uses. For example, "1/Day" means a special ability can be used once and that the monster must finish a long rest to use it again.
 
-**Recharge X-Y.** The notation "Recharge X- Y" means a monster can use a special ability once and that the ability then has a random chance of recharging during each subsequent round of combat. At the start of each of the monster's turns, roll a d6. If the roll is one of the numbers in the recharge notation, the monster regains the use of the special ability. The ability also recharges when the monster finishes a short or long rest.
+**Recharge X-Y.** The notation "Recharge X-Y" means a monster can use a special ability once and that the ability then has a random chance of recharging during each subsequent round of combat. At the start of each of the monster's turns, roll a d6. If the roll is one of the numbers in the recharge notation, the monster regains the use of the special ability. The ability also recharges when the monster finishes a short or long rest.
 
 For example, "Recharge 5-6" means a monster can use the special ability once. Then, at the start of the monster's turn, it regains the use of that ability if it rolls a 5 or 6 on a d6.
 
@@ -460,7 +460,7 @@ A legendary creature can do things that ordinary creatures can't. Legendary crea
 
 ### Legendary Actions
 
-A legendary creature can take a certain number of special actions-called legendary actions-outside its turn. Only one legendary action option can be used at a time and only at the end of another creature's turn. A legendary creature regains spent legendary actions at the start of its turn. It isn't required to use its legendary actions, and it can't use legendary actions while incapacitated.
+A legendary creature can take a certain number of special actions - called legendary actions - outside its turn. Only one legendary action option can be used at a time and only at the end of another creature's turn. A legendary creature regains spent legendary actions at the start of its turn. It isn't required to use its legendary actions, and it can't use legendary actions while incapacitated.
 
 ### A Legendary Creature's Lair
 
