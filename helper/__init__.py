@@ -74,7 +74,7 @@ class OptionalRule (utils.Base):
         self.source = data[0].strip()
         d = ''.join(data[1:])
         d = utils.convert(d)
-        d = utils.get_details(d)
+        d = utils.get_details(d, splttag='h1')
         self.description = d
 
     def __str__(self):
@@ -93,7 +93,7 @@ class OptionalRules (utils.Group):
                 for item in sorted(os.listdir(folder)):
                     item = os.path.join(folder, item)
                     if os.path.exists(item) and item.endswith('.md'):
-                        with open(item, 'r') as f:
+                        with open(item, 'r', encoding='utf-8') as f:
                             item = f.readlines()
                         if len(item) > 1:
                             item = self.type(item)

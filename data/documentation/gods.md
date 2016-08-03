@@ -275,7 +275,20 @@ The Egyptian pantheon is unusual in having three gods with the Death domain of d
 
 | Deity | Alignment | Suggested Domains | Symbol |
 |:------|:---------:|:------------------|:-------|
-| 
+| Re-Horakhty, god of the sun, ruler ofthe gods | LG | Life, Light | Solar disk encircled by serpent
+| Anubis, god of judgment and death | LN | Death | Black jackal
+| Apep, god of evil, fire, and serpents | NE | Trickery | Flaming snake
+| Bast, goddess of cats and vengeance | CG | War | Cat
+| Bes, god of luck and music | CN | Trickery | Image of the misshapen deity
+| Hathor, goddess of love, music, and motherhood | NG | Life, Light | Horned cow's head with lunar disk
+| Imhotep, god of crafts and medicine | NG | Knowledge | Step pyramid
+| Isis, goddess of fertility and magic | NG | Knowledge, Life | Ankh and star
+| Nephthys, goddess of death and grief | CG | Death | Horns around a lunar disk
+| Osiris, god of nature and the underworld | LG | Life, Nature | Crook and flail
+| Ptah, god of crafts, knowledge, and secrets | LN | Knowledge | Bull
+| Set, god of darkness and desert storms | CE | Death, Tempest, Trickery | Coiled cobra
+| Sobek, god of water and crocodiles | LE | Nature, Tempest | Crocodile head with horns and plumes
+| Thoth, god of knowledge and wisdom | N | Knowledge | Ibis
 
 ## The Norse Pantheon
 
@@ -287,4 +300,23 @@ The Norse pantheon includes two main families, the Aesir (deities of war and des
 
 | Deity | Alignment | Suggested Domains | Symbol |
 |:------|:---------:|:------------------|:-------|
-| 
+| Odin, god of knowledge and war | NG | Knowledge, War | Watching blue eye
+| Aegir, god of the sea and storms | NE | Tempest | Rough ocean waves
+| Balder, god of beauty and poetry | NG | Life, Light | Gem-encrusted silver chalice
+| Forseti, god of justice and law | N | Light | Head of a bearded man
+| Frey, god of fertility and the sun | NG | Life, Light | Ice-blue greatsword
+| Freya, goddess of fertility and love | NG | Life | Falcon
+| Frigga, goddess of birth and fertility | N | Life, Light | Cat
+| Heimdall, god of watchfulness and loyalty | LG | Light, War | Curling musical horn
+| Hel, goddess of the underworld | NE | Death | Woman's face, rotting on one side
+| Hermod, god of luck | CN | Trickery | Winged scroll
+| Loki, god of thieves and trickery | CE | Trickery | Flame
+| Njord, god of sea and wind | NG | Nature, Tempest | Gold coin
+| Odur, god of light and the sun | CG | Light | Solar disk
+| Sif, goddess of war | CG | War | Upraised sword
+| Skadi, god of earth and mountains | N | Nature | Mountain peak
+| Surtur, god of fire giants and war | LE | War | Flaming sword
+| Thor, god of storms and thunder | CG | Tempest, War | Hammer
+| Thrym, god of fire giants and cold | CE | War | White double-bladed axe
+| Tyr, god of courage and strategy | LN | Knowledge, War | Sword
+| Uller, god of hunting and winter | CN | Nature | Longbow
