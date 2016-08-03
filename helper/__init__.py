@@ -36,6 +36,8 @@ class Documents (utils.Group):
     type = Documentation
     
     docs = [
+        'preface',
+        'introduction',
         'character-creation',
         'personality',
         'equipment',
