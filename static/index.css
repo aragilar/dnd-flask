@@ -78,6 +78,27 @@ h1, h2, h3, h4, h5, h6 {
     color: #900;
 }
 
+blockquote {
+    position: relative;
+    background-color: rgba(170, 200, 160, 0.7);
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 0.25em 1em;
+    box-shadow: 0 3px 3px 3px #bbb;
+}
+
+blockquote::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    border: 0.5em solid;
+    border-color: black #cec #cec black;
+}
+
 div {
     width: 90%;
     min-width: 200px;
@@ -187,7 +208,7 @@ td, th {
     margin-left: 40px;
 }
 
-/*
+/* Possible swing animation for details
 .accordion > dd {
     transition: 0.4s;
     transform-origin: 50% 0%;
