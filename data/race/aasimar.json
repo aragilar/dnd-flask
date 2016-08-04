@@ -11,7 +11,25 @@
     },
     "age": "Aasimar mature at the same rate as humans but live a few years longer.",
     "alignment": "Due to their celestial heritage, aasimar are often good. However, some aasimar fall into evil, rejecting their heritage.",
-    "description": "# Aasimar\n\nWhereas tieflings have fiendish blood in their veins, aasimar are the descendants of celestial beings. These folk generally appear as glorious humans with lustrous hair, flawless skin, and piercing eyes. Aasimar often attempt to pass as humans in order to right wrongs and defend goodness on the Material Plane without drawing undue attention to their celestial heritage. They strive to fit into society, although they usually rise to the top, becoming revered leaders and honorable heroes.\n\nYou might decide to use the aasimar as a counterpoint to the tiefling race. The two races could even be at odd reflecting some greater conflict between the forces of good and evil in your campaign.\n\nHere are our basic goals for the aasimar:\n\n* Aasimar should make effective clerics and paladins.\n* Aasimar should be to celestials and humans what tieflings are to fiends and humans.\n\nGiven that aasimar and tieflings are like two sides of the same coin, the tiefling makes a good starting point for coming up with the new race's traits. Since we want aasimar to be effective paladins and clerics, it makes sense to improve their Wisdom and Charisma instead of Intelligence and Charisma.\nLike tieflings, aasimar have darkvision. Instead of resistance to fire damage, we give them resistance to radiant damage to reflect their celestial nature. However, radiant damage isn't as common as fire damage, so we give them resistance to necrotic damage as well, making them good at facing undead.\n\nThe tiefling's Infernal Legacy trait is a good model for a similar trait to reflect a magical, celestial heritage. replacing the tiefling's spells with spells of similar level that more closely match the aasimar's celestial ancestry. However, the aasimar's expanded resistance might require limiting this trait to basic utility spells.\n\nFilling in the remaining details, we end up with the following racial traits for the aasimar:",
+    "description": [
+        "# Aasimar",
+        "",
+        "Whereas tieflings have fiendish blood in their veins, aasimar are the descendants of celestial beings. These folk generally appear as glorious humans with lustrous hair, flawless skin, and piercing eyes. Aasimar often attempt to pass as humans in order to right wrongs and defend goodness on the Material Plane without drawing undue attention to their celestial heritage. They strive to fit into society, although they usually rise to the top, becoming revered leaders and honorable heroes.",
+        "",
+        "You might decide to use the aasimar as a counterpoint to the tiefling race. The two races could even be at odd reflecting some greater conflict between the forces of good and evil in your campaign.",
+        "",
+        "Here are our basic goals for the aasimar:",
+        "",
+        "* Aasimar should make effective clerics and paladins.",
+        "* Aasimar should be to celestials and humans what tieflings are to fiends and humans.",
+        "",
+        "Given that aasimar and tieflings are like two sides of the same coin, the tiefling makes a good starting point for coming up with the new race's traits. Since we want aasimar to be effective paladins and clerics, it makes sense to improve their Wisdom and Charisma instead of Intelligence and Charisma.",
+        "Like tieflings, aasimar have darkvision. Instead of resistance to fire damage, we give them resistance to radiant damage to reflect their celestial nature. However, radiant damage isn't as common as fire damage, so we give them resistance to necrotic damage as well, making them good at facing undead.",
+        "",
+        "The tiefling's Infernal Legacy trait is a good model for a similar trait to reflect a magical, celestial heritage. replacing the tiefling's spells with spells of similar level that more closely match the aasimar's celestial ancestry. However, the aasimar's expanded resistance might require limiting this trait to basic utility spells.",
+        "",
+        "Filling in the remaining details, we end up with the following racial traits for the aasimar:"
+    ],
     "languages": [
         "Common",
         "Celestial"

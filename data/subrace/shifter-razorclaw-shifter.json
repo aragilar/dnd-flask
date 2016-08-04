@@ -10,7 +10,9 @@
         "str": 0,
         "wis": 0
     },
-    "description": "As a razorclaw shifter, you make swift, slashing strikes in battle.",
+    "description": [
+        "As a razorclaw shifter, you make swift, slashing strikes in battle."
+    ],
     "name": "Razorclaw Shifter",
     "traits": [
         [

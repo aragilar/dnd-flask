@@ -9,7 +9,7 @@ class Race (utils.Base):
     age = None
     alignment = None
     combat_proficiencies = []
-    description = ''
+    description = []
     feats = []
     languages = []
     languages_description = None
@@ -25,7 +25,7 @@ class Race (utils.Base):
         ret = '<div>\n'
         
         # ----#-   Race Description
-        temp = utils.convert(self.description)
+        temp = utils.convert('\n'.join(self.description))
         ret += utils.get_details(temp, 'h1') + '\n\n'
         
         # ----#-   Race Features
@@ -161,6 +161,7 @@ class SubRace (Race):
     def __str__(self):
         summary = '<h1 id="%s">%s</h1>' % (utils.slug(self.name), self.name)
         desc = self.description
+        desc = '\n'.join(desc)
         desc = utils.convert(desc)
         ret = utils.details_group(utils.details_block(summary, desc))
         ret += self.features2html()

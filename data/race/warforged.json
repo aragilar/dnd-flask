@@ -9,7 +9,17 @@
         "str": 1,
         "wis": 0
     },
-    "description": "# Warforged\n\n*Unearthed Arcana: Eberron*\n\nThe warforged were made as the ideal soldiers to serve in the devastating Last War. Although they are constructs, they have much in common with living creatures, including emotions and social bonds, and perhaps even souls.\n\n## Use in Eberon Setting\n\nThe warforged are a living reminder of the Last War's legacy and the uncertain future that faces Khorvaire.",
+    "description": [
+        "# Warforged",
+        "",
+        "*Unearthed Arcana: Eberron*",
+        "",
+        "The warforged were made as the ideal soldiers to serve in the devastating Last War. Although they are constructs, they have much in common with living creatures, including emotions and social bonds, and perhaps even souls.",
+        "",
+        "## Use in Eberon Setting",
+        "",
+        "The warforged are a living reminder of the Last War's legacy and the uncertain future that faces Khorvaire."
+    ],
     "languages": [
         "Common",
         1

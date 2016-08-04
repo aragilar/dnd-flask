@@ -10,7 +10,9 @@
         "str": 0,
         "wis": 0
     },
-    "description": "Your cliffwalk heritage grants you the agility of a mountain goat.",
+    "description": [
+        "Your cliffwalk heritage grants you the agility of a mountain goat."
+    ],
     "name": "Cliffwalk Shifter",
     "traits": [
         [

@@ -209,13 +209,13 @@
         "",
         "What led you to take up the adventuring life? Were you lured to settled lands by the promise of riches? Did you join forces with soldiers of those lands to face a shared threat? Did monsters or an invading horde drive you out of your homeland, making you a rootless refugee? Perhaps you were a prisoner of war, brought in chains to \"civilized\" lands and only now able to win your freedom. Or you might have been cast out from your people because of a crime you committed, a taboo you violated, or a coup that removed you from a position of authority.",
         "",
-        "## Primal Paths",
-        "",
-        "Rage burns in every barbarian's heart, a furnace that drives him or her toward greatness. Different barbarians attribute their rage to different sources, however. For some, it is an internal reservoir where pain, grief, and anger are forged into a fury hard as steel. Others see it as a spiritual blessing, a gift of a totem animal.",
-        "",
         "## Quick Build",
         "",
-        "You can make a barbarian quickly by following these suggestions. First, put your highest ability score in Strength, followed by Constitution. Second, choose the outlander background."
+        "You can make a barbarian quickly by following these suggestions. First, put your highest ability score in Strength, followed by Constitution. Second, choose the outlander background.",
+        "",
+        "## Primal Paths",
+        "",
+        "Rage burns in every barbarian's heart, a furnace that drives him or her toward greatness. Different barbarians attribute their rage to different sources, however. For some, it is an internal reservoir where pain, grief, and anger are forged into a fury hard as steel. Others see it as a spiritual blessing, a gift of a totem animal."
     ],
     "name": "Barbarian",
     "primary stat": [

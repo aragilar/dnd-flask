@@ -10,7 +10,9 @@
         "str": 0,
         "wis": 0
     },
-    "description": "As a beasthide shifter, you are especially tough and persistent in battle.",
+    "description": [
+        "As a beasthide shifter, you are especially tough and persistent in battle."
+    ],
     "name": "Beasthide Shifter",
     "traits": [
         [

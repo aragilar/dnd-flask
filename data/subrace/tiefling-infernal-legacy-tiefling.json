@@ -10,7 +10,9 @@
         "str": 0,
         "wis": 0
     },
-    "description": "The Infernal Legacy Tiefling is the Player's Handbook version of the Tiefling.",
+    "description": [
+        "The Infernal Legacy Tiefling is the Player's Handbook version of the Tiefling."
+    ],
     "languages": [
         "Infernal"
     ],

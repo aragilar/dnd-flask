@@ -10,7 +10,9 @@
         "str": 1,
         "wis": 0
     },
-    "description": "As a longtooth shifter, you are a ferocious combatant.",
+    "description": [
+        "As a longtooth shifter, you are a ferocious combatant."
+    ],
     "name": "Longtooth Shifter",
     "traits": [
         [

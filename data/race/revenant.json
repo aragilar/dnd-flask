@@ -9,7 +9,17 @@
         "str": 0,
         "wis": 0
     },
-    "description": "# Revenants\n\n*Unearthed Arcana: Gothic Characters*\n\nHaving met a cruel and undeserved end, you have returned to the realm of the living. As a revenant, you thirst for revenge against those who wronged you in life, or seek to complete a final, critical task you left unfinished.\n\nThe revenant subrace can be applied to any race that has a subrace, and replaces that race's existing subrace options. Alternatively, you can apply this new subrace to a race without subrace options using the modification options provided below.\n\nYour DM might also allow you to take this subrace for a slain character. In that case, your character rises from the dead with its original subrace replaced (or with the necessary modifications made to its base traits), filled with a determination to seek vengeance or complete its mission.",
+    "description": [
+        "# Revenants",
+        "",
+        "*Unearthed Arcana: Gothic Characters*",
+        "",
+        "Having met a cruel and undeserved end, you have returned to the realm of the living. As a revenant, you thirst for revenge against those who wronged you in life, or seek to complete a final, critical task you left unfinished.",
+        "",
+        "The revenant subrace can be applied to any race that has a subrace, and replaces that race's existing subrace options. Alternatively, you can apply this new subrace to a race without subrace options using the modification options provided below.",
+        "",
+        "Your DM might also allow you to take this subrace for a slain character. In that case, your character rises from the dead with its original subrace replaced (or with the necessary modifications made to its base traits), filled with a determination to seek vengeance or complete its mission."
+    ],
     "name": "Revenant",
     "traits": [
         [

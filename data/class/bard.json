@@ -241,13 +241,13 @@
         "",
         "Did you serve an apprenticeship, studying under a master, following the more experienced bard until you were ready to strike out on your own? Or did you attend a college where you studied bardic lore and practiced your musical magic? Perhaps you were a young runaway or orphan, befriended by a wandering bard who became your mentor. Or you might have been a spoiled noble child tutored by a master. Perhaps you stumbled into the clutches of a hag, making a bargain for a musical gift in addition to your life and freedom, but at what cost?",
         "",
-        "## Bard Colleges",
-        "",
-        "The way of a bard is gregarious. Bards seek each other out to swap songs and stories, boast of their accomplishments, and share their knowledge. Bards form loose associations, which they call colleges, to facilitate their gatherings and preserve their traditions.",
-        "",
         "## Quick Build",
         "",
-        "You can make a bard quickly by following these suggestions. First, Charisma should be your highest ability score, followed by Dexterity. Second, choose the entertainer background. Third, choose the dancing lights and vicious mockery cantrips, along with the following 1st-level spells: charm person, detect magic, healing word, and thunderwave."
+        "You can make a bard quickly by following these suggestions. First, Charisma should be your highest ability score, followed by Dexterity. Second, choose the entertainer background. Third, choose the *dancing lights* and *vicious mockery* cantrips, along with the following 1st-level spells: *charm person*, *detect magic*, *healing word*, and *thunderwave*.",
+        "",
+        "## Bard Colleges",
+        "",
+        "The way of a bard is gregarious. Bards seek each other out to swap songs and stories, boast of their accomplishments, and share their knowledge. Bards form loose associations, which they call colleges, to facilitate their gatherings and preserve their traditions."
     ],
     "magic": 1,
     "name": "Bard",

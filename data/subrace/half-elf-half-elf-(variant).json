@@ -1,7 +1,9 @@
 {
     "+": "SCAG",
     "@": "Half-Elf",
-    "description": "*Sword Coast Adventurer's Guide*",
+    "description": [
+        "*Sword Coast Adventurer's Guide*"
+    ],
     "name": "Half-Elf (Variant)",
     "traits": [
         [

@@ -10,7 +10,9 @@
         "str": 0,
         "wis": 1
     },
-    "description": "Your wildhunt heritage makes you a consummate tracker and survivor.",
+    "description": [
+        "Your wildhunt heritage makes you a consummate tracker and survivor."
+    ],
     "name": "Wildhunt Shifter",
     "traits": [
         [

@@ -10,7 +10,9 @@
         "str": 0,
         "wis": 0
     },
-    "description": "If your campaign uses the optional feat rules from chapter 5, your Dungeon Master might allow these variant traits, all of which replace the human's Ability Score Increase trait:",
+    "description": [
+        "If your campaign uses the optional feat rules from chapter 5, your Dungeon Master might allow these variant traits, all of which replace the human's Ability Score Increase trait:"
+    ],
     "feats": [
         1
     ],

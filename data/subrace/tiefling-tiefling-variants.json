@@ -1,7 +1,13 @@
 {
     "+": "SCAG",
     "@": "Tiefling",
-    "description": "*Sword Coast Adventurer's Guide*\n\nSince not all tieflings are of the blood of Asmodeus, some have traits that differ from those in the Player's Handbook. The Dungeon Master may permit the following variants for your tiefling character, although Devil's Tongue, Hellfire, and Winged are mutually exclusive.\n\nThese variations are based on the original Tiefling from the Player's Handbook. For the base stats to modify combine the Tiefling base race and the Infernal Legacy subrace.",
+    "description": [
+        "*Sword Coast Adventurer's Guide*",
+        "",
+        "Since not all tieflings are of the blood of Asmodeus, some have traits that differ from those in the Player's Handbook. The Dungeon Master may permit the following variants for your tiefling character, although Devil's Tongue, Hellfire, and Winged are mutually exclusive.",
+        "",
+        "These variations are based on the original Tiefling from the Player's Handbook. For the base stats to modify combine the Tiefling base race and the Infernal Legacy subrace."
+    ],
     "name": "Tiefling Variants",
     "traits": [
         [

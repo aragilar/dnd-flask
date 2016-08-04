@@ -243,13 +243,13 @@
         "",
         "What's the source of your particular hatred of a certain kind of enemy? Did a monster kill someone you loved or destroy your home village? Or did you see too much of the destruction these monsters cause and commit yourself to reining in their depredations? Is your adventuring career a continuation of your work in protecting the borderlands, or a significant change? What made you join up with a band of adventurers? Do you find it challenging to teach new allies the ways of the wild, or do you welcome the relief from solitude that they offer?",
         "",
-        "## Ranger Archetypes",
-        "",
-        "The ideal of the ranger has two classic expressions: the Hunter and the Beast Master.",
-        "",
         "## Quick Build",
         "",
-        "You can make a ranger quickly by following these suggestions. First, make Dexterity your highest ability score, followed by Wisdom. (Some rangers who focus on two-weapon fighting make Strength higher than Dexterity.) Second, choose the outlander background."
+        "You can make a ranger quickly by following these suggestions. First, make Dexterity your highest ability score, followed by Wisdom. (Some rangers who focus on two-weapon fighting make Strength higher than Dexterity.) Second, choose the outlander background.",
+        "",
+        "## Ranger Archetypes",
+        "",
+        "The ideal of the ranger has two classic expressions: the Hunter and the Beast Master."
     ],
     "magic": 2,
     "name": "Ranger",

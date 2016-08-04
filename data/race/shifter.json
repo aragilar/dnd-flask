@@ -9,7 +9,17 @@
         "str": 0,
         "wis": 0
     },
-    "description": "# Shifters\n\n*Unearthed Arcana: Eberron*\n\nShifters are descended from humans and lycanthropes. Although they cannot fully change to animal form, they can take on animalistic features by a process they call shifting.\n\n## Use in Eberon Setting\n\nShifters embody the tension between Khorvaire's natural world and its future, as growing cities and magical technology push against the wild.",
+    "description": [
+        "# Shifters",
+        "",
+        "*Unearthed Arcana: Eberron*",
+        "",
+        "Shifters are descended from humans and lycanthropes. Although they cannot fully change to animal form, they can take on animalistic features by a process they call shifting.",
+        "",
+        "## Use in Eberon Setting",
+        "",
+        "Shifters embody the tension between Khorvaire's natural world and its future, as growing cities and magical technology push against the wild."
+    ],
     "languages": [
         "Common",
         "Sylvan"

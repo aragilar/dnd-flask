@@ -208,13 +208,13 @@
         "",
         "You might have enjoyed formal training in a noble's army or in a local militia. Perhaps you trained in a war academy, learning strategy, tactics, and military history. Or you might be self-taught, unpolished but well tested. Did you take up the sword as a way to escape the limits of life on a farm, or are you following a proud family tradition? Where did you acquire your weapons and armor? They might have been military issue or family heirlooms, or perhaps you scrimped and saved for years to buy them. Your armaments are now among your most important possessions-the only things that stand between you and death's embrace.",
         "",
-        "## Martial Archetypes",
-        "",
-        "Different fighters choose different approaches to perfecting their fighting prowess. The martial archetype you choose to emulate reflects your approach.",
-        "",
         "## Quick Build",
         "",
-        "You can make a fighter quickly by following these suggestions. First, make Strength or Dexterity your highest ability score, depending on whether you want to focus on melee weapons or on archery (or finesse weapons). Your next-highest score should be Constitution, or Intelligence if you plan to adopt the Eldritch Knight martial archetype. Second, choose the soldier background."
+        "You can make a fighter quickly by following these suggestions. First, make Strength or Dexterity your highest ability score, depending on whether you want to focus on melee weapons or on archery (or finesse weapons). Your next-highest score should be Constitution, or Intelligence if you plan to adopt the Eldritch Knight martial archetype. Second, choose the soldier background.",
+        "",
+        "## Martial Archetypes",
+        "",
+        "Different fighters choose different approaches to perfecting their fighting prowess. The martial archetype you choose to emulate reflects your approach."
     ],
     "name": "Fighter",
     "primary stat": [

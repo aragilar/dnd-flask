@@ -10,7 +10,9 @@
         "str": 0,
         "wis": 0
     },
-    "description": "Longstride shifters are fleet and elusive.",
+    "description": [
+        "Longstride shifters are fleet and elusive."
+    ],
     "name": "Longstride Shifter",
     "traits": [
         [
