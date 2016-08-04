@@ -43,10 +43,6 @@ Starting off at 1st level marks your character's entry into the adventuring life
 
 Record your level on your character sheet. If you're starting at a higher level, record the additional elements your class gives you for your levels past 1st. Also record your experience points. A 1st-level character has 0 XP. A higher-level character typically begins with the minimum amount of XP required to reach that level (see "Beyond 1st Level" later in this chapter).
 
-> **Quick Build**
->
-> Each class description in chapter 3 includes a section offering suggestions to quickly build a character of that class, including how to assign your highest ability scores, a background suitable to the class, and starting spells.
-
 ### Hit Points and Hit Dice
 
 Your character's hit points define how tough your character is in combat and other dangerous situations. Your hit points are determined by your Hit Dice (short for Hit Point Dice).
@@ -75,6 +71,10 @@ Your proficiency bonus can't be added to a single die roll or other number more 
 Bob imagines Bruenor charging into battle with an axe, one horn on his helmet broken off. He makes Bruenor a fighter and notes the fighter's proficiencies and 1st-level class features on his character sheet.
 
 As a 1st-level fighter, Bruenor has 1 Hit Die - a d10 - and starts with hit points equal to 10 + his Constitution modifier. Bob notes this, and will record the final number after he determines Bruenor's Constitution score (see step 3). Bob also notes the proficiency bonus for a 1st-level character, which is +2.
+
+> **Quick Build**
+>
+> Each class description in chapter 3 includes a section offering suggestions to quickly build a character of that class, including how to assign your highest ability scores, a background suitable to the class, and starting spells.
 
 ## 3. Determine Ability Scores
 
