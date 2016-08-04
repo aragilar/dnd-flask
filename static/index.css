@@ -133,10 +133,6 @@ img.right {
     float: right;
 }
 
-img.big {
-    max-height: 1000px;
-}
-
 li:empty {
     list-style: none outside;
 }

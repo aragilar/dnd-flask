@@ -43,6 +43,10 @@ Starting off at 1st level marks your character's entry into the adventuring life
 
 Record your level on your character sheet. If you're starting at a higher level, record the additional elements your class gives you for your levels past 1st. Also record your experience points. A 1st-level character has 0 XP. A higher-level character typically begins with the minimum amount of XP required to reach that level (see "Beyond 1st Level" later in this chapter).
 
+> **Quick Build**
+>
+> Each class description in chapter 3 includes a section offering suggestions to quickly build a character of that class, including how to assign your highest ability scores, a background suitable to the class, and starting spells.
+
 ### Hit Points and Hit Dice
 
 Your character's hit points define how tough your character is in combat and other dangerous situations. Your hit points are determined by your Hit Dice (short for Hit Point Dice).
@@ -83,10 +87,6 @@ You generate your character's six ability scores randomly. Roll four 6-sided dic
 Now take your six numbers and write each number beside one of your character's six abilities to assign scores to Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma. Afterward, make any changes to your ability scores as a result of your race choice.
 
 After assigning your ability scores, determine your **ability modifiers** using the Ability Scores and Modifiers table. To determine an ability modifier without consulting the table, subtract 10 from the ability score and then divide the result by 2 (round down). Write the modifier next to each of your scores.
-
-### Quick Build
-
-Each class description in chapter 3 includes a section offering suggestions to quickly build a character of that class, including how to assign your highest ability scores, a background suitable to the class, and starting spells.
 
 ### Building Bruenor, Step 3
 
@@ -243,7 +243,7 @@ Most D&D characters don't work alone. Each character plays a role within a party
 
 ## Beyond First Level
 
-As your character goes on adventures and overcomes challenges, he or she gains experience, represented by experience points. A character who reaches a specified experience point total advances in capability. This advancement is called gaining a level.
+As your character goes on adventures and overcomes challenges, he or she gains experience, represented by experience points. A character who reaches a specified experience point total advances in capability. This advancement is called **gaining a level**.
 
 When your character gains a level, his or her class often grants additional features, as detailed in the class description. Some of these features allow you to increase your ability scores, either increasing two scores by 1 each or increasing one score by 2. You can't increase an ability score above 20. In addition, every character's proficiency bonus increases at certain levels.
 
