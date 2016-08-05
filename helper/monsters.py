@@ -66,12 +66,42 @@ class Monster (utils.Base):
     def dict(self):
         d = {
             'name': self.name,
+            'alignment': self.alignment,
+            'challenge rating': self._get_cr(),
+            'legendary': bool(self.legendary_actions),
+            'size': self.size,
+            'type': self.type,
         }
         return d
     
+    def _get_cr(self):
+        if self.challenge_rating is None:
+            c = challenge_ratings.get(self.experience, -1)
+        else:
+            c = self.challenge_rating
+        c = float(c)
+        return c
+    
+    def get_cr(self):
+        c = self._get_cr()
+        if c < 0:
+            c = '?'
+        elif c > 0 and c < 1:
+            c = '1/%d' % int(1 / c)
+        else:
+            c = '{:g}'.format(c)
+        return c
+    
     def __str__(self):
         if self._page is None:
-            ret = '<div class="monster-box">\n'
+            ret = ''
+            
+            ret += utils.details_group(utils.details_block(
+                '<h1>%s</h1>\n' % self.name,
+                utils.convert('\n'.join(self.description)),
+            ))
+            
+            ret += '<div class="monster-box">\n'
             ret += '<h1>%s</h1>\n' % self.name
             ret += '<p><em>{size} {type}, {alignment}</em></p>\n'.format(
                 alignment=self.alignment,
@@ -84,8 +114,11 @@ class Monster (utils.Base):
             ret += '<p><strong>Speed</strong> %s</p>\n' % self.speed
             ret += '<hr>\n'
             
+            ret += '<ul class="monster-stats">\n'
             for stat in utils.stats:
-                ret += '<p><strong>%s:</strong> %d</p>\n' % (stat.upper(), self.ability_scores.get(stat, 10))
+                value = self.ability_scores.get(stat, 10)
+                ret += '<li><strong>{}</strong> {} ({:+})</li>\n'.format(stat.upper(), value, utils.get_modifier(value))
+            ret += '</ul>\n'
             
             ret += '<hr>\n'
             
@@ -112,19 +145,7 @@ class Monster (utils.Base):
                     self.languages
                 )
             
-            if self.challenge_rating is None:
-                c = challenge_ratings.get(self.experience)
-            else:
-                c = self.challenge_rating
-            if c is None:
-                c = '?'
-            elif isinstance(c, str):
-                pass
-            elif c > 0 and c < 1:
-                c = '1/%d' % int(1 / c)
-            else:
-                c = str(c)
-            ret += '<p><strong>Challenge</strong> {} ({:,} XP)</p>\n'.format(c, self.experience)
+            ret += '<p><strong>Challenge</strong> {} ({:,} XP)</p>\n'.format(self.get_cr(), self.experience)
             
             ret += '<hr>\n'
             
@@ -151,8 +172,6 @@ class Monster (utils.Base):
                     ret += utils.convert('**{}.** {}'.format(item[0], '\n'.join(item[1:])))
             
             ret += '</div>\n'
-            
-            ret += utils.convert('\n'.join(self.description))
             
             ret = spells.handle_spells(ret, self.spell_list)
             ret = '<div>\n%s</div>\n' % ret

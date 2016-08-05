@@ -339,6 +339,12 @@ def asyncmap(func, lst):
         new = pool.map(func, lst)
     return new
 
+def get_modifier(num):
+    num = int(num)
+    num -= 10
+    num //= 2
+    return num
+
 stats = collections.OrderedDict([
     ('str', 'Strength'),
     ('dex', 'Dexterity'),

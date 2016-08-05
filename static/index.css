@@ -19,6 +19,55 @@
     /*background-color: #ffd;*/
 }
 
+/* Monsters */
+.monster-box {
+    background-color: rgba(210, 170, 100, 0.5);
+    border: 0;
+    position: relative;
+}
+
+.monster-box::before, .monster-box::after {
+    content: "";
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    background-color: rgb(210, 170, 100);
+    border: 1px solid black;
+    height: 5px;
+}
+
+.monster-box::before {
+    top: 0;
+}
+
+.monster-box::after {
+    bottom: 0;
+}
+
+.monster-box > hr {
+    height: 5px;
+    margin: 0.5em 0;
+    border: 0;
+    background: -webkit-linear-gradient(left, #900, transparent);
+    background: -moz-linear-gradient(left, #900, transparent);
+    background: -o-linear-gradient(left, #900, transparent);
+    background: linear-gradient(left, #900, transparent);
+}
+
+.monster-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.monster-stats strong {
+    display: block;
+}
+/* end monsters */
+
 .button {
     background-color: #ddd;
     padding: 3px;
