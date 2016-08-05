@@ -12,14 +12,14 @@
         "",
         "**Undying Light Flaws**",
         "",
-        "d6 | Flaw",
-        ":--|:--",
-        "1 | You are afraid of the dark, and must always have a light source at hand.",
-        "2 | You have a nervous compulsion to keep a bright light in even the barest shadow.",
-        "3 | You have a compulsion to enter and illuminate dark areas.",
-        "4 | You have an overwhelming hatred of undead creatures.",
-        "5 | You fidget and are irritable when you can't see the sun.",
-        "6 | In a dark area, you always carry a lit torch or lantern. Putting it down is an unbearable thought."
+        "| d6 | Flaw",
+        "|:--|:--",
+        "| 1 | You are afraid of the dark, and must always have a light source at hand.",
+        "| 2 | You have a nervous compulsion to keep a bright light in even the barest shadow.",
+        "| 3 | You have a compulsion to enter and illuminate dark areas.",
+        "| 4 | You have an overwhelming hatred of undead creatures.",
+        "| 5 | You fidget and are irritable when you can't see the sun.",
+        "| 6 | In a dark area, you always carry a lit torch or lantern. Putting it down is an unbearable thought."
     ],
     "features": [
         [

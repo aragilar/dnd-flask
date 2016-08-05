@@ -5,7 +5,7 @@
         "Medium Armor",
         "Simple Weapons"
     ],
-    "description": "A mystic draws on the power of psionics-the energy of the mind-to create powerful effects.",
+    "description": "A mystic draws on the power of psionics - the energy of the mind - to create powerful effects.",
     "equipment": [
         [
             "a spear",
@@ -170,7 +170,7 @@
                 "",
                 "## Combining Psionic Effects",
                 "",
-                "The effects of different psionic disciplines add together while the durations of those disciplines overlap. Likewise, different options from a single psionic discipline combine if they are active at the same time. However, a specific option from a psionic discipline doesn't combine with itself if that option is used multiple times. Instead, the most potent effect-usually dependent on how many psi points were used to create the effect-applies while the durations of the effects overlap.",
+                "The effects of different psionic disciplines add together while the durations of those disciplines overlap. Likewise, different options from a single psionic discipline combine if they are active at the same time. However, a specific option from a psionic discipline doesn't combine with itself if that option is used multiple times. Instead, the most potent effect - usually dependent on how many psi points were used to create the effect - applies while the durations of the effects overlap.",
                 "",
                 "Psionics and magic are separate effects, and therefore their benefits and drawbacks overlap. A psionic effect that reproduces a spell is an exception to this rule (see \"Psionics and Magic\" earlier, as well as \"Combining Magical Effects\" in chapter 10, \"Spellcasting,\" of the Player's Handbook)."
             ],
@@ -255,7 +255,7 @@
                 "",
                 "*Lesser discipline (awakened)*",
                 "",
-                "You forge an indomitable wall of psionic energy around your mind-one that allows you to launch reflexive counterattacks against your opponents.",
+                "You forge an indomitable wall of psionic energy around your mind - one that allows you to launch reflexive counterattacks against your opponents.",
                 "",
                 "**Psychic Focus.** While focused on this discipline, you gain resistance to psychic damage.",
                 "",
@@ -426,7 +426,7 @@
         "",
         "As the laws of reality twist and turn, individual minds can be awakened to the cosmic underpinnings that dictate the form and nature of reality. The tumult caused by the Far Realm creates echoes that can disturb and awaken minds that would otherwise slumber. Such awakened creatures look on the world in the same way that creatures existing in three dimensions might look on a two dimensional realm. They see possibilities, options, and connections that are unfathomable to those with a more limited view of reality.",
         "",
-        "In worlds that are relatively stable and hew close to the archetypal D&D setting presented in the core rulebooks, psionics is rare-or might not exist at all. The cosmic bindings that define the multiverse are strong in such places, making it unlikely that an individual mind can perceive the possibilities offered by psionics. Mystics in such worlds might be so scarce that a mystic never meets another practitioner of the psionic arts. Characters might unlock their psionic potential by random chance, and ancient tomes, journals, and other accounts of mystics might serve as the only guide to mastering this form of power.",
+        "In worlds that are relatively stable and hew close to the archetypal D&D setting presented in the core rulebooks, psionics is rare - or might not exist at all. The cosmic bindings that define the multiverse are strong in such places, making it unlikely that an individual mind can perceive the possibilities offered by psionics. Mystics in such worlds might be so scarce that a mystic never meets another practitioner of the psionic arts. Characters might unlock their psionic potential by random chance, and ancient tomes, journals, and other accounts of mystics might serve as the only guide to mastering this form of power.",
         "",
         "Psionics is more common in worlds where the bounds of reality have been twisted and warped. The realm of Athas in the Dark Sun campaign setting is the prime example of a world where psionics is common. The gods are absent, magic has been twisted into an ecological scourge, and the common threads that bind many worlds of D&D have been sundered. By contrast, the world Eberron is a setting where the bounds of reality have been tested but not fully broken. Psionics is not as pervasive in Eberron as in Athas, but the influence of the otherworldly realm of Xoriat makes it a known and studied art.",
         "",

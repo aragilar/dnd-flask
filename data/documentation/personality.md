@@ -8,12 +8,13 @@ Your character's name and physical description might be the first things that th
 
 ## Tika and Artemis: Contrasting Characters
 
-The details in this chapter make a big difference in setting your character apart from every other character. Consider the following two human fighters.
-Hailing from the Dragonlance setting, Tika Waylan was a brash teenager who had a rough childhood. The daughter of a thief, she ran away from home and practiced her father's trade on the streets of Solace. When she tried to rob the proprietor of the Inn of the Last Home, he caught her and took her under his wing, giving her a job as a barmaid. But when the dragonarmies laid waste to the town of Solace and destroyed the inn, necessity forced Tika into adventure alongside the friends she'd known from her childhood. Her skill as a fighter (a frying pan remains one of her favorite weapons) combined with her history on the streets gave her skills invaluable in her adventuring career.
-
-Artemis Entreri grew up on the streets of Calimport in the Forgotten Realms. He used his wits, strength, and agility to carve out his own territory in one of the city's hundreds of poor shanty towns. After several years, he attracted the notice of one of the most powerful thieves' guilds in the city, and he ascended the ranks of the guild quickly despite his youth. Artemis became the favored assassin of one of the city's pashas, who sent him to far-off Icewind Dale to recover some stolen gems. He's a professional killer, constantly challenging himself to improve his skills.
-
-Tika and Artemis are both human and both fighters (with some experience as rogues), possessing similarly high Strength and Dexterity scores, but there the similarity ends.
+> The details in this chapter make a big difference in setting your character apart from every other character. Consider the following two human fighters.
+>
+> Hailing from the Dragonlance setting, Tika Waylan was a brash teenager who had a rough childhood. The daughter of a thief, she ran away from home and practiced her father's trade on the streets of Solace. When she tried to rob the proprietor of the Inn of the Last Home, he caught her and took her under his wing, giving her a job as a barmaid. But when the dragonarmies laid waste to the town of Solace and destroyed the inn, necessity forced Tika into adventure alongside the friends she'd known from her childhood. Her skill as a fighter (a frying pan remains one of her favorite weapons) combined with her history on the streets gave her skills invaluable in her adventuring career.
+>
+> Artemis Entreri grew up on the streets of Calimport in the Forgotten Realms. He used his wits, strength, and agility to carve out his own territory in one of the city's hundreds of poor shanty towns. After several years, he attracted the notice of one of the most powerful thieves' guilds in the city, and he ascended the ranks of the guild quickly despite his youth. Artemis became the favored assassin of one of the city's pashas, who sent him to far-off Icewind Dale to recover some stolen gems. He's a professional killer, constantly challenging himself to improve his skills.
+>
+> Tika and Artemis are both human and both fighters (with some experience as rogues), possessing similarly high Strength and Dexterity scores, but there the similarity ends.
 
 ## Name
 
@@ -56,9 +57,9 @@ You choose your character's age and the color of his or her hair, eyes, and skin
 
 ## Tika and Artemis: Character Details
 
-Consider how the names Tika Waylan and Artemis Entreri set these characters apart from each other and reflect their personalities. Tika is a young woman determined to prove that she's not just a kid any more, and her name makes her sound young and ordinary. Artemis Entreri comes from an exotic land and carries a more mysterious name.
-
-Tika is nineteen years old at the start of her adventuring career and has auburn hair, green eyes, fair skin with freckles, and a mole on her right hip. Artemis is a small man, compact and all wiry muscle. He has angular features and high cheekbones, and he always seems in need of a shave. His raven-black hair is thick and full, but his eyes are gray and lifeless - betraying the emptiness of his life and soul.
+> Consider how the names Tika Waylan and Artemis Entreri set these characters apart from each other and reflect their personalities. Tika is a young woman determined to prove that she's not just a kid any more, and her name makes her sound young and ordinary. Artemis Entreri comes from an exotic land and carries a more mysterious name.
+>
+> Tika is nineteen years old at the start of her adventuring career and has auburn hair, green eyes, fair skin with freckles, and a mole on her right hip. Artemis is a small man, compact and all wiry muscle. He has angular features and high cheekbones, and he always seems in need of a shave. His raven-black hair is thick and full, but his eyes are gray and lifeless - betraying the emptiness of his life and soul.
 
 ## Alignment
 
@@ -96,9 +97,9 @@ Most creatures that lack the capacity for rational thought do not have alignment
 
 ## Tika and Artemis: Alignment
 
-Tika Waylan is neutral good, fundamentally good-hearted and striving to help others where she can. Artemis is lawful evil, unconcerned with the value of sentient life but at least professional in his approach to murder.
-
-As an evil character, Artemis is not an ideal adventurer. He began his career as a villain, and only cooperates with heroes when he must - and when it's in his own best interests. In most games, evil adventurers cause problems in groups alongside others who don't share their interests and objectives. Generally, evil alignments are for villains and monsters.
+> Tika Waylan is neutral good, fundamentally good-hearted and striving to help others where she can. Artemis is lawful evil, unconcerned with the value of sentient life but at least professional in his approach to murder.
+>
+> As an evil character, Artemis is not an ideal adventurer. He began his career as a villain, and only cooperates with heroes when he must - and when it's in his own best interests. In most games, evil adventurers cause problems in groups alongside others who don't share their interests and objectives. Generally, evil alignments are for villains and monsters.
 
 ## Languages
 
@@ -170,15 +171,15 @@ else could exploit to bring you to ruin or cause you to act against your best in
 
 ## Tika and Artemis: Personal Characteristics
 
-Tika and Artemis have distinct personality traits. Tika Waylan dislikes boastfulness and has a fear of heights resulting from a bad fall during her career as a thief. Artemis Entreri is always prepared for the worst and moves with a quick, precise confidence.
-
-Consider their ideals. Tika Waylan is innocent, almost childlike, believing in the value of life and the importance of appreciating everyone. Neutral good in alignment, she cleaves to ideals of life and respect. Artemis Entreri never allows his emotions to master him, and he constantly challenges himself to improve his skills. His lawful evil alignment gives him ideals of impartiality and a lust for power.
-
-Tika Waylan's bond is to the Inn of the Last Home. The inn's proprietor gave her a new chance at life, and her friendship with her adventuring companions was forged during her time working there. Its destruction by the marauding dragonarmies gives Tika a very personal reason to hate them with a fiery passion. Her bond might be phrased as "I will do whatever it takes to punish the dragonarmies for the destruction of the Inn of the Last Home."
-
-Artemis Entreri's bond is a strange, almost paradoxical relationship with Drizzt Do'Urden, his equal in swordplay and grim determination. In his first battle with Drizzt, Artemis recognized something of himself in his opponent, some indication that if his life had gone differently, he might have led a life more like the heroic drow's. From that moment, Artemis is more than a criminal assassin - he is an antihero, driven by his rivalry with Drizzt. His bond might be phrased as "I will not rest until I have proved myself better than Drizzt Do'Urden."
-
-Each of these characters also has an important flaw. Tika Waylan is naive and emotionally vulnerable, younger than her companions and annoyed that they still think of her as the kid they knew years ago. She might even be tempted to act against her principles if she's convinced that a particular achievement would demonstrate her maturity. Artemis Entreri is completely walled off from any personal relationship and just wants to be left alone.
+> Tika and Artemis have distinct personality traits. Tika Waylan dislikes boastfulness and has a fear of heights resulting from a bad fall during her career as a thief. Artemis Entreri is always prepared for the worst and moves with a quick, precise confidence.
+>
+> Consider their ideals. Tika Waylan is innocent, almost childlike, believing in the value of life and the importance of appreciating everyone. Neutral good in alignment, she cleaves to ideals of life and respect. Artemis Entreri never allows his emotions to master him, and he constantly challenges himself to improve his skills. His lawful evil alignment gives him ideals of impartiality and a lust for power.
+>
+> Tika Waylan's bond is to the Inn of the Last Home. The inn's proprietor gave her a new chance at life, and her friendship with her adventuring companions was forged during her time working there. Its destruction by the marauding dragonarmies gives Tika a very personal reason to hate them with a fiery passion. Her bond might be phrased as "I will do whatever it takes to punish the dragonarmies for the destruction of the Inn of the Last Home."
+>
+> Artemis Entreri's bond is a strange, almost paradoxical relationship with Drizzt Do'Urden, his equal in swordplay and grim determination. In his first battle with Drizzt, Artemis recognized something of himself in his opponent, some indication that if his life had gone differently, he might have led a life more like the heroic drow's. From that moment, Artemis is more than a criminal assassin - he is an antihero, driven by his rivalry with Drizzt. His bond might be phrased as "I will not rest until I have proved myself better than Drizzt Do'Urden."
+>
+> Each of these characters also has an important flaw. Tika Waylan is naive and emotionally vulnerable, younger than her companions and annoyed that they still think of her as the kid they knew years ago. She might even be tempted to act against her principles if she's convinced that a particular achievement would demonstrate her maturity. Artemis Entreri is completely walled off from any personal relationship and just wants to be left alone.
 
 ## Inspiration
 

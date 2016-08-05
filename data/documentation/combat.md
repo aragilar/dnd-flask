@@ -10,13 +10,13 @@ This chapter provides the rules you need for your characters and monsters to eng
 
 A typical combat encounter is a clash between two sides, a flurry of weapon swings, feints, parries, footwork, and spellcasting. The game organizes the chaos of combat into a cycle of rounds and turns. A **round** represents about 6 seconds in the game world. During a round, each participant in a battle takes a **turn**. The order of turns is determined at the beginning of a combat encounter, when everyone rolls initiative. Once everyone has taken a turn, the fight continues to the next round if neither side has defeated the other.
 
-### Combat Step by Step
-
-1. **Determine surprise.** The DM determines whether anyone involved in the combat encounter is surprised.
-2. **Establish positions.** The DM decides where all the characters and monsters are located. Given the adventurers' marching order or their stated positions in the room or other location, the DM figures out where the adversaries are - how far away and in what direction.
-3. **Roll initiative.** Everyone involved in the combat encounter rolls initiative, determining the order of combatants' turns.
-4. **Take turns.** Each participant in the battle takes a turn in initiative order.
-5. **Begin the next round.** When everyone involved in the combat has had a turn, the round ends. Repeat step 4 until the fighting stops.
+> **Combat Step by Step**
+>
+> 1. **Determine surprise.** The DM determines whether anyone involved in the combat encounter is surprised.
+> 2. **Establish positions.** The DM decides where all the characters and monsters are located. Given the adventurers' marching order or their stated positions in the room or other location, the DM figures out where the adversaries are - how far away and in what direction.
+> 3. **Roll initiative.** Everyone involved in the combat encounter rolls initiative, determining the order of combatants' turns.
+> 4. **Take turns.** Each participant in the battle takes a turn in initiative order.
+> 5. **Begin the next round.** When everyone involved in the combat has had a turn, the round ends. Repeat step 4 until the fighting stops.
 
 ### Surprise
 
@@ -66,31 +66,31 @@ If you want to interact with a second object, you need to use your action. Some 
 
 The DM might require you to use an action for any of these activities when it needs special care or when it presents an unusual obstacle. For instance, the DM could reasonably expect you to use an action to open a stuck door or turn a crank to lower a drawbridge.
 
-#### Interacting with Objects Around You
-
-Here are a few examples of the sorts of thing you can do in tandem with your movement and action:
-
-* draw or sheathe a sword
-* open or close a door
-* withdraw a potion from your backpack
-* pick up a dropped axe
-* take a bauble from a table
-* remove a ring from your finger
-* stuff some food into your mouth
-* plant a banner in the ground
-* fish a few coins from your belt pouch
-* drink all the ale in a flagon
-* throw a lever or a switch
-* pull a torch from a sconce
-* take a book from a shelf you can reach
-* extinguish a small flame
-* don a mask
-* pull the hood of your cloak up and over your head
-* put your ear to a door
-* kick a small stone
-* turn a key in a lock
-* tap the floor with a 10-foot pole
-* hand an item to another character
+> **Interacting with Objects Around You**
+>
+> Here are a few examples of the sorts of thing you can do in tandem with your movement and action:
+>
+> * draw or sheathe a sword
+> * open or close a door
+> * withdraw a potion from your backpack
+> * pick up a dropped axe
+> * take a bauble from a table
+> * remove a ring from your finger
+> * stuff some food into your mouth
+> * plant a banner in the ground
+> * fish a few coins from your belt pouch
+> * drink all the ale in a flagon
+> * throw a lever or a switch
+> * pull a torch from a sconce
+> * take a book from a shelf you can reach
+> * extinguish a small flame
+> * don a mask
+> * pull the hood of your cloak up and over your head
+> * put your ear to a door
+> * kick a small stone
+> * turn a key in a lock
+> * tap the floor with a 10-foot pole
+> * hand an item to another character
 
 ### Reactions
 
@@ -177,23 +177,23 @@ Because larger creatures take up more space, fewer of them can surround a creatu
 
 A creature can squeeze through a space that is large enough for a creature one size smaller than it. Thus, a Large creature can squeeze through a passage that's only 5 feet wide. While squeezing through a space, a creature must spend 1 extra foot for every foot it moves there, and it has disadvantage on attack rolls and Dexterity saving throws. Attack rolls against the creature have advantage while it's in the smaller space.
 
-### Variant: Playing on a Grid
-
-If you play out a combat using a square grid and miniatures or other tokens, follow these rules.
-
-**Squares.** Each square on the grid represents 5 feet.
-
-**Speed.** Rather than moving foot by foot, move square by square on the grid. This means you use your speed in 5-foot segments. This is particularly easy if you translate your speed into squares by dividing the speed by 5. For example, a speed of 30 feet translates into a speed of 6 squares.
-
-If you use a grid often, consider writing your speed in squares on your character sheet.
-
-**Entering a Square.** To enter a square, you must have at least 1 square of movement left, even if the square is diagonally adjacent to the square you're in. (The rule for diagonal movement sacrifices realism for the sake of smooth play. The Dungeon Master's Guide provides guidance on using a more realistic approach.)
-
-If a square costs extra movement, as a square of difficult terrain does, you must have enough movement left to pay for entering it. For example, you must have at least 2 squares of movement left to enter a square of difficult terrain.
-
-**Corners.** Diagonal movement can't cross the corner of a wall, large tree, or other terrain feature that fills its space.
-
-**Ranges.** To determine the range on a grid between two things - whether creatures or objects - start counting squares from a square adjacent to one of them and stop counting in the space of the other one. Count by the shortest route.
+> **Variant: Playing on a Grid**
+>
+> If you play out a combat using a square grid and miniatures or other tokens, follow these rules.
+>
+> ***Squares.*** Each square on the grid represents 5 feet.
+>
+> ***Speed.*** Rather than moving foot by foot, move square by square on the grid. This means you use your speed in 5-foot segments. This is particularly easy if you translate your speed into squares by dividing the speed by 5. For example, a speed of 30 feet translates into a speed of 6 squares.
+>
+> If you use a grid often, consider writing your speed in squares on your character sheet.
+>
+> ***Entering a Square.*** To enter a square, you must have at least 1 square of movement left, even if the square is diagonally adjacent to the square you're in. (The rule for diagonal movement sacrifices realism for the sake of smooth play. The Dungeon Master's Guide provides guidance on using a more realistic approach.)
+>
+> If a square costs extra movement, as a square of difficult terrain does, you must have enough movement left to pay for entering it. For example, you must have at least 2 squares of movement left to enter a square of difficult terrain.
+>
+> ***Corners.*** Diagonal movement can't cross the corner of a wall, large tree, or other terrain feature that fills its space.
+> 
+> ***Ranges.*** To determine the range on a grid between two things - whether creatures or objects - start counting squares from a square adjacent to one of them and stop counting in the space of the other one. Count by the shortest route.
 
 ## Actions in Combat
 
@@ -254,11 +254,11 @@ When you take the Search action, you devote your attention to finding something.
 
 You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn.
 
-### Improvising an Action
-
-Your character can do things not covered by the actions in this chapter, such as breaking down doors, intimidating enemies, sensing weaknesses in magical defenses, or calling for a parley with a foe. The only limits to the actions you can attempt are your imagination and your character's ability scores. See the descriptions of the ability scores in chapter 7 for inspiration as you improvise.
-
-When you describe an action not detailed elsewhere in the rules, the DM tells you whether that action is possible and what kind of roll you need to make, if any, to determine success or failure.
+> **Improvising an Action**
+>
+> Your character can do things not covered by the actions in this chapter, such as breaking down doors, intimidating enemies, sensing weaknesses in magical defenses, or calling for a parley with a foe. The only limits to the actions you can attempt are your imagination and your character's ability scores. See the descriptions of the ability scores in chapter 7 for inspiration as you improvise.
+>
+> When you describe an action not detailed elsewhere in the rules, the DM tells you whether that action is possible and what kind of roll you need to make, if any, to determine success or failure.
 
 ## Making an Attack
 
@@ -429,9 +429,9 @@ The damage types follow, with examples to help a DM assign a damage type to a ne
 
 **Thunder.** A concussive burst of sound, such as the effect of the *thunderwave* spell, deals thunder damage.
 
-#### Describing the Effects of Damage
-
-Dungeon Masters describe hit point loss in different ways. When your current hit point total is half or more of your hit point maximum, you typically show no signs of injury. When you drop below half your hit point maximum, you show signs of wear, such as cuts and bruises. An attack that reduces you to 0 hit points strikes you directly, leaving a bleeding injury or other trauma, or it simply knocks you unconscious.
+> **Describing the Effects of Damage**
+>
+> Dungeon Masters describe hit point loss in different ways. When your current hit point total is half or more of your hit point maximum, you typically show no signs of injury. When you drop below half your hit point maximum, you show signs of wear, such as cuts and bruises. An attack that reduces you to 0 hit points strikes you directly, leaving a bleeding injury or other trauma, or it simply knocks you unconscious.
 
 ### Damage Resistance and Vulnerability
 

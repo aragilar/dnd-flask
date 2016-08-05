@@ -129,11 +129,11 @@ Characters who turn their attention to other tasks as the group travels are not 
 
 **Forage.** The character can keep an eye out for ready sources of food and water, making a Wisdom (Survival) check when the DM calls for it. (The *Dungeon Master's Guide* has rules for foraging.)
 
-#### Splitting Up the Party
-
-Sometimes, it makes sense to split an adventuring party, especially if you want one or more characters to scout ahead. You can form multiple parties, each moving at a different speed. Each group has its own front, middle, and back ranks.
-
-The drawback to this approach is that the party will be split into several smaller groups in the event of an attack. The advantage is that a small group of stealthy characters moving slowly might be able to sneak past enemies that clumsier characters would alert. A pair of rogues moving at a slow pace are much harder to detect when they leave their dwarf fighter friend behind.
+> **Splitting Up the Party**
+>
+> Sometimes, it makes sense to split an adventuring party, especially if you want one or more characters to scout ahead. You can form multiple parties, each moving at a different speed. Each group has its own front, middle, and back ranks.
+>
+> The drawback to this approach is that the party will be split into several smaller groups in the event of an attack. The advantage is that a small group of stealthy characters moving slowly might be able to sneak past enemies that clumsier characters would alert. A pair of rogues moving at a slow pace are much harder to detect when they leave their dwarf fighter friend behind.
 
 ## The Environment
 

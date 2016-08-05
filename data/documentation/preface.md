@@ -22,7 +22,7 @@ The second thing you need is a lively imagination or, more importantly, the will
 
 Luckily, just as D&D can strengthen your friendships, it can help build in you the confidence to create and share. D&D is a game that teaches you to look for the clever solution, share the sudden idea that can overcome a problem, and push yourself to imagine what could be, rather than simply accept what is.
 
-The first characters and adventures you create will probably be a collection of clichés. That's true of everyone, from the greatest Dungeon Masters in history on down. Accept this reality and move on to create the second character or adventure, which will be betler, and then the third, which will be better still. Repeat that over the course of time, and soon you'll be able to create anything, from a character's background story to an epic world of fantasy adventure.
+The first characters and adventures you create will probably be a collection of clichés. That's true of everyone, from the greatest Dungeon Masters in history on down. Accept this reality and move on to create the second character or adventure, which will be betler, and then the third, which will be better still. Repeat that over the course of time, and soon you'll be able to create anything, from a character's background story to an epic world of fantasy adventure.
 
 Once you have that skill, it's yours forever. Countless writers, artists, and other creators can trace their beginnings to a few pages of D&D notes, a handful of dice, and a kitchen table.
 

@@ -25,13 +25,13 @@
                 "",
                 "**Deep Stalker Spells**",
                 "",
-                "Ranger Level | Spell Gained",
-                ":--|:--",
-                "3rd | <spell>Disguise Self</spell>",
-                "5th | <spell>Rope Trick</spell>",
-                "9th | <spell>Glyph of Warding</spell>",
-                "13th | <spell>Greater Invisibility</spell>",
-                "17th | <spell>Seeming</spell>"
+                "| Ranger Level | Spell Gained",
+                "|:--|:--",
+                "| 3rd | <spell>Disguise Self</spell>",
+                "| 5th | <spell>Rope Trick</spell>",
+                "| 9th | <spell>Glyph of Warding</spell>",
+                "| 13th | <spell>Greater Invisibility</spell>",
+                "| 17th | <spell>Seeming</spell>"
             ]
         ],
         [

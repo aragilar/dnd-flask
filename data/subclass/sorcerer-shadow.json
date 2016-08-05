@@ -10,14 +10,14 @@
         "",
         "**Shadow Sorcerer Quirks**",
         "",
-        "d6 | Quirk",
-        ":--|:--",
-        "1 | You are always icy cold to the touch.",
-        "2 | When you are asleep, you don't appear to breathe (though you must still breathe to survive).",
-        "3 | You don't seem to bleed, even when badly injured.",
-        "4 | Your heart beats once per minute. This event sometimes surprises you.",
-        "5 | You have trouble remembering that living creatures and corpses should be treated differently.",
-        "6 | You blinked. Once. Last week."
+        "| d6 | Quirk",
+        "|:--|:--",
+        "| 1 | You are always icy cold to the touch.",
+        "| 2 | When you are asleep, you don't appear to breathe (though you must still breathe to survive).",
+        "| 3 | You don't seem to bleed, even when badly injured.",
+        "| 4 | Your heart beats once per minute. This event sometimes surprises you.",
+        "| 5 | You have trouble remembering that living creatures and corpses should be treated differently.",
+        "| 6 | You blinked. Once. Last week."
     ],
     "features": [
         [

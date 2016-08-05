@@ -9,11 +9,11 @@ Many people in the worlds of D&D worship different gods at different times and c
 Your DM determines which gods, if any, are worshiped in his or her campaign. From among the gods available, you can choose a single deity for your character to serve, worship, or pay lip service to. Or you can pick
 a few that your character prays to most often. Or just make a mental note of the gods who are revered in your DM's campaign so you can invoke their names when appropriate. If you're playing a cleric or a character with the Acolyte background, decide which god your deity serves or served, and consider the deity's suggested domains when selecting your character's domain.
 
-## The Life and Death Domains
-
-Many deities in this section suggest the Life domain, particularly if they are closely associated with healing, protection, childbirth, nurturing, or fertility. As described in the chapter 3, though, the Life domain is incredibly broad, and a cleric of any non-evil deity can choose it.
-
-A number of other deities, mostly evil ones, suggest the Death domain, which is detailed in the *Dungeon Master's Guide*. Most clerics who choose this domain are evil NPCs, but if you want to worship a god of death, consult your Dungeon Master.
+> **The Life and Death Domains**
+>
+> Many deities in this section suggest the Life domain, particularly if they are closely associated with healing, protection, childbirth, nurturing, or fertility. As described in the chapter 3, though, the Life domain is incredibly broad, and a cleric of any non-evil deity can choose it.
+>
+> A number of other deities, mostly evil ones, suggest the Death domain, which is detailed in the *Dungeon Master's Guide*. Most clerics who choose this domain are evil NPCs, but if you want to worship a god of death, consult your Dungeon Master.
 
 # D&D Pantheons
 

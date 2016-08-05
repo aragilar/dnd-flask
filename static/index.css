@@ -81,6 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 blockquote {
     position: relative;
     background-color: rgba(170, 200, 160, 0.7);
+    margin: 1em;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     padding: 0.25em 1em;
