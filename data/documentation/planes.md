@@ -120,4 +120,4 @@ There are no known portals to the Far Realm, or at least none that are still via
 
 ## The Great Wheel
 
-<img src="@images/documentation/great-wheel.png" alt="The Great Wheel">
+<img src="http://omega0.github.io/images/great-wheel.png" alt="The Great Wheel">
