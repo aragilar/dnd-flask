@@ -139,13 +139,13 @@ def index():
         
         classes=helper.class_list.filter(show).keys(),
         races=helper.race_list.filter(show).keys(),
-        backgrounds=bool(helper.background_list.filter(show)),
-        spells=bool(helper.spell_list.filter(show)),
-        feats=bool(helper.feat_list.filter(show)),
-        boons=bool(helper.epicboon_list.filter(show)),
+        backgrounds=helper.background_list.filter(show),
+        spells=helper.spell_list.filter(show),
+        feats=helper.feat_list.filter(show),
+        boons=helper.epicboon_list.filter(show),
         items=helper.weapon_list.filter(show) or helper.armor_list.filter(show) or helper.item_list.filter(show),
-        monsters=bool(helper.monster_list.filter(show)),
-        magicitems=bool(helper.magicitem_list.filter(show)),
+        monsters=helper.monster_list.filter(show),
+        magicitems=helper.magicitem_list.filter(show),
         documentation=helper.document_list.filter(show).keys(),
         optionalrules=helper.optionalrule_list.filter(show).keys(),
     )
@@ -287,13 +287,11 @@ def list_page(type):
     return final_pass(html)
 
 @app.route('/monstergroups/', defaults={'type':'Monsters'})
-def group_page(type):
+def groups_page(type):
     filter, show = get_filter()
     
     data = {
-        'Monsters': [
-            helper.monster_list,
-        ],
+        'Monsters': helper.monster_list,
     }.get(type)
     
     if not data:
@@ -301,7 +299,7 @@ def group_page(type):
     
     data = data.filter(show)
     if data:
-        html = data.page()
+        html = data.groups_page()
     else:
         html = None
 

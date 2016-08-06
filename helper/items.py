@@ -238,7 +238,7 @@ class Items (utils.Group):
                 folder = t
                 for item in os.listdir(folder):
                     item = os.path.join(folder, item)
-                    if os.path.isfile(item) and item.endswith('.md'):
+                    if item.endswith('.md'):
                         with open(item, 'r') as f:
                             temp = f.readlines()
                         temp = {

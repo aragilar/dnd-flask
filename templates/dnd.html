@@ -78,7 +78,7 @@
             <h2><a href="{{ url_for('list_page', type='Monsters', **query) }}">Monsters</a></h2>
             {% if monsters.groups %}
             <ul>
-                <li><h3><a href="{{ url_for('group_page', type='Monsters', **query) }}">Monster Groups</a></h3></li>
+                <li><h3><a href="{{ url_for('groups_page', type='Monsters', **query) }}">Monster Groups</a></h3></li>
             </ul>
             {% endif %}
             {% endif %}

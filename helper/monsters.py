@@ -1,4 +1,5 @@
 import os
+import urllib.parse
 
 from . import archiver
 from . import utils
@@ -48,6 +49,9 @@ class Monster (utils.Base):
     alignment = 'unaligned'
     armor_class = '10'
     challenge_rating = None
+    condition_immunities = []
+    damage_immunities = []
+    damage_resistances = []
     description = []
     experience = 0
     hit_points = '3 (1d4)'
@@ -61,6 +65,7 @@ class Monster (utils.Base):
     traits = []
     type = 'beast'
     
+    group = None
     _page = None
     
     def dict(self):
@@ -135,27 +140,49 @@ class Monster (utils.Base):
                     for skill in sorted(self.skills)
                 )
             
+            if self.damage_resistances:
+                sep = ', '
+                if any(',' in a for a in self.damage_resistances):
+                    sep = '; '
+                ret += '<p><strong>Damage Resistances</strong> %s</p>\n' % sep.join(
+                    self.damage_resistances
+                )
+            
+            if self.damage_immunities:
+                sep = ', '
+                if any(',' in a for a in self.damage_immunities):
+                    sep = '; '
+                ret += '<p><strong>Damage Immunities</strong> %s</p>\n' % sep.join(
+                    self.damage_immunities
+                )
+            
+            if self.condition_immunities:
+                ret += '<p><strong>Condition Immunities</strong> %s</p>\n' % ', '.join(
+                    self.condition_immunities
+                )
+            
             if self.senses:
                 ret += '<p><strong>Senses</strong> %s</p>\n' % ', '.join(
                     self.senses
                 )
             
             if self.languages:
-                ret += '<p><strong>Languages</strong> %s</p>\n' % ', '.join(
-                    self.languages
-                )
+                temp = ', '.join(self.languages)
+            else:
+                temp = '-'
+            ret += '<p><strong>Languages</strong> %s</p>\n' % temp
             
             ret += '<p><strong>Challenge</strong> {} ({:,} XP)</p>\n'.format(self.get_cr(), self.experience)
             
             ret += '<hr>\n'
             
             for item in self.traits:
-                ret += utils.convert('**{}.** {}'.format(item[0], '\n'.join(item[1:])))
+                ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:])))
             
             if self.actions:
                 ret += '<h2>Actions</h2>\n'
                 for item in self.actions:
-                    ret += utils.convert('**{}.** {}'.format(item[0], '\n'.join(item[1:])))
+                    ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:])))
             
             if self.legendary_actions:
                 ret += '<h2>Actions</h2>\n'
@@ -215,6 +242,23 @@ class Monsters (utils.Group):
                 data = utils.get_details(data, splttag='h1')
                 data = utils.get_details(data, 'h1')
                 self.head = data
+            
+            path = os.path.join(folder, self.type.__name__.lower())
+            if os.path.exists(path):
+                for file in os.listdir(path):
+                    file = os.path.join(path, file)
+                    if file.endswith('.md'):
+                        with open(file, 'r') as f:
+                            temp = f.readlines()
+                        self.groups[temp[0].lstrip('#').strip()] = (
+                            ''.join(temp[2:])
+                            if len(temp) > 1
+                            else ''
+                        )
+            
+            for item in self.values():
+                if item.group and item.group not in self.groups:
+                    self.groups[item.group] = ''
 
     def page(self):
         itemscopy = {}
@@ -240,4 +284,37 @@ class Monsters (utils.Group):
         ret += utils.details_group(temp, body_id="monsters", body_class="spell-table")
         
         ret = '<div>\n%s</div>\n' % ret
+        return ret
+    
+    def filter(self, f=None):
+        new = super().filter(f)
+        new.groups = new.groups.copy()
+        for group in list(new.groups.keys()):
+            if not any(item.group == group for item in new.values()):
+                del new.groups[group]
+        return new
+    
+    def groups_page(self):
+        ret = ''
+        for group in sorted(self.groups):
+            temp = self.groups[group]
+            temp = utils.convert(temp)
+            lst = []
+            for item in self.values():
+                if item.group == group:
+                    lst.append(item)
+            if lst:
+                temp += '<ul>\n'
+                for item in lst:
+                    temp += '<li><a href="../monsters/{}">{}</a></li>\n'.format(
+                        urllib.parse.quote(item.name),
+                        item.name,
+                    )
+                temp += '</ul>\n'
+                ret += utils.details_block('<h1>%s</h1>' % group, temp)
+        if ret:
+            ret = utils.details_group(ret)
+            ret = '<div>\n%s</div>\n' % ret
+        else:
+            ret = None
         return ret
