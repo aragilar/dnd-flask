@@ -37,9 +37,9 @@ function Filter(){
                 });
             }
         }
-        if (data === undefined){
+        /*if (data === undefined){
             alert(text)
-        }
+        }*/
         if (data['attunement']){
             if (filters.indexOf('attuned') < 0){
                 hide = true;

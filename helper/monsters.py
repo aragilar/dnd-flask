@@ -281,7 +281,7 @@ class Monsters (utils.Group):
             monsterblock,
             self.values(),
         ))
-        ret += utils.details_group(temp, body_id="monsters", body_class="spell-table")
+        ret += '<ul id="monsters" class="spell-table">\n%s</ul>\n' % temp
         
         ret = '<div>\n%s</div>\n' % ret
         return ret

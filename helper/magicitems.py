@@ -1,4 +1,5 @@
 import os
+import urllib.parse
 
 from . import archiver
 from . import utils
@@ -70,9 +71,12 @@ def itemblock(name, magicitems=None):
     else:
         item = magicitems.get(name)
     if item is not None:
+        body = str(item)
+        body = body.replace('<h1>', '<h1><a href="%s">' % urllib.parse.quote(name), 1)
+        body = body.replace('</h1>', '</a></h1>', 1)
         ret = utils.details_block(
             str(name),
-            str(item),
+            body,
             body_class="spell-box"
         )
     else:
