@@ -52,11 +52,13 @@ class Monster (utils.Base):
     condition_immunities = []
     damage_immunities = []
     damage_resistances = []
+    damage_vulnerabilities = []
     description = []
     experience = 0
     hit_points = '3 (1d4)'
     languages = []
     legendary_actions = []
+    reactions = []
     saving_throws = {}
     senses = []
     size = 'Medium'
@@ -102,10 +104,13 @@ class Monster (utils.Base):
         if self._page is None:
             ret = ''
             
-            if self.description:
+            if self.description or self.group:
+                temp = '\n'.join(self.description)
+                if self.group:
+                    temp += '\n\n* * *\n\nThis monster is a member of the {0} group.'.format(self.group)
                 ret += utils.details_group(utils.details_block(
                     '<h1>%s</h1>\n' % self.name,
-                    utils.convert('\n'.join(self.description)),
+                    utils.convert(temp),
                 ))
             
             ret += '<div class="monster-box">\n'
@@ -143,6 +148,7 @@ class Monster (utils.Base):
                 )
             
             for name, temp in [
+                ('Damage Vulnerabilities', self.damage_vulnerabilities),
                 ('Damage Resistances', self.damage_resistances),
                 ('Damage Immunities', self.damage_immunities),
             ]:
@@ -190,10 +196,14 @@ class Monster (utils.Base):
             for item in self.traits:
                 ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:])))
             
-            if self.actions:
-                ret += '<h2>Actions</h2>\n'
-                for item in self.actions:
-                    ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:])))
+            for name, temp in [
+                ('Actions', self.actions),
+                ('Reactions', self.reactions),
+            ]:
+                if temp:
+                    ret += '<h2>%s</h2>\n' % name
+                    for item in temp:
+                        ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:])))
             
             if self.legendary_actions:
                 ret += '<h2>Legendary Actions</h2>\n'
