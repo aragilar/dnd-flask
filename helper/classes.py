@@ -106,18 +106,13 @@ class Class (utils.Base):
     
         # ----#-   Class Features
         ret += self.features2html()
-        ret += '</div>\n'
     
         ret = spells.handle_spells(ret, self.spell_list)
+        ret += '</div>\n'
     
         # ----#-   Subclass
         for subc in self.children.values():
             ret += str(subc)
-    
-        # ----#-   Class Spells
-        temp = self.spell_tables()
-        if temp:
-            ret += '<div>\n%s</div>\n' % temp
     
         return ret
     
@@ -229,10 +224,13 @@ class Class (utils.Base):
                             ret += '<h2>%s Level</h2>\n' % utils.ordinals[lvl]
                             ret += linestr
 
-            if foot:
+            if foot or any(self.spells.values()):
                 ret += '<hr>\n'
+            if foot:
                 for item in foot:
                     ret += self.feature_block(data, item)
+            
+            ret += self.spell_tables()
             
             ret = utils.details_group(ret, body_class="class-features")
         
@@ -278,7 +276,7 @@ class Class (utils.Base):
         table_style = 'class="%s"' % table_class
         head_row_style = 'class="head-row"'
         ret = ''
-        if self.spells and any(self.spells.values()):
+        if any(self.spells.values()):
             cantrips = self.spells.get('Cantrip', [])
             if cantrips:
                 summary = 'Cantrips'
@@ -307,7 +305,7 @@ class Class (utils.Base):
                         ))
                         body += utils.details_group(temp, body_class=table_class)
                 ret += utils.details_block(summary, body)
-            ret = utils.details_group(ret)
+            #ret = utils.details_group(ret)
         return ret
     
     def filter(self, fil):
