@@ -339,9 +339,6 @@ class SubClass (Class):
         
         ret += self.features2html()
         
-        # ----#-   Spells
-        ret += self.spell_tables()
-        
         ret += '</div>\n'
         
         return ret
