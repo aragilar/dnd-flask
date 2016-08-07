@@ -276,10 +276,29 @@ class Monsters (utils.Group):
         ret += self.head
         
         ret += '''
-        <div style="padding: 5px; margin: 5px auto;">
-        
+        <div class="search-box">
         <h2>Search</h2>
-        
+        <p>Name: <input class="filter" id="name"></p>
+        <p>
+            CR &ge; <input class="filter" id="crge">
+            <br>
+            CR &le; <input class="filter" id="crle">
+        </p>
+        <p class="right">
+            <label><input type="checkbox" class="filter size" id="tiny"> Tiny </label>
+            <br>
+            <label><input type="checkbox" class="filter size" id="small"> Small</label>
+            <br>
+            <label><input type="checkbox" class="filter size" id="medium"> Medium</label>
+            <br>
+            <label><input type="checkbox" class="filter size" id="large"> Large</label>
+            <br>
+            <label><input type="checkbox" class="filter size" id="huge"> Huge</label>
+            <br>
+            <label><input type="checkbox" class="filter size" id="gargantuan"> Gargantuan</label>
+        </p>
+        <p><label><input type="checkbox" class="filter" id="legendary"> Legendary</label></p>
+        <p>Count: <output id="count">0</output></p>
         </div>
         '''
 
