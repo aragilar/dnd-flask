@@ -286,7 +286,7 @@ def list_page(type):
     
     return final_pass(html)
 
-@app.route('/monstergroups/', defaults={'type':'Monsters'})
+@app.route('/monsters/groups/', defaults={'type':'Monsters'})
 def groups_page(type):
     filter, show = get_filter()
     

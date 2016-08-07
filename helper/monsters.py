@@ -240,7 +240,7 @@ def monsterblock(name, monsters=None):
     else:
         monster = monsters.get(name)
     if monster is not None:
-        ret = '<li><a href="{0}">{0}</a></li>\n'.format(name)
+        ret = '<li><a href="{1}">{0}</a></li>\n'.format(name, urllib.parse.quote(name))
     else:
         ret = str(name)
     return ret
@@ -346,12 +346,12 @@ class Monsters (utils.Group):
             if lst:
                 temp += '<ul>\n'
                 for item in lst:
-                    temp += '<li><a href="../monsters/{}">{}</a></li>\n'.format(
+                    temp += '<li><a href="../{}">{}</a></li>\n'.format(
                         urllib.parse.quote(item.name),
                         item.name,
                     )
                 temp += '</ul>\n'
-                ret += utils.details_block('<h1>%s</h1>' % group, temp)
+                ret += utils.details_block('<h1 id="{1}">{0}</h1>'.format(group, utils.slug(group)), temp)
         if ret:
             ret = utils.details_group(ret)
             ret = '<div>\n%s</div>\n' % ret
