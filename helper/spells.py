@@ -113,6 +113,7 @@ def handle_spells(text, spells):
     spelllist += _spellexpression.findall(text)
     for item in spelllist:
         text = text.replace(item[0], utils.details_group(spellblock(item[-1], spells)))
+    text = text.replace('</dl>\n\n\n<dl class="accordion">', '\n')
     return text
 
 def spellblock(name, spells=None):
