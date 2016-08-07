@@ -71,11 +71,11 @@ class Monster (utils.Base):
     def dict(self):
         d = {
             'name': self.name,
-            'alignment': self.alignment,
+            'alignment': self.alignment.lower(),
             'challenge rating': self._get_cr(),
             'legendary': bool(self.legendary_actions),
-            'size': self.size,
-            'type': self.type,
+            'size': self.size.lower(),
+            'type': self.type.lower(),
         }
         return d
     
@@ -85,6 +85,7 @@ class Monster (utils.Base):
         else:
             c = self.challenge_rating
         c = float(c)
+        self.challenge_rating = c
         return c
     
     def get_cr(self):
@@ -140,21 +141,26 @@ class Monster (utils.Base):
                     for skill in sorted(self.skills)
                 )
             
-            if self.damage_resistances:
-                sep = ', '
-                if any(',' in a for a in self.damage_resistances):
-                    sep = '; '
-                ret += '<p><strong>Damage Resistances</strong> %s</p>\n' % sep.join(
-                    self.damage_resistances
-                )
-            
-            if self.damage_immunities:
-                sep = ', '
-                if any(',' in a for a in self.damage_immunities):
-                    sep = '; '
-                ret += '<p><strong>Damage Immunities</strong> %s</p>\n' % sep.join(
-                    self.damage_immunities
-                )
+            for name, temp in [
+                ('Damage Resistances', self.damage_resistances),
+                ('Damage Immunities', self.damage_immunities),
+            ]:
+                if temp:
+                    temp = temp.copy()
+                    ret += '<p><strong>%s</strong> ' % name
+                    new = []
+                    while temp:
+                        s = []
+                        while temp:
+                            if ',' in temp[0]:
+                                if not s:
+                                    s.append(temp.pop(0))
+                                break
+                            else:
+                                s.append(temp.pop(0))
+                        new.append(', '.join(s))
+                    ret += '; '.join(new)
+                    ret += '</p>\n'
             
             if self.condition_immunities:
                 ret += '<p><strong>Condition Immunities</strong> %s</p>\n' % ', '.join(
