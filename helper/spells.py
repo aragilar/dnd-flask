@@ -176,22 +176,27 @@ class Spells (utils.Group):
         
         ret += self.head
         
-        ret += '<div style="padding: 5px; margin: 5px auto;">\n'
+        ret += '''
+        <div class="search-box">
+        <h2>Search</h2>
+        <p>Name: <input class="filter" id="name"></p>
+        <p>
+            Level: <input class="filter" id="level">
+            <br>
+            School: <input class="filter" id="type">
+            <br>
+            <label>Ritual: <input type="checkbox" class="filter" id="ritual"></label>
+        </p>
+        '''
         
-        for c in sorted(byClass.keys()):
-            ret += '\t<label style="clear: right; float: right; padding: 2px;">%s: <input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="%s"></label>\n' % (c, c)
+        if byClass:
+            ret += '<p class="right">\n'
+            for c in sorted(byClass.keys()):
+                ret += '<label><input type="checkbox" class="filter" id="{0}"> {0}</label>\n<br>\n'.format(c)
+            ret += '</p>\n'
         
         ret += '''
-        <h2>Search</h2>
-        Name: <input style="padding: inherit; margin: inherit;" class="filter" id="name"><br>
-        Level: <input style="padding: inherit; margin: inherit;" class="filter" id="level"><br>
-        School: <input style="padding: inherit; margin: inherit;" class="filter" id="type"><br>
-        <label>Ritual: <input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="ritual"></label><br>
-        
-        <!--Nonverbal: <input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="nonverbal"><br>
-        Nonsomatic: <input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="nonsomatic"><br>
-        Immaterial: <input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="immaterial"><br>-->
-        <span style="margin: 5px; display: block; clear: both;">Count: <output id="count">0</output></span>
+        <p>Count: <output id="count">0</output></p>
         </div>
         '''
 

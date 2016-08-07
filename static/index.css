@@ -6,10 +6,99 @@
     src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
+body {
+    background-color: #ddd;
+    background-image: url("images/wood1.png");
+    background-repeat: repeat;
+    padding: 10px 0 300px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #900;
+}
+
+blockquote {
+    position: relative;
+    background-color: rgba(170, 200, 160, 0.7);
+    margin: 1em;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 0.25em 1em;
+    box-shadow: 0 3px 3px 3px #bbb;
+}
+
+blockquote::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    border: 0.5em solid;
+    border-color: black #cec #cec black;
+}
+
+div {
+    width: 90%;
+    min-width: 200px;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+body > div {
+    background-color: #fff;
+    background-image: url("images/parchment3.png");
+    background-repeat: repeat;
+}
+
+a {
+    color: #00e;
+}
+
+p {
+    text-indent: 1em;
+    margin: 0.25em;
+}
+
+img {
+    border-radius: 15px;
+    max-height: 500px;
+    width: auto;
+}
+
+li:empty {
+    list-style: none outside;
+}
+
+table {
+    width: 100%;
+    margin: 0.5em 0;
+}
+
+tr, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td, th {
+    min-width: 20px;
+    max-width: 400px;
+    vertical-align: top;
+    padding: 0 5px;
+}
+
 .head-row {
     background-color: #000;
     color: #fff;
     text-align: center;
+}
+
+.right {
+    float: right;
 }
 
 .spell-box > div {
@@ -115,93 +204,22 @@
 }
 /*end flexbox*/
 
-body {
-    background-color: #ddd;
-    background-image: url("images/wood1.png");
-    background-repeat: repeat;
-    padding: 10px 0 300px;
-    font-family: "Times New Roman", Times, serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #900;
-}
-
-blockquote {
+.search-box {
     position: relative;
-    background-color: rgba(170, 200, 160, 0.7);
-    margin: 1em;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    padding: 0.25em 1em;
-    box-shadow: 0 3px 3px 3px #bbb;
+    padding: 5px;
+    margin: 5px auto;
 }
 
-blockquote::before {
-    content: "";
-    display: block;
+.search-box p {
+    text-indent: 0;
+    margin: 1em 0;
+}
+
+.search-box .right {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 0;
-    width: 0;
-    border: 0.5em solid;
-    border-color: black #cec #cec black;
-}
-
-div {
-    width: 90%;
-    min-width: 200px;
-    max-width: 800px;
-    margin: 0 auto;
-    border: 1px solid black;
-    padding: 15px;
-}
-
-body > div {
-    background-color: #fff;
-    background-image: url("images/parchment3.png");
-    background-repeat: repeat;
-}
-
-a {
-    color: #00e;
-}
-
-p {
-    text-indent: 1em;
-    margin: 0.25em;
-}
-
-img {
-    border-radius: 15px;
-    max-height: 500px;
-    width: auto;
-}
-
-img.right {
-    float: right;
-}
-
-li:empty {
-    list-style: none outside;
-}
-
-table {
-    width: 100%;
-    margin: 0.5em 0;
-}
-
-tr, td, th {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-td, th {
-    min-width: 20px;
-    max-width: 400px;
-    vertical-align: top;
-    padding: 0 5px;
+    top: 5px;
+    right: 5px;
+    float: none;
 }
 
 .accordion > dt > *,
