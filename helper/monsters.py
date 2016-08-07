@@ -167,10 +167,14 @@ class Monster (utils.Base):
                     self.condition_immunities
                 )
             
-            if self.senses:
-                ret += '<p><strong>Senses</strong> %s</p>\n' % ', '.join(
-                    self.senses
-                )
+            temp = self.senses.copy()
+            if not any(item.startswith('passive Perception ') for item in temp):
+                if 'Perception' in self.skills:
+                    s = self.skills['Perception']
+                else:
+                    s = utils.get_modifier(self.ability_scores['wis'])
+                temp.append('passive Perception %d' % (10 + s))
+            ret += '<p><strong>Senses</strong> %s</p>\n' % ', '.join(temp)
             
             if self.languages:
                 temp = ', '.join(self.languages)
