@@ -102,10 +102,11 @@ class Monster (utils.Base):
         if self._page is None:
             ret = ''
             
-            ret += utils.details_group(utils.details_block(
-                '<h1>%s</h1>\n' % self.name,
-                utils.convert('\n'.join(self.description)),
-            ))
+            if self.description:
+                ret += utils.details_group(utils.details_block(
+                    '<h1>%s</h1>\n' % self.name,
+                    utils.convert('\n'.join(self.description)),
+                ))
             
             ret += '<div class="monster-box">\n'
             ret += '<h1>%s</h1>\n' % self.name
@@ -195,7 +196,7 @@ class Monster (utils.Base):
                     ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:])))
             
             if self.legendary_actions:
-                ret += '<h2>Actions</h2>\n'
+                ret += '<h2>Legendary Actions</h2>\n'
                 desc = 0
                 while isinstance(self.legendary_actions[desc], str):
                     desc += 1
