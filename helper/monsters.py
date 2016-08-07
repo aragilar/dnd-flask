@@ -293,7 +293,11 @@ class Monsters (utils.Group):
         ret += '''
         <div class="search-box">
         <h2>Search</h2>
-        <p>Name: <input class="filter" id="name"></p>
+        <p>
+            Name: <input class="filter" id="name">
+            <br>
+            Type: <input class="filter" id="type">
+        </p>
         <p>
             CR &ge; <input class="filter" id="crge">
             <br>

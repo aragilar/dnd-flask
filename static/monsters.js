@@ -32,6 +32,7 @@ function Filter(){
     });
     
     var name = $('#name').val();
+    var type = $('#type').val();
     var mincr = getCR($('#crge').val());
     var maxcr = getCR($('#crle').val());
     
@@ -62,8 +63,12 @@ function Filter(){
         }
         
         if (name != ''){
-            if (data['name'].toLowerCase().indexOf(name.toLowerCase()) < 0
-            && data['type'].toLowerCase().indexOf(name.toLowerCase()) < 0){
+            if (data['name'].toLowerCase().indexOf(name.toLowerCase()) < 0){
+                hide = true;
+            }
+        }
+        if (type != ''){
+            if (data['type'].toLowerCase().indexOf(type.toLowerCase()) < 0){
                 hide = true;
             }
         }
