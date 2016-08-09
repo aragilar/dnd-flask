@@ -57,7 +57,7 @@ class Class (utils.Base):
         if isinstance(num, int):
             num = '1d%d' % num
         
-        short += '<p><strong>Hit Dice:</strong> %s</p>\n' % num
+        short += '<p><strong>Hit Dice:</strong> {0} per {1} level</p>\n'.format(num, self.name.lower())
         
         num = num.split('d')
         if len(num) == 2 and all(map(str.isdigit, num)):
@@ -68,9 +68,9 @@ class Class (utils.Base):
             num = '%dd%d' % (num, die)
             short += (
                 '<p><strong>Hit Points at Higher Levels:</strong>'
-                ' %s (or %d) + your Constitution modifier per %s level after 1st'
+                ' {} (or {}) + your Constitution modifier per {} level after 1st'
                 '</p>\n'
-            ) % (num, avg, self.name.lower())
+            ).format(num, avg, self.name.lower())
             del avg, die, num
         
         short += '<h3>Proficiencies</h3>\n'
