@@ -22,10 +22,6 @@ div {
     border-color: #55f;
 }
 
-.home {
-    float: left;
-}
-
 .save {
     position: absolute;
     font-size: 16px;
@@ -71,8 +67,14 @@ textarea.save {
     margin-left: 20px;
 }
 
-#save {
-    float: right;
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+}
+
+.nav > :last-child:not(:only-child) {
+    margin-left: auto;
 }
 
 #body, #controls {
@@ -82,20 +84,17 @@ textarea.save {
     border: 1px solid black;
 }
 
-#controls::after, #body::after,
-#controls::before, #body::before {
+/*#body::before, #body::after {
     content: "";
     display: table;
-}
-
-#controls::after, #body::after {
     clear: both;
-}
+}*/
 
 #body {
+    display: flex;
+    flex-flow: row wrap;
     background-color: white;
     width: 800px;
-    /*height: 3105px;*/
     padding: 5px;
     margin: 0px auto 10px;
     border: 1px solid black;
@@ -112,7 +111,6 @@ textarea.save {
     height: 1035px;
     position: relative;
     display: none;
-    float: left;
 }
 
 #main-img,
@@ -122,27 +120,22 @@ textarea.save {
     width: 800px;
     height: 1035px;
     position: absolute;
-    /*top: 0px;
-    left: 0px;*/
 }
 
 @media only screen and (min-width: 1610px) {
     #body {
         width: 1600px;
-        /*height: 2070px;*/
     }
 }
 
 @media only screen and (min-width: 2410px) {
     #body {
         width: 2400px;
-        /*height: 1035px;*/
     }
 }
 
 @media only screen and (min-width: 3210px) {
     #body {
         width: 3200px;
-        /*height: 1035px;*/
     }
 }

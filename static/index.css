@@ -120,16 +120,6 @@ td, th {
     /*background-color: #ffd;*/
 }
 
-.home {
-    float: left;
-}
-
-.collapse-details {
-    float: right;
-    color: black;
-    text-decoration: none;
-}
-
 .index a {
     color: black;
 }
@@ -170,6 +160,21 @@ td, th {
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+}
+
+.nav > :last-child:not(:only-child) {
+    margin-left: auto;
+}
+
+.collapse-details {
+    color: black;
+    text-decoration: none;
 }
 /*end flexbox*/
 
