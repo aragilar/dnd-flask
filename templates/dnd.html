@@ -2,18 +2,18 @@
 {% set charsheets = ["Angular", "Circular"] %}
 {% block content %}
 <div class="index">
+    {% if filters %}
+    <section id="filter-block">
+        <p>Filter:</p>
+        <select id="filter">
+            <option>-</option>
+            {% for item in filters %}
+            <option>{{ item }}</option>
+            {% endfor %}
+        </select>
+    </section>
+    {% endif %}
     <section class="flex">
-        {% if filters %}
-        <section id="filter-block">
-            Filter: 
-            <select id="filter">
-                <option>-</option>
-                {% for item in filters %}
-                <option>{{ item }}</option>
-                {% endfor %}
-            </select>
-        </section>
-        {% endif %}
         <section>
             <h1>{{ title }}</h1>
             <h2><a href="{{ url_for('character_sheet', filter=filter) }}">Character Sheet</a></h2>

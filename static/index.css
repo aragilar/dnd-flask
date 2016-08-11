@@ -101,12 +101,77 @@ td, th {
     float: right;
 }
 
+.button {
+    background-color: #ddd;
+    padding: 3px;
+    margin: 1px;
+    border: 2px outset #555;
+    border-radius: 10px;
+}
+
+.button:active {
+    border-style: inset;
+}
+
 .spell-box > div {
     border: 1px solid #ddd;
     width: 98%;
     padding: 0 3px;
     /*background-color: #ffd;*/
 }
+
+.home {
+    float: left;
+}
+
+.collapse-details {
+    float: right;
+    color: black;
+    text-decoration: none;
+}
+
+.index a {
+    color: black;
+}
+
+.index li,
+.index li * {
+    margin: 0px;
+    color: #455;
+}
+
+.search-box {
+    position: relative;
+    padding: 5px;
+    margin: 5px auto;
+}
+
+.search-box p {
+    text-indent: 0;
+    margin: 1em 0;
+}
+
+.search-box .right {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    float: none;
+}
+
+/*Flexbox section*/
+.flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-flow: row nowrap;
+}
+
+#filter-block {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+/*end flexbox*/
 
 /* Monsters */
 .monster-box {
@@ -157,71 +222,7 @@ td, th {
 }
 /* end monsters */
 
-.button {
-    background-color: #ddd;
-    padding: 3px;
-    margin: 1px;
-    border: 2px outset #555;
-    border-radius: 10px;
-}
-
-.button:active {
-    border-style: inset;
-}
-
-.home {
-    float: left;
-}
-
-.collapse-details {
-    float: right;
-    color: black;
-    text-decoration: none;
-}
-
-.index a {
-    color: black;
-}
-
-.index li,
-.index li * {
-    margin: 0px;
-    color: #455;
-}
-
-/*Flexbox section*/
-.flex {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-flow: row wrap;
-    /*padding: 0.5em;*/
-}
-
-#filter-block {
-    align-self: flex-end;
-    flex: 0 1 100%;
-}
-/*end flexbox*/
-
-.search-box {
-    position: relative;
-    padding: 5px;
-    margin: 5px auto;
-}
-
-.search-box p {
-    text-indent: 0;
-    margin: 1em 0;
-}
-
-.search-box .right {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    float: none;
-}
-
+/* Accordions */
 .accordion > dt > *,
 .accordion > * {
     margin: 0;
@@ -281,8 +282,8 @@ td, th {
 .accordion > dd.dd-closed {
     transform: rotate3d(1, 0, 0, -90deg);
     height: 0;
-}
-*/
+}*/
+/* end accordions */
 
 @media only screen
 and (max-device-width : 1000px) {
