@@ -1,9 +1,7 @@
-div#spells-sheet {
+#spells-sheet {
     display: initial;
-}
-
-img#spells-img {
-    content:url("../images/Character_Sheet_Spells.png");
+    background-image: url("../images/Character_Sheet_Spells.png");
+    background-size: 100% 100%;
 }
 
 #spellclass-name {

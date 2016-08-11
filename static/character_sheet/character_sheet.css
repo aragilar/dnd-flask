@@ -113,15 +113,6 @@ textarea.save {
     display: none;
 }
 
-#main-img,
-#spells-img,
-#background-img,
-#equipment-img {
-    width: 800px;
-    height: 1035px;
-    position: absolute;
-}
-
 @media only screen and (min-width: 1610px) {
     #body {
         width: 1600px;

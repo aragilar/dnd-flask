@@ -1,9 +1,7 @@
-div#background-sheet {
+#background-sheet {
     display: initial;
-}
-
-img#background-img {
-    content:url("../images/Character_Sheet_Background.png");
+    background-image: url("../images/Character_Sheet_Background.png");
+    background-size: 100% 100%;
 }
 
 #character-appearance, #symbol {

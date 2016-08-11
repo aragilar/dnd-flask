@@ -1,9 +1,7 @@
-div#equipment-sheet {
+#equipment-sheet {
     display: initial;
-}
-
-img#equipment-img {
-    content:url("../images/Character_Sheet_Circle_2.png");
+    background-image: url("../images/Character_Sheet_Circle_2.png");
+    background-size: 100% 100%;
 }
 
 #helmet, #chestpiece, #bracer, #glove, #belt, #boot {
