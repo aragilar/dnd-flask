@@ -17,12 +17,13 @@ app.logger.addHandler(log)
 
 filters = helper.collections.OrderedDict()
 everystyle = [
-    '@normalize.css',
-    '@index.css'
+    '/static/normalize.css',
+    '/static/index.css'
 ]
 everyjs = [
-    '@jquery.min.js',
-    '@accordion.js'
+    '/static/jquery.min.js',
+    '/static/accordion.js',
+    '/static/keep-params.js'
 ]
 filterkey = 'name'
 
@@ -57,15 +58,6 @@ def get_filter():
         show = None
     return filter, show
 
-def final_pass(html):
-    items = re.findall('="@(.+?)"', html)
-    for item in items:
-        html = html.replace(
-            '="@%s"' % item,
-            '="%s"' % url_for('static', filename=item)
-        )
-    return html
-
 def error(e, message):
     html = render_template('error.html',
         home=True,
@@ -75,7 +67,7 @@ def error(e, message):
         message=message,
     )
     
-    return final_pass(html)
+    return html
 
 @app.errorhandler(403)
 def four_oh_three(e):
@@ -114,10 +106,16 @@ def character_sheet(look):
         look = 'standard'
     
     html = render_template('character_sheet.html',
-        look=helper.slug(look)
+        look=helper.slug(look),
+        styles=[
+            '/static/normalize.css',
+            '/static/character_sheet/character_sheet.css',
+            '/static/character_sheet/%s.css' % look
+        ],
+        javascript=everyjs+["/static/character_sheet/character_sheet.js"]
     )
     
-    return final_pass(html)
+    return html
 
 @app.route('/')
 def index():
@@ -133,7 +131,7 @@ def index():
     html = render_template('dnd.html',
         title=title,
         styles=everystyle,
-        javascript=everyjs+['@filters.js'],
+        javascript=everyjs+['/static/filters.js'],
         filters=filters.keys(),
         slug=helper.slug,
         
@@ -150,10 +148,10 @@ def index():
         optionalrules=helper.optionalrule_list.filter(show).keys(),
     )
     
-    return final_pass(html)
+    return html
 
-@app.route('/class/', defaults={'type':'Classes'})
-@app.route('/race/', defaults={'type':'Races'})
+@app.route('/classes/', defaults={'type':'Classes'})
+@app.route('/races/', defaults={'type':'Races'})
 def subpage(type):
     filter, show = get_filter()
     
@@ -179,10 +177,10 @@ def subpage(type):
     if not html:
         return abort(404)
     
-    return final_pass(html)
+    return html
 
-@app.route('/class/<name>', defaults={'type':'Classes'})
-@app.route('/race/<name>', defaults={'type':'Races'})
+@app.route('/classes/<name>', defaults={'type':'Classes'})
+@app.route('/races/<name>', defaults={'type':'Races'})
 @app.route('/spells/<name>', defaults={'type':'Spells'})
 @app.route('/monsters/<name>', defaults={'type':'Monsters'})
 @app.route('/magicitems/<name>', defaults={'type':'Magic Items'})
@@ -224,7 +222,7 @@ def subthing(name, type):
     if not html:
         return abort(404)
     
-    return final_pass(html)
+    return html
 
 @app.route('/backgrounds', defaults={'type':'Backgrounds'})
 @app.route('/feats', defaults={'type':'Feats'})
@@ -269,7 +267,7 @@ def list_page(type):
         item = item.filter(show)
         if item:
             if hasattr(item, 'javascript'):
-                js += ['@' + a for a in item.javascript]
+                js += ['/static/' + a for a in item.javascript]
             html += item.page()
 
     if not html:
@@ -284,7 +282,7 @@ def list_page(type):
         content=html
     )
     
-    return final_pass(html)
+    return html
 
 @app.route('/monsters/groups/', defaults={'type':'Monsters'})
 def groups_page(type):
@@ -315,7 +313,7 @@ def groups_page(type):
         content=html
     )
     
-    return final_pass(html)
+    return html
 
 if __name__ == '__main__':
     # ----#-   Main

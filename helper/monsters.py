@@ -107,7 +107,7 @@ class Monster (utils.Base):
             if self.description or self.group:
                 temp = '\n'.join(self.description)
                 if self.group:
-                    temp += '\n\n* * *\n\nThis monster is a member of the {0} group.'.format(self.group)
+                    temp += '\n\n* * *\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.group)
                 ret += utils.details_group(utils.details_block(
                     '<h1>%s</h1>\n' % self.name,
                     utils.convert(temp),
@@ -355,7 +355,7 @@ class Monsters (utils.Group):
                         item.name,
                     )
                 temp += '</ul>\n'
-                ret += utils.details_block('<h1 id="{1}">{0}</h1>'.format(group, utils.slug(group)), temp)
+                ret += utils.details_block('<h1>{0}</h1>'.format(group), temp)
         if ret:
             ret = utils.details_group(ret)
             ret = '<div>\n%s</div>\n' % ret

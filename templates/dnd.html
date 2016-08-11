@@ -16,11 +16,11 @@
     <section class="flex">
         <section>
             <h1>{{ title }}</h1>
-            <h2><a href="{{ url_for('character_sheet', filter=filter) }}">Character Sheet</a></h2>
+            <h2><a href="{{ url_for('character_sheet') }}">Character Sheet</a></h2>
             {% if charsheets %}
             <ul>
                 {% for item in charsheets %}
-                <li><a href="{{ url_for('character_sheet', look=item, **query) }}">{{ item }}</a></li>
+                <li><a href="{{ url_for('character_sheet', look=item) }}">{{ item }}</a></li>
                 {% endfor %}
             </ul>
             {% endif %}
@@ -36,20 +36,20 @@
     <section id="reference" class="flex">
         {% if classes %}
         <section>
-            <h2><a href="{{ url_for('subpage', type='Classes', **query) }}">Classes</a></h2>
+            <h2><a href="{{ url_for('subpage', type='Classes') }}">Classes</a></h2>
             <ul>
                 {% for item in classes %}
-                <li><h3><a href="{{ url_for('subthing', name=item, type='Classes', **query) }}">{{ item }}</a></h3></li>
+                <li><h3><a href="{{ url_for('subthing', name=item, type='Classes') }}">{{ item }}</a></h3></li>
                 {% endfor %}
             </ul>
         </section>
         {% endif %}
         {% if races %}
         <section>
-            <h2><a href="{{ url_for('subpage', type='Races', **query) }}">Races</a></h2>
+            <h2><a href="{{ url_for('subpage', type='Races') }}">Races</a></h2>
             <ul>
                 {% for item in races %}
-                <li><h3><a href="{{ url_for('subthing', name=item, type='Races', **query) }}">{{ item }}</a></h3></li>
+                <li><h3><a href="{{ url_for('subthing', name=item, type='Races') }}">{{ item }}</a></h3></li>
                 {% endfor %}
             </ul>
         </section>
@@ -58,32 +58,32 @@
         <section>
             <h2>Other</h2>
             {% if backgrounds %}
-            <h2><a href="{{ url_for('list_page', type='Backgrounds', **query) }}">Backgrounds</a></h2>
+            <h2><a href="{{ url_for('list_page', type='Backgrounds') }}">Backgrounds</a></h2>
             {% endif %}
             {% if spells %}
-            <h2><a href="{{ url_for('list_page', type='Spells', **query) }}">Spells</a></h2>
+            <h2><a href="{{ url_for('list_page', type='Spells') }}">Spells</a></h2>
             {% endif %}
             {% if feats or boons %}
-            <h2><a href="{{ url_for('list_page', type='Feats', **query) }}">Feats</a></h2>
+            <h2><a href="{{ url_for('list_page', type='Feats') }}">Feats</a></h2>
             {% if boons %}
             <ul>
-                <li><h3><a href="{{ url_for('list_page', type='Feats', _anchor='epic-boons', **query) }}">Epic Boons</a></h3></li>
+                <li><h3><a href="{{ url_for('list_page', type='Feats', _anchor='epic-boons') }}">Epic Boons</a></h3></li>
             </ul>
             {% endif %}
             {% endif %}
             {% if items %}
-            <h2><a href="{{ url_for('list_page', type='Items', **query) }}">Items</a></h2>
+            <h2><a href="{{ url_for('list_page', type='Items') }}">Items</a></h2>
             {% endif %}
             {% if monsters %}
-            <h2><a href="{{ url_for('list_page', type='Monsters', **query) }}">Monsters</a></h2>
+            <h2><a href="{{ url_for('list_page', type='Monsters') }}">Monsters</a></h2>
             {% if monsters.groups %}
             <ul>
-                <li><h3><a href="{{ url_for('groups_page', type='Monsters', **query) }}">Monster Groups</a></h3></li>
+                <li><h3><a href="{{ url_for('groups_page', type='Monsters') }}">Monster Groups</a></h3></li>
             </ul>
             {% endif %}
             {% endif %}
             {% if magicitems %}
-            <h2><a href="{{ url_for('list_page', type='Magic Items', **query) }}">Magic Items</a></h2>
+            <h2><a href="{{ url_for('list_page', type='Magic Items') }}">Magic Items</a></h2>
             {% endif %}
         </section>
         {% endif %}
@@ -95,7 +95,7 @@
             {% if documentation %}
             <ul>
                 {% for rule in documentation %}
-                <li><h3><a href="{{ url_for('subthing', name=rule, type='Documentation', **query) }}">{{ rule }}</a></h3></li>
+                <li><h3><a href="{{ url_for('subthing', name=rule, type='Documentation') }}">{{ rule }}</a></h3></li>
                 {% endfor %}
             </ul>
             {% endif %}
@@ -105,7 +105,7 @@
             <h2>Optional Rules</h2>
             <ul>
                 {% for rule in optionalrules %}
-                <li><h3><a href="{{ url_for('subthing', name=rule, type='Optional Rules', **query) }}">{{ rule }}</a></h3></li>
+                <li><h3><a href="{{ url_for('subthing', name=rule, type='Optional Rules') }}">{{ rule }}</a></h3></li>
                 {% endfor %}
             </ul>
         </section>

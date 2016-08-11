@@ -1,5 +1,3 @@
-{% set filter = request.args.get('filter') %}
-{% set query = {'filter':filter} %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +21,7 @@
     {% if home or collapse_details %}
     <div class="nav">
         {% if home %}
-        <a class="home button" href="{{ url_for('.index', **query) }}">Home</a>
+        <a class="home button" href="{{ url_for('.index') }}">Home</a>
         {% endif %}
         {% if collapse_details %}
         <a class="collapse-details button" onclick="closeAccordions();">Collapse All</a>
