@@ -1,5 +1,4 @@
 import os
-import urllib.parse
 
 from . import archiver
 from . import utils
@@ -240,7 +239,7 @@ def monsterblock(name, monsters=None):
     else:
         monster = monsters.get(name)
     if monster is not None:
-        ret = '<li><a href="{1}">{0}</a></li>\n'.format(name, urllib.parse.quote(name))
+        ret = '<li><a href="{1}">{0}</a></li>\n'.format(name, utils.slug(name))
     else:
         ret = str(name)
     return ret
@@ -350,8 +349,8 @@ class Monsters (utils.Group):
             if lst:
                 temp += '<ul>\n'
                 for item in lst:
-                    temp += '<li><a href="../{}">{}</a></li>\n'.format(
-                        urllib.parse.quote(item.name),
+                    temp += '<li><a href="/monsters/{}">{}</a></li>\n'.format(
+                        utils.slug(item.name),
                         item.name,
                     )
                 temp += '</ul>\n'

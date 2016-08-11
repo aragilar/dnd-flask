@@ -104,9 +104,10 @@ def character_sheet(look):
 
     if look in ['index', 'index.htm', 'index.html']:
         look = 'standard'
+    look = helper.slug(look)
     
     html = render_template('character_sheet.html',
-        look=helper.slug(look),
+        look=look,
         styles=[
             '/static/normalize.css',
             '/static/character_sheet/character_sheet.css',
@@ -205,7 +206,9 @@ def subthing(name, type):
     type = type.filter(show)
     
     if name in type:
-        html = str(type[name])
+        item = type[name]
+        html = str(item)
+        name = item.name
     else:
         html = None
     

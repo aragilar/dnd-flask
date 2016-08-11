@@ -181,11 +181,10 @@ class Group (object):
     def items(self):
         return self._items.items()
     
-    def get(self, item):
+    def get(self, item, default=None):
         if item in self:
-            return self[item]
-        else:
-            return None
+            default = self[item]
+        return default
     
     def sort(self, key=lambda a: a.name):
         for item in sorted(self._items.values(), key=key):
@@ -196,6 +195,9 @@ class Group (object):
             elif isinstance(item, type(self)):
                 item.sort(key)
     
+    def keymap(self):
+        return {slug(k): k for k in self._items.keys()}
+    
     def __iter__(self):
         return iter(self._items.values())
     
@@ -203,10 +205,16 @@ class Group (object):
         return len(self._items)
     
     def __contains__(self, key):
-        return key in self._items
+        return key in self._items or key in self.keymap()
     
     def __getitem__(self, key):
-        return self._items[key]
+        km = self.keymap()
+        if key in self._items:
+            return self._items[key]
+        elif key in km:
+            return self._items[km[key]]
+        else:
+            return self._items[key]
 
     def __str__(self):
         return str(list(self.values()))
@@ -220,10 +228,10 @@ def slug(s):
     version of a string
     """
     s = s.lower()
-    s = s.replace(' ', '-')
-    s = s.replace("'", '')
-    s = s.replace(',', '')
-    s = s.replace('/', '-')
+    for item in ' /':
+        s = s.replace(item, '-')
+    for item in "',:":
+        s = s.replace(item, '')
     return s
 
 def comma_list(lst, joiner = 'and'):
