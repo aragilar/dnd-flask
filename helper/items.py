@@ -259,7 +259,6 @@ class Items (utils.Group):
             super().add(item)
         elif isinstance(item, dict):
             g = item['name']
-            g = self._getgroup(g)
             if g is not None:
                 self.groups[g] = item['description']
     
@@ -296,7 +295,7 @@ class Items (utils.Group):
         for name in sorted(self.groups):
             description = self.groups[name]
             hadany = False
-            temp = '<h2>%s</h2>\n' % name
+            temp = '<h2>%s</h2>\n' % self._getgroup(name)
             temp += utils.convert(description)
             temp += '<table>\n'
             temp += (
@@ -307,7 +306,7 @@ class Items (utils.Group):
                 '</tr>\n'
             )
             for item in self.values():
-                if self._getgroup(item.group) == name:
+                if item.group == name:
                     temp += str(item)
                     hadany = True
             temp += '</table>\n'
