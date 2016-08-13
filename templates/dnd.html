@@ -67,7 +67,7 @@
             <h2><a href="{{ url_for('list_page', type='Feats') }}">Feats</a></h2>
             {% if boons %}
             <ul>
-                <li><h3><a href="{{ url_for('list_page', type='Feats', _anchor='epic-boons') }}">Epic Boons</a></h3></li>
+                <li><h3><a href="{{ url_for('list_page', type='Feats', _anchor=slug('Epic Boons')) }}">Epic Boons</a></h3></li>
             </ul>
             {% endif %}
             {% endif %}

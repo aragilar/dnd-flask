@@ -56,7 +56,7 @@ class Feats (utils.Group):
         h1 = re.search('<h1>(.*?)</h1>', ret)
         if h1:
             slug = utils.slug(h1.group(1))
-            ret.replace(h1.group(0), '<h1 id="%s">%s</h1>' % (slug, h1.group(1)), 1)
+            ret = ret.replace(h1.group(0), '<h1 id="{1}">{0}</h1>'.format(h1.group(1), slug), 1)
 
         temp = ''
         for feat in self:
