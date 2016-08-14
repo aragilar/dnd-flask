@@ -340,13 +340,13 @@ class Monsters (utils.Group):
     def groups_page(self):
         ret = ''
         for group in sorted(self.groups):
-            temp = self.groups[group]
-            temp = utils.convert(temp)
             lst = []
             for item in self.values():
                 if item.group == group:
                     lst.append(item)
             if lst:
+                temp = self.groups[group]
+                temp = utils.convert(temp)
                 temp += '<ul>\n'
                 for item in lst:
                     temp += '<li><a href="/monsters/{}">{}</a></li>\n'.format(

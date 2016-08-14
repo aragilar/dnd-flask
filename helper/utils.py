@@ -12,13 +12,9 @@ md = markdown2.Markdown(
     html4tags=True,
     extras = [
         'fenced-code-blocks',
-        # 'header-ids',
-        # 'smarty-pants',
-        'tables',
-        # 'toc',
         'markdown-in-html',
+        'tables',
     ],
-    # safe_mode=True
 )
 
 _lock = multiprocessing.Lock()
