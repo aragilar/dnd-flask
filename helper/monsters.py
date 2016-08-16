@@ -194,17 +194,16 @@ class Monster (utils.Base):
             
             ret += '<hr>\n'
             
-            for item in self.traits:
-                ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:])))
-            
             for name, temp in [
+                (None, self.traits),
                 ('Actions', self.actions),
                 ('Reactions', self.reactions),
             ]:
                 if temp:
-                    ret += '<h2>%s</h2>\n' % name
+                    if name:
+                        ret += '<h2>%s</h2>\n' % name
                     for item in temp:
-                        ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:])))
+                        ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:]).lstrip()))
             
             if self.legendary_actions:
                 ret += '<h2>Legendary Actions</h2>\n'
@@ -218,7 +217,7 @@ class Monster (utils.Base):
                     ret += utils.convert('\n'.join(desc))
                 
                 for item in temp:
-                    ret += utils.convert('**{}.** {}'.format(item[0], '\n'.join(item[1:])))
+                    ret += utils.convert('**{}.** {}'.format(item[0], '\n'.join(item[1:]).lstrip()))
             
             ret += '</div>\n'
             
