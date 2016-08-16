@@ -62,7 +62,7 @@ class Monster (utils.Base):
     senses = []
     size = 'Medium'
     skills = {}
-    speed = '30 ft.'
+    speed = ['30 ft.']
     traits = []
     type = 'beast'
     
@@ -106,11 +106,13 @@ class Monster (utils.Base):
             if self.description or self.group:
                 temp = '\n'.join(self.description)
                 if self.group:
+                    if not temp:
+                        temp = '# {}'.format(self.group)
                     temp += '\n\n* * *\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.group)
-                ret += utils.details_group(utils.details_block(
-                    '<h1>%s</h1>\n' % self.name,
-                    utils.convert(temp),
-                ))
+                temp = utils.convert(temp)
+                if not temp.startswith('<h1'):
+                    temp = '<h1>{}</h1>\n'.format(self.name) + temp
+                ret += utils.get_details(temp, 'h1')
             
             ret += '<div class="monster-box">\n'
             ret += '<h1>%s</h1>\n' % self.name
@@ -122,7 +124,7 @@ class Monster (utils.Base):
             ret += '<hr>\n'
             ret += '<p><strong>Armor Class</strong> %s</p>\n' % self.armor_class
             ret += '<p><strong>Hit Points</strong> %s</p>\n' % self.hit_points
-            ret += '<p><strong>Speed</strong> %s</p>\n' % self.speed
+            ret += '<p><strong>Speed</strong> %s</p>\n' % ', '.join(self.speed)
             ret += '<hr>\n'
             
             ret += '<ul class="monster-stats">\n'
@@ -356,6 +358,7 @@ class Monsters (utils.Group):
                 temp += '</ul>\n'
                 ret += utils.details_block('<h1>{0}</h1>'.format(group), temp)
         if ret:
+            ret = spells.handle_spells(ret, self.spell_list)
             ret = utils.details_group(ret)
             ret = '<div>\n%s</div>\n' % ret
         else:
