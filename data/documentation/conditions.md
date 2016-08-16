@@ -13,11 +13,11 @@ The following definitions specify what happens to a creature while it is subject
 ## Blinded
 
 * A blinded creature can't see and automatically fails any ability check that requires sight.
-* Attack rolls agsinst the creature have advantage, and the creature's attack rolls have disadvantage.
+* Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.
 
 ## Charmed
 
-* A charmed creature can't attack the charmer or target the charmer with hermful abilities or magical effects.
+* A charmed creature can't attack the charmer or target the charmer with harmful abilities or magical effects.
 * The charmer has advantage on any ability check to interact socially with the creature.
 
 ## Deafened
@@ -37,7 +37,7 @@ The following definitions specify what happens to a creature while it is subject
 
 ## Incapacitated
 
-* An incspacitated creature can't take actions or reactions.
+* An incapacitated creature can't take actions or reactions.
 
 ## Invisible
 
@@ -73,7 +73,7 @@ The following definitions specify what happens to a creature while it is subject
 ## Restrained
 
 * A restrained creature's speed becomes 0, and it can't benefit from any bonus to its speed.
-* Attack rolls against the creature have advantage, and tge creature's attack rolls have disadvantage.
+* Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.
 * The creature has disadvantage on Dexterity saving throws.
 
 ## Stunned
