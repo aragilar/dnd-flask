@@ -109,7 +109,7 @@ class Group (object):
         item = os.path.join(folder, filename)
         if os.path.isfile(item) and item.endswith('.json'):
             try:
-                item = archiver.load(item, object_hook=self.type.fromJSON)
+                item = self.type(archiver.load(item))
             except (ValueError, IOError):
                 raise
             if sources is None or item.source in sources:
@@ -138,7 +138,7 @@ class Group (object):
                         item = os.path.join(folder, item)
                         if os.path.isfile(item) and item.endswith('.json'):
                             try:
-                                item = archiver.load(item, object_hook=self.type.subclass.fromJSON)
+                                item = self.type.subclass(archiver.load(item))
                             except (ValueError, IOError):
                                 raise
                             if sources is None or item.source in sources:
