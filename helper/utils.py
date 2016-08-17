@@ -147,6 +147,11 @@ class Group (object):
                     for item in l:
                         if item.parent in self:
                             self[item.parent].children[item.name] = item
+            self.sort()
+            if self.type.subclass:
+                if sources:
+                    self.sort(key=lambda a: sources.index(a.source))
+                self.sort(key=lambda a: a.index)
     
     def add(self, item):
         if isinstance(item, self.type):

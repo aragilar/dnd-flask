@@ -142,9 +142,5 @@ def init(folder='data'):
     
     utils.asyncmap(lambda a: a.__init__(datafolder, sources_order), l)
     for item in l:
-        item.sort(lambda a: a.name)
-        if item in (class_list, race_list):
-            item.sort(key=lambda a: sources_order.index(a.source))
-            item.sort(key=lambda a: a.index)
         item.set_spell_list(spell_list)
     spell_list.set_class_list(class_list)
