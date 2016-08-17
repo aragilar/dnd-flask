@@ -47,6 +47,7 @@ class Monster (utils.Base):
     actions = []
     alignment = 'unaligned'
     armor_class = '10'
+    challenge_description = '{cr} ({xp} XP)'
     challenge_rating = None
     condition_immunities = []
     damage_immunities = []
@@ -190,7 +191,10 @@ class Monster (utils.Base):
                 temp = '-'
             ret += '<p><strong>Languages</strong> %s</p>\n' % temp
             
-            ret += '<p><strong>Challenge</strong> {} ({:,} XP)</p>\n'.format(self.get_cr(), self.experience)
+            temp = self.challenge_description.replace('{xp}', '{xp:,}')
+            temp = '<p><strong>Challenge</strong> {}</p>\n'.format(temp)
+            temp = temp.format(cr=self.get_cr(), xp=self.experience)
+            ret += temp
             
             ret += '<hr>\n'
             
