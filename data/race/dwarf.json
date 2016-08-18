@@ -74,9 +74,9 @@
     "speed description": "Your base walking speed is {speed} feet. Your speed is not reduced by wearing heavy armor.",
     "tool proficiencies": [
         1,
-        "Smith's Tools",
-        "Brewer's Supplies",
-        "Mason's Tools"
+        "smith's tools",
+        "brewer's supplies",
+        "mason's tools"
     ],
     "traits": [
         [
