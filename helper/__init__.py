@@ -101,21 +101,62 @@ class OptionalRules (utils.Group):
                             if sources is None or item.source in sources:
                                 self.add(item)
 
+class Proxy (object):
+    def __init__(self, type):
+        self.type = type
+        self.data = None
+        
+        self.spells = None
+        self.classes = None
+        
+        self.folder = None
+        self.sources = None
+    
+    def __call__(self, datafolder=None, sources=None):
+        self.folder = datafolder
+        self.sources = sources
+    
+    def filter(self, f=None):
+        if self.data is None:
+            self.data = self.type(self.folder, self.sources)
+            if self.spells is not None:
+                self.data.set_spell_list(self.spells)
+            if self.classes is not None:
+                self.data.set_class_list(self.classes)
+        if f is None:
+            return self.data
+        else:
+            return self.data.filter(f)
+    
+    def set_spell_list(self, spell_list):
+        if isinstance(spell_list, Proxy):
+            spell_list = spell_list.filter()
+        self.spells = spell_list
+        if self.data is not None:
+            self.data.set_spell_list(self.spells)
+    
+    def set_class_list(self, class_list):
+        if isinstance(spell_list, Proxy):
+            class_list = class_list.filter()
+        self.classes = class_list
+        if self.data is not None:
+            self.data.set_class_list(self.classes)
+
 datafolder = None
 sources_order = None
-class_list = classes.Classes()
-race_list = races.Races()
-document_list = Documents()
-background_list = backgrounds.Backgrounds()
-spell_list = spells.Spells()
-feat_list = feats.Feats()
-epicboon_list = feats.EpicBoons()
-monster_list = monsters.Monsters()
-magicitem_list = magicitems.MagicItems()
-weapon_list = items.Weapons()
-armor_list = items.Armors()
-optionalrule_list = OptionalRules()
-item_list = items.Items()
+class_list = Proxy(classes.Classes)
+race_list = Proxy(races.Races)
+document_list = Proxy(Documents)
+background_list = Proxy(backgrounds.Backgrounds)
+spell_list = Proxy(spells.Spells)
+feat_list = Proxy(feats.Feats)
+epicboon_list = Proxy(feats.EpicBoons)
+monster_list = Proxy(monsters.Monsters)
+magicitem_list = Proxy(magicitems.MagicItems)
+weapon_list = Proxy(items.Weapons)
+armor_list = Proxy(items.Armors)
+optionalrule_list = Proxy(OptionalRules)
+item_list = Proxy(items.Items)
 
 def init(folder='data'):
     global datafolder, sources_order, weapon_list, armor_list, optionalrule_list, item_list
@@ -140,7 +181,9 @@ def init(folder='data'):
         item_list,
     ]
     
-    utils.asyncmap(lambda a: a.__init__(datafolder, sources_order), l)
+    for item in l:
+        item(datafolder, sources_order)
+    
     for item in l:
         item.set_spell_list(spell_list)
     spell_list.set_class_list(class_list)
