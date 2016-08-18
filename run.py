@@ -129,24 +129,31 @@ def index():
             title
         )
     
+    data = {
+        'classes': helper.class_list.filter(show),
+        'races': helper.race_list.filter(show),
+        'backgrounds': helper.background_list.filter(show),
+        'spells': helper.spell_list.filter(show),
+        'feats': helper.feat_list.filter(show),
+        'boons': helper.epicboon_list.filter(show),
+        'items': (
+            list(helper.weapon_list.filter(show))
+            + list(helper.armor_list.filter(show))
+            + list(helper.item_list.filter(show))
+        ),
+        'monsters': helper.monster_list.filter(show),
+        'magicitems': helper.magicitem_list.filter(show),
+        'documentation': helper.document_list.filter(show),
+        'optionalrules': helper.optionalrule_list.filter(show),
+    }
+    
     html = render_template('dnd.html',
         title=title,
         styles=everystyle,
         javascript=everyjs+['/static/filters.js'],
         filters=filters.keys(),
         slug=helper.slug,
-        
-        classes=helper.class_list.filter(show).keys(),
-        races=helper.race_list.filter(show).keys(),
-        backgrounds=helper.background_list.filter(show),
-        spells=helper.spell_list.filter(show),
-        feats=helper.feat_list.filter(show),
-        boons=helper.epicboon_list.filter(show),
-        items=helper.weapon_list.filter(show) or helper.armor_list.filter(show) or helper.item_list.filter(show),
-        monsters=helper.monster_list.filter(show),
-        magicitems=helper.magicitem_list.filter(show),
-        documentation=helper.document_list.filter(show).keys(),
-        optionalrules=helper.optionalrule_list.filter(show).keys(),
+        **data
     )
     
     return html

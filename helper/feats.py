@@ -59,7 +59,7 @@ class Feats (utils.Group):
             ret = ret.replace(h1.group(0), '<h1 id="{1}">{0}</h1>'.format(h1.group(1), slug), 1)
 
         temp = ''
-        for feat in self:
+        for feat in self.values():
             temp += '<tr><td>\n'
             temp += featblock(feat.name, self)
             temp += '</td></tr>\n'

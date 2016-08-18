@@ -1,6 +1,7 @@
 import os
 import re
 import collections
+import functools
 import copy
 import multiprocessing.pool
 
@@ -121,7 +122,7 @@ class Group (object):
             folder = os.path.join(folder, self.type.__name__.lower())
             if os.path.exists(folder):
                 asyncmap(
-                    lambda a: self.__loadfile(a, folder, sources),
+                    functools.partial(self.__loadfile, folder=folder, sources=sources),
                     os.listdir(folder),
                 )
                 
@@ -155,7 +156,7 @@ class Group (object):
     
     def add(self, item):
         if isinstance(item, self.type):
-            self._items[item.name] = item
+            self._items[slug(item.name)] = item
         else:
             raise TypeError('Cannot accept item of type %s' % str(type(item)))
     
@@ -170,11 +171,11 @@ class Group (object):
     
     def set_spell_list(self, spell_list):
         self.spell_list = spell_list
-        for item in self:
+        for item in self._items.values():
             item.set_spell_list(spell_list)
     
     def keys(self):
-        return self._items.keys()
+        return (item.name for item in self._items.values())
     
     def values(self):
         return self._items.values()
@@ -189,33 +190,27 @@ class Group (object):
     
     def sort(self, key=lambda a: a.name):
         for item in sorted(self._items.values(), key=key):
-            self._items.move_to_end(item.name)
+            self.move_to_end(item.name)
             if isinstance(item, self.type) and item.children:
                 for sub in sorted(item.children.values(), key=key):
                     item.children.move_to_end(sub.name)
             elif isinstance(item, type(self)):
                 item.sort(key)
     
-    def keymap(self):
-        return {slug(k): k for k in self._items.keys()}
+    def move_to_end(self, key):
+        self._items.move_to_end(slug(key))
     
     def __iter__(self):
-        return iter(self._items.values())
+        return iter(self.keys())
     
     def __len__(self):
         return len(self._items)
     
     def __contains__(self, key):
-        return key in self._items or key in self.keymap()
+        return slug(key) in self._items
     
     def __getitem__(self, key):
-        km = self.keymap()
-        if key in self._items:
-            return self._items[key]
-        elif key in km:
-            return self._items[km[key]]
-        else:
-            return self._items[key]
+        return self._items[slug(key)]
 
     def __str__(self):
         return str(list(self.values()))

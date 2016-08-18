@@ -68,7 +68,7 @@ class Weapons (utils.Group):
         simple_melee = []
         simple_ranged = []
         other = []
-        for weapon in self:
+        for weapon in self.values():
             if weapon.type == 'martial':
                 if not weapon.ranged:
                     martial_melee.append(weapon)

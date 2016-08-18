@@ -363,7 +363,7 @@ class Classes (utils.Group):
                 self.head = data
             
             folder = os.path.join(folder, 'spelllist')
-            for c in self:
+            for c in self.values():
                 for item in ([c] + list(c.children.values())):
                     if isinstance(item.spells, str):
                         spellpath = os.path.join(folder, item.spells + '.json')

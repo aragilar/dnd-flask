@@ -80,7 +80,7 @@ class Backgrounds (utils.Group):
         ret += self.head
 
         body = ''
-        for background in self:
+        for background in self.values():
             
             body += utils.details_block(background.name, str(background))
         
