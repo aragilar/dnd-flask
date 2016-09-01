@@ -74,7 +74,7 @@
             ],
             [
                 "Spirit Path",
-                "At 3rd level, you form a bond with a nature spirit - a companion forged by your link to the wild. This spirit companion protects you as you travel and watches your back in battle. You choose a ranger path that shapes your spirit companion and its magic: the Guardian, the Seeker, or the Stalker. Your choice grants you features at 3rd level and again at 7th, 11th, and 15th level.",
+                "At 3rd level, you form a bond with a nature spirit---a companion forged by your link to the wild. This spirit companion protects you as you travel and watches your back in battle. You choose a ranger path that shapes your spirit companion and its magic: the Guardian, the Seeker, or the Stalker. Your choice grants you features at 3rd level and again at 7th, 11th, and 15th level.",
                 "",
                 "### Spirit Companion",
                 "",
@@ -112,7 +112,7 @@
         "",
         "The ranger has been a part of Dungeons & Dragons since almost the beginning, and it remains one of the most popular classes in the game. However, feedback on fifth edition D&D has shown that the ranger lags behind the other classes in terms of power and player satisfaction.",
         "",
-        "In looking at the history of the ranger, the class is very much a victim of the game's changing core mechanics. In the early days, the ranger started with the basic chassis of the fighter, added elements of other classes, and introduced its own unique mechanics. Over time, though, the game's core rules have grown more comprehensive and flexible. And as they have, several of the key elements that set rangers apart - including fighting with two weapons, tracking, and stealth - became available to any character.",
+        "In looking at the history of the ranger, the class is very much a victim of the game's changing core mechanics. In the early days, the ranger started with the basic chassis of the fighter, added elements of other classes, and introduced its own unique mechanics. Over time, though, the game's core rules have grown more comprehensive and flexible. And as they have, several of the key elements that set rangers apart---including fighting with two weapons, tracking, and stealth---became available to any character.",
         "",
         "That change left the ranger leaning on a narrow selection of unique mechanics, most notably those that gave the character a set of benefits against a specific type of opponent. Such a mechanic works well if it augments an already strong foundation for a character class, such as a cleric's ability to turn undead. However, that kind of benefit is too situational to serve as the class's signature ability.",
         "",
@@ -140,7 +140,7 @@
         "",
         "Rangers are champions of the natural world. They are typically good aligned, and their link to nature gives them supernatural abilities. They are the paladins of the forest.",
         "",
-        "Key Mechanics: Spirit Path. The Spirit Path class feature combines the concept of an animal companion with the ranger's traditional spellcasting. This ranger has a spirit companion that can channel magical effects to the character and his or her companions. The spirit companion can manifest as a wild animal and aid the ranger for short periods of time - enough to make a big impact on one fight without serving as the star for every fight.",
+        "Key Mechanics: Spirit Path. The Spirit Path class feature combines the concept of an animal companion with the ranger's traditional spellcasting. This ranger has a spirit companion that can channel magical effects to the character and his or her companions. The spirit companion can manifest as a wild animal and aid the ranger for short periods of time---enough to make a big impact on one fight without serving as the star for every fight.",
         "",
         "Companions are tricky to balance in D&D. If they are weak, they feel like a lot of work for a small payoff. However, even a moderately powerful companion can give a character too much of an advantage in the long term. This design opts for a very powerful companion, but one that appears only once per day.",
         "",
@@ -148,7 +148,7 @@
         "",
         "Does this playtest mean we're changing the ranger as presented in the Player's Handbook? No. Not in the least. This is merely an attempt to gauge how much interest there is in moving back to the core definition of the ranger, then attempting to shift it a bit to make it a more distinct class. Even if this option proves overwhelmingly popular, we'll continue to treat the ranger in the Player's Handbook as the canonical class and will keep this version as an option for players and DMs who want something a bit different. If you're happy with your current ranger character, keep playing!",
         "",
-        "Before we consider making a change to the Player's Handbook, an alternative ranger would need to be thoroughly playtested from levels 1 to 20. We would then need to see conclusive feedback that you - our players and DMs - want to replace the ranger character class. Even then, we'd simply make this option a legal choice for D&D Adventurers League play and present it in an upcoming expansion as a new option for home campaigns. We have no intention of invalidating current characters or taking options away from people who enjoy them."
+        "Before we consider making a change to the Player's Handbook, an alternative ranger would need to be thoroughly playtested from levels 1 to 20. We would then need to see conclusive feedback that you---our players and DMs---want to replace the ranger character class. Even then, we'd simply make this option a legal choice for D&D Adventurers League play and present it in an upcoming expansion as a new option for home campaigns. We have no intention of invalidating current characters or taking options away from people who enjoy them."
     ],
     "max level": 5,
     "name": "Ranger, Alt",
