@@ -14,6 +14,7 @@ md = markdown2.Markdown(
     extras = [
         'fenced-code-blocks',
         'markdown-in-html',
+        'smarty-pants',
         'tables',
     ],
 )

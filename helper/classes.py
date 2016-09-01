@@ -36,7 +36,7 @@ class Class (utils.Base):
         
         summary = '<h2>Features</h2>'
         
-        short = '<p><strong>Description:</strong> %s</p>\n' % self.description
+        short = '<p><strong>Description:</strong> %s</p>\n' % utils.convert(self.description)
         
         temp = self.primary_stat[:]
         
