@@ -2,7 +2,7 @@
 
 *Player's Handbook: Preface*
 
-Once upon a time, long, long ago, in a realm called the Midwestern United States - specifically the states of Minnesota and Wisconsin - a group of friends gathered together to forever alter the history of gaming.
+Once upon a time, long, long ago, in a realm called the Midwestern United States---specifically the states of Minnesota and Wisconsin---a group of friends gathered together to forever alter the history of gaming.
 
 It wasn't their intent to do so. They were tired of merely reading tales about worlds of magic, monsters, and adventure. They wanted to play in those worlds, rather than observe them. That they went on to invent Dungeons & Dragons, and thereby ignite a revolution in gaming that continues to this day, speaks to two things.
 
@@ -26,7 +26,7 @@ The first characters and adventures you create will probably be a collection of 
 
 Once you have that skill, it's yours forever. Countless writers, artists, and other creators can trace their beginnings to a few pages of D&D notes, a handful of dice, and a kitchen table.
 
-Above all else, D&D is yours. The friendships you make around the table will be unique to you. The adventures you embark on, the characters you create, the memories you make - these will be yours. D&D is your personal corner of the universe, a place where you have free reign to do as you wish.
+Above all else, D&D is yours. The friendships you make around the table will be unique to you. The adventures you embark on, the characters you create, the memories you make---these will be yours. D&D is your personal corner of the universe, a place where you have free reign to do as you wish.
 
 Go forth now. Read the rules of the game and the story of its worlds, but always remember that you are the one who brings them to life. They are nothing without the spark of life that you give them.
 

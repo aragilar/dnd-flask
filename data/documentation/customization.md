@@ -2,7 +2,7 @@
 
 *Player's Handbook: Chapter 6*
 
-The combination of ability scores, race, class, and background defines your character's capabilities in the game, and the personal details you create set your character apart from every other character. Even within your class and race, you have options to fine-tune what your character can do. But this chapter is for players who - with the DM's permission - want to go a step further.
+The combination of ability scores, race, class, and background defines your character's capabilities in the game, and the personal details you create set your character apart from every other character. Even within your class and race, you have options to fine-tune what your character can do. But this chapter is for players who---with the DM's permission---want to go a step further.
 
 This chapter defines two optional sets of rules for customizing your character: multiclassing and feats. Multiclassing lets you combine classes together, and feats are special options you can choose instead of increasing your ability scores as you gain levels. Your DM decides whether these options are available in a campaign.
 
@@ -74,9 +74,9 @@ When you gain a level in a class other than your first, you gain only some of th
 | Paladin   | Light armor, medium armor, shields, simple weapons, martial weapons |
 | Ranger    | Light armor, medium armor, shields, simple weapons, martial weapons, one skill from the class's skill list |
 | Rogue     | Light armor, one skill from the class's skill list, thieves' tools |
-| Sorcerer  | -                    |
+| Sorcerer  |---                   |
 | Warlock   | Light armor, simple weapons |
-| Wizard    | -                    |
+| Wizard    |---                   |
 
 ## Class Features
 
@@ -107,7 +107,7 @@ Each spell you know and prepare is associated with one of your classes, and you 
 If you have more than one spellcasting class, this table might give you spell slots of a level that is higher than the spells you know or can prepare. You can use those slots, but only to cast your lower-level spells. If a lower-level spell that you cast, like burning bands, has an enhanced effect when cast using a higher-level slot, you can use the enhanced effect, even though you don't have any spells of that higher level.
 
 For example, if you are the aforementioned ranger 4/wizard 3, you count as a 5th-level character when determining your spell slots: you have four 1st-level
-slots, three 2nd-level slots, and two 3rd-level slots. However, you don't know any 3rd-level spells, nor do you know any 2nd-level ranger spells. You can use the spell slots of those levels to cast the spells you do know - and potentially enhance their effects.
+slots, three 2nd-level slots, and two 3rd-level slots. However, you don't know any 3rd-level spells, nor do you know any 2nd-level ranger spells. You can use the spell slots of those levels to cast the spells you do know---and potentially enhance their effects.
 
 **Pact Magic** If you have both the Spellcasting class feature and the Pact Magic class feature from the warlock class, you can use the spell slots you gain from the Pact Magic feature to cast spells you know or have prepared from classes with the Spellcasting class feature, and you can use the spell slots you gain fram the Spellcasting class feature to cast warlock spells you know.
 
@@ -115,22 +115,22 @@ slots, three 2nd-level slots, and two 3rd-level slots. However, you don't know a
 
 | Lvl. | 1st | 2nd | 3rd | 4th | 5th | 6th | 7th | 8th | 9th |
 |:-----|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| 1st  | 2   | -   | -   | -   | -   | -   | -   | -   | -   |
-| 2nd  | 3   | -   | -   | -   | -   | -   | -   | -   | -   |
-| 3rd  | 4   | 2   | -   | -   | -   | -   | -   | -   | -   |
-| 4th  | 4   | 3   | -   | -   | -   | -   | -   | -   | -   |
-| 5th  | 4   | 3   | 2   | -   | -   | -   | -   | -   | -   |
-| 6th  | 4   | 3   | 3   | -   | -   | -   | -   | -   | -   |
-| 7th  | 4   | 3   | 3   | 1   | -   | -   | -   | -   | -   |
-| 8th  | 4   | 3   | 3   | 2   | -   | -   | -   | -   | -   |
-| 9th  | 4   | 3   | 3   | 3   | 1   | -   | -   | -   | -   |
-| 10th | 4   | 3   | 3   | 3   | 2   | -   | -   | -   | -   |
-| 11th | 4   | 3   | 3   | 3   | 2   | 1   | -   | -   | -   |
-| 12th | 4   | 3   | 3   | 3   | 2   | 1   | -   | -   | -   |
-| 13th | 4   | 3   | 3   | 3   | 2   | 1   | 1   | -   | -   |
-| 14th | 4   | 3   | 3   | 3   | 2   | 1   | 1   | -   | -   |
-| 15th | 4   | 3   | 3   | 3   | 2   | 1   | 1   | 1   | -   |
-| 16th | 4   | 3   | 3   | 3   | 2   | 1   | 1   | 1   | -   |
+| 1st  | 2   |---  |---  |---  |---  |---  |---  |---  |---  |
+| 2nd  | 3   |---  |---  |---  |---  |---  |---  |---  |---  |
+| 3rd  | 4   | 2   |---  |---  |---  |---  |---  |---  |---  |
+| 4th  | 4   | 3   |---  |---  |---  |---  |---  |---  |---  |
+| 5th  | 4   | 3   | 2   |---  |---  |---  |---  |---  |---  |
+| 6th  | 4   | 3   | 3   |---  |---  |---  |---  |---  |---  |
+| 7th  | 4   | 3   | 3   | 1   |---  |---  |---  |---  |---  |
+| 8th  | 4   | 3   | 3   | 2   |---  |---  |---  |---  |---  |
+| 9th  | 4   | 3   | 3   | 3   | 1   |---  |---  |---  |---  |
+| 10th | 4   | 3   | 3   | 3   | 2   |---  |---  |---  |---  |
+| 11th | 4   | 3   | 3   | 3   | 2   | 1   |---  |---  |---  |
+| 12th | 4   | 3   | 3   | 3   | 2   | 1   |---  |---  |---  |
+| 13th | 4   | 3   | 3   | 3   | 2   | 1   | 1   |---  |---  |
+| 14th | 4   | 3   | 3   | 3   | 2   | 1   | 1   |---  |---  |
+| 15th | 4   | 3   | 3   | 3   | 2   | 1   | 1   | 1   |---  |
+| 16th | 4   | 3   | 3   | 3   | 2   | 1   | 1   | 1   |---  |
 | 17th | 4   | 3   | 3   | 3   | 2   | 1   | 1   | 1   | 1   |
 | 18th | 4   | 3   | 3   | 3   | 3   | 1   | 1   | 1   | 1   |
 | 19th | 4   | 3   | 3   | 3   | 3   | 2   | 1   | 1   | 1   |

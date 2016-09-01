@@ -13,7 +13,7 @@ A typical combat encounter is a clash between two sides, a flurry of weapon swin
 > **Combat Step by Step**
 >
 > 1. **Determine surprise.** The DM determines whether anyone involved in the combat encounter is surprised.
-> 2. **Establish positions.** The DM decides where all the characters and monsters are located. Given the adventurers' marching order or their stated positions in the room or other location, the DM figures out where the adversaries are - how far away and in what direction.
+> 2. **Establish positions.** The DM decides where all the characters and monsters are located. Given the adventurers' marching order or their stated positions in the room or other location, the DM figures out where the adversaries are---how far away and in what direction.
 > 3. **Roll initiative.** Everyone involved in the combat encounter rolls initiative, determining the order of combatants' turns.
 > 4. **Take turns.** Each participant in the battle takes a turn in initiative order.
 > 5. **Begin the next round.** When everyone involved in the combat has had a turn, the round ends. Repeat step 4 until the fighting stops.
@@ -38,7 +38,7 @@ If a tie occurs, the DM decides the order among tied DM-controlled creatures, an
 
 ### Your Turn
 
-On your turn, you can **move** a distance up to your speed and **take one action**. You decide whether to move first or take your action first. Your speed - sometimes called your walking speed - is noted on your character sheet.
+On your turn, you can **move** a distance up to your speed and **take one action**. You decide whether to move first or take your action first. Your speed---sometimes called your walking speed---is noted on your character sheet.
 
 The most common actions you can take are described in the "Actions in Combat" section later in this chapter. Many class features and other abilities provide additional options for your action.
 
@@ -124,7 +124,7 @@ For example, if you have a speed of 30 and a flying speed of 60 because a wizard
 
 ### Difficult Terrain
 
-Combat rarely takes place in bare rooms or on featureless plains. Boulder-strewn caverns, briar-choked forests, treacherous staircases - the setting of a typical fight contains difficult terrain.
+Combat rarely takes place in bare rooms or on featureless plains. Boulder-strewn caverns, briar-choked forests, treacherous staircases---the setting of a typical fight contains difficult terrain.
 
 Every foot of movement in difficult terrain costs 1 extra foot. This rule is true even if multiple things in a space count as difficult terrain.
 
@@ -193,7 +193,7 @@ A creature can squeeze through a space that is large enough for a creature one s
 >
 > ***Corners.*** Diagonal movement can't cross the corner of a wall, large tree, or other terrain feature that fills its space.
 > 
-> ***Ranges.*** To determine the range on a grid between two things - whether creatures or objects - start counting squares from a square adjacent to one of them and stop counting in the space of the other one. Count by the shortest route.
+> ***Ranges.*** To determine the range on a grid between two things---whether creatures or objects---start counting squares from a square adjacent to one of them and stop counting in the space of the other one. Count by the shortest route.
 
 ## Actions in Combat
 
@@ -300,7 +300,7 @@ When you attack a target that you can't see, you have disadvantage on the attack
 
 When a creature can't see you, you have advantage on attack rolls against it.
 
-If you are hidden - both unseen and unheard - when you make an attack, you give away your location when the attack hits or misses.
+If you are hidden---both unseen and unheard---when you make an attack, you give away your location when the attack hits or misses.
 
 ### Ranged Attacks
 
@@ -387,7 +387,7 @@ Whenever a creature takes damage, that damage is subtracted from its hit points.
 
 Each weapon, spell, and harmful monster ability specifies the damage it deals. You roll the damage die or dice, add any modifiers, and apply the damage to your target. Magic weapons, special abilities, and other factors can grant a bonus to damage.
 
-When attacking with a **weapon**, you add your ability modifier - the same modifier used for the attack roll - to the damage. A **spell** tells you which dice to roll for damage and whether to add any modifiers.
+When attacking with a **weapon**, you add your ability modifier---the same modifier used for the attack roll---to the damage. A **spell** tells you which dice to roll for damage and whether to add any modifiers.
 
 If a spell or other effect deals damage to **more than one target** at the same time, roll the damage once for all of them. For example, when a wizard casts fireball or a cleric casts flame strike, the spell's damage is rolled once for all creatures caught in the blast.
 
@@ -405,7 +405,7 @@ The damage types follow, with examples to help a DM assign a damage type to a ne
 
 **Acid.** The corrosive spray of a black dragon's breath and the dissolving enzymes secreted by a black pudding deal acid damage.
 
-**Bludgeoning.** Blunt force attacks - hammers, falling, constriction, and the like - deal bludgeoning damage.
+**Bludgeoning.** Blunt force attacks---hammers, falling, constriction, and the like---deal bludgeoning damage.
 
 **Cold.** The infernal chill radiating from an ice devil's spear and the frigid blast of a white dragon's breath deal cold damage.
 

@@ -178,7 +178,7 @@ Use common sense to determine whether more than one of a given kind of magic ite
 
 ### Paired Items
 
-Items that come in pairs - such as boots, bracers, gauntlets, and gloves - impart their benefits only if both items of the pair are worn. For example, a character wearing a boot of striding and springing on one foot and a boot of elvenkind on the other foot gains no benefit from either item.
+Items that come in pairs---such as boots, bracers, gauntlets, and gloves---impart their benefits only if both items of the pair are worn. For example, a character wearing a boot of striding and springing on one foot and a boot of elvenkind on the other foot gains no benefit from either item.
 
 ## Activating an Item
 
@@ -199,7 +199,7 @@ Some items are used up when they are activated. A potion or an elixir must be sw
 Some magic items allow the user to cast a spell from the item. The spell is cast at the lowest possible spell level, doesn't expend any of the user's spell slots, and requires no components, unless the item's description says otherwise. The spell uses its normal casting time, range, and duration, and the user of the item must concentrate if the spell requires concentration. Many items, such as potions, bypass the casting of a spell and confer the spell's effects, with their usual duration. Certain items make exceptions to these rules, changing the casting time, duration, or other parts of a spell.
 
 A magic item, such as certain staffs, may require
-you to use your own spellcasting ability when you cast a spell from the item. If you have more than one spellcasting ability, you choose which one to use with the item. If you don't have a spellcasting ability - perhaps you're a rogue with the Use Magic Device feature - your spellcasting ability modifier is +0 for the item, and your proficiency bonus does apply.
+you to use your own spellcasting ability when you cast a spell from the item. If you have more than one spellcasting ability, you choose which one to use with the item. If you don't have a spellcasting ability---perhaps you're a rogue with the Use Magic Device feature---your spellcasting ability modifier is +0 for the item, and your proficiency bonus does apply.
 
 ### Charges
 
@@ -287,7 +287,7 @@ The tables that follow can help you come up with answers. Roll on as many of the
 | 3   | **Covetous.** The item's bearer becomes obsessed with material wealth.
 | 4   | **Frail.** The item crumbles, frays, chips, or cracks slightly when wielded, worn, or activated. This quirk has no effect on its properties, but if the item has seen much use, it looks decrepit.
 | 5   | **Hungry.** This item's magical properties function only if fresh blood from a humanoid has been applied to it within the past 24 hours. It needs only a drop to activate.
-| 6   | **Loud.** The item makes a loud noise - such as a clang, a shout, or a resonating gong - when used.
+| 6   | **Loud.** The item makes a loud noise---such as a clang, a shout, or a resonating gong---when used.
 | 7   | **Metamorphic.** The item periodically and randomly alters its appearance in slight ways. The bearer has no control over these minor alterations, which have no effect on the item's use.
 | 8   | **Muttering.** The item grumbles and mutters. A creature who listens carefully to the item might learn something useful.
 | 9   | **Painful.** The bearer experiences a harmless flash of pain when using the item.

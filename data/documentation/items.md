@@ -67,4 +67,4 @@ Opportunities abound to  nd treasure, equipment, weapons, armor, and more in the
 
 **Gems, Jewelry, and Art Objects.** These items retain their full value in the marketplace, and you can either trade them in for coin or use them as currency for other transactions. For exceptionally valuable treasures, the DM might require you to  nd a buyer in a large town or larger community first.
 
-**Trade Goods.** On the borderlands, many people conduct transactions through barter. Like gems and art objects, trade goods - bars of iron, bags of salt, livestock, and so on - retain their full value in the market and can be used as currency.
+**Trade Goods.** On the borderlands, many people conduct transactions through barter. Like gems and art objects, trade goods---bars of iron, bags of salt, livestock, and so on---retain their full value in the market and can be used as currency.

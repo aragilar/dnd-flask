@@ -8,7 +8,7 @@ This chapter provides the rules for casting spells. Different character classes 
 
 ## What Is a Spell?
 
-A spell is a discrete magical effect, a single shaping of the magical energies that suffuse the multiverse into a specific, limited expression. In casting a spell, a character carefully plucks at the invisible strands of raw magic suffusing the world, pins them in place in a particular pattern, sets them vibrating in a specific way, and then releases them to unleash the desired effect - in most cases, all in the span of seconds.
+A spell is a discrete magical effect, a single shaping of the magical energies that suffuse the multiverse into a specific, limited expression. In casting a spell, a character carefully plucks at the invisible strands of raw magic suffusing the world, pins them in place in a particular pattern, sets them vibrating in a specific way, and then releases them to unleash the desired effect---in most cases, all in the span of seconds.
 
 Spells can be versatile tools, weapons, or protective wards. They can deal damage or undo it, impose or remove conditions (see appendix A), drain life energy away, and restore life to the dead.
 
@@ -16,7 +16,7 @@ Uncounted thousands of spells have been created over the course of the multivers
 
 ### Spell Level
 
-Every spell has a level from 0 to 9. A spell's level is a general indicator of how powerful it is, with the lowly (but still impressive) *magic missile* at 1st level and the incredible *time stop* at 9th. Cantrips - simple but powerful spells that characters can cast almost by rote - are level 0. The higher a spell's level, the higher level a spellcaster must be to use that spell.
+Every spell has a level from 0 to 9. A spell's level is a general indicator of how powerful it is, with the lowly (but still impressive) *magic missile* at 1st level and the incredible *time stop* at 9th. Cantrips---simple but powerful spells that characters can cast almost by rote---are level 0. The higher a spell's level, the higher level a spellcaster must be to use that spell.
 
 Spell level and character level don't correspond directly. Typically, a character has to be at least 17th level, not 9th level, to cast a 9th-level spell.
 
@@ -30,7 +30,7 @@ In every case, the number of spells a caster can have fixed in mind at any given
 
 Regardless of how many spells a caster knows or prepares, he or she can cast only a limited number of spells before resting. Manipulating the fabric of magic and channeling its energy into even a simple spell is physically and mentally taxing, and higher-level spells are even more so. Thus, each spellcasting class's description includes a table showing how many spell slots of each spell level a character can use at each character level. For example, the 3rd-level wizard Umara has four 1st-level spell slots and two 2nd-level slots.
 
-When a character casts a spell, he or she expends a slot of that spell's level or higher, effectively "filling" a slot with the spell. You can think of a spell slot as a groove of a certain size - small for a 1st-level slot, larger for a spell of higher level. A 1st-level spell  ts into a slot of any size, but a 9th-level spell fits only in a 9th-level slot. So when Umara casts magic missile, a 1st-level spell, she spends one of her four 1st-level slots and has three remaining.
+When a character casts a spell, he or she expends a slot of that spell's level or higher, effectively "filling" a slot with the spell. You can think of a spell slot as a groove of a certain size---small for a 1st-level slot, larger for a spell of higher level. A 1st-level spell  ts into a slot of any size, but a 9th-level spell fits only in a 9th-level slot. So when Umara casts magic missile, a 1st-level spell, she spends one of her four 1st-level slots and has three remaining.
 
 Finishing a long rest restores any expended spell slots (see chapter 8 for the rules on resting).
 
@@ -106,7 +106,7 @@ Casting some spells requires particular objects, speci ed in parentheses in the 
 
 If a spell states that a material component is consumed by the spell, the caster must provide this component for each casting of the spell.
 
-A spellcaster must have a hand free to access these components - or to hold a spellcasting focus - but it can be the same hand that he or she uses to perform somatic components.
+A spellcaster must have a hand free to access these components---or to hold a spellcasting focus---but it can be the same hand that he or she uses to perform somatic components.
 
 ### Duration
 
@@ -220,7 +220,7 @@ Most spells that require attack rolls involve ranged attacks. Remember that you 
 
 ### Combining Magical Effects
 
-The effects of different spells add together while the durations of those spells overlap. The effects of the same spell cast multiple times don't combine, however. Instead, the most potent effect - such as the highest bonus - from those castings applies while their durations overlap.
+The effects of different spells add together while the durations of those spells overlap. The effects of the same spell cast multiple times don't combine, however. Instead, the most potent effect---such as the highest bonus---from those castings applies while their durations overlap.
 
 For example, if two clerics cast bless on the same target, that character gains the spell's benefit only once; he or she doesn't get to roll two bonus dice.
 
@@ -232,6 +232,6 @@ For example, if two clerics cast bless on the same target, that character gains 
 >
 > Mortals can't directly shape this raw magic. Instead, they make use of a fabric of magic, a kind of interface between the will of a spellcaster and the stuff of raw magic. The spellcasters of the Forgotten Realms call it the Weave and recognize its essence as the goddess Mystra, but casters have varied ways of naming and visualizing this interface. By any name, without the Weave, raw magic is locked away and inaccessible; the most powerful archmage can't light a candle with magic in an area where the Weave has been torn. But surrounded by the Weave, a spellcaster can shape lightning to blast foes, transport hundreds of miles in the blink of an eye, or even reverse death itself.
 >
-> All magic depends on the Weave, though different kinds of magic access it in a variety of ways. The spells of wizards, warlocks, sorcerers, and bards are commonly called **arcane magic**. These spells rely on an understanding - learned or intuitive - of the workings of the Weave. The caster plucks directly at the strands of the Weave to create the desired effect. Eldritch knights and arcane tricksters also use arcane magic. The spells of clerics, druids, paladins, and rangers are called **divine magic**. These spellcasters' access to the Weave is mediated by divine power - gods, the divine forces of nature, or the sacred weight of a paladin's oath.
+> All magic depends on the Weave, though different kinds of magic access it in a variety of ways. The spells of wizards, warlocks, sorcerers, and bards are commonly called **arcane magic**. These spells rely on an understanding---learned or intuitive---of the workings of the Weave. The caster plucks directly at the strands of the Weave to create the desired effect. Eldritch knights and arcane tricksters also use arcane magic. The spells of clerics, druids, paladins, and rangers are called **divine magic**. These spellcasters' access to the Weave is mediated by divine power---gods, the divine forces of nature, or the sacred weight of a paladin's oath.
 >
-> Whenever a magic effect is created, the threads of the Weave intertwine, twist, and fold to make the effect possible. When characters use divination spells such as detect magic or identify, they glimpse the Weave. A spell such as dispel magic smooths the Weave. Spells such as antimagic field rearrange the Weave so that magic flows around, rather than through, the area affected by the spell. And in places where the Weave is damaged or torn, magic works in unpredictable ways - or not at all.
+> Whenever a magic effect is created, the threads of the Weave intertwine, twist, and fold to make the effect possible. When characters use divination spells such as detect magic or identify, they glimpse the Weave. A spell such as dispel magic smooths the Weave. Spells such as antimagic field rearrange the Weave so that magic flows around, rather than through, the area affected by the spell. And in places where the Weave is damaged or torn, magic works in unpredictable ways---or not at all.

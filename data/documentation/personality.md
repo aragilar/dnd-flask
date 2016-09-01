@@ -59,7 +59,7 @@ You choose your character's age and the color of his or her hair, eyes, and skin
 
 > Consider how the names Tika Waylan and Artemis Entreri set these characters apart from each other and reflect their personalities. Tika is a young woman determined to prove that she's not just a kid any more, and her name makes her sound young and ordinary. Artemis Entreri comes from an exotic land and carries a more mysterious name.
 >
-> Tika is nineteen years old at the start of her adventuring career and has auburn hair, green eyes, fair skin with freckles, and a mole on her right hip. Artemis is a small man, compact and all wiry muscle. He has angular features and high cheekbones, and he always seems in need of a shave. His raven-black hair is thick and full, but his eyes are gray and lifeless - betraying the emptiness of his life and soul.
+> Tika is nineteen years old at the start of her adventuring career and has auburn hair, green eyes, fair skin with freckles, and a mole on her right hip. Artemis is a small man, compact and all wiry muscle. He has angular features and high cheekbones, and he always seems in need of a shave. His raven-black hair is thick and full, but his eyes are gray and lifeless---betraying the emptiness of his life and soul.
 
 ## Alignment
 
@@ -93,13 +93,13 @@ The evil deities who created other races, though, made those races to serve them
 
 Alignment is an essential part of the nature of celestials and fiends. A devil does not choose to be lawful evil, and it doesn't tend toward lawful evil, but rather it is lawful evil in its essence. If it somehow ceased to be lawful evil, it would cease to be a devil.
 
-Most creatures that lack the capacity for rational thought do not have alignments - they are unaligned. Such a creature is incapable of making a moral or ethical choice and acts according to its bestial nature. Sharks are savage predators, for example, but they are not evil; they have no alignment.
+Most creatures that lack the capacity for rational thought do not have alignments---they are unaligned. Such a creature is incapable of making a moral or ethical choice and acts according to its bestial nature. Sharks are savage predators, for example, but they are not evil; they have no alignment.
 
 ## Tika and Artemis: Alignment
 
 > Tika Waylan is neutral good, fundamentally good-hearted and striving to help others where she can. Artemis is lawful evil, unconcerned with the value of sentient life but at least professional in his approach to murder.
 >
-> As an evil character, Artemis is not an ideal adventurer. He began his career as a villain, and only cooperates with heroes when he must - and when it's in his own best interests. In most games, evil adventurers cause problems in groups alongside others who don't share their interests and objectives. Generally, evil alignments are for villains and monsters.
+> As an evil character, Artemis is not an ideal adventurer. He began his career as a villain, and only cooperates with heroes when he must---and when it's in his own best interests. In most games, evil adventurers cause problems in groups alongside others who don't share their interests and objectives. Generally, evil alignments are for villains and monsters.
 
 ## Languages
 
@@ -129,7 +129,7 @@ Some of these languages are actually families of languages with many dialects. F
 | Abyssal     | Demons                  | Infernal  |
 | Celesetial  | Celestials              | Celestial |
 | Draconic    | Dragons, dragonborn     | Draconic  |
-| Deep Speech | Mind flayers, beholders | -         |
+| Deep Speech | Mind flayers, beholders |---        |
 | Infernal    | Devils                  | Infernal  |
 | Primordial  | Elementals              | Dwarvish  |
 | Sylvan      | Fey creatures           | Elvish    |
@@ -137,7 +137,7 @@ Some of these languages are actually families of languages with many dialects. F
 
 ## Personal Characteristics
 
-Fleshing out your character's personality - the array of traits, mannerisms, habits, beliefs, and flaws that give a person a unique identity - will help you bring him or her to life as you play the game. Four categories of characteristics are presented here: personality traits, ideals, bonds, and flaws. Beyond those categories, think about your character's favorite words or phrases, tics and habitual gestures, vices and pet peeves, and whatever else you can imagine.
+Fleshing out your character's personality---the array of traits, mannerisms, habits, beliefs, and flaws that give a person a unique identity---will help you bring him or her to life as you play the game. Four categories of characteristics are presented here: personality traits, ideals, bonds, and flaws. Beyond those categories, think about your character's favorite words or phrases, tics and habitual gestures, vices and pet peeves, and whatever else you can imagine.
 
 Each background presented later in this chapter includes suggested characteristics that you can use to spark your imagination. You're not bound to those options, but they're a good starting point.
 
@@ -166,7 +166,7 @@ Your bonds might be tied to your class, your background, your race, or some othe
 
 ### Flaws
 
-Finally, choose a  aw for your character. Your character's flaw represents some vice, compulsion, fear, or weakness - in particular, anything that someone
+Finally, choose a  aw for your character. Your character's flaw represents some vice, compulsion, fear, or weakness---in particular, anything that someone
 else could exploit to bring you to ruin or cause you to act against your best interests. More significant than negative personality traits, a flaw might answer any of these questions: What enrages you? What's the one person, concept, or event that you are terrified of? What are your vices?
 
 ## Tika and Artemis: Personal Characteristics
@@ -177,7 +177,7 @@ else could exploit to bring you to ruin or cause you to act against your best in
 >
 > Tika Waylan's bond is to the Inn of the Last Home. The inn's proprietor gave her a new chance at life, and her friendship with her adventuring companions was forged during her time working there. Its destruction by the marauding dragonarmies gives Tika a very personal reason to hate them with a fiery passion. Her bond might be phrased as "I will do whatever it takes to punish the dragonarmies for the destruction of the Inn of the Last Home."
 >
-> Artemis Entreri's bond is a strange, almost paradoxical relationship with Drizzt Do'Urden, his equal in swordplay and grim determination. In his first battle with Drizzt, Artemis recognized something of himself in his opponent, some indication that if his life had gone differently, he might have led a life more like the heroic drow's. From that moment, Artemis is more than a criminal assassin - he is an antihero, driven by his rivalry with Drizzt. His bond might be phrased as "I will not rest until I have proved myself better than Drizzt Do'Urden."
+> Artemis Entreri's bond is a strange, almost paradoxical relationship with Drizzt Do'Urden, his equal in swordplay and grim determination. In his first battle with Drizzt, Artemis recognized something of himself in his opponent, some indication that if his life had gone differently, he might have led a life more like the heroic drow's. From that moment, Artemis is more than a criminal assassin---he is an antihero, driven by his rivalry with Drizzt. His bond might be phrased as "I will not rest until I have proved myself better than Drizzt Do'Urden."
 >
 > Each of these characters also has an important flaw. Tika Waylan is naive and emotionally vulnerable, younger than her companions and annoyed that they still think of her as the kid they knew years ago. She might even be tempted to act against her principles if she's convinced that a particular achievement would demonstrate her maturity. Artemis Entreri is completely walled off from any personal relationship and just wants to be left alone.
 
@@ -189,7 +189,7 @@ Inspiration is a rule the Dungeon Master can use to reward you for playing your 
 
 Your DM can choose to give you inspiration for a variety of reasons. Typically, DMs award it when you play out your personality traits, give in to the drawbacks presented by a flaw or bond, and otherwise portray your character in a compelling way. Your DM will tell you how you can earn inspiration in the game.
 
-You either have inspiration or you don't - you can't stockpile multiple "inspirations" for later use.
+You either have inspiration or you don't---you can't stockpile multiple "inspirations" for later use.
 
 ### Using Inspiration
 

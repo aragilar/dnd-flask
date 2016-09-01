@@ -11,7 +11,7 @@ a detailed explanation of each one.
 
 Adventurers sometimes advance in more than one class. A rogue might switch direction in life and swear the oath of a paladin, A barbarian might discover latent magical abilily and dabble in the sorcerer class while continuing to advance as a barbarian. Elves are known to combine martial mastery with magical training and advance as fighters and wizards simultaneously. Optional rules for combining classes in this way, called multiclassing, appear in chapter 6.
 
-Twelve classes - listed in the Classes table - are found in almost every D&D world and define the spectrum of typical adventurers.
+Twelve classes---listed in the Classes table---are found in almost every D&D world and define the spectrum of typical adventurers.
 
 **Classes**
 
@@ -20,7 +20,7 @@ Twelve classes - listed in the Classes table - are found in almost every D&D wor
 | Barbarian | A fierce warrior of primitive background who can enter a battle rage | d12 | Strength | Strength & Constitution | Light and medium armor, shields, simple and martial weapons
 | Bard | An inspiring magician whose power echoes the music of creation | d8 | Charisma | Dexterity & Charisma | Light armor, simple weapons, hand crossbows, longswords, rapiers, shortswords
 | Cleric | A priestly champion who wields divine magic in service of a higher power | d8 | Wisdom | Wisdom & Charisma | Light and medium armor, shields, simple weapons
-| Druid | A priest of the Old Faith, wielding the powers of nature - moonlight and plant growth, fire and lightning - and adopting animal forms | d8 | Wisdom | Intelligence & Wisdom | Light and medium armor (nonmetal), shields (nonmetal), clubs, daggers, darts, javelins, maces, quarterslaffs, scimitars, sickles, slings, spears
+| Druid | A priest of the Old Faith, wielding the powers of nature---moonlight and plant growth, fire and lightning---and adopting animal forms | d8 | Wisdom | Intelligence & Wisdom | Light and medium armor (nonmetal), shields (nonmetal), clubs, daggers, darts, javelins, maces, quarterslaffs, scimitars, sickles, slings, spears
 | Fighter | A master of martial combat, skilled wilh a variety of weapons and armor | d10 | Strength or Dexterity | Strength & Constitution | All armor, shields, simple and martial weapons
 | Monk | A master of martial arts, harnessing the power of the body in pursuit of physical and spiritual perfection | d8 | Dexterity & Wisdom | Strength & Dexterity | Simple weapons, shortswords
 | Paladin | A holy warrior bound to a sacred oath | d10 | Strength & Charisma | Wisdom & Charisma | All armor, shields, simple and martial weapons

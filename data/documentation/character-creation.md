@@ -70,7 +70,7 @@ Your proficiency bonus can't be added to a single die roll or other number more 
 
 Bob imagines Bruenor charging into battle with an axe, one horn on his helmet broken off. He makes Bruenor a fighter and notes the fighter's proficiencies and 1st-level class features on his character sheet.
 
-As a 1st-level fighter, Bruenor has 1 Hit Die - a d10 - and starts with hit points equal to 10 + his Constitution modifier. Bob notes this, and will record the final number after he determines Bruenor's Constitution score (see step 3). Bob also notes the proficiency bonus for a 1st-level character, which is +2.
+As a 1st-level fighter, Bruenor has 1 Hit Die---a d10---and starts with hit points equal to 10 + his Constitution modifier. Bob notes this, and will record the final number after he determines Bruenor's Constitution score (see step 3). Bob also notes the proficiency bonus for a 1st-level character, which is +2.
 
 > **Quick Build**
 >
@@ -198,11 +198,11 @@ A character with high Charisma exudes confidence, which is usually mixed with a 
 
 Bob fills in some of Bruenor's basic details: his name, his sex (male), his height and weight, and his alignment (lawful good). His high Strength and Constitution suggest a healthy, athletic body, and his low Intelligence suggests a degree of forgetfulness.
 
-Bob decides that Bruenor comes from a noble line, but his clan was expelled from its homeland when Bruenor was very young. He grew up working as a smith in the remote villages of Icewind Dale. But Bruenor has a heroic destiny - to reclaim his homeland - so Bob chooses the folk hero background for his dwarf. He notes the proficiencies and special feature this background gives him.
+Bob decides that Bruenor comes from a noble line, but his clan was expelled from its homeland when Bruenor was very young. He grew up working as a smith in the remote villages of Icewind Dale. But Bruenor has a heroic destiny---to reclaim his homeland---so Bob chooses the folk hero background for his dwarf. He notes the proficiencies and special feature this background gives him.
 
 Bob has a pretty clear picture of Bruenor's personality in mind, so he skips the personality traits suggested in the folk hero background, noting instead that Bruenor is a caring, sensitive dwarf who genuinely loves his friends and allies, but he hides this soft heart behind a gruff, snarling demeanor. He chooses the ideal of fairness from the list in his background, noting that Bruenor believes that no one is above the law.
 
-Given his history, Bruenor's bond is obvious: he aspires to someday reclaim Mithral Hall, his homeland, from the shadow dragon that drove the dwarves out. His flaw is tied to his caring, sensitive nature - he has a soft spot for orphans and wayward souls, leading him to show mercy even when it might not be warranted.
+Given his history, Bruenor's bond is obvious: he aspires to someday reclaim Mithral Hall, his homeland, from the shadow dragon that drove the dwarves out. His flaw is tied to his caring, sensitive nature---he has a soft spot for orphans and wayward souls, leading him to show mercy even when it might not be warranted.
 
 ## 5. Choose Equipment
 

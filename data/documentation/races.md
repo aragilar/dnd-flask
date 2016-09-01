@@ -2,11 +2,11 @@
 
 *Player's Handbook: Chapter 2*
 
-A visit to one of the great cities in the worlds of Dungeons & Dragons - Walerdeep, the Free Cily of Greyhawk, or even uncanny Sigil, the City of Doors - overwhelms the senses. Voices chatter in counlless different languages. The smells of cooking in dozens of different cuisines mingle with the odors of crowded streets and poor sanitation. Buildings in myriad architectural styles display the diverse origins of their inhabitants.
+A visit to one of the great cities in the worlds of Dungeons & Dragons---Walerdeep, the Free Cily of Greyhawk, or even uncanny Sigil, the City of Doors---overwhelms the senses. Voices chatter in counlless different languages. The smells of cooking in dozens of different cuisines mingle with the odors of crowded streets and poor sanitation. Buildings in myriad architectural styles display the diverse origins of their inhabitants.
 
-And the people themselves - people of varying size, shape, and color, dressed in a dazzling spectrum of styles and hues - represent many different races, from diminutive halflings and stout dwarves to majestically beautiful elves, mingling among a variety of human ethnicities.
+And the people themselves---people of varying size, shape, and color, dressed in a dazzling spectrum of styles and hues---represent many different races, from diminutive halflings and stout dwarves to majestically beautiful elves, mingling among a variety of human ethnicities.
 
-Scattered among the members of these more common races are the true exolics: a hulking dragonborn here, pushing his way through the crowd, and a sly tiefling there, lurking in the shadows with mischief in her eyes. A group of gnomes laughs as one of them activates a clever wooden toy that moves of its own accord. Half-elves and half-orcs live and work alongside humans, without fully belonging to the races of either of their parents. And there, well out of the sunlight, is a lone drow - a fugilive from the subterranean expanse of the Underdark, trying to make his way in a world that fears his kind.
+Scattered among the members of these more common races are the true exolics: a hulking dragonborn here, pushing his way through the crowd, and a sly tiefling there, lurking in the shadows with mischief in her eyes. A group of gnomes laughs as one of them activates a clever wooden toy that moves of its own accord. Half-elves and half-orcs live and work alongside humans, without fully belonging to the races of either of their parents. And there, well out of the sunlight, is a lone drow---a fugilive from the subterranean expanse of the Underdark, trying to make his way in a world that fears his kind.
 
 ## Choosing a Race
 
