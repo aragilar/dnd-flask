@@ -202,26 +202,16 @@ class Monster (utils.Base):
                 (None, self.traits),
                 ('Actions', self.actions),
                 ('Reactions', self.reactions),
+                ('Legendary Actions', self.legendary_actions, '**'),
             ]:
                 if temp:
                     if name:
                         ret += '<h2>%s</h2>\n' % name
                     for item in temp:
-                        ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:]).lstrip()))
-            
-            if self.legendary_actions:
-                ret += '<h2>Legendary Actions</h2>\n'
-                desc = 0
-                while isinstance(self.legendary_actions[desc], str):
-                    desc += 1
-                temp = self.legendary_actions[desc:]
-                desc = self.legendary_actions[:desc]
-                
-                if desc:
-                    ret += utils.convert('\n'.join(desc))
-                
-                for item in temp:
-                    ret += utils.convert('**{}.** {}'.format(item[0], '\n'.join(item[1:]).lstrip()))
+                        if isinstance(item, list):
+                            ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:]).lstrip()))
+                        else:
+                            ret += utils.convert(item)
             
             ret += '</div>\n'
             
