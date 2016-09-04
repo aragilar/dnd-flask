@@ -275,7 +275,7 @@ A skill bonus is the sum of a monster's relevant ability modifier and its profic
 
 ### Vulnerabilities, Resistances, and Immunities
 
-Some creatures have vulnerability, resistance, or immunity to certain types of damage. Additionally, some creatures are immune to certain conditions. If a monster is immune to a game effect that isn't considered damage or a condition, it has a special trait.
+Some creatures have vulnerability, resistance, or immunity to certain types of damage. Particular creatures are even resistant or immune to damage from nonmagical attacks (a magical attack is an attack delivered by a spell, a magic item, or another magical source). In addition, some creatures are immune to certain conditions.
 
 ### Senses
 
@@ -384,7 +384,7 @@ A monster's innate spells can't be swapped out with other spells. If a monster's
 
 A monster with the Spellcasting class feature has a spellcaster level and spell slots, which it uses to cast its spells of 1st level and higher (as explained in the *Player's Handbook*). The spellcaster level is also used for any cantrips included in the feature.
 
-The monster has a list of spells known or prepared from a particular class. The list might also include spells from a feature in that class, such as the Divine Domain feature of the cleric or the Druid Circle feature of the druid.
+The monster has a list of spells known or prepared from a particular class. The list might also include spells from a feature in that class, such as the Divine Domain feature of the cleric or the Druid Circle feature of the druid. The monster is considered a member of that class when attuning to or using a magic item that requires membership in the class or access to its spell list.
 
 A monster can cast a spell from its list at a higher level if it has the spell slot to do so. For example, a drow mage with the 3rd-level *lightning bolt* spell can cast it as a 5th-level spell by using one of its 5th-level spell slots.
 
@@ -458,9 +458,11 @@ A creature grappled by the monster can use its action to try to escape. To do so
 
 A legendary creature can do things that ordinary creatures can't. Legendary creatures can take special actions outside their turns, and a few can exert power over their environment, causing extraordinary magical effects to occur in their vicinity.
 
+If a creature assumes the form of a legendary creature, such as through a spell, it doesn't gain that form's legendary actions, lair actions, or regional effects.
+
 ### Legendary Actions
 
-A legendary creature can take a certain number of special actions---called legendary actions---outside its turn. Only one legendary action option can be used at a time and only at the end of another creature's turn. A legendary creature regains spent legendary actions at the start of its turn. It isn't required to use its legendary actions, and it can't use legendary actions while incapacitated.
+A legendary creature can take a certain number of special actions---called legendary actions---outside its turn. Only one legendary action option can be used at a time and only at the end of another creature's turn. A legendary creature regains spent legendary actions at the start of its turn. It can forgo using them, and it can't use them while incapacitated or otherwise unable to take actions. If surprised, it can't use them until after its first turn in the combat.
 
 ### A Legendary Creature's Lair
 
@@ -468,7 +470,7 @@ A legendary creature might have a section describing its lair and the special ef
 
 #### Lair Actions
 
-If a legendary creature has lair actions, it can use them to harness the ambient magic in its lair. On initiative count 20 (losing all initiative ties), the creature can use one of its lair action options, or forgo using any of them that round.
+If a legendary creature has lair actions, it can use them to harness the ambient magic in its lair. On initiative count 20 (losing all initiative ties), it can use one of its lair action options. It can't do so while incapacitated or otherwise unable to take actions. If surprised, it can't use one until after its first turn in the combat.
 
 #### Regional Effects
 
