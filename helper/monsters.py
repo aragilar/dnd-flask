@@ -203,7 +203,6 @@ class Monster (utils.Base):
             ]:
                 if temp:
                     if name:
-                        print(name)
                         md += '## {}\n\n'.format(name)
                     for item in temp:
                         if isinstance(item, list):
