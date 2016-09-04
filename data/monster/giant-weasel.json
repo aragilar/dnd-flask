@@ -1,0 +1,40 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 5,
+        "con": 10,
+        "dex": 16,
+        "int": 4,
+        "str": 11,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 5 (1d4 + 3) piercing damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "13",
+    "experience": 25,
+    "hit points": "9 (2d8)",
+    "name": "Giant Weasel",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Perception": 3,
+        "Stealth": 5
+    },
+    "speed": [
+        "40 ft."
+    ],
+    "traits": [
+        [
+            "Keen Hearing and Smell",
+            "The weasel has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+        ]
+    ],
+    "type": "beast"
+}

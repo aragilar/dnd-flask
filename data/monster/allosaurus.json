@@ -1,0 +1,43 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 5,
+        "con": 17,
+        "dex": 13,
+        "int": 2,
+        "str": 19,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 15 (2d10 + 4) piercing damage."
+        ],
+        [
+            "Claw",
+            "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 8 (1d8 + 4) slashing damage."
+        ]
+    ],
+    "armor class": "13 (natural armor)",
+    "description": [
+        "The allosaurus is a predator possessing great size, strength, and speed. It can run down almost any prey over open ground, pouncing to pull creatures down with its wicked claws."
+    ],
+    "experience": 450,
+    "group": "Dinosaurs",
+    "hit points": "51 (6d10 + 18)",
+    "name": "Allosaurus",
+    "size": "Large",
+    "skills": {
+        "Perception": 5
+    },
+    "speed": [
+        "60 ft."
+    ],
+    "traits": [
+        [
+            "Pounce",
+            "If the allosaurus moves at least 30 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the allosaurus can make one bite attack against it as a bonus action."
+        ]
+    ],
+    "type": "beast"
+}

@@ -1,0 +1,72 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 7,
+        "con": 16,
+        "dex": 17,
+        "int": 6,
+        "str": 10,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The elemental makes two touch attacks."
+        ],
+        [
+            "Touch",
+            "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 10 (2d6 + 3) fire damage. If the target is a creature or a flammable object, it ignites. Until a creature takes an action to douse the fire, the target takes 5 (1d10) fire damage at the start of each of its turns."
+        ]
+    ],
+    "alignment": "neutral",
+    "armor class": "13",
+    "condition immunities": [
+        "exhaustion",
+        "grappled",
+        "paralyzed",
+        "petrified",
+        "poisoned",
+        "prone",
+        "restrained",
+        "unconscious"
+    ],
+    "damage immunities": [
+        "fire",
+        "poison"
+    ],
+    "damage resistances": [
+        "bludgeoning, piercing, and slashing from nonmagical attacks"
+    ],
+    "description": [
+        "A faint humanoid shape threads through the core of this wild, moving flame. A fire elemental is a force of capricious devastation. Wherever it moves, it sets its surroundings ablaze, turning the world to ash, smoke, and cinders. Water can halt its destructive progress, causing the fire elemental to shrink back, hissing and smoking in pain and rage."
+    ],
+    "experience": 1800,
+    "group": "Elementals",
+    "hit points": "102 (12d10 + 36)",
+    "languages": [
+        "Ignan"
+    ],
+    "name": "Fire Elemental",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Large",
+    "speed": [
+        "50 ft."
+    ],
+    "traits": [
+        [
+            "Fire Form",
+            "The elemental can move through a space as narrow as 1 inch wide without squeezing. A creature that touches the elemental or hits it with a melee attack while within 5 feet of it takes 5 (1d10) fire damage. In addition, the elemental can enter a hostile creature's space and stop there. The first time it enters a creature's space on a turn, that creature takes 5 (1d10) fire damage and catches fire; until someone takes an action to douse the fire, the creature takes 5 (1d10) fire damage at the start of each of its turns."
+        ],
+        [
+            "Illumination",
+            "The elemental sheds bright light in a 30-foot radius and dim light in an additional 30 feet."
+        ],
+        [
+            "Water Susceptibility",
+            "For every 5 feet the elemental moves in water, or for every gallon of water splashed on it, it takes 1 cold damage."
+        ]
+    ],
+    "type": "elemental"
+}

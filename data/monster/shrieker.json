@@ -1,0 +1,45 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 1,
+        "con": 10,
+        "dex": 1,
+        "int": 1,
+        "str": 1,
+        "wis": 3
+    },
+    "alignment": "unaligned",
+    "armor class": "5",
+    "condition immunities": [
+        "blinded",
+        "deafened",
+        "frightened"
+    ],
+    "description": [
+        "A shrieker is a human-sized mushroom that emits a piercing screech to drive off creatures that disturb it. Other creatures use the fungi as an alarm to signal the approach of prey, and various intelligent races of the Underdark cultivate shriekers on the outskirts of their communities to discourage trespassers."
+    ],
+    "experience": 10,
+    "group": "Fungi",
+    "hit points": "13 (3d8)",
+    "name": "Shrieker",
+    "reactions": [
+        [
+            "Shriek",
+            "When bright light or a creature is within 30 feet of the shrieker, it emits a shriek audible within 300 feet of it. The shrieker continues to shriek until the disturbance moves out of range and for 1d4 of the shrieker's turns afterward."
+        ]
+    ],
+    "senses": [
+        "blindsight 30 ft. (blind beyond this radius)"
+    ],
+    "size": "Medium",
+    "speed": [
+        "0 ft."
+    ],
+    "traits": [
+        [
+            "False Appearance",
+            "While the shrieker remains motionless, it is indistinguishable from an ordinary fungus."
+        ]
+    ],
+    "type": "plant"
+}

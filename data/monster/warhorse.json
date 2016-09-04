@@ -1,0 +1,48 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 7,
+        "con": 13,
+        "dex": 12,
+        "int": 2,
+        "str": 18,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Hooves",
+            "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) bludgeoning damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "11",
+    "description": [
+        "> **Variant: Warhorse Armor**",
+        ">",
+        "> An armored warhorse has an AC based on the type of barding worn (see the *Player's Handbook* for more information on barding). The horse's AC includes its Dexterity modifier, where applicable. Barding doesn't alter the horse's challenge rating.",
+        ">",
+        "> | AC | Barding |",
+        "> |:--:|---------|",
+        "> | 12 | Leather",
+        "> | 13 | Studded leather",
+        "> | 14 | Ring mail",
+        "> | 15 | Scale mail",
+        "> | 16 | Chain mail",
+        "> | 17 | Splint",
+        "> | 18 | Plate"
+    ],
+    "experience": 100,
+    "hit points": "19 (3d10 + 3)",
+    "name": "Warhorse",
+    "size": "Large",
+    "speed": [
+        "60 ft."
+    ],
+    "traits": [
+        [
+            "Trampling Charge",
+            "If the horse moves at least 20 feet straight toward a creature and then hits it with a hooves attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the horse can make another attack with its hooves against it as a bonus action."
+        ]
+    ],
+    "type": "beast"
+}

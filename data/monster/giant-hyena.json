@@ -1,0 +1,36 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 7,
+        "con": 14,
+        "dex": 14,
+        "int": 2,
+        "str": 16,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6 + 3) piercing damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "12",
+    "experience": 200,
+    "hit points": "45 (6d10 + 12)",
+    "name": "Giant Hyena",
+    "size": "Large",
+    "skills": {
+        "Perception": 3
+    },
+    "speed": [
+        "50 ft."
+    ],
+    "traits": [
+        [
+            "Rampage",
+            "When the hyena reduces a creature to 0 hit points with a melee attack on its turn, the hyena can take a bonus action to move up to half its speed and make a bite attack."
+        ]
+    ],
+    "type": "beast"
+}

@@ -1,0 +1,45 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 9,
+        "con": 12,
+        "dex": 12,
+        "int": 10,
+        "str": 13,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Longsword",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. Hit: 5 (1d8 + 1) slashing damage, or 6 (1d10 + 1) slashing damage if used with two hands."
+        ],
+        [
+            "Longbow",
+            "*Ranged Weapon Attack:* +3 to hit, range 150/600 ft., one target. Hit: 5 (1d8 + 1) piercing damage."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "18 (chain mail, shield)",
+    "experience": 100,
+    "group": "Hobgoblins",
+    "hit points": "11 (2d8 + 2)",
+    "languages": [
+        "Common",
+        "Goblin"
+    ],
+    "name": "Hobgoblin",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Martial Advantage",
+            "Once per turn, the hobgoblin can deal an extra 7 (2d6) damage to a creature it hits with a weapon attack if that creature is within 5 feet of an ally of the hobgoblin that isn't incapacitated."
+        ]
+    ],
+    "type": "humanoid (goblinoid)"
+}

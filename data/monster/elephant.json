@@ -1,0 +1,37 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 6,
+        "con": 17,
+        "dex": 9,
+        "int": 3,
+        "str": 22,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Gore",
+            "*Melee Weapon Attack:* +8 to hit, reach 5 ft., one target. *Hit:* 19 (3d8 + 6) piercing damage."
+        ],
+        [
+            "Stomp",
+            "*Melee Weapon Attack:* +8 to hit, reach 5 ft., one prone creature. *Hit:* 22 (3d10 + 6) bludgeoning damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "12 (natural armor)",
+    "experience": 1100,
+    "hit points": "76 (8d12 + 24)",
+    "name": "Elephant",
+    "size": "Huge",
+    "speed": [
+        "40 ft."
+    ],
+    "traits": [
+        [
+            "Trampling Charge",
+            "If the elephant moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the elephant can make one stomp attack against it as a bonus action."
+        ]
+    ],
+    "type": "beast"
+}

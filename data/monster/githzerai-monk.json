@@ -1,0 +1,69 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 10,
+        "con": 12,
+        "dex": 15,
+        "int": 13,
+        "str": 12,
+        "wis": 14
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The githzerai makes two unarmed strikes."
+        ],
+        [
+            "Unarmed Strike",
+            "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 6 (1d8 + 2) bludgeoning damage plus 9 (2d8) psychic damage. This is a magic weapon attack."
+        ]
+    ],
+    "alignment": "lawful neutral",
+    "armor class": "14",
+    "experience": 450,
+    "group": "Gith",
+    "hit points": "38 (7d8 + 7)",
+    "languages": [
+        "Gith"
+    ],
+    "name": "Githzerai Monk",
+    "saving throws": {
+        "Dex": 4,
+        "Int": 3,
+        "Str": 3,
+        "Wis": 4
+    },
+    "size": "Medium",
+    "skills": {
+        "Insight": 4,
+        "Perception": 4
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Innate Spellcating (Psionics)",
+            "The githzerai's innate spellcasting ability is Wisdom. It can innately cast the following spells, requiring no components:",
+            "",
+            "At will: *mage hand* (the hand is invisible)",
+            "",
+            "3/day each: *feather fall*, *jump*, *see invisibility*, *shield*",
+            "",
+            "<spell>Mage Hand</spell>",
+            "",
+            "<spell>Feather Fall</spell>",
+            "",
+            "<spell>Jump</spell>",
+            "",
+            "<spell>See Invisibility</spell>",
+            "",
+            "<spell>Shield</spell>"
+        ],
+        [
+            "Psychic Defense",
+            "While the githzerai is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
+        ]
+    ],
+    "type": "humanoid (gith)"
+}

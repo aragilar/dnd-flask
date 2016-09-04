@@ -1,0 +1,92 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 16,
+        "con": 21,
+        "dex": 15,
+        "int": 19,
+        "str": 20,
+        "wis": 17
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The glabrezu makes four attacks: two with its pincers and two with its fists. Alternatively, it makes two attacks with its pincers and casts one spell."
+        ],
+        [
+            "Pincer",
+            "*Melee Weapon Attack:* +9 to hit, reach 10ft., one target. *Hit:* 16 (2d10 + 5) bludgeoning damage. If the target is a Medium or smaller creature, it is grappled (escape DC 15). The glabrezu has two pincers, each of which can grapple only one target."
+        ],
+        [
+            "Fist",
+            "*Melee Weapon Attack:* +9 to hit, reach 5 ft., one target. *Hit:* 7 (2d4 + 2) bludgeoning damage."
+        ]
+    ],
+    "alignment": "chaotic evil",
+    "armor class": "17 (natural armor)",
+    "condition immunities": [
+        "poisoned"
+    ],
+    "damage immunities": [
+        "poison"
+    ],
+    "damage resistances": [
+        "cold",
+        "fire",
+        "lightning",
+        "bludgeoning, piercing, and slashing from nonmagical attacks"
+    ],
+    "description": [
+        "A glabrezu takes great pleasure in destroying mortals through temptation, and these creatures are among the few demons to offer their service to creatures foolish enough to summon them.",
+        "",
+        "Although glabrezus are devastating in combat, they prefer to tempt victims into ruin, using power or wealth as a lure. Engaging in guile, trickery, and evil bargains, a glabrezu hoards riches that it uses to fulfill promises to shortsighted summoners and weak-willed mortals. However, if its attempts to entice or deceive fail, a glabrezu has the strength to fight and win."
+    ],
+    "experience": 5000,
+    "group": "Demons",
+    "hit points": "157 (15d10 + 75)",
+    "languages": [
+        "Abyssal",
+        "telepathy 120 ft."
+    ],
+    "name": "Glabrezu",
+    "saving throws": {
+        "Cha": 7,
+        "Con": 9,
+        "Str": 9,
+        "Wis": 7
+    },
+    "senses": [
+        "truesight 120 ft."
+    ],
+    "size": "Large",
+    "speed": [
+        "40 ft."
+    ],
+    "traits": [
+        [
+            "Innate Spellcating",
+            "The glabrezu's spellcasting ability is Intelligence (spell save DC 16). The glabrezu can innately cast the following spells, requiring no material components:",
+            "",
+            "At will: *darkness*, *detect magic*, *dispel magic*",
+            "",
+            "1/day each: *confusion*, *fly*, *power word stun*",
+            "",
+            "<spell>Darkness</spell>",
+            "",
+            "<spell>Detect Magic</spell>",
+            "",
+            "<spell>Dispel Magic</spell>",
+            "",
+            "<spell>Confusion</spell>",
+            "",
+            "<spell>Fly</spell>",
+            "",
+            "<spell>Power Word Stun</spell>"
+        ],
+        [
+            "Magic Resistance",
+            "The glabrezu has advantage on saving throws against spells and other magical effects."
+        ]
+    ],
+    "type": "fiend (demon)"
+}

@@ -1,0 +1,57 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 8,
+        "con": 11,
+        "dex": 14,
+        "int": 7,
+        "str": 12,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The snake makes two attacks: one with its bite and one with its tail."
+        ],
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 3 (1d4 + 1) piercing damage plus 3 (1d6) fire damage."
+        ],
+        [
+            "Tail",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 3 (1d4 + 1) bludgeoning damage plus 3 (1d6) fire damage."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "14 (natural armor)",
+    "damage immunities": [
+        "fire"
+    ],
+    "damage resistances": [
+        "bludgeoning, piercing, and slashing from nonmagical attacks"
+    ],
+    "damage vulnerabilities": [
+        "cold"
+    ],
+    "experience": 200,
+    "group": "Salamanders",
+    "hit points": "22 (5d8)",
+    "languages": [
+        "understands Ignan but can't speak"
+    ],
+    "name": "Fire Snake",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Heated Body",
+            "A creature that touches the snake or hits it with a melee attack while within 5 feet of it takes 3 (1d6) fire damage."
+        ]
+    ],
+    "type": "elemental"
+}

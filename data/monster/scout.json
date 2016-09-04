@@ -1,0 +1,54 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 11,
+        "con": 12,
+        "dex": 14,
+        "int": 11,
+        "str": 11,
+        "wis": 13
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The scout makes two melee attacks or two ranged attacks."
+        ],
+        [
+            "Shortsword",
+            "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6 + 2) piercing damage."
+        ],
+        [
+            "Longbow",
+            "*Ranged Weapon Attack:* +4 to hit, ranged 150/600 ft., one target. *Hit:* 6 (1d8 + 2) piercing damage."
+        ]
+    ],
+    "alignment": "any alignment",
+    "armor class": "13 (leather armor)",
+    "description": [
+        "Scouts are skilled hunters and trackers who offer their services for a fee. Most hunt wild game, but a few work as bounty hunters, serve as guides, or provide military reconnaissance."
+    ],
+    "experience": 100,
+    "group": "Nonplayer Characters",
+    "hit points": "16 (3d8 + 3)",
+    "languages": [
+        "any one language (usually Common)"
+    ],
+    "name": "Scout",
+    "size": "Medium",
+    "skills": {
+        "Nature": 4,
+        "Perception": 5,
+        "Stealth": 6,
+        "Survival": 5
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Keen Hearing and Sight",
+            "The scout has advantage on Wisdom (Perception) checks that rely on hearing or sight."
+        ]
+    ],
+    "type": "humanoid (any race)"
+}

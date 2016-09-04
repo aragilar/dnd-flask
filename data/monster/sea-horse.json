@@ -1,0 +1,28 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 2,
+        "con": 8,
+        "dex": 12,
+        "int": 1,
+        "str": 1,
+        "wis": 10
+    },
+    "alignment": "unaligned",
+    "armor class": "11",
+    "experience": 0,
+    "hit points": "1 (1d4 - 1)",
+    "name": "Sea Horse",
+    "size": "Tiny",
+    "speed": [
+        "0 ft.",
+        "swim 20 ft."
+    ],
+    "traits": [
+        [
+            "Water Breathing",
+            "The sea horse can breathe only underwater."
+        ]
+    ],
+    "type": "beast"
+}

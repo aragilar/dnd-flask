@@ -1,0 +1,51 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 1,
+        "con": 16,
+        "dex": 12,
+        "int": 2,
+        "str": 17,
+        "wis": 6
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The spore servant makes two claw attacks."
+        ],
+        [
+            "Claw",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 6 (1d6 + 3) slashing damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "13 (natural armor)",
+    "condition immunities": [
+        "blinded",
+        "charmed",
+        "frightened",
+        "paralyzed",
+        "poisoned"
+    ],
+    "damage immunities": [
+        "poison"
+    ],
+    "description": [
+        "# Sample Spore Servant",
+        "",
+        "This spore servant statistics presented here use a quaggoth as the base creature."
+    ],
+    "experience": 200,
+    "group": "Myconids",
+    "hit points": "45 (6d8 + 18)",
+    "name": "Quaggoth Spore Servant",
+    "senses": [
+        "blindsight 30 ft. (blind beyond this radius)"
+    ],
+    "size": "Medium",
+    "speed": [
+        "20 ft.",
+        "climb 20 ft."
+    ],
+    "type": "plant"
+}

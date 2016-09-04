@@ -1,0 +1,70 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 17,
+        "con": 16,
+        "dex": 15,
+        "int": 14,
+        "str": 19,
+        "wis": 13
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The sahuagin makes three attacks: one with his bite and two with his claws or trident."
+        ],
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 9 (2d4 + 4) piercing damage."
+        ],
+        [
+            "Claws",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) slashing damage."
+        ],
+        [
+            "Trident",
+            "*Melee or Ranged Weapon Attack:* +7 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 11 (2d6 + 4) piercing damage, or 13 (2d8 + 4) piercing damage if used with two hands to make a melee attack."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "16 (breastplate)",
+    "experience": 1800,
+    "group": "Sahuagin",
+    "hit points": "76 (9d10 + 27)",
+    "languages": [
+        "Sahuagin"
+    ],
+    "name": "Sahuagin Baron",
+    "saving throws": {
+        "Con": 6,
+        "Dex": 5,
+        "Int": 5,
+        "Wis": 4
+    },
+    "senses": [
+        "darkvision 120 ft."
+    ],
+    "size": "Large",
+    "skills": {
+        "Perception": 7
+    },
+    "speed": [
+        "30 ft.",
+        "swim 50 ft."
+    ],
+    "traits": [
+        [
+            "Blood Frenzy",
+            "The sahuagin has advantage on melee attack rolls against any creature that doesn't have all its hit points."
+        ],
+        [
+            "Limited Amphibiousness",
+            "The sahuagin can breathe air and water, but he needs to be submerged at least once every 4 hours to avoid suffocating."
+        ],
+        [
+            "Shark Telepathy",
+            "The sahuagin can magically command any shark within 120 feet of him, using a limited telepathy."
+        ]
+    ],
+    "type": "humanoid (sahuagin)"
+}

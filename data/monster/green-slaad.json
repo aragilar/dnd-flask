@@ -1,0 +1,104 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 12,
+        "con": 16,
+        "dex": 15,
+        "int": 11,
+        "str": 18,
+        "wis": 8
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The slaad makes three attacks: one with its bite and two with its claws or staff. Alternatively, it uses its Hurl Flame twice."
+        ],
+        [
+            "Bite (Slaad Form Only)",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) piercing damage."
+        ],
+        [
+            "Claw (Slaad Form Only)",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 7 (1d6 + 4) slashing damage."
+        ],
+        [
+            "Staff",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) bludgeoning damage."
+        ],
+        [
+            "Hurl Flame",
+            "*Ranged Spell Attack:* +4 to hit, range 60 ft., one target. *Hit:* 10 (3d6) fire damage. The fire ignites flammable objects that aren't being worn or carried."
+        ]
+    ],
+    "alignment": "chaotic neutral",
+    "armor class": "16",
+    "damage resistances": [
+        "acid",
+        "cold",
+        "fire",
+        "lightning",
+        "thunder"
+    ],
+    "description": [
+        "Green slaadi are surprisingly intelligent and possess innate spellcasting ability. A green slaad can change its shape to appear as a humanoid. If it was born of a humanoid host, the slaad usually adopts its host's form.",
+        "",
+        "At some unpredictable point in its existence, a green slaad unlocks the means to magically, instantly, and permanently transform itself into a gray slaad. Unlocking this knowledge can take years, even decades."
+    ],
+    "experience": 3900,
+    "group": "Slaadi",
+    "hit points": "127 (15d10 + 45)",
+    "languages": [
+        "Slaad",
+        "telepathy 60 ft."
+    ],
+    "name": "Green Slaad",
+    "senses": [
+        "blindsight 30 ft.",
+        "darkvision 60 ft."
+    ],
+    "size": "Large",
+    "skills": {
+        "Arcana": 3,
+        "Perception": 2
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Shapechanger",
+            "The slaad can use its action to polymorph into a Small or Medium humanoid, or back into its true form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+        ],
+        [
+            "Innate Spellcasting",
+            "The slaad's innate spellcasting ability is Charisma (spell save DC 12). The slaad can innately cast the following spells, requiring no material components:",
+            "",
+            "At will: *detect magic*, *detect thoughts*, *mage hand*",
+            "",
+            "2/day each: *fear*, *invisibility* (self only)",
+            "",
+            "1/day: *fireball*",
+            "",
+            "<spell>Detect Magic</spell>",
+            "",
+            "<spell>Detect Thoughts</spell>",
+            "",
+            "<spell>Mage Hand</spell>",
+            "",
+            "<spell>Fear</spell>",
+            "",
+            "<spell>Invisibility</spell>",
+            "",
+            "<spell>Fireball</spell>"
+        ],
+        [
+            "Magic Resistance",
+            "The slaad has advantage on saving throws against spells and other magical effects."
+        ],
+        [
+            "Regeneration",
+            "The slaad regains 10 hit points at the start of its turn if it has at least 1 hit point."
+        ]
+    ],
+    "type": "aberration (shapechanger)"
+}

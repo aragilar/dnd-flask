@@ -1,0 +1,40 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 5,
+        "con": 10,
+        "dex": 15,
+        "int": 2,
+        "str": 12,
+        "wis": 9
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 6 (2d4 + 1) piercing damage."
+        ]
+    ],
+    "armor class": "13 (natural armor)",
+    "description": [
+        "These flying reptiles have wingspans of 15 to 20 feet and typically dive for small marine prey, though they are opportunists and will attack any creature that appears edible. A pteranodon has no teeth, instead using its sharp beak to stab prey too large to swallow with one gulp."
+    ],
+    "experience": 50,
+    "group": "Dinosaurs",
+    "hit points": "13 (3d8)",
+    "name": "Pteranodon",
+    "size": "Medium",
+    "skills": {
+        "Perception": 1
+    },
+    "speed": [
+        "10 ft.",
+        "fly 60 ft."
+    ],
+    "traits": [
+        [
+            "Flyby",
+            "The pteranodon doesn't provoke an opportunity attack when it flies out of an enemy's reach."
+        ]
+    ],
+    "type": "beast"
+}

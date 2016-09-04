@@ -1,0 +1,104 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 16,
+        "con": 12,
+        "dex": 16,
+        "int": 15,
+        "str": 15,
+        "wis": 15
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +5 to hit, reach 10 ft., one creature. *Hit:* 10 (2d6 + 3) piercing damage plus 10 (3d6) poison damage."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "15 (natural armor)",
+    "condition immunities": [
+        "charmed",
+        "exhaustion",
+        "paralyzed",
+        "poisoned"
+    ],
+    "damage immunities": [
+        "poison"
+    ],
+    "description": [
+        "In response to the long history of conflict between the yuan-ti and the nagas, yuan-ti created a necromantic ritual that could halt a naga's resurrection by transforming the living naga into a skeletal undead servitor. A bone naga retains only a few of the spells it knew in life."
+    ],
+    "experience": 1100,
+    "group": "Nagas",
+    "hit points": "58 (9d10 + 9)",
+    "languages": [
+        "Common plus one other language"
+    ],
+    "name": "Bone Naga",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Large",
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Spellcasting",
+            "The naga is a 5th-level spellcaster (spell save DC 12, +4 to hit with spell attacks) that needs only verbal components to cast its spells.",
+            "",
+            "If the naga was a guardian naga in life, its spellcasting ability is Wisdom, and it has the following cleric spells prepared:",
+            "",
+            "Cantrips (at will): *mending*, *sacred flame*, *thaumaturgy*",
+            "",
+            "1st level (4 slots): *command*, *shield of faith*",
+            "",
+            "2nd level (3 slots): *calm emotions*, *hold person*",
+            "",
+            "3rd level (2 slots): *bestow curse*",
+            "",
+            "<spell>Mending</spell>",
+            "",
+            "<spell>Sacred Flame</spell>",
+            "",
+            "<spell>Thaumaturgy</spell>",
+            "",
+            "<spell>Command</spell>",
+            "",
+            "<spell>Shield of Faith</spell>",
+            "",
+            "<spell>Calm Emotions</spell>",
+            "",
+            "<spell>Hold Person</spell>",
+            "",
+            "<spell>Bestow Curse</spell>",
+            "",
+            "If the naga was a spirit naga in life, its spellcasting ability is Intelligence, and it has the following wizard spells prepared:",
+            "",
+            "Cantrips (at will): *mage hand*, *minor illusion*, *ray of frost*",
+            "",
+            "1st level (4 slots): *charm person*, *sleep*",
+            "",
+            "2nd level (3 slots): *detect thoughts*, *hold person*",
+            "",
+            "3rd level (2 slots): *lightning bolt*",
+            "",
+            "<spell>Mage Hand</spell>",
+            "",
+            "<spell>Minor Illusion</spell>",
+            "",
+            "<spell>Ray of Frost</spell>",
+            "",
+            "<spell>Charm Person</spell>",
+            "",
+            "<spell>Sleep</spell>",
+            "",
+            "<spell>Detect Thoughts</spell>",
+            "",
+            "<spell>Hold Person</spell>",
+            "",
+            "<spell>Lightning Bolt</spell>"
+        ]
+    ],
+    "type": "undead"
+}

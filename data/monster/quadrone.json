@@ -1,0 +1,59 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 11,
+        "con": 12,
+        "dex": 14,
+        "int": 10,
+        "str": 12,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The quad rone makes two fist attacks or four shortbow attacks."
+        ],
+        [
+            "Fist",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 3 (1d4 + 1) bludgeoning damage."
+        ],
+        [
+            "Shortbow",
+            "*Ranged Weapon Attack:* +4 to hit, range 80/320 ft., one target. *Hit:* 5 (1d6 + 2) piercing damage."
+        ]
+    ],
+    "alignment": "lawful neutral",
+    "armor class": "16 (natural armor)",
+    "description": [
+        "Astute combatants, quadrones serve as artillery and field officers in the regiments of modron armies."
+    ],
+    "experience": 200,
+    "group": "Modrons",
+    "hit points": "22 (4d8 + 4)",
+    "languages": [
+        "Modron"
+    ],
+    "name": "Quadrone",
+    "senses": [
+        "truesight 120 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Perception": 2
+    },
+    "speed": [
+        "30 ft.",
+        "fly 30 ft."
+    ],
+    "traits": [
+        [
+            "Axiomatic Mind",
+            "The quadrone can't be compelled to act in a manner contrary to its nature or its instructions."
+        ],
+        [
+            "Disintegration",
+            "If the quadrone dies, its body disintegrates into dust, leaving behind its weapons and anything else it was carrying."
+        ]
+    ],
+    "type": "construct"
+}

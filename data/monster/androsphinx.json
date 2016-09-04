@@ -1,0 +1,147 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 23,
+        "con": 20,
+        "dex": 10,
+        "int": 16,
+        "str": 22,
+        "wis": 18
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The sphinx makes two claw attacks."
+        ],
+        [
+            "Claw",
+            "*Melee Weapon Attack:* +12 to hit, reach 5 ft., one target. *Hit:* 17 (2d10 + 6) slashing damage."
+        ],
+        [
+            "Roar (3/Day)",
+            "The sphinx emits a magical roar. Each time it roars before finishing a long rest, the roar is louder and the effect is different, as detailed below. Each creature within 500 feet of the sphinx and able to hear the roar must make a saving throw.",
+            "",
+            "**First Roar.** Each creature that fails a DC 18 Wisdom saving throw is frightened for 1 minute. A frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+            "",
+            "**Second Roar.** Each creature that fails a DC 18 Wisdom saving throw is deafened and frightened for 1 minute. A frightened creature is paralyzed and can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+            "",
+            "**Third Roar.** Each creature makes a DC 18 Constitution saving throw. On a failed save, a creature takes 44 (8d10) thunder damage and is knocked prone. On a successful save, the creature takes half as much damage and isn't knocked prone."
+        ]
+    ],
+    "alignment": "lawful neutral",
+    "armor class": "17 (natural armor)",
+    "condition immunities": [
+        "charmed",
+        "frightened"
+    ],
+    "damage immunities": [
+        "psychic",
+        "bludgeoning, piercing, and slashing from nonmagical attacks"
+    ],
+    "description": [
+        "An androsphinx bears the head of a humanoid male on its lion's body. Outwardly gruff and downcast, it often begins conversations with insults or negative observations. Beneath this gruff exterior, however, an androsphinx has a noble heart. It has no wish to lie or deceive, but it doesn't give away information readily, choosing its words as wisely as it guards its secrets.",
+        "",
+        "An androsphinx tests the courage and valor of supplicants, not only by forcing them to complete quests but also with its terrible roar, which echoes for miles as it terrifies and deafens nearby creatures. Those who pass its tests may be rewarded with a *heroes' feast*."
+    ],
+    "experience": 18000,
+    "group": "Sphinxes",
+    "hit points": "199 (19d10 + 95)",
+    "languages": [
+        "Common",
+        "Sphinx"
+    ],
+    "legendary actions": [
+        "The sphinx can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The sphinx regains spent legendary actions at the start of its turn.",
+        [
+            "Claw Attack",
+            "The sphinx makes one claw attack."
+        ],
+        [
+            "Teleport (Costs 2 Actions)",
+            "The sphinx magically teleports, along with any equipment it is wearing or carrying, up to 120 feet to an unoccupied space it can see."
+        ],
+        [
+            "Cast a Spell (Costs 3 Actions)",
+            "The sphinx casts a spell from its list of prepared spells, using a spell slot as normal."
+        ]
+    ],
+    "name": "Androsphinx",
+    "saving throws": {
+        "Con": 11,
+        "Dex": 6,
+        "Int": 9,
+        "Wis": 10
+    },
+    "senses": [
+        "truesight 120 ft."
+    ],
+    "size": "Large",
+    "skills": {
+        "Arcana": 9,
+        "Perception": 10,
+        "Religion": 15
+    },
+    "speed": [
+        "40 ft.",
+        "fly 60 ft."
+    ],
+    "traits": [
+        [
+            "Inscrutable",
+            "The sphinx is immune to any effect that would sense its emotions or read its thoughts, as well as any divination spell that it refuses. Wisdom (Insight) checks made to ascertain the sphinx's intentions or sincerity have disadvantage."
+        ],
+        [
+            "Magic Weapons",
+            "The sphinx's weapon attacks are magical."
+        ],
+        [
+            "Spellcasting",
+            "The sphinx is a 12th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 18, +10 to hit with spell attacks). It requires no material components to cast its spells. The sphinx has the following cleric spells prepared:",
+            "",
+            "Cantrips (at will): *sacred flame*, *spare the dying*, *thaumaturgy*",
+            "",
+            "1st level (4 slots): *command*, *detect evil and good*, *detect magic*",
+            "",
+            "2nd level (3 slots): *lesser restoration*, *zone of truth*",
+            "",
+            "3rd level (3 slots): *dispel magic*, *tongues*",
+            "",
+            "4th level (3 slots): *banishment*, *freedom of movement*",
+            "",
+            "5th level (2 slots): *flame strike*, *greater restoration*",
+            "",
+            "6th level (1 slot): *heroes' feast*",
+            "",
+            "<spell>Sacred Flame</spell>",
+            "",
+            "<spell>Spare the Dying</spell>",
+            "",
+            "<spell>Thaumaturgy</spell>",
+            "",
+            "<spell>Command</spell>",
+            "",
+            "<spell>Detect Evil and Good</spell>",
+            "",
+            "<spell>Detect Magic</spell>",
+            "",
+            "<spell>Lesser Restoration</spell>",
+            "",
+            "<spell>Zone of Truth</spell>",
+            "",
+            "<spell>Dispel Magic</spell>",
+            "",
+            "<spell>Tongues</spell>",
+            "",
+            "<spell>Banishment</spell>",
+            "",
+            "<spell>Freedom of Movement</spell>",
+            "",
+            "<spell>Flame Strike</spell>",
+            "",
+            "<spell>Greater Restoration</spell>",
+            "",
+            "<spell>Heroes' Feast</spell>"
+        ]
+    ],
+    "type": "monstrosity"
+}

@@ -1,0 +1,63 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 7,
+        "con": 12,
+        "dex": 12,
+        "int": 9,
+        "str": 8,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Fists",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one creature. *Hit:* 4 (1d6 + 1) bludgeoning damage."
+        ],
+        [
+            "Mub Breath (Recharge 6)",
+            "The mephit belches viscid mud onto one creature within 5 feet of it. If the target is Medium or smaller, it must succeed on a DC 11 Dexterity saving throw or be restrained for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "11",
+    "condition immunities": [
+        "poisoned"
+    ],
+    "damage immunities": [
+        "poison"
+    ],
+    "description": [
+        "Mud mephits are slow, unctuous creatures of earth and water. They drone their complaints to all who will listen, and beg incessantly for attention and treasure."
+    ],
+    "experience": 50,
+    "group": "Mephits",
+    "hit points": "27 (6d6 + 6)",
+    "languages": [
+        "Aquan",
+        "Terran"
+    ],
+    "name": "Mud Mephit",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Small",
+    "skills": {
+        "Stealth": 3
+    },
+    "speed": [
+        "20 ft.",
+        "fly 20 ft.",
+        "swim 20 ft."
+    ],
+    "traits": [
+        [
+            "Death Burst",
+            "When the mephit dies, it explodes in a burst of sticky mud. Each Medium or smaller creature within 5 feet of it must succeed on a DC 11 Dexterity saving throw or be restrained until the end of the creature's next turn."
+        ],
+        [
+            "False Apperance",
+            "While the mephit remains motionless, it is indistinguishable from an ordinary mound of mud."
+        ]
+    ],
+    "type": "elemental"
+}

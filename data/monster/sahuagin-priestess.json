@@ -1,0 +1,91 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 13,
+        "con": 12,
+        "dex": 11,
+        "int": 12,
+        "str": 13,
+        "wis": 14
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The sahuagin makes two attacks: one with her bite and one with her claws."
+        ],
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 3 (1d4 + 1) piercing damage."
+        ],
+        [
+            "Claws",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 3 (1d4 + 1) slashing damage."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "12 (natural armor)",
+    "experience": 450,
+    "group": "Sahuagin",
+    "hit points": "33 (6d8 + 6)",
+    "languages": [
+        "Sahuagin"
+    ],
+    "name": "Sahuagin Priestess",
+    "senses": [
+        "darkvision 120 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Perception": 6,
+        "Religion": 3
+    },
+    "speed": [
+        "30 ft.",
+        "swim 40 ft."
+    ],
+    "traits": [
+        [
+            "Blood Frenzy",
+            "The sahuagin has advantage on melee attack rolls against any creature that doesn't have all its hit points."
+        ],
+        [
+            "Limited Amphibiousness",
+            "The sahuagin can breathe air and water, but she needs to be submerged at least once every 4 hours to avoid suffocating."
+        ],
+        [
+            "Shark Telepathy",
+            "The sahuagin can magically command any shark within 120 feet of her, using a limited telepathy."
+        ],
+        [
+            "Spellcasting",
+            "The sahuagin is a 6th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). She has the following cleric spells prepared:",
+            "",
+            "Cantrips (at will): *guidance*, *thaumaturgy*",
+            "",
+            "1st level (4 slots): *bless*, *detect magic*, *guiding bolt*",
+            "",
+            "2nd level (3 slots): *hold person*, *spiritual weapon* (trident)",
+            "",
+            "3rd level (3 slots): *mass healing word*, *tongues*",
+            "",
+            "<spell>Guidance</spell>",
+            "",
+            "<spell>Thaumaturgy</spell>",
+            "",
+            "<spell>Bless</spell>",
+            "",
+            "<spell>Detect Magic</spell>",
+            "",
+            "<spell>Guiding Bolt</spell>",
+            "",
+            "<spell>Hold Person</spell>",
+            "",
+            "<spell>Spiritual Weapon</spell>",
+            "",
+            "<spell>Mass Healing Word</spell>",
+            "",
+            "<spell>Tongues</spell>"
+        ]
+    ],
+    "type": "humanoid (sahuagin)"
+}

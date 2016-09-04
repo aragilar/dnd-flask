@@ -1,0 +1,94 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 11,
+        "con": 16,
+        "dex": 11,
+        "int": 7,
+        "str": 18,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The mezzoloth makes two attacks: one with its claws and one with its trident."
+        ],
+        [
+            "Claws",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 9 (2d4 + 4) slashing damage."
+        ],
+        [
+            "Trident",
+            "*Melee or Ranged Weapon Attack:* +7 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 7 (1d6 + 4) piercing damage, or 8 (1d8 + 4) piercing damage when held with two claws and used to make a melee attack."
+        ],
+        [
+            "Teleport",
+            "The mezzoloth magically teleports, along with any equipment it is wearing or carrying, up to 60 feet to an unoccupied space it can see."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "18 (natural armor)",
+    "condition immunities": [
+        "posioned"
+    ],
+    "damage immunities": [
+        "acid",
+        "poison"
+    ],
+    "damage resistances": [
+        "cold",
+        "fire",
+        "lightning",
+        "bludgeoning, piercing, and slashing from nonmagical attacks"
+    ],
+    "description": [
+        "The bulk of the yugoloth population is made up of mezzoloths, which are human-sized insect creatures covered in dense chitinous plates. Mezzoloths serve as foot soldiers in yugoloth armies, their wide-set eyes glowing red as the mezzoloths bear down on their foes.",
+        "",
+        "Violence and reward are the fundamental drives of a mezzoloth, and powerful beings that promise one or the other can easily attract them into service. Although it has lethal claws on its four arms, a mezzoloth typically wields a trident in two of them. If surrounded by enemies, a mezzoloth exhales toxic fumes that can choke and kill whole groups of creatures."
+    ],
+    "experience": 1800,
+    "group": "Yugoloths",
+    "hit points": "75 (10d8 + 30)",
+    "languages": [
+        "Abyssal",
+        "Infernal",
+        "telepathy 60 ft."
+    ],
+    "name": "Mezzoloth",
+    "senses": [
+        "blindsight 60 ft.",
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Perception": 3
+    },
+    "speed": [
+        "40 ft."
+    ],
+    "traits": [
+        [
+            "Innate Spellcasting",
+            "The mezzoloth's innate spellcasting ability is Charisma (spell save DC 11). The mezzoloth can innately cast the following spells, requiring no material components:",
+            "",
+            "2/day each: *darkness*, *dispel magic*",
+            "",
+            "1/day: *cloudkill*",
+            "",
+            "<spell>Darkness</spell>",
+            "",
+            "<spell>Dispel Magic</spell>",
+            "",
+            "<spell>Cloudkill</spell>"
+        ],
+        [
+            "Magic Resistance",
+            "The mezzoloth has advantage on saving throws against spells and other magical effects."
+        ],
+        [
+            "Magic Weapons",
+            "The mezzoloth's weapon attacks are magical."
+        ]
+    ],
+    "type": "fiend (yugoloth)"
+}

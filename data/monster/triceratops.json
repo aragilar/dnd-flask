@@ -1,0 +1,40 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 5,
+        "con": 17,
+        "dex": 9,
+        "int": 2,
+        "str": 22,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Gore",
+            "*Melee Weapon Attack:* +9 to hit, reach 5 ft., one target. *Hit:* 24 (4d8 + 6) piercing damage."
+        ],
+        [
+            "Stomp",
+            "*Melee Weapon Attack:* +9 to hit, reach 5 ft., one prone creature. *Hit:* 22 (3d10 + 6) bludgeoning damage"
+        ]
+    ],
+    "armor class": "13 (natural armor)",
+    "description": [
+        "One of the most aggressive of the herbivorous dinosaurs, a triceratops has a skull that flares out to form a protective plate of bone. With its great horns and formidable speed, a triceratops gores and tramples would-be predators to death."
+    ],
+    "experience": 1800,
+    "group": "Dinosaurs",
+    "hit points": "95 (10d12 + 30)",
+    "name": "Triceratops",
+    "size": "Huge",
+    "speed": [
+        "50 ft."
+    ],
+    "traits": [
+        [
+            "Trampling Charge",
+            "If the triceratops moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the triceratops can make one stomp attack against it as a bonus action."
+        ]
+    ],
+    "type": "beast"
+}

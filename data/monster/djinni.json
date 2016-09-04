@@ -1,0 +1,107 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 20,
+        "con": 22,
+        "dex": 15,
+        "int": 15,
+        "str": 21,
+        "wis": 16
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The djinni makes three scimitar attacks."
+        ],
+        [
+            "Scimitar",
+            "*Melee Weapon Attack:* +9 to hit, reach 5 ft., one target. *Hit:* 12 (2d6 + 5) slashing damage plus 3 (1d6) lightning or thunder damage (djinni's choice)."
+        ],
+        [
+            "Create Whirlwind",
+            "A 5-foot-radius, 30-foot-tall cylinder of swirling air magically forms on a point the djinni can see within 120 feet of it. The whirlwind lasts as long as the djinni maintains concentration (as if concentrating on a spell). Any creature but the djinni that enters the whirlwind must succeed on a DC 18 Strength saving throw or be restrained by it. The djinni can move the whirlwind up to 60 feet as an action, and creatures restrained by the whirlwind move with it. The whirlwind ends if the djinni loses sight of it.",
+            "",
+            "A creature can use its action to free a creature restrained by the whirlwind, including itself, by succeeding on a DC 18 Strength check. If the check succeeds, the creature is no longer restrained and moves to the nearest space outside the whirlwind."
+        ]
+    ],
+    "alignment": "chaotic good",
+    "armor class": "17 (natural armor)",
+    "damage immunities": [
+        "lightning",
+        "thunder"
+    ],
+    "description": [
+        "Proud, sensuous genies from the Elemental Plane of Air, the djinn are attractive, tall, well-muscled humanoids with blue skin and dark eyes. They dress in airy, shimmering silks, designed as much for comfort as to flaunt their musculature.",
+        "",
+        "***Airy Aesthetes.*** Djinn rule floating islands of cloudstuff covered with enormous pavilions, or topped with wondrous buildings, courtyards, fountains, and gardens. Creatures of comfort and ease, djinn enjoy succulent fruits, pungent wines, fine perfumes, and beautiful music.",
+        "",
+        "Djinn are known for their sense of mischief and their favorable attitude toward mortals. Among genies, djinn deal coolly with efreet and marids, whom they view as haughty. They openly despise dao and strike against them with little provocation.",
+        "",
+        "***Masters of the Wind.*** Masters of the air, the djinn ride powerful whirlwinds that they create and direct on a whim, and which can even carry passengers. Creatures that stand against a djinni are assaulted by wind and thunder, even as the djinni spins away on that wind if outmatched in combat. When a djinni flies, its lower body transforms into a column of swirling air.",
+        "",
+        "***Accepting Servitors.*** The djinn believe that servitude is a matter of fate, and that no being can contest the hand of fate. As a result, of all the genies, djinn are the ones most amenable to servitude, though they never enjoy it. Djinn treat their slaves more like servants deserving of kindness and protection, and they part with them reluctantly.",
+        "",
+        "A mortal who desires the brief service of a djinni can entreat it with fine gifts, or use flattery to bribe it into compliance. Powerful wizards are able to forgo such niceties, however, if they can summon, bind into service, or imprison a djinni using magic. Long-term service displeases a djinni, and imprisonment is inexcusable. Djinn resent the cruel wizards that have imprisoned their kind in bottles, iron flasks, and wind instruments throughout the ages. Betrayal, particularly by a mortal whom a djinni trusted, is a vile deed that only deadly vengeance can amend."
+    ],
+    "experience": 7200,
+    "group": "Genies",
+    "hit points": "161 (14d10 + 84)",
+    "languages": [
+        "Auran"
+    ],
+    "name": "Djinni",
+    "saving throws": {
+        "Cha": 9,
+        "Dex": 6,
+        "Wis": 7
+    },
+    "senses": [
+        "darkvision 120 ft."
+    ],
+    "size": "Large",
+    "speed": [
+        "30 ft.",
+        "fly 90 ft."
+    ],
+    "traits": [
+        [
+            "Elemental Demise",
+            "If the djinni dies, its body disintegrates into a warm breeze, leaving behind only equipment the djinni was wearing or carrying."
+        ],
+        [
+            "Innate Spellcasting",
+            "The djinni's innate spellcasting ability is Charisma (spell save DC 17, +9 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
+            "",
+            "At will: *detect evil and good*, *detect magic*, *thunderwave*",
+            "",
+            "3/day each: *create food and water* (can create wine instead of water), *tongues*, *wind walk*",
+            "",
+            "1/day each: *conjure elemental* (air elemental only), *creation*, *gaseous form*, *invisibility*, *major image*, *plane shift*",
+            "",
+            "<spell>Detect Evil and Good</spell>",
+            "",
+            "<spell>Detect Magic</spell>",
+            "",
+            "<spell>Thunderwave</spell>",
+            "",
+            "<spell>Create Food and Water</spell>",
+            "",
+            "<spell>Tongues</spell>",
+            "",
+            "<spell>Wind Walk</spell>",
+            "",
+            "<spell>Conjure Elemental</spell>",
+            "",
+            "<spell>Creation</spell>",
+            "",
+            "<spell>Gaseous Form</spell>",
+            "",
+            "<spell>Invisibility</spell>",
+            "",
+            "<spell>Major Image</spell>",
+            "",
+            "<spell>Plane Shift</spell>"
+        ]
+    ],
+    "type": "elemental"
+}

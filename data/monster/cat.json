@@ -1,0 +1,38 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 7,
+        "con": 10,
+        "dex": 15,
+        "int": 3,
+        "str": 3,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Claws",
+            "*Melee Weapon Attack:* +0 to hit, reach 5 ft., one target. *Hit:* 1 slashing damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "12",
+    "experience": 10,
+    "hit points": "2 (1d4)",
+    "name": "Cat",
+    "size": "Tiny",
+    "skills": {
+        "Perception": 3,
+        "Stealth": 4
+    },
+    "speed": [
+        "40 ft.",
+        "climb 30 ft."
+    ],
+    "traits": [
+        [
+            "Keen Smell",
+            "The cat has advantage on Wisdom (Perception) checks that rely on smell."
+        ]
+    ],
+    "type": "beast"
+}

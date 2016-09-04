@@ -1,0 +1,57 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 3,
+        "con": 12,
+        "dex": 13,
+        "int": 4,
+        "str": 6,
+        "wis": 8
+    },
+    "actions": [
+        [
+            "Claws",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 3 (1d4 + 1) piercing damage."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "13 (natural armor)",
+    "condition immunities": [
+        "blinded",
+        "deafened"
+    ],
+    "damage vulnerabilities": [
+        "fire"
+    ],
+    "description": [
+        "Twig blights can root in soil, which they do when living prey are scarce. While rooted, they resemble woody shrubs. When it pulls its roots free of the ground to move, a twig blight's branches twist together to form a humanoid-looking body with a head and limbs.",
+        "",
+        "Twig blights seek out campsites and watering holes, rooting there to set up ambushes for potential victims coming to drink or rest. Huddled together in groups, twig blights blend in with an area's natural vegetation or with piles of debris or firewood.",
+        "",
+        "Given how dry they are, twig blights are particularly susceptible to fire."
+    ],
+    "experience": 25,
+    "group": "Blights",
+    "hit points": "4 (1d6 + 1)",
+    "languages": [
+        "understands Common but can't speak"
+    ],
+    "name": "Twig Blight",
+    "senses": [
+        "blindsight 60 ft. (blind beyond this radius)"
+    ],
+    "size": "Small",
+    "skills": {
+        "Stealth": 3
+    },
+    "speed": [
+        "20 ft."
+    ],
+    "traits": [
+        [
+            "False Apprearance",
+            "While the blight remains motionless, it is indistinguishable from a dead shrub."
+        ]
+    ],
+    "type": "plant"
+}

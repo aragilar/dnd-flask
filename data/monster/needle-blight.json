@@ -1,0 +1,47 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 3,
+        "con": 13,
+        "dex": 12,
+        "int": 4,
+        "str": 12,
+        "wis": 8
+    },
+    "actions": [
+        [
+            "Claws",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 6 (2d4 + 1) piercing damage."
+        ],
+        [
+            "Needles",
+            "*Ranged Weapon Attack:* +3 to hit, range 30/60 ft., one target. *Hit:* 8 (2d6 + 1) piercing damage."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "12 (natural armor)",
+    "condition immunities": [
+        "blinded",
+        "deafened"
+    ],
+    "description": [
+        "In the shadows of a forest, needle blights might be taken at a distance for shuffling, hunched humanoids. Up close, these creatures reveal themselves as horrid plants whose conifer-like needles grow across their bodies in quivering clumps. A needle blight lashes out with these needles or launches them as an aerial assault that can punch through armor and flesh.",
+        "",
+        "When needle blights detect a threat, they loose a pollen that the wind carries to other needle blights throughout the forest. Alerted to their foes' location, needle blights converge from all sides to drench their roots in blood."
+    ],
+    "experience": 50,
+    "group": "Blights",
+    "hit points": "11 (2d8 + 2)",
+    "languages": [
+        "understands Common but can't speak"
+    ],
+    "name": "Needle Blight",
+    "senses": [
+        "blindsight 60 ft. (blind beyond this radius)"
+    ],
+    "size": "Medium",
+    "speed": [
+        "30 ft."
+    ],
+    "type": "plant"
+}

@@ -1,0 +1,76 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 12,
+        "con": 15,
+        "dex": 18,
+        "int": 16,
+        "str": 13,
+        "wis": 17
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The githzerai makes two unarmed strikes."
+        ],
+        [
+            "Unarmed Strike",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) bludgeoning damage plus 13 (3d8) psychic damage. This is a magic weapon attack."
+        ]
+    ],
+    "alignment": "lawful neutral",
+    "armor class": "17",
+    "experience": 2300,
+    "group": "Gith",
+    "hit points": "84 (13d8 + 26)",
+    "languages": [
+        "Gith"
+    ],
+    "name": "Githzerai Zerth",
+    "saving throws": {
+        "Dex": 7,
+        "Int": 6,
+        "Str": 4,
+        "Wis": 6
+    },
+    "size": "Medium",
+    "skills": {
+        "Arcana": 6,
+        "Insight": 6,
+        "Perception": 6
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Innate Spellcating (Psionics)",
+            "The githzerai's spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). It can innately cast the following spells, requiring no components:",
+            "",
+            "At will: *mage hand* (the hand is invisible)",
+            "",
+            "3/day each: *feather fall*, *jump*, *see invisibility*, *shield*",
+            "",
+            "1/day each: *phantasmal killer*, *plane shift*",
+            "",
+            "<spell>Mage Hand</spell>",
+            "",
+            "<spell>Feather Fall</spell>",
+            "",
+            "<spell>Jump</spell>",
+            "",
+            "<spell>See Invisibility</spell>",
+            "",
+            "<spell>Shield</spell>",
+            "",
+            "<spell>Phantasmal Killer</spell>",
+            "",
+            "<spell>Plane Shift</spell>"
+        ],
+        [
+            "Psychic Defense",
+            "While the githzerai is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
+        ]
+    ],
+    "type": "humanoid (gith)"
+}

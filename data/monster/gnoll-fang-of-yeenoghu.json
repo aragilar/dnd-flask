@@ -1,0 +1,57 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 13,
+        "con": 15,
+        "dex": 15,
+        "int": 10,
+        "str": 17,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The gnoll makes three attacks: one with its bite and two with its claws."
+        ],
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one creature. *Hit:* 6 (1d6 + 3) piercing damage, and the target must succeed on a DC 12 Constitution saving throw or take 7 (2d6) poison damage."
+        ],
+        [
+            "Claw",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 7 (1d8 + 3) slashing damage."
+        ]
+    ],
+    "alignment": "chaotic evil",
+    "armor class": "14 (hide armor)",
+    "description": [
+        "Gnolls celebrate their victories by performing demonic rituals and making blood offerings to Yeenoghu. Sometimes the demon lord rewards his worshipers by allowing one of them to be possessed by a demonic spirit. Marked as Yeenoghu's favorite, the lucky recipient becomes a fang of Yeenoghu, the chosen of the Gnoll Lord. In much the same way Yeenoghu created the first gnolls, a hyena that feasts on a fang's slain foe undergoes a horrible transformation, becoming a fullgrown adult gnoll. Depending on the number of hyenas in a region, a fang of Yeenoghu can lead to a startling increase in the gnoll population. Finding and killing the fang is the only way to keep that population in check."
+    ],
+    "experience": 1100,
+    "group": "Gnolls",
+    "hit points": "65 (10d8 + 20)",
+    "languages": [
+        "Abyssal",
+        "Gnoll"
+    ],
+    "name": "Gnoll Fang of Yeenoghu",
+    "saving throws": {
+        "Cha": 3,
+        "Con": 4,
+        "Wis": 2
+    },
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Rampage",
+            "When the gnoll reduces a creature to 0 hit points with a melee attack on its turn, the gnoll can take a bonus action to move up to half its speed and make a bite attack."
+        ]
+    ],
+    "type": "fiend (gnoll)"
+}

@@ -1,0 +1,64 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 1,
+        "con": 11,
+        "dex": 15,
+        "int": 1,
+        "str": 12,
+        "wis": 5
+    },
+    "actions": [
+        [
+            "Longsword",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 5 (1d8 + 1) slashing damage."
+        ]
+    ],
+    "armor class": "17 (natural armor)",
+    "condition immunities": [
+        "blinded",
+        "charmed",
+        "deafened",
+        "frightened",
+        "paralyzed",
+        "petrified",
+        "poisoned"
+    ],
+    "damage immunities": [
+        "poison",
+        "psychic"
+    ],
+    "description": [
+        "A flying sword dances through the air, fighting with the confidence of a warrior that can't be injured. Swords are the most common weapons animated with magic. Axes, clubs, daggers, maces, spears, and even self-loading crossbows are also known to exist in animated object form.",
+        "",
+        "> \"Lyin' next to the chest were the bones of Cap'n Scornblade himself, still clutchin' his rusty sword. Imagine my surprise when  the blade flew from his bony grasp!\"",
+        ">",
+        "> --Levity Quickstitch, Halfling Rogue"
+    ],
+    "experience": 50,
+    "group": "Animated Objects",
+    "hit points": "17 (5d6)",
+    "name": "Flying Sword",
+    "saving throws": {
+        "dex": 4
+    },
+    "senses": [
+        "blindsight 60 ft. (blind beyond this radius)"
+    ],
+    "size": "Small",
+    "speed": [
+        "0 ft.",
+        "fly 50 ft. (hover)"
+    ],
+    "traits": [
+        [
+            "Antimagic Susceptibility",
+            "The sword is incapacitated while in the area of an *antimagic field*. If targeted by *dispel magic*, the sword must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute."
+        ],
+        [
+            "False Appearance",
+            "While the sword remains motionless and isn't flying, it is indistinguishable from a normal sword."
+        ]
+    ],
+    "type": "construct"
+}

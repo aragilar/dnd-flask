@@ -1,0 +1,52 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 10,
+        "con": 13,
+        "dex": 17,
+        "int": 8,
+        "str": 16,
+        "wis": 14
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The eagle makes two attacks: one with its beak and one with its talons."
+        ],
+        [
+            "Beak",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 6 (1d6 + 3) piercing damage."
+        ],
+        [
+            "Talons",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6 + 3) slashing damage."
+        ]
+    ],
+    "alignment": "neutral good",
+    "armor class": "13",
+    "description": [
+        "A **giant eagle** is a noble creature that speaks its own language and understands speech in the Common tongue. A mated pair of giant eagles typically has up to four eggs or young in their nest (treat the young as normal eagles)."
+    ],
+    "experience": 200,
+    "hit points": "26 (4d10 + 4)",
+    "languages": [
+        "Giant Eagle",
+        "understands Common and Auran but can't speak them"
+    ],
+    "name": "Giant Eagle",
+    "size": "Large",
+    "skills": {
+        "Perception": 4
+    },
+    "speed": [
+        "10 ft.",
+        "fly 80 ft."
+    ],
+    "traits": [
+        [
+            "Keen Sight",
+            "The eagle has advantage on Wisdom (Perception) checks that rely on sight."
+        ]
+    ],
+    "type": "beast"
+}

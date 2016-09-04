@@ -1,0 +1,112 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 14,
+        "con": 16,
+        "dex": 17,
+        "int": 13,
+        "str": 17,
+        "wis": 8
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The slaad makes three attacks: one with its bite and two with its claws or greatsword."
+        ],
+        [
+            "Bite (Slaad Form Only)",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 6 (1d6 + 3) piercing damage."
+        ],
+        [
+            "Claws (Slaad Form Only)",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 8 (1d10 + 3) slashing damage."
+        ],
+        [
+            "Greatsword",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 10 (2d6 + 3) slashing damage."
+        ]
+    ],
+    "alignment": "chaotic neutral",
+    "armor class": "18 (natural armor)",
+    "damage resistances": [
+        "acid",
+        "cold",
+        "fire",
+        "lightning",
+        "thunder"
+    ],
+    "description": [
+        "Outside of Limbo, gray slaadi act as living extensions of the will of their masters, the death slaadi. A gray slaad journeys to the Material Plane on errands of doom, often taking humanoid form. A gray slaad learns how to master the use of a greatsword and imbue it with its own innate magic.",
+        "",
+        "A gray slaad that eats the entire corpse of a dead death slaad instantly transforms into a death slaad."
+    ],
+    "experience": 5000,
+    "group": "Slaadi",
+    "hit points": "127 (17d8 + 51)",
+    "languages": [
+        "Slaad",
+        "telepathy 60 ft."
+    ],
+    "name": "Gray Slaad",
+    "senses": [
+        "blindsight 60 ft.",
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Arcana": 5,
+        "Perception": 6
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Shapechanger",
+            "The slaad can use its action to polymorph into a Small or Medium humanoid, or back into its true form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+        ],
+        [
+            "Innate Spellcasting",
+            "The slaad's innate spellcasting ability is Charisma (spell save DC 14). The slaad can innately cast the following spells, requiring no material components:",
+            "",
+            "At will: *detect magic*, *detect thoughts*, *invisibility* (self only), *mage hand*, *major image*",
+            "",
+            "2/day each: *fear*, *fly*, *fireball*, *tongues*",
+            "",
+            "1/day: *plane shift* (self only)",
+            "",
+            "<spell>Detect Magic</spell>",
+            "",
+            "<spell>Detect Thoughts</spell>",
+            "",
+            "<spell>Invisibility</spell>",
+            "",
+            "<spell>Mage Hand</spell>",
+            "",
+            "<spell>Major Image</spell>",
+            "",
+            "<spell>Fear</spell>",
+            "",
+            "<spell>Fly</spell>",
+            "",
+            "<spell>Fireball</spell>",
+            "",
+            "<spell>Tongues</spell>",
+            "",
+            "<spell>Plane Shift</spell>"
+        ],
+        [
+            "Magic Resistance",
+            "The slaad has advantage on saving throws against spells and other magical effects."
+        ],
+        [
+            "Magic Weapons",
+            "The slaad's weapon attacks are magical."
+        ],
+        [
+            "Regeneration",
+            "The slaad regains 10 hit points at the start of its turn if it has at least 1 hit point."
+        ]
+    ],
+    "type": "aberration (shapechanger)"
+}

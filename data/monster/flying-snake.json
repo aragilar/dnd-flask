@@ -1,0 +1,41 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 5,
+        "con": 11,
+        "dex": 18,
+        "int": 2,
+        "str": 4,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 1 piercing damage plus 7 (3d4) poison damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "14",
+    "description": [
+        "A **flying snake** is a brightly colored, winged serpent found in remote jungles. Tribespeople and cultists sometimes domesticate flying snakes to serve as messengers that deliver scrolls wrapped in their coils."
+    ],
+    "experience": 25,
+    "hit points": "5 (2d4)",
+    "name": "Flying Snake",
+    "senses": [
+        "blindsight 10 ft."
+    ],
+    "size": "Tiny",
+    "speed": [
+        "30 ft.",
+        "fly 60 ft.",
+        "swim 30 ft."
+    ],
+    "traits": [
+        [
+            "Flyby",
+            "The snake doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+        ]
+    ],
+    "type": "beast"
+}

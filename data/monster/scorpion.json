@@ -1,0 +1,30 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 2,
+        "con": 8,
+        "dex": 11,
+        "int": 1,
+        "str": 2,
+        "wis": 8
+    },
+    "actions": [
+        [
+            "Sting",
+            "*Melee Weapon Attack:* +2 to hit, reach 5 ft., one creature. *Hit:* 1 piercing damage, and the target must make a DC 9 Constitution saving throw, taking 4 (1d8) poison damage on a failed save, or half as much damage on a successful one."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "11 (natural armor)",
+    "experience": 10,
+    "hit points": "1 (1d4 - 1)",
+    "name": "Scorpion",
+    "senses": [
+        "blindsight 10 ft."
+    ],
+    "size": "Tiny",
+    "speed": [
+        "10 ft."
+    ],
+    "type": "beast"
+}

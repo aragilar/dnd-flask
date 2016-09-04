@@ -1,0 +1,40 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 6,
+        "con": 8,
+        "dex": 16,
+        "int": 2,
+        "str": 5,
+        "wis": 14
+    },
+    "actions": [
+        [
+            "Talons",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 1 slashing damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "13",
+    "description": [
+        "# Hawk (Falcon)"
+    ],
+    "experience": 10,
+    "hit points": "1 (1d4 - 1)",
+    "name": "Hawk",
+    "size": "Tiny",
+    "skills": {
+        "Perception": 4
+    },
+    "speed": [
+        "10 ft.",
+        "fly 60 ft."
+    ],
+    "traits": [
+        [
+            "Keen Sight",
+            "The hawk has advantage on Wisdom (Perception) checks that rely on sight."
+        ]
+    ],
+    "type": "beast"
+}

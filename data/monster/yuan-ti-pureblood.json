@@ -1,0 +1,78 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 14,
+        "con": 11,
+        "dex": 12,
+        "int": 13,
+        "str": 11,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The yuan-ti makes two melee attacks."
+        ],
+        [
+            "Scimitar",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 4 (1d6 + 1) slashing damage."
+        ],
+        [
+            "Shortbow",
+            "*Ranged Weapon Attack:* +3 to hit, range 80/320 ft., one target. *Hit:* 4 (1d6 + 1) piercing damage plus 7 (2d6) poison damage."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "11",
+    "condition immunities": [
+        "poisoned"
+    ],
+    "damage immunities": [
+        "poison"
+    ],
+    "description": [
+        "Purebloods form the lowest caste of yuan-ti society. They closely resemble humans, yet a pureblood can't pass for human under close scrutiny because there's always some hint of its true nature, such as scaly patches of skin, serpentine eyes, pointed teeth, or a forked tongue. Wearing cloaks and cowls, they masquerade as humans and infiltrate civilized lands to gather information, kidnap prisoners for interrogation and sacrifice, and trade with anyone who has something that can further their myriad plots."
+    ],
+    "experience": 200,
+    "group": "Yuan-ti",
+    "hit points": "40 (9d8)",
+    "languages": [
+        "Abyssal",
+        "Common",
+        "Draconic"
+    ],
+    "name": "Yuan-ti Pureblood",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Deception": 6,
+        "Perception": 3,
+        "Stealth": 3
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Innate Spellcasting",
+            "The yuan-ti's spellcasting ability is Charisma (spell save DC 12). The yuan-ti can innately cast the following spells, requiring no material components:",
+            "",
+            "At will: *animal friendship* (snakes only)",
+            "",
+            "3/day each: *poison spray*, *suggestion*",
+            "",
+            "<spell>Animal Friendship</spell>",
+            "",
+            "<spell>Poison Spray</spell>",
+            "",
+            "<spell>Suggestion</spell>"
+        ],
+        [
+            "Magic Resistance",
+            "The yuan-ti has advantage on saving throws against spells and other magical effects."
+        ]
+    ],
+    "type": "humanoid (yuan-ti)"
+}

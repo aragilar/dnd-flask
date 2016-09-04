@@ -1,0 +1,42 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 4,
+        "con": 17,
+        "dex": 13,
+        "int": 3,
+        "str": 18,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 20 (3d10 + 4) piercing damage plus 7 (2d6) fire damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "14 (natural armor)",
+    "damage immunities": [
+        "fire"
+    ],
+    "experience": 1800,
+    "group": "Remorhazes",
+    "hit points": "93 (11d10 + 33)",
+    "name": "Young Remorhaz",
+    "senses": [
+        "darkvision 60 ft.",
+        "tremorsense 60 ft."
+    ],
+    "size": "Large",
+    "speed": [
+        "30 ft.",
+        "burrow 20 ft."
+    ],
+    "traits": [
+        [
+            "Heated Body",
+            "A creature that touches the remorhaz or hits it with a melee attack while within 5 feet of it takes 7 (2d6) fire damage."
+        ]
+    ],
+    "type": "monstrosity"
+}

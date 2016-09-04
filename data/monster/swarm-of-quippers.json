@@ -1,0 +1,61 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 2,
+        "con": 9,
+        "dex": 16,
+        "int": 1,
+        "str": 13,
+        "wis": 7
+    },
+    "actions": [
+        [
+            "Bites",
+            "*Melee Weapon Attack:* +5 to hit, reach 0 ft., one creature in the swarm's space. *Hit:* 14 (4d6) piercing damage, or 7 (2d6) piercing damage if the swarm has half of its hit points or fewer."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "13",
+    "condition immunities": [
+        "charmed",
+        "frightened",
+        "grappled",
+        "paralyzed",
+        "petrified",
+        "prone",
+        "restrained",
+        "stunned"
+    ],
+    "damage resistances": [
+        "bludgeoning",
+        "piercing",
+        "slashing"
+    ],
+    "experience": 200,
+    "group": "Swarms",
+    "hit points": "28 (8d8 - 8)",
+    "name": "Swarm of Quippers",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "speed": [
+        "0 ft.",
+        "swim 40 ft."
+    ],
+    "traits": [
+        [
+            "Blood Frenzy",
+            "The swarm has advantage on melee attack rolls against any creature that doesn't have all its hit points."
+        ],
+        [
+            "Swarm",
+            "The swarm can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny quipper. The swarm can't regain hit points or gain temporary hit points."
+        ],
+        [
+            "Water Breathing",
+            "The swarm can breathe only underwater."
+        ]
+    ],
+    "type": "swarm of Tiny beasts"
+}

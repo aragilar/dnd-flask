@@ -1,0 +1,112 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 18,
+        "con": 16,
+        "dex": 18,
+        "int": 16,
+        "str": 19,
+        "wis": 19
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +8 to hit, reach 10 ft., one creature. *Hit:* 8 (1d8 + 4) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 45 (10d8) poison damage on a failed save, or half as much damage on a successful one."
+        ],
+        [
+            "Spit Poison",
+            "*Ranged Weapon Attack:* +8 to hit, range 15/30 ft., one creature. *Hit:* The target must make a DC 15 Constitution saving throw, taking 45 (10d8) poison damage on a failed save, or half as much damage on a successful one."
+        ]
+    ],
+    "alignment": "lawful good",
+    "armor class": "18 (natural armor)",
+    "condition immunities": [
+        "charmed",
+        "poisoned"
+    ],
+    "damage immunities": [
+        "poison"
+    ],
+    "description": [
+        "Wise and good, the beautiful guardian nagas protect sacred places and items of magical power from falling into evil hands. In their hidden redoubts, they research spells and hatch convoluted plots to thwart the evil designs of their enemies.",
+        "",
+        "A guardian naga doesn't seek out violence, warning off intruders rather than attacking. Only if its foes persist does the naga attack, accosting enemies with its spells and poisonous spittle."
+    ],
+    "experience": 5900,
+    "group": "Nagas",
+    "hit points": "127 (15d10 + 45)",
+    "languages": [
+        "Celestial",
+        "Common"
+    ],
+    "name": "Guardian Naga",
+    "saving throws": {
+        "Cha": 8,
+        "Con": 7,
+        "Dex": 8,
+        "Int": 7,
+        "Wis": 8
+    },
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Large",
+    "speed": [
+        "40 ft."
+    ],
+    "traits": [
+        [
+            "Rejuvenation",
+            "If it dies, the naga returns to life in 1d6 days and regains all its hit points. Only a *wish* spell can prevent this trait from functioning."
+        ],
+        [
+            "Spellcasting",
+            "The naga is an 11th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 16, +8 to hit with spell attacks), and it needs only verbal components to cast its spells. It has the following cleric spells prepared:",
+            "",
+            "Cantrips (at will): *mending*, *sacred flame*, *thaumaturgy*",
+            "",
+            "1st level (4 slots): *command*, *cure wounds*, *shield of faith*",
+            "",
+            "2nd level (3 slots): *calm emotions*, *hold person*",
+            "",
+            "3rd level (3 slots): *bestow curse*, *clairvoyance*",
+            "",
+            "4th level (3 slots): *banishment*, *freedom of movement*",
+            "",
+            "5th level (2 slots): *flame strike*, *geas*",
+            "",
+            "6th level (1 slot): *true seeing*",
+            "",
+            "<spell>Mending</spell>",
+            "",
+            "<spell>Sacred Flame</spell>",
+            "",
+            "<spell>Thaumaturgy</spell>",
+            "",
+            "<spell>Command</spell>",
+            "",
+            "<spell>Cure Wounds</spell>",
+            "",
+            "<spell>Shield of Faith</spell>",
+            "",
+            "<spell>Calm Emotions</spell>",
+            "",
+            "<spell>Hold Person</spell>",
+            "",
+            "<spell>Bestow Curse</spell>",
+            "",
+            "<spell>Clairvoyance</spell>",
+            "",
+            "<spell>Banishment</spell>",
+            "",
+            "<spell>Freedom of Movement</spell>",
+            "",
+            "<spell>Flame Strike</spell>",
+            "",
+            "<spell>Geas</spell>",
+            "",
+            "<spell>True Seeing</spell>"
+        ]
+    ],
+    "type": "monstrosity"
+}

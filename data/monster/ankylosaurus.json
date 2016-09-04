@@ -1,0 +1,30 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 5,
+        "con": 15,
+        "dex": 11,
+        "int": 2,
+        "str": 19,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Tail",
+            "*Melee Weapon Attack:* +7 to hit, reach 10 ft., one target. *Hit:* 18 (4d6 + 4) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
+        ]
+    ],
+    "armor class": "15 (natural armor)",
+    "description": [
+        "Thick armor plating covers the body of the plant-eating ankylosaurus, which defends itself against predators with a knobbed tail that delivers a devastating strike. Some varieties of ankylosaurus have spiked tails that deal piercing damage instead of bludgeoning damage."
+    ],
+    "experience": 700,
+    "group": "Dinosaurs",
+    "hit points": "68 (8d12 + 16)",
+    "name": "Ankylosaurus",
+    "size": "Huge",
+    "speed": [
+        "30 ft."
+    ],
+    "type": "beast"
+}

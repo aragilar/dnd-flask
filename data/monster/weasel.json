@@ -1,0 +1,37 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 3,
+        "con": 8,
+        "dex": 16,
+        "int": 2,
+        "str": 3,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 1 piercing damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "13",
+    "experience": 10,
+    "hit points": "1 (1d4 - 1)",
+    "name": "Weasel",
+    "size": "Tiny",
+    "skills": {
+        "Perception": 3,
+        "Stealth": 5
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Keen Hearing and Smell",
+            "The weasel has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+        ]
+    ],
+    "type": "beast"
+}

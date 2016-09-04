@@ -1,0 +1,52 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 10,
+        "con": 12,
+        "dex": 15,
+        "int": 8,
+        "str": 13,
+        "wis": 13
+    },
+    "actions": [
+        [
+            "Talons",
+            "*Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 8 (2d6 + 1) slashing damage."
+        ]
+    ],
+    "alignment": "neutral",
+    "armor class": "12",
+    "description": [
+        "**Giant owls** often befriend fey and other sylvan creatures and are guardians of their woodland realms."
+    ],
+    "experience": 50,
+    "hit points": "19 (3d10 + 3)",
+    "languages": [
+        "Giant Owl",
+        "understands Common, Elvish, and Sylvan but can't speak them"
+    ],
+    "name": "Giant Owl",
+    "senses": [
+        "darkvision 120 ft."
+    ],
+    "size": "Large",
+    "skills": {
+        "Perception": 5,
+        "Stealth": 4
+    },
+    "speed": [
+        "5 ft.",
+        "fly 60 ft."
+    ],
+    "traits": [
+        [
+            "Flyby",
+            "The owl doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+        ],
+        [
+            "Keen Hearing and Sight",
+            "The owl has advantage on Wisdom (Perception) checks that rely on hearing or sight."
+        ]
+    ],
+    "type": "beast"
+}

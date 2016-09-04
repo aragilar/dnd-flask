@@ -1,0 +1,39 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 7,
+        "con": 16,
+        "dex": 8,
+        "int": 5,
+        "str": 19,
+        "wis": 7
+    },
+    "actions": [
+        [
+            "Greatclub",
+            "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 13 (2d8 + 4) bludgeoning damage."
+        ],
+        [
+            "Javelin",
+            "*Melee or Ranged Weapon Attack:* +6 to hit, reach 5 ft. or range 30/120 ft., one target. *Hit:* 11 (2d6 + 4) piercing damage."
+        ]
+    ],
+    "alignment": "chaotic evil",
+    "armor class": "11 (hide armor)",
+    "experience": 450,
+    "group": "Ogres",
+    "hit points": "59 (7d10 + 21)",
+    "languages": [
+        "Common",
+        "Giant"
+    ],
+    "name": "Ogre",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Large",
+    "speed": [
+        "40 ft."
+    ],
+    "type": "giant"
+}

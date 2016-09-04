@@ -1,0 +1,78 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 12,
+        "con": 16,
+        "dex": 12,
+        "int": 9,
+        "str": 16,
+        "wis": 13
+    },
+    "actions": [
+        [
+            "Spear",
+            "*Melee or Ranged Weapon Attack:* +5 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 11 (1d6 + 3 plus 1d8) piercing damage, or 12 (2d8 + 3) piercing damage if used with two hands to make a melee attack."
+        ]
+    ],
+    "alignment": "chaotic evil",
+    "armor class": "16 (ring mail, shield)",
+    "description": [
+        "When an orc slays an elf in Gruumsh's name and offers the corpse of its foe as a sacrifice to the god of slaughter, an aspect of the god might appear. This aspect demands an additional sacrifice: one of the orc's eyes, symbolizing the loss Gruumsh suffered at the hands of his greatest enemy, Corellon Larethian.",
+        "",
+        "If the orc plucks out one of its eyes, Gruumsh might grant the orc spellcasting ability and special favor, along with the right to call itself an Eye of Gruumsh. When not using their auguries to advise their war chiefs, these savage devotees of the god of slaughter hurl themselves into battle, their weapons stained with blood."
+    ],
+    "experience": 450,
+    "group": "Orcs",
+    "hit points": "45 (6d8 + 18)",
+    "languages": [
+        "Common",
+        "Orc"
+    ],
+    "name": "Orc Eye of Gruumsh",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Intimidation": 3,
+        "Religion": 1
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Aggressive",
+            "As a bonus action, the orc can move up to its speed toward a hostile creature that it can see."
+        ],
+        [
+            "Gruumsh's Fury",
+            "The orc deals an extra 4 (1d8) damage when it hits with a weapon attack (included in the attack)."
+        ],
+        [
+            "Spellcasting",
+            "The orc is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). The orc has the following cleric spells prepared:",
+            "",
+            "Cantrips (at-will): *guidance*, *resistance*, *thaumaturgy*",
+            "",
+            "1st level (4 slots): *bless*, *command*",
+            "",
+            "2nd level (2 slots): *augury*, *spiritual weapon* (spear)",
+            "",
+            "<spell>Guidance</spell>",
+            "",
+            "<spell>Resistance</spell>",
+            "",
+            "<spell>Thaumaturgy</spell>",
+            "",
+            "<spell>Bless</spell>",
+            "",
+            "<spell>Command</spell>",
+            "",
+            "<spell>Augury</spell>",
+            "",
+            "<spell>Spiritual Weapon</spell>"
+        ]
+    ],
+    "type": "humanoid (orc)"
+}

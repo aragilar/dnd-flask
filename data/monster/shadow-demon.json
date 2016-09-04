@@ -1,0 +1,88 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 14,
+        "con": 12,
+        "dex": 17,
+        "int": 14,
+        "str": 1,
+        "wis": 13
+    },
+    "actions": [
+        [
+            "Claws",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one creature. *Hit:* 10 (2d6 + 3) psychic damage or, if the demon had advantage on the attack roll, 17 (4d6 + 3) psychic damage."
+        ]
+    ],
+    "alignment": "chaotic evil",
+    "armor class": "13",
+    "condition immunities": [
+        "exhaustion",
+        "grappled",
+        "paralyzed",
+        "petrified",
+        "poisoned",
+        "prone",
+        "restrained"
+    ],
+    "damage immunities": [
+        "cold",
+        "lightning",
+        "poison"
+    ],
+    "damage resistances": [
+        "acid",
+        "fire",
+        "necrotic",
+        "thunder",
+        "bludgeoning, piercing, and slashing from nonmagical attacks"
+    ],
+    "damage vulnerabilities": [
+        "radiant"
+    ],
+    "description": [
+        "When a demon's body is destroyed but the fiend is prevented from reforming in the Abyss, its essence sometimes takes on a vague physical form. These shadow demons exist outside the normal abyssal hierarchy, since their creation results most often from mortal magic, not from transformation or promotion.",
+        "",
+        "Shadow demons all but disappear in the darkness, and they can creep about without making a sound. A shadow demon uses its insubstantial claws to feast on its victim's fears, to taste its memories, and drink in its doubts. Bright light harries this fiend and shows its distinct shape, resolving it from a blur of darkness to a winged humanoid creature whose lower body trails off into nothing, and whose claws rend a victim's mind.",
+        "",
+        "***Shadowy Nature.*** A shadow demon doesn't require air, food, drink, or sleep."
+    ],
+    "experience": 1100,
+    "group": "Demons",
+    "hit points": "66 (12d8 + 12)",
+    "languages": [
+        "Abyssal",
+        "telepathy 120 ft."
+    ],
+    "name": "Shadow Demon",
+    "saving throws": {
+        "Cha": 4,
+        "Dex": 5
+    },
+    "senses": [
+        "darkvision 120 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Stealth": 7
+    },
+    "speed": [
+        "30 ft.",
+        "fly 30 ft."
+    ],
+    "traits": [
+        [
+            "Incorporeal Movement",
+            "The demon can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+        ],
+        [
+            "Light Sensitivity",
+            "While in bright light, the demon has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+        ],
+        [
+            "Shadow Stealth",
+            "While in dim light or darkness, the demon can take the Hide action as a bonus action."
+        ]
+    ],
+    "type": "fiend (demon)"
+}

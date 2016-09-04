@@ -1,0 +1,37 @@
+{
+    "+": "FREE",
+    "ability scores": {
+        "cha": 10,
+        "con": 12,
+        "dex": 12,
+        "int": 10,
+        "str": 13,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Spear",
+            "*Melee or Ranged Weapon Attack:* +3 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 4 (1d6 + 1) piercing damage or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack."
+        ]
+    ],
+    "alignment": "any alignment",
+    "armor class": "16 (chain shirt, shield)",
+    "description": [
+        "**Guards** include members of a city watch, sentries in a citadel or fortified town, and the bodyguards of merchants and nobles."
+    ],
+    "experience": 25,
+    "group": "Nonplayer Characters",
+    "hit points": "11 (2d8 + 2)",
+    "languages": [
+        "any one language (usually Common)"
+    ],
+    "name": "Guard",
+    "size": "Medium",
+    "skills": {
+        "Perception": 2
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "type": "humanoid (any race)"
+}

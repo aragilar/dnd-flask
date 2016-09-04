@@ -1,0 +1,50 @@
+{
+    "+": "MM",
+    "ability scores": {
+        "cha": 3,
+        "con": 10,
+        "dex": 15,
+        "int": 3,
+        "str": 7,
+        "wis": 5
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d4 + 2) piercing damage."
+        ]
+    ],
+    "alignment": "chaotic neutral",
+    "armor class": "12",
+    "damage resistances": [
+        "acid",
+        "cold",
+        "fire",
+        "lightning",
+        "thunder"
+    ],
+    "experience": 25,
+    "group": "Slaadi",
+    "hit points": "10 (4d4)",
+    "languages": [
+        "understands Slaad but can't speak"
+    ],
+    "name": "Slaad Tadpole",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Tiny",
+    "skills": {
+        "Stealth": 4
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Magic Resistance",
+            "The slaad has advantage on saving throws against spells and other magical effects."
+        ]
+    ],
+    "type": "aberration"
+}
