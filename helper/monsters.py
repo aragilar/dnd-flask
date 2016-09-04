@@ -109,45 +109,44 @@ class Monster (utils.Base):
                 if self.group:
                     if not temp:
                         temp = '# {}'.format(self.group)
-                    temp += '\n\n* * *\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.group)
+                    temp += '\n\n***\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.group)
                 temp = utils.convert(temp)
                 if not temp.startswith('<h1'):
                     temp = '<h1>{}</h1>\n'.format(self.name) + temp
                 ret += utils.get_details(temp, 'h1')
             
             ret += '<div class="monster-box">\n'
-            ret += '<h1>%s</h1>\n' % self.name
-            ret += '<p><em>{size} {type}, {alignment}</em></p>\n'.format(
+            
+            md = '# {}\n\n'.format(self.name)
+            md += '*{size} {type}, {alignment}*\n\n'.format(
                 alignment=self.alignment,
                 size=self.size,
                 type=self.type,
             )
-            ret += '<hr>\n'
-            ret += '<p><strong>Armor Class</strong> %s</p>\n' % self.armor_class
-            ret += '<p><strong>Hit Points</strong> %s</p>\n' % self.hit_points
-            ret += '<p><strong>Speed</strong> %s</p>\n' % ', '.join(self.speed)
-            ret += '<hr>\n'
+            md += '***\n\n'
+            md += '**Armor Class** {}\n\n'.format(self.armor_class)
+            md += '**Hit Points** {}\n\n'.format(self.hit_points)
+            md += '**Speed** {}\n\n'.format(', '.join(self.speed))
+            md += '***\n\n'
             
-            ret += '<ul class="monster-stats">\n'
             for stat in utils.stats:
                 value = self.ability_scores.get(stat, 10)
-                ret += '<li><strong>{}</strong> {} ({:+})</li>\n'.format(stat.upper(), value, utils.get_modifier(value))
-            ret += '</ul>\n'
+                md += '* **{}** {} ({:+})\n'.format(stat.upper(), value, utils.get_modifier(value))
             
-            ret += '<hr>\n'
+            md += '\n***\n\n'
             
             if self.saving_throws:
-                ret += '<p><strong>Saving Throws</strong> %s</p>\n' % ', '.join(
+                md += '**Saving Throws** {}\n\n'.format(', '.join(
                     '{} {:+}'.format(stat, self.saving_throws[stat])
                     for stat in map(str.title, utils.stats)
                     if stat in self.saving_throws
-                )
+                ))
             
             if self.skills:
-                ret += '<p><strong>Skills</strong> %s</p>\n' % ', '.join(
+                md += '**Skills** {}\n\n'.format(', '.join(
                     '{} {:+}'.format(skill, self.skills[skill])
                     for skill in sorted(self.skills)
-                )
+                ))
             
             for name, temp in [
                 ('Damage Vulnerabilities', self.damage_vulnerabilities),
@@ -156,7 +155,6 @@ class Monster (utils.Base):
             ]:
                 if temp:
                     temp = temp.copy()
-                    ret += '<p><strong>%s</strong> ' % name
                     new = []
                     while temp:
                         s = []
@@ -168,12 +166,11 @@ class Monster (utils.Base):
                             else:
                                 s.append(temp.pop(0))
                         new.append(', '.join(s))
-                    ret += '; '.join(new)
-                    ret += '</p>\n'
+                    md += '**{}** {}\n\n'.format(name, '; '.join(new))
             
             if self.condition_immunities:
-                ret += '<p><strong>Condition Immunities</strong> %s</p>\n' % ', '.join(
-                    self.condition_immunities
+                md += '**Condition Immunities** {}\n\n'.format(
+                    ', '.join(self.condition_immunities)
                 )
             
             temp = self.senses.copy()
@@ -182,41 +179,46 @@ class Monster (utils.Base):
                     s = self.skills['Perception']
                 else:
                     s = utils.get_modifier(self.ability_scores['wis'])
-                temp.append('passive Perception %d' % (10 + s))
-            ret += '<p><strong>Senses</strong> %s</p>\n' % ', '.join(temp)
+                temp.append('passive Perception {}'.format(10 + s))
+            md += '**Senses** {}\n\n'.format(', '.join(temp))
             
             if self.languages:
                 temp = ', '.join(self.languages)
             else:
                 temp = '-'
-            ret += '<p><strong>Languages</strong> %s</p>\n' % temp
+            md += '**Languages** {}\n\n'.format(temp)
             
             temp = self.challenge_description.replace('{xp}', '{xp:,}')
-            temp = '<p><strong>Challenge</strong> {}</p>\n'.format(temp)
+            temp = '**Challenge** {}\n\n'.format(temp)
             temp = temp.format(cr=self.get_cr(), xp=self.experience)
-            ret += temp
+            md += temp
             
-            ret += '<hr>\n'
+            md += '***\n\n'
             
             for name, temp in [
                 (None, self.traits),
                 ('Actions', self.actions),
                 ('Reactions', self.reactions),
-                ('Legendary Actions', self.legendary_actions, '**'),
+                ('Legendary Actions', self.legendary_actions),
             ]:
                 if temp:
                     if name:
-                        ret += '<h2>%s</h2>\n' % name
+                        print(name)
+                        md += '## {}\n\n'.format(name)
                     for item in temp:
                         if isinstance(item, list):
-                            ret += utils.convert('***{}.*** {}'.format(item[0], '\n'.join(item[1:]).lstrip()))
+                            md += '***{}.*** {}\n\n'.format(item[0], '\n'.join(item[1:]).lstrip())
                         else:
-                            ret += utils.convert(item)
+                            md += item + '\n\n'
+
+            md = utils.convert(md)
+            md = md.replace('<ul>', '<ul class="monster-stats">', 1)
+            ret += md
             
             ret += '</div>\n'
             
             ret = spells.handle_spells(ret, self.spell_list)
-            ret = '<div>\n%s</div>\n' % ret
+            ret = '<div>\n{}</div>\n'.format(ret)
             
             self._page = ret
         else:
