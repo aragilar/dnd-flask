@@ -141,8 +141,6 @@ class MagicItems (utils.Group):
             <br>
             <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="legendary"> Legendary</label>
             <br>
-            <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="sentient"> Sentient</label>
-            <br>
             <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="artifact"> Artifacts</label>
         </p>
         <p>

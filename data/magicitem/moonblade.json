@@ -15,7 +15,7 @@
         "**Moonblade Properties**",
         "",
         "| d100  | Property |",
-        "|:-----:|:---------|",
+        "|:-----:|----------|",
         "| 01-40 | Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus.",
         "| 41-80 | The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter).",
         "| 81-82 | The moonblade gains the finesse property.",
@@ -41,6 +41,6 @@
     ],
     "limits": "longsword",
     "name": "Moonblade",
-    "rarity": "sentient",
+    "rarity": "legendary",
     "type": "Weapon"
 }
