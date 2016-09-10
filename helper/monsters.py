@@ -199,7 +199,6 @@ class Monster (utils.Base):
                 (None, self.traits),
                 ('Actions', self.actions),
                 ('Reactions', self.reactions),
-                ('Legendary Actions', self.legendary_actions),
             ]:
                 if temp:
                     if name:
@@ -207,6 +206,18 @@ class Monster (utils.Base):
                     for item in temp:
                         if isinstance(item, list):
                             md += '***{}.*** {}\n\n'.format(item[0], '\n'.join(item[1:]).lstrip())
+                        else:
+                            md += item + '\n\n'
+            
+            for name, temp in [
+                ('Legendary Actions', self.legendary_actions),
+            ]:
+                if temp:
+                    if name:
+                        md += '## {}\n\n'.format(name)
+                    for item in temp:
+                        if isinstance(item, list):
+                            md += '{}\n: {}\n\n'.format(item[0], '\n'.join(item[1:]).lstrip())
                         else:
                             md += item + '\n\n'
 

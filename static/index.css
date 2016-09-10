@@ -91,6 +91,16 @@ td, th {
     padding: 0 5px;
 }
 
+dl:not(.accordion) > dt {
+    font-weight: bold;
+    margin: 0 0.25em;
+}
+
+dl:not(.accordion) > dt::after {
+    content: ".";
+    display: inline;
+}
+
 .head-row {
     background-color: #000;
     color: #fff;

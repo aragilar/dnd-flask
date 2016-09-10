@@ -5,18 +5,28 @@ import functools
 import copy
 import multiprocessing.pool
 
-import markdown2
+import markdown
+##import markdown2
 
 from . import archiver
 
-md = markdown2.Markdown(
-    html4tags=True,
-    extras = [
-        'fenced-code-blocks',
-        'markdown-in-html',
-        'smarty-pants',
-        'tables',
-    ],
+##md = markdown2.Markdown(
+##    html4tags=True,
+##    extras = [
+##        'fenced-code-blocks',
+##        'markdown-in-html',
+##        'smarty-pants',
+##        'tables',
+##    ],
+##)
+
+md = markdown.Markdown(
+    extensions = [
+        "markdown.extensions.def_list",
+        "markdown.extensions.fenced_code",
+        "markdown.extensions.tables",
+        "markdown.extensions.smarty",
+    ]
 )
 
 _lock = multiprocessing.Lock()
