@@ -70,6 +70,7 @@
     "size": "Small",
     "size description": "Halflings average about 3 feet tall and weigh about 40 pounds. Your size is {size}.",
     "speed": 25,
+    "subrace": "The two main kinds of halfling, lightfoot and stout, are more like closely related families than true subraces. Choose one of these subraces.",
     "traits": [
         [
             "Lucky",
@@ -83,5 +84,6 @@
             "Halfling Nimbleness",
             "You can move through the space of any creature that is of a size larger than yours."
         ]
-    ]
+    ],
+    "traits description": "Your halfling character has a number of traits in common with all other halflings."
 }

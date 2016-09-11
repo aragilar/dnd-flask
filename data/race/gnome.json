@@ -65,6 +65,7 @@
     "size": "Small",
     "size description": "Gnomes are between 3 and 4 feet tall and average about 40 pounds. Your size is {size}.",
     "speed": 25,
+    "subrace": "Two subraces of gnomes are found among the worlds of D&D: forest gnomes and rock gnomes. Choose one of these subraces.",
     "traits": [
         [
             "Darkvision",
@@ -74,5 +75,6 @@
             "Gnome Cunning",
             "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
         ]
-    ]
+    ],
+    "traits description": "Your gnome character has certain characteristics in common with all other gnomes."
 }

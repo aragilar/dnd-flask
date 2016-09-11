@@ -18,8 +18,10 @@ class Race (utils.Base):
     size_description = 'Your size is {size}.'
     speed = 30
     speed_description = 'Your base walking speed is {speed} feet.'
+    subrace = ''
     tool_proficiencies = []
     traits = []
+    traits_description = ''
     
     def __str__(self):
         ret = '<div>\n'
@@ -42,6 +44,9 @@ class Race (utils.Base):
     
     def features2html(self):
         ret = ''
+        
+        if self.traits_description:
+            ret += self.traits_description + '\n\n'
         
         # ----#-   Race Ability Scores
         scores = self.ability_scores
@@ -67,67 +72,67 @@ class Race (utils.Base):
                 )
             lst = utils.comma_list(lst)
             lst = lst[0].upper() + lst[1:] + '.'
-            ret += '**Ability Score Increase.** %s\n\n' % lst
+            ret += '***Ability Score Increase.*** %s\n\n' % lst
         
         # ----#-   Race Age
         if self.age is not None:
-            ret += '**Age.** %s\n\n' % self.age
+            ret += '***Age.*** %s\n\n' % self.age
         
         # ----#-   Race Alignment
         if self.alignment is not None:
-            ret += '**Alignment.** %s\n\n' % self.alignment
+            ret += '***Alignment.*** %s\n\n' % self.alignment
         
         # ----#-   Race Size
         if self.size is not None:
-            ret += '**Size.** %s\n\n' % self.size_description.format(size=self.size)
+            ret += '***Size.*** %s\n\n' % self.size_description.format(size=self.size)
         
         # ----#-   Race Speed
         if self.speed is not None:
-            ret += '**Speed.** %s\n\n' % self.speed_description.format(speed=self.speed)
+            ret += '***Speed.*** %s\n\n' % self.speed_description.format(speed=self.speed)
         
         # ----#-   Race Traits
         for trait in self.traits:
-            ret += '**%s.** %s\n\n' % (trait[0], '\n'.join(trait[1:]))
+            ret += '***%s.*** %s\n\n' % (trait[0], '\n'.join(trait[1:]))
         
         # ----#-   Race Weapons
         if self.combat_proficiencies:
-            ret += ('**%s Combat Training.** You have proficiency in %s.\n\n'
+            ret += ('***%s Combat Training.*** You have proficiency in %s.\n\n'
                 % (self.name, utils.comma_list(self.combat_proficiencies))
             )
         
         # ----#-   Race Tools
         if len(self.tool_proficiencies) > 1:
-            ret += '**Tool Proficiencies.** %s.\n\n' % utils.choice_list(self.tool_proficiencies, 'tool')
+            ret += '***Tool Proficiencies.*** %s.\n\n' % utils.choice_list(self.tool_proficiencies, 'tool')
         elif self.tool_proficiencies:
-            ret += ('**Tool Proficiency.** You gain proficiency with %s.\n\n'
+            ret += ('***Tool Proficiency.*** You gain proficiency with %s.\n\n'
                 % str(self.tool_proficiencies[0])
             )
         
         # ----#-   Race Skills
         if len(self.skills) > 1:
-            ret += ('**Skills.** You gain proficiency in %s.\n\n'
+            ret += ('***Skills.*** You gain proficiency in %s.\n\n'
                 % utils.choice_list(self.skills, 'skill')
             )
         elif self.skills:
             if isinstance(self.skills[0], int):
                 if self.skills[0] == 1:
-                    ret += '**Skills.** You gain proficiency in a skill of your choice.\n\n'
+                    ret += '***Skills.*** You gain proficiency in a skill of your choice.\n\n'
                 else:
-                    ret += '**Skills.** You gain proficiency in %d skills of your choice.\n\n' % self.skills[0]
+                    ret += '***Skills.*** You gain proficiency in %d skills of your choice.\n\n' % self.skills[0]
             else:
-                ret += '**Skills.** You gain proficiency in %s.\n\n' % str(self.skills[0])
+                ret += '***Skills.*** You gain proficiency in %s.\n\n' % str(self.skills[0])
         
         # ----#-   Race Feats
         if len(self.feats) > 1:
-            ret += '**Feats.** You gain %s.\n\n' % utils.choice_list(self.feats, 'feat')
+            ret += '***Feats.*** You gain %s.\n\n' % utils.choice_list(self.feats, 'feat')
         elif len(self.feats):
             if isinstance(self.feats[0], int):
                 if self.feats[0] == 1:
-                    ret += '**Feats.** You gain a feat of your choice.\n\n'
+                    ret += '***Feats.*** You gain a feat of your choice.\n\n'
                 else:
-                    ret += '**Feats.** You gain %d feats of your choice.\n\n' % self.feats[0]
+                    ret += '***Feats.*** You gain %d feats of your choice.\n\n' % self.feats[0]
             else:
-                ret += '**Feats.** You gain the %s feat.\n\n' % str(self.feats[0])
+                ret += '***Feats.*** You gain the %s feat.\n\n' % str(self.feats[0])
         
         # ----#-   Race Languages
         temp = self.languages[:]
@@ -140,13 +145,16 @@ class Race (utils.Base):
         if temp:
             tempstr = self.languages_description
             if tempstr is not None:
-                ret += '**Languages.** %s\n\n' % tempstr.format(
+                ret += '***Languages.*** %s\n\n' % tempstr.format(
                     languages=utils.choice_list(temp, 'language')
                 )
             else:
-                ret += ('**Languages.** You can speak, read, and write %s.\n\n'
+                ret += ('***Languages.*** You can speak, read, and write %s.\n\n'
                     % utils.choice_list(temp, 'language')
                 )
+        
+        if self.subrace:
+            ret += '***Subrace.*** %s\n\n' % self.subrace
         
         ret = utils.md.convert(ret)
         

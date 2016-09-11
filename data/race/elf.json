@@ -68,6 +68,7 @@
         "Perception"
     ],
     "speed": 30,
+    "subrace": "Ancient divides amoog the elven people resulted in three main subraces: high elves, wood elves, and dark elves, who are commonly called drow. Choose one of these subraces. In some worlds, these subraces are divided still further (such as the sun elves and moon elves of the Forgotten Realms), so if you wish, you can choose a narrower subrace.",
     "traits": [
         [
             "Darkvision",
@@ -81,5 +82,6 @@
             "Trance",
             "Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\") While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep."
         ]
-    ]
+    ],
+    "traits description": "Your elf character has a variety of natural abilities, the result of thousands of years of elven refinemenl."
 }

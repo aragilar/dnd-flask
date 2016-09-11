@@ -58,5 +58,6 @@
     "name": "Human",
     "size": "Medium",
     "size description": "Humans vary widely in height and build, from barely 5 feet to well over 6 feet tall. Regardless of your position in that range, your size is {size}.",
-    "speed": 30
+    "speed": 30,
+    "traits description": "It's hard to make generalizations about humans, but your human character has these traits."
 }

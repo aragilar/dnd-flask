@@ -72,6 +72,7 @@
     "size description": "Dwarves stand between 4 and 5 feet tall and average about 150 pounds. Your size is {size}.",
     "speed": 25,
     "speed description": "Your base walking speed is {speed} feet. Your speed is not reduced by wearing heavy armor.",
+    "subrace": "Two main subraces of dwarves populate the worlds of D&D: hill dwarves and mountain dwarves. Choose one of these subraces.",
     "tool proficiencies": [
         1,
         "smith's tools",
@@ -91,5 +92,6 @@
             "Stonecunning",
             "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."
         ]
-    ]
+    ],
+    "traits description": "Your dwarf character has an assortment of inborn abilities, part and parcel of dwarven nature."
 }
