@@ -13,6 +13,7 @@ from . import archiver
 ##md = markdown2.Markdown(
 ##    html4tags=True,
 ##    extras = [
+##        'definition-lists',
 ##        'fenced-code-blocks',
 ##        'markdown-in-html',
 ##        'smarty-pants',

@@ -35,8 +35,9 @@ def save(data, filename, compact=False, **kwargs):
     """
     Saves a JSON object to the given file
     """
+    out = p(data, compact=compact, **kwargs)
     with open(filename, 'w') as f:
-        json.dump(data, f, cls=encoder, compact=compact, **kwargs)
+        f.write(out)
 
 def load(filename, debug=True, **kwargs):
     """
@@ -61,7 +62,10 @@ def load(filename, debug=True, **kwargs):
             return None
 
 def p(data, compact=False, **kwargs):
-    return json.dumps(data, cls=encoder, compact=compact, **kwargs)
+    out = json.dumps(data, cls=encoder, compact=compact, **kwargs)
+    if not compact and not out.endswith('\n'):
+        out += '\n'
+    return out
 
 if __name__ == '__main__':
     #load(sys.argv[0])
