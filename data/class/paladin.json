@@ -148,7 +148,7 @@
         [
             7,
             [
-                "Sacred Oath Feature",
+                "Sacred Oath feature",
                 "You gain a feature from your Sacred Oath."
             ]
         ],
@@ -185,7 +185,7 @@
         ],
         [
             15,
-            "Sacred Oath Feature"
+            "Sacred Oath feature"
         ],
         [
             16,
@@ -204,7 +204,7 @@
         ],
         [
             20,
-            "Sacred Oath Feature"
+            "Sacred Oath feature"
         ]
     ],
     "hit die": "1d10",

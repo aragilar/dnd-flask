@@ -96,7 +96,7 @@
                 "A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
             ],
             [
-                "Divine Domain Feature",
+                "Divine Domain feature",
                 "You gain a feature from your Divine Domain."
             ]
         ],
@@ -130,7 +130,7 @@
                 "Channel Divinity (2/rest)",
                 "Beginning at 6th level, you can use your Channel Divinity twice between rests."
             ],
-            "Divine Domain Feature"
+            "Divine Domain feature"
         ],
         [
             8,
@@ -139,7 +139,7 @@
                 "Destroy Undead (CR 1)",
                 "Starting at 8th level you can instantly destroy undead of CR 1 or lower with Destroy Undead."
             ],
-            "Divine Domain Feature"
+            "Divine Domain feature"
         ],
         [
             10,
@@ -182,7 +182,7 @@
                 "Destroy Undead (CR 4)",
                 "Starting at 17th level you can instantly destroy undead of CR 4 or lower with Destroy Undead."
             ],
-            "Divine Domain Feature"
+            "Divine Domain feature"
         ],
         [
             18,
