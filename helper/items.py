@@ -251,8 +251,8 @@ class Items (utils.Group):
                         }
                         self.add(temp)
             for item in self.values():
-                if item.group and self._getgroup(item.group) not in self.groups:
-                    self.groups[self._getgroup(item.group)] = ''
+                if item.group and item.group not in self.groups:
+                    self.groups[item.group] = ''
     
     def add(self, item):
         if isinstance(item, self.type):
