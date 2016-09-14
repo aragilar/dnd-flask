@@ -107,6 +107,11 @@
             "Seeker": false,
             "Stalker": false
         },
+        "Ranger, Revised": {
+            "Beast Conclave": false,
+            "Deep Stalker Conclave": false,
+            "Hunter Conclave": false
+        },
         "Rogue": {
             "Arcane Trickster": false,
             "Assassin": false,
