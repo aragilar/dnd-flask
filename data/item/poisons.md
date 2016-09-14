@@ -1,4 +1,4 @@
-## Poisons
+# Poisons
 
 Given their insidious and deadly nature, poisons are illegal in most societies but are a favorite tool among assassins, draw, and other evil creatures.
 
