@@ -235,7 +235,10 @@ def slug(s):
     gets a "slug", a filename compatible
     version of a string
     """
+    #s = bytearray(s, 'utf_8').decode('ascii', errors='ignore')
+    s = s.strip()
     s = s.lower()
+    s = s.replace("&#8217;", "'")
     for item in ' /':
         s = s.replace(item, '-')
     for item in "',:":

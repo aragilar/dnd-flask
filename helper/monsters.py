@@ -305,9 +305,9 @@ class Monsters (utils.Group):
             Type: <input class="filter" id="type">
         </p>
         <p>
-            CR &ge; <input class="filter" id="crge">
+            Min CR <input class="filter" id="crge">
             <br>
-            CR &le; <input class="filter" id="crle">
+            Max CR <input class="filter" id="crle">
         </p>
         <p class="right">
             <label><input type="checkbox" class="filter size" id="tiny"> Tiny </label>
