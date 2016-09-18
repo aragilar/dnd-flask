@@ -29,7 +29,7 @@
     "alignment": "neutral",
     "armor class": "18 (natural armor)",
     "damage resistances": [
-        "bludgeoning, piercing, and slashing damage from nonmagical attacks"
+        "bludgeoning, piercing, and slashing from nonmagical attacks"
     ],
     "experience": 2900,
     "group": "Grick",

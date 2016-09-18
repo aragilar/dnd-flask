@@ -29,7 +29,7 @@
     "alignment": "neutral evil",
     "armor class": "18 (natural armor)",
     "condition immunities": [
-        "posioned"
+        "poisoned"
     ],
     "damage immunities": [
         "acid",
