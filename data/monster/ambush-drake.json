@@ -1,0 +1,53 @@
+{
+    "+": "HotDQ",
+    "ability scores": {
+        "cha": 6,
+        "con": 14,
+        "dex": 15,
+        "int": 4,
+        "str": 13,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Bite",
+            "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d6 + 1) piercing damage."
+        ]
+    ],
+    "alignment": "unaligned",
+    "armor class": "13 (natural armor)",
+    "damage resistances": [
+        "poison"
+    ],
+    "description": [
+        "*Hoard of the Dragon Queen*"
+    ],
+    "experience": 100,
+    "hit points": "22 (4d6 + 8)",
+    "languages": [
+        "understands Draconic but can't speak it"
+    ],
+    "name": "Ambush Drake",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Perception": 4,
+        "Stealth": 4
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Pack Tactics",
+            "The drake has advantage on an attack roll against a creature if at least one of the drake's allies is within 5 feet of the creature and the ally isn't incapacitated."
+        ],
+        [
+            "Surprise Attack",
+            "If the drake surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 (2d6) damage from the attack."
+        ]
+    ],
+    "type": "dragon"
+}

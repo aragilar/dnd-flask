@@ -1,0 +1,63 @@
+{
+    "+": "HotDQ",
+    "ability scores": {
+        "cha": 12,
+        "con": 16,
+        "dex": 10,
+        "int": 13,
+        "str": 19,
+        "wis": 14
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "Othelstan attacks twice with his flail or spear, or makes two ranged attacks with his spears."
+        ],
+        [
+            "Flail",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 8 (1d8 + 4) bludgeoning damage."
+        ],
+        [
+            "Spear",
+            "*Melee or Ranged Weapon Attack:* +7 to hit, reach 5 ft. or ranged 20/60 ft., one target. *Hit:* 7 (1d6 + 4) piercing damage."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "19 (splint, shield)",
+    "description": [
+        "*Hoard of the Dragon Queen*"
+    ],
+    "experience": 1800,
+    "hit points": "93 (11d10 + 33)",
+    "languages": [
+        "Common",
+        "Draconic",
+        "Giant"
+    ],
+    "name": "Captain Othelstan",
+    "saving throws": {
+        "Con": 6,
+        "Str": 7
+    },
+    "size": "Medium",
+    "skills": {
+        "Athletics": 7,
+        "Intimidation": 4,
+        "Perception": 5,
+        "Religion": 4
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Action Surge (Recharges after a Short or Long Rest)",
+            "On his turn, Othelstan can take one additional action."
+        ],
+        [
+            "Tiamat's Blessing of Retribution",
+            "When Othelstan takes damage that reduces him to 0 hit points, he immediately regains 20 hit points. If he has 20 hit points or fewer at the end of his next turn, he dies."
+        ]
+    ],
+    "type": "humanoid (human)"
+}

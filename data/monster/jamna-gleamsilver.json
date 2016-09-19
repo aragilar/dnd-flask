@@ -1,0 +1,95 @@
+{
+    "+": "HotDQ",
+    "ability scores": {
+        "cha": 12,
+        "con": 14,
+        "dex": 17,
+        "int": 15,
+        "str": 8,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "Jamna attacks twice with her shortswords."
+        ],
+        [
+            "Shortsword",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 6 (1d6 + 3) piercing damage, or 9 (1d6 + 3 plus 1d6) piercing damage if the target is Medium or larger."
+        ]
+    ],
+    "alignment": "neutral",
+    "armor class": "15 (leather armor)",
+    "description": [
+        "*Hoard of the Dragon Queen*",
+        "",
+        "**Jamna Gleamsilver** is a female gnome and a member of a secretive organization called the Black Network, also known as the Zhentarim. Outwardly, the Black Network provides mercenaries and other forms of muscle for hire. Informally, it is known as a criminal society akin to a widespread thieves guild. Secretly, its leaders seek to extend their shadowy fingers into every throne room and ruling council chamber in Faerun. Like the Harpers, the Zhentarim too are aware that the Cult of the Dragon is on the move, and they need to know the cult's plans so they can prevent them from interfering with the Zhentarim's own plans, plus perhaps take advantage of the plunder possibilities.",
+        "",
+        "That's why Gleamsilver joins the caravan. The Black Network's spies learned that the cult is moving freight northward, and, like the characters, she was tasked with finding out what they're hauling and where it's headed. Those above her seriously considered wiping out the caravan with mercenaries disguised as bandits, ransacking the wagons, and torturing cult members for the desired information. Fortunately for the characters, Gleamsilver persuaded her superiors to give her a shot at uncovering the truth in a less bloody fashion. If she hasn't come up with something useful by the time the caravan reaches Waterdeep, she will put plan B---the one involving mass murder---into action.",
+        "",
+        "Despite the vast gulf between their outlooks, the Black Network and the Harpers have a common enemy, and that is pushing them into an unlikely alliance. Gleam silver is the antithesis of a hero---she is self-serving, a skilled thief and liar, and willing to murder anyone who stands between her and her goal."
+    ],
+    "experience": 200,
+    "hit points": "22 (4d6 + 8)",
+    "languages": [
+        "Common",
+        "Gnomish",
+        "Goblin",
+        "Sylvan"
+    ],
+    "name": "Jamna Gleamsilver",
+    "saving throws": {
+        "Dex": 5,
+        "Int": 4
+    },
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Small",
+    "skills": {
+        "Acrobatics": 5,
+        "Deception": 3,
+        "Insight": 2,
+        "Perception": 4,
+        "Persuasion": 3,
+        "Stealth": 7
+    },
+    "speed": [
+        "25 ft."
+    ],
+    "traits": [
+        [
+            "Cunning Action",
+            "Jamna can take a bonus action to take the Dash, Disengage, or Hide action."
+        ],
+        [
+            "Gnome Cunning",
+            "Jamna has advantage on Intelligence, Wisdom, and Charisma saving throws against magic."
+        ],
+        [
+            "Spellcasting",
+            "Jamna is a 4th-level spellcaster that uses Intelligence as her spellcasting ability (spell save DC 12, +4 to hit with spell attacks). Jamna has the following spells prepared from the wizard spell list:",
+            "",
+            "Cantrips (atwill): *mage hand*, *minor illusion*, *prestidigitation*, *ray of frost*",
+            "",
+            "1st level (3 slots): *charm person*, *color spray*, *disguise self*, *longstrider*",
+            "",
+            "<spell>Mage Hand</spell>",
+            "",
+            "<spell>Minor Illusion</spell>",
+            "",
+            "<spell>Prestidigitation</spell>",
+            "",
+            "<spell>Ray of Frost</spell>",
+            "",
+            "<spell>Charm Person</spell>",
+            "",
+            "<spell>Color Spray</spell>",
+            "",
+            "<spell>Disguise Self</spell>",
+            "",
+            "<spell>Longstrider</spell>"
+        ]
+    ],
+    "type": "humanoid (gnome)"
+}

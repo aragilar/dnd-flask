@@ -1,0 +1,115 @@
+{
+    "+": "HotDQ",
+    "ability scores": {
+        "cha": 10,
+        "con": 14,
+        "dex": 16,
+        "int": 18,
+        "str": 11,
+        "wis": 14
+    },
+    "actions": [
+        [
+            "Quarterstaff",
+            "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d8) bludgeoning damage."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "13 (16 with *mage armor*)",
+    "description": [
+        "*Hoard of the Dragon Queen*"
+    ],
+    "experience": 2300,
+    "hit points": "71 (11d8 + 22)",
+    "languages": [
+        "Common",
+        "Draconic",
+        "Infernal",
+        "Primordial",
+        "Thayan"
+    ],
+    "name": "Rath Modar",
+    "reactions": [
+        [
+            "Illusory Self (Recharges after a Short or Long Rest)",
+            "When a creature Rath can see makes an attack roll against him, he can interpose an illusory duplicate between the attacker and him. The attack automatically misses Rath, then the illusion dissipates."
+        ]
+    ],
+    "saving throws": {
+        "Int": 7,
+        "Wis": 5
+    },
+    "size": "Medium",
+    "skills": {
+        "Arcana": 7,
+        "Deception": 3,
+        "Insight": 5,
+        "Stealth": 6
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Special Equipment",
+            "Rath has a *staff of fire*, and scrolls of *dimension door*, *feather fall*, and *fireball*."
+        ],
+        [
+            "Spellcasting",
+            "Rath is an 11th-level spellcaster who uses Intelligence as his spellcasting ability (spell save DC 15, +7 to hit with spell attacks). Rath has the following spells prepared from the wizard spell list:",
+            "",
+            "Cantrips (at will): *fire bolt*, *minor illusion*, *prestidigitation*, *shocking grasp*",
+            "",
+            "1st level (4 slots): *chromatic orb*, *color spray*, *mage armor*, *magic missile*",
+            "",
+            "2nd level (3 slots): *detect thoughts*, *mirror image*, *phantasmal force*",
+            "",
+            "3rd level (3 slots): *counterspell*, *fireball*, *major image*",
+            "",
+            "4th level (3 slots): *confusion*, *greater invisibility*",
+            "",
+            "5th level (2 slots): *mislead*, *seeming*",
+            "",
+            "6th level (1 slot): *globe of invulnerability*",
+            "",
+            "<spell>Fire Bolt</spell>",
+            "",
+            "<spell>Minor Illusion</spell>",
+            "",
+            "<spell>Prestidigitation</spell>",
+            "",
+            "<spell>Shocking Grasp</spell>",
+            "",
+            "<spell>Chromatic Orb</spell>",
+            "",
+            "<spell>Color Spray</spell>",
+            "",
+            "<spell>Mage Armor</spell>",
+            "",
+            "<spell>Magic Missile</spell>",
+            "",
+            "<spell>Detect Thoughts</spell>",
+            "",
+            "<spell>Mirror Image</spell>",
+            "",
+            "<spell>Phantasmal Force</spell>",
+            "",
+            "<spell>Counterspell</spell>",
+            "",
+            "<spell>Fireball</spell>",
+            "",
+            "<spell>Major Image</spell>",
+            "",
+            "<spell>Confusion</spell>",
+            "",
+            "<spell>Greater Invisibility</spell>",
+            "",
+            "<spell>Mislead</spell>",
+            "",
+            "<spell>Seeming</spell>",
+            "",
+            "<spell>Globe of Invulnerability</spell>"
+        ]
+    ],
+    "type": "humanoid (human)"
+}
