@@ -10,9 +10,16 @@
         "",
         "Those with knowledge of the Draakhorn's history know that it was first built to signal danger to chromatic dragons-a purpose the Cult of the Dragon has corrupted to call chromatic dragons to the Well of Dragons from across the North.",
         "",
-        "See area 8, \"The Draakhorn\" for the item's game effects."
+        "See area 8, \"The Draakhorn\" for the item's game effects.",
+        "",
+        "Within 50 feet of the entrance to area 8, the air begins to shimmer from the sound. Any character within 20 feet of the doorway must succeed on a DC 12 Strength check to continue pushing against the pressure of the sound. A failure indicates the character can advance no farther toward area 8.",
+        "",
+        "For any character entering area 8, the sound fades to silence---because any creature that enters the chamber is temporarily deafened and must make a DC 12 Constitution saving throw. Success indicates the deafness ends 2 minutes after the Draakhorn ceases to sound. Failure indicates the character remains deafened for 1 hour after the Draakhorn ceases to sound."
     ],
     "name": "Draakhorn",
-    "rarity": "unique",
+    "rarity": [
+        "legendary",
+        "unique"
+    ],
     "type": "Wondrous item"
 }
