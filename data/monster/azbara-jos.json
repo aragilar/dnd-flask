@@ -17,11 +17,7 @@
     "alignment": "lawful evil",
     "armor class": "13 (16 with *mage armor*)",
     "description": [
-        "*Hoard of the Dragon Queen*",
-        "",
-        "**Azbara Jos** is a male human and a Red Wizard of Thay. Red Wizards are widely disliked and mistrusted, so he takes some pains to disguise his membership in that group by always wearing a wool cap with ear and neck flaps to cover his shaved, tattooed head. It's not an especially effective disguise; characters who make a successful DC 15 Wisdom (Perception) check notice the edges of the tattoos peeking out from under the cap. Many Thayans have shaved, tattooed heads, however, but only a few are Red Wizards. Countless Thayans fled their country when the lich Szass Tam seized control, so they are not entirely strange on the Sword Coast. If questioned, Jos claims to be just another Thayan expatriot trying to find refuge while his country is controlled by undead monsters. In fact, other than the denial that he's a Red Wizard, this is all true.",
-        "",
-        "Jos buys space aboard one of the cult wagons, although they turned away everyone else who sought passage earlier in the journey. He does not mingle with the other travelers and seldom speaks to anyone except the man who seems to be the leader of the cultists."
+        "*Hoard of the Dragon Queen*"
     ],
     "experience": 1100,
     "hit points": "39 (6d8 + 12)",

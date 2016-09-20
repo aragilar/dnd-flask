@@ -25,11 +25,7 @@
     "alignment": "chaotic evil",
     "armor class": "15 (studded leather, shield)",
     "description": [
-        "*Hoard of the Dragon Queen*",
-        "",
-        "**Pharblex Spattergoo** is a rare bullywug who has mastered shamanistic magic. His \"religion\" is a mishmash of confused tradition, borrowed mysticism, hallucinogenic intoxicants, and manufactured lore that serves more as a road to personal power for Pharblex than as a spiritual system for the bullywugs. Pharblex's spellcasting holds his followers together, and that makes him useful to Rezmir.",
-        "",
-        "Pharblex hopes that when Tiamat returns, Rezmir will hand Castle Naerytar over to him, and he will rule the entire Mere of Dead Men from the castle. The only obstacle he sees between himself and his goal is the castle's current master, Dralmorrer Borngray; the notion that someone might want to not live in a swamp has never entered Pharblex's narrow mind, and the bullywug seems deaf to Borngray's ironic and sarcastic jabs at the mere."
+        "*Hoard of the Dragon Queen*"
     ],
     "experience": 700,
     "hit points": "59 (7d8 + 28)",
