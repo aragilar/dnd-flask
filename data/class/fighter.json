@@ -127,7 +127,9 @@
             11,
             [
                 "Extra Attack (2)",
-                "The number of attacks granted by your Extra Attack increase to three when you reach 11th level in this class."
+                "Beginning at 11th level, you can attack three times, instead of once, whenever you take the Attack action on your turn.",
+                "",
+                "The number of attacks increases to four when you reach 20th level in this class."
             ]
         ],
         [
@@ -176,7 +178,7 @@
             20,
             [
                 "Extra Attack (3)",
-                "The number of attacks granted by your Extra Attack increase to four when you reach 20th level in this class."
+                "Beginning at 20th level, you can attack four times, instead of once, whenever you take the Attack action on your turn."
             ]
         ]
     ],
