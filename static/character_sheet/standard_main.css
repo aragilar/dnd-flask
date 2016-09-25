@@ -1,7 +1,7 @@
 #main-sheet {
     display: initial;
     background-image: url("../images/Character_Sheet.png");
-    background-size: 100% 100%;
+    background-size: contain;
 }
 
 #notes {

@@ -45,9 +45,18 @@ function getValue(id, fail) {
     }
 
     var value;
-    var elem = document.getElementById(id);
+    var elem;
+    if (id instanceof HTMLElement) {
+        elem = id;
+        id = elem.getAttribute("id");
+    } else {
+        elem = document.getElementById(id);
+    }
     if (elem) {
         value = elem.value;
+        if (value === "" && elem.hasAttribute("placeholder")) {
+            value = elem.getAttribute("placeholder");
+        }
     } else {
         value = fail;
     }
@@ -149,7 +158,7 @@ function download() {
 }
 
 function modifiers() {
-    var value = this.value;
+    var value = getValue(this);
     value -= 10;
     value /= 2;
     value = Math.floor(value);
