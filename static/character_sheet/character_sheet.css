@@ -140,7 +140,7 @@ textarea.save {
     }
 
     #body > * {
-        page-break-before: always;
+        break-inside: avoid;
     }
 
     #body > * output, #body > * input.save:placeholder-shown {
