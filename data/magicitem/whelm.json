@@ -24,6 +24,9 @@
     ],
     "limits": "warhammer",
     "name": "Whelm",
-    "rarity": "legendary",
+    "rarity": [
+        "legendary",
+        "sentient"
+    ],
     "type": "Weapon"
 }

@@ -41,6 +41,9 @@
     ],
     "limits": "longsword",
     "name": "Moonblade",
-    "rarity": "legendary",
+    "rarity": [
+        "legendary",
+        "sentient"
+    ],
     "type": "Weapon"
 }

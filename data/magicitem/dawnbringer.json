@@ -20,6 +20,9 @@
     ],
     "limits": "longsword",
     "name": "Dawnbringer",
-    "rarity": "legendary",
+    "rarity": [
+        "legendary",
+        "sentient"
+    ],
     "type": "Weapon"
 }

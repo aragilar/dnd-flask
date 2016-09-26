@@ -32,6 +32,9 @@
     ],
     "limits": "greatsword",
     "name": "Blackrazor",
-    "rarity": "legendary",
+    "rarity": [
+        "legendary",
+        "sentient"
+    ],
     "type": "Weapon"
 }

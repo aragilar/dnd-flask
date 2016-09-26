@@ -24,6 +24,9 @@
     ],
     "limits": "trident",
     "name": "Wave",
-    "rarity": "legendary",
+    "rarity": [
+        "legendary",
+        "sentient"
+    ],
     "type": "Weapon"
 }

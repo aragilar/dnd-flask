@@ -16,6 +16,9 @@
     ],
     "limits": "longsword",
     "name": "Sunsword",
-    "rarity": "legendary",
+    "rarity": [
+        "legendary",
+        "sentient"
+    ],
     "type": "Weapon"
 }

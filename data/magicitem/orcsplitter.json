@@ -19,6 +19,9 @@
     ],
     "limits": "greataxe",
     "name": "Orcsplitter",
-    "rarity": "legendary",
+    "rarity": [
+        "legendary",
+        "sentient"
+    ],
     "type": "Weapon"
 }
