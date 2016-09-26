@@ -78,14 +78,15 @@ def itemblock(name, magicitems=None):
     else:
         item = magicitems.get(name)
     if item is not None:
-        body = str(item)
-        body = body.replace('<h1>', '<h1><a href="%s">' % utils.slug(name), 1)
-        body = body.replace('</h1>', '</a></h1>', 1)
-        ret = utils.details_block(
-            str(name),
-            body,
-            body_class="spell-box"
-        )
+        #body = str(item)
+        #body = body.replace('<h1>', '<h1><a href="%s">' % utils.slug(name), 1)
+        #body = body.replace('</h1>', '</a></h1>', 1)
+        #ret = utils.details_block(
+        #    str(name),
+        #    body,
+        #    body_class="spell-box"
+        #)
+        ret = '<li><a href="{1}">{0}</a></li>\n'.format(name, utils.slug(name))
     else:
         ret = str(name)
     return ret
@@ -164,7 +165,7 @@ class MagicItems (utils.Group):
                 itemblock,
                 self.values(),
         ))
-        ret += utils.details_group(temp, body_id="magicitems", body_class="spell-table")
+        ret += '<ul id="magicitems" class="spell-table">\n%s</ul>\n' % temp
         
         ret = '<div>\n%s</div>\n' % ret
         return ret

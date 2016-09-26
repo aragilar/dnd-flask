@@ -16,9 +16,9 @@ function Filter(){
     
     var name = $('#name').val();
     
-    $('#magicitems > .spell-box').each(function(){
+    $('#magicitems > li').each(function(){
         var tag = $(this);
-        var val = tag.prev();
+        var val = tag.children('a');
         var text = val.html();
         var data = items[text];
         var hide = false;
