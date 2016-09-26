@@ -215,11 +215,13 @@ class Monster (utils.Base):
                 if temp:
                     if name:
                         md += '## {}\n\n'.format(name)
+                    md += '<dl markdown="1">\n'
                     for item in temp:
                         if isinstance(item, list):
-                            md += '{}\n: {}\n\n'.format(item[0], '\n'.join(item[1:]).lstrip())
+                            md += '<dt>{}</dt>\n<dd>{}</dd>\n'.format(item[0], '\n'.join(item[1:]).lstrip())
                         else:
                             md += item + '\n\n'
+                    md += '</dl>\n'
 
             md = utils.convert(md)
             md = md.replace('<ul>', '<ul class="monster-stats">', 1)
