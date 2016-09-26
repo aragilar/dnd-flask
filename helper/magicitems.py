@@ -34,9 +34,17 @@ class MagicItem (utils.Base):
                 temp += ' (%s)' % self.limits
             
             if isinstance(self.rarity, list):
-                temp += ', rarity varies'
+                rarity = self.rarity.copy()
             else:
-                temp += ', ' + self.rarity
+                rarity = [self.rarity]
+
+            if 'sentient' in rarity:
+                rarity.remove('sentient')
+
+            if len(rarity) == 1:
+                temp += ', ' + rarity[0]
+            else:
+                temp += ', rarity varies'
             
             if self.attunement:
                 if isinstance(self.attunement, str):
