@@ -24,7 +24,7 @@ class Class (utils.Base):
     table = {}
     tool_proficiencies = []
     
-    def __str__(self):
+    def page(self):
         ret = '<div>\n'
     
         # ----#-   Class Description
@@ -112,7 +112,7 @@ class Class (utils.Base):
     
         # ----#-   Subclass
         for subc in self.children.values():
-            ret += str(subc)
+            ret += subc.page()
     
         return ret
     
@@ -322,7 +322,7 @@ class SubClass (Class):
     subclass = None
     subclass_spells = {}
     
-    def __str__(self):
+    def page(self):
         ret = '<div>\n'
             
         # ----#-   Features

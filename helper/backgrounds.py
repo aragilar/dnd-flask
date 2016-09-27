@@ -15,7 +15,7 @@ class Background (utils.Base):
     tools = []
     variant = None
 
-    def __str__(self):
+    def page(self):
         body = '<h2>%s</h2>\n' % self.name
         
         body += '%s\n' % utils.convert('\n'.join(self.description))
@@ -82,7 +82,7 @@ class Backgrounds (utils.Group):
         body = ''
         for background in self.values():
             
-            body += utils.details_block(background.name, str(background))
+            body += utils.details_block(background.name, background.page())
         
         ret += utils.details_group(body)
 

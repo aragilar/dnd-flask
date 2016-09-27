@@ -23,7 +23,7 @@ class Race (utils.Base):
     traits = []
     traits_description = ''
     
-    def __str__(self):
+    def page(self):
         ret = '<div>\n'
         
         # ----#-   Race Description
@@ -38,7 +38,7 @@ class Race (utils.Base):
         
         # ----#-   Subrace
         for subrace in self.children.values():
-            ret += str(subrace)
+            ret += subrace.page()
         
         return ret
     
@@ -166,7 +166,7 @@ class SubRace (Race):
     size = None
     speed = None
 
-    def __str__(self):
+    def page(self):
         summary = '<h1 id="%s">%s</h1>' % (utils.slug(self.name), self.name)
         desc = self.description
         desc = '\n'.join(desc)

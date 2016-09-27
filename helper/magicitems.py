@@ -23,7 +23,7 @@ class MagicItem (utils.Base):
         }
         return d
     
-    def __str__(self):
+    def page(self):
         if self._page is None:
             ret = ''
             ret += '<h1>%s</h1>\n\n' % self.name
@@ -78,7 +78,7 @@ def itemblock(name, magicitems=None):
     else:
         item = magicitems.get(name)
     if item is not None:
-        #body = str(item)
+        #body = item.page()
         #body = body.replace('<h1>', '<h1><a href="%s">' % utils.slug(name), 1)
         #body = body.replace('</h1>', '</a></h1>', 1)
         #ret = utils.details_block(

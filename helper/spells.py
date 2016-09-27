@@ -43,7 +43,7 @@ class Spell (utils.Base):
         }
         return d
     
-    def __str__(self):
+    def page(self):
         if self._page is None:
             ret = '<h2>%s</h2>\n' % self.name
             
@@ -129,7 +129,7 @@ def spellblock(name, spells=None):
     if spell is not None:
         ret = utils.details_block(
             str(name),
-            str(spell),
+            spell.page(),
             body_class="spell-box"
         )
     else:

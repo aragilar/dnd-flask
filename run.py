@@ -215,7 +215,7 @@ def subthing(name, type):
     
     if name in type:
         item = type[name]
-        html = str(item)
+        html = item.page()
         name = item.name
     else:
         html = None

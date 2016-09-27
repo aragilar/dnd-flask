@@ -27,7 +27,7 @@ class Documentation (utils.Base):
         d = utils.get_details(d, splttag='h1')
         self.description = d
     
-    def __str__(self):
+    def page(self):
         html = self.description
         html = '<div>\n%s</div>\n' % html
         return html
@@ -77,7 +77,7 @@ class OptionalRule (utils.Base):
         d = utils.get_details(d, splttag='h1')
         self.description = d
 
-    def __str__(self):
+    def page(self):
         html = self.description
         html = '<div>\n%s</div>\n' % html
         return html

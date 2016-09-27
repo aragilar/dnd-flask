@@ -100,7 +100,7 @@ class Monster (utils.Base):
             c = '{:g}'.format(c)
         return c
     
-    def __str__(self):
+    def page(self):
         if self._page is None:
             ret = ''
             

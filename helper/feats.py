@@ -8,7 +8,7 @@ class Feat (utils.Base):
     prerequisite = None
     text = []
     
-    def __str__(self):
+    def page(self):
         ret = '<h2>%s</h2>\n\n' % self.name
         if self.prerequisite is not None:
             ret += '<em>Prerequisite: %s</em>\n\n' % self.prerequisite
@@ -26,7 +26,7 @@ def featblock(name, feats):
     if feat is not None:
         ret = utils.details_block(
             str(name),
-            '<div>\n%s</div>\n' % str(feat),
+            '<div>\n%s</div>\n' % feat.page(),
             body_class='spell-box',
         )
     else:

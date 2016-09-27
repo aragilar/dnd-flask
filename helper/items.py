@@ -14,7 +14,7 @@ class Weapon (utils.Base):
 
     special = ''
 
-    def __str__(self):
+    def page(self):
         ret = '<tr>\n'
         
         ret += '<th>%s</th>\n' % self.name
@@ -86,7 +86,7 @@ class Weapons (utils.Group):
             if lst:
                 temp += '<tr><th colspan="5">%s</th></tr>\n' % name
                 for weapon in lst:
-                    temp += str(weapon)
+                    temp += weapon.page()
         
         temp += '</table>\n'
         temp = utils.get_details(temp, 'h1')
@@ -101,7 +101,7 @@ class Armor (utils.Base):
     strength = 0
     weight = '0'
 
-    def __str__(self):
+    def page(self):
         ret = '<tr>\n'
         
         ret += '<th>%s</th>' % self.name
@@ -180,7 +180,7 @@ class Armors (utils.Group):
             if lst:
                 temp += '<tr><th colspan="7">%s</th></tr>\n' % name
                 for armor in lst:
-                    temp += str(armor)
+                    temp += armor.page()
         temp += '</table>\n'
         temp = utils.get_details(temp, 'h1')
         
@@ -192,7 +192,7 @@ class Item (utils.Base):
     group = None
     weight = '-'
 
-    def __str__(self):
+    def page(self):
         temp = self.description
         if temp:
             temp = utils.convert(str(temp))
@@ -288,7 +288,7 @@ class Items (utils.Group):
         
         for item in self.values():
             if not item.group:
-                ret += str(item)
+                ret += item.page()
         
         ret += '</table>\n'
         
@@ -307,7 +307,7 @@ class Items (utils.Group):
             )
             for item in self.values():
                 if item.group == name:
-                    temp += str(item)
+                    temp += item.page()
                     hadany = True
             temp += '</table>\n'
             if hadany:
