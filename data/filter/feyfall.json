@@ -1241,7 +1241,7 @@
         "New Ability Scores: Honor and Sanity": false,
         "Plot Points": false,
         "Proficiency Dice": false,
-        "Rest Variants": false,
+        "Rest Variants": true,
         "Skill Variants": false,
         "Spell Points": false
     },
