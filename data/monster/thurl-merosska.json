@@ -1,0 +1,97 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 15,
+        "con": 14,
+        "dex": 14,
+        "int": 11,
+        "str": 16,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "Thurl makes two melee attacks."
+        ],
+        [
+            "Greatsword",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6 + 3) slashing damage."
+        ],
+        [
+            "Lance",
+            "*Melee Weapon Attack:* +5 to hit, reach 10 ft., one target. *Hit:* 9 (1d12 + 3) piercing damage."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "16 (breastplate)",
+    "description": [
+        "*Princes of the Apocalypse*",
+        "",
+        "Thurl Merosska is the leader of the Feathergale Knights. Once a griffon rider of Waterdeep, Thurl retired after a storm nearly claimed his life. Obsessed with his near-death experience, Thurl learned of Yan-C-Bin and swore an oath to serve the elemental prince in exchange for power.",
+        "",
+        "Thurl realized that there were others among the wealthy of Waterdeep who might make worthy servants of Yan-C-Bin. He formed the Feathergale Society to lure likely individuals into the air cult. He indoctrinated his Feathergale knights, one by one, into the cult's beliefs.",
+        "",
+        "When Aerisi Kalinoth arose as the chosen prophet of air, Thurl reluctantly pledged the Feathergale Knights to the cause. He resents Aerisi Kalinoth's rulership of the cult, but tells himself that he can use her and her followers to make the Feathergale Society strong enough to rule Waterdeep as it should be ruled."
+    ],
+    "experience": 700,
+    "group": "Howling Hatred Cultists",
+    "hit points": "71 (11d8 + 21)",
+    "languages": [
+        "Auran",
+        "Common"
+    ],
+    "name": "Thurl Merosska",
+    "reactions": [
+        [
+            "Parry",
+            "Thurl adds 2 to his AC against one melee attack that would hit him. To do so, Thurl must see the attacker and be wielding a melee weapon."
+        ]
+    ],
+    "size": "Medium",
+    "skills": {
+        "Animal Handling": 2,
+        "Athletics": 5,
+        "Deception": 4,
+        "Persuasion": 4
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Spellcasting",
+            "Thurl is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). Thurl knows the following sorcerer spells (an asterisked spell is from appendix B):",
+            "",
+            "Cantrips (at will): *friends*, *gust*\\*, *light*, *message*, *ray of frost*",
+            "",
+            "1st level (4 slots): *expeditious retreat*, *feather fall*, *jump*",
+            "",
+            "2nd level (3 slots): *levitate*, *misty step*",
+            "",
+            "3rd level (2 slots): *haste*",
+            "",
+            "<spell>Friends</spell>",
+            "",
+            "<spell>Gust</spell>",
+            "",
+            "<spell>Light</spell>",
+            "",
+            "<spell>Message</spell>",
+            "",
+            "<spell>Ray of Frost</spell>",
+            "",
+            "<spell>Expeditious Retreat</spell>",
+            "",
+            "<spell>Feather Fall</spell>",
+            "",
+            "<spell>Jump</spell>",
+            "",
+            "<spell>Levitate</spell>",
+            "",
+            "<spell>Misty Step</spell>",
+            "",
+            "<spell>Haste</spell>"
+        ]
+    ],
+    "type": "humanoid (human)"
+}

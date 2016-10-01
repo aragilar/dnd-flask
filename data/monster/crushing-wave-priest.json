@@ -1,0 +1,80 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 16,
+        "con": 14,
+        "dex": 11,
+        "int": 10,
+        "str": 15,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Quarterstaff",
+            "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 6 (1d8 + 2) bludgeoning damage."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "13",
+    "description": [
+        "*Princes of the Apocalypse*",
+        "",
+        "Crushing Wave priests are the fanatical core of the cult. Gathering in secretive cabals, they perform dark rituals to glorify Olhydra as the embodiment of water's destructiveness. They believe that using water to kill their enemies, such as through ritual drowning, earns them Olhydra's favor."
+    ],
+    "experience": 450,
+    "group": "Crushing Wave Cultists",
+    "hit points": "52 (8d8 + 16)",
+    "languages": [
+        "Aquan",
+        "Common"
+    ],
+    "name": "Crushing Wave Priest",
+    "size": "Medium",
+    "skills": {
+        "Deception": 5,
+        "Religion": 2,
+        "Stealth": 2
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Spellcasting",
+            "The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). It knows the following sorcerer spells (an asterisked spell is from appendix B):",
+            "",
+            "Cantrips (at will): *chill touch*, *mage hand*, *minor illusion*, *prestidigitation*, *ray of frost*",
+            "",
+            "1st level (4 slots): *expeditious retreat*, *ice knife*\\*, *magic missile*, *shield*",
+            "",
+            "2nd level (3 slots): *blur*, *hold person*",
+            "",
+            "3rd level (2 slots): *sleet storm*",
+            "",
+            "<spell>Chill Touch</spell>",
+            "",
+            "<spell>Mage Hand</spell>",
+            "",
+            "<spell>Minor Illusion</spell>",
+            "",
+            "<spell>Prestidigitation</spell>",
+            "",
+            "<spell>Ray of Frost</spell>",
+            "",
+            "<spell>Expeditious Retreat</spell>",
+            "",
+            "<spell>Ice Knife</spell>",
+            "",
+            "<spell>Magic Missile</spell>",
+            "",
+            "<spell>Shield</spell>",
+            "",
+            "<spell>Blur</spell>",
+            "",
+            "<spell>Hold Person</spell>",
+            "",
+            "<spell>Sleet Storm</spell>"
+        ]
+    ],
+    "type": "humanoid (human)"
+}

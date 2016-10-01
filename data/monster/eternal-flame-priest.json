@@ -1,0 +1,81 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 16,
+        "con": 14,
+        "dex": 15,
+        "int": 10,
+        "str": 12,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Dagger",
+            "*Melee or Ranged Weapon Attack:* +4 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 4 (1d4 + 2) piercing damage."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "12 (15 with *mage armor*)",
+    "damage resistances": [
+        "fire"
+    ],
+    "description": [
+        "*Princes of the Apocalypse*",
+        "",
+        "Eternal Flame priests see the world around them as impure and unworthy, and believe that only cleansing by fire can set it right. As a result, all fire is deemed holy, from the smallest candle flame to the greatest conflagrations. When traveling in the open, Eternal Flame priests are clever enough to hide their true beliefs, passing themselves off as druids or wizards with a knack for fire magic."
+    ],
+    "experience": 700,
+    "group": "Eternal Flame Cultists",
+    "hit points": "52 (8d8 + 16)",
+    "languages": [
+        "Common",
+        "Ignan"
+    ],
+    "name": "Eternal Flame Priest",
+    "size": "Medium",
+    "skills": {
+        "Deception": 5,
+        "Intimidation": 5,
+        "Religion": 2
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Spellcasting",
+            "The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). It knows the following sorcerer spells (an asterisked spell is from appendix B):",
+            "",
+            "Cantrips (at will): *control flames*\\*, *create bonfire*\\*, *fire bolt*, *light*, *minor illusion*",
+            "",
+            "1st level (4 slots): *burning hands*, *expeditious retreat*, *mage armor*",
+            "",
+            "2nd level (3 slots): *blur*, *scorching ray*",
+            "",
+            "3rd level (2 slots): *fireball*",
+            "",
+            "<spell>Control Flames</spell>",
+            "",
+            "<spell>Create Bonfire</spell>",
+            "",
+            "<spell>Fire Bolt</spell>",
+            "",
+            "<spell>Light</spell>",
+            "",
+            "<spell>Minor Illusion</spell>",
+            "",
+            "<spell>Burning Hands</spell>",
+            "",
+            "<spell>Expeditious Retreat</spell>",
+            "",
+            "<spell>Mage Armor</spell>",
+            "",
+            "<spell>Blur</spell>",
+            "",
+            "<spell>Scorching Ray</spell>",
+            "",
+            "<spell>Fireball</spell>"
+        ]
+    ],
+    "type": "humanoid (human)"
+}

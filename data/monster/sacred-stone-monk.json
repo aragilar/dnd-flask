@@ -1,0 +1,64 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 9,
+        "con": 12,
+        "dex": 15,
+        "int": 10,
+        "str": 13,
+        "wis": 14
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The monk makes two melee attacks."
+        ],
+        [
+            "Unarmed Strike",
+            "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6 + 2) bludgeoning damage."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "14",
+    "description": [
+        "*Princes of the Apocalypse*",
+        "",
+        "Sacred Stone monks are followers of a martial philosophy that seeks to emulate the strength of rock and stone. They don gargoyle masks and use a finely honed sense of touch to measure their surroundings by contact with the ground. They avoid speaking, or extraneous thought for that matter. They live only to test themselves with deprivation and to punish those who doubt the strength of elemental earth."
+    ],
+    "experience": 100,
+    "group": "Black Earth Cultists",
+    "hit points": "22 (4d8 + 4)",
+    "languages": [
+        "Common"
+    ],
+    "name": "Sacred Stone Monk",
+    "reactions": [
+        [
+            "Parry",
+            "The monk adds 2 to its AC against one melee or ranged weapon attack that would hit it. To do so, the monk must see the attacker."
+        ]
+    ],
+    "senses": [
+        "tremorsense 10 ft."
+    ],
+    "size": "Medium",
+    "skills": {
+        "Acrobatics": 4,
+        "Athletics": 3,
+        "Perception": 4
+    },
+    "speed": [
+        "40 ft."
+    ],
+    "traits": [
+        [
+            "Unarmored Defense",
+            "While the monk is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
+        ],
+        [
+            "Unarmored Movement",
+            "While the monk is wearing no armor and wielding no shield, its walking speed increases by 10 feet (included in its speed)."
+        ]
+    ],
+    "type": "humanoid (human)"
+}

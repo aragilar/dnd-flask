@@ -1,0 +1,88 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 13,
+        "con": 12,
+        "dex": 12,
+        "int": 14,
+        "str": 8,
+        "wis": 15
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "Wiggan makes two attacks with his wooden cane."
+        ],
+        [
+            "Wooden Cane (Club)",
+            "*Melee Weapon Attack:* +0 to hit (+4 to hit with *shillelagh*), reach 5 ft., one target. *Hit:* 1 (1d4 - 1) bludgeoning damage, or 6 (1d8 + 2) bludgeoning damage with *shillelagh*."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "11 (16 with *barkskin*)",
+    "description": [
+        "*Princes of the Apocalypse*",
+        "",
+        "Wiggan Nettlebee is the patriarch of the Nettlebee clan, a wealthy family of halflings that raise livestock and farm their land. He presents the outward appearance of a modest rancher, and he forbids extravagance on his farm. Thinking he had found a cult dedicated to the dominating nature and utilizing its darker aspects. Wiggan joined the Cult of the Black Earth. He still doesn't know the full extent of the cult's plans.",
+        "",
+        "Wiggan dislikes and distrusts outsiders. He believes they are all evildoers who would steal from him if they could. He sees the earth cult as a powerful and necessary ally toward securing his finances and sustaining his position. A greedy miser, Wiggan becomes visibly upset at the thought of parting with even a few spare coins from his hoard."
+    ],
+    "experience": 450,
+    "hit points": "36 (8d6 + 8)",
+    "languages": [
+        "Common",
+        "Halfling"
+    ],
+    "name": "Wiggan Nettlebee",
+    "size": "Small",
+    "skills": {
+        "Deception": 3,
+        "Insight": 4
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Brave Devotion",
+            "Wiggan has advantage on saving throws against being charmed or frightened."
+        ],
+        [
+            "Spellcasting",
+            "Wiggan is a 4th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). He has the following cleric spells prepared:",
+            "",
+            "Cantrips (at will): *guidance*, *light*, *mending*, *shillelagh*, *thaumaturgy*",
+            "",
+            "1st Level (4 slots): *animal friendship*, *cure wounds*, *healing word*, *inflict wounds*, *speak with animals*",
+            "",
+            "2nd Level (3 slots): *barkskin*, *spike growth*, *spiritual weapon*",
+            "",
+            "<spell>Guidance</spell>",
+            "",
+            "<spell>Light</spell>",
+            "",
+            "<spell>Mending</spell>",
+            "",
+            "<spell>Shillelagh</spell>",
+            "",
+            "<spell>Thaumaturgy</spell>",
+            "",
+            "<spell>Animal Friendship</spell>",
+            "",
+            "<spell>Cure Wounds</spell>",
+            "",
+            "<spell>Healing Word</spell>",
+            "",
+            "<spell>Inflict Wounds</spell>",
+            "",
+            "<spell>Speak with Animals</spell>",
+            "",
+            "<spell>Barkskin</spell>",
+            "",
+            "<spell>Spike Growth</spell>",
+            "",
+            "<spell>Spiritual Weapon</spell>"
+        ]
+    ],
+    "type": "humanoid (halfling)"
+}

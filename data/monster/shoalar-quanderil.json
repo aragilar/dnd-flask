@@ -1,0 +1,79 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 17,
+        "con": 16,
+        "dex": 12,
+        "int": 14,
+        "str": 11,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Dagger",
+            "*Melee or Ranged Weapon Attack:* +3 to hit, reach 5 ft. or ranged 20/60 ft., one target. *Hit:* 3 (1d4 + 1) piercing damage."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "10 (13 with *mage armor*)",
+    "damage resistances": [
+        "acid"
+    ],
+    "description": [
+        "*Princes of the Apocalypse*",
+        "",
+        "A plump water genasi armed with a jovial manner and biting sense of humor, Shoalar Quanderil seems like the last person one would expect to be a cruel member of a destructive cult. Nevertheless, Shoalar is the captain of a pirate ship that harries the Sword Coast, and a high-ranking Crushing Wave cultist. He sees Olhydra's power as a means to making himself as rich as possible."
+    ],
+    "experience": 1100,
+    "group": "Crushing Wave Cultists",
+    "hit points": "60 (8d8 + 24)",
+    "languages": [
+        "Aquan",
+        "Common"
+    ],
+    "name": "Shoalar Quanderil",
+    "size": "Medium",
+    "skills": {
+        "Arcana": 4,
+        "Deception": 5,
+        "Insight": 2,
+        "Persuasion": 5
+    },
+    "speed": [
+        "30 ft.",
+        "swim 30 ft."
+    ],
+    "traits": [
+        [
+            "Amphibious",
+            "Shoalar can breathe air and water."
+        ],
+        [
+            "Innate Spellcasting",
+            "Shoalar's innate spellcasting ability is Constitution (spell save DC 13, +5 to hit with spell attacks). He can innately cast the following spells (an asterisked spell is from appendix B):",
+            "",
+            "At will: *shape water*\\*",
+            "",
+            "1/day: *create or destroy water*",
+            "",
+            "<spell>Shape Water</spell>",
+            "",
+            "<spell>Create or Destroy Water</spell>"
+        ],
+        [
+            "Spellcasting",
+            "Shoalar is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). He knows the following sorcerer spells (an asterisked spell is from appendix B):",
+            "",
+            "Cantrips (at will): *acid splash*, *chill touch*, *friends*, *prestidigitation*, *ray of frost*",
+            "",
+            "1st level (4 slots): *disguise self*, *mage armor*, *magic missile*",
+            "",
+            "2nd level (3 slots): *hold person*, *misty step*",
+            "",
+            "3rd level (2 slots): *tidal wave*\\*",
+            "",
+            "<spell></spell>"
+        ]
+    ],
+    "type": "humanoid (water genasi)"
+}

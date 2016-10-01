@@ -1,0 +1,66 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 10,
+        "con": 15,
+        "dex": 14,
+        "int": 8,
+        "str": 18,
+        "wis": 10
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The myrmidon makes three trident attacks."
+        ],
+        [
+            "Trident",
+            "*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 7 (1d6 + 4) piercing damage."
+        ],
+        [
+            "Freezing Strikes (Recharge 6)",
+            "The myrmidon uses Multiattack. Each attack that hits deals an extra 5 (1d10) cold damage, and the target's speed is reduced by 10 feet until the end of the myrmidon's next turn."
+        ]
+    ],
+    "alignment": "neutral",
+    "armor class": "18 (plate)",
+    "condition immunities": [
+        "paralyzed",
+        "petrified",
+        "poisoned",
+        "prone"
+    ],
+    "damage immunities": [
+        "poison"
+    ],
+    "damage resistances": [
+        "acid",
+        "bludgeoning, piercing, and slashing from nonmagical attacks"
+    ],
+    "description": [
+        "*Princes of the Apocalypse*"
+    ],
+    "experience": 2900,
+    "group": "Elemental Myrmidons",
+    "hit points": "127 (17d8 + 51)",
+    "languages": [
+        "Aquan",
+        "one language of its creator's choice"
+    ],
+    "name": "Water Elemental Myrmidon",
+    "senses": [
+        "darkvision 60 ft."
+    ],
+    "size": "Medium",
+    "speed": [
+        "40 ft.",
+        "swim 40 ft."
+    ],
+    "traits": [
+        [
+            "Magic Weapons",
+            "The myrmidon's weapon attacks are magical."
+        ]
+    ],
+    "type": "elemental"
+}

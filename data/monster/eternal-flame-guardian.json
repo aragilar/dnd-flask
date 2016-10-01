@@ -1,0 +1,57 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 13,
+        "con": 14,
+        "dex": 13,
+        "int": 8,
+        "str": 15,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The guard makes two melee attacks."
+        ],
+        [
+            "Longsword",
+            "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 6 (1d8 + 2) slashing damage."
+        ],
+        [
+            "Heavy Crossbow",
+            "*Ranged Weapon Attack:* +3 to hit, range 100/400 ft., one target. *Hit:* 6 (1d10 + 1) piercing damage."
+        ]
+    ],
+    "alignment": "chaotic evil",
+    "armor class": "17 (breastplate, shield; 15 while using a crossbow)",
+    "damage resistances": [
+        "fire"
+    ],
+    "description": [
+        "*Princes of the Apocalypse*",
+        "",
+        "Eternal Flame guardians are dullards fascinated by the power of fire and eager to show the cult's enemies firsthand what it feels like to burn. They light things aflame to honor elemental fire and just for entertainment, but they don't always think ahead about what else nearby might catch fire."
+    ],
+    "experience": 450,
+    "group": "Eternal Flame Cultists",
+    "hit points": "45 (7d8 + 14)",
+    "languages": [
+        "Common"
+    ],
+    "name": "Eternal Flame Guardian",
+    "size": "Medium",
+    "skills": {
+        "Intimidation": 3,
+        "Perception": 2
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Flaming Weapon (Recharges after a Short or Long Rest)",
+            "As a bonus action, the guard can wreath one melee weapon it is wielding in flame. The guard is unharmed by this fire, which lasts until the end of the guard's next turn. While wreathed in flame, the weapon deals an extra 3 (1d6) fire damage on a hit."
+        ]
+    ],
+    "type": "humanoid (human)"
+}

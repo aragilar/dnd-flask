@@ -1,0 +1,111 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 18,
+        "con": 17,
+        "dex": 10,
+        "int": 13,
+        "str": 12,
+        "wis": 11
+    },
+    "actions": [
+        [
+            "Staff",
+            "*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 4 (1d6 + 1) bludgeoning damage, or 5 (1d8 + 1) bludgeoning damage when used with two hands."
+        ]
+    ],
+    "alignment": "neutral evil",
+    "armor class": "10 (13 with *mage armor*)",
+    "description": [
+        "*Princes of the Apocalypse*",
+        "",
+        "Miraj is an earth genasi from Calimshan. He is a perfectionist who oversees the Black Earth cult's tunneling operations and specializes in magic and alchemical processes that shape stone. He also has an affinity for the element of water and styles himself a \"mud sorcerer.\"",
+        "",
+        "Though he is the most accomplished spellcaster in the Cult of the Black Earth, he has no interest in challenging Marlos Urnrayle for leadership. He knows that he is no match for the medusa and is happy to pursue his experiments while Marlos leads."
+    ],
+    "experience": 2300,
+    "group": "Black Earth Cultists",
+    "hit points": "82 (11d8 + 33)",
+    "languages": [
+        "Common",
+        "Primordial"
+    ],
+    "name": "Miraj Vizann",
+    "size": "Medium",
+    "skills": {
+        "Arcana": 4,
+        "Deception": 7
+    },
+    "speed": [
+        "30 ft."
+    ],
+    "traits": [
+        [
+            "Earth Walk",
+            "Moving through difficult terrain made of earth or stone costs Miraj no extra movement."
+        ],
+        [
+            "Innate Spellcasting",
+            "Miraj's innate spellcasting ability is Constitution (spell save DC 14). He can innately cast the following spell, requiring no material components:",
+            "",
+            "1/day: *pass without trace*",
+            "",
+            "<spell>Pass without Trace</spell>"
+        ],
+        [
+            "Spellcasting",
+            "Miraj is an 11th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). He knows the following sorcerer spells (an asterisked spell is from appendix B):",
+            "",
+            "Cantrips (at will): *acid splash*, *blade ward*, *friends*, *light*, *message*, *mold earth*\\*",
+            "",
+            "1st level (4 slots): *chromatic orb*, *mage armor*, *magic missile*",
+            "",
+            "2nd level (3 slots): *Maximilian's earthen grasp*\\*, *shatter*, *suggestion*",
+            "",
+            "3rd level (3 slots): *counterspell*, *erupting earth*\\*",
+            "",
+            "4th level (3 slots): *polymorph*, *stoneskin*",
+            "",
+            "5th level (2 slots): *wall of stone*",
+            "",
+            "6th level (1 slot): *move earth*",
+            "",
+            "<spell>Acid Splash</spell>",
+            "",
+            "<spell>Blade Ward</spell>",
+            "",
+            "<spell>Friends</spell>",
+            "",
+            "<spell>Light</spell>",
+            "",
+            "<spell>Message</spell>",
+            "",
+            "<spell>Mold Earth</spell>",
+            "",
+            "<spell>Chromatic Orb</spell>",
+            "",
+            "<spell>Mage Armor</spell>",
+            "",
+            "<spell>Magic Missile</spell>",
+            "",
+            "<spell>Maximilian's Earthen Grasp</spell>",
+            "",
+            "<spell>Shatter</spell>",
+            "",
+            "<spell>Suggestion</spell>",
+            "",
+            "<spell>Counterspell</spell>",
+            "",
+            "<spell>Erupting Earth</spell>",
+            "",
+            "<spell>Polymorph</spell>",
+            "",
+            "<spell>Stoneskin</spell>",
+            "",
+            "<spell>Wall of Stone</spell>",
+            "",
+            "<spell>Move Earth</spell>"
+        ]
+    ],
+    "type": "humanoid (earth genasi)"
+}

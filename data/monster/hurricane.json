@@ -1,0 +1,88 @@
+{
+    "+": "PotA",
+    "ability scores": {
+        "cha": 10,
+        "con": 13,
+        "dex": 16,
+        "int": 10,
+        "str": 12,
+        "wis": 12
+    },
+    "actions": [
+        [
+            "Multiattack",
+            "The hurricane makes two melee attacks."
+        ],
+        [
+            "Unarmed Strike",
+            "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 6 (1d6 + 3) bludgeoning damage."
+        ]
+    ],
+    "alignment": "lawful evil",
+    "armor class": "14",
+    "description": [
+        "*Princes of the Apocalypse*",
+        "",
+        "Hurricanes profess their disgust with decadence, and they dedicate their bodies and their minds to the world's destruction. Through breathing exercises and ascetic philosophy, skilled Howling Hatred initiates learn to imitate the cycling patterns of the hurricane. They believe the physical world must be shattered so that the creatures of the Material Plane can live unshackled by physical things.",
+        "",
+        "Hurricanes see the frenetic activity of the world in slow motion, and themselves at the calm center of the storm. Through meditation and mysticism they learn to summon powerful blasts of wind, catch missiles with ease, and fall like feathers."
+    ],
+    "experience": 450,
+    "group": "Howling Hatred Cultists",
+    "hit points": "33 (6d8 + 6)",
+    "languages": [
+        "Auran",
+        "Common"
+    ],
+    "name": "Hurricane",
+    "reactions": [
+        [
+            "Deflect Missiles",
+            "When the hurricane is hit by a ranged weapon attack, it reduces the damage from the attack by 1d10 + 9. If the damage is reduced to 0, the hurricane can catch the missile if it is small enough to hold in one hand and the hurricane has at least one hand free."
+        ]
+    ],
+    "size": "Medium",
+    "skills": {
+        "Acrobatics": 5
+    },
+    "speed": [
+        "45 ft."
+    ],
+    "traits": [
+        [
+            "Spellcasting",
+            "The hurricane is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). It knows the following sorcerer spells (an asterisked spell is from appendix B):",
+            "",
+            "Cantrips (at will): *blade ward*, *gust*\\*, *light*, *prestidigitation*",
+            "",
+            "1st level (4 slots): *feather fall*, *jump*, *thunderwave*",
+            "",
+            "2nd level (2 slots): *gust of wind*",
+            "",
+            "<spell>Blade Ward</spell>",
+            "",
+            "<spell>Gust</spell>",
+            "",
+            "<spell>Light</spell>",
+            "",
+            "<spell>Prestidigitation</spell>",
+            "",
+            "<spell>Feather Fall</spell>",
+            "",
+            "<spell>Jump</spell>",
+            "",
+            "<spell>Thunderwave</spell>",
+            "",
+            "<spell>Gust of Wind</spell>"
+        ],
+        [
+            "Unarmored Defense",
+            "While the hurricane is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
+        ],
+        [
+            "Unarmored Movement",
+            "While the hurricane is wearing no armor and wielding no shield, its walking speed increases by 15 feet (included in its speed)."
+        ]
+    ],
+    "type": "humanoid (human)"
+}
