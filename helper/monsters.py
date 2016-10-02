@@ -66,10 +66,10 @@ class Monster (utils.Base):
     speed = ['30 ft.']
     traits = []
     type = 'beast'
-    
+
     group = None
     _page = None
-    
+
     def dict(self):
         d = {
             'name': self.name,
@@ -80,7 +80,7 @@ class Monster (utils.Base):
             'type': self.type.lower(),
         }
         return d
-    
+
     def _get_cr(self):
         if self.challenge_rating is None:
             c = challenge_ratings.get(self.experience, -1)
@@ -89,7 +89,7 @@ class Monster (utils.Base):
         c = float(c)
         self.challenge_rating = c
         return c
-    
+
     def get_cr(self):
         c = self._get_cr()
         if c < 0:
@@ -99,11 +99,11 @@ class Monster (utils.Base):
         else:
             c = '{:g}'.format(c)
         return c
-    
+
     def page(self):
         if self._page is None:
             ret = ''
-            
+
             if self.description or self.group:
                 temp = '\n'.join(self.description)
                 if self.group:
@@ -114,9 +114,9 @@ class Monster (utils.Base):
                 if not temp.startswith('<h1'):
                     temp = '<h1>{}</h1>\n'.format(self.name) + temp
                 ret += utils.get_details(temp, 'h1')
-            
+
             ret += '<div class="monster-box">\n'
-            
+
             md = '# {}\n\n'.format(self.name)
             md += '*{size} {type}, {alignment}*\n\n'.format(
                 alignment=self.alignment,
@@ -128,26 +128,31 @@ class Monster (utils.Base):
             md += '**Hit Points** {}\n\n'.format(self.hit_points)
             md += '**Speed** {}\n\n'.format(', '.join(self.speed))
             md += '***\n\n'
-            
+
             for stat in utils.stats:
                 value = self.ability_scores.get(stat, 10)
                 md += '* **{}** {} ({:+})\n'.format(stat.upper(), value, utils.get_modifier(value))
-            
+
             md += '\n***\n\n'
-            
+
             if self.saving_throws:
                 md += '**Saving Throws** {}\n\n'.format(', '.join(
                     '{} {:+}'.format(stat, self.saving_throws[stat])
                     for stat in map(str.title, utils.stats)
                     if stat in self.saving_throws
                 ))
-            
+
             if self.skills:
-                md += '**Skills** {}\n\n'.format(', '.join(
-                    '{} {:+}'.format(skill, self.skills[skill])
-                    for skill in sorted(self.skills)
-                ))
-            
+                skills = []
+                for skill in sorted(self.skills):
+                    value = self.skills[skill]
+                    if isinstance(value, (int, float)):
+                        _format = '{} {:+}'
+                    else:
+                        _format = '{} {}'
+                    skills.append(_format.format(skill, value))
+                md += '**Skills** {}\n\n'.format(', '.join(skills))
+
             for name, temp in [
                 ('Damage Vulnerabilities', self.damage_vulnerabilities),
                 ('Damage Resistances', self.damage_resistances),
@@ -167,12 +172,12 @@ class Monster (utils.Base):
                                 s.append(temp.pop(0))
                         new.append(', '.join(s))
                     md += '**{}** {}\n\n'.format(name, '; '.join(new))
-            
+
             if self.condition_immunities:
                 md += '**Condition Immunities** {}\n\n'.format(
                     ', '.join(self.condition_immunities)
                 )
-            
+
             temp = self.senses.copy()
             if not any(item.startswith('passive Perception ') for item in temp):
                 if 'Perception' in self.skills:
@@ -181,20 +186,20 @@ class Monster (utils.Base):
                     s = utils.get_modifier(self.ability_scores['wis'])
                 temp.append('passive Perception {}'.format(10 + s))
             md += '**Senses** {}\n\n'.format(', '.join(temp))
-            
+
             if self.languages:
                 temp = ', '.join(self.languages)
             else:
                 temp = '-'
             md += '**Languages** {}\n\n'.format(temp)
-            
+
             temp = self.challenge_description.replace('{xp}', '{xp:,}')
             temp = '**Challenge** {}\n\n'.format(temp)
             temp = temp.format(cr=self.get_cr(), xp=self.experience)
             md += temp
-            
+
             md += '***\n\n'
-            
+
             for name, temp in [
                 (None, self.traits),
                 ('Actions', self.actions),
@@ -208,7 +213,7 @@ class Monster (utils.Base):
                             md += '***{}.*** {}\n\n'.format(item[0], '\n'.join(item[1:]).lstrip())
                         else:
                             md += item + '\n\n'
-            
+
             for name, temp in [
                 ('Legendary Actions', self.legendary_actions),
             ]:
@@ -226,16 +231,16 @@ class Monster (utils.Base):
             md = utils.convert(md)
             md = md.replace('<ul>', '<ul class="monster-stats">', 1)
             ret += md
-            
+
             ret += '</div>\n'
-            
+
             ret = spells.handle_spells(ret, self.spell_list)
             ret = '<div>\n{}</div>\n'.format(ret)
-            
+
             self._page = ret
         else:
             ret = self._page
-        
+
         return ret
 
 def monsterblock(name, monsters=None):
@@ -256,9 +261,9 @@ def monsterblock(name, monsters=None):
 class Monsters (utils.Group):
     type = Monster
     javascript = ['monsters.js']
-    
+
     head = '<h1>Monsters</h1>\n'
-    
+
     def __init__(self, folder=None, sources=None):
         super().__init__(folder, sources)
         self.groups = {}
@@ -271,7 +276,7 @@ class Monsters (utils.Group):
                 data = utils.get_details(data, splttag='h1')
                 data = utils.get_details(data, 'h1')
                 self.head = data
-            
+
             path = os.path.join(folder, self.type.__name__.lower())
             if os.path.exists(path):
                 for file in os.listdir(path):
@@ -284,7 +289,7 @@ class Monsters (utils.Group):
                             if len(temp) > 1
                             else ''
                         )
-            
+
             for item in self.values():
                 if item.group and item.group not in self.groups:
                     self.groups[item.group] = ''
@@ -293,11 +298,11 @@ class Monsters (utils.Group):
         itemscopy = {}
         for item in self.values():
             itemscopy[item.name] = item.dict()
-        
+
         ret = '<script>\nmonsters = %s;\n</script>\n' % (archiver.p(itemscopy, compact=True))
-        
+
         ret += self.head
-        
+
         ret += '''
         <div class="search-box">
         <h2>Search</h2>
@@ -334,10 +339,10 @@ class Monsters (utils.Group):
             self.values(),
         ))
         ret += '<ul id="monsters" class="spell-table">\n%s</ul>\n' % temp
-        
+
         ret = '<div>\n%s</div>\n' % ret
         return ret
-    
+
     def filter(self, f=None):
         new = super().filter(f)
         new.groups = new.groups.copy()
@@ -345,7 +350,7 @@ class Monsters (utils.Group):
             if not any(item.group == group for item in new.values()):
                 del new.groups[group]
         return new
-    
+
     def groups_page(self):
         ret = ''
         for group in sorted(self.groups):
