@@ -166,6 +166,10 @@ dl:not(.accordion) > dt::after {
     flex-flow: row nowrap;
 }
 
+.flex > * {
+    flex: 1;
+}
+
 #filter-block {
     display: flex;
     justify-content: flex-end;
