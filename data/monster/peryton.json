@@ -46,10 +46,10 @@
         "understands Common and Elvish but can't speak"
     ],
     "name": "Peryton",
-    "saving throws": {
+    "size": "Medium",
+    "skills": {
         "Perception": 5
     },
-    "size": "Medium",
     "speed": [
         "20 ft.",
         "fly 60 ft."
