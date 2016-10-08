@@ -19,18 +19,18 @@
                 "",
                 "**Casting Elemental Spells.** Some elemental disciplines allow you to cast spells. See chapter 10 for the general rules of spellcasting. To cast one of these spells, you use its casting time and other rules, but you don't need to provide material components for it.",
                 "",
-                "Once you reach 5th level in this class, you can spend additional ki points to increase the level of an elemental discipline spell that you cast, provided that the spell has an enhanced effect at a higher level, as burning hands does. The spell's level increases by 1 for each additional ki point you spend. For example, if you are a 5th-level monk and use Sweeping Cinder Strike to cast *burning hands*, you can spend 3 ki points to cast it as a 2nd-level spell (the discipline's base cost of 2 ki points plus 1).",
+                "Once you reach 5th level in this class, you can spend additional ki points to increase the level of an elemental discipline spell that you cast, provided that the spell has an enhanced effect at a higher level, as *burning hands* does. The spell's level increases by 1 for each additional ki point you spend. For example, if you are a 5th-level monk and use Sweeping Cinder Strike to cast *burning hands*, you can spend 3 ki points to cast it as a 2nd-level spell (the discipline's base cost of 2 ki points plus 1).",
                 "",
                 "The maximum number of ki points you can spend to cast a spell in this way (including its base ki point cost and any additional ki points you spend to increase its level) is determined by your monk level, as shown in the Spells and Ki Points table.",
                 "",
                 "**Spells and Ki Points**",
                 "",
                 "| Monk Levels | Maximum Ki Points for a Spell |",
-                "|:-----------:|:-----------------------------:|",
-                "| 5th-8th     | 3                             |",
-                "| 9th-12th    | 4                             |",
-                "| 13th-16th   | 5                             |",
-                "| 17th-20th   | 6                             |"
+                "|-------------|---|",
+                "| 5th-8th     | 3 |",
+                "| 9th-12th    | 4 |",
+                "| 13th-16th   | 5 |",
+                "| 17th-20th   | 6 |"
             ]
         ],
         [
