@@ -18,7 +18,7 @@ slug = utils.slug
 
 class Documentation (utils.Base):
     description = ''
-    
+
     def __init__(self, data):
         self.name = data[0].lstrip('#').strip()
         self.source = 'FREE'
@@ -26,7 +26,7 @@ class Documentation (utils.Base):
         d = utils.convert(d)
         d = utils.get_details(d, splttag='h1')
         self.description = d
-    
+
     def page(self):
         html = self.description
         html = '<div>\n%s</div>\n' % html
@@ -34,7 +34,7 @@ class Documentation (utils.Base):
 
 class Documents (utils.Group):
     type = Documentation
-    
+
     docs = [
         'preface',
         'introduction',
@@ -62,7 +62,7 @@ class Documents (utils.Group):
                     if item:
                         item = self.type(item)
                         self.add(item)
-    
+
     def sort(self, key=None):
         pass
 
@@ -97,7 +97,7 @@ class OptionalRules (utils.Group):
                             item = f.readlines()
                         if len(item) > 1:
                             item = self.type(item)
-                            
+
                             if sources is None or item.source in sources:
                                 self.add(item)
 
@@ -105,17 +105,17 @@ class Proxy (object):
     def __init__(self, type):
         self.type = type
         self.data = None
-        
+
         self.spells = None
         self.classes = None
-        
+
         self.folder = None
         self.sources = None
-    
+
     def __call__(self, datafolder=None, sources=None):
         self.folder = datafolder
         self.sources = sources
-    
+
     def filter(self, f=None):
         if self.data is None:
             self.data = self.type(self.folder, self.sources)
@@ -127,14 +127,14 @@ class Proxy (object):
             return self.data
         else:
             return self.data.filter(f)
-    
+
     def set_spell_list(self, spell_list):
         if isinstance(spell_list, Proxy):
             spell_list = spell_list.filter()
         self.spells = spell_list
         if self.data is not None:
             self.data.set_spell_list(self.spells)
-    
+
     def set_class_list(self, class_list):
         if isinstance(spell_list, Proxy):
             class_list = class_list.filter()
@@ -158,13 +158,15 @@ armor_list = Proxy(items.Armors)
 optionalrule_list = Proxy(OptionalRules)
 item_list = Proxy(items.Items)
 
-def init(folder='data'):
+def init(folder=None):
     global datafolder, sources_order, weapon_list, armor_list, optionalrule_list, item_list
 
+    if folder is None:
+        folder = 'data'
     datafolder = folder
 
     sources_order = archiver.load(os.path.join(datafolder, 'sources.json'))
-    
+
     l = [
         class_list,
         race_list,
@@ -180,10 +182,10 @@ def init(folder='data'):
         optionalrule_list,
         item_list,
     ]
-    
+
     for item in l:
         item(datafolder, sources_order)
-    
+
     for item in l:
         item.set_spell_list(spell_list)
     spell_list.set_class_list(class_list)

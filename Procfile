@@ -1,1 +1,1 @@
-web: python run.py data --log-file -
+web: python run.py -f data -p $PORT

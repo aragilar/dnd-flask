@@ -28,13 +28,9 @@ everyjs = [
 ]
 filterkey = 'name'
 
-def init():
-    global filters, started
-    if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
-        args = (sys.argv[1],)
-    else:
-        args = ()
-    helper.init(*args)
+def init(folder=None):
+    global filters
+    helper.init(folder=folder)
     folder = os.path.join(helper.datafolder, 'filter')
     if os.path.exists(folder):
         for item in os.listdir(folder):
@@ -67,7 +63,7 @@ def error(e, message):
         title=str(e),
         message=message,
     )
-    
+
     return html
 
 @app.errorhandler(403)
@@ -106,7 +102,7 @@ def character_sheet(look):
     if look in ['index', 'index.htm', 'index.html']:
         look = 'standard'
     look = helper.slug(look)
-    
+
     html = render_template('character_sheet.html',
         look=look,
         styles=[
@@ -116,20 +112,20 @@ def character_sheet(look):
         ],
         javascript=everyjs+["/static/character_sheet/character_sheet.js"]
     )
-    
+
     return html
 
 @app.route('/')
 def index():
     filter, show = get_filter()
-    
+
     title = 'Home'
     if show is not None:
         title = '{} {}'.format(
             show.get(filterkey, filter),
             title
         )
-    
+
     data = {
         'classes': helper.class_list.filter(show),
         'races': helper.race_list.filter(show),
@@ -147,7 +143,7 @@ def index():
         'documentation': helper.document_list.filter(show),
         'optionalrules': helper.optionalrule_list.filter(show),
     }
-    
+
     html = render_template('dnd.html',
         title=title,
         styles=everystyle,
@@ -156,24 +152,24 @@ def index():
         slug=helper.slug,
         **data
     )
-    
+
     return html
 
 @app.route('/classes/', defaults={'type':'Classes'})
 @app.route('/races/', defaults={'type':'Races'})
 def subpage(type):
     filter, show = get_filter()
-    
+
     data = {
         'Classes': helper.class_list,
         'Races': helper.race_list,
     }.get(type)
-    
+
     if not data:
         return abort(404)
-    
+
     data = data.filter(show)
-    
+
     html = render_template('dnd-subthing.html',
         home=True,
         styles=everystyle,
@@ -182,10 +178,10 @@ def subpage(type):
         things=data,
         slug=helper.slug
     )
-    
+
     if not html:
         return abort(404)
-    
+
     return html
 
 @app.route('/classes/<name>', defaults={'type':'Classes'})
@@ -197,7 +193,7 @@ def subpage(type):
 @app.route('/optionalrule/<name>', defaults={'type':'Optional Rules'})
 def subthing(name, type):
     filter, show = get_filter()
-    
+
     type = {
         'Classes': helper.class_list,
         'Races': helper.race_list,
@@ -207,19 +203,19 @@ def subthing(name, type):
         'Documentation': helper.document_list,
         'Optional Rules': helper.optionalrule_list,
     }.get(type)
-    
+
     if not type:
         return abort(404)
-    
+
     type = type.filter(show)
-    
+
     if name in type:
         item = type[name]
         html = item.page()
         name = item.name
     else:
         html = None
-    
+
     if html:
         html = render_template('dnd-base.html',
             home=True,
@@ -229,10 +225,10 @@ def subthing(name, type):
             title=name,
             content=html
         )
-    
+
     if not html:
         return abort(404)
-    
+
     return html
 
 @app.route('/backgrounds', defaults={'type':'Backgrounds'})
@@ -243,7 +239,7 @@ def subthing(name, type):
 @app.route('/magicitems/', defaults={'type':'Magic Items'})
 def list_page(type):
     filter, show = get_filter()
-    
+
     data = {
         'Spells': [
             helper.spell_list,
@@ -267,10 +263,10 @@ def list_page(type):
             helper.armor_list,
         ],
     }.get(type)
-    
+
     if not data:
         return abort(404)
-    
+
     html = ''
     style = everystyle
     js = everyjs
@@ -283,7 +279,7 @@ def list_page(type):
 
     if not html:
         return abort(404)
-    
+
     html = render_template('dnd-base.html',
         home=True,
         collapse_details=True,
@@ -292,20 +288,20 @@ def list_page(type):
         title=type,
         content=html
     )
-    
+
     return html
 
 @app.route('/monsters/groups/', defaults={'type':'Monsters'})
 def groups_page(type):
     filter, show = get_filter()
-    
+
     data = {
         'Monsters': helper.monster_list,
     }.get(type)
-    
+
     if not data:
         return abort(404)
-    
+
     data = data.filter(show)
     if data:
         html = data.groups_page()
@@ -314,7 +310,7 @@ def groups_page(type):
 
     if not html:
         return abort(404)
-    
+
     html = render_template('dnd-base.html',
         home=True,
         collapse_details=True,
@@ -323,22 +319,27 @@ def groups_page(type):
         title='Groups (%s)' % type,
         content=html
     )
-    
+
     return html
 
 if __name__ == '__main__':
+    import argparse
     # ----#-   Main
-    init()
-    
-    if 'PORT' in os.environ: # Public System
-        port = int(os.environ['PORT'])
+    parser = argparse.ArgumentParser(description="D&D web server")
+    parser.add_argument("-f", metavar="FILE", dest="file", help="The location where the data files are stored")
+    parser.add_argument("-p", metavar="PORT", dest="port", help="The port where the server will run. Runs in private mode if not specified")
+    args = parser.parse_args()
+    init(args.file)
+
+    if args.port is not None: # Public System
+        port = int(args.port)
         host = '0.0.0.0'
         debug = False
     else: # Private System
         port = 5000
         host = '127.0.0.1'
         debug = False
-        
+
         print('safari-http://%s:%d/' % (host, port))
-    
+
     app.run(host=host, port=port, debug=debug, use_reloader=False)
