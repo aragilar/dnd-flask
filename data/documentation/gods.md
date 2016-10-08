@@ -52,7 +52,7 @@ Dozens of deities are revered, worshiped, and feared throughout the world of the
 | Mystra, goddess of magic | NG | Knowledge | Circle of seven stars, or nine stars encircling a flowing red mist, or a single star
 | Oghma, god of knowledge | N | Knowledge | Blank scroll
 | Savras, god of divination and fate | LN | Knowledge | Crystal ball containing many kinds of eyes
-| Selûne, goddess of the moon | CG | Knowledge, Life | Pair of eyes surrounded by seven stars
+| Selune, goddess of the moon | CG | Knowledge, Life | Pair of eyes surrounded by seven stars
 | Shar, goddess of darkness and loss | NE | Death, Trickery | Black disk encircled with a border
 | Silvanus, god of wild nature | N | Nature | Oak leaf
 | Sune, goddess of love and beauty | CG | Life, Light | Face of a beautiful red-haired woman
