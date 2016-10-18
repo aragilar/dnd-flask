@@ -1,7 +1,0 @@
-{
-    "+": "FREE",
-    "cost": 50,
-    "description": "A character who drinks the magical red fluid in this vial regains 2d4 + 2 hit points. Drinking or administering a potion takes an action.",
-    "name": "Potion of healing",
-    "weight": "0.5 lb."
-}

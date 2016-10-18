@@ -1,7 +1,0 @@
-{
-    "+": "FREE",
-    "cost": 2,
-    "description": "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied.",
-    "name": "Crowbar",
-    "weight": "5 lb."
-}
