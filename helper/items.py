@@ -1,24 +1,32 @@
 import os
 import re
 
-from . import archiver
 from . import utils
 
 class Weapon (utils.Base):
-    cost = 0.0
-    damage = ''
-    damage_type = 'unknown'
-    properties = ['-']
-    ranged = False
-    weight = '0'
+    def __init__(self, parent, d):
+        for key, value in {
+            "cost": 0.0,
+            "damage": "",
+            "damage_type": "unknown",
+            "weight": "0",
+            "properties": "-",
+            "type": "other",
+            "special": None,
+        }.items():
+            if d[key] is None:
+                d[key] = value
 
-    special = ''
+        d["properties"] = d["properties"].split("\v")
+        d["ranged"] = bool(d["ranged"])
+
+        super().__init__(parent, d)
 
     def page(self):
         ret = '<tr>\n'
-        
+
         ret += '<th>%s</th>\n' % self.name
-        
+
         if self.cost > 0:
             if self.cost < 0.1:
                 ret += '<td>%d cp</td>\n' % int(self.cost * 100)
@@ -28,39 +36,43 @@ class Weapon (utils.Base):
                 ret += '<td>%d gp</td>\n' % int(self.cost)
         else:
             ret += '<td>-</td>\n'
-        
+
         ret += '<td>%s %s</td>' % (self.damage, self.damage_type)
         ret += '<td>%s lb.</td>\n' % self.weight
         ret += '<td>%s</td>\n' % ', '.join(self.properties)
-        
+
         ret += '</tr>\n'
         return ret
 
 class Weapons (utils.Group):
     type = Weapon
-    head = '# Weapons'
+    tablename = "weapons"
     
-    def __init__(self, folder=None, sources=None):
-        super().__init__(folder, sources)
-        if folder:
-            folder = os.path.join(folder, 'documentation/weapons.md')
-            if os.path.exists(folder):
-                with open(folder, 'r') as f:
-                    data = f.read()
-                self.head = data
+    @property
+    def head(self):
+        with self.db as db:
+            text = db.select('documents', conditions="name=='Weapons'")
+        if text:
+            text = text[0]
+            title = "# %s\n\n" % text['name']
+            body = text['description']
+            text = title + body
+        else:
+            text = '# Weapons\n\n'
+        return text
 
     def page(self):
         temp = ''
-        
+
         temp += self.head
         temp += '\n\n'
-        
+
         temp += '## Special\n\n'
         for item in self.values():
             if item.special:
                 temp += '**%s** %s\n\n' % (item.name, item.special)
         temp = utils.get_details(utils.convert(temp))
-        
+
         temp += '<table id="weapons-table">\n'
         temp += '<tr><th>Name</th><th>Cost</th><th>Damage</th><th>Weight</th><th>Properties</th></tr>'
         martial_melee = []
@@ -81,31 +93,39 @@ class Weapons (utils.Group):
                     simple_ranged.append(weapon)
             else:
                 other.append(weapon)
-        
+
         for name, lst in [('Simple Melee', simple_melee), ('Simple Ranged', simple_ranged), ('Martial Melee', martial_melee), ('Martial Ranged', martial_ranged), ('Other', other)]:
             if lst:
                 temp += '<tr><th colspan="5">%s</th></tr>\n' % name
                 for weapon in lst:
                     temp += weapon.page()
-        
+
         temp += '</table>\n'
         temp = utils.get_details(temp, 'h1')
-        
+
         return '<div>\n%s</div>\n' % temp
 
 class Armor (utils.Base):
-    ac = '-'
-    cost = 0.0
-    note = '-'
-    stealth = False
-    strength = 0
-    weight = '0'
+    def __init__(self, parent, d):
+        for key, value in {
+            "type": "other",
+            "ac": "-",
+            "cost": 0.0,
+            "strength": 0,
+            "weight": "0",
+        }.items():
+            if d[key] is None:
+                d[key] = value
+
+        d["stealth"] = bool(d["stealth"])
+
+        super().__init__(parent, d)
 
     def page(self):
         ret = '<tr>\n'
-        
+
         ret += '<th>%s</th>' % self.name
-        
+
         if self.cost > 0:
             if self.cost < 0.1:
                 ret += '<td>%d cp</td>\n' % int(self.cost * 100)
@@ -115,48 +135,51 @@ class Armor (utils.Base):
                 ret += '<td>%d gp</td>\n' % int(self.cost)
         else:
             ret += '<td>-</td>\n'
-        
+
         ret += '<td>%s</td>\n' % self.ac
-        
+
         if self.strength:
             ret += '<td>%d</td>\n' % self.strength
         else:
             ret += '<td>-</td>\n'
-        
+
         if self.stealth:
             ret += '<td>Disadvantage</td>\n'
         else:
             ret += '<td>-</td>\n'
-        
+
         ret += '<td>%s</td>\n' % self.weight
-        ret += '<td>%s</td>\n' % self.note
-        
+
         ret += '</tr>\n'
         return ret
 
 class Armors (utils.Group):
     type = Armor
-    head = '# Armors'
+    tablename = "armors"
     
-    def __init__(self, folder=None, sources=None):
-        super().__init__(folder, sources)
-        if folder:
-            folder = os.path.join(folder, 'documentation/armors.md')
-            if os.path.exists(folder):
-                with open(folder, 'r') as f:
-                    data = f.read()
-                self.head = data
+    @property
+    def head(self):
+        with self.db as db:
+            text = db.select('documents', conditions="name=='Armor and Shields'")
+        if text:
+            text = text[0]
+            title = "# %s\n\n" % text['name']
+            body = text['description']
+            text = title + body
+        else:
+            text = '# Armor and Shields\n\n'
+        return text
 
     def page(self):
         temp = ''
-        
+
         temp += self.head
         temp += '\n\n'
-        
+
         temp = utils.get_details(utils.convert(temp))
-        
+
         temp += '<table id="armor-table">\n'
-        temp += '<tr><th>Armor</th><th>Cost</th><th>Armor Class (ac)</th><th>Strength</th><th>Stealth</th><th>Weight</th><th>Note</th></tr>'
+        temp += '<tr><th>Armor</th><th>Cost</th><th>Armor Class (ac)</th><th>Strength</th><th>Stealth</th><th>Weight</th></tr>'
         light = []
         medium = []
         heavy = []
@@ -175,22 +198,28 @@ class Armors (utils.Group):
                 heavy.append(armor)
             else:
                 other.append(armor)
-        
+
         for name, lst in [('Light', light), ('Medium', medium), ('Heavy', heavy), ('Other', other)]:
             if lst:
-                temp += '<tr><th colspan="7">%s</th></tr>\n' % name
+                temp += '<tr><th colspan="6">%s</th></tr>\n' % name
                 for armor in lst:
                     temp += armor.page()
         temp += '</table>\n'
         temp = utils.get_details(temp, 'h1')
-        
+
         return '<div>\n%s</div>\n' % temp
 
 class Item (utils.Base):
-    cost = 0.0
-    description = ''
-    group = None
-    weight = '-'
+    def __init__(self, parent, d):
+        for key, value in {
+            "cost": 0.0,
+            "weight": "-",
+            "description": "",
+        }.items():
+            if d[key] is None:
+                d[key] = value
+
+        super().__init__(parent, d)
 
     def page(self):
         temp = self.description
@@ -200,7 +229,7 @@ class Item (utils.Base):
         ret = '<td>'
         ret += utils.details_group(utils.details_block(self.name, temp))
         ret += '</td>\n'
-        
+
         if isinstance(self.cost, str):
             ret += '<td>-</td>\n'
         elif self.cost > 0:
@@ -212,48 +241,30 @@ class Item (utils.Base):
                 ret += '<td>%d gp</td>\n' % int(self.cost)
         else:
             ret += '<td>-</td>\n'
-        
+
         ret += '<td>%s</td>\n' % self.weight
-        
+
         ret = '<tr>%s</tr>\n' % ret
 
         return ret
 
 class Items (utils.Group):
     type = Item
-    head = '# Items'
-
-    def __init__(self, folder=None, sources=None):
-        super().__init__(folder, sources)
-        self.groups = {}
-        if folder:
-            path = os.path.join(folder, 'documentation/items.md')
-            if os.path.exists(path):
-                with open(path, 'r') as f:
-                    data = f.read()
-                self.head = data
-            
-            t = os.path.join(folder, self.type.__name__.lower())
-            if os.path.exists(t):
-                folder = t
-                for item in os.listdir(folder):
-                    item = os.path.join(folder, item)
-                    if item.endswith('.md'):
-                        with open(item, 'r') as f:
-                            temp = f.readlines()
-                        temp = {
-                            'name': temp[0].lstrip('#').strip(),
-                            'description': (
-                                ''.join(temp[2:])
-                                if len(temp) > 1
-                                else ''
-                            ),
-                        }
-                        self.add(temp)
-            for item in self.values():
-                if item.group and item.group not in self.groups:
-                    self.groups[item.group] = ''
+    tablename = "items"
     
+    @property
+    def head(self):
+        with self.db as db:
+            text = db.select('documents', conditions="name=='Items'")
+        if text:
+            text = text[0]
+            title = "# %s\n\n" % text['name']
+            body = text['description']
+            text = title + body
+        else:
+            text = '# Items\n\n'
+        return text
+
     def add(self, item):
         if isinstance(item, self.type):
             super().add(item)
@@ -261,7 +272,7 @@ class Items (utils.Group):
             g = item['name']
             if g is not None:
                 self.groups[g] = item['description']
-    
+
     @staticmethod
     def _getgroup(g):
         if g is not None:
@@ -276,7 +287,7 @@ class Items (utils.Group):
         ret = self.head
         ret = utils.convert(ret)
         ret = utils.get_details(ret)
-        
+
         ret += '<table>\n'
         ret += (
             '<tr>'
@@ -285,15 +296,18 @@ class Items (utils.Group):
             '<th>Weight</th>'
             '</tr>\n'
         )
-        
+
         for item in self.values():
-            if not item.group:
+            if not item.item_group:
                 ret += item.page()
-        
+
         ret += '</table>\n'
-        
-        for name in sorted(self.groups):
-            description = self.groups[name]
+
+        with self.db as db:
+            groups = db.select("item_groups")
+        groups = {item["name"]: item["description"] for item in groups}
+        for name in sorted(groups):
+            description = groups[name]
             hadany = False
             temp = '<h2>%s</h2>\n' % self._getgroup(name)
             temp += utils.convert(description)
@@ -306,13 +320,13 @@ class Items (utils.Group):
                 '</tr>\n'
             )
             for item in self.values():
-                if item.group == name:
+                if item.item_group == name:
                     temp += item.page()
                     hadany = True
             temp += '</table>\n'
             if hadany:
                 ret += utils.get_details(temp)
-        
+
         ret = utils.get_details(ret, 'h1')
-        
+
         return '<div>\n%s</div>\n' % ret

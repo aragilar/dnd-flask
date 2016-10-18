@@ -1,71 +1,70 @@
 import os
+import json
 
-from . import archiver
 from . import utils
 from . import spells
 
 class MagicItem (utils.Base):
-    attunement = False
-    description = []
-    limits = None
-    rarity = 'common'
-    type = 'Wondrous item'
-    
-    _page = None
-    
+    def __init__(self, parent, d):
+        for key, value in {
+            "rarity": "common",
+            "category": "Wondrous item",
+            "description": "",
+        }.items():
+            if d[key] is None:
+                d[key] = value
+        d["rarity"] = d["rarity"].split("\v")
+
+        super().__init__(parent, d)
+
     def dict(self):
         d = {
             'name': self.name,
             'attunement': self.attunement,
             'limits': self.limits,
             'rarity': self.rarity,
-            'type': self.type,
+            'type': self.category,
         }
         return d
-    
+
     def page(self):
-        if self._page is None:
-            ret = ''
-            ret += '<h1>%s</h1>\n\n' % self.name
-            
-            temp = self.type
-            
-            if self.limits:
-                temp += ' (%s)' % self.limits
-            
-            if isinstance(self.rarity, list):
-                rarity = self.rarity.copy()
-            else:
-                rarity = [self.rarity]
+        ret = ''
+        ret += '<h1>%s</h1>\n\n' % self.name
 
-            if 'sentient' in rarity:
-                rarity.remove('sentient')
+        temp = self.category
 
-            if len(rarity) == 1:
-                temp += ', ' + rarity[0]
-            else:
-                temp += ', rarity varies'
-            
-            if self.attunement:
-                if isinstance(self.attunement, str):
-                    if self.attunement[0].upper() in 'AEIOU':
-                        temp += ' (requires attunement by an %s)' % self.attunement
-                    else:
-                        temp += ' (requires attunement by a %s)' % self.attunement
-                else:
-                    temp += ' (requires attunement)'
-            ret += '<p><em>%s</em></p>\n\n' % temp
-            
-            ret += utils.convert('\n'.join(self.description))
-            
-            ret = spells.handle_spells(ret, self.spell_list)
-            
-            ret = '<div>\n%s</div>' % ret
-            
-            self._page = ret
+        if self.limits:
+            temp += ' (%s)' % self.limits
+
+        if isinstance(self.rarity, list):
+            rarity = self.rarity.copy()
         else:
-            ret = self._page
-        
+            rarity = [self.rarity]
+
+        if 'sentient' in rarity:
+            rarity.remove('sentient')
+
+        if len(rarity) == 1:
+            temp += ', ' + rarity[0]
+        else:
+            temp += ', rarity varies'
+
+        if self.attunement:
+            if isinstance(self.attunement, str):
+                if self.attunement[0].upper() in 'AEIOU':
+                    temp += ' (requires attunement by an %s)' % self.attunement
+                else:
+                    temp += ' (requires attunement by a %s)' % self.attunement
+            else:
+                temp += ' (requires attunement)'
+        ret += '<p><em>%s</em></p>\n\n' % temp
+
+        ret += utils.convert(self.description)
+
+        ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
+
+        ret = '<div>\n%s</div>' % ret
+
         return ret
 
 def itemblock(name, magicitems=None):
@@ -78,14 +77,6 @@ def itemblock(name, magicitems=None):
     else:
         item = magicitems.get(name)
     if item is not None:
-        #body = item.page()
-        #body = body.replace('<h1>', '<h1><a href="%s">' % utils.slug(name), 1)
-        #body = body.replace('</h1>', '</a></h1>', 1)
-        #ret = utils.details_block(
-        #    str(name),
-        #    body,
-        #    body_class="spell-box"
-        #)
         ret = '<li><a href="{1}">{0}</a></li>\n'.format(name, utils.slug(name))
     else:
         ret = str(name)
@@ -93,48 +84,29 @@ def itemblock(name, magicitems=None):
 
 class MagicItems (utils.Group):
     type = MagicItem
+    tablename = "magic_items"
     javascript = ['magicitems.js']
     
-    head = '<h1>Magic Items</h1>\n'
-    
-    def __init__(self, folder=None, sources=None):
-        super().__init__(folder, sources)
-        if folder:
-            p = ''
-            
-            path = os.path.join(folder, 'documentation/magicitems.md')
-            if os.path.exists(path):
-                with open(path, 'r') as f:
-                    data = f.read()
-                p += data
-            
-            path = os.path.join(folder, 'documentation/sentientitems.md')
-            if os.path.exists(path):
-                with open(path, 'r') as f:
-                    data = f.read()
-                p += data
-            
-            path = os.path.join(folder, 'documentation/artifacts.md')
-            if os.path.exists(path):
-                with open(path, 'r') as f:
-                    data = f.read()
-                p += data
-            
-            if p:
-                p = utils.convert(p)
-                p = utils.get_details(p, splttag='h1')
-                p = utils.get_details(p, 'h1')
-                self.head = p
+    @property
+    def head(self):
+        header = self.get_document("Magic Items", "Magic Items")
+        header2 = self.get_document("Sentient Items")
+        header3 = self.get_document("Artifacts")
+        if header2:
+            header += header2
+        if header3:
+            header += header3
+        return header
 
     def page(self):
         itemscopy = {}
         for item in self.values():
             itemscopy[item.name] = item.dict()
-        
-        ret = '<script>\nitems = %s;\n</script>\n' % (archiver.p(itemscopy, compact=True))
-        
-        ret += spells.handle_spells(self.head, self.spell_list)
-        
+
+        ret = '<script>\nitems = %s;\n</script>\n' % (json.dumps(itemscopy, sort_keys=True))
+
+        ret += spells.handle_spells(self.head, self.get_spell_list(spells.Spells))
+
         ret += '''
         <div class="search-box">
         <h2>Search</h2>
@@ -166,6 +138,6 @@ class MagicItems (utils.Group):
                 self.values(),
         ))
         ret += '<ul id="magicitems" class="spell-table">\n%s</ul>\n' % temp
-        
+
         ret = '<div>\n%s</div>\n' % ret
         return ret

@@ -8,8 +8,6 @@ import multiprocessing.pool
 ##import markdown
 import markdown2
 
-from . import archiver
-
 md = markdown2.Markdown(
     html4tags=True,
     extras = [
@@ -38,197 +36,147 @@ def convert(data):
     return out
 
 class Base (object):
-    _translate = {
-        '+': 'source',
-        '@': 'parent',
-        'A': 'index',
-    }
-    
-    name = ''
-    spell_list = {}
-    source = ''
-    index = float('inf')
-    parent = None
-    children = collections.OrderedDict()
-    subclass = None
-    
-    def __init__(self, d={}):
+    children = None
+
+    def __init__(self, parent, d, children=None):
+        self.parent = parent
         for key, value in d.items():
-            if key in self._translate:
-                key = self._translate[key]
-            key = key.replace(' ', '_')
             setattr(self, key, value)
-        if self.subclass:
-            self.children = collections.OrderedDict()
-    
-    @classmethod
-    def fromJSON(cls, d):
-        if isinstance(d, dict):
-            if 'name' in d:
-                d = cls(d)
-        return d
-    
-    def filter(self, filter=None):
-        ret = copy.copy(self)
-        if filter is not None and type(self).__name__.lower() in filter:
-            filter = filter[type(self).__name__.lower()]
-            if self.name not in filter:
-                ret = None
-            else:
-                f = filter[self.name]
-                if not f:
-                    ret = None
-                elif self.subclass:
-                    ret.children = collections.OrderedDict()
-                    for child in self.children.values():
-                        child = child.subfilter(f)
-                        if child:
-                            ret.children[child.name] = child
-                    if not ret.children and not f == True:
-                        ret = None
-        return ret
-    
-    def subfilter(self, filter=None):
-        ret = copy.copy(self)
-        if filter is not None:
-            if self.name not in filter or not filter[self.name]:
-                ret = None
-        return ret
-    
-    def set_spell_list(self, spell_list):
-        self.spell_list = spell_list
-        if self.children:
-            for child in self.children.values():
-                child.set_spell_list(spell_list)
-    
+
     def __str__(self):
         return self.name
-    
+
     def __repr__(self):
         s = '{}({})'.format(
             type(self).__name__,
             self.name,
         )
-        if self.subclass:
+        if self.children:
             s += ': '
             s += ', '.join(map(repr, self.children.values()))
         return s
 
 class Group (object):
     type = Base
-    spell_list = {}
+    subtype = None
+    tablename = None
 
-    def __loadfile(self, filename, folder, sources=None):
-        item = os.path.join(folder, filename)
-        if os.path.isfile(item) and item.endswith('.json'):
-            try:
-                item = self.type(archiver.load(item))
-            except (ValueError, IOError):
-                raise
-            if sources is None or item.source in sources:
-                self.add(item)
-    
-    def __init__(self, folder=None, sources=None):
-        self._items = collections.OrderedDict()
-        if folder:
-            folder = os.path.join(folder, self.type.__name__.lower())
-            if os.path.exists(folder):
-                asyncmap(
-                    functools.partial(self.__loadfile, folder=folder, sources=sources),
-                    os.listdir(folder),
-                )
-                
-                # ----#-         Sub
-                if self.type.subclass:
-                    if folder.endswith('/') or folder.endswith('\\'):
-                        folder = folder[:-1]
-    
-                    folder = os.path.split(folder)
-                    folder = os.path.join(folder[0], self.type.subclass.__name__.lower())
-    
-                    l = []
-                    for item in os.listdir(folder):
-                        item = os.path.join(folder, item)
-                        if os.path.isfile(item) and item.endswith('.json'):
-                            try:
-                                item = self.type.subclass(archiver.load(item))
-                            except (ValueError, IOError):
-                                raise
-                            if sources is None or item.source in sources:
-                                l.append(item)
-    
-                    for item in l:
-                        if item.parent in self:
-                            self[item.parent].children[item.name] = item
-            self.sort()
-            if self.type.subclass:
-                if sources:
-                    self.sort(key=lambda a: sources.index(a.source))
-                self.sort(key=lambda a: a.index)
-    
-    def add(self, item):
-        if isinstance(item, self.type):
-            self._items[slug(item.name)] = item
+    def __init__(self, db=None, f=None):
+        self.db = db
+        self.current_filter = f
+
+    def __call__(self, db):
+        self.db = db
+
+    def filter(self, f=None):
+        if f:
+            c = copy.copy(self)
+            c.current_filter = f
+            return c
         else:
-            raise TypeError('Cannot accept item of type %s' % str(type(item)))
+            return self
+
+    def get_data(self, columns=["*"], subtype_item=None):
+        if self.db:
+            tables = ['%s C' % self.tablename, 'Sources S']
+            conditions = ["C.source==S.id"]
+            order = [
+                "case when C.sort_index is null then 1 else 0 end",
+                "C.sort_index",
+                "C.name",
+            ]
+            if self.subtype:
+                order.insert(2, "S.source_index")
+
+            if self.current_filter:
+                tables.append('%s_filters F' % self.tablename)
+                conditions.append('C.name == F.item_name')
+                conditions.append("F.filter_name == '%s'" % self.current_filter.replace("'", "''"))
+
+            if subtype_item:
+                tables[0] = 'sub' + tables[0]
+                if self.current_filter:
+                    tables[-1] = 'sub' + tables[-1]
+                conditions.append("C.%s=='%s'" % (
+                    self.type.__name__.lower(),
+                    subtype_item.replace("'", "''"),
+                ))
+
+            with self.db as db:
+                return db.select(
+                    tables,
+                    columns=list(map("C.".__add__, columns)),
+                    conditions=conditions,
+                    order=order,
+                )
+        else:
+            return []
     
-    def filter(self, f):
-        new = copy.copy(self)
-        new._items = collections.OrderedDict()
-        for item in self.values():
-            item = item.filter(f)
-            if item is not None:
-                new.add(item)
-        return new
-    
-    def set_spell_list(self, spell_list):
-        self.spell_list = spell_list
-        for item in self._items.values():
-            item.set_spell_list(spell_list)
-    
+    def get_document(self, doc, default=None):
+        with self.db as db:
+            text = db.select('documents', conditions="name=='%s'" % doc)
+        if text:
+            text = text[0]
+            title = "<h1>%s</h1>\n\n" % text['name']
+            body = convert(text['description'])
+            body = get_details(body)
+            text = details_block(title, body)
+            text = details_group(text)
+        else:
+            if default:
+                text = '<h1>%s</h1>\n' % default
+            else:
+                text = None
+        return text
+
     def keys(self):
-        return (item.name for item in self._items.values())
-    
+        return (item["name"] for item in self.get_data(columns=["name"]))
+
     def values(self):
-        return self._items.values()
-    
+        values = list(map(functools.partial(self.type, self), self.get_data()))
+        if self.subtype:
+            for item in values:
+                item.children = collections.OrderedDict()
+                data = self.get_data(subtype_item=item.name)
+                for sub in data:
+                    item.children[sub["name"]] = self.subtype(self, sub)
+        return values
+
+    def dict(self):
+        items = list(self.values())
+        names = (item.name for item in items)
+        return collections.OrderedDict(zip(names, items))
+
     def items(self):
-        return self._items.items()
-    
-    def get(self, item, default=None):
-        if item in self:
-            default = self[item]
+        return self.dict().items()
+
+    def get(self, key, default=None):
+        if key in self:
+            default = self[key]
         return default
-    
-    def sort(self, key=lambda a: a.name):
-        for item in sorted(self._items.values(), key=key):
-            self.move_to_end(item.name)
-            if isinstance(item, self.type) and item.children:
-                for sub in sorted(item.children.values(), key=key):
-                    item.children.move_to_end(sub.name)
-            elif isinstance(item, type(self)):
-                item.sort(key)
-    
-    def move_to_end(self, key):
-        self._items.move_to_end(slug(key))
-    
-    def __iter__(self):
-        return iter(self.keys())
-    
+
+    __iter__ = keys
+
     def __len__(self):
-        return len(self._items)
-    
+        return len(self.get_data())
+
     def __contains__(self, key):
-        return slug(key) in self._items
-    
+        return slug(key) in map(slug, self.keys())
+
     def __getitem__(self, key):
-        return self._items[slug(key)]
+        d = {}
+        for k, item in self.items():
+            d[slug(k)] = item
+        return d[slug(key)]
 
     def __str__(self):
         return str(list(self.values()))
 
     def __nonzero__(self):
         return len(self) > 0
+
+    def get_spell_list(self, SpellsClass):
+        return SpellsClass(self.db)
 
 def slug(s):
     r"""
@@ -258,7 +206,8 @@ def comma_list(lst, joiner = 'and'):
         ret = 'none'
     return ret
 
-def choice_list(lst, type = ''):
+def choice_list(lst, type=''):
+    lst = [int(item) if isinstance(item, int) or item.isdigit() else item for item in lst]
     if type != '':
         type = ' ' + type
     if lst:
@@ -267,11 +216,11 @@ def choice_list(lst, type = ''):
             if isinstance(item, int):
                 choose = x
                 break
-        
+
         if (type and choose is not None
                 and lst[choose] > 1):
             type += 's'
-        
+
         if choose is not None and len(lst) > 1:
             choices = comma_list(lst[choose+1:], 'or')
             if choose == 0:
@@ -303,7 +252,7 @@ def get_details(text, detltag='h2', splttag=None):
         blocks = text.split('<{}'.format(splttag))
     else:
         blocks = [text]
-    
+
     for x, text in enumerate(blocks):
         repl = re.findall('(<{0}.*?>.*?</{0}>)(.+?)(?=<{0}|$)'.format(detltag), text, re.DOTALL)
         if repl:
@@ -312,7 +261,7 @@ def get_details(text, detltag='h2', splttag=None):
             for item in repl:
                 new += details_block(item[0], item[1])
             blocks[x] = head + details_group(new)
-    
+
     if splttag is not None:
         text = '<{}'.format(splttag).join(blocks)
     else:
@@ -327,7 +276,7 @@ def details_block(summary, body=None, summary_class=None, body_class=None):
             txt = '<dt>'
         txt += summary
         txt += '</dt>\n'
-    
+
         if body_class:
             txt += '<dd class="%s">' % body_class
         else:
@@ -350,7 +299,7 @@ def details_group(text, body_id=None, body_class=None):
     d = ''
     if body_id:
         d = ' id="%s"' % body_id
-    
+
     return '<dl%s class="%s">\n%s</dl>\n' % (d, c, text)
 
 def asyncmap(func, lst):
@@ -363,6 +312,13 @@ def get_modifier(num):
     num -= 10
     num //= 2
     return num
+
+def remove_null(d):
+    d = d.copy()
+    for key in d:
+        if d[key] is None:
+            del d[key]
+    return d
 
 stats = collections.OrderedDict([
     ('str', 'Strength'),

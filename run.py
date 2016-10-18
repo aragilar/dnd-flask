@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import sys
 import os
 import re
@@ -16,7 +17,6 @@ log = logging.getLogger('FlaskApp')
 log.setLevel(logging.ERROR)
 app.logger.addHandler(log)
 
-filters = helper.collections.OrderedDict()
 everystyle = [
     '/static/normalize.css',
     '/static/index.css'
@@ -26,34 +26,12 @@ everyjs = [
     '/static/accordion.js',
     '/static/keep-params.js'
 ]
-filterkey = 'name'
-
-def init(folder=None):
-    global filters
-    helper.init(folder=folder)
-    folder = os.path.join(helper.datafolder, 'filter')
-    if os.path.exists(folder):
-        for item in os.listdir(folder):
-            if item.endswith('.json'):
-                d = helper.archiver.load(os.path.join(folder, item))
-                if filterkey not in d:
-                    d[filterkey] = item[:-5]
-                filters[d[filterkey]] = d
-        for key in sorted(filters):
-            try:
-                filters.move_to_end(key)
-            except AttributeError:
-                d = filters[key]
-                del filters[key]
-                filters[key] = d
 
 def get_filter():
-    filter = request.args.get('filter')
-    if filter is not None and filter in filters:
-        show = filters[filter]
-    else:
-        show = None
-    return filter, show
+    filter_name = request.args.get('filter')
+    if filter_name not in helper.filter_list.keys():
+        filter_name = None
+    return filter_name
 
 def error(e, message):
     html = render_template('error.html',
@@ -97,7 +75,7 @@ def favicon():
 @app.route('/character_sheet/', defaults={'look':'standard'})
 @app.route('/character_sheet/<look>')
 def character_sheet(look):
-    filter, show = get_filter()
+    filter_name = get_filter()
 
     if look in ['index', 'index.htm', 'index.html']:
         look = 'standard'
@@ -110,45 +88,45 @@ def character_sheet(look):
             '/static/character_sheet/character_sheet.css',
             '/static/character_sheet/%s.css' % look
         ],
-        javascript=everyjs+["/static/character_sheet/character_sheet.js"]
+        javascript=everyjs+["/static/character_sheet/character_sheet.js"],
     )
 
     return html
 
 @app.route('/')
 def index():
-    filter, show = get_filter()
+    filter_name = get_filter()
 
     title = 'Home'
-    if show is not None:
+    if filter_name is not None:
         title = '{} {}'.format(
-            show.get(filterkey, filter),
+            filter_name,
             title
         )
 
     data = {
-        'classes': helper.class_list.filter(show),
-        'races': helper.race_list.filter(show),
-        'backgrounds': helper.background_list.filter(show),
-        'spells': helper.spell_list.filter(show),
-        'feats': helper.feat_list.filter(show),
-        'boons': helper.epicboon_list.filter(show),
+        'classes': helper.class_list.filter(filter_name),
+        'races': helper.race_list.filter(filter_name),
+        'backgrounds': helper.background_list.filter(filter_name),
+        'spells': helper.spell_list.filter(filter_name),
+        'feats': helper.feat_list.filter(filter_name),
+        'boons': helper.epicboon_list.filter(filter_name),
         'items': (
-            list(helper.weapon_list.filter(show))
-            + list(helper.armor_list.filter(show))
-            + list(helper.item_list.filter(show))
+            list(helper.weapon_list.filter(filter_name))
+            + list(helper.armor_list.filter(filter_name))
+            + list(helper.item_list.filter(filter_name))
         ),
-        'monsters': helper.monster_list.filter(show),
-        'magicitems': helper.magicitem_list.filter(show),
-        'documentation': helper.document_list.filter(show),
-        'optionalrules': helper.optionalrule_list.filter(show),
+        'monsters': helper.monster_list.filter(filter_name),
+        'magicitems': helper.magicitem_list.filter(filter_name),
+        'documentation': helper.document_list.filter(filter_name),
+        'optionalrules': helper.optionalrule_list.filter(filter_name),
     }
 
     html = render_template('dnd.html',
         title=title,
         styles=everystyle,
         javascript=everyjs+['/static/filters.js'],
-        filters=filters.keys(),
+        filters=helper.filter_list.keys(),
         slug=helper.slug,
         **data
     )
@@ -158,7 +136,7 @@ def index():
 @app.route('/classes/', defaults={'type':'Classes'})
 @app.route('/races/', defaults={'type':'Races'})
 def subpage(type):
-    filter, show = get_filter()
+    filter_name = get_filter()
 
     data = {
         'Classes': helper.class_list,
@@ -168,7 +146,7 @@ def subpage(type):
     if not data:
         return abort(404)
 
-    data = data.filter(show)
+    data = data.filter(filter_name)
 
     html = render_template('dnd-subthing.html',
         home=True,
@@ -176,7 +154,7 @@ def subpage(type):
         javascript=everyjs,
         name=type,
         things=data,
-        slug=helper.slug
+        slug=helper.slug,
     )
 
     if not html:
@@ -192,7 +170,7 @@ def subpage(type):
 @app.route('/documentation/<name>', defaults={'type':'Documentation'})
 @app.route('/optionalrule/<name>', defaults={'type':'Optional Rules'})
 def subthing(name, type):
-    filter, show = get_filter()
+    filter_name = get_filter()
 
     type = {
         'Classes': helper.class_list,
@@ -207,7 +185,7 @@ def subthing(name, type):
     if not type:
         return abort(404)
 
-    type = type.filter(show)
+    type = type.filter(filter_name)
 
     if name in type:
         item = type[name]
@@ -223,7 +201,7 @@ def subthing(name, type):
             styles=everystyle,
             javascript=everyjs,
             title=name,
-            content=html
+            content=html,
         )
 
     if not html:
@@ -238,7 +216,7 @@ def subthing(name, type):
 @app.route('/monsters/', defaults={'type':'Monsters'})
 @app.route('/magicitems/', defaults={'type':'Magic Items'})
 def list_page(type):
-    filter, show = get_filter()
+    filter_name = get_filter()
 
     data = {
         'Spells': [
@@ -271,11 +249,12 @@ def list_page(type):
     style = everystyle
     js = everyjs
     for item in data:
-        item = item.filter(show)
+        item = item.filter(filter_name)
         if item:
             if hasattr(item, 'javascript'):
                 js += ['/static/' + a for a in item.javascript]
-            html += item.page()
+            page = item.page()
+            html += page
 
     if not html:
         return abort(404)
@@ -286,14 +265,14 @@ def list_page(type):
         styles=style,
         javascript=js,
         title=type,
-        content=html
+        content=html,
     )
 
     return html
 
 @app.route('/monsters/groups/', defaults={'type':'Monsters'})
 def groups_page(type):
-    filter, show = get_filter()
+    filter_name = get_filter()
 
     data = {
         'Monsters': helper.monster_list,
@@ -302,7 +281,7 @@ def groups_page(type):
     if not data:
         return abort(404)
 
-    data = data.filter(show)
+    data = data.filter(filter_name)
     if data:
         html = data.groups_page()
     else:
@@ -317,7 +296,7 @@ def groups_page(type):
         styles=everystyle,
         javascript=everyjs,
         title='Groups (%s)' % type,
-        content=html
+        content=html,
     )
 
     return html
@@ -325,11 +304,11 @@ def groups_page(type):
 if __name__ == '__main__':
     import argparse
     # ----#-   Main
-    parser = argparse.ArgumentParser(description="D&D web server")
-    parser.add_argument("-f", metavar="FILE", dest="file", help="The location where the data files are stored")
-    parser.add_argument("-p", metavar="PORT", dest="port", help="The port where the server will run. Runs in private mode if not specified")
+    parser = argparse.ArgumentParser(description="D&D web server", epilog="The server runs locally on port 5000 if PORT is not specified.")
+    parser.add_argument("-f", dest="file", help="The location of the database file")
+    parser.add_argument("-p", dest="port", help="The port where the server will run")
     args = parser.parse_args()
-    init(args.file)
+    helper.init(args.file)
 
     if args.port is not None: # Public System
         port = int(args.port)

@@ -5,21 +5,21 @@ from . import utils
 from . import spells
 
 class Feat (utils.Base):
-    prerequisite = None
-    text = []
-    
+    def __init__(self, parent, d):
+        if d["description"] is None:
+            d["description"] = ""
+
+        super().__init__(parent, d)
+
     def page(self):
         ret = '<h2>%s</h2>\n\n' % self.name
-        if self.prerequisite is not None:
+        if self.prerequisite:
             ret += '<em>Prerequisite: %s</em>\n\n' % self.prerequisite
-        ret += utils.convert('\n'.join(self.text))
-        
-        ret = spells.handle_spells(ret, self.spell_list)
-        
-        return ret
+        ret += utils.convert(self.description)
 
-class EpicBoon (Feat):
-    pass
+        ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
+
+        return ret
 
 def featblock(name, feats):
     feat = feats.get(name)
@@ -35,24 +35,15 @@ def featblock(name, feats):
 
 class Feats (utils.Group):
     type = Feat
+    tablename = "feats"
     _headfile = 'feats.md'
-    head = '<h1>Feats</h1>\n'
     
-    def __init__(self, folder=None, sources=None):
-        super().__init__(folder, sources)
-        if folder:
-            folder = os.path.join(folder, 'documentation', self._headfile)
-            if os.path.exists(folder):
-                with open(folder, 'r') as f:
-                    data = f.read()
-                data = utils.convert(data)
-                data = utils.get_details(data, 'h1')
-                self.head = data
+    @property
+    def head(self):
+        return self.get_document("Feats", "Feats")
 
     def page(self):
-        ret = '<div>\n'
-    
-        ret += self.head
+        ret = self.head
         h1 = re.search('<h1>(.*?)</h1>', ret)
         if h1:
             slug = utils.slug(h1.group(1))
@@ -64,11 +55,15 @@ class Feats (utils.Group):
             temp += featblock(feat.name, self)
             temp += '</td></tr>\n'
         ret += utils.details_group(temp)
-        
-        ret += '</div>\n'
+
+        ret = '<div>\n%s</div>\n' % ret
         return ret
 
 class EpicBoons (Feats):
-    type = EpicBoon
+    type = Feat
+    tablename = "epic_boons"
     _headfile = 'epicboons.md'
-    head = '<h1>Epic Boons</h1>\n'
+    
+    @property
+    def head(self):
+        return self.get_document("Epic Boons", "Epic Boons")

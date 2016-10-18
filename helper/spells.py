@@ -1,7 +1,7 @@
 import os
 import re
+import json
 
-from . import archiver
 from . import utils
 
 _spellexpression = re.compile('''(?<!<p>)(
@@ -19,94 +19,84 @@ _spellexpression_p = re.compile('''(
 )''', re.X)
 
 class Spell (utils.Base):
-    cast_time = 'Unknown Casting Time'
-    components = {}
-    description = []
-    duration = 'Unknown Duration'
-    level = '0'
-    range = 'Unknown Range'
-    ritual = False
-    type = 'Unknown Type'
-    
-    _page = None
-    
+    def __init__(self, parent, d):
+        for key, value in {
+            "level": -1,
+            "school": "Unknown School",
+            "cast_time": "Unknown casting time",
+            "range": "Unknown range",
+            "duration": "Unknown duration",
+            "description": "",
+        }.items():
+            if d[key] is None:
+                d[key] = value
+
+        for key in [
+            "ritual",
+            "verbal",
+            "somatic",
+        ]:
+            d[key] = bool(d[key])
+
+        super().__init__(parent, d)
+
     def dict(self):
         d = {
             'name': self.name,
             'cast time': self.cast_time,
-            'components': self.components,
             'duration': self.duration,
             'level': self.level,
             'range': self.range,
             'ritual': self.ritual,
-            'type': self.type,
+            'type': self.school,
         }
         return d
-    
-    def page(self):
-        if self._page is None:
-            ret = '<h2>%s</h2>\n' % self.name
-            
-            if self.level == 'Cantrip':
-                lvl = '%s Cantrip' % self.type
-            else:
-                lvl = '%s-level %s' % (utils.ordinals[int(self.level)], self.type)
-            
-            if self.ritual:
-                lvl += ' (ritual)'
-            
-            ret += '<p>\n<em>%s</em><br>\n' % lvl
-            
-            ret += '<strong>Casting Time:</strong> %s<br>\n' % self.cast_time
-            ret += '<strong>Range:</strong> %s<br>\n' % self.range
-            
-            lst = []
-            truncated = True
-            
-            if self.components.get('verbal', False):
-                lst.append('Verbal')
-                if truncated:
-                    lst[-1] = lst[-1][0]
-            if self.components.get('somatic', False):
-                lst.append('Somatic')
-                if truncated:
-                    lst[-1] = lst[-1][0]
-            if self.components.get('material'):
-                lst.append('Material')
-                if truncated:
-                    lst[-1] = lst[-1][0]
-                lst[-1] += ' (%s)' % self.components.get('material', 'Unknown Material Component')
-            
-            if len(lst) == 0:
-                lst.append('None')
-            
-            ret += '<strong>Components:</strong> %s<br>\n' % ', '.join(lst)
-            ret += '<strong>Duration:</strong> %s\n</p>\n' % self.duration
-            
-            ret += utils.convert('\n'.join(self.description))
-            ret = handle_spells(ret, self.spell_list)
-            
-            ret = '<div>\n%s</div>' % ret
-            
-            self._page = ret
-        else:
-            ret = self._page
-        
-        return ret
 
-def spells_by_class(classes):
-    new = {}
-    for c in classes.values():
-        d = []
-        
-        slist = c.spells
-        
-        for x in slist.keys():
-            d.extend(slist.get(x, []))
-        d.sort()
-        if len(d):
-            new[c.name] = d
-    return new
+    def page(self):
+        ret = '<h2>%s</h2>\n' % self.name
+
+        if self.level == 0:
+            lvl = '%s Cantrip' % self.school
+        else:
+            lvl = '%s-level %s' % (utils.ordinals[self.level], self.school)
+
+        if self.ritual:
+            lvl += ' (ritual)'
+
+        ret += '<p>\n<em>%s</em><br>\n' % lvl
+
+        ret += '<strong>Casting Time:</strong> %s<br>\n' % self.cast_time
+        ret += '<strong>Range:</strong> %s<br>\n' % self.range
+
+        lst = []
+        truncated = True
+
+        if self.verbal:
+            lst.append('Verbal')
+            if truncated:
+                lst[-1] = lst[-1][0]
+        if self.somatic:
+            lst.append('Somatic')
+            if truncated:
+                lst[-1] = lst[-1][0]
+        if self.material:
+            lst.append('Material')
+            if truncated:
+                lst[-1] = lst[-1][0]
+            lst[-1] += ' (%s)' % self.material
+
+        if len(lst) == 0:
+            lst.append('None')
+
+        ret += '<strong>Components:</strong> %s<br>\n' % ', '.join(lst)
+        ret += '<strong>Duration:</strong> %s\n</p>\n' % self.duration
+
+        ret += utils.convert(self.description)
+        ret = handle_spells(ret, self.parent.get_spell_list(Spells))
+
+        ret = '<div>\n%s</div>' % ret
+
+        return ret
 
 def handle_spells(text, spells):
     spelllist = _spellexpression_p.findall(text)
@@ -138,46 +128,41 @@ def spellblock(name, spells=None):
 
 class Spells (utils.Group):
     type = Spell
-    
+    tablename = "spells"
     javascript = ['spells.js']
-    head = '<h1>Spells</h1>\n'
-    classes = {}
     
-    def __init__(self, folder=None, sources=None):
-        super().__init__(folder, sources)
-        if folder:
-            folder = os.path.join(folder, 'documentation/spellcasting.md')
-            if os.path.exists(folder):
-                with open(folder, 'r') as f:
-                    data = f.read()
-                data = utils.convert(data)
-                data = utils.get_details(data)
-                data = utils.get_details(data, 'h1')
-                self.head = data
-    
-    def set_class_list(self, value):
-        self.classes = value
-    
-    def filter(self, f=None):
-        r = super().filter(f)
-        if hasattr(r.classes, 'filter'):
-            r.classes = r.classes.filter(f)
-        return r
+    @property
+    def head(self):
+        return self.get_document("Spellcasting", "Spells")
+
+    def spells_by_class(self):
+        if self.db:
+            with self.db as db:
+                l = db.select("spell_lists")
+            d = {}
+            for item in l:
+                d[item["name"]] = []
+                for level in range(10):
+                    level = "cantrips" if level == 0 else "level_%d_spells" % level
+                    d[item["name"]].extend(item[level].split("\v"))
+            return d
+        else:
+            return {}
 
     def page(self):
         ret = '<div>\n'
-        byClass = spells_by_class(self.classes)
+        byClass = self.spells_by_class()
         spellscopy = {}
         for spell in self.values():
             spellscopy[spell.name] = spell.dict()
-        
+
         ret += '<script>\nspells = %s;\n\nclasses = %s\n</script>\n' % (
-            archiver.p(spellscopy, compact=True),
-            archiver.p(byClass, compact=True)
+            json.dumps(spellscopy, sort_keys=True),
+            json.dumps(byClass, sort_keys=True),
         )
-        
+
         ret += self.head
-        
+
         ret += '''
         <div class="search-box">
         <h2>Search</h2>
@@ -190,13 +175,13 @@ class Spells (utils.Group):
             <label>Ritual: <input type="checkbox" class="filter" id="ritual"></label>
         </p>
         '''
-        
+
         if byClass:
             ret += '<p class="right">\n'
             for c in sorted(byClass.keys()):
                 ret += '<label><input type="checkbox" class="filter" id="{0}"> {0}</label>\n<br>\n'.format(c)
             ret += '</p>\n'
-        
+
         ret += '''
         <p>Count: <output id="count">0</output></p>
         </div>

@@ -1,6 +1,7 @@
 import os
+import collections
+import json
 
-from . import archiver
 from . import utils
 from . import spells
 
@@ -43,32 +44,45 @@ challenge_ratings = {
 }
 
 class Monster (utils.Base):
-    ability_scores = {}
-    actions = []
-    alignment = 'unaligned'
-    armor_class = '10'
-    challenge_description = '{cr} ({xp} XP)'
-    challenge_rating = None
-    condition_immunities = []
-    damage_immunities = []
-    damage_resistances = []
-    damage_vulnerabilities = []
-    description = []
-    experience = 0
-    hit_points = '3 (1d4)'
-    languages = []
-    legendary_actions = []
-    reactions = []
-    saving_throws = {}
-    senses = []
-    size = 'Medium'
-    skills = {}
-    speed = ['30 ft.']
-    traits = []
-    type = 'beast'
+    def __init__(self, parent, d):
+        for key, value in {
+            "description": "",
+            "alignment": "",
+            "size": "",
+            "type": "",
+            "ac": "",
+            "hp": "",
+            "speed": "",
+            "challenge_description": "{cr} ({xp} XP)",
+            "experience": 0,
+        }.items():
+            if d[key] is None:
+                d[key] = value
 
-    group = None
-    _page = None
+        for key in [
+            "tags",
+            "speed",
+            "damage_vulnerabilities",
+            "damage_resistances",
+            "damage_immunities",
+            "condition_immunities",
+            "senses",
+            "languages",
+        ]:
+            d[key] = [] if d[key] is None else d[key].split("\v")
+
+        for key in [
+            "ability_scores",
+            "saving_throws",
+            "skills",
+            "traits",
+            "actions",
+            "reactions",
+            "legendary_actions",
+        ]:
+            d[key] = [] if d[key] is None else json.loads(d[key])
+
+        super().__init__(parent, d)
 
     def dict(self):
         d = {
@@ -101,145 +115,140 @@ class Monster (utils.Base):
         return c
 
     def page(self):
-        if self._page is None:
-            ret = ''
+        ret = ''
 
-            if self.description or self.group:
-                temp = '\n'.join(self.description)
-                if self.group:
-                    if not temp:
-                        temp = '# {}'.format(self.group)
-                    temp += '\n\n***\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.group)
-                temp = utils.convert(temp)
-                if not temp.startswith('<h1'):
-                    temp = '<h1>{}</h1>\n'.format(self.name) + temp
-                ret += utils.get_details(temp, 'h1')
+        if self.description or self.monster_group:
+            temp = self.description
+            if self.monster_group:
+                if not temp:
+                    temp = '# {}'.format(self.monster_group)
+                temp += '\n\n***\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.monster_group)
+            temp = utils.convert(temp)
+            if not temp.startswith('<h1'):
+                temp = '<h1>{}</h1>\n'.format(self.name) + temp
+            ret += utils.get_details(temp, 'h1')
 
-            ret += '<div class="monster-box">\n'
+        ret += '<div class="monster-box">\n'
 
-            md = '# {}\n\n'.format(self.name)
-            md += '*{size} {type}, {alignment}*\n\n'.format(
-                alignment=self.alignment,
-                size=self.size,
-                type=self.type,
-            )
-            md += '***\n\n'
-            md += '**Armor Class** {}\n\n'.format(self.armor_class)
-            md += '**Hit Points** {}\n\n'.format(self.hit_points)
-            md += '**Speed** {}\n\n'.format(', '.join(self.speed))
-            md += '***\n\n'
+        md = '# {}\n\n'.format(self.name)
+        md += '*{size} {type}, {alignment}*\n\n'.format(
+            alignment=self.alignment,
+            size=self.size,
+            type=self.type,
+        )
+        md += '***\n\n'
+        md += '**Armor Class** {}\n\n'.format(self.ac)
+        md += '**Hit Points** {}\n\n'.format(self.hp)
+        md += '**Speed** {}\n\n'.format(', '.join(self.speed))
+        md += '***\n\n'
 
-            for stat in utils.stats:
-                value = self.ability_scores.get(stat, 10)
-                md += '* **{}** {} ({:+})\n'.format(stat.upper(), value, utils.get_modifier(value))
+        for stat in utils.stats:
+            value = self.ability_scores.get(stat, 10)
+            md += '* **{}** {} ({:+})\n'.format(stat[:3].upper(), value, utils.get_modifier(value))
 
-            md += '\n***\n\n'
+        md += '\n***\n\n'
 
-            if self.saving_throws:
-                md += '**Saving Throws** {}\n\n'.format(', '.join(
-                    '{} {:+}'.format(stat, self.saving_throws[stat])
-                    for stat in map(str.title, utils.stats)
-                    if stat in self.saving_throws
-                ))
+        if self.saving_throws:
+            md += '**Saving Throws** {}\n\n'.format(', '.join(
+                '{} {:+}'.format(stat, self.saving_throws[stat])
+                for stat in map(str.title, utils.stats)
+                if stat in self.saving_throws
+            ))
 
-            if self.skills:
-                skills = []
-                for skill in sorted(self.skills):
-                    value = self.skills[skill]
-                    if isinstance(value, (int, float)):
-                        _format = '{} {:+}'
-                    else:
-                        _format = '{} {}'
-                    skills.append(_format.format(skill, value))
-                md += '**Skills** {}\n\n'.format(', '.join(skills))
-
-            for name, temp in [
-                ('Damage Vulnerabilities', self.damage_vulnerabilities),
-                ('Damage Resistances', self.damage_resistances),
-                ('Damage Immunities', self.damage_immunities),
-            ]:
-                if temp:
-                    temp = temp.copy()
-                    new = []
-                    while temp:
-                        s = []
-                        while temp:
-                            if ',' in temp[0]:
-                                if not s:
-                                    s.append(temp.pop(0))
-                                break
-                            else:
-                                s.append(temp.pop(0))
-                        new.append(', '.join(s))
-                    md += '**{}** {}\n\n'.format(name, '; '.join(new))
-
-            if self.condition_immunities:
-                md += '**Condition Immunities** {}\n\n'.format(
-                    ', '.join(self.condition_immunities)
-                )
-
-            temp = self.senses.copy()
-            if not any(item.startswith('passive Perception ') for item in temp):
-                if 'Perception' in self.skills:
-                    s = self.skills['Perception']
+        if self.skills:
+            skills = []
+            for skill in sorted(self.skills):
+                value = self.skills[skill]
+                if isinstance(value, (int, float)):
+                    _format = '{} {:+}'
                 else:
-                    s = utils.get_modifier(self.ability_scores['wis'])
-                temp.append('passive Perception {}'.format(10 + s))
-            md += '**Senses** {}\n\n'.format(', '.join(temp))
+                    _format = '{} {}'
+                skills.append(_format.format(skill, value))
+            md += '**Skills** {}\n\n'.format(', '.join(skills))
 
-            if self.languages:
-                temp = ', '.join(self.languages)
+        for name, temp in [
+            ('Damage Vulnerabilities', self.damage_vulnerabilities),
+            ('Damage Resistances', self.damage_resistances),
+            ('Damage Immunities', self.damage_immunities),
+        ]:
+            if temp:
+                temp = temp.copy()
+                new = []
+                while temp:
+                    s = []
+                    while temp:
+                        if ',' in temp[0]:
+                            if not s:
+                                s.append(temp.pop(0))
+                            break
+                        else:
+                            s.append(temp.pop(0))
+                    new.append(', '.join(s))
+                md += '**{}** {}\n\n'.format(name, '; '.join(new))
+
+        if self.condition_immunities:
+            md += '**Condition Immunities** {}\n\n'.format(
+                ', '.join(self.condition_immunities)
+            )
+
+        temp = self.senses.copy()
+        if not any(item.startswith('passive Perception ') for item in temp):
+            if 'Perception' in self.skills:
+                s = self.skills['Perception']
             else:
-                temp = '-'
-            md += '**Languages** {}\n\n'.format(temp)
+                s = utils.get_modifier(self.ability_scores.get("wis", 10))
+            temp.append('passive Perception {}'.format(10 + s))
+        md += '**Senses** {}\n\n'.format(', '.join(temp))
 
-            temp = self.challenge_description.replace('{xp}', '{xp:,}')
-            temp = '**Challenge** {}\n\n'.format(temp)
-            temp = temp.format(cr=self.get_cr(), xp=self.experience)
-            md += temp
-
-            md += '***\n\n'
-
-            for name, temp in [
-                (None, self.traits),
-                ('Actions', self.actions),
-                ('Reactions', self.reactions),
-            ]:
-                if temp:
-                    if name:
-                        md += '## {}\n\n'.format(name)
-                    for item in temp:
-                        if isinstance(item, list):
-                            md += '***{}.*** {}\n\n'.format(item[0], '\n'.join(item[1:]).lstrip())
-                        else:
-                            md += item + '\n\n'
-
-            for name, temp in [
-                ('Legendary Actions', self.legendary_actions),
-            ]:
-                if temp:
-                    if name:
-                        md += '## {}\n\n'.format(name)
-                    md += '<dl markdown="1">\n'
-                    for item in temp:
-                        if isinstance(item, list):
-                            md += '<dt>{}</dt>\n<dd>{}</dd>\n'.format(item[0], '\n'.join(item[1:]).lstrip())
-                        else:
-                            md += item + '\n\n'
-                    md += '</dl>\n'
-
-            md = utils.convert(md)
-            md = md.replace('<ul>', '<ul class="monster-stats">', 1)
-            ret += md
-
-            ret += '</div>\n'
-
-            ret = spells.handle_spells(ret, self.spell_list)
-            ret = '<div>\n{}</div>\n'.format(ret)
-
-            self._page = ret
+        if self.languages:
+            temp = ', '.join(self.languages)
         else:
-            ret = self._page
+            temp = '-'
+        md += '**Languages** {}\n\n'.format(temp)
+
+        temp = self.challenge_description.replace('{xp}', '{xp:,}')
+        temp = '**Challenge** {}\n\n'.format(temp)
+        temp = temp.format(cr=self.get_cr(), xp=self.experience)
+        md += temp
+
+        md += '***\n\n'
+
+        for name, temp in [
+            (None, self.traits),
+            ('Actions', self.actions),
+            ('Reactions', self.reactions),
+        ]:
+            if temp:
+                if name:
+                    md += '## {}\n\n'.format(name)
+                for item in temp:
+                    if isinstance(item, list):
+                        md += '***{}.*** {}\n\n'.format(item[0], '\n'.join(item[1:]).lstrip())
+                    else:
+                        md += item + '\n\n'
+
+        for name, temp in [
+            ('Legendary Actions', self.legendary_actions),
+        ]:
+            if temp:
+                if name:
+                    md += '## {}\n\n'.format(name)
+                md += '<dl markdown="1">\n'
+                for item in temp:
+                    if isinstance(item, list):
+                        md += '<dt>{}</dt>\n<dd>{}</dd>\n'.format(item[0], '\n'.join(item[1:]).lstrip())
+                    else:
+                        md += item + '\n\n'
+                md += '</dl>\n'
+
+        md = utils.convert(md)
+        md = md.replace('<ul>', '<ul class="monster-stats">', 1)
+        ret += md
+
+        ret += '</div>\n'
+
+        ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
+        ret = '<div>\n{}</div>\n'.format(ret)
 
         return ret
 
@@ -260,46 +269,19 @@ def monsterblock(name, monsters=None):
 
 class Monsters (utils.Group):
     type = Monster
+    tablename = "monsters"
     javascript = ['monsters.js']
-
-    head = '<h1>Monsters</h1>\n'
-
-    def __init__(self, folder=None, sources=None):
-        super().__init__(folder, sources)
-        self.groups = {}
-        if folder:
-            path = os.path.join(folder, 'documentation/monsters.md')
-            if os.path.exists(path):
-                with open(path, 'r') as f:
-                    data = f.read()
-                data = utils.convert(data)
-                data = utils.get_details(data, splttag='h1')
-                data = utils.get_details(data, 'h1')
-                self.head = data
-
-            path = os.path.join(folder, self.type.__name__.lower())
-            if os.path.exists(path):
-                for file in os.listdir(path):
-                    file = os.path.join(path, file)
-                    if file.endswith('.md'):
-                        with open(file, 'r') as f:
-                            temp = f.readlines()
-                        self.groups[temp[0].lstrip('#').strip()] = (
-                            ''.join(temp[2:])
-                            if len(temp) > 1
-                            else ''
-                        )
-
-            for item in self.values():
-                if item.group and item.group not in self.groups:
-                    self.groups[item.group] = ''
+    
+    @property
+    def head(self):
+        return self.get_document("Monsters", "Monsters")
 
     def page(self):
         itemscopy = {}
         for item in self.values():
             itemscopy[item.name] = item.dict()
 
-        ret = '<script>\nmonsters = %s;\n</script>\n' % (archiver.p(itemscopy, compact=True))
+        ret = '<script>\nmonsters = %s;\n</script>\n' % (json.dumps(itemscopy, sort_keys=True))
 
         ret += self.head
 
@@ -342,24 +324,27 @@ class Monsters (utils.Group):
 
         ret = '<div>\n%s</div>\n' % ret
         return ret
-
-    def filter(self, f=None):
-        new = super().filter(f)
-        new.groups = new.groups.copy()
-        for group in list(new.groups.keys()):
-            if not any(item.group == group for item in new.values()):
-                del new.groups[group]
-        return new
+    
+    @property
+    def groups(self):
+        with self.db as db:
+            grouplist = db.select("monster_groups", order=["name"])
+        grouplist = [(item["name"], item["description"]) for item in grouplist]
+        grouplist = collections.OrderedDict(grouplist)
+        return grouplist
 
     def groups_page(self):
+        groups = self.groups
+
         ret = ''
-        for group in sorted(self.groups):
+        monster_list = self.values()
+        for group in groups:
             lst = []
-            for item in self.values():
-                if item.group == group:
+            for item in monster_list:
+                if item.monster_group == group:
                     lst.append(item)
             if lst:
-                temp = self.groups[group]
+                temp = groups[group]
                 temp = utils.convert(temp)
                 temp += '<ul>\n'
                 for item in lst:
@@ -370,7 +355,7 @@ class Monsters (utils.Group):
                 temp += '</ul>\n'
                 ret += utils.details_block('<h1>{0}</h1>'.format(group), temp)
         if ret:
-            ret = spells.handle_spells(ret, self.spell_list)
+            ret = spells.handle_spells(ret, self.get_spell_list(spells.Spells))
             ret = utils.details_group(ret)
             ret = '<div>\n%s</div>\n' % ret
         else:
