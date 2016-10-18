@@ -325,9 +325,9 @@ def groups_page(type):
 if __name__ == '__main__':
     import argparse
     # ----#-   Main
-    parser = argparse.ArgumentParser(description="D&D web server")
+    parser = argparse.ArgumentParser(description="D&D web server", epilog="The server runs locally on port 5000 if PORT is not specified.")
     parser.add_argument("-f", metavar="FILE", dest="file", help="The location where the data files are stored")
-    parser.add_argument("-p", metavar="PORT", dest="port", help="The port where the server will run. Runs in private mode if not specified")
+    parser.add_argument("-p", metavar="PORT", dest="port", help="The port where the server will run")
     args = parser.parse_args()
     init(args.file)
 
