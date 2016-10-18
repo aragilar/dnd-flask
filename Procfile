@@ -1,1 +1,1 @@
-web: python run.py -f data -p $PORT
+web: python run.py -f data.db -p $PORT
