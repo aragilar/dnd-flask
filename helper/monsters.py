@@ -47,7 +47,7 @@ class Monster (utils.Base):
     def __init__(self, parent, d):
         for key, value in {
             "description": "",
-            "alignment": "",
+            "alignment": "unaligned",
             "size": "",
             "type": "",
             "ac": "",
@@ -91,7 +91,7 @@ class Monster (utils.Base):
             'challenge rating': self._get_cr(),
             'legendary': bool(self.legendary_actions),
             'size': self.size.lower(),
-            'type': self.type.lower(),
+            'type': self.get_type().lower(),
         }
         return d
 
@@ -113,6 +113,14 @@ class Monster (utils.Base):
         else:
             c = '{:g}'.format(c)
         return c
+    
+    def get_type(self):
+        type = self.type
+        if self.tags:
+            type += ' ('
+            type += ', '.join(self.tags)
+            type += ')'
+        return type
 
     def page(self):
         ret = ''
@@ -134,7 +142,7 @@ class Monster (utils.Base):
         md += '*{size} {type}, {alignment}*\n\n'.format(
             alignment=self.alignment,
             size=self.size,
-            type=self.type,
+            type=self.get_type(),
         )
         md += '***\n\n'
         md += '**Armor Class** {}\n\n'.format(self.ac)
