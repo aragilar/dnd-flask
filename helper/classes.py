@@ -10,9 +10,6 @@ from . import spells
 class Class (utils.Base):
     def __init__(self, parent, d):
         for key, value in {
-            "description": "",
-            "summary": "",
-            "hit_die": 8,
             "magic": 0,
             "max_slot": 9,
             "max_level": 20,
@@ -60,15 +57,19 @@ class Class (utils.Base):
         ret = '<div>\n'
 
         # ----#-   Class Description
-        temp = self.description
-        temp = utils.convert(temp)
-        ret += utils.get_details(temp, 'h1')
+        if self.description:
+            temp = self.description
+            temp = utils.convert(temp)
+            ret += utils.get_details(temp, 'h1')
+        else:
+            ret += '<h1>%s</h1>\n' % self.name
 
         # ----#-   Class Details
 
         summary = '<h2>Features</h2>'
 
-        short = utils.convert('**Description:** %s\n\n' % self.summary)
+        if self.summary:
+            short = utils.convert('**Description:** %s\n\n' % self.summary)
 
         temp = self.primary_stat[:]
 
@@ -85,25 +86,16 @@ class Class (utils.Base):
 
         short += '<h3>Hit Points</h3>\n'
 
-        num = self.hit_die
-        if isinstance(num, int):
-            num = '1d%d' % num
+        if self.hit_die:
+            short += '<p><strong>Hit Dice:</strong> 1d{0} per {1} level</p>\n'.format(self.hit_die, self.name.lower())
 
-        short += '<p><strong>Hit Dice:</strong> {0} per {1} level</p>\n'.format(num, self.name.lower())
-
-        num = num.split('d')
-        if len(num) == 2 and all(map(str.isdigit, num)):
-            die = int(num[1])
-            num = int(num[0])
-            short += '<p><strong>Hit Points at 1st Level:</strong> %d + your Constitution modifier</p>\n' % (num * die)
-            avg = math.ceil((die / 2 + 0.5) * num)
-            num = '%dd%d' % (num, die)
+            avg = math.ceil(self.hit_die / 2 + 0.5)
+            short += '<p><strong>Hit Points at 1st Level:</strong> %d + your Constitution modifier</p>\n' % (self.hit_die)
             short += (
                 '<p><strong>Hit Points at Higher Levels:</strong>'
-                ' {} (or {}) + your Constitution modifier per {} level after 1st'
+                ' 1d{} (or {}) + your Constitution modifier per {} level after 1st'
                 '</p>\n'
-            ).format(num, avg, self.name.lower())
-            del avg, die, num
+            ).format(self.hit_die, avg, self.name.lower())
 
         short += '<h3>Proficiencies</h3>\n'
 
@@ -345,7 +337,6 @@ class Class (utils.Base):
 class SubClass (Class):
     def __init__(self, parent, d):
         for key, value in {
-            "description": "",
             "magic": 0,
             "max_slot": 9,
             "max_level": 20,
