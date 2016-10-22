@@ -5,17 +5,12 @@ from . import utils
 from . import spells
 
 class Feat (utils.Base):
-    def __init__(self, parent, d):
-        if d["description"] is None:
-            d["description"] = ""
-
-        super().__init__(parent, d)
-
     def page(self):
         ret = '<h2>%s</h2>\n\n' % self.name
         if self.prerequisite:
             ret += '<em>Prerequisite: %s</em>\n\n' % self.prerequisite
-        ret += utils.convert(self.description)
+        if self.description:
+            ret += utils.convert(self.description)
 
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
 
