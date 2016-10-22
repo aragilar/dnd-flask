@@ -5,14 +5,6 @@ from . import utils
 
 class Background (utils.Base):
     def __init__(self, parent, d):
-        for key, value in {
-            "description": "",
-            "characteristics": "",
-            "variant": "",
-        }.items():
-            if d[key] is None:
-                d[key] = value
-
         for key in [
             "skills",
             "tools",
@@ -32,7 +24,8 @@ class Background (utils.Base):
     def page(self):
         body = '<h2>%s</h2>\n' % self.name
 
-        body += '%s\n' % utils.convert(self.description)
+        if self.description:
+            body += '%s\n' % utils.convert(self.description)
 
         if self.skills:
             body += '<p><strong>Skill Proficiencies:</strong> %s</p>\n' % utils.choice_list(self.skills, 'skill')
@@ -51,7 +44,8 @@ class Background (utils.Base):
             body += utils.convert(feature[1])
 
         body += '<h3>Suggested Characteristics</h3>\n'
-        body += utils.convert(self.characteristics)
+        if self.characteristics:
+            body += utils.convert(self.characteristics)
 
         for temp, title in [
             (self.personality_traits, 'Personality Trait'),
