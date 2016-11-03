@@ -21,11 +21,11 @@ class DB:
     def __call__(self, commit=None):
         r"""
         Creates a new instance of this class with the same parameters
-        Useful for multithreading
+        Useful for multithreading (if you need separate instances)
 
         e.x.
 
-        database = DB('file.db', commit=True)
+        database = DB('file.db', commit=False)
         with database() as db:
             db.select('table')
         """
@@ -49,11 +49,14 @@ class DB:
         Closes the connections and commits changes if requested
             when the DB was created
         """
-        if self.will_commit:
-            self.conn.commit()
-        self.conn.close()
-        self.conn = None
+        if self.curs:
+            self.curs.close()
         self.curs = None
+        if self.conn:
+            if self.will_commit:
+                self.conn.commit()
+            self.conn.close()
+        self.conn = None
 
     __exit__ = close
 
@@ -130,7 +133,7 @@ class DB:
             ret = True
         return ret
 
-    def insert(self, table, fields={}):
+    def insert(self, table, fields):
         r"""
         Inserts data into the given table
         The values are a dictionary with fields as the keys
@@ -203,3 +206,13 @@ class DB:
                 raise
             ret = self.curs.fetchall()
         return ret
+    
+    def dump(self):
+        r"""
+        Output an iterator that yeilds SQL sattements to build the database.
+        A very hacked together implementation, may need to be fixed.
+        """
+        conn = sqlite3.connect(self.file)
+        for item in conn.iterdump():
+            yield item
+        conn.close()
