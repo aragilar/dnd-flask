@@ -4,6 +4,7 @@ import collections
 import functools
 import copy
 import multiprocessing.pool
+import json
 
 ##import markdown
 import markdown2
@@ -40,7 +41,14 @@ class Base (object):
 
     def __init__(self, parent, d, children=None):
         self.parent = parent
+        
         for key, value in d.items():
+            if isinstance(value, str):
+                if value.endswith('\v'):
+                    value = value.split('\v')
+                    value.pop()
+                elif value.startswith('{') or value.startswith('[['):
+                    value = json.loads(value)
             setattr(self, key, value)
 
     def __str__(self):

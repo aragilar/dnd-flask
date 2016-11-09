@@ -6,33 +6,6 @@ from . import utils
 from . import spells
 
 class Race (utils.Base):
-    def __init__(self, parent, d):
-        for key, value in {
-            "description": "",
-            "traits_description": "",
-            "age": "",
-            "alignment": "",
-            "size": "",
-            "speed": 30,
-            "subrace": "",
-        }.items():
-            if d[key] is None:
-                d[key] = value
-
-        for key in [
-            "combat_proficiencies",
-            "tool_proficiencies",
-            "skills",
-            "feats",
-            "languages",
-        ]:
-            d[key] = [] if d[key] is None else d[key].split("\v")
-
-        d["ability_scores"] = {} if d["ability_scores"] is None else json.loads(d["ability_scores"])
-        d["traits"] = [] if d["traits"] is None else json.loads(d["traits"])
-
-        super().__init__(parent, d)
-
     def page(self):
         ret = '<div>\n'
 
@@ -60,23 +33,23 @@ class Race (utils.Base):
 
         # ----#-   Race Ability Scores
         scores = self.ability_scores
-        if sum(map(lambda a: scores[a], scores)) > 0:
+        if scores and any(scores.values()):
             lst = []
             if sum(map(lambda a: scores[a] if a != '+' else 0, scores)) > 0:
                 if all(map(lambda a: scores[a] == 1, utils.statlist)):
                     lst.append("your ability scores each increase by 1")
                 else:
                     for i in utils.statlist:
-                        if scores.get(i) > 0:
+                        if scores.get(i, 0) > 0:
                             lst.append('your %s score increases by %d' % (
                                 utils.stats[i],
                                 scores.get(i)
                             ))
-                if scores.get('+') > 0:
+                if scores.get('+', 0) > 0:
                     lst.append('%d other ability scores of your choice increase by 1'
                         % scores.get('+')
                     )
-            elif scores.get('+') > 0:
+            elif scores.get('+', 0) > 0:
                 lst.append('%d different ability scores of your choice increase by 1'
                     % scores.get('+')
                 )
@@ -107,8 +80,9 @@ class Race (utils.Base):
                 ret += '***Speed.*** Your base walking speed is %s feet.\n\n' % self.speed
 
         # ----#-   Race Traits
-        for trait in self.traits:
-            ret += '***%s.*** %s\n\n' % (trait[0], '\n'.join(trait[1:]))
+        if self.traits:
+            for trait in self.traits:
+                ret += '***%s.*** %s\n\n' % (trait[0], '\n'.join(trait[1:]))
 
         # ----#-   Race Weapons
         if self.combat_proficiencies:
@@ -117,7 +91,7 @@ class Race (utils.Base):
             )
 
         # ----#-   Race Tools
-        if len(self.tool_proficiencies) > 1:
+        if self.tool_proficiencies and len(self.tool_proficiencies) > 1:
             ret += '***Tool Proficiencies.*** %s.\n\n' % utils.choice_list(self.tool_proficiencies, 'tool')
         elif self.tool_proficiencies:
             ret += ('***Tool Proficiency.*** You gain proficiency with %s.\n\n'
@@ -125,7 +99,7 @@ class Race (utils.Base):
             )
 
         # ----#-   Race Skills
-        if len(self.skills) > 1:
+        if self.skills and len(self.skills) > 1:
             ret += ('***Skills.*** You gain proficiency in %s.\n\n'
                 % utils.choice_list(self.skills, 'skill')
             )
@@ -139,9 +113,9 @@ class Race (utils.Base):
                 ret += '***Skills.*** You gain proficiency in %s.\n\n' % str(self.skills[0])
 
         # ----#-   Race Feats
-        if len(self.feats) > 1:
+        if self.feats and len(self.feats) > 1:
             ret += '***Feats.*** You gain %s.\n\n' % utils.choice_list(self.feats, 'feat')
-        elif len(self.feats):
+        elif self.feats:
             if self.feats[0].isdigit():
                 if self.feats[0] == '1':
                     ret += '***Feats.*** You gain a feat of your choice.\n\n'
@@ -151,10 +125,14 @@ class Race (utils.Base):
                 ret += '***Feats.*** You gain the %s feat.\n\n' % str(self.feats[0])
 
         # ----#-   Race Languages
-        temp = self.languages[:]
-        if len(temp) and temp[-1].isdigit():
+        if self.languages:
+            temp = self.languages[:]
+        else:
+            temp = []
+
+        if temp and temp[-1].isdigit():
             if temp[-1] == '1':
-                temp[-1] = '%s additional language' % temp[-1]
+                temp[-1] = '1 additional language'
             else:
                 temp[-1] = '%s additional languages' % temp[-1]
 
@@ -184,30 +162,12 @@ class SubRace (Race):
     size = None
     speed = None
 
-    def __init__(self, parent, d):
-        for key, value in {
-            "description": "",
-        }.items():
-            if d[key] is None:
-                d[key] = value
-
-        for key in [
-            "combat_proficiencies",
-            "tool_proficiencies",
-            "skills",
-            "feats",
-            "languages",
-        ]:
-            d[key] = [] if d[key] is None else d[key].split("\v")
-
-        d["ability_scores"] = {} if d["ability_scores"] is None else json.loads(d["ability_scores"])
-        d["traits"] = [] if d["traits"] is None else json.loads(d["traits"])
-
-        utils.Base.__init__(self, parent, d)
-
     def page(self):
         summary = '<h1 id="%s">%s</h1>' % (utils.slug(self.name), self.name)
-        desc = utils.convert(self.description)
+        if self.description:
+            desc = utils.convert(self.description)
+        else:
+            desc = '\n\n'
         ret = utils.details_group(utils.details_block(summary, desc))
         ret += self.features2html()
 

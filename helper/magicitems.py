@@ -9,7 +9,6 @@ class MagicItem (utils.Base):
         for key, value in {
             "rarity": "common",
             "category": "Wondrous item",
-            "description": "",
         }.items():
             if d[key] is None:
                 d[key] = value

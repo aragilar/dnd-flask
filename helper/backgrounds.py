@@ -4,23 +4,6 @@ import json
 from . import utils
 
 class Background (utils.Base):
-    def __init__(self, parent, d):
-        for key in [
-            "skills",
-            "tools",
-            "languages",
-            "equipment",
-            "personality_traits",
-            "ideal",
-            "bond",
-            "flaw",
-        ]:
-            d[key] = [] if d[key] is None else d[key].split("\v")
-
-        d["features"] = json.loads(d["features"])
-
-        super().__init__(parent, d)
-
     def page(self):
         body = '<h2>%s</h2>\n' % self.name
 

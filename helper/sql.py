@@ -206,7 +206,44 @@ class DB:
                 raise
             ret = self.curs.fetchall()
         return ret
-    
+
+    def update(self, table, fields, conditions=[]):
+        pass
+
+    def delete(self, table, conditions=[], params=[]):
+        r"""
+        Deletes the rows with the given conditions
+        Deletes all rows if conditions omitted
+
+        table: the name of the tables to delete data from
+
+        conditions: a list of the conditions of which rows to delete,
+            may use a string for a single column
+
+        params: values to be filled in with ? substitution,
+            much safer than using %s or {} to fill values
+        """
+        ret = 0
+        if self.curs:
+            if isinstance(conditions, list):
+                conditions = " AND ".join(conditions)
+
+            statement = "DELETE FROM {}".format(table)
+            if conditions:
+                statement += " WHERE {}".format(conditions)
+            statement += ";"
+
+            try:
+                self.curs.execute(statement, params)
+            except:
+                sys.stderr.write("%s\n" % statement)
+                raise
+            ret = self.curs.rowcount
+        return ret
+
+    def drop_table(self, table):
+        pass
+
     def dump(self):
         r"""
         Output an iterator that yeilds SQL sattements to build the database.

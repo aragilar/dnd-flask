@@ -17,25 +17,6 @@ class Class (utils.Base):
             if d[key] is None:
                 d[key] = value
 
-        d["prestige"] = bool(d["prestige"])
-
-        for key in [
-            "primary_stat",
-            "combat_proficiencies",
-            "tool_proficiencies",
-            "saving_throws",
-            "skills",
-        ]:
-            d[key] = [] if d[key] is None else d[key].split("\v")
-
-        for key in [
-            "table_data",
-            "features",
-        ]:
-            d[key] = {} if d[key] is None else json.loads(d[key])
-
-        d["equipment"] = [] if d["equipment"] is None else json.loads(d["equipment"])
-
         super().__init__(parent, d)
         self.set_class_spells()
 
@@ -51,6 +32,8 @@ class Class (utils.Base):
                 l = temp[0]
                 for key in l:
                     l[key] = l[key].split("\v") if l[key] else []
+                    if l[key]:
+                        l[key].pop()
         self.spells = l
 
     def page(self):
@@ -99,7 +82,11 @@ class Class (utils.Base):
 
         short += '<h3>Proficiencies</h3>\n'
 
-        short += '<p><strong>Armor and Weapons:</strong> %s</p>\n' % utils.comma_list(self.combat_proficiencies)
+        if self.combat_proficiencies:
+            temp = utils.comma_list(self.combat_proficiencies)
+        else:
+            temp = 'None'
+        short += '<p><strong>Armor and Weapons:</strong> %s</p>\n' % temp
 
         if self.tool_proficiencies:
             temp = utils.choice_list(self.tool_proficiencies)
@@ -108,13 +95,19 @@ class Class (utils.Base):
         short += '<p><strong>Tools:</strong> %s</p>\n' % temp
 
         temp = self.saving_throws
+        if temp is None:
+            temp = []
         temp = list(map(lambda a: utils.stats[a], temp))
-        if len(temp) > 1:
-            short += '<p><strong>Saving Throws:</strong> %s</p>\n' % utils.comma_list(temp)
-        elif temp:
+        if len(temp) == 1:
             short += '<p><strong>Saving Throw:</strong> %s</p>\n' % temp[0]
+        else:
+            short += '<p><strong>Saving Throws:</strong> %s</p>\n' % utils.comma_list(temp)
 
-        short += '<p><strong>Skills:</strong> %s</p>\n' % utils.choice_list(self.skills)
+        if self.skills:
+            temp = utils.choice_list(self.skills)
+        else:
+            temp = 'None'
+        short += '<p><strong>Skills:</strong> %s</p>\n' % temp
 
         if self.equipment:
             short += '<h3>Equipment</h3>\n'
@@ -162,7 +155,8 @@ class Class (utils.Base):
                 x = 0
 
             headrows = ['Level']
-            headrows += self.table_data.get('@', [])
+            if self.table_data:
+                headrows += self.table_data.get('@', [])
             if self.magic:
                 headrows += ['']
                 headrows += list(map(lambda a: utils.ordinals[a], range(1, x + 1)))
@@ -188,9 +182,11 @@ class Class (utils.Base):
                         body += '<td style="text-align: center;">'
                         if item == 'Level': # character level
                             body += utils.ordinals[x]
-                        elif item in self.table_data: # data specific to the class
+                        elif self.table_data and item in self.table_data:
+                            # data specific to the class
                             body += str(self.table_data.get(item, [])[x-1])
-                        elif item[:3] in utils.ordinals: # spell slots
+                        elif item[:3] in utils.ordinals:
+                            # spell slots
                             if x < self.magic:
                                 y = 0
                             else:
@@ -343,12 +339,6 @@ class SubClass (Class):
         }.items():
             if d[key] is None:
                 d[key] = value
-
-        for key in [
-            "table_data",
-            "features",
-        ]:
-            d[key] = {} if d[key] is None else json.loads(d[key])
 
         utils.Base.__init__(self, parent, d)
         self.set_class_spells()

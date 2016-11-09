@@ -46,13 +46,7 @@ challenge_ratings = {
 class Monster (utils.Base):
     def __init__(self, parent, d):
         for key, value in {
-            "description": "",
             "alignment": "unaligned",
-            "size": "",
-            "type": "",
-            "ac": "",
-            "hp": "",
-            "speed": "",
             "challenge_description": "{cr} ({xp} XP)",
             "experience": 0,
         }.items():

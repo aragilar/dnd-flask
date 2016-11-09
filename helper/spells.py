@@ -26,17 +26,9 @@ class Spell (utils.Base):
             "cast_time": "Unknown casting time",
             "range": "Unknown range",
             "duration": "Unknown duration",
-            "description": "",
         }.items():
             if d[key] is None:
                 d[key] = value
-
-        for key in [
-            "ritual",
-            "verbal",
-            "somatic",
-        ]:
-            d[key] = bool(d[key])
 
         super().__init__(parent, d)
 
