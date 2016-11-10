@@ -47,7 +47,8 @@ class Base (object):
                 if value.endswith('\v'):
                     value = value.split('\v')
                     value.pop()
-                elif value.startswith('{') or value.startswith('[['):
+                elif (value.startswith('{') and value.endswith('}')
+                        or value.startswith('[[') and value.endswith(']]')):
                     value = json.loads(value)
             setattr(self, key, value)
 
