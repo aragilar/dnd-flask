@@ -29,7 +29,7 @@ class Class (utils.Base):
                     conditions="name='%s'" % (self.spell_list_name.replace("'", "''")),
                 )
             if temp:
-                l = temp[0]
+                l = dict(temp[0])
                 for key in l:
                     l[key] = l[key].split("\v") if l[key] else []
                     if l[key]:

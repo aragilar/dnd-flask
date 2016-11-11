@@ -112,12 +112,15 @@ class Group (object):
                 ))
 
             with self.db as db:
-                return db.select(
+                data = db.select(
                     tables,
                     columns=list(map("C.".__add__, columns)),
                     conditions=conditions,
                     order=order,
                 )
+                # data = map(dict, data)
+                # data = list(data)
+                return data
         else:
             return []
     
@@ -142,7 +145,9 @@ class Group (object):
         return (item["name"] for item in self.get_data(columns=["name"]))
 
     def values(self):
-        values = list(map(functools.partial(self.type, self), self.get_data()))
+        values = self.get_data()
+        values = map(functools.partial(self.type, self), values)
+        values = list(values)
         if self.subtype:
             for item in values:
                 item.children = collections.OrderedDict()
@@ -173,6 +178,12 @@ class Group (object):
         return slug(key) in map(slug, self.keys())
 
     def __getitem__(self, key):
+        # commented code doesn't get subclasses
+##        keys = {slug(key): key for key in self.keys()}
+##        key = keys[slug(key)]
+##        data = self.get_data(conditions=["name='%s'" % key])
+##        data = data[0]
+##        return self.type(self, dict)
         d = {}
         for k, item in self.items():
             d[slug(k)] = item
