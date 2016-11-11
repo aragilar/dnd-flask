@@ -94,11 +94,13 @@ class DB:
             ret = bool(ret)
         return ret
 
-    def create_table(self, table, fields={}, ignore_existing=True):
+    def create_table(self, table, fields={}, constraints=[], ignore_existing=True):
         r"""
         Creates a table with the give fields
         The fields are specified with a dictionary mapping the name to a type
         The type can be a string or the actual Python type desired
+        
+        constraints is currently ignored
 
         Returns if the creation was successful
         """
@@ -207,8 +209,49 @@ class DB:
             ret = self.curs.fetchall()
         return ret
 
-    def update(self, table, fields, conditions=[]):
-        pass
+    def update(self, table, fields, conditions=[], params=[]):
+        r"""
+        Updates data in the given table
+
+        fields: a dictionary with fields as the keys
+            and the value to insert as the values
+
+        conditions: a list of the conditions for the WHERE statement,
+            may use a string for a single column
+
+        params: values to be filled in with ? substitution,
+            much safer than using %s or {} to fill values
+
+        Returns the number of updated rows
+        """
+        ret = -1
+        if self.curs:
+            if isinstance(tables, list):
+                tables = ", ".join(tables)
+            if isinstance(conditions, list):
+                conditions = " AND ".join(conditions)
+            
+            data = []
+            newparams = []
+            for key, value in fields.items():
+                data.append('%s=?' % key)
+                newparams.append(value)
+            data = ','.join(data)
+            newparams.extend(params)
+            params = newparams
+
+            statement = "UPDATE {} SET {}".format(columns, data)
+            if conditions:
+                statement += " WHERE {}".format(conditions)
+            statement += ";"
+
+            try:
+                self.curs.execute(statement, params)
+            except:
+                sys.stderr.write("%s\n" % statement)
+                raise
+            ret = self.curs.rowcount
+        return ret
 
     def delete(self, table, conditions=[], params=[]):
         r"""
@@ -223,7 +266,7 @@ class DB:
         params: values to be filled in with ? substitution,
             much safer than using %s or {} to fill values
         """
-        ret = 0
+        ret = -1
         if self.curs:
             if isinstance(conditions, list):
                 conditions = " AND ".join(conditions)
@@ -242,7 +285,22 @@ class DB:
         return ret
 
     def drop_table(self, table):
-        pass
+        r"""
+        Drops the given table
+        
+        Returns if the operation was successful
+        """
+        ret = False
+        if self.curs:
+            statement = "DROP TABLE {}".format(table)
+            statement += ';'
+            try:
+                self.curs.execute(statement, params)
+            except:
+                sys.stderr.write("%s\n" % statement)
+                raise
+            ret = True
+        return ret
 
     def dump(self):
         r"""
