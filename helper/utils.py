@@ -85,10 +85,12 @@ class Group (object):
         else:
             return self
 
-    def get_data(self, columns=["*"], subtype_item=None):
+    def get_data(self, columns=["*"], name=None, subtype_item=None):
         if self.db:
             tables = ['%s C' % self.tablename, 'Sources S']
             conditions = ["C.source==S.id"]
+            if name is not None:
+                conditions.append("name='%s'" % name)
             order = [
                 "case when C.sort_index is null then 1 else 0 end",
                 "C.sort_index",
@@ -140,6 +142,15 @@ class Group (object):
             else:
                 text = None
         return text
+    
+    def add_children(self, parent):
+        if self.subtype:
+            parent.children = collections.OrderedDict()
+            data = self.get_data(subtype_item=parent.name)
+            for sub in data:
+                sub = self.subtype(self, sub)
+                parent.children[sub.name] = sub
+        return parent
 
     def keys(self):
         return (item["name"] for item in self.get_data(columns=["name"]))
@@ -148,12 +159,8 @@ class Group (object):
         values = self.get_data()
         values = map(functools.partial(self.type, self), values)
         values = list(values)
-        if self.subtype:
-            for item in values:
-                item.children = collections.OrderedDict()
-                data = self.get_data(subtype_item=item.name)
-                for sub in data:
-                    item.children[sub["name"]] = self.subtype(self, sub)
+        for item in values:
+            self.add_children(item)
         return values
 
     def dict(self):
@@ -178,16 +185,13 @@ class Group (object):
         return slug(key) in map(slug, self.keys())
 
     def __getitem__(self, key):
-        # commented code doesn't get subclasses
-##        keys = {slug(key): key for key in self.keys()}
-##        key = keys[slug(key)]
-##        data = self.get_data(conditions=["name='%s'" % key])
-##        data = data[0]
-##        return self.type(self, dict)
-        d = {}
-        for k, item in self.items():
-            d[slug(k)] = item
-        return d[slug(key)]
+        keys = {slug(key): key for key in self.keys()}
+        key = keys[slug(key)]
+        data = self.get_data(name=key)
+        data = dict(data[0])
+        data = self.type(self, data)
+        self.add_children(data)
+        return data
 
     def __str__(self):
         return str(list(self.values()))
