@@ -90,6 +90,7 @@ class Group (object):
             tables = ['%s C' % self.tablename, 'Sources S']
             conditions = ["C.source==S.id"]
             if name is not None:
+                name = name.replace("'", "''")
                 conditions.append("name='%s'" % name)
             order = [
                 "case when C.sort_index is null then 1 else 0 end",
