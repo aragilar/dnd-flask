@@ -53,28 +53,8 @@ class Monster (utils.Base):
             if d[key] is None:
                 d[key] = value
 
-        for key in [
-            "tags",
-            "speed",
-            "damage_vulnerabilities",
-            "damage_resistances",
-            "damage_immunities",
-            "condition_immunities",
-            "senses",
-            "languages",
-        ]:
-            d[key] = [] if d[key] is None else d[key].split("\v")
-
-        for key in [
-            "ability_scores",
-            "saving_throws",
-            "skills",
-            "traits",
-            "actions",
-            "reactions",
-            "legendary_actions",
-        ]:
-            d[key] = [] if d[key] is None else json.loads(d[key])
+        if d["legendary_actions"] is not None:
+            d["legendary_actions"] = json.loads(d["legendary_actions"])
 
         super().__init__(parent, d)
 
