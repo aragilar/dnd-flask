@@ -18,11 +18,12 @@ log.setLevel(logging.ERROR)
 app.logger.addHandler(log)
 
 everystyle = [
-    '/static/normalize.css',
+    '/static/bootstrap.min.css',
     '/static/index.css'
 ]
 everyjs = [
     '/static/jquery.min.js',
+    '/static/bootstrap/js/bootstrap.min.js',
     '/static/accordion.js',
     '/static/keep-params.js'
 ]
