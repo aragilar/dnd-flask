@@ -45,7 +45,7 @@ class Spell (utils.Base):
         return d
 
     def page(self):
-        ret = '<h2>%s</h2>\n' % self.name
+        ret = '## %s\n\n' % self.name
 
         if self.level == 0:
             lvl = '%s Cantrip' % self.school
@@ -55,10 +55,10 @@ class Spell (utils.Base):
         if self.ritual:
             lvl += ' (ritual)'
 
-        ret += '<p>\n<em>%s</em><br>\n' % lvl
+        ret += '*%s*  \n' % lvl
 
-        ret += '<strong>Casting Time:</strong> %s<br>\n' % self.cast_time
-        ret += '<strong>Range:</strong> %s<br>\n' % self.range
+        ret += '**Casting Time:** %s  \n' % self.cast_time
+        ret += '**Range:** %s  \n' % self.range
 
         lst = []
         truncated = True
@@ -80,10 +80,11 @@ class Spell (utils.Base):
         if len(lst) == 0:
             lst.append('None')
 
-        ret += '<strong>Components:</strong> %s<br>\n' % ', '.join(lst)
-        ret += '<strong>Duration:</strong> %s\n</p>\n' % self.duration
+        ret += '**Components:** %s  \n' % ', '.join(lst)
+        ret += '**Duration:** %s\n\n' % self.duration
 
-        ret += utils.convert(self.description)
+        ret += self.description
+        ret = utils.convert(ret)
         ret = handle_spells(ret, self.parent.get_spell_list(Spells))
 
         ret = '<div>\n%s</div>' % ret
