@@ -7,12 +7,10 @@
 }
 
 /* Taken from normalize.css */
-button, input, optgroup, select, textarea
-{
-    color:inherit;
-    font:inherit;
-    margin:0;
-}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:700}
+button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
 /**/
 
 body {
