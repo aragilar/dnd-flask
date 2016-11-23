@@ -12,7 +12,11 @@ class MagicItem (utils.Base):
         }.items():
             if d[key] is None:
                 d[key] = value
-        d["rarity"] = d["rarity"].split("\v")
+
+        if d["attunement"] == '0':
+            d["attunement"] = False
+        elif d["attunement"] == '1':
+            d["attunement"] = True
 
         super().__init__(parent, d)
 
@@ -76,7 +80,7 @@ def itemblock(name, magicitems=None):
     else:
         item = magicitems.get(name)
     if item is not None:
-        ret = '<li><a href="{1}">{0}</a></li>\n'.format(name, utils.slug(name))
+        ret = '<li><a href="/magicitems/{1}">{0}</a></li>\n'.format(name, utils.slug(name))
     else:
         ret = str(name)
     return ret
@@ -85,7 +89,7 @@ class MagicItems (utils.Group):
     type = MagicItem
     tablename = "magic_items"
     javascript = ['magicitems.js']
-    
+
     @property
     def head(self):
         header = self.get_document("Magic Items", "Magic Items")
@@ -138,5 +142,5 @@ class MagicItems (utils.Group):
         ))
         ret += '<ul id="magicitems" class="spell-table">\n%s</ul>\n' % temp
 
-        ret = '<div>\n%s</div>\n' % ret
+        ret = '<section>\n%s</section>\n' % ret
         return ret

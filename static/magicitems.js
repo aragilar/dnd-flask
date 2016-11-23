@@ -58,16 +58,9 @@ function Filter(){
         }
         
         if (hide){
-            if (tag.is(':visible')){
-                tag.addClass('_preserve');
-            }
-            val.add(tag).hide();
+            tag.hide();
         } else {
-            val.show();
-            if (tag.hasClass('_preserve')){
-                tag.show();
-                tag.removeClass('_preserve');
-            }
+            tag.show();
             count += 1;
         }
     });
@@ -79,6 +72,6 @@ $(document).ready(function(){
     $('.filter').each(function(){
         $(this).change(Filter);
     });
-    
+
     Filter();
 });

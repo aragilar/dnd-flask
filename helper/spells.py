@@ -37,7 +37,7 @@ class Spell (utils.Base):
             'name': self.name,
             'cast time': self.cast_time,
             'duration': self.duration,
-            'level': self.level,
+            'level': str(self.level) if self.level > 0 else "0cantrip",
             'range': self.range,
             'ritual': self.ritual,
             'type': self.school,
@@ -87,17 +87,14 @@ class Spell (utils.Base):
         ret = utils.convert(ret)
         ret = handle_spells(ret, self.parent.get_spell_list(Spells))
 
-        ret = '<div>\n%s</div>' % ret
-
         return ret
 
 def handle_spells(text, spells):
     spelllist = _spellexpression_p.findall(text)
     spelllist += _spellexpression.findall(text)
     for item in spelllist:
-        text = text.replace(item[0], utils.details_group(spellblock(item[-1], spells)))
-    text = re.sub(r'</dl>\s*<dl class="accordion">', '', text)
-    #text = text.replace('</dl>\n\n\n<dl class="accordion">', '\n')
+        text = text.replace(item[0], '<ul class="spell-list">\n%s</ul>\n' % spellblock(item[-1], spells))
+    text = re.sub(r'</ul>\s*<ul class="spell-list">', '', text)
     return text
 
 def spellblock(name, spells=None):
@@ -110,20 +107,16 @@ def spellblock(name, spells=None):
     else:
         spell = spells.get(name)
     if spell is not None:
-        ret = utils.details_block(
-            str(name),
-            spell.page(),
-            body_class="spell-box"
-        )
+        ret = '<li><a href="/spells/{1}">{0}</a></li>\n'.format(name, utils.slug(name))
     else:
-        ret = '<p>%s</p>\n' % str(name)
+        ret = str(name)
     return ret
 
 class Spells (utils.Group):
     type = Spell
     tablename = "spells"
     javascript = ['spells.js']
-    
+
     @property
     def head(self):
         return self.get_document("Spellcasting", "Spells")
@@ -143,7 +136,7 @@ class Spells (utils.Group):
             return {}
 
     def page(self):
-        ret = '<div>\n'
+        ret = '<section>\n'
         byClass = self.spells_by_class()
         spellscopy = {}
         for spell in self.values():
@@ -184,7 +177,7 @@ class Spells (utils.Group):
                 spellblock,
                 self.values(),
         ))
-        ret += utils.details_group(temp, body_id="spells", body_class="spell-table")
-        ret += '</div>\n'
+        ret += '<ul id="spells" class="spell-list">\n%s</ul>\n' % temp
+        ret += '</section>\n'
 
         return ret

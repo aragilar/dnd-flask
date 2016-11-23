@@ -18,13 +18,13 @@ log.setLevel(logging.ERROR)
 app.logger.addHandler(log)
 
 everystyle = [
-    '/static/bootstrap.min.css',
+    '/static/bootstrap/css/bootstrap.min.css',
+    #'/static/bootstrap/css/bootstrap-theme.min.css',
     '/static/index.css'
 ]
 everyjs = [
     '/static/jquery.min.js',
     '/static/bootstrap/js/bootstrap.min.js',
-    '/static/accordion.js',
     '/static/keep-params.js'
 ]
 
@@ -191,6 +191,8 @@ def subthing(name, type):
     if name in type:
         item = type[name]
         html = item.page()
+        if not type.tablename in ["classes", "races"]:
+            html = '<section>\n%s</section>\n' % html
         name = item.name
     else:
         html = None

@@ -103,7 +103,7 @@ class Weapons (utils.Group):
         temp += '</table>\n'
         temp = utils.get_details(temp, 'h1')
 
-        return '<div>\n%s</div>\n' % temp
+        return '<section>\n%s</section>\n' % temp
 
 class Armor (utils.Base):
     def __init__(self, parent, d):
@@ -207,7 +207,7 @@ class Armors (utils.Group):
         temp += '</table>\n'
         temp = utils.get_details(temp, 'h1')
 
-        return '<div>\n%s</div>\n' % temp
+        return '<section>\n%s</section>\n' % temp
 
 class Item (utils.Base):
     def __init__(self, parent, d):
@@ -329,4 +329,4 @@ class Items (utils.Group):
 
         ret = utils.get_details(ret, 'h1')
 
-        return '<div>\n%s</div>\n' % ret
+        return '<section>\n%s</section>\n' % ret

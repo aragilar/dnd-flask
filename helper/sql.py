@@ -6,7 +6,7 @@ class DB:
     A database manager class for sqlite3
     """
 
-    def __init__(self, db=None, commit=True):
+    def __init__(self, db=None, commit=True, debug=True):
         r"""
         db is the file to open the database from
         commit is whether to commit changes before closing
@@ -15,6 +15,7 @@ class DB:
             db = "data.db"
         self.file = db
         self.will_commit = commit
+        self.debug = debug
         self.conn = None
         self.curs = None
 
@@ -31,7 +32,7 @@ class DB:
         """
         if commit is None:
             commit = self.will_commit
-        return type(self)(db=self.file, commit=commit)
+        return type(self)(db=self.file, commit=commit, debug=debug)
 
     def connect(self):
         r"""
@@ -130,7 +131,8 @@ class DB:
             try:
                 self.curs.execute(statement)
             except:
-                sys.stderr.write("%s\n" % statement)
+                if self.debug:
+                    sys.stderr.write("%s\n" % statement)
                 raise
             ret = True
         return ret
@@ -157,7 +159,8 @@ class DB:
             try:
                 self.curs.execute(statement, p)
             except:
-                sys.stderr.write("%s\n%s\n" % (statement, " | ".join(map(repr, p))))
+                if self.debug:
+                    sys.stderr.write("%s\n%s\n" % (statement, " | ".join(map(repr, p))))
                 raise
         return ret
 
@@ -204,7 +207,8 @@ class DB:
             try:
                 self.curs.execute(statement, params)
             except:
-                sys.stderr.write("%s\n" % statement)
+                if self.debug:
+                    sys.stderr.write("%s\n" % statement)
                 raise
             ret = self.curs.fetchall()
         return ret
@@ -226,8 +230,8 @@ class DB:
         """
         ret = -1
         if self.curs:
-            if isinstance(tables, list):
-                tables = ", ".join(tables)
+            if isinstance(table, list):
+                table = ", ".join(table)
             if isinstance(conditions, list):
                 conditions = " AND ".join(conditions)
             
@@ -240,7 +244,7 @@ class DB:
             newparams.extend(params)
             params = newparams
 
-            statement = "UPDATE {} SET {}".format(columns, data)
+            statement = "UPDATE {} SET {}".format(table, data)
             if conditions:
                 statement += " WHERE {}".format(conditions)
             statement += ";"
@@ -248,7 +252,8 @@ class DB:
             try:
                 self.curs.execute(statement, params)
             except:
-                sys.stderr.write("%s\n" % statement)
+                if self.debug:
+                    sys.stderr.write("%s\n" % statement)
                 raise
             ret = self.curs.rowcount
         return ret
@@ -279,7 +284,8 @@ class DB:
             try:
                 self.curs.execute(statement, params)
             except:
-                sys.stderr.write("%s\n" % statement)
+                if self.debug:
+                    sys.stderr.write("%s\n" % statement)
                 raise
             ret = self.curs.rowcount
         return ret
@@ -297,7 +303,8 @@ class DB:
             try:
                 self.curs.execute(statement, params)
             except:
-                sys.stderr.write("%s\n" % statement)
+                if self.debug:
+                    sys.stderr.write("%s\n" % statement)
                 raise
             ret = True
         return ret

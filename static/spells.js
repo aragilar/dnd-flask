@@ -26,12 +26,13 @@ function Filter(){
 
     var count = 0;
     
-    $('#spells > .spell-box').each(function(){
+    $('#spells > li').each(function(){
         var tag = $(this);
-        var val = tag.prev();
+        var val = tag.children('a');
         var text = val.html();
         var data = spells[text];
         var hide = false;
+        
         $.each(cfilters, function(filter, value){
             if (value && classes[filter].indexOf(text) < 0){
                 hide = true;
@@ -45,7 +46,7 @@ function Filter(){
                         hide = true;
                     }
                 } else {
-                    if (data[filter].toLowerCase().indexOf(value.toLowerCase()) < 0){
+                    if (data[filter].toString().toLowerCase().indexOf(value.toString().toLowerCase()) < 0){
                         hide = true;
                     }
                 }
@@ -53,16 +54,9 @@ function Filter(){
         });
 
         if (hide){
-            if (tag.is(':visible')){
-                tag.addClass('_preserve');
-            }
-            val.add(tag).hide();
+            tag.hide();
         } else {
-            val.show();
-            if (tag.hasClass('_preserve')){
-                tag.show();
-                tag.removeClass('_preserve');
-            }
+            tag.show();
             count += 1;
         }
     });
@@ -74,10 +68,6 @@ $(document).ready(function(){
     $('.filter').each(function(){
         $(this).change(Filter);
     });
-    
-    $.each(classes, function(item){
-        $(item).change(Filter);
-    });
-    
+
     Filter();
 });

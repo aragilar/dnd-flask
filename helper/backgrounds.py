@@ -57,7 +57,7 @@ class Backgrounds (utils.Group):
         return self.get_document("Backgrounds", "Backgrounds")
 
     def page(self):
-        ret = '<div>\n'
+        ret = '<section>\n'
 
         ret += self.head
 
@@ -68,5 +68,5 @@ class Backgrounds (utils.Group):
 
         ret += utils.details_group(body)
 
-        ret += '</div>\n'
+        ret += '</section>\n'
         return ret

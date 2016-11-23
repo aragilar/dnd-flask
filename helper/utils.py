@@ -5,6 +5,7 @@ import functools
 import copy
 import multiprocessing.pool
 import json
+import uuid
 
 ##import markdown
 import markdown2
@@ -295,37 +296,38 @@ def get_details(text, detltag='h2', splttag=None):
 
 def details_block(summary, body=None, summary_class=None, body_class=None):
     if body:
+        id = uuid.uuid4()
+        sclass = "collapse-toggle"
         if summary_class:
-            txt = '<dt class="%s">' % summary_class
-        else:
-            txt = '<dt>'
+            sclass += ' ' + summary_class
+        txt = '<button class="{1}" data-toggle="collapse" data-target="#{0}" aria-expanded="false" aria-controls="{0}">'.format(id, sclass)
         txt += summary
-        txt += '</dt>\n'
+        txt += '</button>\n'
 
+        bclass = "collapse"
         if body_class:
-            txt += '<dd class="%s">' % body_class
-        else:
-            txt += '<dd>'
+            bclass += ' ' + body_class
+        txt += '<div id="{0}" class="{1}" aria-expanded="false">'.format(id, bclass)
         if not body.startswith('\n'):
             txt += '\n'
         txt += body
         if not body.endswith('\n'):
             txt += '\n'
-        txt += '</dd>\n'
+        txt += '</div>\n'
     else:
         txt = summary
     return txt
 
 def details_group(text, body_id=None, body_class=None):
-    c = 'accordion'
+    c = ''
     if body_class:
-        c += ' ' + body_class
+        c = body_class
 
     d = ''
     if body_id:
         d = ' id="%s"' % body_id
 
-    return '<dl%s class="%s">\n%s</dl>\n' % (d, c, text)
+    return '<div%s class="%s">\n%s</div>\n' % (d, c, text)
 
 def asyncmap(func, lst):
     with multiprocessing.pool.ThreadPool() as pool:

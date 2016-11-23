@@ -21,8 +21,7 @@ def featblock(name, feats):
     if feat is not None:
         ret = utils.details_block(
             str(name),
-            '<div>\n%s</div>\n' % feat.page(),
-            body_class='spell-box',
+            '<div class="spell-box">\n%s</div>\n' % feat.page(),
         )
     else:
         ret = str(name)
@@ -51,7 +50,7 @@ class Feats (utils.Group):
             temp += '</td></tr>\n'
         ret += utils.details_group(temp)
 
-        ret = '<div>\n%s</div>\n' % ret
+        ret = '<section>\n%s</section>\n' % ret
         return ret
 
 class EpicBoons (Feats):

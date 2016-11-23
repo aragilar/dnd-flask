@@ -7,7 +7,7 @@ from . import spells
 
 class Race (utils.Base):
     def page(self):
-        ret = '<div>\n'
+        ret = '<section>\n'
 
         # ----#-   Race Description
         temp = utils.convert(self.description)
@@ -15,7 +15,7 @@ class Race (utils.Base):
 
         # ----#-   Race Features
         ret += self.features2html()
-        ret += '</div>\n'
+        ret += '</section>\n'
 
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
 
@@ -173,7 +173,7 @@ class SubRace (Race):
 
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
 
-        ret = '<div>\n%s</div>\n' % ret
+        ret = '<section>\n%s</section>\n' % ret
 
         return ret
 

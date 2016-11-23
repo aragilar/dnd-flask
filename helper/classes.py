@@ -37,7 +37,7 @@ class Class (utils.Base):
         self.spells = l
 
     def page(self):
-        ret = '<div>\n'
+        ret = '<section>\n'
 
         # ----#-   Class Description
         if self.description:
@@ -125,7 +125,7 @@ class Class (utils.Base):
         ret += self.features2html()
 
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
-        ret += '</div>\n'
+        ret += '</section>\n'
 
         # ----#-   Subclass
         for subc in self.children.values():
@@ -241,7 +241,7 @@ class Class (utils.Base):
                             linestr += self.feature_block(data, item)
 
                         if linestr:
-                            ret += '<h2>%s Level</h2>\n' % utils.ordinals[lvl]
+                            ret += '<b>%s Level</b>\n' % utils.ordinals[lvl]
                             ret += linestr
 
             if foot or any(self.spells.values()):
@@ -344,7 +344,7 @@ class SubClass (Class):
         self.set_class_spells()
 
     def page(self):
-        ret = '<div>\n'
+        ret = '<section>\n'
 
         # ----#-   Features
         summary = '<h1 id="%s">%s</h1>' % (utils.slug(self.name), self.name)
@@ -360,7 +360,7 @@ class SubClass (Class):
 
         ret += self.features2html()
 
-        ret += '</div>\n'
+        ret += '</section>\n'
 
         return ret
 

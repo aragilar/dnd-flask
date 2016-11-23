@@ -1,9 +1,9 @@
 {% extends "dnd-base.html" %}
 {% block content %}
-<div>
+<section>
     <h1>{{ title }}</h1>
     {% for line in message %}
     <p>{{ line }}</p>
     {% endfor %}
-</div>
+</section>
 {% endblock %}

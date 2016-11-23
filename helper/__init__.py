@@ -42,24 +42,29 @@ class Document (utils.Base):
     def page(self):
         html = "<h1>%s</h1>\n\n" % self.name
         html += utils.convert(self.description)
-        html = '<div>\n%s</div>\n' % html
         return html
 
 class Documents (utils.Group):
     type = Document
     tablename = "documents"
 
-    def get_data(self, columns=["*"]):
+    def get_data(self, columns=["*"], name=None, subtype_item=None):
         if self.db:
+            conditions = ["C.sort_index is not null"]
+            params = []
+            if name:
+                conditions.append("C.name=?")
+                params.append(name)
             with self.db as db:
                 return db.select(
                     '%s C' % self.tablename,
                     columns=list(map("C.".__add__, columns)),
-                    conditions=["C.sort_index is not null"],
+                    conditions=conditions,
                     order=[
                         "C.sort_index",
                         "C.name",
                     ],
+                    params=params,
                 )
         else:
             return []

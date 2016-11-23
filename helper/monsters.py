@@ -233,7 +233,7 @@ class Monster (utils.Base):
         ret += '</div>\n'
 
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
-        ret = '<div>\n{}</div>\n'.format(ret)
+        ret = '<section>\n{}</section>\n'.format(ret)
 
         return ret
 
@@ -307,7 +307,7 @@ class Monsters (utils.Group):
         ))
         ret += '<ul id="monsters" class="spell-table">\n%s</ul>\n' % temp
 
-        ret = '<div>\n%s</div>\n' % ret
+        ret = '<section>\n%s</section>\n' % ret
         return ret
     
     @property
@@ -342,7 +342,7 @@ class Monsters (utils.Group):
         if ret:
             ret = spells.handle_spells(ret, self.get_spell_list(spells.Spells))
             ret = utils.details_group(ret)
-            ret = '<div>\n%s</div>\n' % ret
+            ret = '<section>\n%s</section>\n' % ret
         else:
             ret = None
         return ret

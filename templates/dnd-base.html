@@ -19,14 +19,14 @@
 </head>
 <body>
     {% if home or collapse_details %}
-    <div class="nav">
+    <nav>
         {% if home %}
         <a class="home button" href="{{ url_for('.index') }}">Home</a>
         {% endif %}
         {% if collapse_details %}
         <a class="collapse-details button" onclick="closeAccordions();">Collapse All</a>
         {% endif %}
-    </div>
+    </nav>
     {% endif %}
     {% block content %}{{ content|safe }}{% endblock %}
 </body>

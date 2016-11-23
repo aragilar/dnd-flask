@@ -6,23 +6,17 @@
     src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
-/* Taken from normalize.css */
-article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
-h1{font-size:2em;margin:.67em 0}
-b,strong{font-weight:700}
-button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
-/**/
-
 body {
     background-color: #ddd;
     background-image: url("images/wood1.png");
     background-repeat: repeat;
     padding: 10px 0 300px;
-    font-family: "Times New Roman", Times, serif;
+    /*font-family: "Times New Roman", Times, serif;*/
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: #900;
+    font-weight: bold;
 }
 
 blockquote {
@@ -47,7 +41,7 @@ blockquote::before {
     border-color: black #cec #cec black;
 }
 
-div {
+section, nav {
     width: 90%;
     min-width: 200px;
     max-width: 800px;
@@ -56,7 +50,7 @@ div {
     padding: 15px;
 }
 
-body > div {
+body > section, body > nav {
     background-color: #fff;
     background-image: url("images/parchment3.png");
     background-repeat: repeat;
@@ -67,6 +61,7 @@ a {
 }
 
 p {
+    font-size: 1em;
     text-indent: 1em;
     margin: 0.25em;
 }
@@ -98,12 +93,17 @@ td, th {
     padding: 0 5px;
 }
 
-dl:not(.accordion) > dt {
+hr {
+    margin: 5px;
+    border-color: darkgray;
+}
+
+dl > dt {
     font-weight: bold;
     margin: 0 0.25em;
 }
 
-dl:not(.accordion) > dt::after {
+dl > dt::after {
     content: ".";
     display: inline;
 }
@@ -130,11 +130,15 @@ dl:not(.accordion) > dt::after {
     border-style: inset;
 }
 
-.spell-box > div {
+.spell-box {
     border: 1px solid #ddd;
     width: 98%;
     padding: 0 3px;
     /*background-color: #ffd;*/
+}
+
+.spell-list {
+    margin: 10px;
 }
 
 .index a {
@@ -148,6 +152,10 @@ dl:not(.accordion) > dt::after {
 }
 
 .search-box {
+    width: 90%;
+    min-width: 200px;
+    border: 1px solid black;
+    margin: 10px auto;
     position: relative;
     padding: 5px;
     margin: 5px auto;
@@ -183,13 +191,13 @@ dl:not(.accordion) > dt::after {
     flex-direction: row;
 }
 
-.nav {
+nav {
     display: flex;
     justify-content: flex-start;
     flex-flow: row nowrap;
 }
 
-.nav > :last-child:not(:only-child) {
+nav > :last-child:not(:only-child) {
     margin-left: auto;
 }
 
@@ -201,6 +209,8 @@ dl:not(.accordion) > dt::after {
 
 /* Monsters */
 .monster-box {
+    margin: 10px;
+    padding: 15px;
     background-color: rgba(210, 170, 100, 0.5);
     border: 0;
     position: relative;
@@ -248,42 +258,21 @@ dl:not(.accordion) > dt::after {
 }
 /* end monsters */
 
-/* Accordions */
-.accordion > dt > *,
-.accordion > * {
-    margin: 0;
-    padding: 0;
-}
-
-.accordion > dt > * {
-    display: inline-block;
-}
-
-.accordion > h1,
-.accordion > h2,
-.accordion > h3,
-.accordion > h4,
-.accordion > h5,
-.accordion > h6 {
-    font-size: 1em;
-}
-
-.accordion > hr {
-    margin: 0.5em auto;
-}
-
-.accordion > dt {
-    position: relative;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+/* Collapse */
+.collapse-toggle {
+    display: block;
     transition-timing-function: ease-in;
     transition: 0.2s;
+    background-color: transparent;
+    border: none;
 }
 
-.accordion > dt::before {
+.collapse-toggle > * {
+    display: inline-block;
+    margin: 0;
+}
+
+.collapse-toggle::before {
     display: inline-block;
     font-family: "Glyphicons Halflings";
     content: '\e259';
@@ -291,25 +280,17 @@ dl:not(.accordion) > dt::after {
     transition: 1s;
 }
 
-.accordion > dt.dt-open::before {
+.collapse-toggle[aria-expanded="true"]::before {
     transform: rotate3d(1, 0, 0, 180deg);
 }
 
-.accordion > dd {
-    border-bottom: 1px solid black;
+.collapse, .collapsing {
     margin-left: 40px;
 }
 
-/* Possible swing animation for details
-.accordion > dd {
-    transition: 0.4s;
-    transform-origin: 50% 0%;
+.collapse.in {
+    border-bottom: 1px solid black;
 }
-
-.accordion > dd.dd-closed {
-    transform: rotate3d(1, 0, 0, -90deg);
-    height: 0;
-}*/
 /* end accordions */
 
 @media only screen

@@ -1,9 +1,9 @@
 {% extends "dnd-base.html" %}
 {% set charsheets = ["Angular", "Circular"] %}
 {% block content %}
-<div class="index">
+<section class="index">
     {% if filters %}
-    <section id="filter-block">
+    <div id="filter-block">
         <p>Filter:</p>
         <select id="filter">
             <option>-</option>
@@ -11,10 +11,10 @@
             <option>{{ item }}</option>
             {% endfor %}
         </select>
-    </section>
+    </div>
     {% endif %}
-    <section class="flex">
-        <section>
+    <div class="flex">
+        <div>
             <h1>{{ title }}</h1>
             <h2><a href="{{ url_for('character_sheet') }}">Character Sheet</a></h2>
             {% if charsheets %}
@@ -24,38 +24,38 @@
                 {% endfor %}
             </ul>
             {% endif %}
-        </section>
-        <section>
+        </div>
+        <div>
             <h1>External Links</h1>
             <h2><a href="http://dnd.wizards.com/articles/features/basicrules" target="_blank">Basic Rules</a></h2>
             <h2><a href="http://crobi.github.io/dnd5e-quickref/preview/quickref.html" target="_blank">Actions &amp; Conditions</a></h2>
-        </section>
-    </section>
+        </div>
+    </div>
     <hr>
     <h1>Reference Databases</h1>
-    <section id="reference" class="flex">
+    <div id="reference" class="flex">
         {% if classes %}
-        <section>
+        <div>
             <h2><a href="{{ url_for('subpage', type='Classes') }}">Classes</a></h2>
             <ul>
                 {% for item in classes %}
                 <li><h3><a href="{{ url_for('subthing', name=slug(item), type='Classes') }}">{{ item }}</a></h3></li>
                 {% endfor %}
             </ul>
-        </section>
+        </div>
         {% endif %}
         {% if races %}
-        <section>
+        <div>
             <h2><a href="{{ url_for('subpage', type='Races') }}">Races</a></h2>
             <ul>
                 {% for item in races %}
                 <li><h3><a href="{{ url_for('subthing', name=slug(item), type='Races') }}">{{ item }}</a></h3></li>
                 {% endfor %}
             </ul>
-        </section>
+        </div>
         {% endif %}
         {% if backgrounds or spells or feats or boons or items or monsters or magicitems %}
-        <section>
+        <div>
             <h2>Other</h2>
             {% if backgrounds %}
             <h2><a href="{{ url_for('list_page', type='Backgrounds') }}">Backgrounds</a></h2>
@@ -85,12 +85,12 @@
             {% if magicitems %}
             <h2><a href="{{ url_for('list_page', type='Magic Items') }}">Magic Items</a></h2>
             {% endif %}
-        </section>
+        </div>
         {% endif %}
-    </section>
+    </div>
     <hr>
-    <section id="rules" class="flex">
-        <section>
+    <div id="rules" class="flex">
+        <div>
             <h1>Rules</h1>
             {% if documentation %}
             <ul>
@@ -99,17 +99,17 @@
                 {% endfor %}
             </ul>
             {% endif %}
-        </section>
+        </div>
         {% if optionalrules %}
-        <section>
+        <div>
             <h2>Optional Rules</h2>
             <ul>
                 {% for rule in optionalrules %}
                 <li><h3><a href="{{ url_for('subthing', name=slug(rule), type='Optional Rules') }}">{{ rule }}</a></h3></li>
                 {% endfor %}
             </ul>
-        </section>
+        </div>
         {% endif %}
-    </section>
-</div>
+    </div>
+</section>
 {% endblock %}
