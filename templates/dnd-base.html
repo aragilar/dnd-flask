@@ -24,7 +24,7 @@
         <a class="home button" href="{{ url_for('.index') }}">Home</a>
         {% endif %}
         {% if collapse_details %}
-        <a class="collapse-details button" onclick="closeAccordions();">Collapse All</a>
+        <a class="collapse-details button" onclick="$('.collapse').collapse('hide');">Collapse All</a>
         {% endif %}
     </nav>
     {% endif %}
