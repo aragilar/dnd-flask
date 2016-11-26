@@ -155,6 +155,7 @@ class Spells (utils.Group):
 
         ret += '''
         <div class="search-box">
+        <h2>Search</h2>
         '''
 
         if byClass:
@@ -164,7 +165,6 @@ class Spells (utils.Group):
             ret += '</p>\n'
 
         ret += '''
-        <h2>Search</h2>
         <p>Name: <input class="filter" id="name"></p>
         <p>
             Level: <input class="filter" id="level">

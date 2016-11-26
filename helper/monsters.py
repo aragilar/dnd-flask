@@ -272,6 +272,7 @@ class Monsters (utils.Group):
 
         ret += '''
         <div class="search-box">
+        <h2>Search</h2>
         <p class="right">
             <label><input type="checkbox" class="filter size" id="tiny"> Tiny </label>
             <br>
@@ -285,7 +286,6 @@ class Monsters (utils.Group):
             <br>
             <label><input type="checkbox" class="filter size" id="gargantuan"> Gargantuan</label>
         </p>
-        <h2>Search</h2>
         <p>
             Name: <input class="filter" id="name">
             <br>
