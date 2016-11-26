@@ -259,13 +259,9 @@ nav > :last-child:not(:only-child) {
 }
 
 .collapse-toggle::before {
-    content: "";
     display: inline-block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0.7em 0.4em 0;
-    border-color: black transparent;
+    content: "\\/";
+    font-weight: bolder;
     margin-right: 0.4em;
     transition: 1s;
 }
