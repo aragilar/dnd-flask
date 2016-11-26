@@ -187,7 +187,7 @@ nav > :last-child:not(:only-child) {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
 }
 
 .flex > * {
