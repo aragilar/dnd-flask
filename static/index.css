@@ -100,6 +100,16 @@ dl > dt::after {
     display: inline;
 }
 
+nav {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+}
+
+nav > :last-child:not(:only-child) {
+    margin-left: auto;
+}
+
 .head-row {
     background-color: #000;
     color: #fff;
@@ -177,22 +187,6 @@ dl > dt::after {
     flex: 1;
 }
 
-#filter-block {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
-}
-
-nav {
-    display: flex;
-    justify-content: flex-start;
-    flex-flow: row nowrap;
-}
-
-nav > :last-child:not(:only-child) {
-    margin-left: auto;
-}
-
 .collapse-details {
     color: black;
     text-decoration: none;
@@ -265,10 +259,14 @@ nav > :last-child:not(:only-child) {
 }
 
 .collapse-toggle::before {
+    content: "";
     display: inline-block;
-    font-family: "Glyphicons Halflings";
-    content: '\e259';
-    margin-right: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.7em 0.4em 0;
+    border-color: black transparent;
+    margin-right: 0.4em;
     transition: 1s;
 }
 
