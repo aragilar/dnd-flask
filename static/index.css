@@ -164,6 +164,7 @@ nav > :last-child:not(:only-child) {
 }
 
 .search-box::after {
+    display: block;
     content: "";
     clear: both;
 }
