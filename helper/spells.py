@@ -127,10 +127,14 @@ class Spells (utils.Group):
                 l = db.select("spell_lists")
             d = {}
             for item in l:
-                d[item["name"]] = []
+                name = item["name"]
+                d[name] = []
                 for level in range(10):
                     level = "cantrips" if level == 0 else "level_%d_spells" % level
-                    d[item["name"]].extend(item[level].split("\v"))
+                    level = item[level]
+                    if level:
+                        level = level.split("\v")
+                        d[name].extend(level)
             return d
         else:
             return {}
