@@ -155,15 +155,6 @@ class Spells (utils.Group):
 
         ret += '''
         <div class="search-box">
-        <h2>Search</h2>
-        <p>Name: <input class="filter" id="name"></p>
-        <p>
-            Level: <input class="filter" id="level">
-            <br>
-            School: <input class="filter" id="type">
-            <br>
-            <label>Ritual: <input type="checkbox" class="filter" id="ritual"></label>
-        </p>
         '''
 
         if byClass:
@@ -173,6 +164,15 @@ class Spells (utils.Group):
             ret += '</p>\n'
 
         ret += '''
+        <h2>Search</h2>
+        <p>Name: <input class="filter" id="name"></p>
+        <p>
+            Level: <input class="filter" id="level">
+            <br>
+            School: <input class="filter" id="type">
+            <br>
+            <label>Ritual: <input type="checkbox" class="filter" id="ritual"></label>
+        </p>
         <p>Count: <output id="count">0</output></p>
         </div>
         '''

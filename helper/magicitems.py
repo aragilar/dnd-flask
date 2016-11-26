@@ -112,8 +112,6 @@ class MagicItems (utils.Group):
 
         ret += '''
         <div class="search-box">
-        <h2>Search</h2>
-        <p>Name: <input style="padding: inherit; margin: inherit;" class="filter" id="name"></p>
         <p class="right">
             <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="common"> Common</label>
             <br>
@@ -127,6 +125,8 @@ class MagicItems (utils.Group):
             <br>
             <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="artifact"> Artifacts</label>
         </p>
+        <h2>Search</h2>
+        <p>Name: <input style="padding: inherit; margin: inherit;" class="filter" id="name"></p>
         <p>
             <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="attuned" checked> Attuned</label>
             <br>
