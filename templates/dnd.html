@@ -3,14 +3,17 @@
 {% block content %}
 <section class="index">
     {% if filters %}
-    <div id="filter-block">
-        <p>Filter:</p>
-        <select id="filter">
-            <option>-</option>
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="filterMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filter
+        </button>
+        <div id="filter" class="dropdown-menu" aria-labelledby="filterMenuButton">
+            <a class="dropdown-item" href="?filter=">-</a>
             {% for item in filters %}
-            <option>{{ item }}</option>
+            <a class="dropdown-item" href="?filter={{ item.replace(' ', '%20') }}">{{ item }}</a>
             {% endfor %}
-        </select>
+        </div>
     </div>
     {% endif %}
     <div class="flex">
