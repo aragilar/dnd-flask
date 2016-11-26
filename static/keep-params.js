@@ -7,7 +7,7 @@ $.expr[':'].internal = function(a){
 };
 
 $(document).ready(function(){
-    $("a:internal").each(function(){
+    $("a:not(.dropdown-item):internal").each(function(){
         item = $(this);
         var link = item.attr('href');
         link += window.location.search;
