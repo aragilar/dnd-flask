@@ -18,13 +18,13 @@ log.setLevel(logging.ERROR)
 app.logger.addHandler(log)
 
 everystyle = [
-    '/static/bootstrap/css/bootstrap.min.css',
-    #'/static/bootstrap/css/bootstrap-theme.min.css',
+    'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css',
+    #'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap-theme.min.css',
     '/static/index.css'
 ]
 everyjs = [
-    '/static/jquery.min.js',
-    '/static/bootstrap/js/bootstrap.min.js',
+    'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',
+    'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js',
     '/static/keep-params.js'
 ]
 
@@ -126,7 +126,7 @@ def index():
     html = render_template('dnd.html',
         title=title,
         styles=everystyle,
-        javascript=everyjs+['/static/filters.js'],
+        javascript=everyjs,#+['/static/filters.js'],
         filters=helper.filter_list.keys(),
         slug=helper.slug,
         **data
