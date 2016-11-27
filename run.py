@@ -257,7 +257,8 @@ def list_page(type):
             if hasattr(item, 'javascript'):
                 js += ['/static/' + a for a in item.javascript]
             page = item.page()
-            html += page
+            if page:
+                html += page
 
     if not html:
         return abort(404)
