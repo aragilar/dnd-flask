@@ -8,12 +8,12 @@
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Filter
         </button>
-        <div id="filter" class="dropdown-menu" aria-labelledby="filterMenuButton">
-            <a class="dropdown-item" href="?filter=">-</a>
+        <ul id="filter" class="dropdown-menu" aria-labelledby="filterMenuButton">
+            <li class="dropdown-item"><a href="?filter=">-</a></li>
             {% for item in filters %}
-            <a class="dropdown-item" href="?filter={{ item.replace(' ', '%20') }}">{{ item }}</a>
+            <li class="dropdown-item"><a href="?filter={{ item.replace(' ', '%20') }}">{{ item }}</a></li>
             {% endfor %}
-        </div>
+        </ul>
     </div>
     {% endif %}
     <div class="flex">
