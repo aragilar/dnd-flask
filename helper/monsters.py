@@ -131,9 +131,13 @@ class Monster (utils.Base):
         md += '\n***\n\n'
 
         if self.saving_throws:
+            title_stats = list(map(str.title, utils.stats))
+            for key in self.saving_throws:
+                if key not in title_stats:
+                    raise ValueError("Invalid saving throw: %s" % key)
             md += '**Saving Throws** {}\n\n'.format(', '.join(
                 '{} {:+}'.format(stat, self.saving_throws[stat])
-                for stat in map(str.title, utils.stats)
+                for stat in title_stats
                 if stat in self.saving_throws
             ))
 
@@ -233,7 +237,6 @@ class Monster (utils.Base):
         ret += '</div>\n'
 
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
-        ret = '<section>\n{}</section>\n'.format(ret)
 
         return ret
 
