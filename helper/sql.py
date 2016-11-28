@@ -318,3 +318,19 @@ class DB:
         for item in conn.iterdump():
             yield item
         conn.close()
+    
+    def list_tables(self):
+        r"""
+        Returns a list of tables in the database
+        """
+        ret = []
+        if self.curs:
+            try:
+                self.curs.execute("SELECT name FROM sqlite_master WHERE type='table';")
+            except:
+                if self.debug:
+                    sys.stderr.write("%s\n" % "SELECT * FROM dbname.sqlite_master WHERE type='table';")
+                raise
+            ret = self.curs.fetchall()
+            ret = list(map(lambda a: a['name'], ret))
+        return ret
