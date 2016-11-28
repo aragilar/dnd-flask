@@ -13,16 +13,13 @@
     {% endfor %}
     {% block meta %}
     {% endblock %}
-    {% if reload %}
-    <meta http-equiv="refresh" content="3">
-    {% endif %}
     {% endblock %}
 </head>
 <body>
     {% if home or collapse_details %}
     <nav>
         {% if home %}
-        <a class="home button" href="{{ url_for('.index') }}">Home</a>
+        <a class="home btn btn-primary" href="{{ url_for('.index') }}">Home</a>
         {% endif %}
         {% if collapse_details %}
         <a class="collapse-details button" onclick="$('.collapse').collapse('hide');">Collapse All</a>

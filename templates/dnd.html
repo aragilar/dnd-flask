@@ -1,10 +1,10 @@
 {% extends "dnd-base.html" %}
 {% set charsheets = ["Angular", "Circular"] %}
 {% block content %}
-<section class="index">
+<section class="index container">
     {% if filters %}
     <div class="dropdown">
-        <button class="btn dropdown-toggle" type="button" id="filterMenuButton"
+        <button class="btn btn-primary dropdown-toggle" type="button" id="filterMenuButton"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Filter
         </button>
@@ -16,8 +16,8 @@
         </ul>
     </div>
     {% endif %}
-    <div class="flex">
-        <div>
+    <div class="row">
+        <div class="col-md-6">
             <h1>{{ title }}</h1>
             <h2><a href="{{ url_for('character_sheet') }}">Character Sheet</a></h2>
             {% if charsheets %}
@@ -28,7 +28,7 @@
             </ul>
             {% endif %}
         </div>
-        <div>
+        <div class="col-md-6">
             <h1>External Links</h1>
             <h2><a href="http://dnd.wizards.com/articles/features/basicrules" target="_blank">Basic Rules</a></h2>
             <h2><a href="http://crobi.github.io/dnd5e-quickref/preview/quickref.html" target="_blank">Actions &amp; Conditions</a></h2>
@@ -36,9 +36,9 @@
     </div>
     <hr>
     <h1>Reference Databases</h1>
-    <div id="reference" class="flex">
+    <div id="reference" class="row">
         {% if classes %}
-        <div>
+        <div class="col-md-4 col-sm-6">
             <h2><a href="{{ url_for('subpage', type='Classes') }}">Classes</a></h2>
             <ul>
                 {% for item in classes %}
@@ -48,7 +48,7 @@
         </div>
         {% endif %}
         {% if races %}
-        <div>
+        <div class="col-md-4 col-sm-6">
             <h2><a href="{{ url_for('subpage', type='Races') }}">Races</a></h2>
             <ul>
                 {% for item in races %}
@@ -58,7 +58,7 @@
         </div>
         {% endif %}
         {% if backgrounds or spells or feats or boons or items or monsters or magicitems %}
-        <div>
+        <div class="col-md-4 col-sm-6">
             <h2>Other</h2>
             {% if backgrounds %}
             <h2><a href="{{ url_for('list_page', type='Backgrounds') }}">Backgrounds</a></h2>
@@ -92,8 +92,8 @@
         {% endif %}
     </div>
     <hr>
-    <div id="rules" class="flex">
-        <div>
+    <div id="rules" class="row">
+        <div class="col-md-6">
             <h1>Rules</h1>
             {% if documentation %}
             <ul>
@@ -104,7 +104,7 @@
             {% endif %}
         </div>
         {% if optionalrules %}
-        <div>
+        <div class="col-md-6">
             <h2>Optional Rules</h2>
             <ul>
                 {% for rule in optionalrules %}
