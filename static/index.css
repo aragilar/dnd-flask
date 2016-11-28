@@ -101,7 +101,7 @@ dl > dt::after {
 }
 
 dl > dd {
-    margin-left: 40px;
+    margin-left: 1em;
 }
 
 nav {
