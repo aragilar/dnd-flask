@@ -17,12 +17,12 @@
 </head>
 <body>
     {% if home or collapse_details %}
-    <nav>
+    <nav class="container">
         {% if home %}
         <a class="home btn btn-primary" href="{{ url_for('.index') }}">Home</a>
         {% endif %}
         {% if collapse_details %}
-        <a class="collapse-details button" onclick="$('.collapse').collapse('hide');">Collapse All</a>
+        <a class="collapse-details btn btn-default" onclick="$('.collapse').collapse('hide');">Collapse All</a>
         {% endif %}
     </nav>
     {% endif %}

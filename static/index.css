@@ -49,10 +49,6 @@ body > section, body > nav {
     background-repeat: repeat;
 }
 
-a {
-    color: #00e;
-}
-
 p {
     font-size: 1em;
     text-indent: 1em;
@@ -89,6 +85,15 @@ td, th {
 hr {
     margin: 5px;
     border-color: darkgray;
+}
+
+li > h1,
+li > h2,
+li > h3,
+li > h4,
+li > h5,
+li > h6 {
+    margin: 0;
 }
 
 dl > dt {
@@ -138,24 +143,11 @@ nav > :last-child:not(:only-child) {
 }
 
 .spell-box {
-    border: 1px solid #ddd;
-    width: 98%;
-    padding: 0 3px;
-    /*background-color: #ffd;*/
+    padding: 0.25em;
 }
 
 .spell-list {
     margin: 10px;
-}
-
-.index a {
-    color: black;
-}
-
-.index li,
-.index li * {
-    margin: 0px;
-    color: #455;
 }
 
 .search-box {
