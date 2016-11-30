@@ -140,7 +140,7 @@ class MagicItems (utils.Group):
                 itemblock,
                 self.values(),
         ))
-        ret += '<ul id="magicitems" class="spell-table">\n%s</ul>\n' % temp
+        ret += '<ul id="magicitems" class="link-list">\n%s</ul>\n' % temp
 
         ret = '<section>\n%s</section>\n' % ret
         return ret

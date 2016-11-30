@@ -308,7 +308,7 @@ class Monsters (utils.Group):
             monsterblock,
             self.values(),
         ))
-        ret += '<ul id="monsters" class="spell-table">\n%s</ul>\n' % temp
+        ret += '<ul id="monsters" class="link-list">\n%s</ul>\n' % temp
 
         ret = '<section>\n%s</section>\n' % ret
         return ret

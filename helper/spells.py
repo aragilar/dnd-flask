@@ -177,11 +177,11 @@ class Spells (utils.Group):
         </div>
         '''
 
-        temp = ''.join(utils.asyncmap(
-                spellblock,
-                self.values(),
+        temp = ''.join(map(
+                lambda a: '<li><a href="{1}">{0}</a></li>\n'.format(a, utils.slug(a)),
+                self.keys(),
         ))
-        ret += '<ul id="spells" class="spell-list">\n%s</ul>\n' % temp
+        ret += '<ul id="spells" class="link-list">\n%s</ul>\n' % temp
         ret += '</section>\n'
 
         return ret
