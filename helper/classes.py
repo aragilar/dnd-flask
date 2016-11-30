@@ -163,9 +163,6 @@ class Class (utils.Base):
 
             body = '<table class="class-table">\n'
 
-            if self.magic:
-                body += '<caption>%sSpell Slots</caption>\n' % ('&nbsp;' * len(headrows) * 3)
-
             emptycolstyle = ' style="min-width: 0px;"'
             body += '<tr>\n'
             for item in headrows:
@@ -252,7 +249,7 @@ class Class (utils.Base):
 
             ret += self.spell_tables()
 
-            ret = utils.details_group(ret, body_class="class-features")
+            ret = utils.details_group(ret)
 
         return ret
 
