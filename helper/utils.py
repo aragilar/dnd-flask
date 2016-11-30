@@ -91,8 +91,7 @@ class Group (object):
             tables = ['%s C' % self.tablename, 'Sources S']
             conditions = ["C.source==S.id"]
             if name is not None:
-                name = name.replace("'", "''")
-                conditions.append("name='%s'" % name)
+                conditions.append("slug(name)='%s'" % slug(name))
             order = [
                 "case when C.sort_index is null then 1 else 0 end",
                 "C.sort_index",
@@ -116,14 +115,16 @@ class Group (object):
                 ))
 
             with self.db as db:
+                if name is not None:
+                    self.db.conn.create_function("slug", 1, slug)
                 data = db.select(
                     tables,
                     columns=list(map("C.".__add__, columns)),
                     conditions=conditions,
                     order=order,
                 )
-                # data = map(dict, data)
-                # data = list(data)
+##                data = map(dict, data)
+##                data = list(data)
                 return data
         else:
             return []
@@ -187,8 +188,8 @@ class Group (object):
         return slug(key) in map(slug, self.keys())
 
     def __getitem__(self, key):
-        keys = {slug(key): key for key in self.keys()}
-        key = keys[slug(key)]
+##        keys = {slug(key): key for key in self.keys()}
+##        key = keys[slug(key)]
         data = self.get_data(name=key)
         data = dict(data[0])
         data = self.type(self, data)
@@ -321,13 +322,13 @@ def details_block(summary, body=None, summary_class=None, body_class=None):
 def details_group(text, body_id=None, body_class=None):
     c = ''
     if body_class:
-        c = body_class
+        c = ' class="%s"' % body_class
 
     d = ''
     if body_id:
         d = ' id="%s"' % body_id
 
-    return '<div%s class="%s">\n%s</div>\n' % (d, c, text)
+    return '<div%s%s>\n%s</div>\n' % (d, c, text)
 
 def asyncmap(func, lst):
     with multiprocessing.pool.ThreadPool() as pool:
