@@ -93,8 +93,8 @@ def handle_spells(text, spells):
     spelllist = _spellexpression_p.findall(text)
     spelllist += _spellexpression.findall(text)
     for item in spelllist:
-        text = text.replace(item[0], '<ul class="spell-list">\n%s</ul>\n' % spellblock(item[-1], spells))
-    text = re.sub(r'</ul>\s*<ul class="spell-list">', '', text)
+        text = text.replace(item[0], spellblock(item[-1], spells))
+    # text = re.sub(r'</div>\s*<div class="spell-list">', '', text)
     return text
 
 def spellblock(name, spells=None):
@@ -107,7 +107,10 @@ def spellblock(name, spells=None):
     else:
         spell = spells.get(name)
     if spell is not None:
-        ret = '<li><a href="/spells/{1}">{0}</a></li>\n'.format(name, utils.slug(name))
+        ret = utils.popup_group(
+            utils.popup_block(name, spell.page(), body_class="spell-box"),
+            body_class="spell-list"
+        )
     else:
         ret = str(name)
     return ret

@@ -330,6 +330,43 @@ def details_group(text, body_id=None, body_class=None):
 
     return '<div%s%s>\n%s</div>\n' % (d, c, text)
 
+def popup_block(summary, body=None, summary_class=None, body_class=None):
+    if body:
+        id = uuid.uuid4()
+        sclass = "btn btn-default btn-sm dropdown-toggle"
+        if summary_class:
+            sclass += ' ' + summary_class
+        txt = '<button class="{1}" id="{0}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.format(id, sclass)
+        txt += '<span class="caret"></span> '
+        txt += summary
+        txt += '</button>\n'
+
+        bclass = "dropdown-menu"
+        if body_class:
+            bclass += ' ' + body_class
+        txt += '<div class="{1}" aria-labeledby="{0}">'.format(id, bclass)
+        if not body.startswith('\n'):
+            txt += '\n'
+        txt += body
+        if not body.endswith('\n'):
+            txt += '\n'
+        txt += '</div>\n'
+    else:
+        txt = summary
+    return txt
+
+def popup_group(text, body_id=None, body_class=None):
+    c = ' class="dropdown'
+    if body_class:
+        c += ' %s' % body_class
+    c += '"'
+
+    d = ''
+    if body_id:
+        d = ' id="%s"' % body_id
+
+    return '<div%s%s>\n%s</div>\n' % (d, c, text)
+
 def asyncmap(func, lst):
     with multiprocessing.pool.ThreadPool() as pool:
         new = pool.map(func, lst)
