@@ -25,7 +25,7 @@ everystyle = [
 everyjs = [
     'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',
     'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
-    '/static/keep-params.js'
+    '/static/index.js'
 ]
 
 def get_filter():
@@ -35,8 +35,8 @@ def get_filter():
     return filter_name
 
 def final_pass(html):
-    html = html.replace('<table', '<div class="table-responsive"><table')
-    html = html.replace('</table>', '</table></div>')
+##    html = html.replace('<table', '<div class="table-responsive"><table')
+##    html = html.replace('</table>', '</table></div>')
     return html
 
 def error(e, message):
