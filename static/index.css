@@ -1,3 +1,7 @@
+.table-responsive {
+    overflow-y: visible; /*bootstrap fix*/
+}
+
 body {
     background-color: #ddd;
     background-image: url("images/wood1.png");
