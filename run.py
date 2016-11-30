@@ -34,6 +34,11 @@ def get_filter():
         filter_name = None
     return filter_name
 
+def final_pass(html):
+    html = html.replace('<table', '<div class="table-responsive"><table')
+    html = html.replace('</table>', '</table></div>')
+    return html
+
 def error(e, message):
     html = render_template('error.html',
         home=True,
@@ -132,7 +137,7 @@ def index():
         **data
     )
 
-    return html
+    return final_pass(html)
 
 @app.route('/classes/', defaults={'type':'Classes'})
 @app.route('/races/', defaults={'type':'Races'})
@@ -161,7 +166,7 @@ def subpage(type):
     if not html:
         return abort(404)
 
-    return html
+    return final_pass(html)
 
 @app.route('/classes/<name>', defaults={'type':'Classes'})
 @app.route('/races/<name>', defaults={'type':'Races'})
@@ -210,7 +215,7 @@ def subthing(name, type):
     if not html:
         return abort(404)
 
-    return html
+    return final_pass(html)
 
 @app.route('/backgrounds', defaults={'type':'Backgrounds'})
 @app.route('/feats', defaults={'type':'Feats'})
@@ -272,7 +277,7 @@ def list_page(type):
         content=html,
     )
 
-    return html
+    return final_pass(html)
 
 @app.route('/monsters/groups/', defaults={'type':'Monsters'})
 def groups_page(type):
@@ -303,7 +308,7 @@ def groups_page(type):
         content='<section class="container">\n%s</section>' % html,
     )
 
-    return html
+    return final_pass(html)
 
 if __name__ == '__main__':
     import argparse
