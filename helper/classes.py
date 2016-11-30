@@ -37,7 +37,7 @@ class Class (utils.Base):
         self.spells = l
 
     def page(self):
-        ret = '<section>\n'
+        ret = ''
 
         # ----#-   Class Description
         if self.description:
@@ -125,7 +125,8 @@ class Class (utils.Base):
         ret += self.features2html()
 
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
-        ret += '</section>\n'
+        
+        ret = '<section class="container">\n%s</section>\n' % ret
 
         # ----#-   Subclass
         for subc in self.children.values():
@@ -341,7 +342,7 @@ class SubClass (Class):
         self.set_class_spells()
 
     def page(self):
-        ret = '<section>\n'
+        ret = ''
 
         # ----#-   Features
         summary = '<h1 id="%s">%s</h1>' % (utils.slug(self.name), self.name)
@@ -357,7 +358,7 @@ class SubClass (Class):
 
         ret += self.features2html()
 
-        ret += '</section>\n'
+        ret = '<section class="container">\n%s</section>\n' % ret
 
         return ret
 

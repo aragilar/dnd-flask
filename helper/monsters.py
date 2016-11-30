@@ -310,7 +310,6 @@ class Monsters (utils.Group):
         ))
         ret += '<ul id="monsters" class="link-list">\n%s</ul>\n' % temp
 
-        ret = '<section>\n%s</section>\n' % ret
         return ret
     
     @property
@@ -345,7 +344,6 @@ class Monsters (utils.Group):
         if ret:
             ret = spells.handle_spells(ret, self.get_spell_list(spells.Spells))
             ret = utils.details_group(ret)
-            ret = '<section>\n%s</section>\n' % ret
         else:
             ret = None
         return ret

@@ -192,7 +192,7 @@ def subthing(name, type):
         item = type[name]
         html = item.page()
         if not type.tablename in ["classes", "races"]:
-            html = '<section>\n%s</section>\n' % html
+            html = '<section class="container">\n%s</section>\n' % html
         name = item.name
     else:
         html = None
@@ -258,7 +258,7 @@ def list_page(type):
                 js += ['/static/' + a for a in item.javascript]
             page = item.page()
             if page:
-                html += page
+                html += '<section class="container">\n%s</section>\n' % page
 
     if not html:
         return abort(404)
@@ -300,7 +300,7 @@ def groups_page(type):
         styles=everystyle,
         javascript=everyjs,
         title='Groups (%s)' % type,
-        content=html,
+        content='<section class="container">\n%s</section>' % html,
     )
 
     return html

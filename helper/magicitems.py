@@ -142,5 +142,4 @@ class MagicItems (utils.Group):
         ))
         ret += '<ul id="magicitems" class="link-list">\n%s</ul>\n' % temp
 
-        ret = '<section>\n%s</section>\n' % ret
         return ret

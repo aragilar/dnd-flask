@@ -143,13 +143,12 @@ class Spells (utils.Group):
             return {}
 
     def page(self):
-        ret = '<section>\n'
         byClass = self.spells_by_class()
         spellscopy = {}
         for spell in self.values():
             spellscopy[spell.name] = spell.dict()
 
-        ret += '<script>\nspells = %s;\n\nclasses = %s\n</script>\n' % (
+        ret = '<script>\nspells = %s;\n\nclasses = %s\n</script>\n' % (
             json.dumps(spellscopy, sort_keys=True),
             json.dumps(byClass, sort_keys=True),
         )
@@ -185,6 +184,5 @@ class Spells (utils.Group):
                 self.keys(),
         ))
         ret += '<ul id="spells" class="link-list">\n%s</ul>\n' % temp
-        ret += '</section>\n'
 
         return ret
