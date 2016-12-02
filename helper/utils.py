@@ -43,14 +43,9 @@ class Base (object):
     def __init__(self, parent, d, children=None):
         self.parent = parent
         
+        d = unjson(d)
+        
         for key, value in d.items():
-            if isinstance(value, str):
-                if value.endswith('\v'):
-                    value = value.split('\v')
-                    value.pop()
-                elif (value.startswith('{') and value.endswith('}')
-                        or value.startswith('[[') and value.endswith(']]')):
-                    value = json.loads(value)
             setattr(self, key, value)
 
     def __str__(self):
@@ -207,6 +202,34 @@ class Group (object):
 
     def get_spell_list(self, SpellsClass):
         return SpellsClass(self.db)
+
+def unjson(d):
+    new = {}
+    for key, value in d.items():
+        if isinstance(value, str):
+            if isinstance(value, str) and value.endswith("\v"):
+                item = value.split("\v")
+                item.pop()
+                value = item
+            elif (value.startswith("{") and value.endswith("}")
+                    or value.startswith("[[") and value.endswith("]]")):
+                value = json.loads(value)
+        new[key] = value
+    return new
+
+def tojson(d):
+    new = {}
+    for key, value in d.items():
+        if isinstance(value, dict):
+            value = json.dumps(value, sort_keys=True)
+        elif isinstance(value, list):
+            try:
+                item = "\v".join(value) + "\v"
+            except TypeError:
+                item = json.dumps(value, sort_keys=True)
+            value = item
+        new[key] = value
+    return new
 
 def slug(s):
     r"""
