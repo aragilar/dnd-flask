@@ -30,9 +30,8 @@ class MagicItem (utils.Base):
         }
         return d
 
-    def page(self):
-        ret = ''
-        ret += '<h1>%s</h1>\n\n' % self.name
+    def md(self):
+        ret = '# %s\n\n' % self.name
 
         temp = self.category
 
@@ -60,14 +59,17 @@ class MagicItem (utils.Base):
                     temp += ' (requires attunement by a %s)' % self.attunement
             else:
                 temp += ' (requires attunement)'
-        ret += '<p><em>%s</em></p>\n\n' % temp
+        ret += '*%s*\n\n' % temp
 
-        ret += utils.convert(self.description)
-
-        ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
-
-        ret = '<div>\n%s</div>' % ret
-
+        ret += self.description
+        
+        return ret
+    
+    def page(self):
+        ret = self.md()
+        ret = utils.convert(ret)
+        ret = spells.handle_spells(ret,
+            self.parent.get_spell_list(spells.Spells))
         return ret
 
 def itemblock(name, magicitems=None):

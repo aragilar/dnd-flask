@@ -44,8 +44,8 @@ class Spell (utils.Base):
         }
         return d
 
-    def page(self):
-        ret = '## %s\n\n' % self.name
+    def md(self):
+        ret = '# %s\n\n' % self.name
 
         if self.level == 0:
             lvl = '%s Cantrip' % self.school
@@ -84,6 +84,11 @@ class Spell (utils.Base):
         ret += '**Duration:** %s\n\n' % self.duration
 
         ret += self.description
+        
+        return ret
+    
+    def page(self):
+        ret = self.md()
         ret = utils.convert(ret)
         ret = handle_spells(ret, self.parent.get_spell_list(Spells))
 

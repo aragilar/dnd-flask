@@ -95,7 +95,7 @@ class Monster (utils.Base):
             type += ', '.join(self.tags)
             type += ')'
         return type
-    
+
     def about(self):
         temp = None
         if self.description or self.monster_group:
@@ -105,8 +105,8 @@ class Monster (utils.Base):
                     temp = '# {}'.format(self.monster_group)
                 temp += '\n\n---\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.monster_group)
         return temp
-
-    def md(self):
+    
+    def body(self):
         md = '# {}\n\n'.format(self.name)
         md += '*{size} {type}, {alignment}*\n\n'.format(
             alignment=self.alignment,
@@ -226,17 +226,31 @@ class Monster (utils.Base):
                 md += '</dl>\n'
 
         return md
+    
+    def md(self):
+        ret = self.about()
+        if ret:
+            ret += '\n\n---\n---\n\n'
+            if not ret.startswith("#"):
+                ret = "# %s\n\n%s" % (self.name, ret)
+        ret += self.body()
+        ret = ret.replace('<dl markdown="1">\n', '')
+        ret = ret.replace('\n</dl>', '')
+        ret = ret.replace('<dt>', '**')
+        ret = ret.replace('</dt>\n', '.** ')
+        ret = ret.replace('<dd>', '')
+        ret = ret.replace('</dd>', '')
+        return ret
 
     def page(self):
-        temp = ''
         temp = self.about()
         if temp:
             temp = utils.convert(temp)
             if not temp.startswith('<h1'):
                 temp = '<h1>{}</h1>\n'.format(self.name) + temp
             temp = utils.get_details(temp, 'h1')
-        
-        md = self.md()
+
+        md = self.body()
         md = utils.convert(md)
         md = md.replace('<ul>', '<ul class="monster-stats">', 1)
         

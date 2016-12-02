@@ -5,13 +5,17 @@ from . import utils
 from . import spells
 
 class Feat (utils.Base):
-    def page(self):
-        ret = '<h2>%s</h2>\n\n' % self.name
+    def md(self):
+        ret = '# %s\n\n' % self.name
         if self.prerequisite:
-            ret += '<em>Prerequisite: %s</em>\n\n' % self.prerequisite
+            ret += '*Prerequisite: %s*\n\n' % self.prerequisite
         if self.description:
-            ret += utils.convert(self.description)
-
+            ret += self.description
+        return ret
+        
+    def page(self):
+        ret = self.md()
+        ret = utils.convert(ret)
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
 
         return ret
