@@ -53,9 +53,11 @@ class Documents (utils.Group):
             conditions = ["C.sort_index is not null"]
             params = []
             if name:
-                conditions.append("C.name=?")
-                params.append(name)
+                conditions.append("slug(C.name)=?")
+                params.append(slug(name))
             with self.db as db:
+                if name is not None:
+                    self.db.conn.create_function("slug", 1, slug)
                 return db.select(
                     '%s C' % self.tablename,
                     columns=list(map("C.".__add__, columns)),

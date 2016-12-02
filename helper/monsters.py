@@ -95,40 +95,35 @@ class Monster (utils.Base):
             type += ', '.join(self.tags)
             type += ')'
         return type
-
-    def page(self):
-        ret = ''
-
+    
+    def about(self):
+        temp = None
         if self.description or self.monster_group:
             temp = self.description
             if self.monster_group:
                 if not temp:
                     temp = '# {}'.format(self.monster_group)
-                temp += '\n\n***\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.monster_group)
-            temp = utils.convert(temp)
-            if not temp.startswith('<h1'):
-                temp = '<h1>{}</h1>\n'.format(self.name) + temp
-            ret += utils.get_details(temp, 'h1')
+                temp += '\n\n---\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.monster_group)
+        return temp
 
-        ret += '<div class="monster-box">\n'
-
+    def md(self):
         md = '# {}\n\n'.format(self.name)
         md += '*{size} {type}, {alignment}*\n\n'.format(
             alignment=self.alignment,
             size=self.size,
             type=self.get_type(),
         )
-        md += '***\n\n'
+        md += '---\n\n'
         md += '**Armor Class** {}\n\n'.format(self.ac)
         md += '**Hit Points** {}\n\n'.format(self.hp)
         md += '**Speed** {}\n\n'.format(', '.join(self.speed))
-        md += '***\n\n'
+        md += '---\n\n'
 
         for stat in utils.stats:
             value = self.ability_scores.get(stat, 10)
             md += '* **{}** {} ({:+})\n'.format(stat[:3].upper(), value, utils.get_modifier(value))
 
-        md += '\n***\n\n'
+        md += '\n---\n\n'
 
         if self.saving_throws:
             title_stats = list(map(str.title, utils.stats))
@@ -200,7 +195,7 @@ class Monster (utils.Base):
         temp = temp.format(cr=self.get_cr(), xp=self.experience)
         md += temp
 
-        md += '***\n\n'
+        md += '---\n\n'
 
         for name, temp in [
             (None, self.traits),
@@ -230,10 +225,24 @@ class Monster (utils.Base):
                         md += item + '\n\n'
                 md += '</dl>\n'
 
+        return md
+
+    def page(self):
+        temp = ''
+        temp = self.about()
+        if temp:
+            temp = utils.convert(temp)
+            if not temp.startswith('<h1'):
+                temp = '<h1>{}</h1>\n'.format(self.name) + temp
+            temp = utils.get_details(temp, 'h1')
+        
+        md = self.md()
         md = utils.convert(md)
         md = md.replace('<ul>', '<ul class="monster-stats">', 1)
+        
+        ret = temp
+        ret += '<div class="monster-box">\n'
         ret += md
-
         ret += '</div>\n'
 
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))

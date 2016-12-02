@@ -90,8 +90,10 @@ class Group (object):
         if self.db:
             tables = ['%s C' % self.tablename, 'Sources S']
             conditions = ["C.source==S.id"]
+            params = []
             if name is not None:
-                conditions.append("slug(name)='%s'" % slug(name))
+                conditions.append("slug(C.name)=?")
+                params.append(slug(name))
             order = [
                 "case when C.sort_index is null then 1 else 0 end",
                 "C.sort_index",
@@ -122,6 +124,7 @@ class Group (object):
                     columns=list(map("C.".__add__, columns)),
                     conditions=conditions,
                     order=order,
+                    params=params,
                 )
 ##                data = map(dict, data)
 ##                data = list(data)
