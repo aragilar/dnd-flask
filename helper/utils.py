@@ -60,6 +60,9 @@ class Base (object):
             s += ': '
             s += ', '.join(map(repr, self.children.values()))
         return s
+    
+    def page(self):
+        return '<div class="alert alert-danger" role="alert">This object has no <code>page</code> method.</div>'
 
 class Group (object):
     type = Base
