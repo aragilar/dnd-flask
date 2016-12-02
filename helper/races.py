@@ -8,7 +8,9 @@ from . import spells
 class Race (utils.Base):
     def page(self):
         # ----#-   Race Description
-        ret = utils.convert(self.description)
+        ret = "# %s\n\n" % self.name
+        ret += self.description
+        ret = utils.convert(ret)
         ret = utils.get_details(ret, 'h1') + '\n\n'
 
         # ----#-   Race Features
@@ -33,21 +35,24 @@ class Race (utils.Base):
         scores = self.ability_scores
         if scores and any(scores.values()):
             lst = []
-            if sum(map(lambda a: scores[a] if a != '+' else 0, scores)) > 0:
-                if all(map(lambda a: scores[a] == 1, utils.statlist)):
-                    lst.append("your ability scores each increase by 1")
-                else:
-                    for i in utils.statlist:
-                        if scores.get(i, 0) > 0:
-                            lst.append('your %s score increases by %d' % (
-                                utils.stats[i],
-                                scores.get(i)
-                            ))
-                if scores.get('+', 0) > 0:
-                    lst.append('%d other ability scores of your choice increase by 1'
-                        % scores.get('+')
-                    )
-            elif scores.get('+', 0) > 0:
+            if all(map(lambda a: scores[a] == 1, utils.statlist)):
+                lst.append("your ability scores each increase by 1")
+            elif sum(map(lambda a: scores[a] if a != '+' else 0, scores)) > 0:
+                for i in utils.statlist:
+                    score = scores.get(i, 0)
+                    if score:
+                        operator = None
+                        if score > 0:
+                            operator = "increases"
+                        else:
+                            operator = "decreases"
+                            score *= -1
+                        lst.append('your %s score %s by %d' % (
+                            utils.stats[i],
+                            operator,
+                            score,
+                        ))
+            if scores.get('+', 0) > 0:
                 lst.append('%d different ability scores of your choice increase by 1'
                     % scores.get('+')
                 )
