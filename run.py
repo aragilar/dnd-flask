@@ -131,7 +131,7 @@ def index():
     html = render_template('dnd.html',
         title=title,
         styles=everystyle,
-        javascript=everyjs,#+['/static/filters.js'],
+        javascript=everyjs,
         filters=helper.filter_list.keys(),
         slug=helper.slug,
         **data

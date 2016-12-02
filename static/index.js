@@ -16,11 +16,13 @@ function make_responsive(){
 }
 
 $(document).ready(function(){
-    $("a:not(.dropdown-item):internal").each(function(){
+    $("a:internal").each(function(){
         item = $(this);
-        var link = item.attr('href');
-        link += window.location.search;
-        item.attr('href', link);
+        if (!item.parent().hasClass("dropdown-item")){
+            var link = item.attr('href');
+            link += window.location.search;
+            item.attr('href', link);
+        }
     });
     make_responsive();
 });
