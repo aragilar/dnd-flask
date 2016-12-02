@@ -9,9 +9,9 @@
             Filter
         </button>
         <ul id="filter" class="dropdown-menu" aria-labelledby="filterMenuButton">
-            <li class="dropdown-item"><a href="?filter=">-</a></li>
+            <li class="dropdown-item"><a class="nochange" href="?filter=">-</a></li>
             {% for item in filters %}
-            <li class="dropdown-item"><a href="?filter={{ item.replace(' ', '%20') }}">{{ item }}</a></li>
+            <li class="dropdown-item"><a class="nochange" href="?filter={{ item.replace(' ', '%20') }}">{{ item }}</a></li>
             {% endfor %}
         </ul>
     </div>
