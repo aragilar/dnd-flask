@@ -62,9 +62,9 @@ class MagicItem (utils.Base):
         ret += '*%s*\n\n' % temp
 
         ret += self.description
-        
+
         return ret
-    
+
     def page(self):
         ret = self.md()
         ret = utils.convert(ret)
@@ -113,27 +113,21 @@ class MagicItems (utils.Group):
         ret += spells.handle_spells(self.head, self.get_spell_list(spells.Spells))
 
         ret += '''
-        <div class="search-box">
+        <div class="search-box clearfix">
         <h2>Search</h2>
-        <p class="right">
-            <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="common"> Common</label>
-            <br>
-            <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="uncommon"> Uncommon</label>
-            <br>
-            <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="rare"> Rare</label>
-            <br>
-            <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="very_rare"> Very Rare</label>
-            <br>
-            <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="legendary"> Legendary</label>
-            <br>
-            <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="artifact"> Artifacts</label>
-        </p>
+        <div class="pull-right">
+            <p><label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="common"> Common</label></p>
+            <p><label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="uncommon"> Uncommon</label></p>
+            <p><label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="rare"> Rare</label></p>
+            <p><label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="very_rare"> Very Rare</label></p>
+            <p><label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="legendary"> Legendary</label></p>
+            <p><label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter rarity" id="artifact"> Artifacts</label></p>
+        </div>
         <p>Name: <input style="padding: inherit; margin: inherit;" class="filter" id="name"></p>
-        <p>
-            <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="attuned" checked> Attuned</label>
-            <br>
-            <label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="unattuned" checked> Unattuned</label>
-        <p>
+        <br>
+        <p><label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="attuned" checked> Attuned</label><p>
+        <p><label><input style="padding: inherit; margin: inherit;" type="checkbox" class="filter" id="unattuned" checked> Unattuned</label><p>
+        <br>
         <p>Count: <output id="count">0</output></p>
         </div>
         '''

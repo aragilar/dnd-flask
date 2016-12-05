@@ -158,23 +158,13 @@ nav > :last-child:not(:only-child) {
     margin: 5px auto;
 }
 
-.search-box::after {
-    display: block;
-    content: "";
-    clear: both;
-}
-
 .search-box p {
-    text-indent: 0;
-    margin: 1em 0;
+    text-indent: initial;
+    margin: initial;
 }
 
 .search-box label {
     margin: 0;
-}
-
-.search-box .right {
-    float: right;
 }
 
 /*Flexbox section*/
@@ -274,10 +264,6 @@ nav > :last-child:not(:only-child) {
 
 .collapse, .collapsing {
     margin-left: 40px;
-}
-
-.collapse.in {
-    border-bottom: 1px solid black;
 }
 /* end accordions */
 

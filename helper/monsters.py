@@ -87,7 +87,7 @@ class Monster (utils.Base):
         else:
             c = '{:g}'.format(c)
         return c
-    
+
     def get_type(self):
         type = self.type
         if self.tags:
@@ -105,7 +105,7 @@ class Monster (utils.Base):
                     temp = '# {}'.format(self.monster_group)
                 temp += '\n\n---\n\nThis monster is a member of the {0} [group](/monsters/groups/).'.format(self.monster_group)
         return temp
-    
+
     def body(self):
         md = '# {}\n\n'.format(self.name)
         md += '*{size} {type}, {alignment}*\n\n'.format(
@@ -226,7 +226,7 @@ class Monster (utils.Base):
                 md += '</dl>\n'
 
         return md
-    
+
     def md(self):
         ret = self.about()
         if ret:
@@ -253,7 +253,7 @@ class Monster (utils.Base):
         md = self.body()
         md = utils.convert(md)
         md = md.replace('<ul>', '<ul class="monster-stats">', 1)
-        
+
         ret = temp
         ret += '<div class="monster-box">\n'
         ret += md
@@ -282,7 +282,7 @@ class Monsters (utils.Group):
     type = Monster
     tablename = "monsters"
     javascript = ['monsters.js']
-    
+
     @property
     def head(self):
         return self.get_document("Monsters", "Monsters")
@@ -297,33 +297,25 @@ class Monsters (utils.Group):
         ret += self.head
 
         ret += '''
-        <div class="search-box">
+        <div class="search-box clearfix">
         <h2>Search</h2>
-        <p class="right">
-            <label><input type="checkbox" class="filter size" id="tiny"> Tiny </label>
-            <br>
-            <label><input type="checkbox" class="filter size" id="small"> Small</label>
-            <br>
-            <label><input type="checkbox" class="filter size" id="medium"> Medium</label>
-            <br>
-            <label><input type="checkbox" class="filter size" id="large"> Large</label>
-            <br>
-            <label><input type="checkbox" class="filter size" id="huge"> Huge</label>
-            <br>
-            <label><input type="checkbox" class="filter size" id="gargantuan"> Gargantuan</label>
-        </p>
-        <p>
-            Name: <input class="filter" id="name">
-            <br>
-            Type: <input class="filter" id="type">
-        </p>
-        <p>
-            Min CR <input class="filter" id="crge">
-            <br>
-            Max CR <input class="filter" id="crle">
-        </p>
+        <div class="pull-right">
+            <p><label><input type="checkbox" class="filter size" id="tiny"> Tiny </label></p>
+            <p><label><input type="checkbox" class="filter size" id="small"> Small</label></p>
+            <p><label><input type="checkbox" class="filter size" id="medium"> Medium</label></p>
+            <p><label><input type="checkbox" class="filter size" id="large"> Large</label></p>
+            <p><label><input type="checkbox" class="filter size" id="huge"> Huge</label></p>
+            <p><label><input type="checkbox" class="filter size" id="gargantuan"> Gargantuan</label></p>
+        </div>
+        <p>Name: <input class="filter" id="name"></p>
+        <p>Type: <input class="filter" id="type"></p>
+        <br>
+        <p>Min CR <input class="filter" id="crge"></p>
+        <p>Max CR <input class="filter" id="crle"></p>
+        <br>
         <p><label><input type="checkbox" class="filter" id="legendary"> Legendary</label></p>
-        <p>Count: <output id="count">0</output></p>
+        <br>
+        <p>Count: <span id="count">0</span></p>
         </div>
         '''
 
@@ -334,7 +326,7 @@ class Monsters (utils.Group):
         ret += '<ul id="monsters" class="link-list">\n%s</ul>\n' % temp
 
         return ret
-    
+
     @property
     def groups(self):
         with self.db as db:

@@ -84,9 +84,9 @@ class Spell (utils.Base):
         ret += '**Duration:** %s\n\n' % self.duration
 
         ret += self.description
-        
+
         return ret
-    
+
     def page(self):
         ret = self.md()
         ret = utils.convert(ret)
@@ -161,26 +161,24 @@ class Spells (utils.Group):
         ret += self.head
 
         ret += '''
-        <div class="search-box">
+        <div class="search-box clearfix">
         <h2>Search</h2>
         '''
 
         if byClass:
-            ret += '<p class="right">\n'
+            ret += '<div class="pull-right">\n'
             for c in sorted(byClass.keys()):
-                ret += '<label><input type="checkbox" class="filter" id="{0}"> {0}</label>\n<br>\n'.format(c)
-            ret += '</p>\n'
+                ret += '<p><label><input type="checkbox" class="filter" id="{0}"> {0}</label></p>\n'.format(c)
+            ret += '</div>\n'
 
         ret += '''
         <p>Name: <input class="filter" id="name"></p>
-        <p>
-            Level: <input class="filter" id="level">
-            <br>
-            School: <input class="filter" id="type">
-            <br>
-            <label>Ritual: <input type="checkbox" class="filter" id="ritual"></label>
-        </p>
-        <p>Count: <output id="count">0</output></p>
+        <br>
+        <p>Level: <input class="filter" id="level"></p>
+        <p>School: <input class="filter" id="type"></p>
+        <p><label>Ritual: <input type="checkbox" class="filter" id="ritual"></label></p>
+        <br>
+        <p>Count: <span id="count">0</span></p>
         </div>
         '''
 
