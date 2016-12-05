@@ -37,22 +37,17 @@ class Class (utils.Base):
         self.spells = l
 
     def page(self):
-        ret = ''
+        ret = '<h1>%s</h1>' % self.name
 
         # ----#-   Class Description
         if self.description:
             temp = self.description
             temp = utils.convert(temp)
-            ret += utils.get_details(temp, 'h1')
-        else:
-            ret += '<h1>%s</h1>\n' % self.name
+            ret = utils.details_block(ret, temp)
 
         # ----#-   Class Details
-
-        summary = '<h2>Features</h2>'
-
         if self.summary:
-            short = utils.convert('**Description:** %s\n\n' % self.summary)
+            short = '**Description:** %s\n\n' % self.summary
 
         temp = self.primary_stat[:]
 
@@ -63,69 +58,65 @@ class Class (utils.Base):
 
         temp = list(map(lambda a: utils.stats[a], temp))
         if len(temp) > 1:
-            short += '<p><strong>Primary Abilities:</strong> %s</p>\n' % utils.comma_list(temp, sep)
+            short += '**Primary Abilities:** %s\n\n' % utils.comma_list(temp, sep)
         elif temp:
-            short += '<p><strong>Primary Ability:</strong> %s</p>\n' % temp[0]
+            short += '**Primary Ability:** %s\n\n' % temp[0]
 
-        short += '<h3>Hit Points</h3>\n'
+        short += '### Hit Points\n\n'
 
         if self.hit_die:
-            short += '<p><strong>Hit Dice:</strong> 1d{0} per {1} level</p>\n'.format(self.hit_die, self.name.lower())
+            short += '**Hit Dice:** 1d{0} per {1} level\n\n'.format(self.hit_die, self.name.lower())
 
             avg = math.ceil(self.hit_die / 2 + 0.5)
-            short += '<p><strong>Hit Points at 1st Level:</strong> %d + your Constitution modifier</p>\n' % (self.hit_die)
-            short += (
-                '<p><strong>Hit Points at Higher Levels:</strong>'
-                ' 1d{} (or {}) + your Constitution modifier per {} level after 1st'
-                '</p>\n'
-            ).format(self.hit_die, avg, self.name.lower())
+            short += '**Hit Points at 1st Level:** %d + your Constitution modifier\n\n' % (self.hit_die)
+            short += '**Hit Points at Higher Levels:** 1d%d (or %d) + your Constitution modifier per %s level after 1st\n\n' % (self.hit_die, avg, self.name.lower())
 
-        short += '<h3>Proficiencies</h3>\n'
+        short += '### Proficiencies\n\n'
 
         if self.combat_proficiencies:
             temp = utils.comma_list(self.combat_proficiencies)
         else:
             temp = 'None'
-        short += '<p><strong>Armor and Weapons:</strong> %s</p>\n' % temp
+        short += '**Armor and Weapons:** %s\n\n' % temp
 
         if self.tool_proficiencies:
             temp = utils.choice_list(self.tool_proficiencies)
         else:
             temp = 'None'
-        short += '<p><strong>Tools:</strong> %s</p>\n' % temp
+        short += '**Tools:** %s\n\n' % temp
 
         temp = self.saving_throws
         if temp is None:
             temp = []
         temp = list(map(lambda a: utils.stats[a], temp))
         if len(temp) == 1:
-            short += '<p><strong>Saving Throw:</strong> %s</p>\n' % temp[0]
+            short += '**Saving Throw:** %s\n\n' % temp[0]
         else:
-            short += '<p><strong>Saving Throws:</strong> %s</p>\n' % utils.comma_list(temp)
+            short += '**Saving Throws:** %s\n\n' % utils.comma_list(temp)
 
         if self.skills:
             temp = utils.choice_list(self.skills)
         else:
             temp = 'None'
-        short += '<p><strong>Skills:</strong> %s</p>\n' % temp
+        short += '**Skills:** %s\n\n' % temp
 
         if self.equipment:
-            short += '<h3>Equipment</h3>\n'
-            short += '<p>You start with the following equipment in addition to the equipment granted by your background:<p>\n<ul>\n'
+            short += '### Equipment\n\n'
+            short += 'You start with the following equipment in addition to the equipment granted by your background:\n\n'
             for item in self.equipment:
-                short += '<li>%s</li>\n' % self.equipment_row(item)
-            short += '</ul>'
+                short += '* %s\n' % self.equipment_row(item)
+        short = utils.convert(short)
 
-        group = utils.details_block(summary, short, body_class="class-head")
-        group += self.classTable()
+        ret += utils.details_block('<h2>Features</h2>', short, body_class="class-head")
+        ret += self.classTable()
 
-        ret += utils.details_group(group)
+        ret = utils.details_group(ret)
 
         # ----#-   Class Features
         ret += self.features2html()
 
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
-        
+
         ret = '<section class="container">\n%s</section>\n' % ret
 
         # ----#-   Subclass
@@ -366,7 +357,7 @@ class Classes (utils.Group):
     type = Class
     subtype = SubClass
     tablename = "classes"
-    
+
     @property
     def head(self):
         return self.get_document("Classes", "Classes")
