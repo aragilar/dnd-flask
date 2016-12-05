@@ -42,9 +42,9 @@ class Base (object):
 
     def __init__(self, parent, d, children=None):
         self.parent = parent
-        
+
         d = unjson(d)
-        
+
         for key, value in d.items():
             setattr(self, key, value)
 
@@ -60,7 +60,7 @@ class Base (object):
             s += ': '
             s += ', '.join(map(repr, self.children.values()))
         return s
-    
+
     def page(self):
         return '<div class="alert alert-danger" role="alert">This object has no <code>page</code> method.</div>'
 
@@ -129,7 +129,7 @@ class Group (object):
                 return data
         else:
             return []
-    
+
     def get_document(self, doc, default=None):
         with self.db as db:
             text = db.select('documents', conditions="name=='%s'" % doc)
@@ -146,7 +146,7 @@ class Group (object):
             else:
                 text = None
         return text
-    
+
     def add_children(self, parent):
         if self.subtype:
             parent.children = collections.OrderedDict()
@@ -361,19 +361,18 @@ def details_group(text, body_id=None, body_class=None):
 
 def popup_block(summary, body=None, summary_class=None, body_class=None):
     if body:
-        id = uuid.uuid4()
         sclass = "btn btn-default btn-sm dropdown-toggle"
         if summary_class:
             sclass += ' ' + summary_class
-        txt = '<button class="{1}" id="{0}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.format(id, sclass)
-        txt += '<span class="caret"></span> '
+        txt = '<button type="button" class="{0}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.format(sclass)
         txt += summary
+        txt += ' <span class="caret"></span>'
         txt += '</button>\n'
 
         bclass = "dropdown-menu"
         if body_class:
             bclass += ' ' + body_class
-        txt += '<div class="{1}" aria-labeledby="{0}">'.format(id, bclass)
+        txt += '<div class="{0}">'.format(bclass)
         if not body.startswith('\n'):
             txt += '\n'
         txt += body
