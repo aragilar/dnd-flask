@@ -82,11 +82,10 @@ def character_sheet(look):
     html = render_template('character_sheet.html',
         look=look,
         styles=[
-            '/static/normalize.css',
             '/static/character_sheet/character_sheet.css',
             '/static/character_sheet/%s.css' % look
         ],
-        javascript=everyjs+["/static/character_sheet/character_sheet.js"],
+        javascript=[everyjs[0], "/static/character_sheet/character_sheet.js"],
     )
 
     return html
