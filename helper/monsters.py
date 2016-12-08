@@ -123,13 +123,12 @@ class Monster (utils.Base):
         md += '\n---\n\n'
 
         if self.saving_throws:
-            title_stats = list(map(str.title, utils.stats))
             for key in self.saving_throws:
-                if key not in title_stats:
+                if key not in utils.stats:
                     raise ValueError("Invalid saving throw: %s" % key)
             md += '**Saving Throws** {}\n\n'.format(', '.join(
-                '{} {:+}'.format(stat, self.saving_throws[stat])
-                for stat in title_stats
+                '{} {:+}'.format(stat.title(), self.saving_throws[stat])
+                for stat in utils.stats
                 if stat in self.saving_throws
             ))
 
