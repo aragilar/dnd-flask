@@ -125,7 +125,12 @@ function download() {
 }
 
 function modifiers() {
-    var value = parseNumber($(this).val());
+    var elem = $(this);
+    var value = elem.val();
+    if (value === ""){
+        value = elem.prop("placeholder");
+    }
+    value = parseNumber(value);
     value -= 10;
     value /= 2;
     value = Math.floor(value);
@@ -232,7 +237,7 @@ function fillAttrs() {
         value += proficiency;
         var value2 = value + 8;
         $("#spell-attack").val(toMod(value));
-        $("spell-save").val(value2);
+        $("#spell-save").val(value2);
     }
 }
 
@@ -241,7 +246,7 @@ $(function(){
     fillAttrs();
 
     $.each(
-        Object.keys(skills),
+        statList.concat(Object.keys(skills)),
         function(x, item){
             $("#" + item).change(fillAttrs);
         }
