@@ -18,23 +18,34 @@ class Class (utils.Base):
                 d[key] = value
 
         super().__init__(parent, d)
-        self.set_class_spells()
 
-    def set_class_spells(self):
-        l = {}
-        if self.spell_list_name:
-            with self.parent.db as db:
-                temp = db.select(
-                    "spell_lists",
-                    conditions="name='%s'" % (self.spell_list_name.replace("'", "''")),
-                )
-            if temp:
-                l = dict(temp[0])
-                for key in l:
-                    l[key] = l[key].split("\v") if l[key] else []
-                    if l[key]:
-                        l[key].pop()
-        self.spells = l
+    @property
+    def spells(self):
+        if not hasattr(self, "_spells"):
+            l = utils.collections.defaultdict(list)
+            if self.spell_list_name:
+                with self.parent.db as db:
+                    temp = db.select(
+                        ["spell_lists L", "spells S"],
+                        columns=[
+                            "L.spell",
+                            "S.level",
+                        ],
+                        conditions=[
+                            "L.class='%s'" % (self.spell_list_name.replace("'", "''")),
+                            "L.spell=S.name",
+                        ],
+                        order=["L.spell"],
+                    )
+                if temp:
+                    for spell in temp:
+                        if spell["level"] == 0:
+                            level = "cantrips"
+                        else:
+                            level = str(spell["level"])
+                        l[level].append(spell["spell"])
+            self._spells = l
+        return self._spells
 
     def page(self):
         ret = '<h1>%s</h1>' % self.name
@@ -330,7 +341,6 @@ class SubClass (Class):
                 d[key] = value
 
         utils.Base.__init__(self, parent, d)
-        self.set_class_spells()
 
     def page(self):
         ret = ''
