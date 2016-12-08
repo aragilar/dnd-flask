@@ -14,6 +14,7 @@
     <style>
 body {
     padding-top: 60px;
+    padding-bottom: 13em;
 }
 
 textarea {
@@ -229,7 +230,7 @@ $(function(){
             </div>
             <div id="navbar-collapse" class="collapse navbar-collapse navbar-pills">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><input type="button" id="save" class="btn btn-default navbar-btn" value="Save"></li>
+                    <li><input type="button" id="save" class="btn btn-primary navbar-btn" value="Save"></li>
                     <!--<li><input type="reset" class="btn btn-default navbar-btn" value="Clear"></li>-->
                 </ul>
             </div>
@@ -239,20 +240,25 @@ $(function(){
         <input type="text" id="name" class="save form-control" placeholder="Name">
         <textarea id="description" class="save form-control" placeholder="Description"></textarea>
         <hr>
-        <div class="row">
-            <div class="col-sm-3">
-                <input type="text" id="size" class="save form-control" placeholder="Size">
-            </div>
-            <div class="col-sm-3">
-                <input type="text" id="type" class="save form-control" placeholder="Type">
-            </div>
-            <div class="form-group col-sm-3">
-                <label>Tags</label>
-                <div id="tags" class="row"></div>
-                <input type="button" id="add-tag" class="add-item btn btn-primary" value="Add Tag">
-            </div>
-            <div class="col-sm-3">
-                <input type="text" id="alignment" class="save form-control" placeholder="alignment">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="size">Size</label>
+                    <input type="text" id="size" class="save form-control" placeholder="Size">
+                </div>
+                <div class="col-sm-3">
+                    <label for="type">Type</label>
+                    <input type="text" id="type" class="save form-control" placeholder="Type">
+                </div>
+                <div class="form-group col-sm-3 clearfix">
+                    <label>Tags</label>
+                    <div id="tags" class="row"></div>
+                    <input type="button" id="add-tag" class="add-item btn btn-info pull-right" value="+ Tag">
+                </div>
+                <div class="col-sm-3">
+                    <label for="alignment">Alignment</label>
+                    <input type="text" id="alignment" class="save form-control" placeholder="alignment">
+                </div>
             </div>
         </div>
         <hr>
@@ -328,70 +334,70 @@ $(function(){
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Skills</label>
             <div id="skills" class="row"></div>
-            <input type="button" id="add-skill" class="add-item btn btn-primary" value="Add Skill">
+            <input type="button" id="add-skill" class="add-item btn btn-info pull-right" value="+ Skill">
         </div>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Damage Vulnerabilities</label>
             <div id="damage_vulnerabilities" class="row"></div>
-            <input type="button" id="add-damage-vulnerability" class="add-item btn btn-primary" value="Add Vulnerabilitiy">
+            <input type="button" id="add-damage-vulnerability" class="add-item btn btn-info pull-right" value="+ Vulnerabilitiy">
         </div>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Damage Resistances</label>
             <div id="damage_resistances" class="row"></div>
-            <input type="button" id="add-damage-resistance" class="add-item btn btn-primary" value="Add Resistance">
+            <input type="button" id="add-damage-resistance" class="add-item btn btn-info pull-right" value="+ Resistance">
         </div>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Damage Immunities</label>
             <div id="damage_immunities" class="row"></div>
-            <input type="button" id="add-damage-immunity" class="add-item btn btn-primary" value="Add Immunity">
+            <input type="button" id="add-damage-immunity" class="add-item btn btn-info pull-right" value="+ Immunity">
         </div>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Condition Immunities</label>
             <div id="condition_immunities" class="row"></div>
-            <input type="button" id="add-condition-immunity" class="add-item btn btn-primary" value="Add Condition">
+            <input type="button" id="add-condition-immunity" class="add-item btn btn-info pull-right" value="+ Condition">
         </div>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Senses</label>
             <div id="senses" class="row"></div>
-            <input type="button" id="add-sense" class="add-item btn btn-primary" value="Add Sense">
+            <input type="button" id="add-sense" class="add-item btn btn-info pull-right" value="+ Sense">
         </div>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Languages</label>
             <div id="languages" class="row"></div>
-            <input type="button" id="add-language" class="add-item btn btn-primary" value="Add Language">
+            <input type="button" id="add-language" class="add-item btn btn-info pull-right" value="+ Language">
         </div>
         <div class="form-group">
             <label for="experience">Experience</label>
             <input type="number" id="experience" class="save form-control" placeholder="0" min="0">
         </div>
         <hr>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Traits</label>
             <div id="traits" class="row"></div>
-            <input type="button" id="add-trait" class="add-item btn btn-primary" value="Add Trait">
+            <input type="button" id="add-trait" class="add-item btn btn-info pull-right" value="+ Trait">
         </div>
         <hr>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Actions</label>
             <div id="actions" class="row"></div>
-            <input type="button" id="add-action" class="add-item btn btn-primary" value="Add Action">
+            <input type="button" id="add-action" class="add-item btn btn-info pull-right" value="+ Action">
         </div>
         <hr>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Reactions</label>
             <div id="reactions" class="row"></div>
-            <input type="button" id="add-reaction" class="add-item btn btn-primary" value="Add Reaction">
+            <input type="button" id="add-reaction" class="add-item btn btn-info pull-right" value="+ Reaction">
         </div>
         <hr>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label>Legendary Actions</label>
             <textarea id="legendary_actions_description" class="save form-control" placeholder="Legendary actions description"></textarea>
             <br>
             <div id="traits" class="row"></div>
-            <input type="button" id="add-legendary-action" class="add-item btn btn-primary" value="Add Legendary Action">
+            <input type="button" id="add-legendary-action" class="add-item btn btn-info pull-right" value="+ Legendary Action">
         </div>
     </form>
 </body>
