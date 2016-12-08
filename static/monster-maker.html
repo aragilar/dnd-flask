@@ -36,26 +36,26 @@ var elements = {
     tags: '<div>' +
         '<input type="text" class="name form-control" placeholder="tag">' +
         '</div>',
-    skills: '<div class="col-xs-3 col-sm-2">' +
+    skills: '<div class="col-xs-6 col-sm-4">' +
         '<input type="text" class="name form-control" placeholder="Skill">' +
         '<input type="number" class="value form-control" placeholder="0">' +
         '</div>',
-    damage_vulnerabilities: '<div class="col-xs-3 col-sm-2">' +
+    damage_vulnerabilities: '<div class="col-xs-6 col-sm-4">' +
         '<input type="text" class="name form-control" placeholder="vulnerability">' +
         '</div>',
-    damage_resistances: '<div class="col-xs-3 col-sm-2">' +
+    damage_resistances: '<div class="col-xs-6 col-sm-4">' +
         '<input type="text" class="name form-control" placeholder="resistance">' +
         '</div>',
-    damage_immunities: '<div class="col-xs-3 col-sm-2">' +
+    damage_immunities: '<div class="col-xs-6 col-sm-4">' +
         '<input type="text" class="name form-control" placeholder="immunity">' +
         '</div>',
-    condition_immunities: '<div class="col-xs-3 col-sm-2">' +
+    condition_immunities: '<div class="col-xs-6 col-sm-4">' +
         '<input type="text" class="name form-control" placeholder="condition">' +
         '</div>',
-    senses: '<div class="col-xs-3 col-sm-2">' +
+    senses: '<div class="col-xs-6 col-sm-4">' +
         '<input type="text" class="name form-control" placeholder="sense">' +
         '</div>',
-    languages: '<div class="col-xs-3 col-sm-2">' +
+    languages: '<div class="col-xs-6 col-sm-4">' +
         '<input type="text" class="name form-control" placeholder="language">' +
         '</div>',
     traits: '<div class="col-xs-12">' +
@@ -80,7 +80,7 @@ function add_input(){
     var group = $(this).parent().find('.row');
     var new_item = elements[group.prop('id')];
     if (new_item === undefined){
-        new_item = '<div class="col-xs-3 col-sm-2">' +
+        new_item = '<div class="col-xs-6 col-sm-4">' +
             '<input type="text" class="name form-control" placeholder="item">' +
             '</div>';
     }
