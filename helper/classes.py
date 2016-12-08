@@ -309,13 +309,12 @@ class Class (utils.Base):
                 body += utils.details_group(temp, body_class=table_class)
                 ret += utils.details_block(summary, body)
 
-            levelname = "level_%d_spells".__mod__
-            if self.max_slot > 0 and any(self.spells.get(levelname(i)) for i in range(1, self.max_slot+1)):
+            if self.max_slot > 0 and any(self.spells.get(str(i)) for i in range(1, self.max_slot+1)):
                 summary = 'Spells'
                 body = ''
                 for x in range(1, self.max_slot + 1):
-                    if levelname(x) in self.spells:
-                        lst = self.spells[levelname(x)]
+                    if str(x) in self.spells:
+                        lst = self.spells[str(x)]
                     else:
                         lst = []
 
@@ -366,7 +365,59 @@ class SubClass (Class):
 class Classes (utils.Group):
     type = Class
     subtype = SubClass
-    tablename = "classes"
+    singular = "Class"
+    plural = "Classes"
+    tables = [
+    {
+        "table": "sub" + plural,
+        "fields": utils.collections.OrderedDict([
+            ("class", str),
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("description", str),
+            ("table_data", str),
+            ("magic", int),
+            ("max_slot", int),
+            ("max_level", int),
+            ("features", str),
+            ("spell_list_name", str),
+        ]),
+        "constraints": {
+            "class": "REFERENCES %s(name)" % plural,
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+        }
+    },
+    {
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("prestige", int),
+            ("description", str),
+            ("summary", str),
+            ("primary_stat", str),
+            ("hit_die", int),
+            ("combat_proficiencies", str),
+            ("tool_proficiencies", str),
+            ("saving_throws", str),
+            ("skills", str),
+            ("equipment", str),
+            ("table_data", str),
+            ("magic", int),
+            ("max_slot", int),
+            ("max_level", int),
+            ("features", str),
+            ("spell_list_name", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+        }
+    }
+    ]
 
     @property
     def head(self):

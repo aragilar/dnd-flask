@@ -122,7 +122,51 @@ def spellblock(name, spells=None):
 
 class Spells (utils.Group):
     type = Spell
-    tablename = "spells"
+    singular = "Spell"
+    plural = "Spells"
+    tables = [
+    {
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("level", int),
+            ("school", str),
+            ("ritual", int),
+            ("cast_time", str),
+            ("range", str),
+            ("verbal", int),
+            ("somatic", int),
+            ("material", str),
+            ("duration", str),
+            ("description", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "level": "NOT NULL",
+            "school": "NOT NULL",
+            "cast_time": "NOT NULL",
+            "range": "NOT NULL",
+            "duration": "NOT NULL",
+            "description": "NOT NULL",
+        }
+    },
+    {
+        "table": "spell_lists",
+        "fields": utils.collections.OrderedDict([
+            ("class", str),
+            ("spell", str),
+        ]),
+        "constraints": {
+            "spell": "REFERENCES spells(name)",
+        },
+        "adtl_constraints": [
+            "PRIMARY KEY(class, spell)",
+        ]
+    }
+    ]
     javascript = ['spells.js']
 
     @property

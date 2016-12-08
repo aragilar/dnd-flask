@@ -89,7 +89,28 @@ def itemblock(name, magicitems=None):
 
 class MagicItems (utils.Group):
     type = MagicItem
-    tablename = "magic_items"
+    singular = "Magic_Item"
+    plural = "Magic_Items"
+    tables = [{
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("rarity", str),
+            ("category", str),
+            ("limits", str),
+            ("attunement", str),
+            ("description", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "rarity": "NOT NULL",
+            "category": "NOT NULL",
+            "description": "NOT NULL",
+        }
+    }]
     javascript = ['magicitems.js']
 
     @property

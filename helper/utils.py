@@ -67,7 +67,9 @@ class Base (object):
 class Group (object):
     type = Base
     subtype = None
-    tablename = None
+    singular = "Group"
+    plural = "Groups"
+    tables = []
 
     def __init__(self, db=None, f=None):
         self.db = db
@@ -86,7 +88,7 @@ class Group (object):
 
     def get_data(self, columns=["*"], name=None, subtype_item=None):
         if self.db:
-            tables = ['%s C' % self.tablename, 'Sources S']
+            tables = ['%s C' % self.plural, 'Sources S']
             conditions = ["C.source==S.id"]
             params = []
             if name is not None:
@@ -101,7 +103,7 @@ class Group (object):
                 order.insert(2, "S.source_index")
 
             if self.current_filter:
-                tables.append('%s_filters F' % self.tablename)
+                tables.append('%s_filters F' % self.plural)
                 conditions.append('C.name == F.item_name')
                 conditions.append("F.filter_name == '%s'" % self.current_filter.replace("'", "''"))
 
@@ -110,7 +112,7 @@ class Group (object):
                 if self.current_filter:
                     tables[-1] = 'sub' + tables[-1]
                 conditions.append("C.%s=='%s'" % (
-                    self.type.__name__.lower(),
+                    self.singular.lower(),
                     subtype_item.replace("'", "''"),
                 ))
 
@@ -493,3 +495,25 @@ spellslots = [
     [4,3,3,3,3,2,1,1,1],
     [4,3,3,3,3,2,2,1,1],
 ]
+
+import time
+class Timer (object):
+    def __init__(self, name=None):
+        self.name = name
+
+    @property
+    def secs(self):
+        return self.start - self.end
+
+    @property
+    def msecs(self):
+        return self.secs * 1000
+
+    def __enter__(self):
+        self.start = time.time()
+        return self
+
+    def __exit__(self, *args):
+        self.end = time.time()
+        if self.name:
+            print("%s: %f ms" % (self.name, self.msecs))

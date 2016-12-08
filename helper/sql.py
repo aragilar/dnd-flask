@@ -41,6 +41,7 @@ class DB:
         self.conn = sqlite3.connect(self.file)
         self.conn.row_factory = self._to_dict # sqlite3.Row
         self.curs = self.conn.cursor()
+        self.curs.execute("PRAGMA foreign_keys = ON;")
         return self
 
     __enter__ = connect
@@ -95,12 +96,12 @@ class DB:
             ret = bool(ret)
         return ret
 
-    def create_table(self, table, fields={}, constraints=[], ignore_existing=True):
+    def create_table(self, table, fields={}, constraints={}, adtl_constraints=[], ignore_existing=True):
         r"""
         Creates a table with the give fields
         The fields are specified with a dictionary mapping the name to a type
         The type can be a string or the actual Python type desired
-        
+
         constraints is currently ignored
 
         Returns if the creation was successful
@@ -115,18 +116,24 @@ class DB:
         if sys.version_info[0] < 3:
             types[unicode] = "TEXT"
         else:
-            types[bytes] = "BLOB",
+            types[bytes] = "BLOB"
 
         ret = False
         if self.curs:
             for key, value in fields.items():
                 if value is None or isinstance(value, type):
                     value = types[value]
-                fields[key] = "{} {}".format(key, value)
+                if key in constraints:
+                    constraint = constraints[key]
+                    fields[key] = "{} {} {}".format(key, value, constraint)
+                else:
+                    fields[key] = "{} {}".format(key, value)
             statement = "CREATE TABLE "
             if ignore_existing:
                 statement += "IF NOT EXISTS "
-            statement += "{} ({})".format(table, ", ".join(fields.values()))
+            cols = list(fields.values())
+            cols += adtl_constraints
+            statement += "{} ({})".format(table, ", ".join(cols))
             statement += ";"
             try:
                 self.curs.execute(statement)
@@ -234,7 +241,7 @@ class DB:
                 table = ", ".join(table)
             if isinstance(conditions, list):
                 conditions = " AND ".join(conditions)
-            
+
             data = []
             newparams = []
             for key, value in fields.items():
@@ -293,7 +300,7 @@ class DB:
     def drop_table(self, table):
         r"""
         Drops the given table
-        
+
         Returns if the operation was successful
         """
         ret = False
@@ -318,7 +325,7 @@ class DB:
         for item in conn.iterdump():
             yield item
         conn.close()
-    
+
     def list_tables(self):
         r"""
         Returns a list of tables in the database

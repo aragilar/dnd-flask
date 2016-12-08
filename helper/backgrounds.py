@@ -47,7 +47,7 @@ class Background (utils.Base):
             body += self.variant + '\n\n'
 
         return body
-    
+
     def page(self):
         ret = self.md()
         ret = utils.convert(ret)
@@ -55,8 +55,34 @@ class Background (utils.Base):
 
 class Backgrounds (utils.Group):
     type = Background
-    tablename = "backgrounds"
-    
+    singular = "Background"
+    plural = "Backgrounds"
+    tables = [{
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("description", str),
+            ("skills", str),
+            ("tools", str),
+            ("languages", str),
+            ("equipment", str),
+            ("features", str),
+            ("characteristics", str),
+            ("personality_traits", str),
+            ("ideal", str),
+            ("bond", str),
+            ("flaw", str),
+            ("variant", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "description": "NOT NULL",
+        }
+    }]
+
     @property
     def head(self):
         return self.get_document("Backgrounds", "Backgrounds")

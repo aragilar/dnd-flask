@@ -17,13 +17,25 @@ from . import items
 slug = utils.slug
 
 class Filters (utils.Group):
-    tablename = "filters"
-    
+    singular = "Filter"
+    plural = "Filters"
+    tables = [{
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("sort_index", int),
+            ("name", str),
+        ]),
+        "constraints": {
+            "sort_index": "NOT NULL UNIQUE",
+            "name": "PRIMARY KEY NOT NULL",
+        }
+    }]
+
     def get_data(self, columns=["*"]):
         if self.db:
             with self.db as db:
                 return db.select(
-                    '%s' % self.tablename,
+                    '%s' % self.plural,
                     columns=columns,
                     order=[
                         "sort_index",
@@ -46,7 +58,20 @@ class Document (utils.Base):
 
 class Documents (utils.Group):
     type = Document
-    tablename = "documents"
+    singular = "Document"
+    plural = "Documents"
+    tables = [{
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("sort_index", int),
+            ("description", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "description": "NOT NULL",
+        }
+    }]
 
     def get_data(self, columns=["*"], name=None, subtype_item=None):
         if self.db:
@@ -59,7 +84,7 @@ class Documents (utils.Group):
                 if name is not None:
                     self.db.conn.create_function("slug", 1, slug)
                 return db.select(
-                    '%s C' % self.tablename,
+                    '%s C' % self.plural,
                     columns=list(map("C.".__add__, columns)),
                     conditions=conditions,
                     order=[
@@ -73,7 +98,22 @@ class Documents (utils.Group):
 
 class OptionalRules (utils.Group):
     type = Document
-    tablename = "optional_rules"
+    singular = "Optional_Rule"
+    plural = "Optional_Rules"
+    tables = [{
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("description", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "description": "NOT NULL",
+        }
+    }]
 
 database = None
 filter_list = Filters()
@@ -115,3 +155,52 @@ def init(file=None):
 
     for item in l:
         item(database)
+    with database as db:
+        db.curs.execute("PRAGMA journal_mode = MEMORY;")
+        db.create_table(
+            "sources",
+            utils.collections.OrderedDict([
+                ("id", str),
+                ("source_name", str),
+                ("source_index", int),
+                ("core", int),
+            ]),
+            constraints={
+                "id": "PRIMARY KEY NOT NULL",
+                "source_name": "NOT NULL",
+                "source_index": "NOT NULL",
+            },
+        )
+        db.commit()
+        for item in l:
+            for table in item.tables:
+                db.create_table(**table)
+                db.commit()
+            if type(item) not in [Filters, Documents]:
+                db.create_table(
+                    item.plural + "_filters",
+                    utils.collections.OrderedDict([
+                        ("filter_name", str),
+                        ("item_name", str),
+                    ]),
+                    constraints={
+                        "filter_name": "NOT NULL REFERENCES filters(id)",
+                        "item_name": "NOT NULL REFERENCES %s(name)" % item.plural,
+                    },
+                    adtl_constraints=["PRIMARY KEY(filter_name, item_name)"],
+                )
+                db.commit()
+            if item.subtype:
+                db.create_table(
+                    "sub%s_filters" % item.plural,
+                    utils.collections.OrderedDict([
+                        ("filter_name", str),
+                        ("item_name", str),
+                    ]),
+                    constraints={
+                        "filter_name": "NOT NULL REFERENCES filters(id)",
+                        "item_name": "NOT NULL REFERENCES sub%s(name)" % item.plural,
+                    },
+                    adtl_constraints=["PRIMARY KEY(filter_name, item_name)"],
+                )
+                db.commit()

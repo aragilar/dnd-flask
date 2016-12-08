@@ -70,14 +70,6 @@ def five_hundred(e):
         "We'll try to fix this a quickly as possible."
     ]), 500
 
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(
-        os.path.join(app.root_path, 'static', 'images'),
-        'favicon.ico',
-        mimetype='image/vnd.microsoft.icon',
-    )
-
 @app.route('/character_sheet/', defaults={'look':'standard'})
 @app.route('/character_sheet/<look>')
 def character_sheet(look):
@@ -196,7 +188,7 @@ def subthing(name, type):
     if name in type:
         item = type[name]
         html = item.page()
-        if not type.tablename in ["classes", "races"]:
+        if not type.plural in ["Classes", "Races"]:
             html = '<section class="container">\n%s</section>\n' % html
         name = item.name
     else:

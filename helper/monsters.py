@@ -280,7 +280,67 @@ def monsterblock(name, monsters=None):
 
 class Monsters (utils.Group):
     type = Monster
-    tablename = "monsters"
+    singular = "Monster"
+    plural = "Monsters"
+    tables = [
+    {
+        "table": "monster_groups",
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("description", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "description": "NOT NULL",
+        }
+    },
+    {
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("monster_group", str),
+            ("description", str),
+            ("alignment", str),
+            ("size", str),
+            ("type", str),
+            ("tags", str),
+            ("ac", str),
+            ("hp", str),
+            ("speed", str),
+            ("ability_scores", str),
+            ("saving_throws", str),
+            ("skills", str),
+            ("damage_vulnerabilities", str),
+            ("damage_resistances", str),
+            ("damage_immunities", str),
+            ("condition_immunities", str),
+            ("senses", str),
+            ("languages", str),
+            ("experience", int),
+            ("challenge_rating", int),
+            ("challenge_description", str),
+            ("traits", str),
+            ("actions", str),
+            ("reactions", str),
+            ("legendary_actions", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "monster_group": "REFERENCES monster_group(name)",
+            "alignment": "NOT NULL",
+            "size": "NOT NULL",
+            "type": "NOT NULL",
+            "ac": "NOT NULL",
+            "hp": "NOT NULL",
+            "speed": "NOT NULL",
+            "ability_scores": "NOT NULL",
+            "experience": "NOT NULL",
+        }
+    }
+    ]
     javascript = ['monsters.js']
 
     @property

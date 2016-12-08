@@ -37,6 +37,10 @@ class Weapon (utils.Base):
         else:
             ret += '<td>-</td>\n'
 
+        if not self.damage:
+            self.damage = "-"
+        if not self.damage_type:
+            self.damage_type = "-"
         ret += '<td>%s %s</td>' % (self.damage, self.damage_type)
         ret += '<td>%s lb.</td>\n' % self.weight
         ret += '<td>%s</td>\n' % ', '.join(self.properties)
@@ -46,8 +50,29 @@ class Weapon (utils.Base):
 
 class Weapons (utils.Group):
     type = Weapon
-    tablename = "weapons"
-    
+    singular = "Weapon"
+    plural = "Weapons"
+    tables = [{
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("cost", float),
+            ("damage", str),
+            ("damage_type", str),
+            ("weight", str),
+            ("properties", str),
+            ("type", str),
+            ("ranged", int),
+            ("special", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+        }
+    }]
+
     @property
     def head(self):
         with self.db as db:
@@ -155,8 +180,28 @@ class Armor (utils.Base):
 
 class Armors (utils.Group):
     type = Armor
-    tablename = "armors"
-    
+    singular = "Armor"
+    plural = "Armors"
+    tables = [{
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("type", str),
+            ("ac", str),
+            ("cost", float),
+            ("strength", int),
+            ("stealth", int),
+            ("weight", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "ac": "NOT NULL",
+        }
+    }]
+
     @property
     def head(self):
         with self.db as db:
@@ -250,8 +295,40 @@ class Item (utils.Base):
 
 class Items (utils.Group):
     type = Item
-    tablename = "items"
-    
+    singular = "Item"
+    plural = "Items"
+    tables = [
+    {
+        "table": "item_groups",
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("description", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "description": "NOT NULL",
+        }
+    },
+    {
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("item_group", str),
+            ("cost", float),
+            ("weight", str),
+            ("description", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "item_group": "REFERENCES item_groups(name)",
+        }
+    }
+    ]
+
     @property
     def head(self):
         with self.db as db:

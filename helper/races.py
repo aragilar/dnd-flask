@@ -183,8 +183,70 @@ class SubRace (Race):
 class Races (utils.Group):
     type = Race
     subtype = SubRace
-    tablename = "races"
-    
+    singular = "Race"
+    plural = "Races"
+    tables = [
+    {
+        "table": "sub" + plural,
+        "fields": utils.collections.OrderedDict([
+            ("race", str),
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("description", str),
+            ("traits_description", str),
+            ("ability_scores", str),
+            ("age", str),
+            ("alignment", str),
+            ("size", str),
+            ("size_description", str),
+            ("speed", int),
+            ("speed_description", str),
+            ("traits", str),
+            ("combat_proficiencies", str),
+            ("tool_proficiencies", str),
+            ("skills", str),
+            ("feats", str),
+            ("languages", str),
+            ("languages_description", str),
+        ]),
+        "constraints": {
+            "race": "REFERENCES %s(name)" % plural,
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+        }
+    },
+    {
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("description", str),
+            ("traits_description", str),
+            ("ability_scores", str),
+            ("age", str),
+            ("alignment", str),
+            ("size", str),
+            ("size_description", str),
+            ("speed", int),
+            ("speed_description", str),
+            ("traits", str),
+            ("combat_proficiencies", str),
+            ("tool_proficiencies", str),
+            ("skills", str),
+            ("feats", str),
+            ("languages", str),
+            ("languages_description", str),
+            ("subrace", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+        }
+    }
+    ]
+
     @property
     def head(self):
         return self.get_document("Races", "Races")

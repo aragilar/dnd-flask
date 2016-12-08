@@ -12,7 +12,7 @@ class Feat (utils.Base):
         if self.description:
             ret += self.description
         return ret
-        
+
     def page(self):
         ret = self.md()
         ret = utils.convert(ret)
@@ -33,9 +33,25 @@ def featblock(name, feats):
 
 class Feats (utils.Group):
     type = Feat
-    tablename = "feats"
+    singular = "Feat"
+    plural = "Feats"
+    tables = [{
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("prerequisite", str),
+            ("description", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "description": "NOT NULL",
+        }
+    }]
     _headfile = 'feats.md'
-    
+
     @property
     def head(self):
         return self.get_document("Feats", "Feats")
@@ -58,9 +74,25 @@ class Feats (utils.Group):
 
 class EpicBoons (Feats):
     type = Feat
-    tablename = "epic_boons"
+    singular = "Epic_Boon"
+    plural = "Epic_Boons"
+    tables = [{
+        "table": plural,
+        "fields": utils.collections.OrderedDict([
+            ("name", str),
+            ("source", str),
+            ("sort_index", int),
+            ("prerequisite", str),
+            ("description", str),
+        ]),
+        "constraints": {
+            "name": "PRIMARY KEY NOT NULL",
+            "source": "NOT NULL",
+            "description": "NOT NULL",
+        }
+    }]
     _headfile = 'epicboons.md'
-    
+
     @property
     def head(self):
         return self.get_document("Epic Boons", "Epic Boons")
