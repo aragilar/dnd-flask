@@ -149,9 +149,9 @@ function parseNumber(i) {
 }
 
 function fillAttrs() {
-	$.each(statList, function(x, item){
-		modifiers.call(document.getElementById(item));
-	});
+    $.each(statList, function(x, item){
+        modifiers.call(document.getElementById(item));
+    });
 
     var stats = {
         "str": parseNumber($("#strmod").val()),
@@ -162,7 +162,12 @@ function fillAttrs() {
         "cha": parseNumber($("#chamod").val()),
     };
 
-    var proficiency = parseNumber($("#proficiency").val());
+    var pElem = $("#proficiency");
+    var proficiency = pElem.val();
+    if (proficiency == ""){
+        proficiency = pElem.prop("placeholder");
+    }
+    var proficiency = parseNumber(proficiency);
 
     var stat;
     var tag;
@@ -200,7 +205,10 @@ function fillAttrs() {
 
         if (isProficient) {
             value += proficiency;
-            if (features.indexOf("expertise: " + key) > -1) {
+            var expertise = key.split("-").join(" ");
+            expertise = "expertise: " + expertise;
+            expertise = features.indexOf(expertise) > -1;
+            if (expertise) {
                 value += proficiency;
             }
         } else if (jack && key != stat + "save") {
