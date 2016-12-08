@@ -53,9 +53,6 @@ class Monster (utils.Base):
             if d[key] is None:
                 d[key] = value
 
-        if d["legendary_actions"] is not None:
-            d["legendary_actions"] = json.loads(d["legendary_actions"])
-
         super().__init__(parent, d)
 
     def dict(self):
@@ -217,12 +214,11 @@ class Monster (utils.Base):
             if temp:
                 if name:
                     md += '## {}\n\n'.format(name)
+                if self.legendary_actions_description:
+                    md += self.legendary_actions_description
                 md += '<dl markdown="1">\n'
                 for item in temp:
-                    if isinstance(item, list):
-                        md += '<dt>{}</dt>\n<dd>{}</dd>\n'.format(item[0], '\n'.join(item[1:]).lstrip())
-                    else:
-                        md += item + '\n\n'
+                    md += '<dt>{}</dt>\n<dd>{}</dd>\n'.format(item[0], '\n'.join(item[1:]).lstrip())
                 md += '</dl>\n'
 
         return md
