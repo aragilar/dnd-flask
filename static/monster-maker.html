@@ -57,19 +57,19 @@ var elements = {
     languages: '<div class="col-xs-3 col-sm-2">' +
         '<input type="text" class="name form-control" placeholder="language">' +
         '</div>',
-    traits: '<div class="col-md-6">' +
+    traits: '<div class="col-xs-12">' +
         '<input type="text" class="name form-control" placeholder="Trait">' +
         '<textarea class="value form-control" placeholder="Trait description"></textarea>' +
         '</div>',
-    actions: '<div class="col-md-6">' +
+    actions: '<div class="col-xs-12">' +
         '<input type="text" class="name form-control" placeholder="Action">' +
         '<textarea class="value form-control" placeholder="Action description"></textarea>' +
         '</div>',
-    reactions: '<div class="col-md-6">' +
+    reactions: '<div class="col-xs-12">' +
         '<input type="text" class="name form-control" placeholder="Reaction">' +
         '<textarea class="value form-control" placeholder="Reaction description"></textarea>' +
         '</div>',
-    legendary_actions: '<div class="col-md-6">' +
+    legendary_actions: '<div class="col-xs-12">' +
         '<input type="text" class="name form-control" placeholder="Legendary Action">' +
         '<textarea class="value form-control" placeholder="Legendary action description"></textarea>' +
         '</div>',
@@ -98,7 +98,7 @@ function add_input(){
 
 function remove_empty(){
     var elem = $(this);
-    if (elem.val() == ''){
+    if (elem.val().trim() == ''){
         elem.parent().remove();
     }
 }
@@ -107,7 +107,7 @@ function save(){
 	var data = {};
 	$('.save').each(function(){
 		var elem = $(this);
-		var value = elem.val();
+		var value = elem.val().trim();
 		if (value != ''){
 			if (elem.prop('type') == 'number') {
 				value = parseInt(value);
@@ -122,7 +122,7 @@ function save(){
     data.ability_scores = {};
 	$('#ability_scores .form-control').each(function(){
         var elem = $(this);
-        var value = parseInt(elem.val());
+        var value = parseInt(elem.val().trim());
         if (!isNaN(value)){
             data.ability_scores[elem.prop('id')] = value;
         }
@@ -134,7 +134,7 @@ function save(){
     var saving_throws = {};
     $('#saving_throws .form-control').each(function(){
         var elem = $(this);
-        var value = parseInt(elem.val());
+        var value = parseInt(elem.val().trim());
         if (!isNaN(value)){
             saving_throws[elem.prop('id').slice(0, 3)] = value;
         }
@@ -156,7 +156,7 @@ function save(){
         var temp = [];
         $('#' + name + ' .name').each(function(){
     		var elem = $(this);
-    		var value = elem.val();
+    		var value = elem.val().trim();
     		if (value != ''){
     			if (elem.prop('type') == 'number') {
     				value = parseInt(value);
@@ -180,9 +180,9 @@ function save(){
         var temp = {};
         $('#' + name + ' > div').each(function(){
             var elem = $(this);
-            var name = elem.find('.name').val();
+            var name = elem.find('.name').val().trim();
             elem = elem.find('.value');
-            var value = elem.val();
+            var value = elem.val().trim();
             if (value != ''){
                 if (elem.prop('type') == 'number') {
                     value = parseInt(value);
