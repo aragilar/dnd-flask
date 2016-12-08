@@ -1,15 +1,15 @@
-var filename = 'Character.json';
+var filename = "Character.json";
 
 var continuity = true;
 var out = {};
 
 var statList = [
-    'str',
-    'dex',
-    'con',
-    'int',
-    'wis',
-    'cha',
+    "str",
+    "dex",
+    "con",
+    "int",
+    "wis",
+    "cha",
 ];
 
 var skills = {
@@ -39,43 +39,12 @@ var skills = {
     "survival": "wis"
 };
 
-function getValue(id, fail) {
-    if (fail === undefined) {
-        fail = 0;
-    }
-
-    var value;
-    var elem;
-    if (id instanceof HTMLElement) {
-        elem = id;
-        id = elem.getAttribute("id");
-    } else {
-        elem = document.getElementById(id);
-    }
-    if (elem) {
-        value = elem.value;
-        if (value === "" && elem.hasAttribute("placeholder")) {
-            value = elem.getAttribute("placeholder");
-        }
-    } else {
-        value = fail;
-    }
-    return value;
-}
-
-function setValue(id, value) {
-    var elem = document.getElementById(id);
-    if (elem) {
-        elem.value = value;
-    }
-}
-
 function toMod(i) {
     var s = i.toString();
     if (i > 0) {
-        s = '+' + s;
+        s = "+" + s;
     } else if (i == 0) {
-        s = '±' + s;
+        s = "±" + s;
     }
     return s;
 }
@@ -94,20 +63,19 @@ function upload() {
                 if (continuity) {
                     out = data;
                 }
-                var tags = document.getElementsByClassName('save');
-                for (var x = 0; x < tags.length; x++){
-                    var tag = tags[x];
+                var tags = $(".save").each(function(){
+                    var tag = $(this);
                     tag.value = "";
-                }
+                });
                 for (var key in data) {
-                    var tag = document.getElementById(key);
-                    if (tag) {
-                        if (tag.type == "checkbox" || tag.type == "radio") {
-                            tag.checked = Boolean(data[key]);
+                    var tag = $("#" + key);
+                    if (tag.length) {
+                        if (tag.attr("type") == "checkbox" || tag.attr("type") == "radio") {
+                            tag.prop("checked", Boolean(data[key]));
                         } else {
-                            tag.value = data[key];
+                            tag.val(data[key]);
                             if (statList.indexOf(key) >= 0) {
-                                modifiers(tag);
+                                modifiers.call(tag);
                             }
                         }
                     }
@@ -125,46 +93,45 @@ function upload() {
 }
 
 function download() {
-    var tags = document.getElementsByClassName('save');
-    //var tags = document.querySelectorAll(".save");
+    var tags = $(".save");
     var data;
     if (continuity) {
         data = out;
     } else {
         data = {};
     }
-    
-    for (var x = 0; x < tags.length; x++) {
-        var tag = tags[x];
-        if (tag.type === "checkbox") {
-            data[tag.id] = tag.checked;
+
+    tags.each(function(){
+        var tag = $(this);
+        if (tag.prop("type") === "checkbox") {
+            data[tag.prop("id")] = Boolean(tag.prop("checked"));
         } else {
-            data[tag.id] = tag.value;
+            data[tag.prop("id")] = tag.val();
         }
-    }
-    
+    });
+
     data = JSON.stringify(data, null, 4);
-    /*alert(data);*/
-    
-    /*var element = document.getElementById('downloadlink');*/
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
-    element.setAttribute('download', filename);
-    element.setAttribute('target', '_blank');
-    //element.style.display = 'none';
-    //document.body.appendChild(element);
+
+    var blob = new Blob([data], {type: "text/plain"});
+    var href = window.URL.createObjectURL(blob);
+    var element = document.createElement("a");
+    element.href = href;
+    element.download = filename;
+    element.target = "_blank";
+    document.body.appendChild(element);
     element.click();
-    //document.body.removeChild(element);
+    document.body.removeChild(element);
+    window.URL.revokeObjectURL(blob);
 }
 
 function modifiers() {
-    var value = getValue(this);
+    var value = parseNumber($(this).val());
     value -= 10;
     value /= 2;
     value = Math.floor(value);
-    var tag = document.getElementById(this.id + 'mod');
-    if (tag) {
-        tag.value = toMod(value);
+    var tag = $("#" + this.id + "mod");
+    if (tag.length) {
+        tag.val(toMod(value));
     }
 }
 
@@ -177,20 +144,20 @@ function parseNumber(i) {
 }
 
 function fillAttrs() {
-	statList.forEach(function(item){
+	$.each(statList, function(x, item){
 		modifiers.call(document.getElementById(item));
 	});
 
     var stats = {
-        "str": parseNumber(getValue('strmod')),
-        "dex": parseNumber(getValue('dexmod')),
-        "con": parseNumber(getValue('conmod')),
-        "int": parseNumber(getValue('intmod')),
-        "wis": parseNumber(getValue('wismod')),
-        "cha": parseNumber(getValue('chamod'))
+        "str": parseNumber($("#strmod").val()),
+        "dex": parseNumber($("#dexmod").val()),
+        "con": parseNumber($("#conmod").val()),
+        "int": parseNumber($("#intmod").val()),
+        "wis": parseNumber($("#wismod").val()),
+        "cha": parseNumber($("#chamod").val()),
     };
-    
-    var proficiency = parseNumber(getValue('proficiency'));
+
+    var proficiency = parseNumber($("#proficiency").val());
 
     var stat;
     var tag;
@@ -198,7 +165,7 @@ function fillAttrs() {
     var checkbox;
     var isProficient;
 
-    var features = getValue('features', '').toLowerCase();
+    var features = $("#features", "").val().toLowerCase();
     var half = parseInt(proficiency / 2);
     var jack = features.indexOf("jack of all trades") > -1;
     if (jack) {
@@ -213,18 +180,15 @@ function fillAttrs() {
         athlete = 0;
     }
     var athleteSkills = statList.slice(0,3);
-    
+
     for (var key in skills) {
         stat = skills[key];
-        tag = document.getElementById(key + '-value');
-        /*if (!tag){
-            tag = document.getElementById(key);
-        }*/
+        tag = $("#" + key + "-value");
         value = stats[stat];
 
-        checkbox = document.getElementById(key)
-        if (checkbox) {
-            isProficient = checkbox.checked;
+        checkbox = $("#" + key)
+        if (checkbox.length) {
+            isProficient = checkbox.prop("checked");
         } else {
             isProficient = false;
         }
@@ -234,63 +198,59 @@ function fillAttrs() {
             if (features.indexOf("expertise: " + key) > -1) {
                 value += proficiency;
             }
-        } else if (jack && key != stat + 'save') {
+        } else if (jack && key != stat + "save") {
             value += jack;
         } else if (athlete
-            && key != stat + 'save'
+            && key != stat + "save"
             && athleteSkills.indexOf(stat) > -1) {
             value += athlete;
         }
         if (tag) {
-            tag.value = toMod(value);
+            tag.val(toMod(value));
         }
     }
 
-    value = stats['dex'];
+    value = stats["dex"];
     if (jack) {
         value += jack;
     } else if (athlete) {
         value += athlete;
     }
-    setValue('initiative', toMod(value));
+    $("#initiative").val(toMod(value));
 
-    value = parseNumber(getValue('perception-value'));
+    value = parseNumber($("#perception-value").val());
     value += 10;
-    setValue('passive-perception', value);
+    $("#passive-perception").val(value);
 
-    var magic = getValue('spellcasting-ability', 'aaa');
-    magic = magic.slice(0, 3).toLowerCase();
+    var magic = $("#spellcasting-ability").val();
+    if (magic.length > 3){
+        magic = magic.slice(0, 3);
+    }
+    magic = magic.toLowerCase();
     if (magic in stats) {
         value = stats[magic];
         value += proficiency;
         var value2 = value + 8;
-        setValue('spell-attack', toMod(value));
-        setValue('spell-save', value2);
+        $("#spell-attack").val(toMod(value));
+        $("spell-save").val(value2);
     }
 }
 
-window.onload = function(){
+$(function(){
     var elem;
     fillAttrs();
-    
-    var fs = {
-        'fileselect': ['change', upload],
-        'calc': ['click', fillAttrs],
-        'save': ['click', download]
-    };
 
-    statList.concat(Object.keys(skills)).concat([
-        'proficiency',
-        'features',
-        'spellcasting-ability'
-    ]).forEach(function(item){
-        fs[item] = ['change', fillAttrs];
-    });
-
-    for (var key in fs) {
-        elem = document.getElementById(key);
-        if (elem) {
-            elem.addEventListener(fs[key][0], fs[key][1]);
+    $.each(
+        Object.keys(skills),
+        function(x, item){
+            $("#" + item).change(fillAttrs);
         }
-    }
-}
+    );
+
+    $("#fileselect").change(upload);
+    $("#save").click(download);
+    $("#calc").click(fillAttrs);
+    $("#proficiency").change(fillAttrs);
+    $("#features").change(fillAttrs);
+    $("#spellcasting-ability").change(fillAttrs);
+})
