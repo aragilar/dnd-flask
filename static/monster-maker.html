@@ -1,0 +1,397 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monster Maker</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+body {
+    padding-top: 60px;
+}
+
+textarea {
+    resize: none;
+    height: 10em !important;
+}
+
+#name {
+    font-size: 2.5em;
+}
+
+#size, #type, #alignment {
+    font-style: italic;
+}
+    </style>
+    <script>
+var elements = {
+    tags: '<div>' +
+        '<input type="text" class="name form-control" placeholder="tag">' +
+        '</div>',
+    skills: '<div class="col-xs-3 col-sm-2">' +
+        '<input type="text" class="name form-control" placeholder="Skill">' +
+        '<input type="number" class="value form-control" placeholder="0">' +
+        '</div>',
+    damage_vulnerabilities: '<div class="col-xs-3 col-sm-2">' +
+        '<input type="text" class="name form-control" placeholder="vulnerability">' +
+        '</div>',
+    damage_resistances: '<div class="col-xs-3 col-sm-2">' +
+        '<input type="text" class="name form-control" placeholder="resistance">' +
+        '</div>',
+    damage_immunities: '<div class="col-xs-3 col-sm-2">' +
+        '<input type="text" class="name form-control" placeholder="immunity">' +
+        '</div>',
+    condition_immunities: '<div class="col-xs-3 col-sm-2">' +
+        '<input type="text" class="name form-control" placeholder="condition">' +
+        '</div>',
+    senses: '<div class="col-xs-3 col-sm-2">' +
+        '<input type="text" class="name form-control" placeholder="sense">' +
+        '</div>',
+    languages: '<div class="col-xs-3 col-sm-2">' +
+        '<input type="text" class="name form-control" placeholder="language">' +
+        '</div>',
+    traits: '<div class="col-md-6">' +
+        '<input type="text" class="name form-control" placeholder="Trait">' +
+        '<textarea class="value form-control" placeholder="Trait description"></textarea>' +
+        '</div>',
+    actions: '<div class="col-md-6">' +
+        '<input type="text" class="name form-control" placeholder="Action">' +
+        '<textarea class="value form-control" placeholder="Action description"></textarea>' +
+        '</div>',
+    reactions: '<div class="col-md-6">' +
+        '<input type="text" class="name form-control" placeholder="Reaction">' +
+        '<textarea class="value form-control" placeholder="Reaction description"></textarea>' +
+        '</div>',
+    legendary_actions: '<div class="col-md-6">' +
+        '<input type="text" class="name form-control" placeholder="Legendary Action">' +
+        '<textarea class="value form-control" placeholder="Legendary action description"></textarea>' +
+        '</div>',
+}
+
+function add_input(){
+    var group = $(this).parent().find('.row');
+    var new_item = elements[group.prop('id')];
+    if (new_item === undefined){
+        new_item = '<div class="col-xs-3 col-sm-2">' +
+            '<input type="text" class="name form-control" placeholder="item">' +
+            '</div>';
+    }
+    new_item = $(new_item);
+    group.append(new_item);
+    new_item.find('.name')
+		.focusout(remove_empty)
+		.keydown(function(event){
+			var keyCode = (event.keyCode ? event.keyCode : event.which);
+			if (keyCode == 13) { // enter key
+				$(this).focusout();
+			}
+		})
+		.focus();
+}
+
+function remove_empty(){
+    var elem = $(this);
+    if (elem.val() == ''){
+        elem.parent().remove();
+    }
+}
+
+function save(){
+	var data = {};
+	$('.save').each(function(){
+		var elem = $(this);
+		var value = elem.val();
+		if (value != ''){
+			if (elem.prop('type') == 'number') {
+				value = parseInt(value);
+			}
+			data[elem.prop('id')] = value;
+		}
+	});
+    if (data.name === undefined){
+        data.name = '';
+    }
+
+    data.ability_scores = {};
+	$('#ability_scores .form-control').each(function(){
+        var elem = $(this);
+        var value = parseInt(elem.val());
+        if (!isNaN(value)){
+            data.ability_scores[elem.prop('id')] = value;
+        }
+        else {
+            data.ability_scores[elem.prop('id')] = parseInt(elem.prop('placeholder'));
+        }
+    });
+
+    var saving_throws = {};
+    $('#saving_throws .form-control').each(function(){
+        var elem = $(this);
+        var value = parseInt(elem.val());
+        if (!isNaN(value)){
+            saving_throws[elem.prop('id').slice(0, 3)] = value;
+        }
+    });
+    if (Object.keys(saving_throws).length){
+        data.saving_throws = saving_throws;
+    }
+
+    var lists = [
+        'tags',
+        'damage_vulnerabilities',
+        'damage_resistances',
+        'damage_immunities',
+        'condition_immunities',
+        'senses',
+        'languages',
+    ];
+    lists.forEach(function(name){
+        var temp = [];
+        $('#' + name + ' .name').each(function(){
+    		var elem = $(this);
+    		var value = elem.val();
+    		if (value != ''){
+    			if (elem.prop('type') == 'number') {
+    				value = parseInt(value);
+    			}
+    			temp.push(value);
+    		}
+        });
+        if (temp.length){
+            data[name] = temp;
+        }
+    });
+
+    var dicts = [
+        'skills',
+        'traits',
+        'actions',
+        'reactions',
+        'legendary_actions',
+    ];
+    dicts.forEach(function(name){
+        var temp = {};
+        $('#' + name + ' > div').each(function(){
+            var elem = $(this);
+            var name = elem.find('.name').val();
+            elem = elem.find('.value');
+            var value = elem.val();
+            if (value != ''){
+                if (elem.prop('type') == 'number') {
+                    value = parseInt(value);
+                }
+                temp[name] = value;
+            }
+        });
+        if (Object.keys(temp).length){
+            data[name] = temp;
+        }
+    });
+
+    var filename = data.name.toLowerCase() + '.json';
+    data = JSON.stringify(data, null, 4);
+    var blob = new Blob([data], {type: 'text/plain'});
+    var href = window.URL.createObjectURL(blob);
+    var element = document.createElement('a');
+    element.href = href;
+    element.download = filename;
+    element.target = '_blank';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    window.URL.revokeObjectURL(blob);
+}
+
+$(function(){
+    $('.add-item').click(add_input);
+	$('#save').click(save);
+});
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Monster Maker</a>
+            </div>
+            <div id="navbar-collapse" class="collapse navbar-collapse navbar-pills">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><input type="button" id="save" class="btn btn-default navbar-btn" value="Save"></li>
+                    <!--<li><input type="reset" class="btn btn-default navbar-btn" value="Clear"></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form class="container">
+        <input type="text" id="name" class="save form-control" placeholder="Name">
+        <textarea id="description" class="save form-control" placeholder="Description"></textarea>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="text" id="size" class="save form-control" placeholder="Size">
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="type" class="save form-control" placeholder="Type">
+            </div>
+            <div class="form-group col-sm-3">
+                <label>Tags</label>
+                <div id="tags" class="row"></div>
+                <input type="button" id="add-tag" class="add-item btn btn-primary" value="Add Tag">
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="alignment" class="save form-control" placeholder="alignment">
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="ac">Armor Class</label>
+            <input type="text" id="ac" class="save form-control" placeholder="AC">
+        </div>
+        <div class="form-group">
+            <label for="hp">Hit Points</label>
+            <input type="text" id="hp" class="save form-control" placeholder="HP">
+        </div>
+        <div class="form-group">
+            <label for="speed">Speed</label>
+            <input type="text" id="speed" class="save form-control" placeholder="speed">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label>Ability Scores</label>
+            <div id="ability_scores" class="row">
+                <div class="col-xs-4 col-sm-2">
+                    <label for="str">STR</label>
+                    <input type="number" id="str" class="form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="dex">DEX</label>
+                    <input type="number" id="dex" class="form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="con">CON</label>
+                    <input type="number" id="con" class="form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="int">INT</label>
+                    <input type="number" id="int" class="form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="wis">WIS</label>
+                    <input type="number" id="wis" class="form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="cha">CHA</label>
+                    <input type="number" id="cha" class="form-control" placeholder="10" min="1" max="30">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label>Saving Throws</label>
+            <div id="saving_throws" class="row">
+                <div class="col-xs-4 col-sm-2">
+                    <label for="strsave">STR save</label>
+                    <input type="number" id="strsave" class="form-control" placeholder="0">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="dex">DEX save</label>
+                    <input type="number" id="dexsave" class="form-control" placeholder="0">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="con">CON save</label>
+                    <input type="number" id="consave" class="form-control" placeholder="0">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="int">INT save</label>
+                    <input type="number" id="intsave" class="form-control" placeholder="0">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="wis">WIS save</label>
+                    <input type="number" id="wissave" class="form-control" placeholder="0">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="cha">CHA save</label>
+                    <input type="number" id="chasave" class="form-control" placeholder="0">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Skills</label>
+            <div id="skills" class="row"></div>
+            <input type="button" id="add-skill" class="add-item btn btn-primary" value="Add Skill">
+        </div>
+        <div class="form-group">
+            <label>Damage Vulnerabilities</label>
+            <div id="damage_vulnerabilities" class="row"></div>
+            <input type="button" id="add-damage-vulnerability" class="add-item btn btn-primary" value="Add Vulnerabilitiy">
+        </div>
+        <div class="form-group">
+            <label>Damage Resistances</label>
+            <div id="damage_resistances" class="row"></div>
+            <input type="button" id="add-damage-resistance" class="add-item btn btn-primary" value="Add Resistance">
+        </div>
+        <div class="form-group">
+            <label>Damage Immunities</label>
+            <div id="damage_immunities" class="row"></div>
+            <input type="button" id="add-damage-immunity" class="add-item btn btn-primary" value="Add Immunity">
+        </div>
+        <div class="form-group">
+            <label>Condition Immunities</label>
+            <div id="condition_immunities" class="row"></div>
+            <input type="button" id="add-condition-immunity" class="add-item btn btn-primary" value="Add Condition">
+        </div>
+        <div class="form-group">
+            <label>Senses</label>
+            <div id="senses" class="row"></div>
+            <input type="button" id="add-sense" class="add-item btn btn-primary" value="Add Sense">
+        </div>
+        <div class="form-group">
+            <label>Languages</label>
+            <div id="languages" class="row"></div>
+            <input type="button" id="add-language" class="add-item btn btn-primary" value="Add Language">
+        </div>
+        <div class="form-group">
+            <label for="experience">Experience</label>
+            <input type="number" id="experience" class="save form-control" placeholder="0" min="0">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label>Traits</label>
+            <div id="traits" class="row"></div>
+            <input type="button" id="add-trait" class="add-item btn btn-primary" value="Add Trait">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label>Actions</label>
+            <div id="actions" class="row"></div>
+            <input type="button" id="add-action" class="add-item btn btn-primary" value="Add Action">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label>Reactions</label>
+            <div id="reactions" class="row"></div>
+            <input type="button" id="add-reaction" class="add-item btn btn-primary" value="Add Reaction">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label>Legendary Actions</label>
+            <textarea id="legendary_actions_description" class="save form-control" placeholder="Legendary actions description"></textarea>
+            <br>
+            <div id="traits" class="row"></div>
+            <input type="button" id="add-legendary-action" class="add-item btn btn-primary" value="Add Legendary Action">
+        </div>
+    </form>
+</body>
+</html>

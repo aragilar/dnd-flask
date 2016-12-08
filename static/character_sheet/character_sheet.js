@@ -111,7 +111,6 @@ function download() {
     });
 
     data = JSON.stringify(data, null, 4);
-
     var blob = new Blob([data], {type: "text/plain"});
     var href = window.URL.createObjectURL(blob);
     var element = document.createElement("a");
