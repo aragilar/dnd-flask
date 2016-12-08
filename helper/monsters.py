@@ -172,7 +172,7 @@ class Monster (utils.Base):
                 ', '.join(self.condition_immunities)
             )
 
-        if temp:
+        if self.senses:
             temp = self.senses.copy()
         else:
             temp = []
