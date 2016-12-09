@@ -4,6 +4,8 @@ import sys
 import os
 import re
 import logging
+import json
+from collections import OrderedDict
 
 from flask import (
     Flask,
@@ -309,44 +311,33 @@ def groups_page(type):
 
     return final_pass(html)
 
-@app.route('/test/<type>')
-def test_upload(type):
+@app.route('/test/<type>', methods=['GET', 'POST'])
+def test(type):
     data = {helper.slug(item.singular).replace('_', '-'): item for item in helper.l}.get(type)
 
     if not data:
         return abort(404)
 
-    html = render_template('test-upload.html',
-        styles=everystyle,
-        javascript=everyjs,
-        name=data.singular.replace('_', ' '),
-    )
-
-    return final_pass(html)
-
-@app.route('/test/<type>', methods=['POST'])
-def test(type):
-    data = {helper.slug(item.singular).replace('_', '-'): item for item in helper.l}.get(type)
-
     file = request.files.get('files[]')
     if not file:
-        return redirect(request.url)
-
-    if data:
-        file = file.read().decode('utf-8')
-        html = data.type(data, helper.utils.json.loads(file, object_pairs_hook=helper.utils.collections.OrderedDict)).page()
+        html = render_template('test-upload.html',
+            styles=everystyle,
+            javascript=everyjs,
+            name=data.singular.replace('_', ' '),
+        )
     else:
-        html = None
+        file = file.read().decode('utf-8')
+        file = json.loads(file, object_pairs_hook=OrderedDict)
+        html = data.type(data, file).page()
+        html = render_template('test.html',
+            styles=everystyle,
+            javascript=everyjs,
+            name=data.singular.replace('_', ' '),
+            content=html,
+        )
 
     if not html:
         return abort(404)
-
-    html = render_template('test.html',
-        styles=everystyle,
-        javascript=everyjs,
-        name=data.singular.replace('_', ' '),
-        content=html,
-    )
 
     return final_pass(html)
 
