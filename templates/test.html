@@ -1,0 +1,9 @@
+{% extends "dnd-base.html" %}
+{% block title %}Upload {{ name }} Test{% endblock %}
+{% block content %}
+<section class="container">
+    <h1>{{ name }} Test</h1>
+    <hr>
+    {{ content|safe }}
+</section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "dnd-base.html" %}
+{% block title %}Upload {{ name }} Test{% endblock %}
+{% block content %}
+<form class="container" method="POST" enctype="multipart/form-data">
+    <h1>{{ name }} Test</h1>
+    <div class="form-group">
+        <label for="fileselect">Upload a {{ name }} file</label>
+        <input id="fileselect" class="form-control" type="file" name="files[]">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Upload">
+</form>
+{% endblock %}

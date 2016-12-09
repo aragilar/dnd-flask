@@ -131,30 +131,28 @@ armor_list = items.Armors()
 optionalrule_list = OptionalRules()
 item_list = items.Items()
 
+l = [
+    filter_list,
+    class_list,
+    race_list,
+    document_list,
+    background_list,
+    spell_list,
+    feat_list,
+    epicboon_list,
+    monster_list,
+    magicitem_list,
+    weapon_list,
+    armor_list,
+    optionalrule_list,
+    item_list,
+]
+
 def init(file=None):
     global database
 
-    l = [
-        filter_list,
-        class_list,
-        race_list,
-        document_list,
-        background_list,
-        spell_list,
-        feat_list,
-        epicboon_list,
-        monster_list,
-        magicitem_list,
-        weapon_list,
-        armor_list,
-        optionalrule_list,
-        item_list,
-    ]
-
     database = sql.DB(file)
 
-    for item in l:
-        item(database)
     with database as db:
         db.curs.execute("PRAGMA journal_mode = MEMORY;")
         db.create_table(
@@ -204,3 +202,6 @@ def init(file=None):
                     adtl_constraints=["PRIMARY KEY(filter_name, item_name)"],
                 )
                 db.commit()
+
+    for item in l:
+        item(database)

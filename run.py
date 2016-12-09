@@ -5,7 +5,15 @@ import os
 import re
 import logging
 
-from flask import Flask, render_template, url_for, abort, request, send_from_directory
+from flask import (
+    Flask,
+    render_template,
+    url_for,
+    abort,
+    request,
+    send_from_directory,
+    redirect,
+)
 
 import helper
 
@@ -297,6 +305,47 @@ def groups_page(type):
         javascript=everyjs,
         title='Groups (%s)' % type,
         content='<section class="container">\n%s</section>' % html,
+    )
+
+    return final_pass(html)
+
+@app.route('/test/<type>')
+def test_upload(type):
+    data = helper.slug_lists.get(type)
+
+    if not data:
+        return abort(404)
+
+    html = render_template('test-upload.html',
+        styles=everystyle,
+        javascript=everyjs,
+        name=data.singular.replace('_', ' '),
+    )
+
+    return final_pass(html)
+
+@app.route('/test/<type>', methods=['POST'])
+def test(type):
+    data = {slug(item.singular).replace('_', '-'): item for item in helper.l}.get(type)
+
+    file = request.files.get('files[]')
+    if not file:
+        return redirect(request.url)
+
+    if data:
+        file = file.read().decode('utf-8')
+        html = data.type(data, helper.utils.json.loads(file, object_pairs_hook=helper.utils.collections.OrderedDict)).page()
+    else:
+        html = None
+
+    if not html:
+        return abort(404)
+
+    html = render_template('test.html',
+        styles=everystyle,
+        javascript=everyjs,
+        name=data.plural.replace('_', ' '),
+        content=html,
     )
 
     return final_pass(html)

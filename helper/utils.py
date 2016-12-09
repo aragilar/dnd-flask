@@ -45,6 +45,10 @@ class Base (object):
 
         d = unjson(d)
 
+        for key in [a for a in parent.tables if a['table'] == parent.plural][0]['fields']:
+            if key not in d:
+                d[key] = None
+
         for key, value in d.items():
             setattr(self, key, value)
 

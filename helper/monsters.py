@@ -50,7 +50,7 @@ class Monster (utils.Base):
             "challenge_description": "{cr} ({xp} XP)",
             "experience": 0,
         }.items():
-            if d[key] is None:
+            if key not in d or d[key] is None:
                 d[key] = value
 
         super().__init__(parent, d)
