@@ -2,7 +2,7 @@ import os
 import math
 import copy
 import re
-import json
+from collections import OrderedDict, defaultdict
 
 from . import utils
 from . import spells
@@ -22,7 +22,7 @@ class Class (utils.Base):
     @property
     def spells(self):
         if not hasattr(self, "_spells"):
-            l = utils.collections.defaultdict(list)
+            l = defaultdict(list)
             if self.spell_list_name:
                 with self.parent.db as db:
                     temp = db.select(
@@ -370,7 +370,7 @@ class Classes (utils.Group):
     tables = [
     {
         "table": "sub" + plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": OrderedDict([
             ("class", str),
             ("name", str),
             ("source", str),
@@ -391,7 +391,7 @@ class Classes (utils.Group):
     },
     {
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),

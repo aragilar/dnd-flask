@@ -84,8 +84,8 @@ class Race (utils.Base):
 
         # ----#-   Race Traits
         if self.traits:
-            for trait in self.traits:
-                ret += '***%s.*** %s\n\n' % (trait[0], '\n'.join(trait[1:]))
+            for name, trait in self.traits.items():
+                ret += '***%s.*** %s\n\n' % (name, trait.lstrip())
 
         # ----#-   Race Weapons
         if self.combat_proficiencies:
@@ -188,7 +188,7 @@ class Races (utils.Group):
     tables = [
     {
         "table": "sub" + plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("race", str),
             ("name", str),
             ("source", str),
@@ -218,7 +218,7 @@ class Races (utils.Group):
     },
     {
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),

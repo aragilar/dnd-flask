@@ -1,11 +1,11 @@
 import os
 import re
-import collections
 import functools
 import copy
 import multiprocessing.pool
 import json
 import uuid
+from collections import OrderedDict, defaultdict
 
 ##import markdown
 import markdown2
@@ -155,7 +155,7 @@ class Group (object):
 
     def add_children(self, parent):
         if self.subtype:
-            parent.children = collections.OrderedDict()
+            parent.children = OrderedDict()
             data = self.get_data(subtype_item=parent.name)
             for sub in data:
                 sub = self.subtype(self, sub)
@@ -176,7 +176,7 @@ class Group (object):
     def dict(self):
         items = list(self.values())
         names = (item.name for item in items)
-        return collections.OrderedDict(zip(names, items))
+        return OrderedDict(zip(names, items))
 
     def items(self):
         return self.dict().items()
@@ -213,7 +213,7 @@ class Group (object):
         return SpellsClass(self.db)
 
 def unjson(d):
-    new = {}
+    new = OrderedDict()
     for key, value in d.items():
         if isinstance(value, str):
             if isinstance(value, str) and value.endswith("\v"):
@@ -221,21 +221,21 @@ def unjson(d):
                 item.pop()
                 value = item
             elif (value.startswith("{") and value.endswith("}")
-                    or value.startswith("[[") and value.endswith("]]")):
-                value = json.loads(value)
+                    or value.startswith("[") and value.endswith("]")):
+                value = json.loads(value, object_pairs_hook=OrderedDict)
         new[key] = value
     return new
 
 def tojson(d):
-    new = {}
+    new = OrderedDict()
     for key, value in d.items():
         if isinstance(value, dict):
-            value = json.dumps(value, sort_keys=True)
+            value = json.dumps(value)
         elif isinstance(value, list):
             try:
                 item = "\v".join(value) + "\v"
             except TypeError:
-                item = json.dumps(value, sort_keys=True)
+                item = json.dumps(value)
             value = item
         new[key] = value
     return new
@@ -419,7 +419,7 @@ def remove_null(d):
             del d[key]
     return d
 
-stats = collections.OrderedDict([
+stats = OrderedDict([
     ('str', 'Strength'),
     ('dex', 'Dexterity'),
     ('con', 'Constitution'),

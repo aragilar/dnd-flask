@@ -1,5 +1,4 @@
 import os
-import json
 
 from . import utils
 
@@ -59,7 +58,7 @@ class Backgrounds (utils.Group):
     plural = "Backgrounds"
     tables = [{
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),

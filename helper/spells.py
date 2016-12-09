@@ -127,7 +127,7 @@ class Spells (utils.Group):
     tables = [
     {
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),
@@ -155,7 +155,7 @@ class Spells (utils.Group):
     },
     {
         "table": "spell_lists",
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("class", str),
             ("spell", str),
         ]),
@@ -198,8 +198,8 @@ class Spells (utils.Group):
             spellscopy[spell.name] = spell.dict()
 
         ret = '<script>\nspells = %s;\n\nclasses = %s\n</script>\n' % (
-            json.dumps(spellscopy, sort_keys=True),
-            json.dumps(byClass, sort_keys=True),
+            json.dumps(spellscopy),
+            json.dumps(byClass),
         )
 
         ret += self.head

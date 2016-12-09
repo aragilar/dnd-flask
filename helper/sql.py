@@ -1,5 +1,6 @@
 import sys
 import sqlite3
+from collections import OrderedDict
 
 class DB:
     r"""
@@ -81,7 +82,7 @@ class DB:
 
         Returns a dictionary of the columns
         """
-        return {desc[0].lower(): value for desc, value in zip(curs.description, row)}
+        return OrderedDict((desc[0].lower(), value) for desc, value in zip(curs.description, row))
 
     def switch_schema(self, schema):
         pass # for now

@@ -37,7 +37,7 @@ class Feats (utils.Group):
     plural = "Feats"
     tables = [{
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),
@@ -78,7 +78,7 @@ class EpicBoons (Feats):
     plural = "Epic_Boons"
     tables = [{
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),

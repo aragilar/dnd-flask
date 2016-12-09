@@ -1,5 +1,5 @@
 import os
-import collections
+from collections import OrderedDict
 import json
 
 from . import utils
@@ -201,11 +201,8 @@ class Monster (utils.Base):
             if temp:
                 if name:
                     md += '## {}\n\n'.format(name)
-                for item in temp:
-                    if isinstance(item, list):
-                        md += '***{}.*** {}\n\n'.format(item[0], '\n'.join(item[1:]).lstrip())
-                    else:
-                        md += item + '\n\n'
+                for name, item in temp.items():
+                    md += '***{}.*** {}\n\n'.format(name, item.lstrip())
 
         for name, temp in [
             ('Legendary Actions', self.legendary_actions),
@@ -216,8 +213,8 @@ class Monster (utils.Base):
                 if self.legendary_actions_description:
                     md += self.legendary_actions_description
                 md += '<dl markdown="1">\n'
-                for item in temp:
-                    md += '<dt>{}</dt>\n<dd>{}</dd>\n'.format(item[0], '\n'.join(item[1:]).lstrip())
+                for name, item in temp.items():
+                    md += '<dt>{}</dt>\n<dd>{}</dd>\n'.format(name, item.lstrip())
                 md += '</dl>\n'
 
         return md
@@ -280,7 +277,7 @@ class Monsters (utils.Group):
     tables = [
     {
         "table": "monster_groups",
-        "fields": utils.collections.OrderedDict([
+        "fields": OrderedDict([
             ("name", str),
             ("description", str),
         ]),
@@ -291,7 +288,7 @@ class Monsters (utils.Group):
     },
     {
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),
@@ -347,7 +344,7 @@ class Monsters (utils.Group):
         for item in self.values():
             itemscopy[item.name] = item.dict()
 
-        ret = '<script>\nmonsters = %s;\n</script>\n' % (json.dumps(itemscopy, sort_keys=True))
+        ret = '<script>\nmonsters = %s;\n</script>\n' % (json.dumps(itemscopy))
 
         ret += self.head
 
@@ -387,7 +384,7 @@ class Monsters (utils.Group):
         with self.db as db:
             grouplist = db.select("monster_groups", order=["name"])
         grouplist = [(item["name"], item["description"]) for item in grouplist]
-        grouplist = collections.OrderedDict(grouplist)
+        grouplist = OrderedDict(grouplist)
         return grouplist
 
     def groups_page(self):

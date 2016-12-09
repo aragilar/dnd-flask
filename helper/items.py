@@ -54,7 +54,7 @@ class Weapons (utils.Group):
     plural = "Weapons"
     tables = [{
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),
@@ -184,7 +184,7 @@ class Armors (utils.Group):
     plural = "Armors"
     tables = [{
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),
@@ -300,7 +300,7 @@ class Items (utils.Group):
     tables = [
     {
         "table": "item_groups",
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("description", str),
         ]),
@@ -312,7 +312,7 @@ class Items (utils.Group):
     },
     {
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),

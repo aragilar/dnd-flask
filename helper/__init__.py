@@ -21,7 +21,7 @@ class Filters (utils.Group):
     plural = "Filters"
     tables = [{
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("sort_index", int),
             ("name", str),
         ]),
@@ -62,7 +62,7 @@ class Documents (utils.Group):
     plural = "Documents"
     tables = [{
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("sort_index", int),
             ("description", str),
@@ -102,7 +102,7 @@ class OptionalRules (utils.Group):
     plural = "Optional_Rules"
     tables = [{
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),
@@ -157,7 +157,7 @@ def init(file=None):
         db.curs.execute("PRAGMA journal_mode = MEMORY;")
         db.create_table(
             "sources",
-            utils.collections.OrderedDict([
+            utils.OrderedDict([
                 ("id", str),
                 ("source_name", str),
                 ("source_index", int),
@@ -177,7 +177,7 @@ def init(file=None):
             if type(item) not in [Filters, Documents]:
                 db.create_table(
                     item.plural + "_filters",
-                    utils.collections.OrderedDict([
+                    utils.OrderedDict([
                         ("filter_name", str),
                         ("item_name", str),
                     ]),
@@ -191,7 +191,7 @@ def init(file=None):
             if item.subtype:
                 db.create_table(
                     "sub%s_filters" % item.plural,
-                    utils.collections.OrderedDict([
+                    utils.OrderedDict([
                         ("filter_name", str),
                         ("item_name", str),
                     ]),

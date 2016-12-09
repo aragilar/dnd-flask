@@ -93,7 +93,7 @@ class MagicItems (utils.Group):
     plural = "Magic_Items"
     tables = [{
         "table": plural,
-        "fields": utils.collections.OrderedDict([
+        "fields": utils.OrderedDict([
             ("name", str),
             ("source", str),
             ("sort_index", int),
@@ -129,7 +129,7 @@ class MagicItems (utils.Group):
         for item in self.values():
             itemscopy[item.name] = item.dict()
 
-        ret = '<script>\nitems = %s;\n</script>\n' % (json.dumps(itemscopy, sort_keys=True))
+        ret = '<script>\nitems = %s;\n</script>\n' % (json.dumps(itemscopy))
 
         ret += spells.handle_spells(self.head, self.get_spell_list(spells.Spells))
 
