@@ -125,7 +125,7 @@ function remove_empty(){
 }
 
 function save(){
-    var data = {};
+    var data = {name: ''};
     $('.save').each(function(){
         var elem = $(this);
         var value = elem.val().trim();
@@ -136,33 +136,6 @@ function save(){
             data[elem.prop('id')] = value;
         }
     });
-    if (data.name === undefined){
-        data.name = '';
-    }
-
-    data.ability_scores = {};
-    $('#ability_scores .form-control').each(function(){
-        var elem = $(this);
-        var value = parseInt(elem.val().trim());
-        if (!isNaN(value)){
-            data.ability_scores[elem.prop('id')] = value;
-        }
-        else {
-            data.ability_scores[elem.prop('id')] = parseInt(elem.prop('placeholder'));
-        }
-    });
-
-    var saving_throws = {};
-    $('#saving_throws .form-control').each(function(){
-        var elem = $(this);
-        var value = parseInt(elem.val().trim());
-        if (!isNaN(value)){
-            saving_throws[elem.prop('id').slice(0, 3)] = value;
-        }
-    });
-    if (Object.keys(saving_throws).length){
-        data.saving_throws = saving_throws;
-    }
 
     lists.forEach(function(name){
         var temp = [];
@@ -296,28 +269,28 @@ $(function(){
             <label for="ability_scores">Ability Scores</label>
             <div id="ability_scores" class="row">
                 <div class="col-xs-4 col-sm-2">
-                    <label for="str">STR</label>
-                    <input type="number" id="str" class="form-control" placeholder="10" min="1" max="30">
+                    <label for="strength">STR</label>
+                    <input type="number" id="strength" class="save form-control" placeholder="10" min="1" max="30">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="dex">DEX</label>
-                    <input type="number" id="dex" class="form-control" placeholder="10" min="1" max="30">
+                    <label for="dexterity">DEX</label>
+                    <input type="number" id="dexterity" class="save form-control" placeholder="10" min="1" max="30">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="con">CON</label>
-                    <input type="number" id="con" class="form-control" placeholder="10" min="1" max="30">
+                    <label for="constitution">CON</label>
+                    <input type="number" id="constitution" class="save form-control" placeholder="10" min="1" max="30">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="int">INT</label>
-                    <input type="number" id="int" class="form-control" placeholder="10" min="1" max="30">
+                    <label for="intelligence">INT</label>
+                    <input type="number" id="intelligence" class="save form-control" placeholder="10" min="1" max="30">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="wis">WIS</label>
-                    <input type="number" id="wis" class="form-control" placeholder="10" min="1" max="30">
+                    <label for="wisdom">WIS</label>
+                    <input type="number" id="wisdom" class="save form-control" placeholder="10" min="1" max="30">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="cha">CHA</label>
-                    <input type="number" id="cha" class="form-control" placeholder="10" min="1" max="30">
+                    <label for="charisma">CHA</label>
+                    <input type="number" id="charisma" class="save form-control" placeholder="10" min="1" max="30">
                 </div>
             </div>
         </div>
@@ -327,27 +300,27 @@ $(function(){
             <div id="saving_throws" class="row">
                 <div class="col-xs-4 col-sm-2">
                     <label for="strsave">STR save</label>
-                    <input type="number" id="strsave" class="form-control" placeholder="0">
+                    <input type="number" id="strsave" class="save form-control" placeholder="0">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="dex">DEX save</label>
-                    <input type="number" id="dexsave" class="form-control" placeholder="0">
+                    <label for="dexsave">DEX save</label>
+                    <input type="number" id="dexsave" class="save form-control" placeholder="0">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="con">CON save</label>
-                    <input type="number" id="consave" class="form-control" placeholder="0">
+                    <label for="consave">CON save</label>
+                    <input type="number" id="consave" class="save form-control" placeholder="0">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="int">INT save</label>
-                    <input type="number" id="intsave" class="form-control" placeholder="0">
+                    <label for="intsave">INT save</label>
+                    <input type="number" id="intsave" class="save form-control" placeholder="0">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="wis">WIS save</label>
-                    <input type="number" id="wissave" class="form-control" placeholder="0">
+                    <label for="wissave">WIS save</label>
+                    <input type="number" id="wissave" class="save form-control" placeholder="0">
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <label for="cha">CHA save</label>
-                    <input type="number" id="chasave" class="form-control" placeholder="0">
+                    <label for="chasave">CHA save</label>
+                    <input type="number" id="chasave" class="save form-control" placeholder="0">
                 </div>
             </div>
         </div>
