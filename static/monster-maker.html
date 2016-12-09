@@ -43,6 +43,25 @@ String.prototype.format = function(){
     return s;
 }
 
+var lists = [
+    'tags',
+    'speed',
+    'damage_vulnerabilities',
+    'damage_resistances',
+    'damage_immunities',
+    'condition_immunities',
+    'senses',
+    'languages',
+];
+
+var dicts = [
+    'skills',
+    'traits',
+    'actions',
+    'reactions',
+    'legendary_actions',
+];
+
 var dict_elem = '<div class="col-xs-6 col-sm-4">' +
     '<input type="text" class="name form-control" placeholder="{0}">' +
     '<input type="number" class="value form-control" placeholder="0">' +
@@ -63,6 +82,7 @@ var def_elem = '<div class="col-xs-12">' +
 
 var elements = {
     tags: list_elem_wide.format('tag'),
+    speed: list_elem_med.format('speed'),
     skills: dict_elem.format('Skill'),
     damage_vulnerabilities: list_elem.format('vulnerability'),
     damage_resistances: list_elem.format('resistance'),
@@ -90,8 +110,8 @@ function add_input(){
         .focusout(remove_empty)
         .keydown(function(event){
             var keyCode = (event.keyCode ? event.keyCode : event.which);
-            if (keyCode == 13) { // enter key
-                $(this).focusout();
+            if (keyCode == 13) { // 'enter' key
+                remove_empty.call(this);
             }
         })
         .focus();
@@ -144,15 +164,6 @@ function save(){
         data.saving_throws = saving_throws;
     }
 
-    var lists = [
-        'tags',
-        'damage_vulnerabilities',
-        'damage_resistances',
-        'damage_immunities',
-        'condition_immunities',
-        'senses',
-        'languages',
-    ];
     lists.forEach(function(name){
         var temp = [];
         $('#' + name + ' .name').each(function(){
@@ -170,13 +181,6 @@ function save(){
         }
     });
 
-    var dicts = [
-        'skills',
-        'traits',
-        'actions',
-        'reactions',
-        'legendary_actions',
-    ];
     dicts.forEach(function(name){
         var temp = {};
         $('#' + name + ' > div').each(function(){
@@ -282,9 +286,10 @@ $(function(){
             <label for="hp">Hit Points</label>
             <input type="text" id="hp" class="save form-control" placeholder="HP">
         </div>
-        <div class="form-group">
+        <div class="form-group clearfix">
             <label for="speed">Speed</label>
-            <input type="text" id="speed" class="save form-control" placeholder="speed">
+            <div id="speed" class="row"></div>
+            <input type="button" id="add-speed" class="add-item btn btn-info pull-right" value="+ Speed">
         </div>
         <hr>
         <div class="form-group">
