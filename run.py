@@ -311,7 +311,7 @@ def groups_page(type):
 
 @app.route('/test/<type>')
 def test_upload(type):
-    data = helper.slug_lists.get(type)
+    data = {helper.slug(item.singular).replace('_', '-'): item for item in helper.l}.get(type)
 
     if not data:
         return abort(404)
@@ -326,7 +326,7 @@ def test_upload(type):
 
 @app.route('/test/<type>', methods=['POST'])
 def test(type):
-    data = {slug(item.singular).replace('_', '-'): item for item in helper.l}.get(type)
+    data = {helper.slug(item.singular).replace('_', '-'): item for item in helper.l}.get(type)
 
     file = request.files.get('files[]')
     if not file:
@@ -344,7 +344,7 @@ def test(type):
     html = render_template('test.html',
         styles=everystyle,
         javascript=everyjs,
-        name=data.plural.replace('_', ' '),
+        name=data.singular.replace('_', ' '),
         content=html,
     )
 
