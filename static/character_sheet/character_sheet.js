@@ -65,7 +65,7 @@ function upload() {
                 }
                 var tags = $(".save").each(function(){
                     var tag = $(this);
-                    tag.value = "";
+                    tag.val("");
                 });
                 for (var key in data) {
                     var tag = $("#" + key);
