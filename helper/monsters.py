@@ -116,21 +116,20 @@ class Monster (utils.Base):
         md += '**Speed** {}\n\n'.format(', '.join(self.speed))
         md += '---\n\n'
 
-        for stat in utils.stats:
-            value = self.ability_scores.get(stat, 10)
+        for stat in utils.stats.values():
+            stat = stat.lower()
+            value = getattr(self, stat, 10)
             md += '* **{}** {} ({:+})\n'.format(stat[:3].upper(), value, utils.get_modifier(value))
 
         md += '\n---\n\n'
 
-        if self.saving_throws:
-            for key in self.saving_throws:
-                if key not in utils.stats:
-                    raise ValueError("Invalid saving throw: %s" % key)
-            md += '**Saving Throws** {}\n\n'.format(', '.join(
-                '{} {:+}'.format(stat.title(), self.saving_throws[stat])
-                for stat in utils.stats
-                if stat in self.saving_throws
-            ))
+        temp = ', '.join(
+            '{} {:+}'.format(stat.title(), getattr(self, stat + "save"))
+            for stat in utils.stats
+            if getattr(self, stat + "save", None) is not None
+        )
+        if temp:
+            md += '**Saving Throws** {}\n\n'.format(temp)
 
         if self.skills:
             skills = []
@@ -301,8 +300,20 @@ class Monsters (utils.Group):
             ("ac", str),
             ("hp", str),
             ("speed", str),
-            ("ability_scores", str),
-            ("saving_throws", str),
+            #("ability_scores", str),
+            ("strength", int),
+            ("dexterity", int),
+            ("constitution", int),
+            ("intelligence", int),
+            ("wisdom", int),
+            ("charisma", int),
+            #("saving_throws", str),
+            ("strsave", int),
+            ("dexsave", int),
+            ("consave", int),
+            ("intsave", int),
+            ("wissave", int),
+            ("chasave", int),
             ("skills", str),
             ("damage_vulnerabilities", str),
             ("damage_resistances", str),
@@ -317,6 +328,7 @@ class Monsters (utils.Group):
             ("actions", str),
             ("reactions", str),
             ("legendary_actions", str),
+            ("legendary_actions_description", str),
         ]),
         "constraints": {
             "name": "PRIMARY KEY NOT NULL",
@@ -328,7 +340,12 @@ class Monsters (utils.Group):
             "ac": "NOT NULL",
             "hp": "NOT NULL",
             "speed": "NOT NULL",
-            "ability_scores": "NOT NULL",
+            "strength": "NOT NULL",
+            "dexterity": "NOT NULL",
+            "constitution": "NOT NULL",
+            "intelligence": "NOT NULL",
+            "wisdom": "NOT NULL",
+            "charisma": "NOT NULL",
             "experience": "NOT NULL",
         }
     }
