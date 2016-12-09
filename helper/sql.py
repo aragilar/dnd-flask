@@ -1,5 +1,6 @@
 import sys
 import sqlite3
+import re
 from collections import OrderedDict
 
 class DB:
@@ -341,4 +342,48 @@ class DB:
                 raise
             ret = self.curs.fetchall()
             ret = list(map(lambda a: a['name'], ret))
+        return ret
+
+    def list_columns(self, table):
+        r"""
+        Returns a list of columns for the given table
+        """
+        ret = []
+        if self.curs:
+            try:
+                self.curs.execute("SELECT sql FROM sqlite_master WHERE tbl_name=? AND type = 'table';", [table])
+            except:
+                if self.debug:
+                    sys.stderr.write("%s\n" % "SELECT sql FROM sqlite_master WHERE tbl_name=? AND type='table';")
+                raise
+            ret = self.curs.fetchall()
+            ret = map(lambda a: a['sql'], ret)
+            ret = ''.join(ret)
+            ret = re.findall(r'\(?(\S+) \S+[,)]', ret)
+        return ret
+
+    def drop_columns(self, table, columns=[]):
+        ret = False
+        if self.curs:
+            if isinstance(columns, str):
+                columns = [columns]
+            cols = filter(lambda a: a not in columns, self.list_columns(table))
+            cols = ','.join(cols)
+            for statement in [
+                "CREATE TEMPORARY TABLE {0}_backup({1});",
+                "INSERT INTO {0}_backup SELECT {1} FROM {0};",
+                "DROP TABLE {0};",
+                "CREATE TABLE {0}({1});",
+                "INSERT INTO {0} SELECT {1} FROM {0}_backup;",
+                "DROP TABLE {0}_backup",
+            ]:
+                statement = statement.format(table, cols)
+                try:
+                    self.curs.execute(statement)
+                except:
+                    if self.debug:
+                        sys.stderr.write("%s\n" % statement)
+                    self.rollback()
+                    raise
+            ret = True
         return ret
