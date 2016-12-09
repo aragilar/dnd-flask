@@ -144,6 +144,23 @@ function save(){
         data.saving_throws = saving_throws;
     }
 
+    var skills = {};
+    $('#skills > div').each(function(){
+        var elem = $(this);
+        var name = elem.find('.name').val().trim();
+        elem = elem.find('.value');
+        var value = elem.val().trim();
+        if (value != ''){
+            if (elem.prop('type') == 'number') {
+                value = parseInt(value);
+            }
+            skills[name] = value;
+        }
+    });
+    if (Object.keys(skills).length){
+        data[name] = skills;
+    }
+
     var lists = [
         'tags',
         'damage_vulnerabilities',
@@ -170,15 +187,14 @@ function save(){
         }
     });
 
-    var dicts = [
-        'skills',
+    var definitions = [
         'traits',
         'actions',
         'reactions',
         'legendary_actions',
     ];
-    dicts.forEach(function(name){
-        var temp = {};
+    definitions.forEach(function(name){
+        var temp = [];
         $('#' + name + ' > div').each(function(){
             var elem = $(this);
             var name = elem.find('.name').val().trim();
@@ -188,15 +204,22 @@ function save(){
                 if (elem.prop('type') == 'number') {
                     value = parseInt(value);
                 }
-                temp[name] = value;
+                temp.push([name, value]);
             }
         });
-        if (Object.keys(temp).length){
+        if (temp.length){
             data[name] = temp;
         }
     });
 
-    var filename = data.name.toLowerCase() + '.json';
+    var filename = data.name.toLowerCase();
+    filename = filename.split(' ').join('-');
+    filename = filename.split('/').join('-');
+    filename = filename.split("'").join('');
+    filename += '.json';
+    if (filename == '.json'){
+        filename = 'no-name.json';
+    }
     data = JSON.stringify(data, null, 4);
     var blob = new Blob([data], {type: 'text/plain'});
     var href = window.URL.createObjectURL(blob);
