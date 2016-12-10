@@ -98,14 +98,19 @@ var elements = {
     item: list_elem_med.format('item'),
 }
 
-function add_input(){
-    var group = $(this).parent().find('.row');
-    var new_item = elements[group.prop('id')];
+function create_input(groupname){
+    var new_item = elements[groupname];
     if (new_item === undefined){
         new_item = elements['item'];
     }
     new_item = $(new_item);
-    group.append(new_item);
+    return new_item;
+}
+
+function add_input(){
+    var parent = $(this).parent().find('.row');
+    var new_item = create_input(parent.prop('id'));
+    parent.append(new_item);
     new_item.find('.name')
         .focusout(remove_empty)
         .keydown(function(event){
@@ -195,9 +200,68 @@ function save(){
     window.URL.revokeObjectURL(blob);
 }
 
+function load(){
+    var file = document.getElementById("load");
+    file = file.files;
+    if (file.length){
+        file = file[0];
+        filename = file.name;
+        var reader = new FileReader();
+        reader.onload = function(event){
+            try {
+                var text = reader.result;
+                var data = JSON.parse(text);
+
+                $('.save').val('').each(function(){
+                    var elem = $(this);
+                    var key = elem.prop('id');
+                    var value = data[key];
+                    if (value !== undefined){
+                        elem.val(value);
+                    }
+                });
+
+                lists.forEach(function(group){
+                    var parent = $('#' + group);
+                    parent.empty();
+                    var list = data[group];
+                    if (list !== undefined){
+                        list.forEach(function(name){
+                            var new_item = create_input(group);
+                            parent.append(new_item);
+                            new_item.find('.name').val(name);
+                        });
+                    }
+                });
+                
+                dicts.forEach(function(group){
+                    var parent = $('#' + group);
+                    parent.empty();
+                    var list = data[group];
+                    if (list !== undefined){
+                        Object.keys(list).forEach(function(name){
+                            var value = list[name];
+                            var new_item = create_input(group);
+                            parent.append(new_item);
+                            new_item.find('.name').val(name);
+                            new_item.find('.value').val(value);
+                        });
+                    }
+                });
+            } catch (err) {
+                alert(err);
+            }
+        }
+        reader.readAsText(file);
+    } else {
+        alert("Please select a file.");
+    }
+}
+
 $(function(){
     $('.add-item').click(add_input);
     $('#save').click(save);
+    $('#load').change(load);
 });
     </script>
 </head>
@@ -214,6 +278,11 @@ $(function(){
                 <a class="navbar-brand" href="/">Monster Maker</a>
             </div>
             <div id="navbar-collapse" class="collapse navbar-collapse navbar-pills">
+                <div class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input id="load" class="form-control" type="file" name="files[]">
+                    </div>
+                </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li><input type="button" id="save" class="btn btn-primary navbar-btn" value="Save"></li>
                     <!--<li><input type="reset" class="btn btn-default navbar-btn" value="Clear"></li>-->
@@ -300,27 +369,27 @@ $(function(){
             <div id="saving_throws" class="row">
                 <div class="col-xs-4 col-sm-2">
                     <label for="strsave">STR save</label>
-                    <input type="number" id="strsave" class="save form-control" placeholder="0">
+                    <input type="number" id="strsave" class="save form-control" placeholder="">
                 </div>
                 <div class="col-xs-4 col-sm-2">
                     <label for="dexsave">DEX save</label>
-                    <input type="number" id="dexsave" class="save form-control" placeholder="0">
+                    <input type="number" id="dexsave" class="save form-control" placeholder="">
                 </div>
                 <div class="col-xs-4 col-sm-2">
                     <label for="consave">CON save</label>
-                    <input type="number" id="consave" class="save form-control" placeholder="0">
+                    <input type="number" id="consave" class="save form-control" placeholder="">
                 </div>
                 <div class="col-xs-4 col-sm-2">
                     <label for="intsave">INT save</label>
-                    <input type="number" id="intsave" class="save form-control" placeholder="0">
+                    <input type="number" id="intsave" class="save form-control" placeholder="">
                 </div>
                 <div class="col-xs-4 col-sm-2">
                     <label for="wissave">WIS save</label>
-                    <input type="number" id="wissave" class="save form-control" placeholder="0">
+                    <input type="number" id="wissave" class="save form-control" placeholder="">
                 </div>
                 <div class="col-xs-4 col-sm-2">
                     <label for="chasave">CHA save</label>
-                    <input type="number" id="chasave" class="save form-control" placeholder="0">
+                    <input type="number" id="chasave" class="save form-control" placeholder="">
                 </div>
             </div>
         </div>
