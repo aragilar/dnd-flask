@@ -22,6 +22,10 @@ textarea {
     height: 10em !important;
 }
 
+input, textarea {
+    font-family: "Courier New", Courier, monospace;
+}
+
 #name {
     font-size: 2.5em;
     height: auto;
@@ -284,15 +288,58 @@ $(function(){
                     </div>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><input type="button" id="save" class="btn btn-primary navbar-btn" value="Save"></li>
-                    <!--<li><input type="reset" class="btn btn-default navbar-btn" value="Clear"></li>-->
+                    <li><button type="button" id="help" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#help-modal">Help</button></li>
+                    <li><button type="button" id="save" class="btn btn-primary navbar-btn">Save</button></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div id="help-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3>Instructions</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Use <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">markdown</a> for any styling.</p>
+                    <p>Do not use underscores for bold and italics</p>
+                    <p>Do not include special unicode characters such as <code>’</code> which would be replaced with the <code>'</code> character instead.</p>
+                    <p>Use left pipes and full-width alignment markings for tables:</p>
+                    <pre>| Col 1 | Col 2 |
+|:-----:|-------|
+| Val 1 | very long answers don't need right pipes
+| Val 2 | use pipes if the entire table is less than 80 characters wide and you can make the pipes line up</pre>
+                    <p>The names of all spells, magic items, and source books should be italicized with <code>*</code>s</p>
+                    <p>Only include a &lt;spell&gt; tag for spells whose effects are actually caused by an ability (not just mentioned).</p>
+                    <p>Spell tags should each be their own paragraph when used:</p>
+                    <pre>The gnome's innate spellcasting ability is Intelligence (spell save DC 11). It can innately cast the following spells, requiring no material components:
+
+At will: *nondetection* (self only)
+
+1/day each: *blindness/deafness*, *blur*, *disguise self*
+
+&lt;spell&gt;Nondetection&lt;/spell&gt;
+
+&lt;spell&gt;Blindness/Deafness&lt;/spell&gt;
+
+&lt;spell&gt;Blur&lt;/spell&gt;
+
+&lt;spell&gt;Disguise Self&lt;/spell&gt;</pre>
+                    <p>For lists, ensure that the items are in order.</p>
+                    <p>View completed files <a href="/test/monster" target="_blank">here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <form class="container">
-        <input type="text" id="name" class="save form-control" placeholder="Name">
-        <textarea id="description" class="save form-control" placeholder="Description"></textarea>
+        <div class="form-group">
+            <input type="text" id="name" class="save form-control" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" class="save form-control" placeholder="Description"></textarea>
+        </div>
         <div class="form-group">
             <label for="monster_group">Group</label>
             <input type="text" id="monster_group" class="save form-control" placeholder="Group">
@@ -311,7 +358,7 @@ $(function(){
                 <div class="form-group col-sm-3 clearfix">
                     <label for="tags">Tags</label>
                     <div id="tags" class="row"></div>
-                    <input type="button" id="add-tag" class="add-item btn btn-info pull-right" value="+ Tag">
+                    <button type="button" id="add-tag" class="add-item btn btn-info pull-right">+ Tag</button>
                 </div>
                 <div class="col-sm-3">
                     <label for="alignment">Alignment</label>
@@ -331,7 +378,7 @@ $(function(){
         <div class="form-group clearfix">
             <label for="speed">Speed</label>
             <div id="speed" class="row"></div>
-            <input type="button" id="add-speed" class="add-item btn btn-info pull-right" value="+ Speed">
+            <button type="button" id="add-speed" class="add-item btn btn-info pull-right">+ Speed</button>
         </div>
         <hr>
         <div class="form-group">
@@ -396,37 +443,37 @@ $(function(){
         <div class="form-group clearfix">
             <label for="skills">Skills</label>
             <div id="skills" class="row"></div>
-            <input type="button" id="add-skill" class="add-item btn btn-info pull-right" value="+ Skill">
+            <button type="button" id="add-skill" class="add-item btn btn-info pull-right">+ Skill</button>
         </div>
         <div class="form-group clearfix">
             <label for="damage_vulnerabilities">Damage Vulnerabilities</label>
             <div id="damage_vulnerabilities" class="row"></div>
-            <input type="button" id="add-damage-vulnerability" class="add-item btn btn-info pull-right" value="+ Vulnerabilitiy">
+            <button type="button" id="add-damage-vulnerability" class="add-item btn btn-info pull-right">+ Vulnerability</button>
         </div>
         <div class="form-group clearfix">
             <label for="damage_resistances">Damage Resistances</label>
             <div id="damage_resistances" class="row"></div>
-            <input type="button" id="add-damage-resistance" class="add-item btn btn-info pull-right" value="+ Resistance">
+            <button type="button" id="add-damage-resistance" class="add-item btn btn-info pull-right">+ Resistance</button>
         </div>
         <div class="form-group clearfix">
             <label for="damage_immunities">Damage Immunities</label>
             <div id="damage_immunities" class="row"></div>
-            <input type="button" id="add-damage-immunity" class="add-item btn btn-info pull-right" value="+ Immunity">
+            <button type="button" id="add-damage-immunity" class="add-item btn btn-info pull-right">+ Immunity</button>
         </div>
         <div class="form-group clearfix">
             <label for="condition_immunities">Condition Immunities</label>
             <div id="condition_immunities" class="row"></div>
-            <input type="button" id="add-condition-immunity" class="add-item btn btn-info pull-right" value="+ Condition">
+            <button type="button" id="add-condition-immunity" class="add-item btn btn-info pull-right">+ Condition</button>
         </div>
         <div class="form-group clearfix">
             <label for="senses">Senses</label>
             <div id="senses" class="row"></div>
-            <input type="button" id="add-sense" class="add-item btn btn-info pull-right" value="+ Sense">
+            <button type="button" id="add-sense" class="add-item btn btn-info pull-right" value="+ Sense">+ Sense</button>
         </div>
         <div class="form-group clearfix">
             <label for="languages">Languages</label>
             <div id="languages" class="row"></div>
-            <input type="button" id="add-language" class="add-item btn btn-info pull-right" value="+ Language">
+            <button type="button" id="add-language" class="add-item btn btn-info pull-right">+ Language</button>
         </div>
         <div class="form-group">
             <label for="experience">Experience</label>
@@ -436,19 +483,19 @@ $(function(){
         <div class="form-group clearfix">
             <label for="traits">Traits</label>
             <div id="traits" class="row"></div>
-            <input type="button" id="add-trait" class="add-item btn btn-info pull-right" value="+ Trait">
+            <button type="button" id="add-trait" class="add-item btn btn-info pull-right">+ Trait</button>
         </div>
         <hr>
         <div class="form-group clearfix">
             <label for="actions">Actions</label>
             <div id="actions" class="row"></div>
-            <input type="button" id="add-action" class="add-item btn btn-info pull-right" value="+ Action">
+            <button type="button" id="add-action" class="add-item btn btn-info pull-right">+ Action</button>
         </div>
         <hr>
         <div class="form-group clearfix">
             <label for="reactions">Reactions</label>
             <div id="reactions" class="row"></div>
-            <input type="button" id="add-reaction" class="add-item btn btn-info pull-right" value="+ Reaction">
+            <button type="button" id="add-reaction" class="add-item btn btn-info pull-right">+ Reaction</button>
         </div>
         <hr>
         <div class="form-group clearfix">
@@ -456,7 +503,7 @@ $(function(){
             <textarea id="legendary_actions_description" class="save form-control" placeholder="Legendary actions description"></textarea>
             <br>
             <div id="legendary_actions" class="row"></div>
-            <input type="button" id="add-legendary-action" class="add-item btn btn-info pull-right" value="+ Legendary Action">
+            <button type="button" id="add-legendary-action" class="add-item btn btn-info pull-right" value="+ Legendary Action">+ Legenadary Action</button>
         </div>
     </form>
 </body>
