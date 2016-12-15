@@ -237,7 +237,7 @@ function load(){
                         });
                     }
                 });
-                
+
                 dicts.forEach(function(group){
                     var parent = $('#' + group);
                     parent.empty();
@@ -304,16 +304,19 @@ $(function(){
                 <div class="modal-body">
                     <p>Use <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">markdown</a> for any styling.</p>
                     <p>Do not use underscores for bold and italics</p>
-                    <p>Do not include special unicode characters such as <code>’</code> which would be replaced with the <code>'</code> character instead.</p>
+                    <p>Replace special unicode characters such as <code>’</code> with their ASCII equivalents when possible. <code>'</code> in this case.</p>
                     <p>Use left pipes and full-width alignment markings for tables:</p>
-                    <pre>| Col 1 | Col 2 |
+                    <pre><code>| Col 1 | Col 2 |
 |:-----:|-------|
 | Val 1 | very long answers don't need right pipes
-| Val 2 | use pipes if the entire table is less than 80 characters wide and you can make the pipes line up</pre>
+| Val 2 | use pipes if the entire table is less than 80 characters wide and you can make the pipes line up</code></pre>
+                    <p>Dashes should be written as 3 hyphens: <code>Some words---other words.</code></p>
+                    <p>Quote citations should use 2 hyphens: <code>--Elminster</code>.</p>
+                    <p>Hyphens should use 1 hyphen: <code>fifty-two</code>.</p>
                     <p>The names of all spells, magic items, and source books should be italicized with <code>*</code>s</p>
                     <p>Only include a &lt;spell&gt; tag for spells whose effects are actually caused by an ability (not just mentioned).</p>
                     <p>Spell tags should each be their own paragraph when used:</p>
-                    <pre>The gnome's innate spellcasting ability is Intelligence (spell save DC 11). It can innately cast the following spells, requiring no material components:
+                    <pre><code>The gnome's innate spellcasting ability is Intelligence (spell save DC 11). It can innately cast the following spells, requiring no material components:
 
 At will: *nondetection* (self only)
 
@@ -325,9 +328,9 @@ At will: *nondetection* (self only)
 
 &lt;spell&gt;Blur&lt;/spell&gt;
 
-&lt;spell&gt;Disguise Self&lt;/spell&gt;</pre>
+&lt;spell&gt;Disguise Self&lt;/spell&gt;</code></pre>
                     <p>For lists, ensure that the items are in order.</p>
-                    <p>View completed files <a href="/test/monster" target="_blank">here</a></p>
+                    <p>Test completed files <a href="/test/monster" target="_blank">here</a></p>
                 </div>
             </div>
         </div>
