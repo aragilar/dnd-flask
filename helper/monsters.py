@@ -94,7 +94,7 @@ class Monster (utils.Base):
         return type
 
     def about(self):
-        temp = None
+        temp = ''
         if self.description or self.monster_group:
             temp = self.description
             if self.monster_group:
@@ -175,7 +175,7 @@ class Monster (utils.Base):
             if self.skills and 'Perception' in self.skills:
                 s = self.skills['Perception']
             else:
-                s = utils.get_modifier(self.ability_scores.get("wis", 10))
+                s = utils.get_modifier(getattr(self, "wisdom", 10))
             temp.append('passive Perception {}'.format(10 + s))
         md += '**Senses** {}\n\n'.format(', '.join(temp))
 
