@@ -302,6 +302,7 @@ $(function(){
                     <h3>Instructions</h3>
                 </div>
                 <div class="modal-body">
+                    <p>The SRC field is the source of the record. It should be the acronym of the name of the book. Omit the leading article and operator words should be lowercase. i.e. The Lost Mine of Phandelver would be LMoP.</p>
                     <p>Use <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">markdown</a> for any styling.</p>
                     <p>Do not use underscores for bold and italics</p>
                     <p>Replace special unicode characters such as <code>’</code> with their ASCII equivalents when possible. <code>'</code> in this case.</p>
@@ -336,6 +337,9 @@ At will: *nondetection* (self only)
         </div>
     </div>
     <form class="container">
+        <div class="form-group">
+            <input type="text" id="source" class="save form-control" placeholder="SRC">
+        </div>
         <div class="form-group">
             <input type="text" id="name" class="save form-control" placeholder="Name">
         </div>
