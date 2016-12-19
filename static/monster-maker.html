@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -8,266 +8,11 @@
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="monster-maker.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <style>
-body {
-    padding-top: 60px;
-    padding-bottom: 13em;
-}
-
-textarea {
-    resize: none;
-    height: 10em !important;
-}
-
-input, textarea {
-    font-family: "Courier New", Courier, monospace;
-}
-
-#name {
-    font-size: 2.5em;
-    height: auto;
-}
-
-#size, #type, #alignment {
-    font-style: italic;
-}
-    </style>
-    <script>
-String.prototype.format = function(){
-    var s = this;
-    for (var i = 0; i < arguments.length; i++){
-        s = s.replace(
-            new RegExp("\\{" + i + "\\}", "gm"),
-            arguments[i]
-        );
-    }
-    return s;
-}
-
-var lists = [
-    'tags',
-    'speed',
-    'damage_vulnerabilities',
-    'damage_resistances',
-    'damage_immunities',
-    'condition_immunities',
-    'senses',
-    'languages',
-];
-
-var dicts = [
-    'skills',
-    'traits',
-    'actions',
-    'reactions',
-    'legendary_actions',
-];
-
-var dict_elem = '<div class="col-xs-6 col-sm-4">' +
-    '<input type="text" class="name form-control" placeholder="{0}">' +
-    '<input type="number" class="value form-control" placeholder="0">' +
-    '</div>';
-var list_elem = '<div class="col-xs-12 col-sm-6 col-md-4">' +
-    '<input type="text" class="name form-control" placeholder="{0}">' +
-    '</div>';
-var list_elem_med = '<div class="col-xs-6 col-sm-4">' +
-    '<input type="text" class="name form-control" placeholder="{0}">' +
-    '</div>';
-var list_elem_wide = '<div class="col-xs-12">' +
-    '<input type="text" class="name form-control" placeholder="{0}">' +
-    '</div>';
-var def_elem = '<div class="col-xs-12">' +
-    '<input type="text" class="name form-control" placeholder="{0}">' +
-    '<textarea class="value form-control" placeholder="{0} description"></textarea>' +
-    '</div>';
-
-var elements = {
-    tags: list_elem_wide.format('tag'),
-    speed: list_elem_med.format('speed'),
-    skills: dict_elem.format('Skill'),
-    damage_vulnerabilities: list_elem.format('vulnerability'),
-    damage_resistances: list_elem.format('resistance'),
-    damage_immunities: list_elem.format('immunity'),
-    condition_immunities: list_elem.format('condition'),
-    senses: list_elem_med.format('sense'),
-    languages: list_elem_med.format('language'),
-    traits: def_elem.format('Trait'),
-    actions: def_elem.format('Action'),
-    reactions: def_elem.format('Reaction'),
-    legendary_actions: def_elem.format('Legendary action'),
-
-    item: list_elem_med.format('item'),
-}
-
-function create_input(groupname){
-    var new_item = elements[groupname];
-    if (new_item === undefined){
-        new_item = elements['item'];
-    }
-    new_item = $(new_item);
-    return new_item;
-}
-
-function add_input(){
-    var parent = $(this).parent().find('.row');
-    var new_item = create_input(parent.prop('id'));
-    parent.append(new_item);
-    new_item.find('.name')
-        .focusout(remove_empty)
-        .keydown(function(event){
-            var keyCode = (event.keyCode ? event.keyCode : event.which);
-            if (keyCode == 13) { // 'enter' key
-                remove_empty.call(this);
-            }
-        })
-        .focus();
-}
-
-function remove_empty(){
-    var elem = $(this);
-    if (elem.val().trim() == ''){
-        elem.parent().remove();
-    }
-}
-
-function save(){
-    var data = {name: ''};
-    $('.save').each(function(){
-        var elem = $(this);
-        var value = elem.val().trim();
-        if (value != ''){
-            if (elem.prop('type') == 'number'){
-                value = parseInt(value);
-            }
-            data[elem.prop('id')] = value;
-        }
-    });
-
-    lists.forEach(function(name){
-        var temp = [];
-        $('#' + name + ' .name').each(function(){
-            var elem = $(this);
-            var value = elem.val().trim();
-            if (value != ''){
-                if (elem.prop('type') == 'number'){
-                    value = parseInt(value);
-                }
-                temp.push(value);
-            }
-        });
-        if (temp.length){
-            data[name] = temp;
-        }
-    });
-
-    dicts.forEach(function(name){
-        var temp = {};
-        $('#' + name + ' > div').each(function(){
-            var elem = $(this);
-            var name = elem.find('.name').val().trim();
-            elem = elem.find('.value');
-            var value = elem.val().trim();
-            if (elem.prop('type') == 'number'){
-                if (value == ''){
-                    value = '0';
-                }
-                value = parseInt(value);
-            }
-            temp[name] = value;
-        });
-        if (Object.keys(temp).length){
-            data[name] = temp;
-        }
-    });
-
-    var filename = data.name.toLowerCase();
-    filename = filename.split(' ').join('-');
-    filename = filename.split('/').join('-');
-    filename = filename.split("'").join('');
-    filename += '.json';
-    if (filename == '.json'){
-        filename = 'no-name.json';
-    }
-    data = JSON.stringify(data, null, 4);
-    var blob = new Blob([data], {type: 'text/plain'});
-    var href = window.URL.createObjectURL(blob);
-    var element = document.createElement('a');
-    element.href = href;
-    element.download = filename;
-    element.target = '_blank';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-    window.URL.revokeObjectURL(blob);
-}
-
-function load(){
-    var file = document.getElementById("load");
-    file = file.files;
-    if (file.length){
-        file = file[0];
-        filename = file.name;
-        var reader = new FileReader();
-        reader.onload = function(event){
-            try {
-                var text = reader.result;
-                var data = JSON.parse(text);
-
-                $('.save').val('').each(function(){
-                    var elem = $(this);
-                    var key = elem.prop('id');
-                    var value = data[key];
-                    if (value !== undefined){
-                        elem.val(value);
-                    }
-                });
-
-                lists.forEach(function(group){
-                    var parent = $('#' + group);
-                    parent.empty();
-                    var list = data[group];
-                    if (list !== undefined){
-                        list.forEach(function(name){
-                            var new_item = create_input(group);
-                            parent.append(new_item);
-                            new_item.find('.name').val(name);
-                        });
-                    }
-                });
-
-                dicts.forEach(function(group){
-                    var parent = $('#' + group);
-                    parent.empty();
-                    var list = data[group];
-                    if (list !== undefined){
-                        Object.keys(list).forEach(function(name){
-                            var value = list[name];
-                            var new_item = create_input(group);
-                            parent.append(new_item);
-                            new_item.find('.name').val(name);
-                            new_item.find('.value').val(value);
-                        });
-                    }
-                });
-            } catch (err) {
-                alert(err);
-            }
-        }
-        reader.readAsText(file);
-    } else {
-        alert("Please select a file.");
-    }
-}
-
-$(function(){
-    $('.add-item').click(add_input);
-    $('#save').click(save);
-    $('#load').change(load);
-});
-    </script>
+    <script src="marked.min.js"></script>
+    <script src="monster-maker.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -301,38 +46,7 @@ $(function(){
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h3>Instructions</h3>
                 </div>
-                <div class="modal-body">
-                    <p>The SRC field is the source of the record. It should be the acronym of the name of the book. Omit the leading article and operator words should be lowercase. i.e. The Lost Mine of Phandelver would be LMoP.</p>
-                    <p>Use <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">markdown</a> for any styling.</p>
-                    <p>Do not use underscores for bold and italics</p>
-                    <p>Replace special unicode characters such as <code>’</code> with their ASCII equivalents when possible. <code>'</code> in this case.</p>
-                    <p>Use left pipes and full-width alignment markings for tables:</p>
-                    <pre><code>| Col 1 | Col 2 |
-|:-----:|-------|
-| Val 1 | very long answers don't need right pipes
-| Val 2 | use pipes if the entire table is less than 80 characters wide and you can make the pipes line up</code></pre>
-                    <p>Dashes should be written as 3 hyphens: <code>Some words---other words.</code></p>
-                    <p>Quote citations should use 2 hyphens: <code>--Elminster</code>.</p>
-                    <p>Hyphens should use 1 hyphen: <code>fifty-two</code>.</p>
-                    <p>The names of all spells, magic items, and source books should be italicized with <code>*</code>s</p>
-                    <p>Only include a &lt;spell&gt; tag for spells whose effects are actually caused by an ability (not just mentioned).</p>
-                    <p>Spell tags should each be their own paragraph when used:</p>
-                    <pre><code>The gnome's innate spellcasting ability is Intelligence (spell save DC 11). It can innately cast the following spells, requiring no material components:
-
-At will: *nondetection* (self only)
-
-1/day each: *blindness/deafness*, *blur*, *disguise self*
-
-&lt;spell&gt;Nondetection&lt;/spell&gt;
-
-&lt;spell&gt;Blindness/Deafness&lt;/spell&gt;
-
-&lt;spell&gt;Blur&lt;/spell&gt;
-
-&lt;spell&gt;Disguise Self&lt;/spell&gt;</code></pre>
-                    <p>For lists, ensure that the items are in order.</p>
-                    <p>Test completed files <a href="/test/monster" target="_blank">here</a></p>
-                </div>
+                <div id="instructions" class="modal-body"></div>
             </div>
         </div>
     </div>
@@ -364,7 +78,7 @@ At will: *nondetection* (self only)
                 </div>
                 <div class="form-group col-sm-3 clearfix">
                     <label for="tags">Tags</label>
-                    <div id="tags" class="row"></div>
+                    <div id="tags" class="row save-group" type="list_wide" placeholder="tag"></div>
                     <button type="button" id="add-tag" class="add-item btn btn-info pull-right">+ Tag</button>
                 </div>
                 <div class="col-sm-3">
@@ -384,7 +98,7 @@ At will: *nondetection* (self only)
         </div>
         <div class="form-group clearfix">
             <label for="speed">Speed</label>
-            <div id="speed" class="row"></div>
+            <div id="speed" class="row save-group" type="list" placeholder="speed"></div>
             <button type="button" id="add-speed" class="add-item btn btn-info pull-right">+ Speed</button>
         </div>
         <hr>
@@ -449,37 +163,37 @@ At will: *nondetection* (self only)
         </div>
         <div class="form-group clearfix">
             <label for="skills">Skills</label>
-            <div id="skills" class="row"></div>
+            <div id="skills" class="row save-group" type="dict_int" placeholder="Skill"></div>
             <button type="button" id="add-skill" class="add-item btn btn-info pull-right">+ Skill</button>
         </div>
         <div class="form-group clearfix">
             <label for="damage_vulnerabilities">Damage Vulnerabilities</label>
-            <div id="damage_vulnerabilities" class="row"></div>
+            <div id="damage_vulnerabilities" class="row save-group" type="list" placeholder="vulnerability"></div>
             <button type="button" id="add-damage-vulnerability" class="add-item btn btn-info pull-right">+ Vulnerability</button>
         </div>
         <div class="form-group clearfix">
             <label for="damage_resistances">Damage Resistances</label>
-            <div id="damage_resistances" class="row"></div>
+            <div id="damage_resistances" class="row save-group" type="list" placeholder="resistance"></div>
             <button type="button" id="add-damage-resistance" class="add-item btn btn-info pull-right">+ Resistance</button>
         </div>
         <div class="form-group clearfix">
             <label for="damage_immunities">Damage Immunities</label>
-            <div id="damage_immunities" class="row"></div>
+            <div id="damage_immunities" class="row save-group" type="list" placeholder="immunity"></div>
             <button type="button" id="add-damage-immunity" class="add-item btn btn-info pull-right">+ Immunity</button>
         </div>
         <div class="form-group clearfix">
             <label for="condition_immunities">Condition Immunities</label>
-            <div id="condition_immunities" class="row"></div>
+            <div id="condition_immunities" class="row save-group" type="list" placeholder="condition"></div>
             <button type="button" id="add-condition-immunity" class="add-item btn btn-info pull-right">+ Condition</button>
         </div>
         <div class="form-group clearfix">
             <label for="senses">Senses</label>
-            <div id="senses" class="row"></div>
-            <button type="button" id="add-sense" class="add-item btn btn-info pull-right" value="+ Sense">+ Sense</button>
+            <div id="senses" class="row save-group" type="list" placeholder="sense"></div>
+            <button type="button" id="add-sense" class="add-item btn btn-info pull-right">+ Sense</button>
         </div>
         <div class="form-group clearfix">
             <label for="languages">Languages</label>
-            <div id="languages" class="row"></div>
+            <div id="languages" class="row save-group" type="list" placeholder="language"></div>
             <button type="button" id="add-language" class="add-item btn btn-info pull-right">+ Language</button>
         </div>
         <div class="form-group">
@@ -489,19 +203,19 @@ At will: *nondetection* (self only)
         <hr>
         <div class="form-group clearfix">
             <label for="traits">Traits</label>
-            <div id="traits" class="row"></div>
+            <div id="traits" class="row save-group" type="dict" placeholder="Trait"></div>
             <button type="button" id="add-trait" class="add-item btn btn-info pull-right">+ Trait</button>
         </div>
         <hr>
         <div class="form-group clearfix">
             <label for="actions">Actions</label>
-            <div id="actions" class="row"></div>
+            <div id="actions" class="row save-group" type="dict" placeholder="Action"></div>
             <button type="button" id="add-action" class="add-item btn btn-info pull-right">+ Action</button>
         </div>
         <hr>
         <div class="form-group clearfix">
             <label for="reactions">Reactions</label>
-            <div id="reactions" class="row"></div>
+            <div id="reactions" class="row save-group" type="dict" placeholder="Reaction"></div>
             <button type="button" id="add-reaction" class="add-item btn btn-info pull-right">+ Reaction</button>
         </div>
         <hr>
@@ -509,8 +223,8 @@ At will: *nondetection* (self only)
             <label for="legendary_actions_description">Legendary Actions</label>
             <textarea id="legendary_actions_description" class="save form-control" placeholder="Legendary actions description"></textarea>
             <br>
-            <div id="legendary_actions" class="row"></div>
-            <button type="button" id="add-legendary-action" class="add-item btn btn-info pull-right" value="+ Legendary Action">+ Legenadary Action</button>
+            <div id="legendary_actions" class="row save-group" type="dict" placeholder="Legendary Action"></div>
+            <button type="button" id="add-legendary-action" class="add-item btn btn-info pull-right">+ Legenadary Action</button>
         </div>
     </form>
 </body>

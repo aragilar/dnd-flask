@@ -1,0 +1,22 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 13em;
+}
+
+textarea {
+    resize: none;
+    height: 10em !important;
+}
+
+input, textarea {
+    font-family: "Courier New", Courier, monospace;
+}
+
+#name {
+    font-size: 2.5em;
+    height: auto;
+}
+
+#size, #type, #alignment {
+    font-style: italic;
+}
