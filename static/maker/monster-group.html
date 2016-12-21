@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monster Maker</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="maker.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../marked.min.js"></script>
+    <script src="maker.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Monster Group Maker</a>
+            </div>
+            <div id="navbar-collapse" class="collapse navbar-collapse navbar-pills">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a id="home" class="navbar-btn" href="../maker.html">Back</a></li>
+                    <li><a type="button" id="help" class="navbar-btn" data-toggle="modal" data-target="#help-modal">Help</a></li>
+                </ul>
+                <div class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input id="load" class="form-control" type="file" name="files[]">
+                    </div>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a type="button" id="save" class="navbar-btn">Save</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form class="container">
+        <div class="form-group">
+            <input type="text" id="name" class="save form-control" placeholder="Name">
+            <label for="description">Description</label>
+            <textarea id="description" class="save form-control" placeholder="Description"></textarea>
+        </div>
+    </form>
+</body>
+</html>

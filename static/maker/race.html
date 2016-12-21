@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Race Maker</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="maker.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../marked.min.js"></script>
+    <script src="maker.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Race Maker</a>
+            </div>
+            <div id="navbar-collapse" class="collapse navbar-collapse navbar-pills">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a id="home" class="navbar-btn" href="../maker.html">Back</a></li>
+                    <li><a type="button" id="help" class="navbar-btn" data-toggle="modal" data-target="#help-modal">Help</a></li>
+                </ul>
+                <div class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input id="load" class="form-control" type="file" name="files[]">
+                    </div>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a type="button" id="save" class="navbar-btn">Save</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form class="container">
+        <div class="form-group">
+            <input type="text" id="source" class="save form-control" placeholder="SRC">
+            <input type="text" id="race" class="save form-control" placeholder="Parent Race">
+            <input type="text" id="name" class="save form-control" placeholder="Name">
+            <label for="description">Description</label>
+            <textarea id="description" class="save form-control" placeholder="Description"></textarea>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="traits_description">Traits Description</label>
+            <input type="text" id="traits_description" class="save form-control" placeholder="Traits description">
+        </div>
+        <div class="form-group">
+            <label for="ability_scores">Ability Scores</label>
+            <div id="ability_scores" class="row">
+                <div class="col-xs-4 col-sm-2">
+                    <label for="strength">STR</label>
+                    <input type="number" id="strength" class="save form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="dexterity">DEX</label>
+                    <input type="number" id="dexterity" class="save form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="constitution">CON</label>
+                    <input type="number" id="constitution" class="save form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="intelligence">INT</label>
+                    <input type="number" id="intelligence" class="save form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="wisdom">WIS</label>
+                    <input type="number" id="wisdom" class="save form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="charisma">CHA</label>
+                    <input type="number" id="charisma" class="save form-control" placeholder="10" min="1" max="30">
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <label for="charisma">Bonus</label>
+                    <input type="number" id="bonus-ability-scores" class="save form-control" placeholder="10" min="1" max="30">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="text" id="age" class="save form-control" placeholder="Age">
+            <label for="alignment">Alignment</label>
+            <input type="text" id="alignment" class="save form-control" placeholder="Alignment">
+            <label for="size">Size</label>
+            <input type="text" id="size" class="save form-control" placeholder="Size">
+            <label for="speed">Speed</label>
+            <input type="text" id="speed" class="save form-control" placeholder="Speed">
+        </div>
+        <div class="form-group clearfix">
+            <label for="traits">Traits</label>
+            <div id="traits" class="row save-group" type="dict" placeholder="Trait"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Trait</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="skills">Skills</label>
+            <div id="skills" class="row save-group" type="list" placeholder="Skill"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Skill</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="combat_proficiencies">Combat Proficiencies</label>
+            <div id="combat_proficiencies" class="row save-group" type="list" placeholder="Proficiency"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Proficiency</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="tool_proficiencies">Tool Proficiencies</label>
+            <div id="tool_proficiencies" class="row save-group" type="list" placeholder="Proficiency"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Proficiency</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="feats">Feats</label>
+            <div id="feats" class="row save-group" type="list" placeholder="Feat"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feat</button>
+        </div>
+        <div class="form-group">
+            <label for="languages">Languages</label>
+            <input type="text" id="languages" class="save form-control" placeholder="Languages">
+            <label for="subrace">Subraces</label>
+            <input type="text" id="subrace" class="save form-control" placeholder="Subraces">
+        </div>
+    </form>
+</body>
+</html>

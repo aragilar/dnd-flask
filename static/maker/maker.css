@@ -17,6 +17,6 @@ input, textarea {
     height: auto;
 }
 
-#size, #type, #alignment {
-    font-style: italic;
+textarea#description {
+    height: 30em !important;
 }

@@ -192,10 +192,24 @@ $(function(){
     $('.add-item').click(add_input);
     $('#save').click(save);
     $('#load').change(load);
-    $('#instructions').html(marked(instructions, {gfm: true}));
+    let instr = `
+<div id="help-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3>Instructions</h3>
+            </div>
+            <div class="modal-body">{0}</div>
+        </div>
+    </div>
+</div>
+    `.format(instructions);
+    $('nav:first').after(instr);
+    $('#help').click($('#help-modal').modal);
 });
 
-let instructions = `
+let instructions = marked(`
 The SRC field is the source of the record. It should be the acronym of the name of the book.
 
 Omit the leading article and operator words should be lowercase.
@@ -252,13 +266,13 @@ At will: *nondetection* (self only)
 
 1/day each: *blindness/deafness*, *blur*, *disguise self*
 
-&lt;spell&gt;Nondetection&lt;/spell&gt;
+<spell>Nondetection</spell>
 
-&lt;spell&gt;Blindness/Deafness&lt;/spell&gt;
+<spell>Blindness/Deafness</spell>
 
-&lt;spell&gt;Blur&lt;/spell&gt;
+<spell>Blur</spell>
 
-&lt;spell&gt;Disguise Self&lt;/spell&gt;
+<spell>Disguise Self</spell>
 \`\`\`
 
 ---
@@ -268,4 +282,4 @@ For lists, ensure that the items are in order.
 ---
 
 Test completed files [here](/test/monster)
-`;
+`, {gfm: true});
