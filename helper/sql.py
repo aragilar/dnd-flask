@@ -7,6 +7,16 @@ class DB:
     r"""
     A database manager class for sqlite3
     """
+    data_types = {
+        None: "NULL",
+        str: "TEXT",
+        int: "INTEGER",
+        float: "REAL",
+    }
+    if sys.version_info[0] < 3:
+        data_types[unicode] = "TEXT"
+    else:
+        data_types[bytes] = "BLOB"
 
     def __init__(self, db=None, commit=True, debug=True):
         r"""
@@ -108,23 +118,10 @@ class DB:
 
         Returns if the creation was successful
         """
-        types = {
-            None: "NULL",
-            str: "TEXT",
-            int: "INTEGER",
-            float: "REAL",
-        }
-
-        if sys.version_info[0] < 3:
-            types[unicode] = "TEXT"
-        else:
-            types[bytes] = "BLOB"
-
         ret = False
         if self.curs:
             for key, value in fields.items():
-                if value is None or isinstance(value, type):
-                    value = types[value]
+                value = self.data_types.get(value, value)
                 if key in constraints:
                     constraint = constraints[key]
                     fields[key] = "{} {} {}".format(key, value, constraint)
@@ -385,5 +382,20 @@ class DB:
                         sys.stderr.write("%s\n" % statement)
                     self.rollback()
                     raise
+            ret = True
+        return ret
+    
+    def add_column(self, table, column, type):
+        ret = False
+        if self.curs:
+            type = self.data_types.get(type, type)
+            statement = "ALTER TABLE ? ADD COLUMN ? ?;"
+            try:
+                self.curs.execute(statement, [table, column, type])
+            except:
+                if self.debug:
+                    sys.stderr.write("%s\n" % statement)
+                self.rollback()
+                raise
             ret = True
         return ret
