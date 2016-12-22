@@ -32,12 +32,18 @@ class Race (utils.Base):
             ret += self.traits_description + '\n\n'
 
         # ----#-   Race Ability Scores
-        scores = self.ability_scores
+        stats = utils.stats.copy()
+        stats['+'] = 'ability_bonus'
+        scores = {
+            score: getattr(self, name.lower(), 0)
+            for score, name in stats.items()
+        }
+        print(scores)
         if scores and any(scores.values()):
             lst = []
             if all(map(lambda a: scores[a] == 1, utils.statlist)):
                 lst.append("your ability scores each increase by 1")
-            elif sum(map(lambda a: scores[a] if a != '+' else 0, scores)) > 0:
+            elif any(map(lambda a: scores[a] if a != '+' else 0, scores)):
                 for i in utils.statlist:
                     score = scores.get(i, 0)
                     if score:
@@ -52,7 +58,7 @@ class Race (utils.Base):
                             operator,
                             score,
                         ))
-            if scores.get('+', 0) > 0:
+            if scores['+'] and scores['+'] > 0:
                 lst.append('%d different ability scores of your choice increase by 1'
                     % scores.get('+')
                 )
@@ -195,7 +201,13 @@ class Races (utils.Group):
             ("sort_index", int),
             ("description", str),
             ("traits_description", str),
-            ("ability_scores", str),
+            ("strength", int),
+            ("dexterity", int),
+            ("constitution", int),
+            ("intelligence", int),
+            ("wisdom", int),
+            ("charisma", int),
+            ("ability_bonus", int),
             ("age", str),
             ("alignment", str),
             ("size", str),
@@ -224,7 +236,13 @@ class Races (utils.Group):
             ("sort_index", int),
             ("description", str),
             ("traits_description", str),
-            ("ability_scores", str),
+            ("strength", int),
+            ("dexterity", int),
+            ("constitution", int),
+            ("intelligence", int),
+            ("wisdom", int),
+            ("charisma", int),
+            ("ability_bonus", int),
             ("age", str),
             ("alignment", str),
             ("size", str),
