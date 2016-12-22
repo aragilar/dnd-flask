@@ -53,6 +53,7 @@ class DB:
         self.conn = sqlite3.connect(self.file)
         self.conn.row_factory = self._to_dict # sqlite3.Row
         self.curs = self.conn.cursor()
+        self.curs.execute("PRAGMA journal_mode = MEMORY;")
         self.curs.execute("PRAGMA foreign_keys = ON;")
         return self
 
@@ -384,14 +385,14 @@ class DB:
                     raise
             ret = True
         return ret
-    
+
     def add_column(self, table, column, type):
         ret = False
         if self.curs:
             type = self.data_types.get(type, type)
-            statement = "ALTER TABLE ? ADD COLUMN ? ?;"
+            statement = "ALTER TABLE %s ADD %s %s;" % (table, column, type)
             try:
-                self.curs.execute(statement, [table, column, type])
+                self.curs.execute(statement)
             except:
                 if self.debug:
                     sys.stderr.write("%s\n" % statement)
