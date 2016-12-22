@@ -95,8 +95,10 @@
             <input type="text" id="alignment" class="save form-control" placeholder="Alignment">
             <label for="size">Size</label>
             <input type="text" id="size" class="save form-control" placeholder="Size">
+            <input type="text" id="size_description" class="save form-control" placeholder="Description">
             <label for="speed">Speed</label>
-            <input type="text" id="speed" class="save form-control" placeholder="Speed">
+            <input type="number" id="speed" class="save form-control" placeholder="Speed">
+            <input type="text" id="speed_description" class="save form-control" placeholder="Description">
         </div>
         <div class="form-group clearfix">
             <label for="traits">Traits</label>
@@ -125,7 +127,11 @@
         </div>
         <div class="form-group">
             <label for="languages">Languages</label>
-            <input type="text" id="languages" class="save form-control" placeholder="Languages">
+            <div id="languages" class="row save-group" type="list" placeholder="Language"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Language</button>
+            <input type="text" id="languages_description" class="save form-control" placeholder="Description" style="clear: both;">
+        </div>
+        <div class="form-group">
             <label for="subrace">Subraces</label>
             <input type="text" id="subrace" class="save form-control" placeholder="Subraces">
         </div>
