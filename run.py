@@ -310,9 +310,19 @@ def groups_page(type):
 
     return final_pass(html)
 
+@app.route('/test/')
+@app.route('/test/index.html')
+def test_list():
+    return render_template('test-list.html',
+        styles=everystyle,
+        javascript=everyjs,
+    )
+
 @app.route('/test/<type>', methods=['GET', 'POST'])
 def test(type):
-    data = {helper.slug(item.singular).replace('_', '-'): item for item in helper.l}.get(type)
+    data = {helper.slug(item.singular).replace('_', '-'): item for item in helper.l}
+    
+    data = data.get(type)
 
     if not data:
         return abort(404)

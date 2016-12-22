@@ -281,5 +281,5 @@ For lists, ensure that the items are in order.
 
 ---
 
-Test completed files [here](/test/monster)
+Test completed files [here](/test/)
 `, {gfm: true});
