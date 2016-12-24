@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
 body {
     padding-top: 60px;
     padding-bottom: 13em;
@@ -9,7 +11,7 @@ textarea {
 }
 
 input, textarea {
-    font-family: "Courier New", Courier, monospace;
+    font-family: Inconsolata, "Courier New", Courier, monospace;
 }
 
 #name {
