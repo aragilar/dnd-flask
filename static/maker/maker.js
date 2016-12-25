@@ -127,8 +127,9 @@ function save(){
         filename = 'no-name.json';
     }
     data = JSON.stringify(data, null, 4);
-    let blob = new Blob([data], {type: 'text/plain'});
-    let href = window.URL.createObjectURL(blob);
+    //let blob = new Blob([data], {type: 'text/plain'});
+    //let href = window.URL.createObjectURL(blob);
+    let href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(data);
     let element = document.createElement('a');
     element.href = href;
     element.download = filename;
