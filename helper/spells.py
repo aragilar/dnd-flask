@@ -1,6 +1,7 @@
 import os
 import re
 import json
+from collections import defaultdict
 
 from . import utils
 
@@ -176,17 +177,10 @@ class Spells (utils.Group):
     def spells_by_class(self):
         if self.db:
             with self.db as db:
-                l = db.select("spell_lists")
-            d = {}
+                l = db.select("spell_lists", order="spell")
+            d = defaultdict(list)
             for item in l:
-                name = item["name"]
-                d[name] = []
-                for level in range(10):
-                    level = "cantrips" if level == 0 else "level_%d_spells" % level
-                    level = item[level]
-                    if level:
-                        level = level.split("\v")
-                        d[name].extend(level)
+                d[item['class']].append(item['spell'])
             return d
         else:
             return {}
