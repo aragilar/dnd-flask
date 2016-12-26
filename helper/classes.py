@@ -131,8 +131,9 @@ class Class (utils.Base):
         ret = '<section class="container">\n%s</section>\n' % ret
 
         # ----#-   Subclass
-        for subc in self.children.values():
-            ret += subc.page()
+        if self.children:
+            for subc in self.children.values():
+                ret += subc.page()
 
         return ret
 
