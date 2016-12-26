@@ -20,8 +20,9 @@ class Race (utils.Base):
         ret = spells.handle_spells(ret, self.parent.get_spell_list(spells.Spells))
 
         # ----#-   Subrace
-        for subrace in self.children.values():
-            ret += subrace.page()
+        if self.children:
+            for subrace in self.children.values():
+                ret += subrace.page()
 
         return ret
 
