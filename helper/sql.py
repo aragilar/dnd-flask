@@ -1,6 +1,6 @@
 import sys
 import sqlite3
-import re
+import operator
 from collections import OrderedDict
 
 class DB:
@@ -348,16 +348,15 @@ class DB:
         """
         ret = []
         if self.curs:
+            statement = "pragma table_info(%s);" % table
             try:
-                self.curs.execute("SELECT sql FROM sqlite_master WHERE tbl_name=? AND type = 'table';", [table])
+                self.curs.execute(statement)
             except:
                 if self.debug:
-                    sys.stderr.write("%s\n" % "SELECT sql FROM sqlite_master WHERE tbl_name=? AND type='table';")
+                    sys.stderr.write("%s\n" % statement)
                 raise
             ret = self.curs.fetchall()
-            ret = map(lambda a: a['sql'], ret)
-            ret = ''.join(ret)
-            ret = re.findall(r'\(?(\S+) \S+[,)]', ret)
+            ret = list(map(operator.itemgetter('name'), ret))
         return ret
 
     def drop_columns(self, table, columns=[]):
@@ -365,10 +364,11 @@ class DB:
         if self.curs:
             if isinstance(columns, str):
                 columns = [columns]
-            cols = filter(lambda a: a not in columns, self.list_columns(table))
+            cols = self.list_columns(table)
+            cols = filter(lambda a: a not in columns, cols)
             cols = ','.join(cols)
             for statement in [
-                "CREATE TEMPORARY TABLE {0}_backup({1});",
+                "CREATE TABLE {0}_backup({1});",
                 "INSERT INTO {0}_backup SELECT {1} FROM {0};",
                 "DROP TABLE {0};",
                 "CREATE TABLE {0}({1});",
