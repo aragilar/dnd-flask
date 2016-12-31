@@ -1,6 +1,7 @@
 import os
 import re
 import json
+from collections import OrderedDict
 
 from . import utils
 from . import spells
@@ -9,7 +10,8 @@ class Race (utils.Base):
     def page(self):
         # ----#-   Race Description
         ret = "# %s\n\n" % self.name
-        ret += self.description
+        if self.description:
+            ret += self.description
         ret = utils.convert(ret)
         ret = utils.get_details(ret, 'h1') + '\n\n'
 
@@ -33,18 +35,19 @@ class Race (utils.Base):
             ret += self.traits_description + '\n\n'
 
         # ----#-   Race Ability Scores
-        stats = utils.stats.copy()
-        stats['+'] = 'ability_bonus'
-        scores = {
-            score: getattr(self, name.lower(), 0)
-            for score, name in stats.items()
-        }
-        print(scores)
-        if scores and any(scores.values()):
+        scores = OrderedDict(
+            (stat, getattr(self, name.lower(), 0))
+            for stat, name in utils.stats.items()
+        )
+        scores['ability_bonus'] = self.ability_bonus
+        for key in scores:
+            if scores[key] is None:
+                scores[key] = 0
+        if any(scores.values()):
             lst = []
-            if all(map(lambda a: scores[a] == 1, utils.statlist)):
+            if all(scores[a] == 1 for a in utils.stats):
                 lst.append("your ability scores each increase by 1")
-            elif any(map(lambda a: scores[a] if a != '+' else 0, scores)):
+            elif any(scores[a] for a in utils.stats):
                 for i in utils.statlist:
                     score = scores.get(i, 0)
                     if score:
@@ -59,9 +62,9 @@ class Race (utils.Base):
                             operator,
                             score,
                         ))
-            if scores['+'] and scores['+'] > 0:
+            if scores['ability_bonus'] > 0:
                 lst.append('%d different ability scores of your choice increase by 1'
-                    % scores.get('+')
+                    % scores['ability_bonus']
                 )
             lst = utils.comma_list(lst)
             lst = lst[0].upper() + lst[1:] + '.'
@@ -77,87 +80,20 @@ class Race (utils.Base):
 
         # ----#-   Race Size
         if self.size is not None:
-            if self.size_description:
-                ret += '***Size.*** %s\n\n' % self.size_description.format(size=self.size)
-            else:
-                ret += '***Size.*** Your size is %s.\n\n' % self.size
+            ret += '***Size.*** %s\n\n' % self.size
 
         # ----#-   Race Speed
         if self.speed is not None:
-            if self.speed_description:
-                ret += '***Speed.*** %s\n\n' % self.speed_description.format(speed=self.speed)
-            else:
-                ret += '***Speed.*** Your base walking speed is %s feet.\n\n' % self.speed
+            ret += '***Speed.*** %s\n\n' % self.speed
 
         # ----#-   Race Traits
         if self.traits:
             for name, trait in self.traits.items():
                 ret += '***%s.*** %s\n\n' % (name, trait.lstrip())
 
-        # ----#-   Race Weapons
-        if self.combat_proficiencies:
-            ret += ('***%s Combat Training.*** You have proficiency in %s.\n\n'
-                % (self.name, utils.comma_list(self.combat_proficiencies))
-            )
-
-        # ----#-   Race Tools
-        if self.tool_proficiencies and len(self.tool_proficiencies) > 1:
-            ret += '***Tool Proficiencies.*** %s.\n\n' % utils.choice_list(self.tool_proficiencies, 'tool')
-        elif self.tool_proficiencies:
-            ret += ('***Tool Proficiency.*** You gain proficiency with %s.\n\n'
-                % str(self.tool_proficiencies[0])
-            )
-
-        # ----#-   Race Skills
-        if self.skills and len(self.skills) > 1:
-            ret += ('***Skills.*** You gain proficiency in %s.\n\n'
-                % utils.choice_list(self.skills, 'skill')
-            )
-        elif self.skills:
-            if self.skills[0].isdigit():
-                if self.skills[0] == '1':
-                    ret += '***Skills.*** You gain proficiency in a skill of your choice.\n\n'
-                else:
-                    ret += '***Skills.*** You gain proficiency in %s skills of your choice.\n\n' % self.skills[0]
-            else:
-                ret += '***Skills.*** You gain proficiency in %s.\n\n' % str(self.skills[0])
-
-        # ----#-   Race Feats
-        if self.feats and len(self.feats) > 1:
-            ret += '***Feats.*** You gain %s.\n\n' % utils.choice_list(self.feats, 'feat')
-        elif self.feats:
-            if self.feats[0].isdigit():
-                if self.feats[0] == '1':
-                    ret += '***Feats.*** You gain a feat of your choice.\n\n'
-                else:
-                    ret += '***Feats.*** You gain %s feats of your choice.\n\n' % self.feats[0]
-            else:
-                ret += '***Feats.*** You gain the %s feat.\n\n' % str(self.feats[0])
-
         # ----#-   Race Languages
         if self.languages:
-            temp = self.languages[:]
-        else:
-            temp = []
-
-        if temp and temp[-1].isdigit():
-            if temp[-1] == '1':
-                temp[-1] = '1 additional language'
-            else:
-                temp[-1] = '%s additional languages' % temp[-1]
-
-        if temp:
-            if self.languages_description:
-                ret += '***Languages.*** %s\n\n' % self.languages_description.format(
-                    languages=utils.choice_list(temp, 'language')
-                )
-            elif len(temp) == 1 and temp[0].isdigit():
-                if temp[0] == '1':
-                    ret += '***Languages.*** You can speak, read, and write 1 language of your choice.\n\n'
-                else:
-                    ret += '***Languages.*** You can speak, read, and write %s languages of your choice.\n\n' % temp[0]
-            else:
-                ret += '***Languages.*** You can speak, read, and write %s.\n\n' % utils.comma_list(temp, 'language')
+            ret += '***Languages.*** %s\n\n' % self.languages
 
         if hasattr(self, "subrace") and self.subrace:
             ret += '***Subrace.*** %s\n\n' % self.subrace
