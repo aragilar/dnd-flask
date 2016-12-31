@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Race Maker</title>
-    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="maker.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../marked.min.js"></script>
+    <script src="https://raw.githubusercontent.com/chjj/marked/master/marked.min.js"></script>
     <script src="maker.js"></script>
 </head>
 <body>
@@ -28,7 +28,7 @@
             </div>
             <div id="navbar-collapse" class="collapse navbar-collapse navbar-pills">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a id="home" href="../maker.html">Back</a></li>
+                    <li><a id="home" href="index.html">Back</a></li>
                     <li><a type="button" id="help" data-toggle="modal" data-target="#help-modal">Help</a></li>
                 </ul>
                 <div class="navbar-form navbar-right">
@@ -90,48 +90,22 @@
         </div>
         <div class="form-group">
             <label for="age">Age</label>
-            <input type="text" id="age" class="save form-control" placeholder="Age">
+            <textarea id="age" class="save form-control" placeholder="Age"></textarea>
             <label for="alignment">Alignment</label>
-            <input type="text" id="alignment" class="save form-control" placeholder="Alignment">
+            <textarea id="alignment" class="save form-control" placeholder="Alignment"></textarea>
             <label for="size">Size</label>
-            <input type="text" id="size" class="save form-control" placeholder="Size">
-            <input type="text" id="size_description" class="save form-control" placeholder="Description">
+            <textarea id="size" class="save form-control" placeholder="Size"></textarea>
             <label for="speed">Speed</label>
-            <input type="number" id="speed" class="save form-control" placeholder="Speed">
-            <input type="text" id="speed_description" class="save form-control" placeholder="Description">
+            <textarea id="speed" class="save form-control" placeholder="Speed"></textarea>
         </div>
         <div class="form-group clearfix">
             <label for="traits">Traits</label>
             <div id="traits" class="row save-group" type="dict" placeholder="Trait"></div>
             <button type="button" class="add-item btn btn-info pull-right">+ Trait</button>
         </div>
-        <div class="form-group clearfix">
-            <label for="skills">Skills</label>
-            <div id="skills" class="row save-group" type="list" placeholder="Skill"></div>
-            <button type="button" class="add-item btn btn-info pull-right">+ Skill</button>
-        </div>
-        <div class="form-group clearfix">
-            <label for="combat_proficiencies">Combat Proficiencies</label>
-            <div id="combat_proficiencies" class="row save-group" type="list" placeholder="Proficiency"></div>
-            <button type="button" class="add-item btn btn-info pull-right">+ Proficiency</button>
-        </div>
-        <div class="form-group clearfix">
-            <label for="tool_proficiencies">Tool Proficiencies</label>
-            <div id="tool_proficiencies" class="row save-group" type="list" placeholder="Proficiency"></div>
-            <button type="button" class="add-item btn btn-info pull-right">+ Proficiency</button>
-        </div>
-        <div class="form-group clearfix">
-            <label for="feats">Feats</label>
-            <div id="feats" class="row save-group" type="list" placeholder="Feat"></div>
-            <button type="button" class="add-item btn btn-info pull-right">+ Feat</button>
-        </div>
         <div class="form-group">
             <label for="languages">Languages</label>
-            <div id="languages" class="row save-group" type="list" placeholder="Language"></div>
-            <button type="button" class="add-item btn btn-info pull-right">+ Language</button>
-            <input type="text" id="languages_description" class="save form-control" placeholder="Description" style="clear: both;">
-        </div>
-        <div class="form-group">
+            <textarea id="languages" class="save form-control" placeholder="Languages"></textarea>
             <label for="subrace">Subraces</label>
             <input type="text" id="subrace" class="save form-control" placeholder="Subraces">
         </div>

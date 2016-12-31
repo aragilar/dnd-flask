@@ -14,6 +14,7 @@ from flask import (
     abort,
     request,
     redirect,
+    send_from_directory,
 )
 
 import helper
@@ -310,8 +311,16 @@ def groups_page(type):
 
     return final_pass(html)
 
-@app.route('/test/')
+@app.route('/maker/')
+def maker_index():
+    return send_from_directory('static/maker/', 'index.html')
+
+@app.route('/maker/<filename>')
+def maker(filename):
+    return send_from_directory('static/maker/', filename)
+
 @app.route('/test/index.html')
+@app.route('/test/')
 def test_list():
     return render_template('test-list.html',
         styles=everystyle,
