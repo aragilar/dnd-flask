@@ -20,7 +20,7 @@ class Class (utils.Base):
     
     @property
     def max_slot(self):
-        if self.max_slot is None and self.magic:
+        if self._max_slot is None and self.magic:
             slot_level = spell_slot_level(self.magic, self.max_level)
             for max_slot in range(len(utils.spellslots[slot_level])):
                 if utils.spellslots[slot_level][max_slot] < 1:
@@ -30,7 +30,7 @@ class Class (utils.Base):
             self._max_slot = max_slot
         else:
             max_slot = self._max_slot
-        return x
+        return max_slot
     
     @max_slot.setter
     def max_slot(self, max_slot):
