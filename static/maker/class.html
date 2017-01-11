@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Class Maker</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="maker.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://raw.githubusercontent.com/chjj/marked/master/marked.min.js"></script>
+    <script src="maker.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Class Maker</a>
+            </div>
+            <div id="navbar-collapse" class="collapse navbar-collapse navbar-pills">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a id="home" href="index.html">Back</a></li>
+                    <li><a type="button" id="help" data-toggle="modal" data-target="#help-modal">Help</a></li>
+                </ul>
+                <div class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input id="load" class="form-control" type="file" name="files[]">
+                    </div>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a type="button" id="save">Save</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form class="container">
+        <div class="form-group">
+            <input type="text" id="source" class="save form-control" placeholder="SRC">
+            <input type="text" id="class" class="save form-control" placeholder="Parent Class">
+            <input type="text" id="name" class="save form-control" placeholder="Name">
+            <label for="description">Description</label>
+            <textarea id="description" class="save form-control" placeholder="Description"></textarea>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="summary">Summary</label>
+            <textarea id="summary" class="save form-control" placeholder="Summary"></textarea>
+            <label for="hit_die">Hit Die</label>
+            <input type="number" id="hit_die" class="save form-control" placeholder="8">
+        </div>
+        <div class="form-group clearfix">
+            <label for="combat_proficiencies">Combat Proficiencies</label>
+            <div id="combat_proficiencies" class="row save-group" type="list" placeholder="proficiency"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Proficiency</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="tool_proficiencies">Tool Proficiencies</label>
+            <div id="tool_proficiencies" class="row save-group" type="list" placeholder="proficiency"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Proficiency</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="saving_throws">Saving Throws</label>
+            <div id="saving_throws" class="row save-group" type="list" placeholder="saving throw"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Save</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="skills">Skills</label>
+            <div id="skills" class="row save-group" type="list" placeholder="Skill"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Skill</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="equipment">Equipment</label>
+            <div id="equipment" class="row save-group" type="list" placeholder="equipment"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Equipment</button>
+        </div>
+        <div class="form-group">
+            <label for="magic">Magic</label>
+            <input type="number" id="magic" class="save form-control" placeholder="0">
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-head">Head Features</label>
+            <div id="features-head" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-1">Level 1 Features</label>
+            <div id="features-level-1" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-2">Level 2 Features</label>
+            <div id="features-level-2" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-3">Level 3 Features</label>
+            <div id="features-level-3" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-4">Level 4 Features</label>
+            <div id="features-level-4" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-5">Level 5 Features</label>
+            <div id="features-level-5" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-6">Level 6 Features</label>
+            <div id="features-level-6" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-7">Level 7 Features</label>
+            <div id="features-level-7" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-8">Level 8 Features</label>
+            <div id="features-level-8" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-9">Level 9 Features</label>
+            <div id="features-level-9" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-10">Level 10 Features</label>
+            <div id="features-level-10" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-11">Level 11 Features</label>
+            <div id="features-level-11" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-12">Level 12 Features</label>
+            <div id="features-level-12" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-13">Level 13 Features</label>
+            <div id="features-level-13" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-14">Level 14 Features</label>
+            <div id="features-level-14" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-15">Level 15 Features</label>
+            <div id="features-level-15" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-16">Level 16 Features</label>
+            <div id="features-level-16" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-17">Level 17 Features</label>
+            <div id="features-level-17" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-18">Level 18 Features</label>
+            <div id="features-level-18" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-19">Level 19 Features</label>
+            <div id="features-level-19" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-level-20">Level 20 Features</label>
+            <div id="features-level-20" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group clearfix">
+            <label for="features-foot">Foot Features</label>
+            <div id="features-foot" class="row save-group" type="dict" placeholder="Feature"></div>
+            <button type="button" class="add-item btn btn-info pull-right">+ Feature</button>
+        </div>
+        <div class="form-group">
+            <label for="spell_list_name">Spell List</label>
+            <input type="text" id="spell_list_name" class="save form-control" placeholder="Spell List">
+        </div>
+    </form>
+</body>
+</html>
