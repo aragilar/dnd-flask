@@ -34,8 +34,6 @@ class Class (utils.Base):
     
     @max_slot.setter
     def max_slot(self, max_slot):
-        if max_slot is None:
-            max_slot = 0
         self._max_slot = max_slot
 
     @property
@@ -368,7 +366,7 @@ class SubClass (Class):
 def spell_slot_level(magic, level):
     if not magic:
         y = 0
-    elif x < magic:
+    elif level < magic:
         y = 0
     else:
         y = int(math.ceil(level / float(magic)))
