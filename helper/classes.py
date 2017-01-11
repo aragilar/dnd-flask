@@ -8,16 +8,35 @@ from . import utils
 from . import spells
 
 class Class (utils.Base):
-    def __init__(self, parent, d):
-        for key, value in {
-            "magic": 0,
-            "max_slot": 9,
-            "max_level": 20,
-        }.items():
-            if d[key] is None:
-                d[key] = value
-
-        super().__init__(parent, d)
+    @property
+    def max_level(self):
+        if self._max_level is None:
+            self._max_level = 20
+        return self._max_level
+    
+    @max_level.setter
+    def max_level(self, max_level):
+        self._max_level = max_level
+    
+    @property
+    def max_slot(self):
+        if self.max_slot is None and self.magic:
+            slot_level = spell_slot_level(self.magic, self.max_level)
+            for max_slot in range(len(utils.spellslots[slot_level])):
+                if utils.spellslots[slot_level][max_slot] < 1:
+                    break
+            else:
+                max_slot += 1
+            self._max_slot = max_slot
+        else:
+            max_slot = self._max_slot
+        return x
+    
+    @max_slot.setter
+    def max_slot(self, max_slot):
+        if max_slot is None:
+            max_slot = 0
+        self._max_slot = max_slot
 
     @property
     def spells(self):
@@ -140,30 +159,13 @@ class Class (utils.Base):
     def classTable(self):
         ret = ''
 
-        if self.table_data or self.magic > 0:
-            if self.magic > 0: # figure out the level of the maximum spell slot
-                if self.max_slot != 9:
-                    x = self.max_slot
-                else:
-                    y = self.max_level
-                    if y < self.magic:
-                        y = 0
-                    else:
-                        y = int(math.ceil(y / float(self.magic)))
-                    for x in range(len(utils.spellslots[-1])):
-                        if utils.spellslots[y][x] < 1:
-                            break
-                    else:
-                        x += 1
-            else:
-                x = 0
-
+        if self.table_data or self.magic:
             headrows = ['Level']
             if self.table_data:
-                headrows += self.table_data.get('@', [])
+                headrows.extend(self.table_data.keys())
             if self.magic:
-                headrows += ['']
-                headrows += list(map(lambda a: utils.ordinals[a], range(1, x + 1)))
+                headrows.append('')
+                headrows.extend(map(lambda a: utils.ordinals[a], range(1, self.max_slot + 1)))
 
             body = '<table class="class-table">\n'
 
@@ -188,12 +190,12 @@ class Class (utils.Base):
                             body += str(self.table_data.get(item, [])[x-1])
                         elif item[:3] in utils.ordinals:
                             # spell slots
-                            if x < self.magic:
-                                y = 0
-                            else:
-                                y = int(math.ceil(x / float(self.magic)))
+                            y = spell_slot_level(self.magic, x)
                             z = utils.ordinals.index(item[:3]) - 1
-                            body += str(utils.spellslots[y][z])
+                            slots = str(utils.spellslots[y][z])
+                            if slots == '0':
+                                slots = '-'
+                            body += slots
                         body += '</td>\n'
                     else:
                         body += '<td%s></td>\n' % emptycolstyle
@@ -310,7 +312,7 @@ class Class (utils.Base):
                 body += utils.details_group(temp, body_class=table_class)
                 ret += utils.details_block(summary, body)
 
-            if self.max_slot > 0 and any(self.spells.get(str(i)) for i in range(1, self.max_slot+1)):
+            if self.max_slot and any(self.spells.get(str(i)) for i in range(1, self.max_slot+1)):
                 summary = 'Spells'
                 body = ''
                 for x in range(1, self.max_slot + 1):
@@ -362,6 +364,15 @@ class SubClass (Class):
         ret = '<section class="container">\n%s</section>\n' % ret
 
         return ret
+
+def spell_slot_level(magic, level):
+    if not magic:
+        y = 0
+    elif x < magic:
+        y = 0
+    else:
+        y = int(math.ceil(level / float(magic)))
+    return y
 
 class Classes (utils.Group):
     type = Class
