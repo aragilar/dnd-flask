@@ -1,11 +1,10 @@
-import os
 import re
 import functools
 import copy
 import multiprocessing.pool
 import json
 import uuid
-from collections import OrderedDict, defaultdict
+from collections import OrderedDict
 
 ##import markdown
 import markdown2
@@ -32,9 +31,8 @@ md = markdown2.Markdown(
 
 _lock = multiprocessing.Lock()
 def convert(data):
-    _lock.acquire()
-    out = md.convert(data)
-    _lock.release()
+    with _lock:
+        out = md.convert(data)
     return out
 
 class Base (object):

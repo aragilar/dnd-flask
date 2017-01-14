@@ -1,6 +1,5 @@
-import os
-from collections import OrderedDict
 import json
+from collections import OrderedDict
 
 from . import utils
 from . import spells

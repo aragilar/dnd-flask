@@ -1,8 +1,3 @@
-import sys
-import os
-import re
-import collections
-
 from . import sql
 from . import utils
 from . import classes

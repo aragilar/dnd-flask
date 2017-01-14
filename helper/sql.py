@@ -44,7 +44,7 @@ class DB:
         """
         if commit is None:
             commit = self.will_commit
-        return type(self)(db=self.file, commit=commit, debug=debug)
+        return type(self)(db=self.file, commit=commit, debug=self.debug)
 
     def connect(self):
         r"""
@@ -308,7 +308,7 @@ class DB:
             statement = "DROP TABLE {}".format(table)
             statement += ';'
             try:
-                self.curs.execute(statement, params)
+                self.curs.execute(statement)
             except:
                 if self.debug:
                     sys.stderr.write("%s\n" % statement)

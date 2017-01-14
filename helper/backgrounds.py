@@ -1,5 +1,3 @@
-import os
-
 from . import utils
 
 class Background (utils.Base):

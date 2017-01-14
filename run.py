@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
-import os
-import re
 import logging
 import json
 from collections import OrderedDict
@@ -10,10 +7,8 @@ from collections import OrderedDict
 from flask import (
     Flask,
     render_template,
-    url_for,
     abort,
     request,
-    redirect,
     send_from_directory,
 )
 
@@ -83,8 +78,6 @@ def five_hundred(e):
 @app.route('/character_sheet/', defaults={'look':'standard'})
 @app.route('/character_sheet/<look>')
 def character_sheet(look):
-    filter_name = get_filter()
-
     if look in ['index', 'index.htm', 'index.html']:
         look = 'standard'
     look = helper.slug(look)

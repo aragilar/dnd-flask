@@ -1,6 +1,3 @@
-import os
-import re
-import json
 from collections import OrderedDict
 
 from . import utils
