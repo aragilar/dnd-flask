@@ -63,9 +63,10 @@ def four_oh_three(e):
 
 @app.errorhandler(404)
 def four_oh_four(e):
-    return error(e, [
-        "Our gnomes couldn't find the file you were looking for...",
-        "If you entered the URL manually try checking your spelling.",
+    return error("404", [
+        "Error 404",
+        "Your haiku could not be found",
+        "Try again later",
     ]), 404
 
 @app.errorhandler(500)
