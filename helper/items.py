@@ -14,7 +14,6 @@ class Weapon (utils.Base):
             if d[key] is None:
                 d[key] = value
 
-        d["properties"] = d["properties"].split("\v")
         d["ranged"] = bool(d["ranged"])
 
         super().__init__(parent, d)
@@ -22,7 +21,7 @@ class Weapon (utils.Base):
     def page(self):
         ret = '<tr>\n'
 
-        ret += '<th>%s</th>\n' % self.name
+        ret += '<td>%s</td>\n' % self.name
 
         if self.cost > 0:
             if self.cost < 0.1:
@@ -146,7 +145,7 @@ class Armor (utils.Base):
     def page(self):
         ret = '<tr>\n'
 
-        ret += '<th>%s</th>' % self.name
+        ret += '<td>%s</td>' % self.name
 
         if self.cost > 0:
             if self.cost < 0.1:
