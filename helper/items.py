@@ -383,7 +383,8 @@ class Items (utils.Group):
             description = groups[name]
             hadany = False
             temp = '<h2>%s</h2>\n' % self._getgroup(name)
-            temp += utils.convert(description)
+            if description:
+                temp += utils.convert(description)
             temp += '<table>\n'
             temp += (
                 '<tr>'
