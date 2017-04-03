@@ -37,6 +37,7 @@ def convert(data):
 
 class Base (object):
     children = None
+    current_filter = None
 
     def __init__(self, parent, d, children=None):
         self.parent = parent
@@ -169,6 +170,7 @@ class Group (object):
         values = list(values)
         for item in values:
             self.add_children(item)
+            item.current_filter = self.current_filter
         return values
 
     def dict(self):
@@ -199,6 +201,7 @@ class Group (object):
         data = dict(data[0])
         data = self.type(self, data)
         self.add_children(data)
+        data.current_filter = self.current_filter
         return data
 
     def __str__(self):

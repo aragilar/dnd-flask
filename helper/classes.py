@@ -29,7 +29,7 @@ class Class (utils.Base):
         else:
             max_slot = self._max_slot
         return max_slot
-    
+
     @max_slot.setter
     def max_slot(self, max_slot):
         self._max_slot = max_slot
@@ -39,18 +39,27 @@ class Class (utils.Base):
         if not hasattr(self, "_spells"):
             l = defaultdict(list)
             if self.spell_list_name:
+                tables = ["spell_lists L", "spells S"]
+                columns = ["L.spell", "S.level"]
+                conditions = [
+                    "L.class=?",
+                    "L.spell=S.name",
+                ]
+                parameters = [self.spell_list_name]
+                if self.current_filter:
+                    tables.append('spells_filters F')
+                    conditions.extend([
+                        "F.item_name=S.name",
+                        "F.filter_name=?",
+                    ])
+                    parameters.append(self.current_filter)
                 with self.parent.db as db:
                     temp = db.select(
-                        ["spell_lists L", "spells S"],
-                        columns=[
-                            "L.spell",
-                            "S.level",
-                        ],
-                        conditions=[
-                            "L.class='%s'" % (self.spell_list_name.replace("'", "''")),
-                            "L.spell=S.name",
-                        ],
+                        tables,
+                        columns=columns,
+                        conditions=conditions,
                         order=["L.spell"],
+                        params=parameters,
                     )
                 if temp:
                     for spell in temp:
